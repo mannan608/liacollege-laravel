@@ -20,48 +20,34 @@
 
                     <div class="p-5 space-y-5">
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            {{-- Name --}}
-                            <x-form.input-text name="name" label="Course Name" value="{{ old('name') }}" placeholder="Enter Course Name..." />
+                        <x-form.select-input name="name" label="Course Name" :options="[
+                            'course-1' => 'course-1',
+                            'course-2' => 'course-2',
+                        ]" />
 
-                            {{-- Code --}}
-                            <x-form.input-text name="code" label="Course Code" value="{{ old('code') }}"  placeholder="Enter Course Code..." />
-
-                            {{-- Cricos --}}
-                            <x-form.input-text name="cricos" label="Cricos No" value="{{ old('cricos') }}"  placeholder="Enter Cricos No..." />
-
-                            {{-- Price --}}
-                            <x-form.input-text name="price" label="Price" value="{{ old('price') }}"  placeholder="Enter Price..." />
-                            <x-form.input-text name="discount_percentage" label="Discount Percentage" value="{{ old('discount_percentage') }}"  placeholder="Enter Discount Percentage..." />
+                        <div class="flex justify-between gap-4">
+                            <h6>Create Section</h6>
+                            <button type="submit"
+                                class=" w-fit rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500">
+                                Create Section
+                            </button>
                         </div>
 
-                        <x-form.file-uploader name="thumbnail" label="Thumbnail" accept="image/*" />
-                        <x-form.file-uploader name="course_material" label="Course Material" accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" />
-
-                        <x-form.textarea-input name="overview" label="Overview" rows="5"
-                            placeholder="Enter Course overview..." :value="old('overview')" />
-
-                        <x-form.textarea-input name="entry_requirements" label="Entry Requirements" rows="5"
-                            placeholder="Enter Entry Requirements..." :value="old('entry_requirements')" />
+                        {{-- show section field --}}
+                        <div class="">
                             
-                        <x-form.textarea-input name="description" label="Description" rows="5"
-                            placeholder="Enter Course description..." :value="old('description')" />
+                        </div>
+
                     </div>
-                    <div class="flex justify-end p-5">
-                    <button type="submit"
-                        class=" w-fit rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500">
-                        Create Course
-                    </button>
-                </div>
+                    
 
                 </div>
             </div>
 
-            <div class="lg:col-span-4">             
+            <div class="lg:col-span-4">
 
-                
+
             </div>
         </div>
     </form>
-   
 @endsection
