@@ -11,20 +11,20 @@ class Course extends Model
 
     protected $fillable = [
         'name',
-        'code',
-        'cricos',
-        'slug',
-        'price',
-        'discount_percentage',
-        'thumbnail',
-        'overview',
-        'entry_requirements',
-        'description',
-        'course_material',
-        'status',
-        'category_id',
-        'created_by',
-        'updated_by',
+        // 'code',
+        // 'cricos',
+       'slug',
+        // 'price',
+        // 'discount_percentage',
+        // 'thumbnail',
+        // 'overview',
+        // 'entry_requirements',
+        // 'description',
+        // 'course_material',
+        // 'status',
+        // 'category_id',
+        // 'created_by',
+        // 'updated_by',
     ];
 
     protected $casts = [
@@ -42,14 +42,23 @@ class Course extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    public function students()
-    {
-        return $this->belongsToMany(Student::class);
-    }
-
+  public function students()
+{
+    return $this->belongsToMany(
+        Student::class,
+        'enroll_course',
+        'course_id',
+        'student_id'
+    );
+}
+    
     public function getFinalPriceAttribute()
     {
         return $this->price -
             (($this->price * $this->discount_percentage) / 100);
+    }
+     public function sections()
+    {
+        return $this->hasMany(CourseSection::class);
     }
 }

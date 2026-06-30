@@ -12,7 +12,7 @@ class UserRepository implements UserRepositoryInterface
     {
          return User::query()
         ->with('roles:id,name', 'primaryRole:id,name')
-        ->where('primary_role_id', '!=', 5)
+        ->where('primary_role_id', '!=', 4)
         ->latest()
         ->paginate($perPage);
     }

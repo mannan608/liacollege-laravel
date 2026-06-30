@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Course;
 use App\Repositories\Eloquent\ProviderRepository;
+use App\Repositories\Eloquent\StudentRepository;
 use App\Repositories\Interfaces\ProviderRepositoryInterface;
+use App\Repositories\Interfaces\StudentRepositoryInterface;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 
@@ -73,6 +75,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             ProviderRepositoryInterface::class,
             ProviderRepository::class
+        );
+         $this->app->bind(
+            StudentRepositoryInterface::class,
+           StudentRepository::class
         );
     }
 

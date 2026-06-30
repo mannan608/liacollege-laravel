@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Student\StudentController;
+use App\Models\Student;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +55,7 @@ Route::prefix('{role}')
         Route::resource('roles-permissions', RolePermissionController::class);
 
         Route::resource('users', UserController::class);
+        Route::resource('students', StudentController::class);
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
@@ -61,4 +64,8 @@ Route::prefix('{role}')
         Route::resource('subscribers', SubscriberController::class);
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        Route::get('students/{student}/course-permission',[StudentController::class, 'coursePermission'])->name('students.course-permission');
+
+        Route::post('students/{student}/course-permission',[StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
     });

@@ -1,0 +1,115 @@
+Dynamic Course Sections with Configurable Fields (Laravel + Blade)
+
+---
+
+## ROLE
+You are a senior Laravel developer. Build a **dynamic, admin-manageable course section system** using **Laravel + Blade** (no SPA framework required, but Alpine.js/vanilla JS allowed for dynamic form behavior). Follow Laravel best practices: Form Requests, Service classes, Eloquent relationships, database transactions, and proper validation.
+
+## FEATURE OVERVIEW
+A **Course** has many **Sections** (e.g., "Policies & Procedures", "Templates", "Sample Documents"). Sections are NOT hardcoded — the admin can:
+1. **Add a new section** at any time, giving it a name/label.
+2. At creation time, **choose which field types** that section will contain (a combination, e.g., Title + File, or Title + Link + Description).
+3. **Edit** a section's fields later (with safe handling of existing data).
+4. **Delete/remove** a section (with safe handling of existing data — soft delete preferred).
+
+
+Each section instance then has one or more **content entries** (rows of actual data) whose fields match the section's configured field schema.
+
+### Supported Field Types (extensible)
+| Key | Label | Storage | Notes |
+|---|---|---|---|
+| `title` | Title | string | required by default |
+| `link` | Link (URL) | string | must validate as URL |
+| `upload` | File Upload | file path | validate mime/size |
+| `description` | Description (Textarea) | text | |
+| `date` | Date | date | validate date format |
+| `checkbox` | Checkbox (boolean) | boolean | |
+
+The field type list must be **stored in a config/enum**, not scattered as magic strings, so adding a new field type later (e.g., "Dropdown", "Number") requires touching only one place.
+
+---
+
+## DATABASE SCHEMA (use EAV-style structure for flexibility)
+
+Design migrations for:
+
+1. **`courses`** — id, title, description, status, timestamps, soft deletes.
+2. **`course_sections`** — id, course_id (FK), name, slug, order (int), is_active (bool), timestamps, soft deletes.
+3. **`section_fields`** — id, course_section_id (FK), field_key (e.g. `title`, `link`, `upload`, `description`, `date`, `checkbox`), label (admin-customizable display name, e.g. "Policy Title"), is_required (bool), order (int), timestamps.
+   
+
+4. **`section_entries`** — id, course_section_id (FK), created_by, timestamps, soft deletes. (Represents one "row" of submitted content for that section.)
+5. **`section_entry_values`** — id, section_entry_id (FK), section_field_id (FK), value_text (nullable, for title/link/description/date/checkbox-as-string), value_file_path (nullable, for uploads), timestamps.
+
+Use **foreign key constraints with `onDelete('cascade')`** where deleting a course/section should clean up dependents, but pair this with **soft deletes on sections** so historical data isn't silently destroyed by accidental section removal.
+
+---
+
+## ADMIN UI / BLADE VIEWS REQUIRED
+
+1. **Course edit page** — lists existing sections (cards), each showing its configured fields, with "Edit" and "Delete" actions, plus an **"+ Add Section"** button.
+2. **Add/Edit Section page**:
+   - Input: Section Name (required, unique per course).
+   - A **dynamic field-picker UI**: checkboxes or a repeatable "add field row" interface where admin picks a field type from a dropdown (Title, Link, Upload, Description, Date, Checkbox) and optionally customizes its label and required flag.
+   - "Add Another Field" button — dynamically appends another field-type row via JS (no page reload). Use Alpine.js or vanilla JS with a Blade `@push('scripts')`.
+   - Must prevent submitting with **zero fields selected**.
+   - Must prevent **duplicate field types** unless explicitly allowed (decide and document your choice).
+3. **Section content entry form (front-end side)** — dynamically renders the correct input type for each configured field (text input for Title, url input for Link, file input for Upload, textarea for Description, date picker for Date, checkbox for Checkbox), driven entirely by what's stored in `section_fields` — **no hardcoded blade per-section**. Use a Blade partial like `_field-input.blade.php` that switches on `field_key`.
+
+---
+
+## BACKEND LOGIC REQUIREMENTS
+
+- `SectionController@store` / `update`:
+  - Wrap section + field creation in a **DB transaction**.
+  - Validate via a dedicated `StoreSectionRequest` Form Request.
+  - Validate the `fields` array structure (each item has `field_key` + optional `label`/`is_required`), reject unknown `field_key` values not in the allowed enum/config list.
+- `SectionEntryController@store`:
+  - **Dynamically build validation rules at runtime** based on the section's configured fields (loop through `section_fields`, map `field_key` to a Laravel validation rule: `link` → `url`, `upload` → `file|mimes:pdf,docx,jpg,png|max:5120`, `date` → `date`, `checkbox` → `boolean`, `title`/`description` → `string`).
+  - Apply `required_if`/`required` based on each field's `is_required` flag.
+  - Store uploaded files via `Storage::disk('public')` with sanitized, unique filenames; never trust original filename for storage path.
+- Use **Policies** to ensure only admins can add/edit/delete sections.
+- Use **Eloquent relationships**: `Course hasMany CourseSection`, `CourseSection hasMany SectionField`, `CourseSection hasMany SectionEntry`, `SectionEntry hasMany SectionEntryValue`, `SectionEntryValue belongsTo SectionField`.
+
+---
+
+## REQUIRED ERROR HANDLING — HANDLE EVERY CASE BELOW
+
+**Section creation/editing:**
+- Empty/whitespace-only section name → `422` with message "Section name is required."
+- Duplicate section name within the same course → reject with clear message ("A section with this name already exists in this course.").
+- Zero fields selected when creating a section → reject ("Please select at least one field for this section.").
+- Invalid/unknown `field_key` submitted (tampered request) → reject with `422`, do not silently ignore.
+- Duplicate field type submitted in the same request (if not allowed) → reject with message naming the duplicate field.
+- Admin tries to **remove a field** from a section that already has entries using that field's data → either (a) soft-delete the field and keep historical entry values read-only, or (b) block deletion with a warning "This field has existing data in N entries. Archiving instead of deleting." — **pick one strategy and apply it consistently**; do not hard-delete a field whose entry values still exist (would orphan `section_entry_values` rows).
+- Admin deletes a whole section that has entries → soft delete the section (don't hard delete), and hide it from the public-facing course view, but preserve data for audit/restore.
+- Reordering sections with invalid/out-of-range order values → re-normalize order values server-side rather than trusting client-submitted indices blindly.
+
+**Section entry submission (the actual content form):**
+- Required field left empty → field-specific inline error ("The Title field is required.").
+- `Link` field given a non-URL string → "Please enter a valid URL (e.g., https://example.com)."
+- `Upload` field: file too large → "File must not exceed 5MB."; disallowed mime type → "Only PDF, DOC, DOCX, JPG, PNG files are allowed."; no file when required → "Please upload a file."
+- `Date` field with invalid/malformed date → "Please enter a valid date."
+- Checkbox: must gracefully handle the field being **absent from the request entirely** when unchecked (HTML checkboxes don't submit when unchecked) — don't throw "field required" for an optional checkbox; for a required checkbox use a hidden `0` fallback input.
+- Submitting an entry against a **soft-deleted or inactive section** → reject with 403/404, "This section is no longer accepting submissions."
+- Submitting a field value for a `field_key` that does **not belong to** the targeted section (tampered request / mismatched section_field_id) → reject, do not save.
+- File upload failures (disk full, permission error, storage exception) → catch and show a generic safe error ("We couldn't upload your file. Please try again."), log full exception server-side via `Log::error()`.
+- Concurrent edits: two admins editing the same section's fields simultaneously → use updated_at timestamp checks or DB transactions with locking (`lockForUpdate()`) to avoid lost updates; on conflict, show "This section was updated by someone else. Please refresh and try again."
+
+
+## DELIVERABLES EXPECTED FROM YOU 
+
+1. Migrations for all tables listed above, with proper foreign keys, indexes, and soft deletes.
+2. Eloquent models with relationships, `$fillable`, and casts (`is_required` → boolean, `order` → integer).
+3. A `FieldType` enum or `config/section-fields.php` config file listing allowed field keys, their labels, default validation rules, and the Blade input partial to use for each.
+4. Form Request classes: `StoreCourseSectionRequest`, `UpdateCourseSectionRequest`, and a dynamic-rule builder for section entries (e.g. `SectionEntryRuleBuilder` service class).
+5. Controllers: `CourseSectionController`, `SectionEntryController`, with full CRUD + the error handling above.
+6. Blade views: section list/manager, add/edit section form with dynamic field picker (JS-driven, no page reload to add a field row), and the dynamic entry-submission form that renders inputs based on configured fields.
+7. A Policy class restricting section management to admins.
+8. Seeders/factories demonstrating at least 3 example sections with different field combinations (matching the original requirement: Section A = Title + File, Section B = Title + Link + Description).
+9. Brief inline comments explaining the dynamic-rule-building logic, since that's the trickiest part.
+
+
+**Now generate the full implementation (migrations → models → requests → controllers → views) in that order, explaining key decisions briefly as you go.**
+
+file save must be public(no need use disk or storage)

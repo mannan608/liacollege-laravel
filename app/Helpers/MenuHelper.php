@@ -37,6 +37,7 @@ class MenuHelper
                     ],
                 ],
             ],
+           
             [
                 'name' => 'Access Control',
                 'icon' => 'authentication',
@@ -53,6 +54,14 @@ class MenuHelper
                     ],
                 ],
             ],
+
+              [
+                'icon' => 'authentication',
+                'name' => 'Students Manage',
+                'route' => 'role.students.index',
+                'permission' => 'user.list',
+            ],
+
             [
                 'name' => 'Organization',
                 'icon' => 'university',

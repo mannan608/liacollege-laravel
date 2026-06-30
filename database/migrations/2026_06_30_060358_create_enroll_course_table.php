@@ -11,14 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('section_entries', function (Blueprint $table) {
+        Schema::create('enroll_course', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_section_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
+
+            $table->foreignId('student_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->foreignId('course_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
             $table->timestamps();
-            $table->softDeletes();
-            
-            $table->index(['course_section_id', 'created_at']);
+
+            $table->unique(['student_id', 'course_id']);
         });
     }
 
@@ -27,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('section_entries');
+        Schema::dropIfExists('enroll_course');
     }
 };

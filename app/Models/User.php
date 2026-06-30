@@ -83,4 +83,8 @@ class User extends Authenticatable
     {
         return $this->student()->exists();
     }
+    public function coursePermissions()
+{
+    return $this->hasMany(CoursePermissions::class,'student_id');
+}
 }

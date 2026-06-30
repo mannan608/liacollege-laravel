@@ -24,6 +24,7 @@ class UserStoreRequest extends FormRequest
             'primary_role_id' => ['required', 'exists:roles,id'],
             'roles' => ['required', 'array', 'min:1'],
             'roles.*' => ['integer', 'exists:roles,id'],
+            
         ];
     }
 
@@ -37,4 +38,6 @@ class UserStoreRequest extends FormRequest
 
         $this->merge(['roles' => array_values(array_unique($roles))]);
     }
+
+    
 }
