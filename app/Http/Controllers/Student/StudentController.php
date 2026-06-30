@@ -7,6 +7,7 @@ use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Course;
+use App\Models\CoursePermissions;
 use App\Models\Student;
 use App\Models\User;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
@@ -122,7 +124,7 @@ class StudentController extends Controller
 //     ->with('sections.rows')
 //     ->get();
 
-// return($enrolledCourses);
+// return($student);
 
 
     return view('backend.pages.students.course-permission', [
@@ -130,6 +132,67 @@ class StudentController extends Controller
         'enrolledCourses' => $student->courses,
     ]);
     }
+
+
+ public function saveCoursePermission(Request $request, string $role, Student $student)
+{
+     dd($request->all());
+
+    DB::transaction(function () use ($request, $student) {
+
+        CoursePermissions::where('student_id', $student->id)->delete();
+
+        foreach ($request->permissions ?? [] as $courseId => $permission) {
+
+            if (!empty($permission['full_course'])) {
+
+                CoursePermissions::create([
+                    'student_id' => $student->id,
+                    'course_id' => $courseId,
+                    'section_id' => null,
+                    'row_id' => null,
+                ]);
+
+                continue;
+            }
+
+            if (!empty($permission['sections'])) {
+
+                foreach ($permission['sections'] as $sectionId) {
+
+                    CoursePermissions::create([
+                        'student_id' => $student->id,
+                        'course_id' => $courseId,
+                        'section_id' => $sectionId,
+                        'row_id' => null,
+                    ]);
+                }
+            }
+
+            if (!empty($permission['rows'])) {
+
+                foreach ($permission['rows'] as $rowId) {
+
+                    $row = \App\Models\CourseSectionRow::find($rowId);
+
+                    if (!$row) {
+                        continue;
+                    }
+
+                    CoursePermissions::create([
+                        'student_id' => $student->id,
+                        'course_id' => $courseId,
+                        'section_id' => $row->course_section_id,
+                        'row_id' => $row->id,
+                    ]);
+                }
+            }
+        }
+
+    });
+
+    return back()->with('success', 'Permission updated successfully.');
+}
 
 
     public function dashboard()
