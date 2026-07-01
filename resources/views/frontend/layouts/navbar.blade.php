@@ -24,8 +24,8 @@
 
                 </button>
                 <!-- Logo -->
-                <div class="w-34">
-                    <a href="/">
+                <div class="w-14">
+                    <a href="/" >
                         <img src="{{ asset('logo.webp') }}" alt="logo" class="w-auto h-auto">
                     </a>
                 </div>

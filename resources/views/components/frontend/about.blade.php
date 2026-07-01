@@ -10,11 +10,11 @@
             </div>
 
             <div class="text-sm lg:text-base text-gray-600 leading-relaxed mt-3 md:mt-5 text-center md:text-left">
-                <p class="">Pentagon College is an Australia based, cutting – edge, accredited vocational education
+                <p class="">Lia College is an Australia based, cutting – edge, accredited vocational education
                     provider. We offer courses in Leadership, Business and Information Technology with all our
                     qualifications focusing on workplace knowledge and practical skills that increase employability.
                     This work inspires the public to pay attention to social issues.Our students come from a diverse
-                    background. Pentagon offers our students an opportunity to make great friends and learn from our
+                    background. Lia College offers our students an opportunity to make great friends and learn from our
                     industry – expert trainers in an engaging classroom environment.</p>
             </div>
 
@@ -47,7 +47,7 @@
                         <h3 class="font-semibold text-base lg:text-lg text-gray-900">CRICOS Registered</h3>
                     </div>
                     <div>
-                        <p class="text-sm lg:text-base text-gray-600 text-center md:text-left">Pentagon College is registered on the Commonwealth
+                        <p class="text-sm lg:text-base text-gray-600 text-center md:text-left">Lia College is registered on the Commonwealth
                             Register of Institutions and Courses for Overseas Students (CRICOS).</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
         <!-- Right Image -->
         <div class="relative">
             <div class="rounded-3xl overflow-hidden shadow-2xl">
-                <img src="{{ asset('penta-img/about.jpg') }}" alt="Pentagon College students collaborating"
+                <img src="{{ asset('penta-img/about.jpg') }}" alt="Lia College students collaborating"
                     class="w-full h-full object-cover">
             </div>
         </div>

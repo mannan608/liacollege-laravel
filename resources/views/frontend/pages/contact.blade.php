@@ -17,7 +17,7 @@
                 </h1>
 
                 <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                    At Pentagon College, we bridge the gap between academic knowledge
+                    At Lia College, we bridge the gap between academic knowledge
                     and industry demands. Our mission is to provide world-class
                     vocational education that transforms careers and fuels
                     professional growth.
@@ -52,7 +52,7 @@
             <div class="grid grid-cols-1 md:grid-cols-[65%_35%] gap-6 md:gap-0">
                 <div class="content pr-0 md:pr-8 lg:pr-10">
                     <p class="lg:text-base text-sm text-neutral-500">
-                        If you have a question about Pentagon College Australia, please contact our friendly team of Course
+                        If you have a question about Lia College Australia, please contact our friendly team of Course
                         and Careers advisers. For those new to replica watches, visiting <a
                             href="https://www.skwatches.com/" class="text-brand-500">https://www.skwatches.com/</a> provides
                         an excellent starting point. The site offers comprehensive information about different Rolex models

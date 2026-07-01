@@ -21,7 +21,7 @@
                 </h1>
 
                 <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                    At Pentagon College, we bridge the gap between academic knowledge
+                    At Lia College, we bridge the gap between academic knowledge
                     and industry demands. Our mission is to provide world-class
                     vocational education that transforms careers and fuels
                     professional growth.

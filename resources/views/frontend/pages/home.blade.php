@@ -61,7 +61,7 @@
 
                     <p class="mt-3 lg:mt-4 text-gray-200
                     text-sm sm:text-base leading-relaxed">
-                        Pentagon College has educational programs that develop you for
+                        Lia College has educational programs that develop you for
                         the real workforce. Our activities are designed to ensure that
                         you can effectively transfer your skills and knowledge into
                         workplace practice.
@@ -142,27 +142,27 @@
             <div class="flex flex-col items-center justify-center">
                 <div class="h-1.5 w-14 bg-brand-500 rounded-full mb-3"></div>
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">Let's Know More About
-                    Pentagon College</h1>
+                    Lia College</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6 md:mt-10">
 
                 <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
-                        Unlocking the Doors to Success at Pentagon College</h5>
+                        Unlocking the Doors to Success at Lia College</h5>
                     <p class="text-body text-sm md:text-base">Section 1: A World of Opportunities Welcome to Pentagon
                         College.</p>
                 </div>
                 <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
-                        5 Reasons to Choose Pentagon College for an Exciting Career in Business
+                        5 Reasons to Choose Lia College for an Exciting Career in Business
                     </h5>
-                    <p class="text-body text-sm md:text-base">SIntroduction Welcome to Pentagon College, the leading
+                    <p class="text-body text-sm md:text-base">SIntroduction Welcome to Lia College, the leading
                         institution for aspiring.</p>
                 </div>
                 <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
-                        Unlocking Your Potential at Pentagon College</h5>
-                    <p class="text-body text-sm md:text-base">Discovering Your True Potential At Pentagon College, we
+                        Unlocking Your Potential at Lia College</h5>
+                    <p class="text-body text-sm md:text-base">Discovering Your True Potential At Lia College, we
                         believe that.</p>
                 </div>
 

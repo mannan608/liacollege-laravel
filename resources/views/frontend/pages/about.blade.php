@@ -21,7 +21,7 @@
                 </h1>
 
                 <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                    At Pentagon College, we bridge the gap between academic knowledge
+                    At Lia College, we bridge the gap between academic knowledge
                     and industry demands. Our mission is to provide world-class
                     vocational education that transforms careers and fuels
                     professional growth.
@@ -61,13 +61,13 @@
                     <img src="{{ asset('penta-img/about-2.jpg') }}" alt="" class="object-cover">
                 </div>
                 <div class="content flex flex-col gap-3 md:gap-4 lg:gap-6">
-                    <p class="lg:text-base text-sm text-neutral-500">Welcome to Pentagon College Australia, a leading
+                    <p class="lg:text-base text-sm text-neutral-500">Welcome to Lia College Australia, a leading
                         institution dedicated to transforming lives through
                         quality education. With a rich heritage and a commitment to excellence, we pride ourselves on
                         providing an exceptional learning experience to students from diverse backgrounds.</p>
                     <p class="lg:text-base text-sm text-neutral-500">
 
-                        At Pentagon College Australia, we believe in fostering a supportive and inclusive community that
+                        At Lia College Australia, we believe in fostering a supportive and inclusive community that
                         empowers students to unlock their potential and shape their future. Our passionate faculty members
                         bring a wealth of knowledge and industry expertise, ensuring that our programs are relevant,
                         up-to-date, and aligned with the demands of the ever-evolving professional landscape.
@@ -87,14 +87,14 @@
                     industry placements, enabling students to gain valuable real-world experience and forge strong industry
                     connections.</p>
 
-                <p class="lg:text-base text-sm text-neutral-500">At Pentagon College Australia, we prioritise the holistic
+                <p class="lg:text-base text-sm text-neutral-500">At Lia College Australia, we prioritise the holistic
                     development of our students. Alongside academic excellence, we foster personal growth, cultural
                     diversity, and a sense of social responsibility. Our dedicated support services ensure that each student
                     receives the guidance and assistance they need to thrive academically and personally. </p>
                 <p class="lg:text-base text-sm text-neutral-500">
                     We invite you to join our vibrant community of learners and embark on a transformative educational
                     journey. Discover limitless possibilities, unleash your potential, and become a leader in your field.
-                    Choose Pentagon College Australia for an education that will empower you to shape a brighter future.
+                    Choose Lia College Australia for an education that will empower you to shape a brighter future.
                 </p>
             </div>
         </div>

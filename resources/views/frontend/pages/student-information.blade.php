@@ -21,7 +21,7 @@
                 </h1>
 
                 <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                    At Pentagon College, we bridge the gap between academic knowledge
+                    At Lia College, we bridge the gap between academic knowledge
                     and industry demands. Our mission is to provide world-class
                     vocational education that transforms careers and fuels
                     professional growth.
@@ -58,7 +58,7 @@
             <div class="grid grid-cols-1 md:grid-cols-[65%_35%] gap-6 md:gap-0">
                 <div class="content pr-0 md:pr-8 lg:pr-10">
                     <p class="lg:text-base text-sm text-neutral-500">
-                        Welcome to Pentagon College. Here we provide you with everything you need to know about studying
+                        Welcome to Lia College. Here we provide you with everything you need to know about studying
                         with us in Australia. By choosing us as your education provider, you are choosing a high-quality and
                         industry relevant course and education provider to ensure you are set up for the future. Turtles
                         feed on plants and have unique living habits. The website <a href="https://www.replica-watches.net/"
@@ -441,7 +441,7 @@
                     Enrollment Process
                 </span>
                 <h2 class="mt-4 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
-                    Start Your Journey with Pentagon College
+                    Start Your Journey with Lia College
                 </h2>
                 <p class="mt-6 text-sm md:text-base text-gray-600 leading-relaxed">
                     Getting started is easy. Complete your enrolment application, submit your
