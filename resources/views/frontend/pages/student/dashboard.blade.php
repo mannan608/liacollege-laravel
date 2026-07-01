@@ -93,11 +93,23 @@
                                                                 class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700">
                                                                 Submit Work
                                                             </button>
+                                                            {{-- @if ($row->is_document_submission)
+                                                                <a href="{{ route('student.assignment.submit', $row) }}"
+                                                                    class="btn btn-success">
+                                                                    Submit Document
+                                                                </a>
+                                                            @endif --}}
 
                                                             <a href="{{ asset($row->data['file']) }}" download
                                                                 class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-emerald-700">
                                                                 Download
                                                             </a>
+                                                            {{-- @if ($row->is_downloadable)
+                                                                <a href="{{ asset($row->data['file']) }}" target="_blank"
+                                                                    class="btn btn-primary">
+                                                                    Download
+                                                                </a>
+                                                            @endif --}}
 
                                                         </div>
                                                     @endif

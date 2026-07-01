@@ -1,57 +1,50 @@
-
 <?php
+
 namespace App\Services;
 
-use App\Models\Course;
-use App\Models\CourseSection;
+use App\Models\CoursePermissions;
 use App\Models\CourseSectionRow;
-use App\Models\User;
+use App\Models\Student;
+
 class CoursePermissionService
 {
-    public function canAccessCourse(User $student, Course $course): bool
+    public function canAccessRow(Student $student, CourseSectionRow $row): bool
     {
-        return $student->coursePermissions()
-            ->where('course_id', $course->id)
-            ->exists();
-    }
+        $courseId = $row->section->course_id;
+        $sectionId = $row->course_section_id;
 
-    public function canAccessSection(User $student, CourseSection $section): bool
-    {
         // Full Course
         if (
-            $student->coursePermissions()
-                ->where('course_id', $section->course_id)
-                ->whereNull('section_id')
-                ->whereNull('row_id')
-                ->exists()
+            CoursePermissions::where([
+                'student_id' => $student->id,
+                'course_id' => $courseId,
+            ])
+            ->whereNull('section_id')
+            ->whereNull('row_id')
+            ->exists()
         ) {
             return true;
         }
 
         // Full Section
-        return $student->coursePermissions()
-            ->where('section_id', $section->id)
+        if (
+            CoursePermissions::where([
+                'student_id' => $student->id,
+                'course_id' => $courseId,
+                'section_id' => $sectionId,
+            ])
             ->whereNull('row_id')
-            ->exists();
-    }
-
-    public function canAccessRow(User $student, CourseSectionRow $row): bool
-    {
-        $section = $row->section;
-
-        // Full Course
-        if ($this->canAccessCourse($student, $section->course)) {
-            return true;
-        }
-
-        // Full Section
-        if ($this->canAccessSection($student, $section)) {
+            ->exists()
+        ) {
             return true;
         }
 
         // Individual Row
-        return $student->coursePermissions()
-            ->where('row_id', $row->id)
-            ->exists();
+        return CoursePermissions::where([
+            'student_id' => $student->id,
+            'course_id' => $courseId,
+            'section_id' => $sectionId,
+            'row_id' => $row->id,
+        ])->exists();
     }
 }

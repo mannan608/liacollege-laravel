@@ -113,37 +113,41 @@
 
 
                                             <!-- FILE -->
+                                           
                                             <template x-if="section.field_types.includes('file')">
 
-                                                <div class="mb-3">
+                                                <div class="space-y-3">
 
-                                                    <label>File</label>
+                                                    <div>
+                                                        <label class="block mb-1 font-medium">File</label>
 
-                                                    <input type="file"
-                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
-                                                        class="border rounded w-full p-2">
+                                                        <input type="file"
+                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
+                                                            class="border rounded w-full p-2">
+                                                    </div>
 
-                                                </div>
+                                                    <div class="flex flex-col gap-2 mb-3">
 
-                                               <div class="mb-3">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
-                                                            value="1">
+                                                        <label class="flex items-center gap-2">
 
-                                                        isDownloadable
+                                                            <input type="checkbox" value="1" checked
+                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`">
 
-                                                    </label>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
-                                                            value="1">
+                                                            <span>Is Downloadable</span>
 
-                                                        isDocumentSubmission
+                                                        </label>
 
-                                                    </label>
+                                                        <label class="flex items-center gap-2">
+
+                                                            <input type="checkbox" value="1" checked
+                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
+
+                                                            <span>Is Document Submission</span>
+
+                                                        </label>
+
+                                                    </div>
+
                                                 </div>
 
                                             </template>
@@ -183,7 +187,7 @@
 
                                             <!-- REMOVE ROW -->
                                             <button type="button" @click="removeRow(section.id, row.id)"
-                                                class="bg-red-500 text-white px-4 py-2 rounded hidden">
+                                                class="bg-red-500 text-white px-4 py-2 rounded ">
                                                 Remove Row
                                             </button>
 
@@ -295,6 +299,7 @@
                     field_types: [],
                     rows: [{
                         id: this.rowCounter++
+
                     }]
                 });
 

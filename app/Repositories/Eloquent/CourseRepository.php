@@ -15,11 +15,11 @@ class CourseRepository implements CourseRepositoryInterface
 {
     use HandlesFiles;
 
-  public function getAll()
+    public function getAll()
     {
-         return Course::select('id', 'name')
-        ->orderBy('name')
-        ->get();
+        return Course::select('id', 'name')
+            ->orderBy('name')
+            ->get();
     }
 
     public function paginate(int $perPage = 15)
@@ -43,7 +43,7 @@ class CourseRepository implements CourseRepositoryInterface
     //         $data['slug'] = $this->generateUniqueSlug(
     //             $data['name']
     //         );
-            
+
     //         $data['created_by'] = auth()->id();
     //         $data['status'] = $data['status'] ?? 'active';
 
@@ -65,7 +65,7 @@ class CourseRepository implements CourseRepositoryInterface
     //     });
     // }
 
-     public function create(
+    public function create(
         array $data,
         Request $request
     ): Course {
@@ -84,8 +84,8 @@ class CourseRepository implements CourseRepositoryInterface
             $course = Course::create([
                 'name' => $data['name'],
                 'slug' => $this->generateUniqueSlug(
-        $data['name']
-    ),
+                    $data['name']
+                ),
             ]);
 
             /*
@@ -178,6 +178,14 @@ class CourseRepository implements CourseRepositoryInterface
                     CourseSectionRow::create([
                         'course_section_id' => $section->id,
                         'data' => $rowPayload,
+
+                        'is_downloadable' => isset($rowData['file'])
+                            ? ($rowData['is_downloadable'] ?? true)
+                            : false,
+
+                        'is_document_submission' => isset($rowData['file'])
+                            ? ($rowData['is_document_submission'] ?? true)
+                            : false,
                     ]);
                 }
             }
@@ -186,7 +194,8 @@ class CourseRepository implements CourseRepositoryInterface
         });
     }
 
-    public function update(Course $course,array $data, Request $request ): Course {
+    public function update(Course $course, array $data, Request $request): Course
+    {
 
         return DB::transaction(function () use (
             $course,
@@ -203,7 +212,7 @@ class CourseRepository implements CourseRepositoryInterface
                     $course->id
                 );
             }
-            
+
             $data['updated_by'] = auth()->id();
 
             if ($request->hasFile('thumbnail')) {
@@ -228,7 +237,8 @@ class CourseRepository implements CourseRepositoryInterface
         });
     }
 
-    public function delete(Course $course): bool {
+    public function delete(Course $course): bool
+    {
         $this->deleteFile($course->thumbnail);
         $this->deleteFile($course->course_material);
         return $course->delete();

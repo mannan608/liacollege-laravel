@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use App\Models\CoursePermissions;
 use App\Models\CourseSection;
@@ -13,6 +14,7 @@ use App\Models\CourseSectionRow;
 use App\Models\Student;
 use App\Models\User;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
+use App\Services\CoursePermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -164,7 +166,9 @@ public function coursePermission(Request $request, string $role, Student $studen
         elseif (!is_null($permission->row_id)) {
             $grantedRows[] = $permission->row_id;
         }
-    }   
+    } 
+    
+    // return $grantedRows;
 
     return view('backend.pages.students.course-permission', [
         'student'          => $student,
@@ -314,4 +318,39 @@ public function coursePermission(Request $request, string $role, Student $studen
 
         return view('frontend.pages.student.profile');
     }
+
+    public function submit(Request $request, CourseSectionRow $row, CoursePermissionService $permission){
+
+    $student = auth()->user()->student;
+
+    if (!$permission->canAccessRow($student,$row)){
+        abort(403);
+    }
+
+    if (!$row->is_document_submission){
+        abort(403);
+    }
+
+    $request->validate([
+        'file'=>'required|file|mimes:pdf,doc,docx|max:10240',
+    ]);
+
+    $path = $request->file('file')
+        ->store('submissions','public');
+
+    AssignmentSubmission::updateOrCreate(
+
+        [
+            'student_id'=>$student->id,
+            'course_section_row_id'=>$row->id,
+        ],
+
+        [
+            'file'=>$path,
+        ]
+
+    );
+
+    return back()->with('success','Assignment submitted successfully.');
+}
 }

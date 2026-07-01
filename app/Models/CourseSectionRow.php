@@ -8,11 +8,15 @@ class CourseSectionRow extends Model
 {
     protected $fillable = [
         'course_section_id',
-        'data'
+        'data',
+        'is_downloadable',
+        'is_document_submission',
     ];
 
     protected $casts = [
-        'data' => 'array'
+        'data' => 'array',
+        'is_downloadable' => 'boolean',
+        'is_document_submission' => 'boolean',
     ];
 
     public function section()
