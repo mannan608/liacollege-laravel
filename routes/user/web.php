@@ -1,52 +1,117 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Student\StudentController;
-use App\Http\Controllers\Admin\SubscriberController;
-use App\Http\Controllers\Frontend\BlogController;
-use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\Frontend\EventController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Student\StudentController;
 use App\SEO\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
-Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
-Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
-Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
-Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
-Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
-Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
-Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
-    ->name('enroll-course');
+// Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
+// Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
+// Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
+// Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
+// Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
+// Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
+// Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
+// Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
+//     ->name('enroll-course');
 
-Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
-    ->name('course.enroll');
+// Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
+//     ->name('course.enroll');
 
 Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
-Route::get('/blogs', [BlogController::class, 'index'])
-    ->name('blogs');
+// Route::get('/blogs', [BlogController::class, 'index'])
+//     ->name('blogs');
 
-Route::get('/blogs/{slug}', [BlogController::class, 'show'])
-    ->name('blog-details');
+// Route::get('/blogs/{slug}', [BlogController::class, 'show'])
+//     ->name('blog-details');
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events');
+// Route::get('/events', [EventController::class, 'index'])
+//     ->name('events');
 
-Route::get('/events/{slug}', [EventController::class, 'show'])
-    ->name('event-details');
-Route::post('/inquiry-us', [ContactController::class, 'store'])
-    ->name('contact.store');
+// Route::get('/events/{slug}', [EventController::class, 'show'])
+//     ->name('event-details');
+// Route::post('/inquiry-us', [ContactController::class, 'store'])
+//     ->name('contact.store');
 
-Route::post('/subscribe', [SubscriberController::class, 'store'])
-    ->name('subscribe.store');
-
+// Route::post('/subscribe', [SubscriberController::class, 'store'])
+//     ->name('subscribe.store');
+ 
 Route::get('register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('register', [AuthController::class, 'register'])->name('register.submit');
 Route::get('/signup', function () {
     return view('backend.pages.auth.signup');
 })->name('signup');
+ 
+
+// Home
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+
+// About & Static Pages
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
+
+// Policies
+Route::get('/policy-and-procedure', [FrontendController::class, 'policyAndProcedure'])
+    ->name('policyAndProcedure');
+
+Route::get('/complaints-and-appeals-policy', [FrontendController::class, 'complaintsAndAppealsPolicy'])
+    ->name('complaintsAndAppealsPolicy');
+
+Route::get('/learning-resources-policy', [FrontendController::class, 'learningResourcesPolicy'])
+    ->name('learningResourcesPolicy');
+
+Route::get('/reassessment-policy', [FrontendController::class, 'reassessmentPolicy'])
+    ->name('reassessmentPolicy');
+
+Route::get('/schedule-of-administrative-fees', [FrontendController::class, 'scheduleOfAdministrativeFees'])
+    ->name('scheduleOfAdministrativeFees');
+
+Route::get('/refund-cancellation-policy', [FrontendController::class, 'refundCancellationPolicy'])
+    ->name('refundCancellationPolicy');
+
+// Enrollment & Placement
+Route::get('/enrolment', [FrontendController::class, 'enrolment'])->name('enrolment');
+Route::get('/work-placement', [FrontendController::class, 'workPlacement'])->name('workPlacement');
+
+// Application
+Route::get('/application', [FrontendController::class, 'application'])->name('application');
+Route::post('/application', [FrontendController::class, 'store'])->name('application.store');
+
+// Single Course Pages
+Route::get('/individual-support', [FrontendController::class, 'individualSupport'])
+    ->name('individualSupport');
+
+Route::get('/ageing-support', [FrontendController::class, 'ageingSupport'])
+    ->name('ageingSupport');
+
+Route::get('/disability-support', [FrontendController::class, 'disabilitySupport'])
+    ->name('disabilitySupport');
+
+Route::get('/community-service', [FrontendController::class, 'communityService'])
+    ->name('communityService');
+
+Route::get('/community-services', [FrontendController::class, 'communityServices'])
+    ->name('communityServices');
+
+Route::get('/cardiopulmonary-resuscitation', [FrontendController::class, 'cardiopulmonaryResuscitation'])
+    ->name('cardiopulmonaryResuscitation');
+
+Route::get('/first-aid-cpr', [FrontendController::class, 'firstAidCpr'])
+    ->name('firstAidCpr');
+
+Route::get('/leadership-management', [FrontendController::class, 'leadershipManagement'])
+    ->name('leadershipManagement');
+
+Route::get('/project-management', [FrontendController::class, 'projectManagement'])
+    ->name('projectManagement');
+
+// Fast Track
+Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track_qualifications'])
+    ->name('fast-track-qualifications');
+
 
 
 Route::prefix('student')

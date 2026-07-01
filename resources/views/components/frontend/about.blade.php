@@ -31,7 +31,7 @@
                         <h3 class="font-semibold text-base lg:text-lg text-gray-900">Qualified Trainers</h3>
                     </div>
                     <div>
-                        <p class="text-sm lg:text-base text-gray-600 text-center md:text-left">Pentagon work with world class trainers to help
+                        <p class="text-sm lg:text-base text-gray-600 text-center md:text-left">Lia work with world class trainers to help
                             students with their career aspirations & provide excellent environment to learn.</p>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 class=" mt-8 lg:mt-10 inline-flex items-center justify-center bg-brand-600 text-white px-5 py-3 lg:px-6 lg:py-3
                         rounded-lg  hover:bg-brand-500
                         transition duration-300">
-                About Pentagon
+                About Lia
             </a>
         </div>
 

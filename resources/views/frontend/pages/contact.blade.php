@@ -179,7 +179,7 @@
                         </svg>
                     </div>
                     <p class="text-gray-700 text-sm sm:text-base leading-7">
-                        info@pentagoncollege.edu.au
+                        info@liacollege.edu.au
                     </p>
                 </div>
             </div>

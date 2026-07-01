@@ -419,8 +419,8 @@
                             </p>
 
                             <p class="text-sm lg:text-base text-gray-600">
-                                Please contact Pentagon team for any support or assistance on <br>
-                                info@pentagoncollege.edu.au
+                                Please contact lia team for any support or assistance on <br>
+                                info@liacollege.edu.au
                                 <br> Or call us on +61 2-9037 6310
                             </p>
 

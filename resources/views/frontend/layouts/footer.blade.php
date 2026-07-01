@@ -21,7 +21,7 @@
 
                 <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                     <span class="font-semibold text-slate-700">Mail:</span>
-                    info@pentagoncollege.edu.au
+                    info@liacollege.edu.au
                 </li>
 
                 <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">

@@ -53,7 +53,7 @@
             <div class="flex flex-col items-center justify-center mb-4 md:mb-6 lg:mb-8">
                 <div class="h-1.5 w-14 bg-brand-500 rounded-full mb-3"></div>
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight text-center">Welcome to
-                    Pentagon
+                    Lia
                     College</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">

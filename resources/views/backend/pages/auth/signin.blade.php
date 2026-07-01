@@ -100,9 +100,9 @@
                                                 Keep me logged in
                                             </label>
                                         </div>
-                                        <a href="{{ route('register') }}"
+                                        {{-- <a href="{{ route('register') }}"
                                                 class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm">Sign
-                                                Up</a>
+                                                Up</a> --}}
                                     </div>
                                     <!-- Button -->
                                     <div>

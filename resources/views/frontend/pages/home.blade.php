@@ -149,7 +149,7 @@
                 <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
                         Unlocking the Doors to Success at Lia College</h5>
-                    <p class="text-body text-sm md:text-base">Section 1: A World of Opportunities Welcome to Pentagon
+                    <p class="text-body text-sm md:text-base">Section 1: A World of Opportunities Welcome to lia
                         College.</p>
                 </div>
                 <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
