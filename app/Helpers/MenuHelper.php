@@ -16,27 +16,27 @@ class MenuHelper
                 'route' => 'role.dashboard',
                 'permission' => 'dashboard.view',
             ],
-            [
-                'name' => 'CMS Manage',
-                'icon' => 'pages',
-                'subItems' => [
-                    [
-                        'name' => 'SEOs',
-                        'route' => 'role.seo.index',
-                        'permission' => 'seo.list',
-                    ],
-                    [
-                        'name' => 'Blogs',
-                        'route' => 'role.blogs.index',
-                        'permission' => 'blog.list',
-                    ],
-                    [
-                        'name' => 'Events',
-                        'route' => 'role.events.index',
-                        'permission' => 'event.list',
-                    ],
-                ],
-            ],
+            // [
+            //     'name' => 'CMS Manage',
+            //     'icon' => 'pages',
+            //     'subItems' => [
+            //         [
+            //             'name' => 'SEOs',
+            //             'route' => 'role.seo.index',
+            //             'permission' => 'seo.list',
+            //         ],
+            //         [
+            //             'name' => 'Blogs',
+            //             'route' => 'role.blogs.index',
+            //             'permission' => 'blog.list',
+            //         ],
+            //         [
+            //             'name' => 'Events',
+            //             'route' => 'role.events.index',
+            //             'permission' => 'event.list',
+            //         ],
+            //     ],
+            // ],
            
             [
                 'name' => 'Access Control',
@@ -62,27 +62,27 @@ class MenuHelper
                 'permission' => 'user.list',
             ],
 
-            [
-                'name' => 'Organization',
-                'icon' => 'university',
-                'subItems' => [
-                    [
-                        'name' => 'University',
-                        'route' => 'role.universities.index',
-                        'permission' => 'university.list',
-                    ],
-                    [
-                        'name' => 'Campus',
-                        'route' => 'role.campuses.index',
-                        'permission' => 'campus.list',
-                    ],
-                    [
-                        'name' => 'Provider',
-                        'route' => 'role.providers.index',
-                        'permission' => 'provider.list',
-                    ],
-                ],
-            ],
+            // [
+            //     'name' => 'Organization',
+            //     'icon' => 'university',
+            //     'subItems' => [
+            //         [
+            //             'name' => 'University',
+            //             'route' => 'role.universities.index',
+            //             'permission' => 'university.list',
+            //         ],
+            //         [
+            //             'name' => 'Campus',
+            //             'route' => 'role.campuses.index',
+            //             'permission' => 'campus.list',
+            //         ],
+            //         [
+            //             'name' => 'Provider',
+            //             'route' => 'role.providers.index',
+            //             'permission' => 'provider.list',
+            //         ],
+            //     ],
+            // ],
             [
                 'name' => 'Courses Manage',
                 'icon' => 'tables',
@@ -100,28 +100,28 @@ class MenuHelper
                     ],
                 ],
             ],
-            [
-                'name' => 'Leads',
-                'icon' => 'chat',
-                'subItems' => [
-                    [
-                        'name' => 'Messages',
-                        'route' => 'role.contacts.index',
-                        'permission' => 'contact.list',
-                    ],
-                    [
-                        'name' => 'Subscriptions',
-                        'route' => 'role.subscribers.index',
-                        'permission' => 'subscriber.list',
-                    ],
-                    [
-                        'name' => 'Enroll',
-                        'route' => 'role.enrollments.index',
-                        'permission' => 'enrollment.list',
-                        'optional' => true,
-                    ],
-                ],
-            ],
+            // [
+            //     'name' => 'Leads',
+            //     'icon' => 'chat',
+            //     'subItems' => [
+            //         [
+            //             'name' => 'Messages',
+            //             'route' => 'role.contacts.index',
+            //             'permission' => 'contact.list',
+            //         ],
+            //         [
+            //             'name' => 'Subscriptions',
+            //             'route' => 'role.subscribers.index',
+            //             'permission' => 'subscriber.list',
+            //         ],
+            //         [
+            //             'name' => 'Enroll',
+            //             'route' => 'role.enrollments.index',
+            //             'permission' => 'enrollment.list',
+            //             'optional' => true,
+            //         ],
+            //     ],
+            // ],
 
         ];
     }
