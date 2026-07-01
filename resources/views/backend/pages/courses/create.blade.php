@@ -125,6 +125,27 @@
 
                                                 </div>
 
+                                               <div class="mb-3">
+                                                    <label>
+                                                        <input type="checkbox"
+                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
+                                                            value="1">
+
+                                                        isDownloadable
+
+                                                    </label>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label>
+                                                        <input type="checkbox"
+                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
+                                                            value="1">
+
+                                                        isDocumentSubmission
+
+                                                    </label>
+                                                </div>
+
                                             </template>
 
 
@@ -162,7 +183,7 @@
 
                                             <!-- REMOVE ROW -->
                                             <button type="button" @click="removeRow(section.id, row.id)"
-                                                class="bg-red-500 text-white px-4 py-2 rounded">
+                                                class="bg-red-500 text-white px-4 py-2 rounded hidden">
                                                 Remove Row
                                             </button>
 

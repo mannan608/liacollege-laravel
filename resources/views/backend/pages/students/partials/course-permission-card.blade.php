@@ -1,10 +1,12 @@
 <div x-data="coursePermission()">
 
     <div class="space-y-8">
-        <form action="{{ role_route('role.students.course-permission.store', ['student' => $student->id]) }}" method="POST">
+        <form action="{{ role_route('role.students.course-permission.store', ['student' => $student->id]) }}"
+            method="POST">
             @csrf
+            <div class="flex gap-6">
             @foreach ($enrolledCourses as $course)
-                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm w-1/2 h-fit"
                     data-course="{{ $course->id }}">
 
                     <!-- Course Header -->
@@ -27,7 +29,8 @@
                                     @change="toggleCourse($event)"> --}}
                                 <input type="checkbox" class="course-checkbox"
                                     name="permissions[{{ $course->id }}][full_course]" value="1"
-                                    data-course="{{ $course->id }}" @change="toggleCourse($event)">
+                                    data-course="{{ $course->id }}" @checked(in_array($course->id, $grantedCourses))
+                                    @change="toggleCourse($event)">
 
                                 <span>Full Course</span>
                             </label>
@@ -53,7 +56,8 @@
                                             <input type="checkbox" class="section-checkbox"
                                                 name="permissions[{{ $course->id }}][sections][]"
                                                 value="{{ $section->id }}" data-course="{{ $course->id }}"
-                                                data-section="{{ $section->id }}" @change="toggleSection($event)">
+                                                data-section="{{ $section->id }}" @checked(in_array($course->id, $grantedCourses) || in_array($section->id, $grantedSections))
+                                                @change="toggleSection($event)">
 
                                             <h3 class="font-semibold text-slate-800">
                                                 {{ $section->section_name }}
@@ -81,7 +85,9 @@
                                                     name="permissions[{{ $course->id }}][rows][]"
                                                     value="{{ $row->id }}" data-course="{{ $course->id }}"
                                                     data-section="{{ $section->id }}" data-row="{{ $row->id }}"
-                                                    @change="toggleRow($event)">
+                                                    @checked(in_array($course->id, $grantedCourses) ||
+                                                            in_array($section->id, $grantedSections) ||
+                                                            in_array($row->id, $grantedRows)) @change="toggleRow($event)">
 
                                                 <div
                                                     class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
@@ -112,10 +118,108 @@
 
                 </div>
             @endforeach
-            <div class="">
-                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit"
+                    class="mt-5 w-40 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600">Save</button>
             </div>
         </form>
     </div>
 
 </div>
+
+<script>
+    function coursePermission() {
+        return {
+            init() {
+
+            this.$nextTick(() => {
+
+                document.querySelectorAll('.section-checkbox').forEach(section => {
+                    this.updateSection(section.dataset.section);
+                });
+
+                document.querySelectorAll('.course-checkbox').forEach(course => {
+                    this.updateCourse(course.dataset.course);
+                });
+
+            });
+
+        },
+
+            toggleCourse(event) {
+
+                const courseId = event.target.dataset.course;
+                const checked = event.target.checked;
+
+                document.querySelectorAll(
+                    `[data-course="${courseId}"].section-checkbox,
+                 .section-checkbox[data-course="${courseId}"]`
+                ).forEach(el => el.checked = checked);
+
+                document.querySelectorAll(
+                    `.row-checkbox[data-course="${courseId}"]`
+                ).forEach(el => el.checked = checked);
+            },
+
+            toggleSection(event) {
+
+                const sectionId = event.target.dataset.section;
+                const courseId = event.target.dataset.course;
+                const checked = event.target.checked;
+
+                document.querySelectorAll(
+                    `.row-checkbox[data-section="${sectionId}"]`
+                ).forEach(el => el.checked = checked);
+
+                this.updateCourse(courseId);
+            },
+
+            toggleRow(event) {
+
+                const sectionId = event.target.dataset.section;
+                const courseId = event.target.dataset.course;
+
+                this.updateSection(sectionId);
+                this.updateCourse(courseId);
+            },
+
+            updateSection(sectionId) {
+
+                const rows = document.querySelectorAll(
+                    `.row-checkbox[data-section="${sectionId}"]`
+                );
+
+                const checkedRows = document.querySelectorAll(
+                    `.row-checkbox[data-section="${sectionId}"]:checked`
+                );
+
+                const sectionCheckbox = document.querySelector(
+                    `.section-checkbox[data-section="${sectionId}"]`
+                );
+
+                sectionCheckbox.checked =
+                    rows.length === checkedRows.length;
+            },
+
+            updateCourse(courseId) {
+
+                const sections = document.querySelectorAll(
+                    `.section-checkbox[data-course="${courseId}"]`
+                );
+
+                const checkedSections = document.querySelectorAll(
+                    `.section-checkbox[data-course="${courseId}"]:checked`
+                );
+
+                const courseCheckbox = document.querySelector(
+                    `.course-checkbox[data-course="${courseId}"]`
+                );
+
+                courseCheckbox.checked =
+                    sections.length === checkedSections.length;
+            }
+
+        }
+    }
+</script>
