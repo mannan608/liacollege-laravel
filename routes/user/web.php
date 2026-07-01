@@ -58,4 +58,5 @@ Route::prefix('student')
         Route::get('/profile', [StudentController::class, 'profile'])
             ->name('profile');
         Route::post('rows/{row}/submit',[StudentController::class, 'submit'])->name('student.rows.submit');
+        Route::get('rows/{row}/download',[StudentController::class, 'download'])->name('student.rows.download');
     });

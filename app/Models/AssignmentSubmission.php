@@ -15,6 +15,6 @@ class AssignmentSubmission extends Model
     ];
 
     protected $casts = [
-        'file' => 'array',
+        'file' => 'string',
     ];
 }

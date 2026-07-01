@@ -103,17 +103,21 @@
                                                         </p>
                                                         @if ($row->data['file'] ?? false)
                                                             <div class="flex items-center gap-3 text-[12px]">
-                                                            <label class="flex items-center gap-2">
+                                                            @if ($row->is_downloadable ?? false)
+                                                                <label class="flex items-center gap-2">
                                                                 <input type="checkbox" value="1" checked
                                                                     :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`">
                                                                 <span>Is Download</span>
                                                             </label>
+                                                            @endif
 
-                                                            <label class="flex items-center gap-2">
-                                                                <input type="checkbox" value="1" checked
-                                                                    :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
-                                                                <span>Is Submission</span>
-                                                            </label>
+                                                            @if ($row->is_document_submission ?? false)
+                                                                <label class="flex items-center gap-2">
+                                                                    <input type="checkbox" value="1" checked
+                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
+                                                                    <span>Is Submission</span>
+                                                                </label>
+                                                            @endif
                                                         </div>
                                                         @endif
                                                     </div>
@@ -132,7 +136,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="flex justify-end">
+            <div class="flex">
                 <button type="submit"
                     class="mt-5 w-40 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600">Save</button>
             </div>

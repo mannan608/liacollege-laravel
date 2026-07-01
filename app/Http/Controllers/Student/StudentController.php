@@ -116,202 +116,200 @@ class StudentController extends Controller
         return Role::query()->orderBy('name')->get(['id', 'name']);
     }
 
-//     public function coursePermission(Request $request, string $role, Student $student)
-//     {
+    //     public function coursePermission(Request $request, string $role, Student $student)
+    //     {
 
-//      $student->load([
-//         'user',
-//         'courses.sections.rows',
-//     ]);
-    
-//     $enrolledCourses = $student->courses()
-//     ->with('sections.rows')
-//     ->get();
+    //      $student->load([
+    //         'user',
+    //         'courses.sections.rows',
+    //     ]);
 
-// return($student);
+    //     $enrolledCourses = $student->courses()
+    //     ->with('sections.rows')
+    //     ->get();
 
-
-//     return view('backend.pages.students.course-permission', [
-//         'student' => $student,
-//         'enrolledCourses' => $student->courses,
-//     ]);
-//     }
-public function coursePermission(Request $request, string $role, Student $student)
-{
-    $student->load([
-        'user',
-        'courses.sections.rows',
-    ]);
-
-    $permissions = CoursePermissions::where('student_id', $student->id)
-        ->get();
-
-    $grantedCourses = [];
-    $grantedSections = [];
-    $grantedRows = [];
-
-    foreach ($permissions as $permission) {
-
-        // Full Course
-        if (is_null($permission->section_id) && is_null($permission->row_id)) {
-            $grantedCourses[] = $permission->course_id;
-        }
-
-        // Full Section
-        elseif (!is_null($permission->section_id) && is_null($permission->row_id)) {
-            $grantedSections[] = $permission->section_id;
-        }
-
-        // Single Row
-        elseif (!is_null($permission->row_id)) {
-            $grantedRows[] = $permission->row_id;
-        }
-    } 
-    
-    // return $grantedRows;
-
-    return view('backend.pages.students.course-permission', [
-        'student'          => $student,
-        'enrolledCourses'  => $student->courses,
-        'grantedCourses'   => $grantedCourses,
-        'grantedSections'  => $grantedSections,
-        'grantedRows'      => $grantedRows,
-    ]);
-}
+    // return($student);
 
 
- public function saveCoursePermission(Request $request, string $role, Student $student)
-{
+    //     return view('backend.pages.students.course-permission', [
+    //         'student' => $student,
+    //         'enrolledCourses' => $student->courses,
+    //     ]);
+    //     }
+    public function coursePermission(Request $request, string $role, Student $student)
+    {
+        $student->load([
+            'user',
+            'courses.sections.rows',
+        ]);
 
-    DB::transaction(function () use ($request, $student) {
+        $permissions = CoursePermissions::where('student_id', $student->id)
+            ->get();
 
-        CoursePermissions::where('student_id', $student->id)->delete();
+        $grantedCourses = [];
+        $grantedSections = [];
+        $grantedRows = [];
 
-        foreach ($request->permissions ?? [] as $courseId => $permission) {
+        foreach ($permissions as $permission) {
 
-            if (!empty($permission['full_course'])) {
-
-                CoursePermissions::create([
-                    'student_id' => $student->id,
-                    'course_id' => $courseId,
-                    'section_id' => null,
-                    'row_id' => null,
-                ]);
-
-                continue;
+            // Full Course
+            if (is_null($permission->section_id) && is_null($permission->row_id)) {
+                $grantedCourses[] = $permission->course_id;
             }
 
-            if (!empty($permission['sections'])) {
+            // Full Section
+            elseif (!is_null($permission->section_id) && is_null($permission->row_id)) {
+                $grantedSections[] = $permission->section_id;
+            }
 
-                foreach ($permission['sections'] as $sectionId) {
+            // Single Row
+            elseif (!is_null($permission->row_id)) {
+                $grantedRows[] = $permission->row_id;
+            }
+        }
+
+        // return $grantedRows;
+
+        return view('backend.pages.students.course-permission', [
+            'student'          => $student,
+            'enrolledCourses'  => $student->courses,
+            'grantedCourses'   => $grantedCourses,
+            'grantedSections'  => $grantedSections,
+            'grantedRows'      => $grantedRows,
+        ]);
+    }
+
+
+    public function saveCoursePermission(Request $request, string $role, Student $student)
+    {
+
+        DB::transaction(function () use ($request, $student) {
+
+            CoursePermissions::where('student_id', $student->id)->delete();
+
+            foreach ($request->permissions ?? [] as $courseId => $permission) {
+
+                if (!empty($permission['full_course'])) {
 
                     CoursePermissions::create([
                         'student_id' => $student->id,
                         'course_id' => $courseId,
-                        'section_id' => $sectionId,
+                        'section_id' => null,
                         'row_id' => null,
                     ]);
+
+                    continue;
+                }
+
+                if (!empty($permission['sections'])) {
+
+                    foreach ($permission['sections'] as $sectionId) {
+
+                        CoursePermissions::create([
+                            'student_id' => $student->id,
+                            'course_id' => $courseId,
+                            'section_id' => $sectionId,
+                            'row_id' => null,
+                        ]);
+                    }
+                }
+
+                if (!empty($permission['rows'])) {
+
+                    foreach ($permission['rows'] as $rowId) {
+
+                        $row = \App\Models\CourseSectionRow::find($rowId);
+
+                        if (!$row) {
+                            continue;
+                        }
+
+                        CoursePermissions::create([
+                            'student_id' => $student->id,
+                            'course_id' => $courseId,
+                            'section_id' => $row->course_section_id,
+                            'row_id' => $row->id,
+                        ]);
+                    }
                 }
             }
+        });
 
-            if (!empty($permission['rows'])) {
+        return redirect()->route('role.students.index', ['role' => $role, 'student' => $student->id,])->with('success', 'Permission updated successfully.');
+    }
 
-                foreach ($permission['rows'] as $rowId) {
 
-                    $row = \App\Models\CourseSectionRow::find($rowId);
+    public function dashboard(Request $request)
+    {
+        $student = auth()->user()->student;
+        $student->load([
+            'courses.sections.rows',
+        ]);
 
-                    if (!$row) {
-                        continue;
+        $permissions = CoursePermissions::where('student_id', $student->id)->get();
+
+        $grantedCourses = $permissions
+            ->whereNull('section_id')
+            ->whereNull('row_id')
+            ->pluck('course_id')
+            ->toArray();
+
+        $grantedSections = $permissions
+            ->whereNotNull('section_id')
+            ->whereNull('row_id')
+            ->pluck('section_id')
+            ->toArray();
+
+        $grantedRows = $permissions
+            ->whereNotNull('row_id')
+            ->pluck('row_id')
+            ->toArray();
+
+        $courses = $student->courses->filter(function ($course) use (
+            $grantedCourses,
+            $grantedSections,
+            $grantedRows
+        ) {
+
+            // Full course access
+            if (in_array($course->id, $grantedCourses)) {
+                return true;
+            }
+
+            // Filter sections
+            $course->setRelation(
+                'sections',
+                $course->sections->filter(function ($section) use (
+                    $grantedSections,
+                    $grantedRows
+                ) {
+
+                    // Full section access
+                    if (in_array($section->id, $grantedSections)) {
+                        return true;
                     }
 
-                    CoursePermissions::create([
-                        'student_id' => $student->id,
-                        'course_id' => $courseId,
-                        'section_id' => $row->course_section_id,
-                        'row_id' => $row->id,
-                    ]);
-                }
-            }
-        }
+                    // Filter rows
+                    $section->setRelation(
+                        'rows',
+                        $section->rows->filter(function ($row) use ($grantedRows) {
+                            return in_array($row->id, $grantedRows);
+                        })
+                    );
 
-    });
+                    return $section->rows->isNotEmpty();
+                })
+            );
 
-    return redirect()->route('role.students.index', ['role' => $role,'student' => $student->id,])->with('success', 'Permission updated successfully.');
+            return $course->sections->isNotEmpty();
+        });
 
-}
+        // return $courses;
 
-
-   public function dashboard(Request $request)
-{
-    $student = auth()->user()->student;
-    $student->load([
-        'courses.sections.rows',
-    ]);
-
-    $permissions = CoursePermissions::where('student_id', $student->id)->get();
-
-    $grantedCourses = $permissions
-        ->whereNull('section_id')
-        ->whereNull('row_id')
-        ->pluck('course_id')
-        ->toArray();
-
-    $grantedSections = $permissions
-        ->whereNotNull('section_id')
-        ->whereNull('row_id')
-        ->pluck('section_id')
-        ->toArray();
-
-    $grantedRows = $permissions
-        ->whereNotNull('row_id')
-        ->pluck('row_id')
-        ->toArray();
-
-    $courses = $student->courses->filter(function ($course) use (
-        $grantedCourses,
-        $grantedSections,
-        $grantedRows
-    ) {
-
-        // Full course access
-        if (in_array($course->id, $grantedCourses)) {
-            return true;
-        }
-
-        // Filter sections
-        $course->setRelation(
-            'sections',
-            $course->sections->filter(function ($section) use (
-                $grantedSections,
-                $grantedRows
-            ) {
-
-                // Full section access
-                if (in_array($section->id, $grantedSections)) {
-                    return true;
-                }
-
-                // Filter rows
-                $section->setRelation(
-                    'rows',
-                    $section->rows->filter(function ($row) use ($grantedRows) {
-                        return in_array($row->id, $grantedRows);
-                    })
-                );
-
-                return $section->rows->isNotEmpty();
-            })
-        );
-
-        return $course->sections->isNotEmpty();
-    });
-
-    // return $courses;
-
-    return view('frontend.pages.student.dashboard', [
-        'courses' => $courses,
-    ]);
-}
+        return view('frontend.pages.student.dashboard', [
+            'courses' => $courses,
+        ]);
+    }
 
     public function profile()
     {
@@ -319,38 +317,57 @@ public function coursePermission(Request $request, string $role, Student $studen
         return view('frontend.pages.student.profile');
     }
 
-    public function submit(Request $request, CourseSectionRow $row, CoursePermissionService $permission){
+    public function submit(Request $request, CourseSectionRow $row, CoursePermissionService $permission)
+    {
 
-    $student = auth()->user()->student;
+        $student = auth()->user()->student;
 
-    if (!$permission->canAccessRow($student,$row)){
-        abort(403);
+        if (!$permission->canAccessRow($student, $row)) {
+            abort(403);
+        }
+
+        if (!$row->is_document_submission) {
+            abort(403);
+        }
+
+        $request->validate([
+            'file' => 'required|file|mimes:pdf,doc,docx|max:10240',
+        ]);
+
+        $path = $request->file('file')
+            ->store('submissions', 'public');
+
+        AssignmentSubmission::updateOrCreate(
+
+            [
+                'student_id' => $student->id,
+                'course_section_row_id' => $row->id,
+            ],
+
+            [
+                'file' => $path,
+            ]
+
+        );
+
+        return back()->with('success', 'Assignment submitted successfully.');
     }
 
-    if (!$row->is_document_submission){
-        abort(403);
+    public function download(
+        CourseSectionRow $row,
+        CoursePermissionService $permissionService
+    ) {
+
+        $student = auth()->user()->student;
+
+        if (!$permissionService->canAccessRow($student, $row)) {
+            abort(403);
+        }
+
+        if (!$row->is_downloadable) {
+            abort(403);
+        }
+
+        return response()->download(public_path($row->data['file']));
     }
-
-    $request->validate([
-        'file'=>'required|file|mimes:pdf,doc,docx|max:10240',
-    ]);
-
-    $path = $request->file('file')
-        ->store('submissions','public');
-
-    AssignmentSubmission::updateOrCreate(
-
-        [
-            'student_id'=>$student->id,
-            'course_section_row_id'=>$row->id,
-        ],
-
-        [
-            'file'=>$path,
-        ]
-
-    );
-
-    return back()->with('success','Assignment submitted successfully.');
-}
 }

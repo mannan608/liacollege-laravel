@@ -105,6 +105,13 @@
                                                                 Download
                                                             </a>
                                                             {{-- @if ($row->is_downloadable)
+                                                                <a href="{{ route('student.rows.download', $row) }}"
+                                                                    class="btn btn-primary">
+                                                                    Download
+                                                                </a>
+                                                            @endif --}}
+
+                                                            {{-- @if ($row->is_downloadable)
                                                                 <a href="{{ asset($row->data['file']) }}" target="_blank"
                                                                     class="btn btn-primary">
                                                                     Download

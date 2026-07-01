@@ -113,7 +113,7 @@
 
 
                                             <!-- FILE -->
-                                           
+
                                             <template x-if="section.field_types.includes('file')">
 
                                                 <div class="space-y-3">
@@ -125,23 +125,23 @@
                                                             :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
                                                             class="border rounded w-full p-2">
                                                     </div>
-
                                                     <div class="flex flex-col gap-2 mb-3">
-
                                                         <label class="flex items-center gap-2">
-
+                                                            <input type="hidden"
+                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
+                                                                value="0">
                                                             <input type="checkbox" value="1" checked
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`">
-
                                                             <span>Is Downloadable</span>
 
                                                         </label>
 
                                                         <label class="flex items-center gap-2">
-
+                                                            <input type="hidden"
+                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
+                                                                value="0">
                                                             <input type="checkbox" value="1" checked
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
-
                                                             <span>Is Document Submission</span>
 
                                                         </label>

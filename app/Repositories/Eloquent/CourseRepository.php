@@ -179,13 +179,8 @@ class CourseRepository implements CourseRepositoryInterface
                         'course_section_id' => $section->id,
                         'data' => $rowPayload,
 
-                        'is_downloadable' => isset($rowData['file'])
-                            ? ($rowData['is_downloadable'] ?? true)
-                            : false,
-
-                        'is_document_submission' => isset($rowData['file'])
-                            ? ($rowData['is_document_submission'] ?? true)
-                            : false,
+                        'is_downloadable' => (int) ($rowData['is_downloadable'] ?? 0),
+                        'is_document_submission' => (int) ($rowData['is_document_submission'] ?? 0),
                     ]);
                 }
             }
