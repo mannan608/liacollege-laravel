@@ -11,20 +11,20 @@ class Course extends Model
 
     protected $fillable = [
         'name',
-        // 'code',
-        // 'cricos',
+        'code',
+        'cricos',
        'slug',
-        // 'price',
-        // 'discount_percentage',
-        // 'thumbnail',
-        // 'overview',
-        // 'entry_requirements',
-        // 'description',
-        // 'course_material',
-        // 'status',
-        // 'category_id',
-        // 'created_by',
-        // 'updated_by',
+        'price',
+        'discount_percentage',
+        'thumbnail',
+        'overview',
+        'entry_requirements',
+        'description',
+        'course_material',
+        'status',
+        'category_id',
+        'created_by',
+        'updated_by',
     ];
 
     protected $casts = [

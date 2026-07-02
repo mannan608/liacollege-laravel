@@ -33,161 +33,39 @@ class CourseRepository implements CourseRepositoryInterface
         return Course::findOrFail($id);
     }
 
-    // public function create(
-    //     array $data,
-    //     Request $request
-    // ): Course {
-
-    //     return DB::transaction(function () use ($data, $request) {
-
-    //         $data['slug'] = $this->generateUniqueSlug(
-    //             $data['name']
-    //         );
-
-    //         $data['created_by'] = auth()->id();
-    //         $data['status'] = $data['status'] ?? 'active';
-
-    //         if ($request->hasFile('thumbnail')) {
-    //             $data['thumbnail'] = $this->uploadFile(
-    //                 $request->file('thumbnail'),
-    //                 'courses/thumbnails'
-    //             );
-    //         }
-
-    //         if ($request->hasFile('course_material')) {
-    //             $data['course_material'] = $this->uploadFile(
-    //                 $request->file('course_material'),
-    //                 'courses/materials'
-    //             );
-    //         }
-
-    //         return Course::create($data);
-    //     });
-    // }
-
     public function create(
         array $data,
         Request $request
     ): Course {
 
-        return DB::transaction(function () use (
-            $data,
-            $request
-        ) {
+        return DB::transaction(function () use ($data, $request) {
 
-            /*
-            |--------------------------------------------------------------------------
-            | Course
-            |--------------------------------------------------------------------------
-            */
+            $data['slug'] = $this->generateUniqueSlug(
+                $data['name']
+            );
 
-            $course = Course::create([
-                'name' => $data['name'],
-                'slug' => $this->generateUniqueSlug(
-                    $data['name']
-                ),
-            ]);
+            $data['created_by'] = auth()->id();
+            $data['status'] = $data['status'] ?? 'active';
 
-            /*
-            |--------------------------------------------------------------------------
-            | Sections
-            |--------------------------------------------------------------------------
-            */
-
-            foreach ($request->sections ?? [] as $sectionData) {
-
-                $section = CourseSection::create([
-                    'course_id' => $course->id,
-                    'section_name' => $sectionData['section_name'] ?? null,
-                    'field_types' => $sectionData['field_types'] ?? [],
-                ]);
-
-                /*
-                |--------------------------------------------------------------------------
-                | Rows
-                |--------------------------------------------------------------------------
-                */
-
-                foreach ($sectionData['rows'] ?? [] as $rowData) {
-
-                    $rowPayload = [];
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Text
-                    |--------------------------------------------------------------------------
-                    */
-
-                    if (!empty($rowData['text'])) {
-                        $rowPayload['text'] = $rowData['text'];
-                    }
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | File
-                    |--------------------------------------------------------------------------
-                    */
-
-                    if (
-                        isset($rowData['file']) &&
-                        $rowData['file'] instanceof \Illuminate\Http\UploadedFile
-                    ) {
-
-                        $rowPayload['file'] = $this->uploadFile(
-                            $rowData['file'],
-                            'courses/sections'
-                        );
-                    }
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Checkbox
-                    |--------------------------------------------------------------------------
-                    */
-
-                    if (isset($rowData['checkbox'])) {
-                        $rowPayload['checkbox'] = $rowData['checkbox'];
-                    }
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Radio
-                    |--------------------------------------------------------------------------
-                    */
-
-                    if (isset($rowData['radio'])) {
-                        $rowPayload['radio'] = $rowData['radio'];
-                    }
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Skip Empty Row
-                    |--------------------------------------------------------------------------
-                    */
-
-                    if (empty($rowPayload)) {
-                        continue;
-                    }
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | Create Row
-                    |--------------------------------------------------------------------------
-                    */
-
-                    CourseSectionRow::create([
-                        'course_section_id' => $section->id,
-                        'data' => $rowPayload,
-
-                        'is_downloadable' => (int) ($rowData['is_downloadable'] ?? 0),
-                        'is_document_submission' => (int) ($rowData['is_document_submission'] ?? 0),
-                    ]);
-                }
+            if ($request->hasFile('thumbnail')) {
+                $data['thumbnail'] = $this->uploadFile(
+                    $request->file('thumbnail'),
+                    'courses/thumbnails'
+                );
             }
 
-            return $course;
+            if ($request->hasFile('course_material')) {
+                $data['course_material'] = $this->uploadFile(
+                    $request->file('course_material'),
+                    'courses/materials'
+                );
+            }
+
+            return Course::create($data);
         });
     }
+
+    
 
     public function update(Course $course, array $data, Request $request): Course
     {

@@ -62,16 +62,17 @@
                     </div>
 
                 </div>
-            </div>
-
-            <div class="lg:col-span-4">             
-
                 <div class="mt-5">
                     <button type="submit"
                         class=" w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500">
                         Update Course
                     </button>
                 </div>
+            </div>
+
+            <div class="lg:col-span-4">             
+
+                
             </div>
         </div>
     </form>

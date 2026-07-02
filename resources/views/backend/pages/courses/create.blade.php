@@ -1,9 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <form x-data="courseBuilder()" @submit.prevent="submitForm($event)" action="{{ role_route('role.courses.store') }}"
-        method="POST" enctype="multipart/form-data">
-
+    <form action="{{ role_route('role.courses.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
 
@@ -22,323 +20,48 @@
 
                     <div class="p-5 space-y-5">
 
-                        <!-- COURSE NAME -->
-                        <div class="mb-6">
-                            <label>Course Name</label>
+                        <div class="grid grid-cols-1  gap-5">
+                            {{-- Name --}}
+                            <x-form.input-text name="name" label="Course Name" value="{{ old('name') }}" placeholder="Enter Course Name..." />
 
-                            <input type="text" name="name" class="border rounded w-full p-2">
-                            {{-- <x-form.select-input name="course_id" label="Course" :options="$courses->pluck('name', 'id')->toArray()" /> --}}
-                            <div x-show="errors.name" class="text-red-500 text-sm mt-1" x-text="errors.name">
-                            </div>
+                            {{-- Code --}}
+                            <x-form.input-text name="code" label="Course Code" value="{{ old('code') }}"  placeholder="Enter Course Code..." />
+
+                            {{-- Cricos --}}
+                            <x-form.input-text name="cricos" label="Cricos No" value="{{ old('cricos') }}"  placeholder="Enter Cricos No..." />
+
+                            {{-- Price --}}
+                            {{-- <x-form.input-text name="price" label="Price" value="{{ old('price') }}"  placeholder="Enter Price..." />
+                            <x-form.input-text name="discount_percentage" label="Discount Percentage" value="{{ old('discount_percentage') }}"  placeholder="Enter Discount Percentage..." /> --}}
                         </div>
 
+                        <x-form.file-uploader name="thumbnail" label="Thumbnail" accept="image/*" />
+                        {{-- <x-form.file-uploader name="course_material" label="Course Material" accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" /> --}}
 
-                        <div x-data="courseBuilder()">
+                        <x-form.textarea-input name="overview" label="Overview" rows="5"
+                            placeholder="Enter Course overview..." :value="old('overview')" />
 
-                            <!-- ALL SECTIONS -->
-                            <template x-for="(section, sectionIndex) in sections" :key="section.id">
+                        <x-form.textarea-input name="entry_requirements" label="Admission Requirements" rows="5"
+                            placeholder="Admission Requirements..." :value="old('entry_requirements')" />
+                            
+                        <x-form.textarea-input name="description" label="Description" rows="5"
+                            placeholder="Enter Course description..." :value="old('description')" />
+                    </div> 
+                    <div class="flex justify-end p-5">
+                    <button type="submit"
+                        class=" w-fit rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500">
+                        Create Course
+                    </button>
+                </div>
 
-                                <div class="border rounded p-5 mb-6 bg-gray-50">
-
-                                    <!-- SECTION NAME -->
-                                    <div class="mb-4">
-
-                                        <label>Section Name</label>
-
-                                        <input type="text" :name="`sections[${sectionIndex}][section_name]`"
-                                            x-model="section.section_name" class="border rounded w-full p-2">
-
-                                    </div>
-
-
-                                    <!-- FIELD TYPES -->
-                                    <div class="mb-4">
-
-                                        <label>Select Fields</label>
-
-                                        <div class="flex gap-4 mt-2">
-
-                                            <label>
-                                                <input type="checkbox" value="text"
-                                                    :name="`sections[${sectionIndex}][field_types][]`"
-                                                    x-model="section.field_types">
-                                                Text
-                                            </label>
-
-                                            <label>
-                                                <input type="checkbox" value="file"
-                                                    :name="`sections[${sectionIndex}][field_types][]`"
-                                                    x-model="section.field_types">
-                                                File
-                                            </label>
-
-                                            <label>
-                                                <input type="checkbox" value="checkbox"
-                                                    :name="`sections[${sectionIndex}][field_types][]`"
-                                                    x-model="section.field_types">
-                                                Checkbox
-                                            </label>
-
-                                            <label>
-                                                <input type="checkbox" value="radio"
-                                                    :name="`sections[${sectionIndex}][field_types][]`"
-                                                    x-model="section.field_types">
-                                                Radio
-                                            </label>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <!-- ROWS -->
-                                    <template x-for="(row, rowIndex) in section.rows" :key="row.id">
-
-                                        <div class="border p-4 rounded mb-4 bg-white">
-
-                                            <!-- TEXT -->
-                                            <template x-if="section.field_types.includes('text')">
-
-                                                <div class="mb-3">
-
-                                                    <label>Text</label>
-
-                                                    <input type="text"
-                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][text]`"
-                                                        class="border rounded w-full p-2">
-
-                                                </div>
-
-                                            </template>
-
-
-                                            <!-- FILE -->
-
-                                            <template x-if="section.field_types.includes('file')">
-
-                                                <div class="space-y-3">
-
-                                                    <div>
-                                                        <label class="block mb-1 font-medium">File</label>
-
-                                                        <input type="file"
-                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
-                                                            class="border rounded w-full p-2">
-                                                    </div>
-                                                    <div class="flex flex-col gap-2 mb-3">
-                                                        <label class="flex items-center gap-2">
-                                                            <input type="hidden"
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
-                                                                value="0">
-                                                            <input type="checkbox" value="1" checked
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`">
-                                                            <span>Is Downloadable</span>
-
-                                                        </label>
-
-                                                        <label class="flex items-center gap-2">
-                                                            <input type="hidden"
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
-                                                                value="0">
-                                                            <input type="checkbox" value="1" checked
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
-                                                            <span>Is Document Submission</span>
-
-                                                        </label>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </template>
-
-
-                                            <!-- CHECKBOX -->
-                                            <template x-if="section.field_types.includes('checkbox')">
-
-                                                <div class="mb-3">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
-                                                            value="1">
-
-                                                        Checkbox
-
-                                                    </label>
-                                                </div>
-                                            </template>
-
-
-                                            <!-- RADIO -->
-                                            <template x-if="section.field_types.includes('radio')">
-
-                                                <div class="mb-3">
-                                                    <label>
-
-                                                        <input type="radio"
-                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][radio]`"
-                                                            value="yes">
-
-                                                        Yes
-
-                                                    </label>
-                                                </div>
-                                            </template>
-
-                                            <!-- REMOVE ROW -->
-                                            <button type="button" @click="removeRow(section.id, row.id)"
-                                                class="bg-red-500 text-white px-4 py-2 rounded ">
-                                                Remove Row
-                                            </button>
-
-                                        </div>
-
-                                    </template>
-
-                                    <!-- ADD ROW -->
-                                    <button type="button" @click="addRow(section.id)"
-                                        class="bg-blue-500 text-white px-4 py-2 rounded">
-                                        Add More Row
-                                    </button>
-
-                                    <!-- REMOVE SECTION -->
-                                    <button type="button" @click="removeSection(section.id)"
-                                        class="bg-red-700 text-white px-4 py-2 rounded ml-2">
-                                        Remove Section
-                                    </button>
-
-                                </div>
-                                <div x-show="errors[`sections.${sectionIndex}.section_name`]"
-                                    class="text-red-500 text-sm mt-1"
-                                    x-text="errors[`sections.${sectionIndex}.section_name`]">
-                                </div>
-
-                            </template>
-
-                            <!-- ADD SECTION -->
-                            <button type="button" @click="addSection()" class="bg-green-600 text-white px-5 py-3 rounded">
-                                Add New Section
-                            </button>
-                        </div>
-                        <button type="submit" class="bg-black text-white px-5 py-3 rounded mt-6">
-                            Save Course
-                        </button>
-                    </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-4">
+            <div class="lg:col-span-4">             
 
-
+                
             </div>
         </div>
     </form>
-    @if ($errors->any())
-        <div class="bg-red-100 p-4 rounded">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+   
 @endsection
-
-<script>
-    function courseBuilder() {
-        return {
-
-            errors: {},
-
-            sectionCounter: 1,
-            rowCounter: 1,
-
-            sections: [],
-
-            async submitForm(event) {
-
-                this.errors = {};
-
-                const form = event.target;
-
-                const response = await fetch(
-                    form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'Accept': 'application/json'
-                        }
-                    }
-                );
-
-                const data = await response.json();
-
-                if (response.status === 422) {
-
-                    Object.keys(data.errors).forEach(key => {
-                        this.errors[key] = data.errors[key][0];
-                    });
-
-                    return;
-                }
-
-                if (response.ok) {
-
-                    window.location.href = data.redirect;
-                }
-            },
-
-            addSection() {
-
-                this.sections.push({
-                    id: this.sectionCounter++,
-                    section_name: '',
-                    field_types: [],
-                    rows: [{
-                        id: this.rowCounter++
-
-                    }]
-                });
-
-            },
-
-            removeSection(sectionId) {
-
-                this.sections = this.sections.filter(
-                    section => section.id !== sectionId
-                );
-
-            },
-
-            addRow(sectionId) {
-
-                const section = this.sections.find(
-                    section => section.id === sectionId
-                );
-
-                if (!section) return;
-
-                section.rows.push({
-                    id: this.rowCounter++
-                });
-
-            },
-
-            removeRow(sectionId, rowId) {
-
-                const section = this.sections.find(
-                    section => section.id === sectionId
-                );
-
-                if (!section) return;
-
-                section.rows = section.rows.filter(
-                    row => row.id !== rowId
-                );
-
-            }
-
-        };
-    }
-</script>

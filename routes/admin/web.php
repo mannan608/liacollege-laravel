@@ -59,13 +59,16 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
+              Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
+        Route::post('courses/{course}/resource', [CourseController::class, 'createResource'])->name('resources.store');
         Route::resource('courses', CourseController::class);
+  
         Route::resource('contacts', ContactController::class);
         Route::resource('subscribers', SubscriberController::class);
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
-        Route::get('students/{student}/course-permission',[StudentController::class, 'coursePermission'])->name('students.course-permission');
+        Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
 
-        Route::post('students/{student}/course-permission',[StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
+        Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
     });

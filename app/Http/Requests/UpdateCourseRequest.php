@@ -58,14 +58,7 @@ class UpdateCourseRequest extends FormRequest
                 'image',
                 'mimes:jpg,jpeg,png,webp',
                 'max:5120',
-            ],
-
-            'course_material' => [
-                'nullable',
-                'file',
-                'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar',
-                'max:51200',
-            ],
+            ],         
 
             'overview' => [
                 'nullable',

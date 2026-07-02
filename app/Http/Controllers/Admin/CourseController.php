@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\StoreResourceRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Models\CourseSection;
@@ -22,7 +23,7 @@ class CourseController extends Controller
     ) {}
 
 
-    public function index(Request $request):View
+    public function index(Request $request): View
     {
         $request->user()->can('course.list') || abort(403);
 
@@ -42,7 +43,7 @@ class CourseController extends Controller
     {
         $request->user()->can('course.create') || abort(403);
 
-    //   $courses = $this->courses->getAll();
+        //   $courses = $this->courses->getAll();
 
         return view('backend.pages.courses.create', [
             'courses' => null,
@@ -50,46 +51,19 @@ class CourseController extends Controller
         ]);
     }
 
-   public function store(StoreCourseRequest $request)
-{
-    try {
-
+    public function store(StoreCourseRequest $request): RedirectResponse
+    {
         $this->courses->create(
             $request->validated(),
             $request
         );
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Course created successfully',
-            'redirect' => role_route('role.courses.index')
-
-        ]);
-
-    } catch (\Throwable $e) {
-
-        report($e);
-
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage()
-        ], 500);
+        Cache::forget('navbar_courses');
+        return redirect()
+            ->route('role.courses.index', [
+                'role' => $request->route('role')
+            ])
+            ->with('success', 'Course created successfully.');
     }
-}
-
-    // public function store(StoreCourseRequest $request): RedirectResponse
-    // {
-    //     $this->courses->create(
-    //         $request->validated(),
-    //         $request
-    //     );
-    //     Cache::forget('navbar_courses');
-    //     return redirect()
-    //         ->route('role.courses.index', [
-    //             'role' => $request->route('role')
-    //         ])
-    //         ->with('success', 'Course created successfully.');
-    // }
 
     public function show(Request $request, Course $course): View
     {
@@ -139,5 +113,38 @@ class CourseController extends Controller
                 'role' => $role
             ])
             ->with('success', 'Course deleted successfully.');
+    }
+
+    public function editResource(Request $request): View
+    {
+         return view('backend.pages.courses.course_resources.create', [
+            'courses' => $this->courses->paginate(),
+            'title' => 'Courses',
+        ]);
+    }
+   
+    public function createResource(StoreResourceRequest $request, Course $course): RedirectResponse
+    {
+
+        $validatedData = $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'resource_name' => 'required|string|max:255',
+            'resource_file' => 'required|file|mimes:pdf,doc,docx|max:51200',
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('resource_file')) {
+            $filePath = $request->file('resource_file')->store('course_resources', 'public');
+            $validatedData['resource_file'] = $filePath;
+        }
+
+        // Create the course resource
+        CourseSectionRow::create($validatedData);
+
+        return redirect()
+            ->route('role.courses.index', [
+                'role' => $request->route('role')
+            ])
+            ->with('success', 'Course resource added successfully.');
     }
 }

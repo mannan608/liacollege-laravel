@@ -91,7 +91,7 @@ class MenuHelper
                         'name' => 'Courses',
                         'route' => 'role.courses.index',
                         'permission' => 'course.list',
-                    ],
+                    ],                    
                 ],
             ],
             // [
