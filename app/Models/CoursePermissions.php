@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CoursePermissions extends Model
 {
- protected $fillable = [
+    protected $fillable = [
         'student_id',
         'course_id',
         'section_id',
@@ -15,25 +16,25 @@ class CoursePermissions extends Model
     ];
 
     protected $casts = [
-    'doc_permissions' => 'array',
-];
+        'doc_permissions' => 'array',
+    ];
 
-    public function student()
+    public function student(): BelongsTo
     {
-        return $this->belongsTo(User::class,'student_id');
+        return $this->belongsTo(Student::class);
     }
 
-    public function course()
+    public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
     }
 
-    public function section()
+    public function section(): BelongsTo
     {
         return $this->belongsTo(CourseSection::class);
     }
 
-    public function row()
+    public function row(): BelongsTo
     {
         return $this->belongsTo(CourseSectionRow::class);
     }

@@ -6,6 +6,8 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Role;
@@ -74,7 +76,7 @@ class User extends Authenticatable
         return user_role_prefix($this);
     }
 
-     public function student()
+    public function student(): HasOne
     {
         return $this->hasOne(Student::class);
     }
@@ -83,8 +85,16 @@ class User extends Authenticatable
     {
         return $this->student()->exists();
     }
-    public function coursePermissions()
-{
-    return $this->hasMany(CoursePermissions::class,'student_id');
-}
+
+    public function coursePermissions(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            CoursePermissions::class,
+            Student::class,
+            'user_id',
+            'student_id',
+            'id',
+            'id',
+        );
+    }
 }

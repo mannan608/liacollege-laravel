@@ -5,16 +5,18 @@ namespace App\Repositories\Eloquent;
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class UserRepository implements UserRepositoryInterface
 {
     public function paginate(int $perPage = 25): LengthAwarePaginator
     {
-         return User::query()
-        ->with('roles:id,name', 'primaryRole:id,name')
-        ->where('primary_role_id', '!=', 4)
-        ->latest()
-        ->paginate($perPage);
+        return User::query()
+            ->with('roles:id,name', 'primaryRole:id,name')
+            ->where('primary_role_id', '!=', 4)
+            ->latest()
+            ->paginate($perPage);
     }
 
     public function create(array $data): User
@@ -30,7 +32,7 @@ class UserRepository implements UserRepositoryInterface
 
         // If no roles provided, assign default role
         if (empty($roleIds)) {
-            $defaultRole = \Spatie\Permission\Models\Role::where('name', 'default')->first();
+            $defaultRole = Role::where('name', 'default')->first();
             if ($defaultRole) {
                 $roleIds[] = $defaultRole->id;
             }
@@ -63,6 +65,19 @@ class UserRepository implements UserRepositoryInterface
 
     public function delete(User $user): bool
     {
-        return (bool) $user->delete();
+        return DB::transaction(function () use ($user): bool {
+            $user->loadMissing('student');
+
+            if ($user->student) {
+                $user->student->courses()->detach();
+                $user->student->coursePermissions()->delete();
+                $user->student->assignmentSubmissions()->delete();
+                $user->student->forceDelete();
+            }
+
+            $user->syncRoles([]);
+
+            return (bool) $user->delete();
+        });
     }
 }

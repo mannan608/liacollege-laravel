@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class StudentRepository implements StudentRepositoryInterface
@@ -90,6 +91,19 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function delete(User $user): bool
     {
-        return (bool) $user->delete();
+        return DB::transaction(function () use ($user): bool {
+            $user->loadMissing('student');
+
+            if ($user->student) {
+                $user->student->courses()->detach();
+                $user->student->coursePermissions()->delete();
+                $user->student->assignmentSubmissions()->delete();
+                $user->student->forceDelete();
+            }
+
+            $user->syncRoles([]);
+
+            return (bool) $user->delete();
+        });
     }
 }

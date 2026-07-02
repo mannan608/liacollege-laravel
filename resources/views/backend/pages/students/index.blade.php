@@ -3,7 +3,9 @@
 @section('content')
     <div class="space-y-6">
         @if (session('success'))
-            <x-ui.alert variant="success" title="" message="{{ session('success') }}" />
+            <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)" x-show="show" x-transition>
+                <x-ui.alert variant="success" title="" message="{{ session('success') }}" />
+            </div>
         @endif
 
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -47,12 +49,15 @@
                                 @endforeach
                             </td>
                             <td class="px-4 py-3 text-sm text-gray-500">
-                                <a href="{{ role_route('role.students.course-permission', [
-                                    'student' => $student,
-                                ]) }}"
-                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                    Permission
-                                </a>
+                                @if ($student->courses->count() > 0)
+                                    <a href="{{ role_route('role.students.course-permission', [
+                                        'student' => $student,
+                                    ]) }}"
+                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
+                                        Permission
+                                    </a>
+                                @endif
+
                             </td>
 
                             {{-- <td class="px-4 py-3 text-sm text-gray-500">{{ ucfirst($student->user?->status) }}</td> --}}

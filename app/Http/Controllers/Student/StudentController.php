@@ -104,6 +104,8 @@ class StudentController extends Controller
             abort(403, 'You cannot delete your own account.');
         }
 
+        abort_unless($student->user, 404);
+
         $this->students->delete($student->user);
 
         return redirect()
@@ -297,7 +299,7 @@ class StudentController extends Controller
             );
 
             return $course->sections->isNotEmpty();
-        });    
+        });
 
         return view('frontend.pages.student.dashboard', [
             'courses' => $courses,

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('student_id')
-                ->constrained('users')
+                ->constrained('students')
                 ->cascadeOnDelete();
 
             $table->foreignId('course_id')
@@ -33,7 +33,7 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('course_section_rows')
                 ->nullOnDelete();
-                $table->json('doc_permissions')->nullable();
+            $table->json('doc_permissions')->nullable();
 
             $table->timestamps();
 
@@ -42,7 +42,7 @@ return new class extends Migration
                 'student_id',
                 'course_id',
                 'section_id',
-                'row_id'
+                'row_id',
             ], 'course_permission_unique');
         });
     }
