@@ -121,7 +121,9 @@ Route::prefix('student')
         Route::get('/dashboard', [StudentController::class, 'dashboard'])
             ->name('dashboard');
         Route::get('/profile', [StudentController::class, 'profile'])
-            ->name('profile');
+            ->name('student.profile');
+            Route::get('profile', [StudentController::class, 'edit'])->name('profile.edit');
+        Route::put('profile', [StudentController::class, 'update'])->name('profile.update');
         Route::post('rows/{row}/submit',[StudentController::class, 'submit'])->name('student.rows.submit');
         Route::get('rows/{row}/download',[StudentController::class, 'download'])->name('student.rows.download');
     });

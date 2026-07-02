@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('frontend.pages.student.layout.app')
 
 @section('content')
     <div class="max-w-5xl mx-auto">
@@ -13,11 +13,11 @@
 
             <div class="p-6 border-b">
                 <h2 class="text-xl font-semibold">
-                    Student Profile
+                    My Profile
                 </h2>
             </div>
 
-            {{-- <form action="{{ route('role.profile.update', ['role' => request()->route('role')]) }}" method="POST"
+            <form action="{{ route('role.profile.update', ['role' => request()->route('role')]) }}" method="POST"
                 enctype="multipart/form-data" class="p-6">
                 @csrf
                 @method('PUT')
@@ -155,12 +155,12 @@
 
                     </div>
                 </div>
-            </form> --}}
+            </form>
         </div>
 
     </div>
 
-    {{-- <script>
+    <script>
         function previewAvatar(event) {
             const preview =
                 document.getElementById('avatarPreview');
@@ -170,5 +170,5 @@
                     event.target.files[0]
                 );
         }
-    </script> --}}
+    </script>
 @endsection
