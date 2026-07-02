@@ -30,7 +30,7 @@ class StoreResourceRequest extends FormRequest
 
             'sections.*.field_types.*' => [
                 'required',
-                Rule::in(['text', 'file', 'checkbox', 'radio']),
+                Rule::in(['text', 'link', 'file', 'checkbox', 'radio']),
             ],
 
             'sections.*.rows' => [
@@ -42,6 +42,8 @@ class StoreResourceRequest extends FormRequest
                 'nullable',
                 'string',
             ],
+
+             'sections.*.rows.*.link' => ['nullable', 'string'],
 
             'sections.*.rows.*.file' => [
                 'nullable',

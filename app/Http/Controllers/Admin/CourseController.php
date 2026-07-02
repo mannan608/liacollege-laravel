@@ -138,8 +138,8 @@ class CourseController extends Controller
                 $course->load('sections.rows');
 
                 $oldFiles = $course->sections
-                    ->flatMap(fn (CourseSection $section) => $section->rows)
-                    ->map(fn (CourseSectionRow $row) => $row->data['file'] ?? null)
+                    ->flatMap(fn(CourseSection $section) => $section->rows)
+                    ->map(fn(CourseSectionRow $row) => $row->data['file'] ?? null)
                     ->filter()
                     ->values();
 
@@ -159,6 +159,15 @@ class CourseController extends Controller
 
                         if (! empty($rowData['text'])) {
                             $rowPayload['text'] = $rowData['text'];
+                        }
+                        if (!empty($rowData['link'])) {
+                            $link = $rowData['link'];
+
+                            if (!str_starts_with($link, 'http://') && !str_starts_with($link, 'https://')) {
+                                $link = 'https://' . $link;
+                            }
+
+                            $rowPayload['link'] = $link;
                         }
 
                         if (! empty($rowData['checkbox'])) {
@@ -194,7 +203,7 @@ class CourseController extends Controller
 
                 $oldFiles
                     ->diff($keptFiles)
-                    ->each(fn (string $path) => $this->deleteFile($path));
+                    ->each(fn(string $path) => $this->deleteFile($path));
             });
 
             Cache::forget('navbar_courses');

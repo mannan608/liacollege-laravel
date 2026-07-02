@@ -11,6 +11,7 @@
                     return [
                         'id' => $row->id,
                         'text' => $row->data['text'] ?? '',
+                        'link' => $row->data['link'] ?? '',
                         'file' => $row->data['file'] ?? '',
                         'checkbox' => $row->data['checkbox'] ?? '',
                         'radio' => $row->data['radio'] ?? '',
@@ -71,7 +72,13 @@
                                                 <input type="checkbox" value="text"
                                                     :name="`sections[${sectionIndex}][field_types][]`"
                                                     x-model="section.field_types">
-                                                Text
+                                               Name (Text)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" value="link"
+                                                    :name="`sections[${sectionIndex}][field_types][]`"
+                                                    x-model="section.field_types">
+                                               Link (URL)
                                             </label>
 
                                             <label>
@@ -110,11 +117,26 @@
 
                                                 <div class="mb-3">
 
-                                                    <label>Text</label>
+                                                    <label>Name (Text)</label>
 
                                                     <input type="text"
                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][text]`"
                                                         x-model="row.text"
+                                                        class="border rounded w-full p-2">
+
+                                                </div>
+
+                                            </template>
+ <!-- TEXT -->
+                                            <template x-if="section.field_types.includes('link')">
+
+                                                <div class="mb-3">
+
+                                                    <label>Link/URL</label>
+
+                                                    <input type="text"
+                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][link]`"
+                                                        x-model="row.link"
                                                         class="border rounded w-full p-2">
 
                                                 </div>
