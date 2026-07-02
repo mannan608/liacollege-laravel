@@ -17,7 +17,7 @@
                 </h2>
             </div>
 
-            <form action="{{ route('role.profile.update', ['role' => request()->route('role')]) }}" method="POST"
+            <form action="{{ route('student.profile.update') }}" method="POST"
                 enctype="multipart/form-data" class="p-6">
                 @csrf
                 @method('PUT')

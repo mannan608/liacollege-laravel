@@ -120,10 +120,15 @@ Route::prefix('student')
     ->group(function () {
         Route::get('/dashboard', [StudentController::class, 'dashboard'])
             ->name('dashboard');
-        Route::get('/profile', [StudentController::class, 'profile'])
-            ->name('student.profile');
-            Route::get('profile', [StudentController::class, 'edit'])->name('profile.edit');
-        Route::put('profile', [StudentController::class, 'update'])->name('profile.update');
-        Route::post('rows/{row}/submit',[StudentController::class, 'submit'])->name('student.rows.submit');
-        Route::get('rows/{row}/download',[StudentController::class, 'download'])->name('student.rows.download');
+    
+        Route::get('/profile', [StudentController::class, 'profileEdit'])
+            ->name('profile');
+        Route::get('/profile/edit', [StudentController::class, 'profileEdit'])
+            ->name('profile.edit');
+        Route::put('/profile', [StudentController::class, 'studentProfileUpdate'])
+            ->name('profile.update');
+        Route::post('rows/{row}/submit', [StudentController::class, 'submit'])
+            ->name('rows.submit');
+        Route::get('rows/{row}/download', [StudentController::class, 'download'])
+            ->name('rows.download');
     });

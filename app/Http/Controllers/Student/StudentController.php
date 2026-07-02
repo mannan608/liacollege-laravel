@@ -12,14 +12,17 @@ use App\Models\CourseSectionRow;
 use App\Models\Student;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use App\Services\CoursePermissionService;
+use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
 class StudentController extends Controller
 {
+    use HandlesFiles;
     public function __construct(
         private readonly StudentRepositoryInterface $students,
     ) {}
@@ -305,12 +308,7 @@ class StudentController extends Controller
             'courses' => $courses,
         ]);
     }
-
-    public function profile()
-    {
-
-        return view('frontend.pages.student.profile');
-    }
+   
 
     public function submit(Request $request, CourseSectionRow $row, CoursePermissionService $permission)
     {
@@ -364,5 +362,85 @@ class StudentController extends Controller
         }
 
         return response()->download(public_path($row->data['file']));
+    }
+
+
+    public function profileEdit(Request $request): View
+    {
+        return view('frontend.pages.student.profile', [
+            'user' => $request->user(),
+        ]);
+    }
+
+       public function studentProfileUpdate(Request $request)
+    {
+        $user = $request->user();
+
+        $request->validate([
+            'name' => ['nullable', 'string', 'max:191'],
+            'phone' => ['nullable', 'string', 'max:191'],
+
+            'avatar' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048'
+            ],
+
+            'current_password' => [
+                'required_with:password'
+            ],
+
+            'password' => [
+                'nullable',
+                'min:8',
+                'confirmed'
+            ],
+        ]);
+
+        $data = [];
+
+        // Name
+        if ($request->filled('name')) {
+            $data['name'] = $request->name;
+        }
+
+        // Phone
+        if ($request->filled('phone')) {
+            $data['phone'] = $request->phone;
+        }
+
+        // Avatar
+        if ($request->hasFile('avatar')) {
+            $data['avatar'] = $this->replaceFile(
+                $request->file('avatar'),
+                $user->avatar,
+                'users'
+            );
+        }
+
+        // Password
+        if ($request->filled('password')) {
+
+            if (! Hash::check(
+                $request->current_password,
+                $user->password
+            )) {
+                return back()->withErrors([
+                    'current_password' => 'Current password is incorrect.'
+                ]);
+            }
+
+            $data['password'] = bcrypt($request->password);
+        }
+
+        if (! empty($data)) {
+            $user->update($data);
+        }
+
+        return back()->with(
+            'success',
+            'Profile updated successfully.'
+        );
     }
 }

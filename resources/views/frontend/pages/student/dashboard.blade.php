@@ -113,7 +113,7 @@
                                                         <div class="min-w-0 flex-1">
                                                             <h4
                                                                 class="text-sm font-semibold leading-relaxed text-slate-800 sm:text-base line-clamp-1">
-                                                                {{ $row->data['text'] }}
+                                                               {{ $row->data['text'] ?? '' }}
                                                             </h4>
                                                         </div>
 
