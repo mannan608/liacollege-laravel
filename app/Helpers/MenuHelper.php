@@ -56,7 +56,7 @@ class MenuHelper
             ],
 
               [
-                'icon' => 'authentication',
+                'icon' => 'user-profile',
                 'name' => 'Students Manage',
                 'route' => 'role.students.index',
                 'permission' => 'user.list',
@@ -86,13 +86,7 @@ class MenuHelper
             [
                 'name' => 'Courses Manage',
                 'icon' => 'tables',
-                'subItems' => [
-                    [
-                        'name' => 'Categories',
-                        'route' => 'role.course-categories.index',
-                        'permission' => 'category.list',
-                        'optional' => true,
-                    ],
+                'subItems' => [                    
                     [
                         'name' => 'Courses',
                         'route' => 'role.courses.index',

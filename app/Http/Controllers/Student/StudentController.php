@@ -4,23 +4,17 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentStoreRequest;
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use App\Models\CoursePermissions;
-use App\Models\CourseSection;
 use App\Models\CourseSectionRow;
 use App\Models\Student;
-use App\Models\User;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use App\Services\CoursePermissionService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
@@ -32,9 +26,8 @@ class StudentController extends Controller
 
     public function index(Request $request): View
     {
-        $request->user()->can('user.list') || abort(403);
+        $request->user()->can('student.list') || abort(403);
 
-        // dd($this->students->paginate()->toArray());
         return view('backend.pages.students.index', [
             'students' => $this->students->paginate(),
             'title' => 'students',
@@ -43,17 +36,17 @@ class StudentController extends Controller
 
     public function create(Request $request): View
     {
-        $request->user()->can('user.create') || abort(403);
+        $request->user()->can('student.create') || abort(403);
 
         return view('backend.pages.students.create', [
-            'user' => null,
+            'student' => null,
             'roles' => $this->roles(),
             'courses' => Course::orderBy('name')->get(),
             'title' => 'Create Student',
         ]);
     }
 
-    public function store(StudentStoreRequest  $request): RedirectResponse
+    public function store(StudentStoreRequest $request): RedirectResponse
     {
         $this->students->create($request->validated());
 
@@ -62,49 +55,56 @@ class StudentController extends Controller
             ->with('success', 'Student created successfully.');
     }
 
-    public function show(Request $request, string $role, User $user): View
+    public function show(Request $request, string $role, Student $student): View
     {
-        $request->user()->can('user.view') || abort(403);
+        $request->user()->can('student.view') || abort(403);
+
+        $student->load([
+            'user.roles',
+            'user.primaryRole',
+            'courses',
+        ]);
 
         return view('backend.pages.students.show', [
-            'user' => $user->load('roles', 'primaryRole'),
-            'title' => 'User Details',
+            'student' => $student,
+            'title' => 'Student Details',
         ]);
     }
 
-    public function edit(Request $request, string $role, User $user): View
+    public function edit(Request $request, string $role, Student $student): View
     {
-        $request->user()->can('user.edit') || abort(403);
+        $request->user()->can('student.edit') || abort(403);
+
+        $student->load([
+            'user',
+            'courses',
+        ]);
 
         return view('backend.pages.students.edit', [
-            'user' => $user->load('roles', 'primaryRole'),
-            'roles' => $this->roles(),
-            'title' => 'Edit User',
+            'student' => $student,
+            'courses' => Course::orderBy('name')->get(),
+            'title' => 'Edit Student',
         ]);
     }
 
-    public function update(UserUpdateRequest $request, string $role, User $user): RedirectResponse
+    public function update(StudentUpdateRequest $request, string $role, Student $student): RedirectResponse
     {
-        if ($request->user()->is($user) && $request->input('status') !== 'active') {
-            abort(403, 'You cannot deactivate your own account.');
-        }
-
-        $this->students->update($user, $request->validated());
+        $this->students->update($student->user, $request->validated());
 
         return redirect()
-            ->route('role.students.index', ['role' => $request->route('role')])
+            ->route('role.students.index', ['role' => $role])
             ->with('success', 'Student updated successfully.');
     }
 
-    public function destroy(Request $request, string $role, User $user): RedirectResponse
+    public function destroy(Request $request, string $role, Student $student): RedirectResponse
     {
-        $request->user()->can('user.delete') || abort(403);
+        $request->user()->can('student.delete') || abort(403);
 
-        if ($request->user()->is($user)) {
+        if ($student->user && $request->user()->is($student->user)) {
             abort(403, 'You cannot delete your own account.');
         }
 
-        $this->students->delete($user);
+        $this->students->delete($student->user);
 
         return redirect()
             ->route('role.students.index', ['role' => $request->route('role')])
@@ -116,26 +116,6 @@ class StudentController extends Controller
         return Role::query()->orderBy('name')->get(['id', 'name']);
     }
 
-    //     public function coursePermission(Request $request, string $role, Student $student)
-    //     {
-
-    //      $student->load([
-    //         'user',
-    //         'courses.sections.rows',
-    //     ]);
-
-    //     $enrolledCourses = $student->courses()
-    //     ->with('sections.rows')
-    //     ->get();
-
-    // return($student);
-
-
-    //     return view('backend.pages.students.course-permission', [
-    //         'student' => $student,
-    //         'enrolledCourses' => $student->courses,
-    //     ]);
-    //     }
     public function coursePermission(Request $request, string $role, Student $student)
     {
         $student->load([
@@ -158,27 +138,36 @@ class StudentController extends Controller
             }
 
             // Full Section
-            elseif (!is_null($permission->section_id) && is_null($permission->row_id)) {
+            elseif (! is_null($permission->section_id) && is_null($permission->row_id)) {
                 $grantedSections[] = $permission->section_id;
             }
 
             // Single Row
-            elseif (!is_null($permission->row_id)) {
+            elseif (! is_null($permission->row_id)) {
                 $grantedRows[] = $permission->row_id;
             }
         }
 
+        $existingPermissions = CoursePermissions::where('student_id', $student->id)
+            ->whereNotNull('row_id')
+            ->get()
+            ->keyBy('row_id')
+            ->map(function ($item) {
+                return $item->doc_permissions ?? [];
+            })
+            ->toArray();
+
         // return $grantedRows;
 
         return view('backend.pages.students.course-permission', [
-            'student'          => $student,
-            'enrolledCourses'  => $student->courses,
-            'grantedCourses'   => $grantedCourses,
-            'grantedSections'  => $grantedSections,
-            'grantedRows'      => $grantedRows,
+            'student' => $student,
+            'enrolledCourses' => $student->courses,
+            'grantedCourses' => $grantedCourses,
+            'grantedSections' => $grantedSections,
+            'grantedRows' => $grantedRows,
+            'existingPermissions' => $existingPermissions,
         ]);
     }
-
 
     public function saveCoursePermission(Request $request, string $role, Student $student)
     {
@@ -189,7 +178,7 @@ class StudentController extends Controller
 
             foreach ($request->permissions ?? [] as $courseId => $permission) {
 
-                if (!empty($permission['full_course'])) {
+                if (! empty($permission['full_course'])) {
 
                     CoursePermissions::create([
                         'student_id' => $student->id,
@@ -201,7 +190,7 @@ class StudentController extends Controller
                     continue;
                 }
 
-                if (!empty($permission['sections'])) {
+                if (! empty($permission['sections'])) {
 
                     foreach ($permission['sections'] as $sectionId) {
 
@@ -214,30 +203,36 @@ class StudentController extends Controller
                     }
                 }
 
-                if (!empty($permission['rows'])) {
+                if (! empty($permission['rows'])) {
 
                     foreach ($permission['rows'] as $rowId) {
 
-                        $row = \App\Models\CourseSectionRow::find($rowId);
+                        $row = CourseSectionRow::find($rowId);
 
-                        if (!$row) {
+                        if (! $row) {
                             continue;
                         }
+
+                        $docPermissions = [
+                            'download' => isset($permission['doc_permissions'][$rowId]['download']),
+
+                            'submission' => isset($permission['doc_permissions'][$rowId]['submission']),
+                        ];
 
                         CoursePermissions::create([
                             'student_id' => $student->id,
                             'course_id' => $courseId,
                             'section_id' => $row->course_section_id,
                             'row_id' => $row->id,
+                            'doc_permissions' => $docPermissions,
                         ]);
                     }
                 }
             }
         });
 
-        return redirect()->route('role.students.index', ['role' => $role, 'student' => $student->id,])->with('success', 'Permission updated successfully.');
+        return redirect()->route('role.students.index', ['role' => $role, 'student' => $student->id])->with('success', 'Permission updated successfully.');
     }
-
 
     public function dashboard(Request $request)
     {
@@ -302,9 +297,7 @@ class StudentController extends Controller
             );
 
             return $course->sections->isNotEmpty();
-        });
-
-        // return $courses;
+        });    
 
         return view('frontend.pages.student.dashboard', [
             'courses' => $courses,
@@ -322,11 +315,11 @@ class StudentController extends Controller
 
         $student = auth()->user()->student;
 
-        if (!$permission->canAccessRow($student, $row)) {
+        if (! $permission->canAccessRow($student, $row)) {
             abort(403);
         }
 
-        if (!$row->is_document_submission) {
+        if (! $row->is_document_submission) {
             abort(403);
         }
 
@@ -360,11 +353,11 @@ class StudentController extends Controller
 
         $student = auth()->user()->student;
 
-        if (!$permissionService->canAccessRow($student, $row)) {
+        if (! $permissionService->canAccessRow($student, $row)) {
             abort(403);
         }
 
-        if (!$row->is_downloadable) {
+        if (! $row->is_downloadable) {
             abort(403);
         }
 

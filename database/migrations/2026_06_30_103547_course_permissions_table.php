@@ -33,6 +33,7 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('course_section_rows')
                 ->nullOnDelete();
+                $table->json('doc_permissions')->nullable();
 
             $table->timestamps();
 

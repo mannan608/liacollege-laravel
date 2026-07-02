@@ -98,27 +98,41 @@
                                                     @endif
 
                                                     <div class="flex-1 flex gap-3 justify-between">
-                                                        <p class="font-medium text-slate-800 leading-relaxed line-clamp-2 text-[15px]">
+                                                        <p
+                                                            class="font-medium text-slate-800 leading-relaxed line-clamp-2 text-[15px]">
                                                             {{ $row->data['text'] ?? 'N/A' }}
                                                         </p>
                                                         @if ($row->data['file'] ?? false)
-                                                            <div class="flex items-center gap-3 text-[12px]">
-                                                            @if ($row->is_downloadable ?? false)
-                                                                <label class="flex items-center gap-2">
-                                                                <input type="checkbox" value="1" checked
-                                                                    :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`">
-                                                                <span>Is Download</span>
-                                                            </label>
-                                                            @endif
+                                                            <div class="ml-8 flex gap-4 text-sm">
 
-                                                            @if ($row->is_document_submission ?? false)
-                                                                <label class="flex items-center gap-2">
-                                                                    <input type="checkbox" value="1" checked
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
-                                                                    <span>Is Submission</span>
-                                                                </label>
-                                                            @endif
-                                                        </div>
+                                                                {{-- DOWNLOAD PERMISSION --}}
+                                                                @if ($row->is_downloadable)
+                                                                    <label class="flex items-center gap-2">
+
+                                                                        <input type="checkbox"
+                                                                            name="permissions[{{ $course->id }}][doc_permissions][{{ $row->id }}][download]"
+                                                                            value="1" @checked(data_get($existingPermissions, $row->id . '.download', true))>
+
+                                                                        <span>Download</span>
+
+                                                                    </label>
+                                                                @endif
+
+
+                                                                {{-- SUBMISSION PERMISSION --}}
+                                                                @if ($row->is_document_submission)
+                                                                    <label class="flex items-center gap-2">
+
+                                                                        <input type="checkbox"
+                                                                            name="permissions[{{ $course->id }}][doc_permissions][{{ $row->id }}][submission]"
+                                                                            value="1" @checked(data_get($existingPermissions, $row->id . '.submission', true))>
+
+                                                                        <span>Submission</span>
+
+                                                                    </label>
+                                                                @endif
+
+                                                            </div>
                                                         @endif
                                                     </div>
 

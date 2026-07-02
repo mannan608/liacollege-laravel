@@ -1,14 +1,7 @@
 @php
-    // Get default role
-    $defaultRole = \Spatie\Permission\Models\Role::where('name', 'default')->first();
-
-    // For new user, use default role as default; for existing, use their values
-    $selectedRoles = old(
-        'roles',
-        $user?->roles->pluck('id')->map(fn($id) => (string) $id)->all() ??
-            ($defaultRole ? [(string) $defaultRole->id] : []),
-    );
-    $selectedPrimaryRole = old('primary_role_id', $user?->primary_role_id ?? $defaultRole?->id);
+    $student ??= null;
+    $user = $student?->user;
+    $selectedCourses = old('courses', $student?->courses?->pluck('id')->toArray() ?? []);
 @endphp
 
 <div
@@ -49,8 +42,16 @@
     </div>
 
     <div>
-        <x-form.multi-select name="courses" label="Select Enroll Course" :options="$courses" :selected="old('courses', [])"
-            placeholder="Select Course" required />
+        <x-form.multi-select
+            name="courses"
+            label="Select Enroll Course"
+            :options="$courses"
+            :selected="$selectedCourses"
+            placeholder="Select Course"
+        />
+        @error('courses')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
     </div>
 </div>
 
@@ -58,7 +59,7 @@
     <button type="submit" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600">
         Save Student
     </button>
-    <a href="{{ role_route('role.users.index') }}"
+    <a href="{{ role_route('role.students.index') }}"
         class="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-300">
         Cancel
     </a>

@@ -11,7 +11,6 @@ use Spatie\Permission\Models\Role;
 
 class StudentRepository implements StudentRepositoryInterface
 {
-
     public function paginate(int $perPage = 25): LengthAwarePaginator
     {
         return Student::query()
@@ -33,11 +32,9 @@ class StudentRepository implements StudentRepositoryInterface
             ->get();
     }
 
-    public function create(array $data): User
+    public function create(array $data): Student
     {
         $courseIds = $data['courses'] ?? [];
-
-
         unset($data['courses']);
 
         $studentRole = Role::where('name', 'student')->firstOrFail();
@@ -45,7 +42,7 @@ class StudentRepository implements StudentRepositoryInterface
         $data['status'] = 'active';
         $data['primary_role_id'] = $studentRole->id;
 
-        if (!empty($data['password'])) {
+        if (! empty($data['password'])) {
             $data['password'] = bcrypt($data['password']);
         }
 
@@ -57,34 +54,42 @@ class StudentRepository implements StudentRepositoryInterface
             'user_id' => $user->id,
         ]);
 
-        if (!empty($courseIds)) {
+        if (! empty($courseIds)) {
             $student->courses()->sync($courseIds);
         }
 
-        return $user->load('student.courses');
+        return $student->load('user.roles', 'user.primaryRole', 'courses');
     }
 
     public function update(User $user, array $data): User
     {
-        $roleIds = $data['roles'] ?? [];
-        unset($data['roles']);
-
         if (empty($data['password'])) {
             unset($data['password']);
         } else {
             $data['password'] = bcrypt($data['password']);
         }
 
-        $user->update($data);
+        $courseIds = $data['courses'] ?? null;
 
-        // Convert IDs to integer to ensure Spatie resolves by ID
-        $user->syncRoles(array_map('intval', $roleIds));
+        unset($data['courses']);
 
-        return $user->load('roles', 'primaryRole');
+        if (! empty($data)) {
+            $user->fill($data);
+
+            if ($user->isDirty()) {
+                $user->save();
+            }
+        }
+
+        if ($courseIds !== null && $user->student) {
+            $user->student->courses()->sync($courseIds);
+        }
+
+        return $user->fresh('student.courses');
     }
 
-public function delete(User $user): bool
-{
-    return (bool) $user->delete();
-}
+    public function delete(User $user): bool
+    {
+        return (bool) $user->delete();
+    }
 }

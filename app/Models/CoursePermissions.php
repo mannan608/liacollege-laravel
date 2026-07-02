@@ -11,7 +11,12 @@ class CoursePermissions extends Model
         'course_id',
         'section_id',
         'row_id',
+        'doc_permissions',
     ];
+
+    protected $casts = [
+    'doc_permissions' => 'array',
+];
 
     public function student()
     {

@@ -2,31 +2,26 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
+use App\Models\Student;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StudentStoreRequest extends FormRequest
+class StudentUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return $this->user()?->can('student.create') === true;
+        return $this->user()?->can('student.edit') === true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
+        $student = $this->route('student');
+        $userId = $student instanceof Student ? $student->user_id : null;
+
         return [
             'name' => ['required', 'string', 'max:191'],
-            'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')->ignore($userId)],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'courses' => ['nullable', 'array'],
             'courses.*' => ['integer', 'exists:courses,id'],
         ];
