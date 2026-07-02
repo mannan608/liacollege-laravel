@@ -228,7 +228,7 @@ https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css
                             <div class="header__right">
                                 <div class="header__right--item">
 
-                                    @auth
+                                    {{-- @auth
 
                                         <div class="dropdown">
                                             <button class="login__btn dropdown-toggle" type="button"
@@ -254,7 +254,17 @@ https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css
                                                 </li>
                                             </ul>
                                         </div>
-                                    @endauth
+                                    @endauth --}}
+
+                                     @auth
+                        <a href="{{ auth()->user()->rolePrefix() === 'student'
+                            ? route('student.dashboard')
+                            : route('role.dashboard', ['role' => auth()->user()->rolePrefix()]) }}"
+                            class="login__btn">
+
+                            <i class="fa-light fa-user"></i>
+                        </a>
+                    @endauth
 
                                     @guest
                                         <a href="{{ route('login') }}" class="login__btn " data-bs-toggle="tooltip"

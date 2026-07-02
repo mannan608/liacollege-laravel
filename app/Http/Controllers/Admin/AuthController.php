@@ -92,13 +92,34 @@ class AuthController extends Controller
             ]);
         }
 
-        if ($user->rolePrefix() === 'student') {
-            return redirect()->route('student.dashboard');
+        // if ($user->rolePrefix() === 'student') {
+        //     return redirect()->route('student.dashboard');
+        // }
+
+        // return redirect()->route('role.dashboard', [
+        //     'role' => $user->rolePrefix(),
+        // ]);
+
+        $rolePrefix = $user->rolePrefix();
+        $userRole   = $user->primaryRole?->name;
+
+        if (!$userRole) {
+            throw ValidationException::withMessages([
+                'email' => 'No role assigned to this account.',
+            ]);
         }
 
-        return redirect()->route('role.dashboard', [
-            'role' => $user->rolePrefix(),
-        ]);
+        if ($rolePrefix !== $userRole) {
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'email' => 'Role mismatch. Please contact administrator.',
+            ]);
+        }
+
+        return $userRole === 'student'
+            ? redirect()->route('student.dashboard')
+            : redirect()->route('role.dashboard', ['role' => $userRole]);
     }
 
 
@@ -112,42 +133,42 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-      public function showRegister()
+    public function showRegister()
     {
         return view('backend.pages.auth.signup');
     }
-   public function register(Request $request)
-{
-    $validatedData = $request->validate([
-        'role' => 'required|in:student',
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'phone' => 'required|string|max:255',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
-
-    $primaryRoleId = match ($validatedData['role']) {
-        'student' => 5,
-        default => null,
-    };
-
-    $user = User::create([
-        'name' => $validatedData['name'],
-        'email' => $validatedData['email'],
-        'phone' => $validatedData['phone'],
-        'password' => Hash::make($validatedData['password']),
-        'status' => 'active',
-        'primary_role_id' => $primaryRoleId,
-    ]);
-
-    if ($validatedData['role'] === 'student') {
-        Student::create([
-            'user_id' => $user->id,
+    public function register(Request $request)
+    {
+        $validatedData = $request->validate([
+            'role' => 'required|in:student',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
         ]);
-    }
 
-    return redirect()
-        ->route('login')
-        ->with('message', 'Registration successful.');
-}
+        $primaryRoleId = match ($validatedData['role']) {
+            'student' => 5,
+            default => null,
+        };
+
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'phone' => $validatedData['phone'],
+            'password' => Hash::make($validatedData['password']),
+            'status' => 'active',
+            'primary_role_id' => $primaryRoleId,
+        ]);
+
+        if ($validatedData['role'] === 'student') {
+            Student::create([
+                'user_id' => $user->id,
+            ]);
+        }
+
+        return redirect()
+            ->route('login')
+            ->with('message', 'Registration successful.');
+    }
 }
