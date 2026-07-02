@@ -1,7 +1,28 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <form x-data="courseBuilder()" @submit.prevent="submitForm($event)" action="{{ role_route('role.courses.store') }}"
+    @php
+        $initialSections = $course->sections->map(function ($section) {
+            return [
+                'id' => $section->id,
+                'section_name' => $section->section_name,
+                'field_types' => $section->field_types ?? [],
+                'rows' => $section->rows->map(function ($row) {
+                    return [
+                        'id' => $row->id,
+                        'text' => $row->data['text'] ?? '',
+                        'file' => $row->data['file'] ?? '',
+                        'checkbox' => $row->data['checkbox'] ?? '',
+                        'radio' => $row->data['radio'] ?? '',
+                        'is_downloadable' => $row->is_downloadable,
+                        'is_document_submission' => $row->is_document_submission,
+                    ];
+                })->values(),
+            ];
+        })->values();
+    @endphp
+
+    <form x-data="courseBuilder({{ \Illuminate\Support\Js::from($initialSections) }})" @submit.prevent="submitForm($event)" action="{{ role_route('role.resources.store', ['course' => $course]) }}"
         method="POST" enctype="multipart/form-data">
 
         @csrf
@@ -15,13 +36,13 @@
                     <div class="border-b border-gray-100 p-5 dark:border-gray-800">
 
                         <h2 class="text-lg font-semibold text-gray-800 dark:text-white">
-                            Create Course Resources
+                            Course Resources: {{ $course->name }}
                         </h2>
 
                     </div>
                 
                     <div class="p-5 space-y-5">
-                        <div x-data="courseBuilder()">
+                        <div>
 
                             <!-- ALL SECTIONS -->
                             <template x-for="(section, sectionIndex) in sections" :key="section.id">
@@ -93,6 +114,7 @@
 
                                                     <input type="text"
                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][text]`"
+                                                        x-model="row.text"
                                                         class="border rounded w-full p-2">
 
                                                 </div>
@@ -112,13 +134,23 @@
                                                         <input type="file"
                                                             :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
                                                             class="border rounded w-full p-2">
+                                                        <input type="hidden"
+                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][existing_file]`"
+                                                            :value="row.file || ''">
+                                                        <template x-if="row.file">
+                                                            <a :href="`/${row.file}`" target="_blank"
+                                                                class="mt-1 inline-block text-sm text-brand-600 hover:text-brand-700">
+                                                                View current file
+                                                            </a>
+                                                        </template>
                                                     </div>
                                                     <div class="flex flex-col gap-2 mb-3">
                                                         <label class="flex items-center gap-2">
                                                             <input type="hidden"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
                                                                 value="0">
-                                                            <input type="checkbox" value="1" checked
+                                                            <input type="checkbox" value="1"
+                                                                x-model="row.is_downloadable"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`">
                                                             <span>Is Downloadable</span>
 
@@ -128,7 +160,8 @@
                                                             <input type="hidden"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
                                                                 value="0">
-                                                            <input type="checkbox" value="1" checked
+                                                            <input type="checkbox" value="1"
+                                                                x-model="row.is_document_submission"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`">
                                                             <span>Is Document Submission</span>
 
@@ -138,6 +171,26 @@
 
                                                 </div>
 
+                                            </template>
+
+                                            <!-- CHECKBOX -->
+                                            <template x-if="section.field_types.includes('checkbox')">
+                                                <div class="mb-3">
+                                                    <label>Checkbox Label</label>
+                                                    <input type="text"
+                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
+                                                        x-model="row.checkbox" class="border rounded w-full p-2">
+                                                </div>
+                                            </template>
+
+                                            <!-- RADIO -->
+                                            <template x-if="section.field_types.includes('radio')">
+                                                <div class="mb-3">
+                                                    <label>Radio Label</label>
+                                                    <input type="text"
+                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][radio]`"
+                                                        x-model="row.radio" class="border rounded w-full p-2">
+                                                </div>
                                             </template>
 
                                             <!-- REMOVE ROW -->
@@ -177,7 +230,7 @@
                             </button>
                         </div>
                         <button type="submit" class="bg-black text-white px-5 py-3 rounded mt-6">
-                            Save Course
+                            Save Resources
                         </button>
                     </div>
                 </div>
@@ -198,18 +251,48 @@
             </ul>
         </div>
     @endif
-@endsection
-
 <script>
-    function courseBuilder() {
+    function courseBuilder(initialSections = []) {
+        const normalizedSections = initialSections.map(section => ({
+            ...section,
+            field_types: section.field_types || [],
+            rows: (section.rows || []).map(row => ({
+                text: '',
+                file: '',
+                checkbox: '',
+                radio: '',
+                is_downloadable: true,
+                is_document_submission: true,
+                ...row,
+            })),
+        }));
+
+        const maxSectionId = normalizedSections.reduce((max, section) => Math.max(max, Number(section.id) || 0), 0);
+        const maxRowId = normalizedSections.flatMap(section => section.rows)
+            .reduce((max, row) => Math.max(max, Number(row.id) || 0), 0);
+        const hasInitialSections = normalizedSections.length > 0;
+
         return {
 
             errors: {},
 
-            sectionCounter: 1,
-            rowCounter: 1,
+            sectionCounter: maxSectionId + (hasInitialSections ? 1 : 2),
+            rowCounter: maxRowId + (hasInitialSections ? 1 : 2),
 
-            sections: [],
+            sections: hasInitialSections ? normalizedSections : [{
+                id: maxSectionId + 1,
+                section_name: '',
+                field_types: [],
+                rows: [{
+                    id: maxRowId + 1,
+                    text: '',
+                    file: '',
+                    checkbox: '',
+                    radio: '',
+                    is_downloadable: true,
+                    is_document_submission: true,
+                }]
+            }],
 
             async submitForm(event) {
 
@@ -252,8 +335,13 @@
                     section_name: '',
                     field_types: [],
                     rows: [{
-                        id: this.rowCounter++
-
+                        id: this.rowCounter++,
+                        text: '',
+                        file: '',
+                        checkbox: '',
+                        radio: '',
+                        is_downloadable: true,
+                        is_document_submission: true,
                     }]
                 });
 
@@ -276,7 +364,13 @@
                 if (!section) return;
 
                 section.rows.push({
-                    id: this.rowCounter++
+                    id: this.rowCounter++,
+                    text: '',
+                    file: '',
+                    checkbox: '',
+                    radio: '',
+                    is_downloadable: true,
+                    is_document_submission: true,
                 });
 
             },
@@ -298,3 +392,4 @@
         };
     }
 </script>
+@endsection

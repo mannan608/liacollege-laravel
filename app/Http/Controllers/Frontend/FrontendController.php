@@ -312,15 +312,15 @@ class FrontendController extends Controller
     }
 
  
-    public function documentDownload(Course $course)
-    {
-        $filePath = public_path('uploads/courses/' . $course->course_material);
+    // public function documentDownload(Course $course)
+    // {
+    //     $filePath = public_path('uploads/courses/' . $course->course_material);
 
-        if (! file_exists($filePath)) {
-            abort(404, 'File not found');
-        }
+    //     if (! file_exists($filePath)) {
+    //         abort(404, 'File not found');
+    //     }
 
-        return response()->download($filePath);
-    }
+    //     return response()->download($filePath);
+    // }
    
 }

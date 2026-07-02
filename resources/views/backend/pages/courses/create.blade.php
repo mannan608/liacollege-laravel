@@ -36,9 +36,7 @@
                         </div>
 
                         <x-form.file-uploader name="thumbnail" label="Thumbnail" accept="image/*" />
-                        {{-- <x-form.file-uploader name="course_material" label="Course Material" accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" /> --}}
-
-                        <x-form.textarea-input name="overview" label="Overview" rows="5"
+                      <x-form.textarea-input name="overview" label="Overview" rows="5"
                             placeholder="Enter Course overview..." :value="old('overview')" />
 
                         <x-form.textarea-input name="entry_requirements" label="Admission Requirements" rows="5"

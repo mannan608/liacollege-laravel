@@ -54,12 +54,7 @@ class CourseRepository implements CourseRepositoryInterface
                 );
             }
 
-            if ($request->hasFile('course_material')) {
-                $data['course_material'] = $this->uploadFile(
-                    $request->file('course_material'),
-                    'courses/materials'
-                );
-            }
+            
 
             return Course::create($data);
         });
@@ -96,13 +91,7 @@ class CourseRepository implements CourseRepositoryInterface
                 );
             }
 
-            if ($request->hasFile('course_material')) {
-                $this->deleteFile($course->course_material);
-                $data['course_material'] = $this->uploadFile(
-                    $request->file('course_material'),
-                    'courses/materials'
-                );
-            }
+           
 
             $course->update($data);
 
@@ -113,7 +102,6 @@ class CourseRepository implements CourseRepositoryInterface
     public function delete(Course $course): bool
     {
         $this->deleteFile($course->thumbnail);
-        $this->deleteFile($course->course_material);
         return $course->delete();
     }
 

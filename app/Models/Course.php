@@ -20,7 +20,6 @@ class Course extends Model
         'overview',
         'entry_requirements',
         'description',
-        'course_material',
         'status',
         'category_id',
         'created_by',

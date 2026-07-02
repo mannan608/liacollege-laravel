@@ -10,6 +10,8 @@ use App\Models\Course;
 use App\Models\CourseSection;
 use App\Models\CourseSectionRow;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
+use App\Traits\HandlesFiles;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -18,10 +20,11 @@ use Illuminate\View\View;
 
 class CourseController extends Controller
 {
+    use HandlesFiles;
+
     public function __construct(
         private readonly CourseRepositoryInterface $courses
     ) {}
-
 
     public function index(Request $request): View
     {
@@ -58,9 +61,10 @@ class CourseController extends Controller
             $request
         );
         Cache::forget('navbar_courses');
+
         return redirect()
             ->route('role.courses.index', [
-                'role' => $request->route('role')
+                'role' => $request->route('role'),
             ])
             ->with('success', 'Course created successfully.');
     }
@@ -96,7 +100,7 @@ class CourseController extends Controller
 
         return redirect()
             ->route('role.courses.index', [
-                'role' => $request->route('role')
+                'role' => $request->route('role'),
             ])
             ->with('success', 'Course updated successfully.');
     }
@@ -110,41 +114,103 @@ class CourseController extends Controller
 
         return redirect()
             ->route('role.courses.index', [
-                'role' => $role
+                'role' => $role,
             ])
             ->with('success', 'Course deleted successfully.');
     }
 
-    public function editResource(Request $request): View
+    public function editResource(Request $request, string $role, Course $course): View
     {
-         return view('backend.pages.courses.course_resources.create', [
-            'courses' => $this->courses->paginate(),
-            'title' => 'Courses',
+        $request->user()->can('course.edit') || abort(403);
+
+        $course->load('sections.rows');
+
+        return view('backend.pages.courses.course_resources.create', [
+            'course' => $course,
+            'title' => 'Course Resources',
         ]);
     }
-   
-    public function createResource(StoreResourceRequest $request, Course $course): RedirectResponse
+
+    public function createResource(StoreResourceRequest $request, string $role, Course $course): JsonResponse
     {
+        try {
+            DB::transaction(function () use ($request, $course) {
+                $course->load('sections.rows');
 
-        $validatedData = $request->validate([
-            'course_id' => 'required|exists:courses,id',
-            'resource_name' => 'required|string|max:255',
-            'resource_file' => 'required|file|mimes:pdf,doc,docx|max:51200',
-        ]);
+                $oldFiles = $course->sections
+                    ->flatMap(fn (CourseSection $section) => $section->rows)
+                    ->map(fn (CourseSectionRow $row) => $row->data['file'] ?? null)
+                    ->filter()
+                    ->values();
 
-        // Handle file upload
-        if ($request->hasFile('resource_file')) {
-            $filePath = $request->file('resource_file')->store('course_resources', 'public');
-            $validatedData['resource_file'] = $filePath;
+                $keptFiles = collect();
+
+                $course->sections()->delete();
+
+                foreach ($request->validated('sections', []) as $sectionData) {
+                    $section = CourseSection::create([
+                        'course_id' => $course->id,
+                        'section_name' => $sectionData['section_name'],
+                        'field_types' => $sectionData['field_types'],
+                    ]);
+
+                    foreach ($sectionData['rows'] ?? [] as $rowData) {
+                        $rowPayload = [];
+
+                        if (! empty($rowData['text'])) {
+                            $rowPayload['text'] = $rowData['text'];
+                        }
+
+                        if (! empty($rowData['checkbox'])) {
+                            $rowPayload['checkbox'] = $rowData['checkbox'];
+                        }
+
+                        if (! empty($rowData['radio'])) {
+                            $rowPayload['radio'] = $rowData['radio'];
+                        }
+
+                        if (! empty($rowData['file'])) {
+                            $rowPayload['file'] = $this->uploadFile(
+                                $rowData['file'],
+                                'courses/sections'
+                            );
+                        } elseif (! empty($rowData['existing_file'])) {
+                            $rowPayload['file'] = $rowData['existing_file'];
+                            $keptFiles->push($rowData['existing_file']);
+                        }
+
+                        if (empty($rowPayload)) {
+                            continue;
+                        }
+
+                        CourseSectionRow::create([
+                            'course_section_id' => $section->id,
+                            'data' => $rowPayload,
+                            'is_downloadable' => (bool) ($rowData['is_downloadable'] ?? false),
+                            'is_document_submission' => (bool) ($rowData['is_document_submission'] ?? false),
+                        ]);
+                    }
+                }
+
+                $oldFiles
+                    ->diff($keptFiles)
+                    ->each(fn (string $path) => $this->deleteFile($path));
+            });
+
+            Cache::forget('navbar_courses');
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Course resources saved successfully.',
+                'redirect' => role_route('role.courses.index'),
+            ]);
+        } catch (\Throwable $e) {
+            report($e);
+
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
         }
-
-        // Create the course resource
-        CourseSectionRow::create($validatedData);
-
-        return redirect()
-            ->route('role.courses.index', [
-                'role' => $request->route('role')
-            ])
-            ->with('success', 'Course resource added successfully.');
     }
 }

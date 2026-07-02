@@ -27,7 +27,6 @@ return new class extends Migration
             $table->longText('entry_requirements')->nullable();
             $table->longText('description')->nullable();
             // PDF, DOC, ZIP, etc
-            $table->string('course_material')->nullable();
              $table->enum('status', ['active', 'inactive'])
                 ->default('active');
             $table->foreignId('category_id')->nullable();

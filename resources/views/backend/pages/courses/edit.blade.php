@@ -42,14 +42,7 @@
                             label="Thumbnail" 
                             accept="image/*" 
                             :existing="$course->thumbnail ? asset(($course->thumbnail)) : null" 
-                        />
-
-                        <x-form.file-uploader 
-                            name="course_material" 
-                            label="Course Material" 
-                            accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" 
-                            :existing="$course->course_material ? asset(($course->course_material)) : null" 
-                        />
+                        />                       
 
                         <x-form.textarea-input name="overview" label="Overview" rows="5"
                             placeholder="Enter Course overview..." :value="old('overview', $course->overview)" />

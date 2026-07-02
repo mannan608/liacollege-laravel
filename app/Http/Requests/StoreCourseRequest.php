@@ -158,7 +158,6 @@ class StoreCourseRequest extends FormRequest
     //         'price' => 'price',
     //         'discount_percentage' => 'discount percentage',
     //         'thumbnail' => 'thumbnail',
-    //         'course_material' => 'course material',
     //         'category_id' => 'category',
     //         'overview' => 'overview',
     //         'entry_requirements' => 'entry requirements',

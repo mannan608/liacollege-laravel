@@ -4,16 +4,15 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CampusController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Student\StudentController;
-use App\Models\Student;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,10 +58,10 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
-              Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
+        Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
         Route::post('courses/{course}/resource', [CourseController::class, 'createResource'])->name('resources.store');
         Route::resource('courses', CourseController::class);
-  
+
         Route::resource('contacts', ContactController::class);
         Route::resource('subscribers', SubscriberController::class);
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');

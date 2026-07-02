@@ -23,7 +23,6 @@ class CourseResource extends JsonResource
             'overview' => $this->overview,
             'entry_requirements' => $this->entry_requirements,
             'description' => $this->description,
-            'course_material' => $this->course_material ? Storage::url($this->course_material) : null,
             'status' => $this->status,
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
         ];
