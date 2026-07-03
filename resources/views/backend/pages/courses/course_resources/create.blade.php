@@ -164,9 +164,9 @@
                                                         x-model="section.field_types" class="checkbox-custom peer hidden">
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 " fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 "
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M4 6h16M4 12h16M4 18h7" />
                                                         </svg>
@@ -186,9 +186,9 @@
                                                         x-model="section.field_types" class="checkbox-custom peer hidden">
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 " fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 "
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                                         </svg>
@@ -208,9 +208,9 @@
                                                         x-model="section.field_types" class="checkbox-custom peer hidden">
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 " fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 "
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                                                         </svg>
@@ -230,9 +230,9 @@
                                                         x-model="section.field_types" class="checkbox-custom peer hidden">
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 " fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 "
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
@@ -252,9 +252,9 @@
                                                         x-model="section.field_types" class="checkbox-custom peer hidden">
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 " fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 "
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                            stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
@@ -314,133 +314,137 @@
                                                     </div>
 
 
-<div class="flex flex-col gap-4">
+                                                    <div class="flex flex-col gap-4">
 
 
-                                                    <!-- TEXT -->
-                                                    <template x-if="section.field_types.includes('text')">
+                                                        <!-- TEXT -->
+                                                        <template x-if="section.field_types.includes('text')">
 
-                                                        <div class="flex flex-col gap-2">
-                                                            <label class="text-sm font-medium text-gray-600">Name</label>
-                                                            <input type="text"
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][text]`"
-                                                                x-model="row.text" placeholder="Enter item name"
-                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
-                                                        </div>
-
-                                                    </template>
-
-                                                    <!-- LINK -->
-                                                    <template x-if="section.field_types.includes('link')">
-
-                                                        <div class="flex flex-col gap-2">
-                                                            <label class="text-sm font-medium text-gray-600">URL</label>
-                                                            <div class="relative">
-                                                                <div
-                                                                    class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        class="h-4 w-4 text-gray-400" fill="none"
-                                                                        viewBox="0 0 24 24" stroke="currentColor"
-                                                                        stroke-width="2">
-                                                                        <path stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                                                                    </svg>
-                                                                </div>
-                                                                <input type="url"
-                                                                    :name="`sections[${sectionIndex}][rows][${rowIndex}][link]`"
-                                                                    x-model="row.link" placeholder="https://example.com"
-                                                                    class="input-field w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
-                                                            </div>
-                                                        </div>
-
-                                                    </template>
-
-                                                    <!-- FILE -->
-
-                                                    <template x-if="section.field_types.includes('file')">
-
-                                                        <div class="space-y-3">
                                                             <div class="flex flex-col gap-2">
-                                                                <label class="text-sm font-medium text-gray-600">Upload
-                                                                    File</label>
+                                                                <label
+                                                                    class="text-sm font-medium text-gray-600">Name</label>
+                                                                <input type="text"
+                                                                    :name="`sections[${sectionIndex}][rows][${rowIndex}][text]`"
+                                                                    x-model="row.text" placeholder="Enter item name"
+                                                                    class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                                                            </div>
+
+                                                        </template>
+
+                                                        <!-- LINK -->
+                                                        <template x-if="section.field_types.includes('link')">
+
+                                                            <div class="flex flex-col gap-2">
+                                                                <label
+                                                                    class="text-sm font-medium text-gray-600">URL</label>
                                                                 <div class="relative">
-                                                                    <input type="file"
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
-                                                                        class="file-input block w-full cursor-pointer rounded-lg border border-dashed border-gray-300 bg-white px-4 py-3 text-sm text-gray-500 file:mr-4 file:ml-0 file:rounded-md file:border-0 file:bg-brand-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-brand-700 hover:border-brand-300">
-                                                                    <input type="hidden"
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][existing_file]`"
-                                                                        :value="row.file || ''">
-                                                                </div>
-                                                                <template x-if="row.file">
-                                                                    <a :href="`/${row.file}`" target="_blank"
-                                                                        class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700">
+                                                                    <div
+                                                                        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            class="h-3.5 w-3.5" fill="none"
+                                                                            class="h-4 w-4 text-gray-400" fill="none"
                                                                             viewBox="0 0 24 24" stroke="currentColor"
                                                                             stroke-width="2">
                                                                             <path stroke-linecap="round"
                                                                                 stroke-linejoin="round"
-                                                                                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                                                         </svg>
-                                                                        View Current File
-                                                                    </a>
-                                                                </template>
+                                                                    </div>
+                                                                    <input type="url"
+                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][link]`"
+                                                                        x-model="row.link"
+                                                                        placeholder="https://example.com"
+                                                                        class="input-field w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                                                                </div>
                                                             </div>
-                                                            <div class="flex flex-wrap gap-4">
-                                                                <label class="flex cursor-pointer items-center gap-2">
-                                                                    <input type="hidden"
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
-                                                                        value="0">
-                                                                    <input type="checkbox" value="1"
-                                                                        x-model="row.is_downloadable"
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
-                                                                        class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0">
-                                                                    <span
-                                                                        class="text-xs font-medium text-gray-600">Downloadable</span>
-                                                                </label>
-                                                                <label class="flex cursor-pointer items-center gap-2">
-                                                                    <input type="hidden"
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
-                                                                        value="0">
-                                                                    <input type="checkbox" value="1"
-                                                                        x-model="row.is_document_submission"
-                                                                        :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
-                                                                        class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0">
-                                                                    <span
-                                                                        class="text-xs font-medium text-gray-600">Document
-                                                                        Submission</span>
-                                                                </label>
+
+                                                        </template>
+
+                                                        <!-- FILE -->
+
+                                                        <template x-if="section.field_types.includes('file')">
+
+                                                            <div class="space-y-3">
+                                                                <div class="flex flex-col gap-2">
+                                                                    <label class="text-sm font-medium text-gray-600">Upload
+                                                                        File</label>
+                                                                    <div class="relative">
+                                                                        <input type="file"
+                                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
+                                                                            class="file-input block w-full cursor-pointer rounded-lg border border-dashed border-gray-300 bg-white px-4 py-3 text-sm text-gray-500 file:mr-4 file:ml-0 file:rounded-md file:border-0 file:bg-brand-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-brand-700 hover:border-brand-300">
+                                                                        <input type="hidden"
+                                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][existing_file]`"
+                                                                            :value="row.file || ''">
+                                                                    </div>
+                                                                    <template x-if="row.file">
+                                                                        <a :href="`/${row.file}`" target="_blank"
+                                                                            class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                class="h-3.5 w-3.5" fill="none"
+                                                                                viewBox="0 0 24 24" stroke="currentColor"
+                                                                                stroke-width="2">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                            </svg>
+                                                                            View Current File
+                                                                        </a>
+                                                                    </template>
+                                                                </div>
+                                                                <div class="flex flex-wrap gap-4">
+                                                                    <label class="flex cursor-pointer items-center gap-2">
+                                                                        <input type="hidden"
+                                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
+                                                                            value="0">
+                                                                        <input type="checkbox" value="1"
+                                                                            x-model="row.is_downloadable"
+                                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
+                                                                            class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0">
+                                                                        <span
+                                                                            class="text-xs font-medium text-gray-600">Downloadable</span>
+                                                                    </label>
+                                                                    <label class="flex cursor-pointer items-center gap-2">
+                                                                        <input type="hidden"
+                                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
+                                                                            value="0">
+                                                                        <input type="checkbox" value="1"
+                                                                            x-model="row.is_document_submission"
+                                                                            :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
+                                                                            class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0">
+                                                                        <span
+                                                                            class="text-xs font-medium text-gray-600">Document
+                                                                            Submission</span>
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                    </template>
+                                                        </template>
 
-                                                    <!-- CHECKBOX -->
-                                                    <template x-if="section.field_types.includes('checkbox')">
-                                                        <div class="flex flex-col gap-2">
-                                                            <label class="text-sm font-medium text-gray-600">Checkbox
-                                                                Label</label>
-                                                            <input type="text"
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
-                                                                x-model="row.checkbox" placeholder="Enter checkbox label"
-                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
-                                                        </div>
-                                                    </template>
+                                                        <!-- CHECKBOX -->
+                                                        <template x-if="section.field_types.includes('checkbox')">
+                                                            <div class="flex flex-col gap-2">
+                                                                <label class="text-sm font-medium text-gray-600">Checkbox
+                                                                    Label</label>
+                                                                <input type="text"
+                                                                    :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
+                                                                    x-model="row.checkbox"
+                                                                    placeholder="Enter checkbox label"
+                                                                    class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                                                            </div>
+                                                        </template>
 
-                                                    <!-- RADIO -->
-                                                    <template x-if="section.field_types.includes('radio')">
-                                                        <div class="flex flex-col gap-2">
-                                                            <label class="text-sm font-medium text-gray-600">Radio
-                                                                Label</label>
-                                                            <input type="text"
-                                                                :name="`sections[${sectionIndex}][rows][${rowIndex}][radio]`"
-                                                                x-model="row.radio" placeholder="Enter radio label"
-                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
-                                                        </div>
-                                                    </template>
+                                                        <!-- RADIO -->
+                                                        <template x-if="section.field_types.includes('radio')">
+                                                            <div class="flex flex-col gap-2">
+                                                                <label class="text-sm font-medium text-gray-600">Radio
+                                                                    Label</label>
+                                                                <input type="text"
+                                                                    :name="`sections[${sectionIndex}][rows][${rowIndex}][radio]`"
+                                                                    x-model="row.radio" placeholder="Enter radio label"
+                                                                    class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                                                            </div>
+                                                        </template>
 
-                                                </div>
+                                                    </div>
                                                 </div>
 
                                             </template>
@@ -484,7 +488,7 @@
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                     </svg>
-                                    Save All Resources
+                                    Save Resources
                                 </button>
                             </div>
                         </div>
@@ -727,7 +731,7 @@
         border-color: #4f46e5;
         color: #4338ca;
     } */
-       .checkbox-custom:checked+div {
+    .checkbox-custom:checked+div {
         background-color: var(--color-brand-50);
         border-color: var(--color-brand-500);
         color: var(--color-brand-500);

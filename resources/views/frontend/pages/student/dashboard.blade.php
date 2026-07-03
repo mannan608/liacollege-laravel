@@ -3,13 +3,18 @@
 @section('content')
     <div class="">
         <div class="mb-10">
-            <h1 class="text-3xl font-bold text-slate-900 mb-6">Enrolled Courses</h1>
+            <div class="bg-white mb-6">
+                <div class=" px-6 py-8">
+                    <h1 class="text-2xl font-semibold text-gray-900 tracking-tight">Enrolled Courses</h1>
+                    <p class="mt-1 text-sm text-gray-500">Browse materials and manage your assignments</p>
+                </div>
+            </div>
 
             <div id="course-tabs" class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
 
                 @foreach ($courses as $course)
                     <button onclick="scrollToCourse({{ $course->id }})"
-                        class="course-tab shrink-0 snap-start group px-6 py-4 bg-white border border-slate-200 rounded-2xl hover:border-brand-500 hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 min-w-[260px]"
+                        class="course-tab shrink-0 group px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-brand-500  transition-all duration-300 focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-0 min-w-65"
                         data-course-id="{{ $course->id }}">
 
                         <div class="flex items-center gap-4">
@@ -24,10 +29,10 @@
 
                             <div class="text-left">
                                 <h3
-                                    class="font-semibold text-slate-800 group-hover:text-brand-600 transition-colors line-clamp-1">
+                                    class="font-semibold text-slate-800 group-hover:text-brand-600 transition-colors line-clamp-1 text-lg md:text-xl lg:text-2xl">
                                     {{ $course->name }}
                                 </h3>
-                                <p class="text-xs text-slate-500 mt-0.5">
+                                <p class="text-xs text-slate-500 mt-0.5 group-hover:text-brand-600 transition-colors">
                                     {{ $course->sections->count() }} Sections
                                 </p>
                             </div>
@@ -40,16 +45,16 @@
         <div class="mt-6 flex flex-col gap-6">
             @foreach ($courses as $course)
                 <div id="course-{{ $course->id }}"
-                    class="course-section scroll-mt-24 bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
-                    <div class="bg-linear-to-r from-brand-600 to-brand-500 px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+                    class="course-section scroll-mt-24 bg-white rounded-xl border border-slate-100 overflow-hidden">
+                    <div class="bg-linear-to-r from-brand-500 to-brand-500 px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
 
                         <div class="flex items-center justify-between gap-4">
                             <div class="min-w-0">
-                                <h2 class="truncate text-lg font-bold text-white sm:text-xl lg:text-2xl">
+                                <h2 class="truncate text-lg font-bold text-white md:text-xl lg:text-2xl">
                                     {{ $course->name }}
                                 </h2>
 
-                                <p class="mt-1 text-xs text-white/80 sm:text-sm">
+                                <p class="mt-1 text-sm text-white/80 sm:text-base">
                                     Course Materials & Resources
                                 </p>
                             </div>
@@ -61,110 +66,108 @@
                     <div class="p-3 sm:p-5 lg:p-6">
 
                         <div class="space-y-4 sm:space-y-5 lg:space-y-6">
+                            @if ($course->sections->isNotEmpty())
+                                @foreach ($course->sections as $section)
+                                    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/60">
 
-                            @foreach ($course->sections as $section)
-                                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/60">
+                                        <!-- Section Header -->
+                                        <div class="border-b border-slate-200 bg-white px-4 py-3 sm:px-5 sm:py-4">
 
-                                    <!-- Section Header -->
-                                    <div class="border-b border-slate-200 bg-white px-4 py-3 sm:px-5 sm:py-4">
-
-                                        <div class="flex items-center gap-3">
-
-                                            <div
-                                                class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M19 11H5m14-4H5m14 8H5m14 4H5" />
-                                                </svg>
-                                            </div>
-
-                                            <h3 class="text-sm font-semibold text-slate-800 sm:text-base lg:text-lg">
-                                                {{ $section->section_name }}
-                                            </h3>
-
-                                        </div>
-                                    </div>
-                                    <div class="divide-y divide-slate-200">
-
-                                        @foreach ($section->rows as $row)
-                                            <div
-                                                class="group bg-white px-4 py-4 transition-all duration-200 hover:bg-slate-50 sm:px-5 sm:py-5">
+                                            <div class="flex items-center gap-3">
 
                                                 <div
-                                                    class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                                                    class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M19 11H5m14-4H5m14 8H5m14 4H5" />
+                                                    </svg>
+                                                </div>
 
-                                                    <!-- Left Content -->
-                                                    <div class="flex min-w-0 flex-1 items-center gap-4">
+                                                <h3 class="text-lg font-semibold text-slate-800 sm:text-xl lg:text-2xl">
+                                                    {{ $section->section_name }}
+                                                </h3>
 
-                                                        <div
-                                                            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-600 sm:h-10 sm:w-10">
+                                            </div>
+                                        </div>
+                                        <div class="divide-y divide-slate-200">
+                                            @foreach ($section->rows as $row)
+                                                <div
+                                                    class="group bg-white px-4 py-4 transition-all duration-200 sm:px-5 sm:py-5">
 
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="h-4 w-4 sm:h-5 sm:w-5" fill="none"
-                                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width="2"
-                                                                    d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-                                                            </svg>
+                                                    <div
+                                                        class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
+                                                        <!-- Left Content -->
+                                                        <div class="flex items-start gap-3 min-w-0 flex-1">
+                                                            <div
+                                                                class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                                                    stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+                                                                </svg>
+                                                            </div>
+                                                            <p
+                                                                class="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-medium">
+                                                                {{ $row->data['text'] ?? '' }}
+                                                            </p>
                                                         </div>
 
-                                                        <div class="min-w-0 flex-1">
-                                                            <h4
-                                                                class="text-sm font-semibold leading-relaxed text-slate-800 sm:text-base line-clamp-1">
-                                                               {{ $row->data['text'] ?? '' }}
-                                                            </h4>
-                                                        </div>
+                                                        @if (!empty($row->data['file']))
+                                                            <!-- Actions -->
+                                                            <div class="flex items-center gap-2 shrink-0">
+                                                                <a href="{{ asset($row->data['file']) }}" download
+                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-gray-900 px-3.5 py-2 text-xs font-medium text-white hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1">
+                                                                    <svg class="w-3.5 h-3.5" fill="none"
+                                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                                                    </svg>
+                                                                    Download
+                                                                </a>
+                                                                <button type="button"
+                                                                    class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
+                                                                    <svg class="w-3.5 h-3.5" fill="none"
+                                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                                    </svg>
+                                                                    Submit
+                                                                </button>
+
+                                                            </div>
+                                                        @endif
 
                                                     </div>
 
-                                                    @if (!empty($row->data['file']))
-                                                        <!-- Right Actions -->
-                                                        <div
-                                                            class="flex w-full flex-col gap-2 sm:flex-row lg:w-auto lg:flex-nowrap lg:justify-end">
-
-                                                            <button type="button"
-                                                                class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700">
-                                                                Submit Work
-                                                            </button>
-                                                            {{-- @if ($row->is_document_submission)
-                                                                <a href="{{ route('student.assignment.submit', $row) }}"
-                                                                    class="btn btn-success">
-                                                                    Submit Document
-                                                                </a>
-                                                            @endif --}}
-
-                                                            <a href="{{ asset($row->data['file']) }}" download
-                                                                class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-emerald-700">
-                                                                Download
-                                                            </a>
-                                                            {{-- @if ($row->is_downloadable)
-                                                                <a href="{{ route('student.rows.download', $row) }}"
-                                                                    class="btn btn-primary">
-                                                                    Download
-                                                                </a>
-                                                            @endif --}}
-
-                                                            {{-- @if ($row->is_downloadable)
-                                                                <a href="{{ asset($row->data['file']) }}" target="_blank"
-                                                                    class="btn btn-primary">
-                                                                    Download
-                                                                </a>
-                                                            @endif --}}
-
-                                                        </div>
-                                                    @endif
-
                                                 </div>
+                                            @endforeach
 
-                                            </div>
-                                        @endforeach
+                                        </div>
 
                                     </div>
+                                @endforeach
+                            @else
+                                <div class="rounded-lg  px-6 py-8 text-center">
+                                    <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
+                                    </svg>
 
+                                    <h3 class="mt-3 text-lg font-semibold text-gray-800">
+                                        No Permission
+                                    </h3>
+
+                                    <p class="mt-2 text-sm text-gray-600">
+                                        You don't have permission to access this course yet.
+                                    </p>
                                 </div>
-                            @endforeach
+                            @endif
 
                         </div>
 
