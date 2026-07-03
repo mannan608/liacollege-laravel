@@ -91,8 +91,11 @@
                                         </div>
                                         <div class="divide-y divide-slate-200">
                                             @foreach ($section->rows as $row)
-                                                <div
-                                                    class="group bg-white px-4 py-4 transition-all duration-200 sm:px-5 sm:py-5">
+                                                <div @class([
+                                                    'group bg-white px-4 transition-all duration-200 sm:px-5',
+                                                    'py-4 sm:py-5' => !empty($row->data['file']),
+                                                    'py-2 sm:py-2' => empty($row->data['file']),
+                                                ])>
                                                     <div
                                                         class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
@@ -161,8 +164,8 @@
                                                                                     onclick="document.getElementById('file-{{ $row->id }}').click()"
                                                                                     class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
                                                                                     title="Update Assignment">
-                                                                                    <svg class="w-3.5 h-3.5 "
-                                                                                        fill="none" stroke="currentColor"
+                                                                                    <svg class="w-3.5 h-3.5 " fill="none"
+                                                                                        stroke="currentColor"
                                                                                         viewBox="0 0 24 24">
                                                                                         <path stroke-linecap="round"
                                                                                             stroke-linejoin="round"
@@ -195,8 +198,8 @@
                                                                                 onclick="document.getElementById('file-{{ $row->id }}').click()"
                                                                                 class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
                                                                                 title="Update Assignment">
-                                                                                <svg class="w-3.5 h-3.5 text-gray-500"
-                                                                                    fill="none" stroke="currentColor"
+                                                                                <svg class="w-3.5 h-3.5" fill="none"
+                                                                                    stroke="currentColor"
                                                                                     viewBox="0 0 24 24">
                                                                                     <path stroke-linecap="round"
                                                                                         stroke-linejoin="round"
