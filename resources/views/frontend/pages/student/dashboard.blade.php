@@ -100,7 +100,7 @@
                                                         class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
                                                         <!-- Left Content -->
-                                                        <div class="flex items-start gap-3 min-w-0 flex-1 ml-10">
+                                                        <div class="flex items-start gap-3 min-w-0 flex-1 ml-0 md:ml-8 lg:ml-10">
                                                             @if (!empty($row->data['file']))
                                                                 <div
                                                                     class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
