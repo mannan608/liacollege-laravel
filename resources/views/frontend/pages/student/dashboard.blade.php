@@ -100,12 +100,11 @@
                                                         class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
                                                         <!-- Left Content -->
-                                                        <div 
-                                                        @class([
-                                                    'flex flex-col  lg:flex-row lg:items-center lg:justify-between',
-                                                    'gap-4' => !empty($row->data['file']),
-                                                    'gap-0' => empty($row->data['file']),
-                                                ])>
+                                                        <div @class([
+                                                            'flex flex-col  lg:flex-row lg:items-center lg:justify-between ml-0 md:ml-7 lg:ml-10',
+                                                            'gap-4' => !empty($row->data['file']),
+                                                            'gap-0' => empty($row->data['file']),
+                                                        ])>
                                                             @if (!empty($row->data['file']))
                                                                 <div
                                                                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
@@ -115,17 +114,17 @@
                                                                             stroke-width="2"
                                                                             d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
                                                                     </svg>
+                                   
                                                                 </div>
-                                                                @else
-                                                                <div class="flex h-10 w-10 shrink-0 items-center justify-center text-gray-500 group-hover:text-brand-600 ">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            class="h-6 w-6 " fill="none"
-                                                                            viewBox="0 0 24 24" stroke="currentColor"
-                                                                            stroke-width="2">
-                                                                            <path stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                                                                        </svg>
+                                                            @else
+                                                                <div
+                                                                    class="flex h-10 w-10 shrink-0 items-center justify-center text-gray-500 group-hover:text-brand-600 ">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 "
+                                                                        fill="none" viewBox="0 0 24 24"
+                                                                        stroke="currentColor" stroke-width="2">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                                                    </svg>
                                                                 </div>
                                                             @endif
                                                             @if (!empty($row->data['link']))
