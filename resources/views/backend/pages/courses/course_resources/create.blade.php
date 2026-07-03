@@ -38,7 +38,7 @@
                 <!-- Header -->
                 <div class="mb-10 text-center">
                     <div
-                        class="mb-3 inline-flex items-center justify-center rounded-2xl bg-indigo-600 p-3 shadow-lg shadow-indigo-500/25">
+                        class="mb-3 inline-flex items-center justify-center rounded-2xl bg-brand-600 p-3 shadow-lg shadow-brand-500/25">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -80,7 +80,7 @@
                                     <p class="mt-1 text-sm text-gray-400">Get started by adding your first resource section
                                         below</p>
                                     <button type="button" @click="addSection()"
-                                        class="btn-primary mt-6 inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25">
+                                        class="btn-primary mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/25">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
@@ -100,7 +100,7 @@
                                     <div
                                         class="flex items-center justify-between border-b border-gray-100 bg-gradient-to-r from-gray-50/80 to-white px-6 py-4">
                                         <div class="flex items-center gap-3">
-                                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-xs font-bold text-indigo-700"
+                                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700"
                                                 x-text="sectionIndex + 1"></div>
                                             <div>
                                                 <h3 class="text-base font-bold text-gray-800">Resource Section</h3>
@@ -137,7 +137,7 @@
                                             <input type="text" :name="`sections[${sectionIndex}][section_name]`"
                                                 x-model="section.section_name"
                                                 placeholder="e.g., Week 1 Materials, Assignments, References"
-                                                class="input-field w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-indigo-500 focus:bg-white">
+                                                class="input-field w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white">
                                             <div x-show="errors[`sections.${sectionIndex}.section_name`]" x-transition
                                                 class="flex items-center gap-1.5 text-xs font-medium text-red-500"
                                                 x-text="errors[`sections.${sectionIndex}.section_name`]">
@@ -165,14 +165,14 @@
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 text-gray-400" fill="none"
+                                                            class="h-4 w-4 " fill="none"
                                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M4 6h16M4 12h16M4 18h7" />
                                                         </svg>
                                                         <span>Text</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="check-icon h-4 w-4 text-indigo-600 opacity-0 transition-all duration-200"
+                                                            class="check-icon h-4 w-4 text-brand-600 opacity-0 transition-all duration-200"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2.5">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -187,14 +187,14 @@
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 text-gray-400" fill="none"
+                                                            class="h-4 w-4 " fill="none"
                                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                                         </svg>
                                                         <span>Link</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="check-icon h-4 w-4 text-indigo-600 opacity-0 transition-all duration-200"
+                                                            class="check-icon h-4 w-4 text-brand-600 opacity-0 transition-all duration-200"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2.5">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -209,14 +209,14 @@
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 text-gray-400" fill="none"
+                                                            class="h-4 w-4 " fill="none"
                                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                                                         </svg>
                                                         <span>File</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="check-icon h-4 w-4 text-indigo-600 opacity-0 transition-all duration-200"
+                                                            class="check-icon h-4 w-4 text-brand-600 opacity-0 transition-all duration-200"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2.5">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -231,14 +231,14 @@
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 text-gray-400" fill="none"
+                                                            class="h-4 w-4 " fill="none"
                                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
                                                         <span>Checkbox</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="check-icon h-4 w-4 text-indigo-600 opacity-0 transition-all duration-200"
+                                                            class="check-icon h-4 w-4 text-brand-600 opacity-0 transition-all duration-200"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2.5">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -253,14 +253,14 @@
                                                     <div
                                                         class="field-chip flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 hover:border-gray-300">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="h-4 w-4 text-gray-400" fill="none"
+                                                            class="h-4 w-4 " fill="none"
                                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
                                                         <span>Radio</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="check-icon h-4 w-4 text-indigo-600 opacity-0 transition-all duration-200"
+                                                            class="check-icon h-4 w-4 text-brand-600 opacity-0 transition-all duration-200"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor"
                                                             stroke-width="2.5">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -325,7 +325,7 @@
                                                             <input type="text"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][text]`"
                                                                 x-model="row.text" placeholder="Enter item name"
-                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-indigo-500">
+                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                                                         </div>
 
                                                     </template>
@@ -350,7 +350,7 @@
                                                                 <input type="url"
                                                                     :name="`sections[${sectionIndex}][rows][${rowIndex}][link]`"
                                                                     x-model="row.link" placeholder="https://example.com"
-                                                                    class="input-field w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-indigo-500">
+                                                                    class="input-field w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                                                             </div>
                                                         </div>
 
@@ -367,14 +367,14 @@
                                                                 <div class="relative">
                                                                     <input type="file"
                                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][file]`"
-                                                                        class="file-input block w-full cursor-pointer rounded-lg border border-dashed border-gray-300 bg-white px-4 py-3 text-sm text-gray-500 file:mr-4 file:ml-0 file:rounded-md file:border-0 file:bg-indigo-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-indigo-700 hover:border-indigo-300">
+                                                                        class="file-input block w-full cursor-pointer rounded-lg border border-dashed border-gray-300 bg-white px-4 py-3 text-sm text-gray-500 file:mr-4 file:ml-0 file:rounded-md file:border-0 file:bg-brand-50 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-brand-700 hover:border-brand-300">
                                                                     <input type="hidden"
                                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][existing_file]`"
                                                                         :value="row.file || ''">
                                                                 </div>
                                                                 <template x-if="row.file">
                                                                     <a :href="`/${row.file}`" target="_blank"
-                                                                        class="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-600 hover:text-indigo-700">
+                                                                        class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                                             class="h-3.5 w-3.5" fill="none"
                                                                             viewBox="0 0 24 24" stroke="currentColor"
@@ -395,7 +395,7 @@
                                                                     <input type="checkbox" value="1"
                                                                         x-model="row.is_downloadable"
                                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][is_downloadable]`"
-                                                                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0">
+                                                                        class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0">
                                                                     <span
                                                                         class="text-xs font-medium text-gray-600">Downloadable</span>
                                                                 </label>
@@ -406,7 +406,7 @@
                                                                     <input type="checkbox" value="1"
                                                                         x-model="row.is_document_submission"
                                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][is_document_submission]`"
-                                                                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0">
+                                                                        class="h-4 w-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500 focus:ring-offset-0">
                                                                     <span
                                                                         class="text-xs font-medium text-gray-600">Document
                                                                         Submission</span>
@@ -424,7 +424,7 @@
                                                             <input type="text"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][checkbox]`"
                                                                 x-model="row.checkbox" placeholder="Enter checkbox label"
-                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-indigo-500">
+                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                                                         </div>
                                                     </template>
 
@@ -436,7 +436,7 @@
                                                             <input type="text"
                                                                 :name="`sections[${sectionIndex}][rows][${rowIndex}][radio]`"
                                                                 x-model="row.radio" placeholder="Enter radio label"
-                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-indigo-500">
+                                                                class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                                                         </div>
                                                     </template>
 
@@ -447,7 +447,7 @@
 
                                             <!-- ADD ROW -->
                                             <button type="button" @click="addRow(section.id)"
-                                                class="btn-primary inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 py-3 text-sm font-semibold text-indigo-600 transition-all hover:border-indigo-400 hover:bg-indigo-100">
+                                                class="btn-primary inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-brand-200 bg-brand-50/50 py-3 text-sm font-semibold text-brand-600 transition-all hover:border-brand-400 hover:bg-brand-100">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -722,10 +722,15 @@
         animation: slideIn 0.3s ease forwards;
     }
 
-    .checkbox-custom:checked+div {
+    /* .checkbox-custom:checked+div {
         background-color: #eef2ff;
         border-color: #4f46e5;
         color: #4338ca;
+    } */
+       .checkbox-custom:checked+div {
+        background-color: var(--color-brand-50);
+        border-color: var(--color-brand-500);
+        color: var(--color-brand-500);
     }
 
     .checkbox-custom:checked+div .check-icon {
