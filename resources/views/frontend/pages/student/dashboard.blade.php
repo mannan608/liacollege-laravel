@@ -112,12 +112,12 @@
                                                             @if (!empty($row->data['link']))
                                                                 <a href="{{ $row->data['link'] }}" target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    class="text-base md:text-lg lg:text-xl text-gray-500 underline hover:text-brand-600 leading-relaxed font-medium">
+                                                                    class="text-sm md:text-base lg:text-lg text-gray-500 underline hover:text-brand-600 leading-relaxed font-medium">
                                                                     {{ $row->data['text'] ?? '' }}
                                                                 </a>
                                                             @else
                                                                 <span
-                                                                    class="text-base md:text-lg lg:text-xl text-gray-500 leading-relaxed font-medium">
+                                                                    class="text-sm md:text-base lg:text-lg text-gray-500 leading-relaxed font-medium">
                                                                     {{ $row->data['text'] ?? '' }}
                                                                 </span>
                                                             @endif
