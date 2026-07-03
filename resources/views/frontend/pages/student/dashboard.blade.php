@@ -128,7 +128,7 @@
                                                             <div class="flex items-baseline gap-2 shrink-0">
                                                                 @if ($row->is_downloadable)
                                                                     <a href="{{ asset($row->data['file']) }}" download
-                                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-gray-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1">
+                                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
                                                                         <svg class="w-3.5 h-3.5" fill="none"
                                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                                             <path stroke-linecap="round"
@@ -159,9 +159,9 @@
                                                                                 class="flex flex-col items-end justify-end gap-0.5">
                                                                                 <button type="button"
                                                                                     onclick="document.getElementById('file-{{ $row->id }}').click()"
-                                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-white border border-gray-200 px-3.5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1"
+                                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
                                                                                     title="Update Assignment">
-                                                                                    <svg class="w-3.5 h-3.5 text-gray-500"
+                                                                                    <svg class="w-3.5 h-3.5 "
                                                                                         fill="none" stroke="currentColor"
                                                                                         viewBox="0 0 24 24">
                                                                                         <path stroke-linecap="round"
@@ -193,7 +193,7 @@
                                                                         @else
                                                                             <button type="button"
                                                                                 onclick="document.getElementById('file-{{ $row->id }}').click()"
-                                                                                class="inline-flex items-center gap-1.5 rounded-lg bg-white border border-gray-200 px-3.5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1"
+                                                                                class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
                                                                                 title="Update Assignment">
                                                                                 <svg class="w-3.5 h-3.5 text-gray-500"
                                                                                     fill="none" stroke="currentColor"
