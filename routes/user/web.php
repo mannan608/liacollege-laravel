@@ -127,7 +127,7 @@ Route::prefix('student')
             ->name('profile.edit');
         Route::put('/profile', [StudentController::class, 'studentProfileUpdate'])
             ->name('profile.update');
-        Route::post('rows/{row}/submit', [StudentController::class, 'submit'])
+        Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
             ->name('rows.submit');
         Route::get('rows/{row}/download', [StudentController::class, 'download'])
             ->name('rows.download');

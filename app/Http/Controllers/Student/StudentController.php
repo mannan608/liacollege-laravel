@@ -158,11 +158,13 @@ class StudentController extends Controller
             ->get()
             ->keyBy('row_id')
             ->map(function ($item) {
-                return $item->doc_permissions ?? [];
+
+                return [
+                    'download' => data_get($item->doc_permissions, 'download', false),
+                    'submission' => data_get($item->doc_permissions, 'submission', false),
+                ];
             })
             ->toArray();
-
-        // return $grantedRows;
 
         return view('backend.pages.students.course-permission', [
             'student' => $student,
@@ -219,9 +221,13 @@ class StudentController extends Controller
                         }
 
                         $docPermissions = [
-                            'download' => isset($permission['doc_permissions'][$rowId]['download']),
+                            'download' => $row->is_downloadable
+                                ? isset($permission['doc_permissions'][$rowId]['download'])
+                                : false,
 
-                            'submission' => isset($permission['doc_permissions'][$rowId]['submission']),
+                            'submission' => $row->is_document_submission
+                                ? isset($permission['doc_permissions'][$rowId]['submission'])
+                                : false,
                         ];
 
                         CoursePermissions::create([
@@ -244,6 +250,7 @@ class StudentController extends Controller
         $student = auth()->user()->student;
         $student->load([
             'courses.sections.rows',
+            'assignmentSubmissions.courseSectionRow',
         ]);
 
         $permissions = CoursePermissions::where('student_id', $student->id)->get();
@@ -303,63 +310,56 @@ class StudentController extends Controller
 
             return $course->sections->isNotEmpty();
         });
+        $submissions = AssignmentSubmission::where(
+            'student_id',
+            $student->id
+        )
+            ->get()
+            ->keyBy('course_section_row_id');
 
         return view('frontend.pages.student.dashboard', [
             'courses' => $courses,
+            'submissions' => $submissions,
         ]);
     }
-   
 
-    public function submit(Request $request, CourseSectionRow $row, CoursePermissionService $permission)
+
+    public function assignmentSubmit(Request $request,    CourseSectionRow $row)
     {
+        $student = auth()->user()->student;       
 
-        $student = auth()->user()->student;
-
-        if (! $permission->canAccessRow($student, $row)) {
-            abort(403);
-        }
-
-        if (! $row->is_document_submission) {
-            abort(403);
-        }
 
         $request->validate([
             'file' => 'required|file|mimes:pdf,doc,docx|max:10240',
         ]);
 
-        $path = $request->file('file')
-            ->store('submissions', 'public');
+        $submission = AssignmentSubmission::where([
+            'student_id' => $student->id,
+            'course_section_row_id' => $row->id,
+        ])->first();
+
+        $path = $this->replaceFile(
+            $request->file('file'),
+            $submission?->file,
+            'submissions'
+        );
 
         AssignmentSubmission::updateOrCreate(
-
             [
                 'student_id' => $student->id,
                 'course_section_row_id' => $row->id,
             ],
-
             [
                 'file' => $path,
             ]
-
         );
 
         return back()->with('success', 'Assignment submitted successfully.');
     }
 
-    public function download(
-        CourseSectionRow $row,
-        CoursePermissionService $permissionService
-    ) {
+    public function download(CourseSectionRow $row ) {
 
         $student = auth()->user()->student;
-
-        if (! $permissionService->canAccessRow($student, $row)) {
-            abort(403);
-        }
-
-        if (! $row->is_downloadable) {
-            abort(403);
-        }
 
         return response()->download(public_path($row->data['file']));
     }
@@ -372,7 +372,7 @@ class StudentController extends Controller
         ]);
     }
 
-       public function studentProfileUpdate(Request $request)
+    public function studentProfileUpdate(Request $request)
     {
         $user = $request->user();
 

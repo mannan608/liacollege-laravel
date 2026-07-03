@@ -53,7 +53,6 @@
                                 <h2 class="truncate text-lg font-bold text-white md:text-xl lg:text-2xl">
                                     {{ $course->name }}
                                 </h2>
-
                                 <p class="mt-1 text-sm text-white/80 sm:text-base">
                                     Course Materials & Resources
                                 </p>
@@ -94,61 +93,127 @@
                                             @foreach ($section->rows as $row)
                                                 <div
                                                     class="group bg-white px-4 py-4 transition-all duration-200 sm:px-5 sm:py-5">
-
                                                     <div
                                                         class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
                                                         <!-- Left Content -->
-                                                        <div class="flex items-start gap-3 min-w-0 flex-1">
-                                                            <div
-                                                                class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
-                                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                                    stroke="currentColor">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                                        stroke-width="2"
-                                                                        d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-                                                                </svg>
-                                                            </div>
-                                                            <p
-                                                                class="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-medium">
-                                                                {{ $row->data['text'] ?? '' }}
-                                                            </p>
+                                                        <div class="flex items-start gap-3 min-w-0 flex-1 ml-10">
+                                                            @if (!empty($row->data['file']))
+                                                                <div
+                                                                    class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
+                                                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                                                        stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                                            stroke-width="2"
+                                                                            d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+                                                                    </svg>
+                                                                </div>
+                                                            @endif
+                                                            @if (!empty($row->data['link']))
+                                                                <a href="{{ $row->data['link'] }}" target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    class="text-base md:text-lg lg:text-xl text-gray-700 underline hover:text-brand-600 leading-relaxed font-medium">
+                                                                    {{ $row->data['text'] ?? '' }}
+                                                                </a>
+                                                            @else
+                                                                <span
+                                                                    class="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed font-medium">
+                                                                    {{ $row->data['text'] ?? '' }}
+                                                                </span>
+                                                            @endif
                                                         </div>
 
                                                         @if (!empty($row->data['file']))
                                                             <!-- Actions -->
-                                                            <div class="flex items-center gap-2 shrink-0">
-                                                                <a href="{{ asset($row->data['file']) }}" download
-                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-gray-900 px-3.5 py-2 text-xs font-medium text-white hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1">
-                                                                    <svg class="w-3.5 h-3.5" fill="none"
-                                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                                            stroke-width="2"
-                                                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                                                    </svg>
-                                                                    Download
-                                                                </a>
-                                                                <button type="button"
-                                                                    class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3.5 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
-                                                                    <svg class="w-3.5 h-3.5" fill="none"
-                                                                        stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                                            stroke-width="2"
-                                                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                                                    </svg>
-                                                                    Submit
-                                                                </button>
+                                                            <div class="flex items-baseline gap-2 shrink-0">
+                                                                @if ($row->is_downloadable)
+                                                                    <a href="{{ asset($row->data['file']) }}" download
+                                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-gray-900 px-3.5 py-2 text-xs font-medium text-white hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1">
+                                                                        <svg class="w-3.5 h-3.5" fill="none"
+                                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                                            <path stroke-linecap="round"
+                                                                                stroke-linejoin="round" stroke-width="2"
+                                                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                                                        </svg>
+                                                                        Download
+                                                                    </a>
+                                                                @endif
+                                                                @php
+                                                                    $submission = $submissions[$row->id] ?? null;
+                                                                @endphp
 
+                                                                @if ($row->is_document_submission)
+                                                                    <form action="{{ route('student.rows.submit', $row) }}"
+                                                                        method="POST" enctype="multipart/form-data"
+                                                                        class="inline-block">
+                                                                        @csrf
+
+                                                                        <input type="file" name="file"
+                                                                            id="file-{{ $row->id }}" class="hidden"
+                                                                            accept=".pdf,.doc,.docx,.zip,.rar,.png,.jpg,.jpeg"
+                                                                            onchange="this.form.submit()">
+
+                                                                        @if ($submission)
+                                                                            {{-- Submitted State: Show file info + update action --}}
+                                                                            <div
+                                                                                class="flex flex-col items-end justify-end gap-0.5">
+                                                                                <button type="button"
+                                                                                    onclick="document.getElementById('file-{{ $row->id }}').click()"
+                                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-white border border-gray-200 px-3.5 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1"
+                                                                                    title="Update Assignment">
+                                                                                    <svg class="w-3.5 h-3.5 text-gray-500"
+                                                                                        fill="none" stroke="currentColor"
+                                                                                        viewBox="0 0 24 24">
+                                                                                        <path stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"
+                                                                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                                                                    </svg>
+                                                                                    Update Assignment
+                                                                                </button>
+                                                                                {{-- File Info --}}
+                                                                                <div class="flex-1 min-w-0 mt-1">
+                                                                                    <a href="{{ asset($submission->file) }}"
+                                                                                        target="_blank"
+                                                                                        class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                            class="h-3.5 w-3.5"
+                                                                                            fill="none"
+                                                                                            viewBox="0 0 24 24"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                stroke-linejoin="round"
+                                                                                                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                                        </svg>
+                                                                                        View Current File
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        @else
+                                                                            <button type="button"
+                                                                                onclick="document.getElementById('file-{{ $row->id }}').click()"
+                                                                                class="inline-flex items-center gap-1.5 rounded-lg bg-white border border-gray-200 px-3.5 py-2 text-xs font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1"
+                                                                                title="Update Assignment">
+                                                                                <svg class="w-3.5 h-3.5 text-gray-500"
+                                                                                    fill="none" stroke="currentColor"
+                                                                                    viewBox="0 0 24 24">
+                                                                                    <path stroke-linecap="round"
+                                                                                        stroke-linejoin="round"
+                                                                                        stroke-width="2"
+                                                                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                                                                </svg>
+                                                                                Submit Assignment
+                                                                            </button>
+                                                                        @endif
+                                                                    </form>
+                                                                @endif
                                                             </div>
                                                         @endif
-
                                                     </div>
-
                                                 </div>
                                             @endforeach
-
                                         </div>
-
                                     </div>
                                 @endforeach
                             @else
@@ -168,11 +233,8 @@
                                     </p>
                                 </div>
                             @endif
-
                         </div>
-
                     </div>
-
                 </div>
             @endforeach
         </div>
