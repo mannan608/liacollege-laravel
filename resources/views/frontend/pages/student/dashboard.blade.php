@@ -125,7 +125,7 @@
 
                                                         @if (!empty($row->data['file']))
                                                             <!-- Actions -->
-                                                            <div class="flex items-baseline gap-2 shrink-0">
+                                                            <div class="flex items-baseline gap-4 shrink-0">
                                                                 @if ($row->is_downloadable)
                                                                     <a href="{{ asset($row->data['file']) }}" download
                                                                         class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
