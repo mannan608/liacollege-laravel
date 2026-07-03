@@ -10,11 +10,11 @@
                 </div>
             </div>
 
-            <div id="course-tabs" class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            <div id="course-tabs" class="grid grid-cols-1 gap-4 lg:grid-cols-2">
 
                 @foreach ($courses as $course)
                     <button onclick="scrollToCourse({{ $course->id }})"
-                        class="course-tab shrink-0 group px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-brand-500  transition-all duration-300 focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-0 min-w-65"
+                        class=" course-tab shrink-0 group px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-brand-500  transition-all duration-300 focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-0 min-w-65"
                         data-course-id="{{ $course->id }}">
 
                         <div class="flex items-center gap-4">
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="mt-6 flex flex-col gap-6">
+        <div class="mt-6 flex flex-col gap-6 md:gap-8 lg:gap-10">
             @foreach ($courses as $course)
                 <div id="course-{{ $course->id }}"
                     class="course-section scroll-mt-24 bg-white rounded-xl border border-slate-100 overflow-hidden">
