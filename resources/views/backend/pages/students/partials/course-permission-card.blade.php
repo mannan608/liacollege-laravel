@@ -25,8 +25,6 @@
 
                                 <!-- Course Checkbox -->
                                 <label class="flex items-center gap-2 text-white">
-                                    {{-- <input type="checkbox" class="course-checkbox h-5 w-5" data-course="{{ $course->id }}"
-                                    @change="toggleCourse($event)"> --}}
                                     <input type="checkbox" class="course-checkbox"
                                         name="permissions[{{ $course->id }}][full_course]" value="1"
                                         data-course="{{ $course->id }}" @checked(in_array($course->id, $grantedCourses))
@@ -111,7 +109,7 @@
 
                                                                         <input type="checkbox"
                                                                             name="permissions[{{ $course->id }}][doc_permissions][{{ $row->id }}][download]"
-                                                                            value="1" @checked(data_get($existingPermissions, $row->id . '.download', true))>
+                                                                            value="1" @checked(data_get($existingPermissions, $row->id . '.download', false))>
 
                                                                         <span>Download</span>
 
@@ -125,7 +123,7 @@
 
                                                                         <input type="checkbox"
                                                                             name="permissions[{{ $course->id }}][doc_permissions][{{ $row->id }}][submission]"
-                                                                            value="1" @checked(data_get($existingPermissions, $row->id . '.submission', true))>
+                                                                            value="1" @checked(data_get($existingPermissions, $row->id . '.submission', false))>
 
                                                                         <span>Submission</span>
 
