@@ -16,8 +16,8 @@ npm -v
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/mannan608/pentagoncollege.git
-cd pentagoncollege
+git clone https://github.com/mannan608/liacollege-laravel.git
+cd liacollege
 ```
 
 ### Step 2: Install PHP Dependencies
@@ -82,7 +82,7 @@ Update your `.env` file with your database credentials:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=Pentagon_db
+DB_DATABASE=example_db
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
@@ -91,10 +91,10 @@ Create the database:
 
 ```bash
 # MySQL
-mysql -u root -p -e "CREATE DATABASE Pentagon_db;"
+mysql -u root -p -e "CREATE DATABASE example_db;"
 
 # PostgreSQL
-createdb Pentagon_db
+createdb example_db
 ```
 
 Run migrations:
@@ -295,7 +295,7 @@ php artisan make:migration create_your_table
 ## 📁 Project Structure
 
 ```
-pentagoncollege/
+liacollege/
 ├── app/                    # Application logic
 │   ├── Http/              # Controllers, Middleware, Requests
 │   ├── Models/            # Eloquent models
