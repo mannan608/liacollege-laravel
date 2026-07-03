@@ -17,4 +17,12 @@ class AssignmentSubmission extends Model
     protected $casts = [
         'file' => 'string',
     ];
+
+    public function courseSectionRow()
+{
+    return $this->belongsTo(
+        CourseSectionRow::class,
+        'course_section_row_id'
+    );
+}
 }
