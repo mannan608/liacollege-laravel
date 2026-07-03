@@ -41,7 +41,7 @@
                             <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">
                                 {{ $student->user?->name }}</td>
                             <td class="px-4 py-3 text-sm text-gray-500">{{ $student->user?->email }}</td>
-                            <td class="px-4 py-3 text-sm text-gray-500 md:max-w-1/2">
+                            <td class="px-4 py-3 text-sm text-gray-500 md:w-1/2">
                                 <div class="flex flex-wrap gap-2">
                                 @foreach ($student->courses as $course)
                                     <span class="inline-block rounded bg-blue-100 px-2 py-1 text-xs text-blue-700">
