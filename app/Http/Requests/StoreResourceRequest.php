@@ -12,71 +12,81 @@ class StoreResourceRequest extends FormRequest
         return $this->user()?->can('course.edit') === true;
     }
 
-    public function rules(): array
-    {
-        return [
-            'sections' => ['required', 'array'],
+  public function rules(): array
+{
+    return [
 
-            'sections.*.section_name' => [
-                'required',
-                'string',
-                'max:191',
-            ],
+        'name' => ['required', 'string', 'max:191'],
 
-            'sections.*.field_types' => [
-                'required',
-                'array',
-            ],
+        'sections' => ['required', 'array'],
 
-            'sections.*.field_types.*' => [
-                'required',
-                Rule::in(['text', 'link', 'file', 'checkbox', 'radio']),
-            ],
+        'sections.*.section_name' => [
+            'required',
+            'string',
+            'max:191',
+        ],
 
-            'sections.*.rows' => [
-                'required',
-                'array',
-            ],
+        'sections.*.field_types' => [
+            'required',
+            'array',
+        ],
 
-            'sections.*.rows.*.text' => [
-                'nullable',
-                'string',
-            ],
-
-             'sections.*.rows.*.link' => ['nullable', 'string'],
-
-            'sections.*.rows.*.file' => [
-                'nullable',
+        'sections.*.field_types.*' => [
+            Rule::in([
+                'text',
+                'link',
                 'file',
-                'mimes:pdf,doc,docx,jpg,png',
-                'max:20480',
-            ],
+                'checkbox',
+                'radio',
+            ]),
+        ],
 
-            'sections.*.rows.*.existing_file' => [
-                'nullable',
-                'string',
-                'max:255',
-            ],
+        'sections.*.rows' => [
+            'required',
+            'array',
+        ],
 
-            'sections.*.rows.*.checkbox' => [
-                'nullable',
-                'string',
-            ],
+        'sections.*.rows.*.text' => [
+            'nullable',
+            'string',
+        ],
 
-            'sections.*.rows.*.radio' => [
-                'nullable',
-                'string',
-            ],
+        'sections.*.rows.*.link' => [
+            'nullable',
+            'string',
+        ],
 
-            'sections.*.rows.*.is_downloadable' => [
-                'nullable',
-                'boolean',
-            ],
+        'sections.*.rows.*.file' => [
+            'nullable',
+            'file',
+            'mimes:pdf,doc,docx,jpg,png',
+            'max:20480',
+        ],
 
-            'sections.*.rows.*.is_document_submission' => [
-                'nullable',
-                'boolean',
-            ],
-        ];
-    }
+        'sections.*.rows.*.existing_file' => [
+            'nullable',
+            'string',
+        ],
+
+        'sections.*.rows.*.checkbox' => [
+            'nullable',
+            'string',
+        ],
+
+        'sections.*.rows.*.radio' => [
+            'nullable',
+            'string',
+        ],
+
+        'sections.*.rows.*.is_downloadable' => [
+            'nullable',
+            'boolean',
+        ],
+
+        'sections.*.rows.*.is_document_submission' => [
+            'nullable',
+            'boolean',
+        ],
+    ];
+}
 }

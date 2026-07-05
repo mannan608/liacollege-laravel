@@ -56,8 +56,9 @@ class Course extends Model
         return $this->price -
             (($this->price * $this->discount_percentage) / 100);
     }
-     public function sections()
+ 
+     public function categories()
     {
-        return $this->hasMany(CourseSection::class);
+        return $this->hasMany(CourseCategory::class);
     }
 }

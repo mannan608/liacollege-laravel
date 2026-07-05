@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\StoreResourceRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
+use App\Models\CourseCategory;
 use App\Models\CourseSection;
 use App\Models\CourseSectionRow;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
@@ -30,12 +31,6 @@ class CourseController extends Controller
     {
         $request->user()->can('course.list') || abort(403);
 
-        //   $mannan = Course::with([
-        //     'sections.rows'
-        // ])->get();
-
-        // return $mannan;
-
         return view('backend.pages.courses.index', [
             'courses' => $this->courses->paginate(),
             'title' => 'Courses',
@@ -45,8 +40,6 @@ class CourseController extends Controller
     public function create(Request $request): View
     {
         $request->user()->can('course.create') || abort(403);
-
-        //   $courses = $this->courses->getAll();
 
         return view('backend.pages.courses.create', [
             'courses' => null,
@@ -119,37 +112,95 @@ class CourseController extends Controller
             ->with('success', 'Course deleted successfully.');
     }
 
-    public function editResource(Request $request, string $role, Course $course): View
-    {
-        $request->user()->can('course.edit') || abort(403);
+    // public function courseResources(Request $request, string $role, Course $course): View
+    // {
 
-        $course->load('sections.rows');
+    //     // $request->user()->can('course.resource.list') || abort(403);
+
+    //     $course->load('categories.sections.rows');
+
+    //     return view('backend.pages.courses.course_resources.index', [
+    //         'course' => $course,
+    //         'title' => 'Courses',
+    //     ]);
+    // }
+
+    public function courseResources(Request $request, string $role, Course $course)
+{
+    $categories = $course->categories()->latest()->paginate(20);
+
+    return view('backend.pages.courses.course_resources.index', [
+        'course' => $course,
+        'items' => $categories,
+        'title' => 'Course Resources',
+    ]);
+}
+
+    public function createResource(Request $request, string $role, Course $course)
+    {
+        $course->load('categories.sections.rows');
 
         return view('backend.pages.courses.course_resources.create', [
             'course' => $course,
+            'category' => new CourseCategory(), // empty when creating
             'title' => 'Course Resources',
         ]);
     }
 
-    public function createResource(StoreResourceRequest $request, string $role, Course $course): JsonResponse
+    public function editResource(
+    Request $request,
+    string $role,
+    Course $course,
+    CourseCategory $category
+)
+{
+    $category->load('sections.rows');
+
+    return view('backend.pages.courses.course_resources.create', [
+        'course' => $course,
+        'category' => $category,
+        'title' => 'Edit Resource',
+    ]);
+}
+
+    public function storeResource(StoreResourceRequest $request, string $role, Course $course): JsonResponse
     {
+
         try {
             DB::transaction(function () use ($request, $course) {
-                $course->load('sections.rows');
 
-                $oldFiles = $course->sections
-                    ->flatMap(fn(CourseSection $section) => $section->rows)
-                    ->map(fn(CourseSectionRow $row) => $row->data['file'] ?? null)
+                $category = CourseCategory::updateOrCreate(
+
+                    [
+                        'id' => $request->category_id,
+                    ],
+
+                    [
+                        'course_id' => $course->id,
+                        'name'      => $request->name,
+                    ]
+
+                );
+
+                $category->load('sections.rows');
+
+                $oldFiles = $category->sections
+                    ->flatMap(function ($section) {
+                        return $section->rows ?? collect();
+                    })
+                    ->map(function ($row) {
+                        return data_get($row, 'data.file');
+                    })
                     ->filter()
                     ->values();
 
                 $keptFiles = collect();
 
-                $course->sections()->delete();
+                $category->sections()->delete();
 
                 foreach ($request->validated('sections', []) as $sectionData) {
                     $section = CourseSection::create([
-                        'course_id' => $course->id,
+                        'course_category_id' => $category->id,
                         'section_name' => $sectionData['section_name'],
                         'field_types' => $sectionData['field_types'],
                     ]);
@@ -208,10 +259,14 @@ class CourseController extends Controller
 
             Cache::forget('navbar_courses');
 
+            session()->flash('success', true);
+            session()->flash('message', 'Course resources saved successfully.');
+
             return response()->json([
                 'success' => true,
-                'message' => 'Course resources saved successfully.',
-                'redirect' => role_route('role.courses.index'),
+                'redirect' => role_route('role.resource', [
+                    'course' => $course->id
+                ]),
             ]);
         } catch (\Throwable $e) {
             report($e);
@@ -222,4 +277,21 @@ class CourseController extends Controller
             ], 500);
         }
     }
+
+    public function destroyResource(
+    Request $request,
+    string $role,
+    Course $course,
+    CourseCategory $category
+) {
+    $category->delete();
+
+     session()->flash('success', true);
+            session()->flash('message', 'Resource deleted successfully.');
+
+    return back()->with(
+        'success',
+        'Resource deleted successfully.'
+    );
+}
 }

@@ -58,8 +58,18 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
-        Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
-        Route::post('courses/{course}/resource', [CourseController::class, 'createResource'])->name('resources.store');
+        // Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
+        Route::get('courses/{course}/resource', [CourseController::class, 'courseResources'])->name('resource'); 
+        Route::get('courses/{course}/resource/create', [CourseController::class, 'createResource'])->name('resource.create');
+        Route::post('courses/{course}/resource', [CourseController::class, 'storeResource'])->name('resources.store');
+        Route::get(
+    'courses/{course}/resource/{category}/edit',
+    [CourseController::class, 'editResource']
+)->name('resource.edit');
+Route::delete(
+    'courses/{course}/resource/{category}',
+    [CourseController::class, 'destroyResource']
+)->name('resource.destroy');
         Route::resource('courses', CourseController::class);
 
         Route::resource('contacts', ContactController::class);
