@@ -10,6 +10,7 @@ class CoursePermissions extends Model
     protected $fillable = [
         'student_id',
         'course_id',
+        'category_id',
         'section_id',
         'row_id',
         'doc_permissions',
@@ -27,6 +28,11 @@ class CoursePermissions extends Model
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(CourseCategory::class, 'category_id');
     }
 
     public function section(): BelongsTo
