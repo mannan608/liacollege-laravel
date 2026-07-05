@@ -10,7 +10,7 @@
             </p>
 
             <span class="text-slate-400 text-xs sm:text-sm">
-                CRICOS Provider Code: 04000A | RTO Number : 45822 | ABN: 33 644 086 895
+                RTO Number : 46049 | ABN: 93 653 303 621
             </span>
 
         </div>
