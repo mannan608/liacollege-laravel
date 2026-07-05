@@ -27,7 +27,7 @@ class Student extends Model
             Course::class,
             'enroll_course',
             'student_id',
-            'course_id'
+            'course_id',
         );
     }
 

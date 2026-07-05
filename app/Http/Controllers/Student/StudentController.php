@@ -125,13 +125,14 @@ class StudentController extends Controller
     {
         $student->load([
             'user',
-            'courses.sections.rows',
+            'courses.categories.sections.rows',
         ]);
 
         $permissions = CoursePermissions::where('student_id', $student->id)
             ->get();
 
         $grantedCourses = [];
+        $grantedCategories = [];
         $grantedSections = [];
         $grantedRows = [];
 
@@ -140,6 +141,14 @@ class StudentController extends Controller
             // Full Course
             if (is_null($permission->section_id) && is_null($permission->row_id)) {
                 $grantedCourses[] = $permission->course_id;
+            }
+            // Full Category
+            elseif (
+                !is_null($permission->category_id) &&
+                is_null($permission->section_id) &&
+                is_null($permission->row_id)
+            ) {
+                $grantedCategories[] = $permission->category_id;
             }
 
             // Full Section
@@ -166,9 +175,12 @@ class StudentController extends Controller
             })
             ->toArray();
 
+        // return $student;
+
         return view('backend.pages.students.course-permission', [
             'student' => $student,
             'enrolledCourses' => $student->courses,
+            'grantedCategories' => $grantedCategories,
             'grantedCourses' => $grantedCourses,
             'grantedSections' => $grantedSections,
             'grantedRows' => $grantedRows,
@@ -326,7 +338,7 @@ class StudentController extends Controller
 
     public function assignmentSubmit(Request $request,    CourseSectionRow $row)
     {
-        $student = auth()->user()->student;       
+        $student = auth()->user()->student;
 
 
         $request->validate([
@@ -357,7 +369,8 @@ class StudentController extends Controller
         return back()->with('success', 'Assignment submitted successfully.');
     }
 
-    public function download(CourseSectionRow $row ) {
+    public function download(CourseSectionRow $row)
+    {
 
         $student = auth()->user()->student;
 
