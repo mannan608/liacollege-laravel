@@ -17,6 +17,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
@@ -387,6 +388,40 @@ class StudentController extends Controller
         abort_unless(! empty($row->data['file']), 404);
 
         return response()->download(public_path($row->data['file']));
+    }
+
+    public function openLink(CourseSectionRow $row)
+    {
+        $student = auth()->user()->student;
+        abort_unless($student, 403);
+
+        $link = data_get($row->data, 'link');
+        abort_unless($link, 404);
+
+        if (Str::startsWith($link, ['http://', 'https://'])) {
+            return redirect()->away($link);
+        }
+
+        $slug = trim(Str::afterLast(trim($link), '/'));
+
+        abort_unless($slug !== '', 404);
+
+        return redirect()->route('student.page', [
+            'slug' => $slug,
+        ]);
+    }
+
+    public function protectedPage(Request $request, string $slug): View
+    {
+        $student = $request->user()?->student;
+        abort_unless($student, 403);
+
+        abort_unless(
+            view()->exists('frontend.pages.student.protected_pages.' . $slug),
+            404
+        );
+
+        return view('frontend.pages.student.protected_pages.' . $slug);
     }
 
 

@@ -345,10 +345,10 @@
                                                                                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                                                         </svg>
                                                                     </div>
-                                                                    <input type="url"
+                                                                    <input type="text"
                                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][link]`"
                                                                         x-model="row.link"
-                                                                        placeholder="https://example.com"
+                                                                        placeholder="individual-support or https://example.com"
                                                                         class="input-field w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                                                                 </div>
                                                             </div>

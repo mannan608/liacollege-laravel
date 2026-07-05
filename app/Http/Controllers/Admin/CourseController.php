@@ -212,13 +212,7 @@ class CourseController extends Controller
                             $rowPayload['text'] = $rowData['text'];
                         }
                         if (!empty($rowData['link'])) {
-                            $link = $rowData['link'];
-
-                            if (!str_starts_with($link, 'http://') && !str_starts_with($link, 'https://')) {
-                                $link = 'https://' . $link;
-                            }
-
-                            $rowPayload['link'] = $link;
+                            $rowPayload['link'] = trim($rowData['link']);
                         }
 
                         if (! empty($rowData['checkbox'])) {

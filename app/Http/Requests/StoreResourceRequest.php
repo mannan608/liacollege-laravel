@@ -54,6 +54,7 @@ class StoreResourceRequest extends FormRequest
         'sections.*.rows.*.link' => [
             'nullable',
             'string',
+            'max:255',
         ],
 
         'sections.*.rows.*.file' => [
