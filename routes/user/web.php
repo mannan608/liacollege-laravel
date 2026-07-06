@@ -131,8 +131,6 @@ Route::prefix('student')
             ->name('rows.submit');
         Route::get('rows/{row}/download', [StudentController::class, 'download'])
             ->name('rows.download');
-        Route::get('rows/{row}/link', [StudentController::class, 'openLink'])
-            ->name('rows.link');
-        Route::get('page/{slug}', [StudentController::class, 'protectedPage'])
-            ->name('page');
+    Route::get('/course/view/{slug}', [StudentController::class, 'view'])
+    ->name('rows.view');
     });

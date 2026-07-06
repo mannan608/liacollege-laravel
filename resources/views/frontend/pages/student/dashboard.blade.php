@@ -1,6 +1,7 @@
 @extends('frontend.pages.student.layout.app')
 
 @section('content')
+
     <div>
         <div class="mb-10">
             <div class="bg-white mb-6">
@@ -69,20 +70,18 @@
                                                 <div class="flex items-center gap-3">
                                                     <div
                                                         class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="2" d="M19 11H5m14-4H5m14 8H5m14 4H5" />
                                                         </svg>
                                                     </div>
 
                                                     <div class="min-w-0">
-                                                        <h3 class="truncate text-lg font-semibold text-slate-800 sm:text-xl lg:text-2xl">
+                                                        <h3
+                                                            class="truncate text-lg font-semibold text-slate-800 sm:text-xl lg:text-2xl">
                                                             {{ $section->section_name }}
                                                         </h3>
-                                                        <p class="mt-1 text-xs text-slate-500">
-                                                            {{ $section->rows->count() }} Items
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -91,13 +90,20 @@
                                                 @foreach ($section->rows as $row)
                                                     @php
                                                         $rowPermission = $rowPermissions[$row->id] ?? null;
-                                                        $canDownload = !empty($row->data['file'])
-                                                            && $row->is_downloadable
-                                                            && data_get($rowPermission, 'download', $row->is_downloadable);
-                                                        $canSubmit = !empty($row->data['file'])
-                                                            && $row->is_document_submission
-                                                            && data_get($rowPermission, 'submission', $row->is_document_submission);
+                                                        $canDownload =
+                                                            !empty($row->data['file']) &&
+                                                            $row->is_downloadable &&
+                                                            data_get($rowPermission, 'download', $row->is_downloadable);
+                                                        $canSubmit =
+                                                            !empty($row->data['file']) &&
+                                                            $row->is_document_submission &&
+                                                            data_get(
+                                                                $rowPermission,
+                                                                'submission',
+                                                                $row->is_document_submission,
+                                                            );
                                                         $submission = $submissions[$row->id] ?? null;
+
                                                     @endphp
 
                                                     <div @class([
@@ -105,7 +111,8 @@
                                                         'py-4 sm:py-5' => !empty($row->data['file']),
                                                         'py-2 sm:py-2' => empty($row->data['file']),
                                                     ])>
-                                                        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                                                        <div
+                                                            class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                                                             <div @class([
                                                                 'flex flex-col lg:flex-row lg:items-center lg:justify-between ml-0 md:ml-7 lg:ml-10',
                                                                 'gap-4' => !empty($row->data['file']),
@@ -114,35 +121,36 @@
                                                                 @if (!empty($row->data['file']))
                                                                     <div
                                                                         class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
-                                                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                                            stroke="currentColor">
-                                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                                stroke-width="2"
+                                                                        <svg class="h-6 w-6" fill="none"
+                                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                                            <path stroke-linecap="round"
+                                                                                stroke-linejoin="round" stroke-width="2"
                                                                                 d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
                                                                         </svg>
                                                                     </div>
                                                                 @else
                                                                     <div
                                                                         class="flex h-10 w-10 shrink-0 items-center justify-center text-gray-500 group-hover:text-brand-600">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                                                                            fill="none" viewBox="0 0 24 24"
-                                                                            stroke="currentColor" stroke-width="2">
-                                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="h-6 w-6" fill="none"
+                                                                            viewBox="0 0 24 24" stroke="currentColor"
+                                                                            stroke-width="2">
+                                                                            <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
                                                                                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                                                         </svg>
                                                                     </div>
                                                                 @endif
 
+
+
                                                                 @if (!empty($row->data['link']))
                                                                     <div class="flex flex-col gap-1">
-                                                                        <a href="{{ route('student.rows.link', $row) }}" target="_blank"
-                                                                            rel="noopener noreferrer"
+                                                                        <a href="{{ route('student.rows.view', ['slug' => \Illuminate\Support\Str::slug($row->data['text'] ?? '')]) }}"
+                                                                            target="_blank" rel="noopener noreferrer"
                                                                             class="line-clamp-1 text-sm md:text-base lg:text-lg text-gray-500 underline hover:text-brand-600 leading-relaxed font-medium">
                                                                             {{ $row->data['text'] ?? '' }}
                                                                         </a>
-                                                                        <span class="inline-flex w-fit items-center rounded-full bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-600">
-                                                                            Student can view
-                                                                        </span>
                                                                     </div>
                                                                 @else
                                                                     <span
@@ -168,26 +176,32 @@
                                                                     @endif
 
                                                                     @if ($canSubmit)
-                                                                        <form action="{{ route('student.rows.submit', $row) }}"
+                                                                        <form
+                                                                            action="{{ route('student.rows.submit', $row) }}"
                                                                             method="POST" enctype="multipart/form-data"
                                                                             class="inline-block">
                                                                             @csrf
 
                                                                             <input type="file" name="file"
-                                                                                id="file-{{ $row->id }}" class="hidden"
+                                                                                id="file-{{ $row->id }}"
+                                                                                class="hidden"
                                                                                 accept=".pdf,.doc,.docx,.zip,.rar,.png,.jpg,.jpeg"
                                                                                 onchange="this.form.submit()">
 
                                                                             @if ($submission)
-                                                                                <div class="flex flex-col items-end justify-end gap-0.5">
+                                                                                <div
+                                                                                    class="flex flex-col items-end justify-end gap-0.5">
                                                                                     <button type="button"
                                                                                         onclick="document.getElementById('file-{{ $row->id }}').click()"
                                                                                         class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
                                                                                         title="Update Assignment">
-                                                                                        <svg class="w-3.5 h-3.5" fill="none"
-                                                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                                                        <svg class="w-3.5 h-3.5"
+                                                                                            fill="none"
+                                                                                            stroke="currentColor"
+                                                                                            viewBox="0 0 24 24">
                                                                                             <path stroke-linecap="round"
-                                                                                                stroke-linejoin="round" stroke-width="2"
+                                                                                                stroke-linejoin="round"
+                                                                                                stroke-width="2"
                                                                                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                                                                         </svg>
                                                                                         Update Assignment
@@ -203,7 +217,8 @@
                                                                                                 viewBox="0 0 24 24"
                                                                                                 stroke="currentColor"
                                                                                                 stroke-width="2">
-                                                                                                <path stroke-linecap="round"
+                                                                                                <path
+                                                                                                    stroke-linecap="round"
                                                                                                     stroke-linejoin="round"
                                                                                                     d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                                                                                             </svg>
@@ -216,10 +231,13 @@
                                                                                     onclick="document.getElementById('file-{{ $row->id }}').click()"
                                                                                     class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
                                                                                     title="Submit Assignment">
-                                                                                    <svg class="w-3.5 h-3.5" fill="none"
-                                                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                                                    <svg class="w-3.5 h-3.5"
+                                                                                        fill="none"
+                                                                                        stroke="currentColor"
+                                                                                        viewBox="0 0 24 24">
                                                                                         <path stroke-linecap="round"
-                                                                                            stroke-linejoin="round" stroke-width="2"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"
                                                                                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                                                                     </svg>
                                                                                     Submit Assignment
@@ -237,8 +255,8 @@
                                     @endforeach
                                 @else
                                     <div class="rounded-lg px-6 py-8 text-center">
-                                        <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
+                                        <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
                                         </svg>
@@ -251,29 +269,28 @@
                                             You don't have permission to access this category yet.
                                         </p>
                                     </div>
-                                @endif
-                            </div>
+                            @endif
                         </div>
                     </div>
-                @endforeach
-            @empty
-                <div class="rounded-lg px-6 py-8 text-center">
-                    <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
-                    </svg>
-
-                    <h3 class="mt-3 text-lg font-semibold text-gray-800">
-                        No Permission
-                    </h3>
-
-                    <p class="mt-2 text-sm text-gray-600">
-                        You don't have permission to access this course yet.
-                    </p>
-                </div>
-            @endforelse
         </div>
+        @endforeach
+    @empty
+        <div class="rounded-lg px-6 py-8 text-center">
+            <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
+            </svg>
+
+            <h3 class="mt-3 text-lg font-semibold text-gray-800">
+                No Permission
+            </h3>
+
+            <p class="mt-2 text-sm text-gray-600">
+                You don't have permission to access this course yet.
+            </p>
+        </div>
+        @endforelse
+    </div>
     </div>
 @endsection
 

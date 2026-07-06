@@ -15,6 +15,7 @@ use App\Services\CoursePermissionService;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -390,39 +391,20 @@ class StudentController extends Controller
         return response()->download(public_path($row->data['file']));
     }
 
-    public function openLink(CourseSectionRow $row)
-    {
-        $student = auth()->user()->student;
-        abort_unless($student, 403);
+ 
 
-        $link = data_get($row->data, 'link');
-        abort_unless($link, 404);
+    // public function protectedPage(Request $request, string $slug): View
+    // {
+    //     $student = $request->user()?->student;
+    //     abort_unless($student, 403);
 
-        if (Str::startsWith($link, ['http://', 'https://'])) {
-            return redirect()->away($link);
-        }
+    //     abort_unless(
+    //         view()->exists('frontend.pages.student.protected_pages.' . $slug),
+    //         404
+    //     );
 
-        $slug = trim(Str::afterLast(trim($link), '/'));
-
-        abort_unless($slug !== '', 404);
-
-        return redirect()->route('student.page', [
-            'slug' => $slug,
-        ]);
-    }
-
-    public function protectedPage(Request $request, string $slug): View
-    {
-        $student = $request->user()?->student;
-        abort_unless($student, 403);
-
-        abort_unless(
-            view()->exists('frontend.pages.student.protected_pages.' . $slug),
-            404
-        );
-
-        return view('frontend.pages.student.protected_pages.' . $slug);
-    }
+    //     return view('frontend.pages.student.protected_pages.' . $slug);
+    // }
 
 
     public function profileEdit(Request $request): View
@@ -613,4 +595,23 @@ class StudentController extends Controller
             'submission' => $submission,
         ];
     }
+
+public function view(string $slug)
+{
+    if (!Auth::check()) {
+        abort(403);
+    }
+
+    $student = Auth::user()->student;
+
+    if (!$student) {
+        abort(403);
+    }
+
+    $view = "frontend.pages.student.private-pages.$slug";
+
+    abort_unless(view()->exists($view), 404);
+
+    return view($view, compact('student'));
+}
 }
