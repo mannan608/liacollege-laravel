@@ -13,7 +13,7 @@ class RoleRepository implements RoleRepositoryInterface
     {
         return Role::query()
             ->withCount('permissions')
-            ->whereNotIn('id', [5])
+            // ->whereNotIn('id', [5])
             ->orderBy('name')
             ->paginate($perPage);
     }

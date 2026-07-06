@@ -55,12 +55,7 @@ class MenuHelper
                 ],
             ],
 
-              [
-                'icon' => 'user-profile',
-                'name' => 'Students Manage',
-                'route' => 'role.students.index',
-                'permission' => 'user.list',
-            ],
+            
 
             // [
             //     'name' => 'Organization',
@@ -83,6 +78,12 @@ class MenuHelper
             //         ],
             //     ],
             // ],
+              [
+                'icon' => 'user-profile',
+                'name' => 'Students Manage',
+                'route' => 'role.students.index',
+                'permission' => 'user.list',
+            ],
             [
                 'name' => 'Courses Manage',
                 'icon' => 'tables',

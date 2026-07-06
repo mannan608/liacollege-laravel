@@ -118,6 +118,7 @@ class RolePermissionSeeder extends Seeder
             'student.edit',
             'student.delete',
             'student.status.change',
+            'student.manage',
         ];
 
         foreach ($permissions as $permission) {

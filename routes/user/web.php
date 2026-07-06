@@ -133,4 +133,5 @@ Route::prefix('student')
             ->name('rows.download');
     Route::get('/course/view/{slug}', [StudentController::class, 'view'])
     ->name('rows.view');
+    
     });

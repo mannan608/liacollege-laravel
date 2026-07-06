@@ -160,9 +160,9 @@
                                                                 @endif
                                                             </div>
 
-                                                            @if (!empty($row->data['file']) && ($canDownload || $canSubmit))
+                                                            @if (!empty($row->data['file']))
                                                                 <div class="flex items-baseline gap-4 shrink-0">
-                                                                    @if ($canDownload)
+                                                                    
                                                                         <a href="{{ route('student.rows.download', $row) }}"
                                                                             class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
                                                                             <svg class="w-3.5 h-3.5" fill="none"
@@ -173,9 +173,7 @@
                                                                             </svg>
                                                                             Download
                                                                         </a>
-                                                                    @endif
 
-                                                                    @if ($canSubmit)
                                                                         <form
                                                                             action="{{ route('student.rows.submit', $row) }}"
                                                                             method="POST" enctype="multipart/form-data"
@@ -244,7 +242,6 @@
                                                                                 </button>
                                                                             @endif
                                                                         </form>
-                                                                    @endif
                                                                 </div>
                                                             @endif
                                                         </div>

@@ -340,13 +340,45 @@ class StudentController extends Controller
     }
 
 
+    // public function assignmentSubmit(Request $request,    CourseSectionRow $row)
+    // {
+    //     $student = auth()->user()->student;
+    //     abort_unless($student, 403);
+
+    //     $rowAccess = $this->rowAccess($student, $row);
+    //     abort_unless($rowAccess['visible'] && $rowAccess['submission'], 403);
+
+
+    //     $request->validate([
+    //         'file' => 'required|file|mimes:pdf,doc,docx|max:10240',
+    //     ]);
+
+    //     $submission = AssignmentSubmission::where([
+    //         'student_id' => $student->id,
+    //         'course_section_row_id' => $row->id,
+    //     ])->first();
+
+    //     $path = $this->replaceFile(
+    //         $request->file('file'),
+    //         $submission?->file,
+    //         'submissions'
+    //     );
+
+    //     AssignmentSubmission::updateOrCreate(
+    //         [
+    //             'student_id' => $student->id,
+    //             'course_section_row_id' => $row->id,
+    //         ],
+    //         [
+    //             'file' => $path,
+    //         ]
+    //     );
+
+    //     return back()->with('success', 'Assignment submitted successfully.');
+    // }
     public function assignmentSubmit(Request $request,    CourseSectionRow $row)
     {
         $student = auth()->user()->student;
-        abort_unless($student, 403);
-
-        $rowAccess = $this->rowAccess($student, $row);
-        abort_unless($rowAccess['visible'] && $rowAccess['submission'], 403);
 
 
         $request->validate([
@@ -376,17 +408,23 @@ class StudentController extends Controller
 
         return back()->with('success', 'Assignment submitted successfully.');
     }
+    // public function download(CourseSectionRow $row)
+    // {
 
+    //     $student = auth()->user()->student;
+    //     abort_unless($student, 403);
+
+    //     $rowAccess = $this->rowAccess($student, $row);
+    //     abort_unless($rowAccess['visible'] && $rowAccess['download'], 403);
+
+    //     abort_unless(! empty($row->data['file']), 404);
+
+    //     return response()->download(public_path($row->data['file']));
+    // }
     public function download(CourseSectionRow $row)
     {
 
         $student = auth()->user()->student;
-        abort_unless($student, 403);
-
-        $rowAccess = $this->rowAccess($student, $row);
-        abort_unless($rowAccess['visible'] && $rowAccess['download'], 403);
-
-        abort_unless(! empty($row->data['file']), 404);
 
         return response()->download(public_path($row->data['file']));
     }
@@ -580,22 +618,38 @@ class StudentController extends Controller
         ];
     }
 
-public function view(string $slug)
+    public function view(string $slug)
+    {
+        if (!Auth::check()) {
+            abort(403);
+        }
+
+        $student = Auth::user()->student;
+
+        if (!$student) {
+            abort(403);
+        }
+
+        $view = "frontend.pages.student.private-pages.$slug";
+
+        abort_unless(view()->exists($view), 404);
+
+        return view($view, compact('student'));
+    }
+
+
+public function assignment(string $role, Student $student)
 {
-    if (!Auth::check()) {
-        abort(403);
-    }
+    $student->load([
+        'user',
+        'courses',
+        'assignmentSubmissions' => function ($query) {
+            $query->latest()->with([
+                'courseSectionRow.section.category.course',
+            ]);
+        },
+    ]);
 
-    $student = Auth::user()->student;
-
-    if (!$student) {
-        abort(403);
-    }
-
-    $view = "frontend.pages.student.private-pages.$slug";
-
-    abort_unless(view()->exists($view), 404);
-
-    return view($view, compact('student'));
+    return view('backend.pages.students.assignments', compact('student'));
 }
 }
