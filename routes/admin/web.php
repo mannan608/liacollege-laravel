@@ -78,6 +78,7 @@ Route::delete(
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
+        Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
 
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         

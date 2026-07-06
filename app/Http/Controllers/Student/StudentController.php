@@ -376,9 +376,9 @@ class StudentController extends Controller
 
     //     return back()->with('success', 'Assignment submitted successfully.');
     // }
-public function assignmentSubmit(Request $request,    CourseSectionRow $row)
+    public function assignmentSubmit(Request $request,    CourseSectionRow $row)
     {
-        $student = auth()->user()->student;       
+        $student = auth()->user()->student;
 
 
         $request->validate([
@@ -421,7 +421,8 @@ public function assignmentSubmit(Request $request,    CourseSectionRow $row)
 
     //     return response()->download(public_path($row->data['file']));
     // }
-      public function download(CourseSectionRow $row ) {
+    public function download(CourseSectionRow $row)
+    {
 
         $student = auth()->user()->student;
 
@@ -617,22 +618,34 @@ public function assignmentSubmit(Request $request,    CourseSectionRow $row)
         ];
     }
 
-public function view(string $slug)
+    public function view(string $slug)
+    {
+        if (!Auth::check()) {
+            abort(403);
+        }
+
+        $student = Auth::user()->student;
+
+        if (!$student) {
+            abort(403);
+        }
+
+        $view = "frontend.pages.student.private-pages.$slug";
+
+        abort_unless(view()->exists($view), 404);
+
+        return view($view, compact('student'));
+    }
+
+
+public function assignment(string $role, Student $student)
 {
-    if (!Auth::check()) {
-        abort(403);
-    }
+    $student->load([
+        'user',
+        'courses',
+        'assignmentSubmissions.courseSectionRow',
+    ]);
 
-    $student = Auth::user()->student;
-
-    if (!$student) {
-        abort(403);
-    }
-
-    $view = "frontend.pages.student.private-pages.$slug";
-
-    abort_unless(view()->exists($view), 404);
-
-    return view($view, compact('student'));
+    return view('backend.students.assignment', compact('student'));
 }
 }

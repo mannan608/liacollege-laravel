@@ -31,7 +31,7 @@
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Email</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Enroll Courses</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Courses Permission</th>
-                        {{-- <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Status</th> --}}
+                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Assignment</th>
                         <th class="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">Actions</th>
                     </tr>
                 </thead>
@@ -62,7 +62,14 @@
 
                             </td>
 
-                            {{-- <td class="px-4 py-3 text-sm text-gray-500">{{ ucfirst($student->user?->status) }}</td> --}}
+                            <td class="px-4 py-3 text-sm text-gray-500">
+                                <a href="{{ role_route('role.students.assignment', [
+                                        'student' => $student,
+                                    ]) }}"
+                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
+                                        Assignment
+                                    </a>
+                            </td>
 
                             <td class="px-4 py-3 text-right text-sm">
                                 <div class="inline-flex items-center gap-3">

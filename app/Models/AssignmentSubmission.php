@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssignmentSubmission extends Model
 {
-
     protected $fillable = [
         'student_id',
         'course_section_row_id',
@@ -18,11 +17,16 @@ class AssignmentSubmission extends Model
         'file' => 'string',
     ];
 
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
     public function courseSectionRow()
-{
-    return $this->belongsTo(
-        CourseSectionRow::class,
-        'course_section_row_id'
-    );
-}
+    {
+        return $this->belongsTo(
+            CourseSectionRow::class,
+            'course_section_row_id'
+        );
+    }
 }
