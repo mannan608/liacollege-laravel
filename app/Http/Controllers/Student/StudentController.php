@@ -643,9 +643,13 @@ public function assignment(string $role, Student $student)
     $student->load([
         'user',
         'courses',
-        'assignmentSubmissions.courseSectionRow',
+        'assignmentSubmissions' => function ($query) {
+            $query->latest()->with([
+                'courseSectionRow.section.category.course',
+            ]);
+        },
     ]);
 
-    return view('backend.students.assignment', compact('student'));
+    return view('backend.pages.students.assignments', compact('student'));
 }
 }
