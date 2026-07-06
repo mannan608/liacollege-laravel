@@ -15,8 +15,10 @@ use App\Services\CoursePermissionService;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
@@ -125,13 +127,14 @@ class StudentController extends Controller
     {
         $student->load([
             'user',
-            'courses.sections.rows',
+            'courses.categories.sections.rows',
         ]);
 
         $permissions = CoursePermissions::where('student_id', $student->id)
             ->get();
 
         $grantedCourses = [];
+        $grantedCategories = [];
         $grantedSections = [];
         $grantedRows = [];
 
@@ -140,6 +143,14 @@ class StudentController extends Controller
             // Full Course
             if (is_null($permission->section_id) && is_null($permission->row_id)) {
                 $grantedCourses[] = $permission->course_id;
+            }
+            // Full Category
+            elseif (
+                !is_null($permission->category_id) &&
+                is_null($permission->section_id) &&
+                is_null($permission->row_id)
+            ) {
+                $grantedCategories[] = $permission->category_id;
             }
 
             // Full Section
@@ -166,9 +177,12 @@ class StudentController extends Controller
             })
             ->toArray();
 
+        // return $student;
+
         return view('backend.pages.students.course-permission', [
             'student' => $student,
             'enrolledCourses' => $student->courses,
+            'grantedCategories' => $grantedCategories,
             'grantedCourses' => $grantedCourses,
             'grantedSections' => $grantedSections,
             'grantedRows' => $grantedRows,
@@ -190,11 +204,26 @@ class StudentController extends Controller
                     CoursePermissions::create([
                         'student_id' => $student->id,
                         'course_id' => $courseId,
+                        'category_id' => null,
                         'section_id' => null,
                         'row_id' => null,
                     ]);
 
                     continue;
+                }
+
+                if (! empty($permission['categories'])) {
+
+                    foreach ($permission['categories'] as $categoryId) {
+
+                        CoursePermissions::create([
+                            'student_id' => $student->id,
+                            'course_id' => $courseId,
+                            'category_id' => $categoryId,
+                            'section_id' => null,
+                            'row_id' => null,
+                        ]);
+                    }
                 }
 
                 if (! empty($permission['sections'])) {
@@ -204,6 +233,7 @@ class StudentController extends Controller
                         CoursePermissions::create([
                             'student_id' => $student->id,
                             'course_id' => $courseId,
+                            'category_id' => null,
                             'section_id' => $sectionId,
                             'row_id' => null,
                         ]);
@@ -233,6 +263,7 @@ class StudentController extends Controller
                         CoursePermissions::create([
                             'student_id' => $student->id,
                             'course_id' => $courseId,
+                            'category_id' => null,
                             'section_id' => $row->course_section_id,
                             'row_id' => $row->id,
                             'doc_permissions' => $docPermissions,
@@ -249,67 +280,51 @@ class StudentController extends Controller
     {
         $student = auth()->user()->student;
         $student->load([
-            'courses.sections.rows',
+            'courses.categories.sections.rows',
             'assignmentSubmissions.courseSectionRow',
         ]);
 
-        $permissions = CoursePermissions::where('student_id', $student->id)->get();
+        $access = $this->studentCourseAccess($student);
 
-        $grantedCourses = $permissions
-            ->whereNull('section_id')
-            ->whereNull('row_id')
-            ->pluck('course_id')
-            ->toArray();
+        $courses = $student->courses->filter(function ($course) use ($access) {
 
-        $grantedSections = $permissions
-            ->whereNotNull('section_id')
-            ->whereNull('row_id')
-            ->pluck('section_id')
-            ->toArray();
-
-        $grantedRows = $permissions
-            ->whereNotNull('row_id')
-            ->pluck('row_id')
-            ->toArray();
-
-        $courses = $student->courses->filter(function ($course) use (
-            $grantedCourses,
-            $grantedSections,
-            $grantedRows
-        ) {
-
-            // Full course access
-            if (in_array($course->id, $grantedCourses)) {
+            if (in_array($course->id, $access['courses'])) {
                 return true;
             }
 
-            // Filter sections
             $course->setRelation(
-                'sections',
-                $course->sections->filter(function ($section) use (
-                    $grantedSections,
-                    $grantedRows
-                ) {
+                'categories',
+                $course->categories->filter(function ($category) use ($access) {
 
-                    // Full section access
-                    if (in_array($section->id, $grantedSections)) {
+                    if (in_array($category->id, $access['categories'])) {
                         return true;
                     }
 
-                    // Filter rows
-                    $section->setRelation(
-                        'rows',
-                        $section->rows->filter(function ($row) use ($grantedRows) {
-                            return in_array($row->id, $grantedRows);
+                    $category->setRelation(
+                        'sections',
+                        $category->sections->filter(function ($section) use ($access) {
+
+                            if (in_array($section->id, $access['sections'])) {
+                                return true;
+                            }
+
+                            $section->setRelation(
+                                'rows',
+                                $section->rows->filter(function ($row) use ($access) {
+                                    return in_array($row->id, $access['rows']);
+                                })
+                            );
+
+                            return $section->rows->isNotEmpty();
                         })
                     );
 
-                    return $section->rows->isNotEmpty();
+                    return $category->sections->isNotEmpty();
                 })
             );
 
-            return $course->sections->isNotEmpty();
-        });
+            return $course->categories->isNotEmpty();
+        })->values();
         $submissions = AssignmentSubmission::where(
             'student_id',
             $student->id
@@ -320,13 +335,18 @@ class StudentController extends Controller
         return view('frontend.pages.student.dashboard', [
             'courses' => $courses,
             'submissions' => $submissions,
+            'rowPermissions' => $access['rowPermissions'],
         ]);
     }
 
 
     public function assignmentSubmit(Request $request,    CourseSectionRow $row)
     {
-        $student = auth()->user()->student;       
+        $student = auth()->user()->student;
+        abort_unless($student, 403);
+
+        $rowAccess = $this->rowAccess($student, $row);
+        abort_unless($rowAccess['visible'] && $rowAccess['submission'], 403);
 
 
         $request->validate([
@@ -357,13 +377,19 @@ class StudentController extends Controller
         return back()->with('success', 'Assignment submitted successfully.');
     }
 
-    public function download(CourseSectionRow $row ) {
+    public function download(CourseSectionRow $row)
+    {
 
         $student = auth()->user()->student;
+        abort_unless($student, 403);
+
+        $rowAccess = $this->rowAccess($student, $row);
+        abort_unless($rowAccess['visible'] && $rowAccess['download'], 403);
+
+        abort_unless(! empty($row->data['file']), 404);
 
         return response()->download(public_path($row->data['file']));
     }
-
 
     public function profileEdit(Request $request): View
     {
@@ -443,4 +469,133 @@ class StudentController extends Controller
             'Profile updated successfully.'
         );
     }
+
+    private function studentCourseAccess(Student $student): array
+    {
+        $permissions = CoursePermissions::where('student_id', $student->id)->get();
+
+        return [
+            'courses' => $permissions
+                ->whereNull('category_id')
+                ->whereNull('section_id')
+                ->whereNull('row_id')
+                ->pluck('course_id')
+                ->toArray(),
+            'categories' => $permissions
+                ->whereNotNull('category_id')
+                ->whereNull('section_id')
+                ->whereNull('row_id')
+                ->pluck('category_id')
+                ->toArray(),
+            'sections' => $permissions
+                ->whereNotNull('section_id')
+                ->whereNull('row_id')
+                ->pluck('section_id')
+                ->toArray(),
+            'rows' => $permissions
+                ->whereNotNull('row_id')
+                ->pluck('row_id')
+                ->toArray(),
+            'rowPermissions' => $permissions
+                ->whereNotNull('row_id')
+                ->keyBy('row_id')
+                ->map(function ($item) {
+
+                    return [
+                        'download' => data_get($item->doc_permissions, 'download', false),
+                        'submission' => data_get($item->doc_permissions, 'submission', false),
+                    ];
+                })
+                ->toArray(),
+        ];
+    }
+
+    private function rowAccess(Student $student, CourseSectionRow $row): array
+    {
+        $row->loadMissing('section.category');
+
+        $courseId = $row->section?->category?->course_id;
+        $categoryId = $row->section?->course_category_id;
+        $sectionId = $row->course_section_id;
+
+        if (! $courseId) {
+            return [
+                'visible' => false,
+                'download' => false,
+                'submission' => false,
+            ];
+        }
+
+        $permissions = CoursePermissions::where('student_id', $student->id)
+            ->where('course_id', $courseId)
+            ->get();
+
+        $rowPermission = $permissions->firstWhere('row_id', $row->id);
+        $isVisible = $permissions->contains(function ($permission) use ($categoryId, $sectionId, $row) {
+
+            if (is_null($permission->category_id) && is_null($permission->section_id) && is_null($permission->row_id)) {
+                return true;
+            }
+
+            if (
+                ! is_null($permission->category_id) &&
+                is_null($permission->section_id) &&
+                is_null($permission->row_id) &&
+                (int) $permission->category_id === (int) $categoryId
+            ) {
+                return true;
+            }
+
+            if (
+                ! is_null($permission->section_id) &&
+                is_null($permission->row_id) &&
+                (int) $permission->section_id === (int) $sectionId
+            ) {
+                return true;
+            }
+
+            return ! is_null($permission->row_id) && (int) $permission->row_id === (int) $row->id;
+        });
+
+        if (! $isVisible) {
+            return [
+                'visible' => false,
+                'download' => false,
+                'submission' => false,
+            ];
+        }
+
+        $download = $row->is_downloadable;
+        $submission = $row->is_document_submission;
+
+        if ($rowPermission) {
+            $download = (bool) data_get($rowPermission->doc_permissions, 'download', false);
+            $submission = (bool) data_get($rowPermission->doc_permissions, 'submission', false);
+        }
+
+        return [
+            'visible' => true,
+            'download' => $download,
+            'submission' => $submission,
+        ];
+    }
+
+public function view(string $slug)
+{
+    if (!Auth::check()) {
+        abort(403);
+    }
+
+    $student = Auth::user()->student;
+
+    if (!$student) {
+        abort(403);
+    }
+
+    $view = "frontend.pages.student.private-pages.$slug";
+
+    abort_unless(view()->exists($view), 404);
+
+    return view($view, compact('student'));
+}
 }

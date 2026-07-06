@@ -94,11 +94,11 @@ class RolePermissionSeeder extends Seeder
             'course.manage',
 
             // Course Resource permissions
-            // 'course.resource.create',
-            // 'course.resource.view',
-            // 'course.resource.edit',
-            // 'course.resource.delete',
-            // 'course.resource.list',
+            'course.resource.create',
+            'course.resource.view',
+            'course.resource.edit',
+            'course.resource.delete',
+            'course.resource.list',
             
 
             //contact

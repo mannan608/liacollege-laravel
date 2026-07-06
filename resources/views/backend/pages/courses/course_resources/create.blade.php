@@ -2,7 +2,7 @@
 
 @section('content')
     @php
-        $initialSections = $course->sections
+        $initialSections = $category->sections
             ->map(function ($section) {
                 return [
                     'id' => $section->id,
@@ -15,8 +15,6 @@
                                 'text' => $row->data['text'] ?? '',
                                 'link' => $row->data['link'] ?? '',
                                 'file' => $row->data['file'] ?? '',
-                                'checkbox' => $row->data['checkbox'] ?? '',
-                                'radio' => $row->data['radio'] ?? '',
                                 'is_downloadable' => $row->is_downloadable,
                                 'is_document_submission' => $row->is_document_submission,
                             ];
@@ -35,20 +33,7 @@
 
             <div class="lg:col-span-8 space-y-6">
 
-                <!-- Header -->
-                <div class="mb-10 text-center">
-                    <div
-                        class="mb-3 inline-flex items-center justify-center rounded-2xl bg-brand-600 p-3 shadow-lg shadow-brand-500/25">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                    </div>
-                    <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Course Resources</h1>
-                    <p class="mt-2 text-base text-slate-500">Organize, manage, and structure your course materials
-                        efficiently</p>
-                </div>
+
 
                 {{-- Course Information --}}
                 <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
@@ -62,8 +47,19 @@
                     </div>
 
                     <div class="p-5 space-y-5">
-                        <div>
+                        <div class="">
+                            <input type="hidden" name="category_id" value="{{ $category->id ?? '' }}">
 
+                            <div class="flex flex-col gap-2">
+                                <label class="text-sm font-medium text-gray-600">Course Section Name</label>
+                                <input type="text" name="name"
+                                    value="{{ old('name', $category->name ?? '') }}" placeholder="Enter course section name"
+                                    class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                            </div>
+
+                        </div>
+
+                        <div>
                             <!-- Empty State -->
                             <template x-if="sections.length === 0">
                                 <div
@@ -349,10 +345,10 @@
                                                                                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                                                                         </svg>
                                                                     </div>
-                                                                    <input type="url"
+                                                                    <input type="text"
                                                                         :name="`sections[${sectionIndex}][rows][${rowIndex}][link]`"
                                                                         x-model="row.link"
-                                                                        placeholder="https://example.com"
+                                                                        placeholder="individual-support or https://example.com"
                                                                         class="input-field w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                                                                 </div>
                                                             </div>
