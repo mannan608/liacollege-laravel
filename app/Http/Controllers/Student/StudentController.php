@@ -350,7 +350,7 @@ class StudentController extends Controller
 
 
         $request->validate([
-            'file' => 'required|file|mimes:pdf,doc,docx,zip,rar,png,jpg,jpeg|max:10240',
+            'file' => 'required|file|mimes:pdf,doc,docx|max:10240',
         ]);
 
         $submission = AssignmentSubmission::where([
@@ -390,22 +390,6 @@ class StudentController extends Controller
 
         return response()->download(public_path($row->data['file']));
     }
-
- 
-
-    // public function protectedPage(Request $request, string $slug): View
-    // {
-    //     $student = $request->user()?->student;
-    //     abort_unless($student, 403);
-
-    //     abort_unless(
-    //         view()->exists('frontend.pages.student.protected_pages.' . $slug),
-    //         404
-    //     );
-
-    //     return view('frontend.pages.student.protected_pages.' . $slug);
-    // }
-
 
     public function profileEdit(Request $request): View
     {

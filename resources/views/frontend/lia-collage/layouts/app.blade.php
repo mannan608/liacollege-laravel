@@ -107,6 +107,21 @@ https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css
             display: none;
             border: none;
         }
+        .private-page-container{
+            background: white;
+        }
+
+        .private-page{
+            max-width: 80%;
+            margin: 0 auto;
+            background: white;
+            h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600;
+    margin:0;
+    line-height: 1.2;
+    
+}
+        }
     </style>
     <!-- Meta Pixel Code -->
     <script>
