@@ -109,9 +109,8 @@
                                                                         {{ $row->data['text'] ?? 'N/A' }}
                                                                     </p>
 
-                                                                    @if ($row->data['file'] ?? false)
+                                                                    {{-- @if ($row->data['file'] ?? false)
                                                                         <div class="mt-1 flex flex-wrap items-center gap-4">
-                                                                            {{-- DOWNLOAD PERMISSION --}}
                                                                             @if ($row->is_downloadable)
                                                                                 <label class="inline-flex items-center gap-2 cursor-pointer">
                                                                                     <input type="checkbox"
@@ -121,8 +120,6 @@
                                                                                     <span class="text-xs text-slate-500">Download</span>
                                                                                 </label>
                                                                             @endif
-
-                                                                            {{-- SUBMISSION PERMISSION --}}
                                                                             @if ($row->is_document_submission)
                                                                                 <label class="inline-flex items-center gap-2 cursor-pointer">
                                                                                     <input type="checkbox"
@@ -133,7 +130,7 @@
                                                                                 </label>
                                                                             @endif
                                                                         </div>
-                                                                    @endif
+                                                                    @endif --}}
                                                                 </div>
                                                             </label>
                                                         </div>
