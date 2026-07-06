@@ -29,9 +29,9 @@
                     <tr>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Name</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Email</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Enroll Courses</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500 max-w[50%]">Enroll Courses</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Courses Permission</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Assignment</th>
+                        {{-- <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Assignment</th> --}}
                         <th class="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">Actions</th>
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@
                             <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">
                                 {{ $student->user?->name }}</td>
                             <td class="px-4 py-3 text-sm text-gray-500">{{ $student->user?->email }}</td>
-                            <td class="px-4 py-3 text-sm text-gray-500 md:w-1/2">
+                            <td class="px-4 py-3 text-sm text-gray-500 max-w[50%]">
                                 <div class="flex flex-wrap gap-2">
                                 @foreach ($student->courses as $course)
                                     <span class="inline-block rounded bg-blue-100 px-2 py-1 text-xs text-blue-700">
@@ -61,16 +61,6 @@
                                 @endif
 
                             </td>
-
-                            <td class="px-4 py-3 text-sm text-gray-500">
-                                <a href="{{ role_route('role.students.assignment', [
-                                        'student' => $student,
-                                    ]) }}"
-                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                        Assignment
-                                    </a>
-                            </td>
-
                             <td class="px-4 py-3 text-right text-sm">
                                 <div class="inline-flex items-center gap-3">
 
