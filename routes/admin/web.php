@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CampusController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseProviderController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -36,11 +37,15 @@ Route::prefix('{role}')
     ->where(['role' => '[a-z0-9-]+'])
     ->middleware(['auth', 'active.user', 'role.prefix'])
     ->group(function () {
-        Route::get('/dashboard', function () {
-            return view('backend.pages.dashboard.index', [
-                'title' => 'Dashboard',
-            ]);
-        })->middleware('permission:dashboard.view')->name('dashboard');
+        // Route::get('/dashboard', function () {
+        //     return view('backend.pages.dashboard.index', [
+        //         'title' => 'Dashboard',
+        //     ]);
+        // })->middleware('permission:dashboard.view')->name('dashboard');
+
+           Route::get('dashboard', [DashboardController::class, 'index'])
+            ->middleware('permission:dashboard.view')
+            ->name('dashboard');
 
         Route::resource('seo', SeoController::class)
             ->middleware('permission:seo.manage');

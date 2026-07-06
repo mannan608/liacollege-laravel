@@ -3,12 +3,16 @@
 @section('content')
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
 
-        @if (session('success'))
-            <div class="mb-6 flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700">
-                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span class="text-sm font-medium">{{ session('success') }}</span>
+       @if (session('success'))
+            <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" x-transition
+                class="fixed top-3 right-5 z-9999 w-full max-w-sm">
+                <div class="relative">
+                    <button @click="show = false" class="absolute top-3 right-3 z-10 text-gray-500 hover:text-gray-700">
+                        ✕
+                    </button>
+
+                    <x-ui.alert variant="success" title="" message="{{ session('success') }}" />
+                </div>
             </div>
         @endif
 
