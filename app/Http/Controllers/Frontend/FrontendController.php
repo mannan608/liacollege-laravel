@@ -95,6 +95,10 @@ class FrontendController extends Controller
     {
         return view('frontend.lia-collage.project-management');
     }
+
+    public function firstAid(){
+        return view('frontend.lia-collage.first-aid');
+    }
   
     public function store(Request $request)
     {

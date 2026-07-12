@@ -107,6 +107,9 @@ Route::get('/leadership-management', [FrontendController::class, 'leadershipMana
 
 Route::get('/project-management', [FrontendController::class, 'projectManagement'])
     ->name('projectManagement');
+    Route::get('/first-aid', [FrontendController::class, 'firstAid'])
+    ->name('firstAid');
+
 
 // Fast Track
 Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track_qualifications'])
