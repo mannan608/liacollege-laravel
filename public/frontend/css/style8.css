@@ -15634,7 +15634,6 @@ body.index-kid .admission-content-top .application-deadline__content table {
 }
 .header.v__3 .header__wrapper {
   margin-top: 0;
-  padding: 0 100px;
 }
 @media screen and (max-width: 1200px) {
   .header.v__3 .header__wrapper {
@@ -15749,7 +15748,7 @@ body.index-kid .admission-content-top .application-deadline__content table {
   }
 }
 .header.v__6 .navigation__menu ul {
-  gap: 50px;
+  gap: 40px;
 }
 .header.v__6 .navigation__menu ul .navigation__menu--item.has-arrow::before {
   color: var(--rt-heading);
@@ -27044,4 +27043,88 @@ th {
   pointer-events: visible;
   z-index: 999;
   top: 0;
+}
+
+
+  footer.rts-footer i {
+            color: #e2b838;
+        }
+
+        .rts-footer-menu i {
+            margin-right: 5px;
+        }
+
+        .rts-footer-widget .rts-footer-menu ul li a:hover {
+            color: white;
+        }
+
+        .right-side,
+        .left-side {
+            width: 50%;
+        }
+
+        .rts__author--img img {
+            height: 50px;
+        }
+
+        .program-menu a {
+            font-size: 12px;
+        }
+
+        .communication-btn img {
+            height: 36px;
+        }
+
+        .progress-wrap {
+            bottom: 100px;
+        }
+
+        .login__btn i {
+            font-size: 22px;
+
+        }
+
+        .translate__lang ul {
+            background: white;
+        }
+
+        .dropdown-toggle {
+            border: none;
+
+            ul li a {
+                text-decoration: none;
+                color: var(--color-gray);
+                font-size: 14px;
+            }
+        }
+
+        .dropdown-menu li a {
+            font-size: 14px;
+        }
+
+
+        .dropdown-toggle::after {
+            display: none;
+            border: none;
+        }
+        .private-page-container{
+            background: white;
+        }
+
+        .private-page{
+            max-width: 80%;
+            margin: 0 auto;
+            background: white;
+            h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600;
+    margin:0;
+    line-height: 1.2;
+    
+}
+        }
+        .container-fluid{
+   max-width: 1290px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
 }

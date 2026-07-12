@@ -78,11 +78,11 @@ class MenuHelper
             //         ],
             //     ],
             // ],
-              [
+             [
                 'icon' => 'user-profile',
                 'name' => 'Students Manage',
                 'route' => 'role.students.index',
-                'permission' => 'user.list',
+                'permission' => 'student.list',
             ],
             [
                 'name' => 'Courses Manage',

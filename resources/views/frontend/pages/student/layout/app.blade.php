@@ -101,7 +101,7 @@
 
     <main class="grow pt-22 md:pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         
-            <div class="w-full md:w-[80%] mx-auto">
+            <div class="w-full mx-auto">
                 {{-- <aside
                     class="hidden md:flex h-1/2 w-64  bg-white border-r  dark:bg-gray-900 dark:border-gray-800 text-gray-900 transition-all duration-300 ease-in-out border-gray-200">
                     @include('frontend.pages.student.layout.sidebar')
