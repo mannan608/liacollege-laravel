@@ -46,10 +46,6 @@
 
 <div class="w-full p-5">
 
-        <div class="mb-8">
-            <img src="{{ asset('logo.webp') }}" alt="Logo" class="h-12">
-        </div>
-
         <ul class="space-y-2">
             @foreach ($menus as $menu)
                 <li>

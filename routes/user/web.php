@@ -37,13 +37,13 @@ Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
 // Route::post('/subscribe', [SubscriberController::class, 'store'])
 //     ->name('subscribe.store');
- 
+
 Route::get('register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('register', [AuthController::class, 'register'])->name('register.submit');
 Route::get('/signup', function () {
     return view('backend.pages.auth.signup');
 })->name('signup');
- 
+
 
 // Home
 Route::get('/', [FrontendController::class, 'index'])->name('home');
@@ -107,9 +107,16 @@ Route::get('/leadership-management', [FrontendController::class, 'leadershipMana
 
 Route::get('/project-management', [FrontendController::class, 'projectManagement'])
     ->name('projectManagement');
-    Route::get('/first-aid', [FrontendController::class, 'firstAid'])
+Route::get('/first-aid', [FrontendController::class, 'firstAid'])
     ->name('firstAid');
 
+Route::get('/course-enrollment', [FrontendController::class, 'enrollmentSlot'])
+    ->name('enrollmentSlot');
+Route::get('/checkout', [FrontendController::class, 'enrollmentCourseCheckout'])
+    ->name('enrollmentCourseCheckout');
+
+        Route::get('/success-message', [FrontendController::class, 'checkoutSuccess'])
+    ->name('checkoutSuccess');
 
 // Fast Track
 Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track_qualifications'])
@@ -123,7 +130,7 @@ Route::prefix('student')
     ->group(function () {
         Route::get('/dashboard', [StudentController::class, 'dashboard'])
             ->name('dashboard');
-    
+
         Route::get('/profile', [StudentController::class, 'profileEdit'])
             ->name('profile');
         Route::get('/profile/edit', [StudentController::class, 'profileEdit'])
@@ -134,7 +141,6 @@ Route::prefix('student')
             ->name('rows.submit');
         Route::get('rows/{row}/download', [StudentController::class, 'download'])
             ->name('rows.download');
-    Route::get('/course/view/{slug}', [StudentController::class, 'view'])
-    ->name('rows.view');
-    
+        Route::get('/course/view/{slug}', [StudentController::class, 'view'])
+            ->name('rows.view');
     });

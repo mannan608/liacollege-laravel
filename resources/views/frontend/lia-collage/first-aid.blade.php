@@ -83,7 +83,7 @@
                                     <div class="text-muted text-2xl">$45<span class="font-semibold text-danger"> · Filling
                                             fast</span></div>
                                 </div>
-                                <a href="https://elearner.net.au/elearning/enrol.php?s=158&amp;ttid=1177229&amp;_gl=1*df9q2w*_gcl_au*MjAwMjA1MjI2MS4xNzgzODM2OTAx"
+                                <a href="{{route('enrollmentSlot')}}"
                                     target="_blank" rel="noopener noreferrer" class="btn d-inline-flex align-items-center"
                                     style="background:#198754; color:#fff; font-size:14px; font-weight:700; padding:12px 24px; border-radius:10px; border:none; text-decoration:none; transition:all .3s ease;"
                                     onmouseover="this.style.background='#146c43'"
@@ -131,37 +131,36 @@
                 </div>
             </section>
         </div>
-       <section class="container my-5">
-    <div class="bg-light border rounded-3 p-4 p-lg-5 w-75 mx-auto">
+        <section class="container my-5">
+            <div class="bg-light border rounded-3 p-4 p-lg-5 w-75 mx-auto">
 
-        <h6 class="text-uppercase fw-bold text-secondary mb-3">
-            Also Available
-        </h6>
+                <h6 class="text-uppercase fw-bold text-secondary mb-3">
+                    Also Available
+                </h6>
 
-        <div class="d-flex flex-wrap gap-2">
+                <div class="d-flex flex-wrap gap-2">
 
-            <a href="/courses/cpr"
-                class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
-                HLTAID009 CPR Only
-                <i class="bi bi-arrow-right ms-2"></i>
-            </a>
+                    <a href="/courses/cpr" class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
+                        HLTAID009 CPR Only
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
 
-            <a href="/courses/childcare-first-aid"
-                class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
-                HLTAID012 Childcare First Aid
-                <i class="bi bi-arrow-right ms-2"></i>
-            </a>
+                    <a href="/courses/childcare-first-aid"
+                        class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
+                        HLTAID012 Childcare First Aid
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
 
-            <a href="/online-first-aid-cpr-courses"
-                class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
-                Online First Aid (via Zoom)
-                <i class="bi bi-arrow-right ms-2"></i>
-            </a>
+                    <a href="/online-first-aid-cpr-courses"
+                        class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
+                        Online First Aid (via Zoom)
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
 
-        </div>
+                </div>
 
-    </div>
-</section>
+            </div>
+        </section>
         <div class="container">
             <section class="mx-auto w-75 px-4 pb-16 pt-14 sm:px-6">
                 <h4 class="text-2xl font-bold sm:text-3xl">First Aid &amp; CPR courses</h4>
