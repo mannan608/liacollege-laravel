@@ -253,7 +253,7 @@
         <section class="bg-white px-14 py-24">
             <div class="container">
                 <div class="px-14 py-24">
-                    <h6 class="text-2xl font-bold sm:text-3xl">What students say about CBD College First Aid &amp; CPR</h6>
+                    <h6 class="text-2xl font-bold sm:text-3xl">What students say about Lia College First Aid &amp; CPR</h6>
                     <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         <figure class="card border border-light bg-light h-100 p-4 rounded-3">
                             <div class="d-flex gap-1 text-warning mb-4" role="img" aria-label="5 out of 5 stars">
@@ -378,7 +378,7 @@
                                 Is this course nationally recognised?
                                 <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
                             </summary>
-                            <p class="mt-3 text-body">Yes. CBD College is a Registered Training Organisation (RTO 91399)
+                            <p class="mt-3 text-body">Yes. Lia College is a Registered Training Organisation (RTO 91399)
                                 and you receive a nationally recognised statement of attainment on completion.</p>
                         </details>
                         <details class="rounded-4 border bg-white p-4">

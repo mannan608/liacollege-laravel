@@ -652,4 +652,31 @@ public function assignment(string $role, Student $student)
 
     return view('backend.pages.students.assignments', compact('student'));
 }
+public function enrollmentCourses()
+{
+    return view('frontend.pages.student.courses.index');
+}
+public function studentCertificate(){
+    return view('frontend.pages.student.certificates.certificate');
+    
+}
+public function studentDocumnet(){
+    return view('frontend.pages.student.certificates.my-document');
+    
+}
+
+public function studentBilling(){
+    return view('frontend.pages.student.billing');
+    
+}
+
+public function CourseDetails(){
+    return view('frontend.pages.student.courses.show');
+}
+
+public function CourseModule(){
+    return view('frontend.pages.student.course-module.index');
+}
+
+
 }

@@ -115,7 +115,7 @@ Route::get('/course-enrollment', [FrontendController::class, 'enrollmentSlot'])
 Route::get('/checkout', [FrontendController::class, 'enrollmentCourseCheckout'])
     ->name('enrollmentCourseCheckout');
 
-        Route::get('/success-message', [FrontendController::class, 'checkoutSuccess'])
+Route::get('/success-message', [FrontendController::class, 'checkoutSuccess'])
     ->name('checkoutSuccess');
 
 // Fast Track
@@ -144,6 +144,19 @@ Route::prefix('student')
         Route::get('/course/view/{slug}', [StudentController::class, 'view'])
             ->name('rows.view');
 
-             Route::get('/enrollment-courses', [StudentController::class, 'enrollmentCourses'])
+
+        Route::get('/certificate', [StudentController::class, 'studentCertificate'])
+            ->name('certificate');
+        Route::get('/document', [StudentController::class, 'studentDocumnet'])
+            ->name('document');
+
+        Route::get('/billing', [StudentController::class, 'studentBilling'])
+            ->name('billing');
+
+        Route::get('/courses', [StudentController::class, 'enrollmentCourses'])
             ->name('enrollment-courses');
+        Route::get('/course-details', [StudentController::class, 'CourseDetails'])
+            ->name('Course-details');
+             Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
+            ->name('course-module');
     });

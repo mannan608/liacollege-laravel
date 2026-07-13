@@ -10,13 +10,13 @@ class MenuStudentPortal
             [
                 'icon' => 'dashboard',
                 'name' => 'Dashboard',
-                'path' => '/dashboard',
+                'path' => 'student/dashboard',
             ],
 
             [
                 'icon' => 'forms',
                 'name' => 'My Courses',
-                'path' => '/enrolled-courses',
+                'path' => 'student/courses',
             ],
 
             [
@@ -25,18 +25,18 @@ class MenuStudentPortal
                 'subItems' => [
                     [
                         'name' => 'Certificates',
-                        'route' => '',
+                        'path' => 'student/certificate',
                     ],
                     [
                         'name' => 'My Documents',
-                        'route' => '',
+                         'path' => 'student/document',
                     ],
                 ],
             ],
             [
                 'icon' => 'billing',
                 'name' => 'Billings',
-                'path' => '/billings',
+                'path' => '/student/billing',
             ],
             [
                 'name' => 'Messaging',
@@ -61,9 +61,9 @@ class MenuStudentPortal
                 ],
             ],
             [
-                'icon' => 'setting',
-                'name' => 'Settings',
-                'path' => '/enrolled-courses',
+                'icon' => 'user-profile',
+                'name' => 'Profile',
+                'path' => 'student/profile',
             ],
             [
                 'name' => 'Help',

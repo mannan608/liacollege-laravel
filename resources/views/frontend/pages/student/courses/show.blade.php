@@ -117,7 +117,7 @@
                             </svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="font-medium text-sm text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">CBD College Student Handbook.pdf</p>
+                            <p class="font-medium text-sm text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">Lia College Student Handbook.pdf</p>
                             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">PDF · 2.4 MB</p>
                         </div>
                         <svg class="w-4 h-4 text-gray-300 group-hover:text-gray-500 transition-colors flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -136,7 +136,7 @@
                             </svg>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="font-medium text-sm text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">Support for students at CBD College.pdf</p>
+                            <p class="font-medium text-sm text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">Support for students at Lia College.pdf</p>
                             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">PDF · 1.8 MB</p>
                         </div>
                         <svg class="w-4 h-4 text-gray-300 group-hover:text-gray-500 transition-colors flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -277,9 +277,9 @@
                                 </td>
                                 <td class="text-center font-medium text-emerald-600 dark:text-emerald-400">100%</td>
                                 <td class="pr-6 text-right">
-                                    <button class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-xs font-medium transition-colors">
+                                     <a href="{{route('student.course-module')}}" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-xs font-medium transition-colors">
                                         Open
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
@@ -292,9 +292,9 @@
                                 </td>
                                 <td class="text-center font-medium text-emerald-600 dark:text-emerald-400">95%</td>
                                 <td class="pr-6 text-right">
-                                    <button class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-xs font-medium transition-colors">
+                                    <a href="{{route('student.course-module')}}" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-xs font-medium transition-colors">
                                         Open
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
@@ -363,9 +363,9 @@
                                 </td>
                                 <td class="text-center font-medium text-emerald-600 dark:text-emerald-400">88%</td>
                                 <td class="pr-6 text-right">
-                                    <button class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-xs font-medium transition-colors">
+                                     <a href="{{route('student.course-module')}}" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-xs font-medium transition-colors">
                                         Open
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
