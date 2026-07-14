@@ -21,7 +21,7 @@
 @endphp
 
 @section('content')
-    <form action="{{ role_route('role.training-center.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ role_route('role.training-centers.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -43,13 +43,12 @@
                             placeholder="Enter Traning Center Name..." />
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-                            <x-form.input-text name="email" label="Email" type="email" value="{{ old('email') }}" />
-
-                            <x-form.input-text name="phone" label="Phone" value="{{ old('phone') }}" />
-                            <x-form.input-text name="postcode" label="Post Code" value="{{ old('postcode') }}" />
-                            <x-form.input-text name="latitude" label="Latitude" value="{{ old('latitude') }}" />
-                            <x-form.input-text name="longitude" label="Longitude" value="{{ old('longitude') }}" />
+                            <x-form.input-text name="email" label="Email" type="email" value="{{ old('email') }}" placeholder="Enter Email..." />
+                            <x-form.input-text name="phone" label="Phone" value="{{ old('phone') }}" placeholder="Enter Phone No..." />  
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <x-form.input-text name="latitude" label="Latitude" value="{{ old('latitude') }}" placeholder="Enter Latitude..." />
+                            <x-form.input-text name="longitude" label="Longitude" value="{{ old('longitude') }}" placeholder="Enter Longitude..." />
 
                         </div>
 
@@ -58,7 +57,8 @@
                             <input type="hidden" name="country" value="Australia">
 
                             <x-form.select-input name="city" label="City" value="{{ old('city') }}"
-                                :options="$cities" />
+                                :options="$cities" placeholder="Select City..." />
+                            <x-form.input-text name="postcode" label="Post Code" value="{{ old('postcode') }}" placeholder="Enter Post Code..." />
 
                         </div>
 

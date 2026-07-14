@@ -122,15 +122,15 @@ class RolePermissionSeeder extends Seeder
 
             // ..............................
 
-            // training_centers
+            // training-centers
 
-            'training_centers.list',
-            'training_centers.create',
-            'training_centers.view',
-            'training_centers.edit',
-            'training_centers.delete',
-            'training_centers.status.change',
-            'training_centers.manage',
+            'training-centers.list',
+            'training-centers.create',
+            'training-centers.view',
+            'training-centers.edit',
+            'training-centers.delete',
+            'training-centers.status.change',
+            'training-centers.manage',
         ];
 
         foreach ($permissions as $permission) {

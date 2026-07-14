@@ -102,7 +102,7 @@ class MenuHelper
                     [
                         'name' => 'Training Centers',
                         'route' => 'role.training-centers.index',
-                        'permission' => 'training_centers.list',
+                        'permission' => 'training-centers.list',
                     ],                    
                 ],
             ],

@@ -62,7 +62,7 @@ class TrainingCenterController extends Controller
     {
         $request->user()->can('training-centers.create') || abort(403);
 
-        return view('training-centers.create');
+        return view('backend.pages.training-centers.create');
     }
 
     /**
@@ -70,7 +70,6 @@ class TrainingCenterController extends Controller
      */
     public function store(StoreTrainingCenterRequest $request)
     {
-
         DB::beginTransaction();
 
         try {
@@ -83,7 +82,7 @@ class TrainingCenterController extends Controller
             DB::commit();
 
             return redirect()
-                ->route('training-centers.index')
+                ->route('role.training-centers.index')
                 ->with('success', 'Training center created successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
@@ -108,14 +107,14 @@ class TrainingCenterController extends Controller
                 ->firstOrFail();
 
             return view(
-                'training-centers.show',
+                'backend.pages.training-centers.show',
                 compact('trainingCenter')
             );
         } catch (Throwable $e) {
             report($e);
 
             return redirect()
-                ->route('training-centers.index')
+                ->route('role.training-centers.index')
                 ->with('error', 'Training center not found.');
         }
     }
@@ -132,14 +131,14 @@ class TrainingCenterController extends Controller
                 ->firstOrFail();
 
             return view(
-                'training-centers.edit',
+                'backend.pages.training-centers.edit',
                 compact('trainingCenter')
             );
         } catch (Throwable $e) {
             report($e);
 
             return redirect()
-                ->route('training-centers.index')
+                ->route('role.training-centers.index')
                 ->with('error', 'Training center not found.');
         }
     }
@@ -151,7 +150,7 @@ class TrainingCenterController extends Controller
         UpdateTrainingCenterRequest $request,
         string $uuid
     ) {
-        $request->user()->can('training-centers.update') || abort(403);
+        $request->user()->can('training-centers.edit') || abort(403);
 
         DB::beginTransaction();
 
@@ -172,7 +171,7 @@ class TrainingCenterController extends Controller
             DB::commit();
 
             return redirect()
-                ->route('training-centers.index')
+                ->route('role.training-centers.index')
                 ->with('success', 'Training center updated successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
@@ -203,7 +202,7 @@ class TrainingCenterController extends Controller
             DB::commit();
 
             return redirect()
-                ->route('training-centers.index')
+                ->route('role.training-centers.index')
                 ->with('success', 'Training center deleted successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
