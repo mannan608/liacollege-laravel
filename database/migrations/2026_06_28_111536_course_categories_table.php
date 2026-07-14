@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('course_categories', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('course_id')
-                ->constrained()
-                ->cascadeOnDelete();
-
             $table->string('name');
+            $table->string('slug')->unique();
 
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('name');
+            $table->index('slug');
         });
     }
 

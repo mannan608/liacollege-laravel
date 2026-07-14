@@ -7,21 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CourseCategory extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'course_id',
         'name',
+        'slug',
     ];
-
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
-
-public function sections()
-{
-    return $this->hasMany(
-        CourseSection::class,
-        'course_category_id'
-    );
-}
 }

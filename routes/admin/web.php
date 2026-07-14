@@ -88,4 +88,5 @@ Route::prefix('{role}')
 
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         Route::resource('training-centers', TrainingCenterController::class);
+        Route::resource('course-categories', TrainingCenterController::class);
     });

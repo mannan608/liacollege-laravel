@@ -131,6 +131,15 @@ class RolePermissionSeeder extends Seeder
             'training-centers.delete',
             'training-centers.status.change',
             'training-centers.manage',
+
+            // course-categories
+            'course-categories.index',
+            'course-categories.create',
+            'course-categories.show',
+            'course-categories.edit',
+            'course-categories.delete',
+            'course-categories.status.change',
+            'course-categories.manage',
         ];
 
         foreach ($permissions as $permission) {

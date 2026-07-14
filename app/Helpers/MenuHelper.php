@@ -87,12 +87,17 @@ class MenuHelper
             [
                 'name' => 'Courses Manage',
                 'icon' => 'tables',
-                'subItems' => [                    
+                'subItems' => [                                        
                     [
                         'name' => 'Courses',
                         'route' => 'role.courses.index',
                         'permission' => 'course.list',
-                    ],                    
+                    ],  
+                      [
+                        'name' => 'Categories',
+                        'route' => 'role.course-categories.index',
+                        'permission' => 'course-categories.list',
+                    ],                  
                 ],
             ],
             [
