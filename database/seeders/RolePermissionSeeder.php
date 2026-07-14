@@ -84,14 +84,7 @@ class RolePermissionSeeder extends Seeder
             'provider.edit',
             'provider.delete',
 
-            // Course permissions
-            'course.list',
-            'course.create',
-            'course.view',
-            'course.edit',
-            'course.delete',
-            'course.status.change',
-            'course.manage',
+          
 
             // Course Resource permissions
             'course.resource.create',
@@ -141,6 +134,15 @@ class RolePermissionSeeder extends Seeder
             'course-categories.delete',
             'course-categories.status.change',
             'course-categories.manage',
+
+              // Course permissions
+            'course.list',
+            'course.create',
+            'course.view',
+            'course.edit',
+            'course.delete',
+            'course.status.change',
+            'course.manage',
         ];
 
         foreach ($permissions as $permission) {

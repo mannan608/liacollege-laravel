@@ -13,32 +13,30 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
+
+            $table->foreignId('course_category_id')
+                ->constrained('course_categories')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
 
             $table->string('name');
             $table->string('code')->nullable();
             $table->string('cricos')->nullable();
             $table->string('slug')->unique();
-
-            $table->decimal('price', 10, 2)->default(0);
-            $table->unsignedTinyInteger('discount_percentage')->default(0);
-
-            $table->string('thumbnail')->nullable();
-            $table->longText('overview')->nullable();
-            $table->longText('entry_requirements')->nullable();
             $table->longText('description')->nullable();
-            // PDF, DOC, ZIP, etc
-             $table->enum('status', ['active', 'inactive'])
+            $table->decimal('price', 10, 2)->nullable();
+             $table->string('duration')->nullable();
+             $table->boolean('includes_cpr')->default(false);
+            $table->string('thumbnail')->nullable();           
+            $table->enum('status', ['active', 'inactive'])
                 ->default('active');
-            $table->foreignId('category_id')->nullable();
-            $table->foreignId('created_by')->nullable();
+              $table->foreignId('created_by')->nullable();
             $table->foreignId('updated_by')->nullable();
-           
-
             $table->timestamps();
             $table->softDeletes();
-
-            $table->index('category_id');
-            $table->index('slug');
+            $table->index('course_category_id');
+            $table->index('status');
         });
     }
 

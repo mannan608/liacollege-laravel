@@ -10,55 +10,38 @@ class Course extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'uuid',
+        'course_category_id',
         'name',
         'code',
         'cricos',
-       'slug',
-        'price',
-        'discount_percentage',
-        'thumbnail',
-        'overview',
-        'entry_requirements',
+        'slug',
         'description',
+        'price',
+        'duration',
+        'includes_cpr',
+        'thumbnail',
         'status',
-        'category_id',
-        'created_by',
+          'created_by',
         'updated_by',
     ];
 
     protected $casts = [
+        'includes_cpr' => 'boolean',
         'price' => 'decimal:2',
-        'discount_percentage' => 'integer',
     ];
 
-    public function creator()
+    public function category()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(
+            CourseCategory::class,
+            'course_category_id'
+        );
     }
 
-    public function updater()
+    public function includes()
     {
-        return $this->belongsTo(User::class, 'updated_by');
-    }
-
-  public function students()
-{
-    return $this->belongsToMany(
-        Student::class,
-        'enroll_course',
-        'course_id',
-        'student_id'
-    );
-}
-    
-    public function getFinalPriceAttribute()
-    {
-        return $this->price -
-            (($this->price * $this->discount_percentage) / 100);
-    }
- 
-     public function categories()
-    {
-        return $this->hasMany(CourseCategory::class);
+        return $this->hasMany(CourseInclude::class)
+            ->orderBy('sort_order');
     }
 }

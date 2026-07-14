@@ -33,71 +33,145 @@ class CourseRepository implements CourseRepositoryInterface
         return Course::findOrFail($id);
     }
 
-    public function create(
-        array $data,
-        Request $request
-    ): Course {
+   public function create(
+    array $data,
+    Request $request
+): Course {
 
-        return DB::transaction(function () use ($data, $request) {
+    return DB::transaction(function () use ($data, $request) {
 
-            $data['slug'] = $this->generateUniqueSlug(
-                $data['name']
+        $data['slug'] = $this->generateUniqueSlug(
+            $data['name']
+        );
+
+        $data['created_by'] = auth()->id();
+        $data['status'] = $data['status'] ?? 'active';
+
+        if ($request->hasFile('thumbnail')) {
+
+            $data['thumbnail'] = $this->uploadFile(
+                $request->file('thumbnail'),
+                'courses/thumbnails'
             );
+        }
 
-            $data['created_by'] = auth()->id();
-            $data['status'] = $data['status'] ?? 'active';
+        $includes = $data['includes'] ?? [];
 
-            if ($request->hasFile('thumbnail')) {
-                $data['thumbnail'] = $this->uploadFile(
-                    $request->file('thumbnail'),
-                    'courses/thumbnails'
-                );
+        unset($data['includes']);
+
+        $course = Course::create($data);
+
+        if (!empty($includes)) {
+
+            foreach ($includes as $index => $include) {
+
+                $course->includes()->create([
+                    'title' => $include,
+                    'sort_order' => $index
+                ]);
             }
+        }
 
-            
-
-            return Course::create($data);
-        });
-    }
+        return $course->load([
+            'category',
+            'includes'
+        ]);
+    });
+}
 
     
 
-    public function update(Course $course, array $data, Request $request): Course
-    {
+   public function update(
+    Course $course,
+    array $data,
+    Request $request
+): Course {
 
-        return DB::transaction(function () use (
-            $course,
-            $data,
-            $request
+    return DB::transaction(function () use (
+        $course,
+        $data,
+        $request
+    ) {
+
+        $updateData = [];
+
+        foreach ($data as $key => $value) {
+
+            // Skip null values
+            if ($value === null) {
+                continue;
+            }
+
+            // Only changed values
+            if ($course->{$key} != $value) {
+                $updateData[$key] = $value;
+            }
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Name Changed -> Regenerate Slug
+        |--------------------------------------------------------------------------
+        */
+        if (
+            isset($updateData['name']) &&
+            $course->name !== $updateData['name']
         ) {
 
-            if (
-                isset($data['name']) &&
-                $course->name !== $data['name']
-            ) {
-                $data['slug'] = $this->generateUniqueSlug(
-                    $data['name'],
-                    $course->id
-                );
-            }
+            $updateData['slug'] = $this->generateUniqueSlug(
+                $updateData['name'],
+                $course->id
+            );
+        }
 
-            $data['updated_by'] = auth()->id();
+        /*
+        |--------------------------------------------------------------------------
+        | Thumbnail Upload
+        |--------------------------------------------------------------------------
+        */
+        if ($request->hasFile('thumbnail')) {
 
-            if ($request->hasFile('thumbnail')) {
+            if (!empty($course->thumbnail)) {
                 $this->deleteFile($course->thumbnail);
-                $data['thumbnail'] = $this->uploadFile(
-                    $request->file('thumbnail'),
-                    'courses/thumbnails'
-                );
             }
 
-           
+            $updateData['thumbnail'] = $this->uploadFile(
+                $request->file('thumbnail'),
+                'courses/thumbnails'
+            );
+        }
 
-            $course->update($data);
+        if (!empty($updateData)) {
 
-            return $course->fresh();
-        });
-    }
+            $updateData['updated_by'] = auth()->id();
+
+            $course->update($updateData);
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Includes Update
+        |--------------------------------------------------------------------------
+        */
+        if (array_key_exists('includes', $data)) {
+
+            $course->includes()->delete();
+
+            foreach ($data['includes'] as $index => $include) {
+
+                $course->includes()->create([
+                    'title' => $include,
+                    'sort_order' => $index
+                ]);
+            }
+        }
+
+        return $course->fresh([
+            'category',
+            'includes'
+        ]);
+    });
+}
 
     public function delete(Course $course): bool
     {
