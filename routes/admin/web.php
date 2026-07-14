@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CampusController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
@@ -88,5 +89,5 @@ Route::prefix('{role}')
 
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         Route::resource('training-centers', TrainingCenterController::class);
-        Route::resource('course-categories', TrainingCenterController::class);
+        Route::resource('course-categories', CourseCategoryController::class);
     });

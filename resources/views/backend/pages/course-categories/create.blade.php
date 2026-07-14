@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <form action="{{ role_route('role.training-centers.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ role_route('role.course-categories.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">

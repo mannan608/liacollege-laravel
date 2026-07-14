@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <form action="{{ role_route('role.course-categories.update', ['courseCategory' => $courseCategory->id]) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ role_route('role.course-categories.update', ['course_category' => $category->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

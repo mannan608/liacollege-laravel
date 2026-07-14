@@ -8,8 +8,8 @@
     $tableRowData = $collection
         ->map(function ($category) {
             return [
-                'id' => $trainingCenter->id,
-                'name' => $trainingCenter->name,
+                'id' => $category->id,
+                'name' => $category->name,
             ];
         })
         ->values();
@@ -91,7 +91,7 @@
                 <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
                     <template x-if="tableRowData.length === 0">
                         <tr>
-                            <td colspan="7" class="px-5 py-10 text-center text-sm text-gray-500 dark:text-gray-400">
+                        <td colspan="3" class="px-5 py-10 text-center text-sm text-gray-500 dark:text-gray-400">
                                 No category records found.
                             </td>
                         </tr>
@@ -104,10 +104,6 @@
                             </td>
                             <td class="px-5 py-4 text-sm text-gray-700" x-text="row.name">
                             </td>
-
-                            <td class="px-5 py-4 text-sm text-gray-500" x-text="row.email || '-'">
-                            </td>
-                            
                             <td class="px-5 py-4">
                                 <div class="flex justify-end gap-2">
 

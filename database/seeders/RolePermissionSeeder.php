@@ -133,6 +133,7 @@ class RolePermissionSeeder extends Seeder
             'training-centers.manage',
 
             // course-categories
+            'course-categories.list',
             'course-categories.index',
             'course-categories.create',
             'course-categories.show',

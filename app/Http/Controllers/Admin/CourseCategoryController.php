@@ -3,30 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Throwable;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Models\TrainingCenter;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\StoreTrainingCenterRequest;
-use App\Http\Requests\UpdateTrainingCenterRequest;
 use App\Models\CourseCategory;
-use App\Services\ActivityLogService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Throwable;
 
 class CourseCategoryController extends Controller
 {
-
     /**
-     * List Training Centers
+     * List course categories.
      */
     public function index(Request $request)
     {
         $request->user()->can('course-categories.list') || abort(403);
+
         try {
             $query = CourseCategory::query();
 
             if ($request->filled('search')) {
-                $query->where('name', 'like', '%' . $request->search . '%');
+                $query->where('name', 'like', '%' . trim($request->search) . '%');
             }
 
             $categories = $query
@@ -38,15 +34,12 @@ class CourseCategoryController extends Controller
         } catch (Throwable $e) {
             report($e);
 
-            return back()->with(
-                'error',
-                'Unable to load categories.'
-            );
+            return back()->with('error', 'Unable to load categories.');
         }
     }
 
     /**
-     * Create Form
+     * Create form.
      */
     public function create(Request $request)
     {
@@ -56,29 +49,26 @@ class CourseCategoryController extends Controller
     }
 
     /**
-     * Store
+     * Store a category.
      */
     public function store(Request $request)
     {
         $request->user()->can('course-categories.create') || abort(403);
-         $validated = $request->validate([
-        'name' => [
-            'required',
-            'string',
-            'max:255',
-            'unique:course_categories,name',
-        ],
-    ]);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255', 'unique:course_categories,name'],
+        ]);
 
         DB::beginTransaction();
 
         try {
             CourseCategory::create([
-            'name' => $validated['name'],
-            'slug' => Str::slug($validated['name']),
-        ]);
+                'name' => $validated['name'],
+                'slug' => Str::slug($validated['name']),
+            ]);
 
             DB::commit();
+
             return redirect(role_route('role.course-categories.index'))
                 ->with('success', 'Course category created successfully.');
         } catch (Throwable $e) {
@@ -88,76 +78,66 @@ class CourseCategoryController extends Controller
 
             return back()
                 ->withInput()
-                ->with('error', 'Failed to create training center.');
+                ->with('error', 'Failed to create course category.');
         }
     }
 
     /**
-     * Show Details
+     * Show details.
      */
-    public function show(Request $request, string $role)
+    public function show(Request $request, string $role, CourseCategory $courseCategory)
     {
         $request->user()->can('course-categories.view') || abort(403);
 
-        try {
-
-            return view(
-                'backend.pages.course-categories.show',
-                compact('categories')
-            );
-        } catch (Throwable $e) {
-            report($e);
-
-            return redirect()
-                ->route('role.course-categories.index')
-                ->with('error', 'Training center not found.');
-        }
+        return view('backend.pages.course-categories.edit', [
+            'category' => $courseCategory,
+        ]);
     }
 
     /**
-     * Edit Form
+     * Edit form.
      */
     public function edit(Request $request, string $role, CourseCategory $courseCategory)
     {
         $request->user()->can('course-categories.edit') || abort(403);
-        return view(
-            'backend.pages.course-categories.edit',
-            ['category' => $courseCategory]
-        );
+
+        return view('backend.pages.course-categories.edit', [
+            'category' => $courseCategory,
+        ]);
     }
 
     /**
-     * Update
+     * Update a category.
      */
-    public function update(
-        UpdateTrainingCenterRequest $request,
-        string $role,
-        CourseCategory $courseCategory
-    ) {
+    public function update(Request $request, string $role, CourseCategory $courseCategory)
+    {
         $request->user()->can('course-categories.edit') || abort(403);
+
+        $validated = $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:course_categories,name,' . $courseCategory->id,
+            ],
+        ]);
 
         DB::beginTransaction();
 
         try {
-
-            $data = collect($request->validated())
-                ->filter(fn($value) => $value !== '')
-                ->toArray();
-
-            $courseCategory->fill($data);
+            $courseCategory->fill([
+                'name' => $validated['name'],
+                'slug' => Str::slug($validated['name']),
+            ]);
 
             if ($courseCategory->isDirty()) {
-                
                 $courseCategory->save();
-             
             }
-
-
 
             DB::commit();
 
             return redirect(role_route('role.course-categories.index'))
-                ->with('success', 'Training center updated successfully.');
+                ->with('success', 'Course category updated successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
 
@@ -165,12 +145,12 @@ class CourseCategoryController extends Controller
 
             return back()
                 ->withInput()
-                ->with('error', 'Failed to update training center.');
+                ->with('error', 'Failed to update course category.');
         }
     }
 
     /**
-     * Delete
+     * Delete a category.
      */
     public function destroy(Request $request, string $role, CourseCategory $courseCategory)
     {
@@ -179,21 +159,20 @@ class CourseCategoryController extends Controller
         DB::beginTransaction();
 
         try {
-
             $courseCategory->delete();
 
             DB::commit();
 
             return redirect()
                 ->route('role.course-categories.index')
-                ->with('success', 'Training center deleted successfully.');
+                ->with('success', 'Course category deleted successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
 
             report($e);
 
             return back()
-                ->with('error', 'Failed to delete training center.');
+                ->with('error', 'Failed to delete course category.');
         }
     }
 }
