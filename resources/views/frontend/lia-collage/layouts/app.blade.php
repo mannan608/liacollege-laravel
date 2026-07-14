@@ -26,9 +26,10 @@
     <!-- nice select js -->
     <link rel="stylesheet" href="{{ asset('frontend/css/plugins/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/plugins/jquery-ui.css') }}">
+     <link rel="stylesheet" href="{{ asset('frontend/css/course.css') }}">
     <!-- custom style css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style8.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/course.css') }}">
+   
     <link rel="stylesheet" href="{{ asset('frontend/css/custom4.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/student-portal.css') }}">
     <script src="

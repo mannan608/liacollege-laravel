@@ -1,309 +1,399 @@
-@extends('frontend.pages.student.layout.app')
+@extends('frontend.pages.student.layouts.app')
 
 @section('content')
+<div class="max-w-full px-0 py-8">
 
-    <div>
-        <div class="mb-10">
-            <div class="bg-white mb-6">
-                <div class="px-6 py-8">
-                    <h1 class="text-2xl font-semibold text-gray-900 tracking-tight">Enrolled Courses</h1>
-                    <p class="mt-1 text-sm text-gray-500">Browse materials and manage your assignments</p>
+    <!-- Greeting -->
+    <div class="mb-8">
+        <h1 class="text-[28px] font-medium leading-tight text-gray-900 dark:text-white">
+            Hello Sudikshya 👋
+        </h1>
+        <p class="text-base text-gray-500 dark:text-gray-400 mt-2">
+            Welcome back to your personal training portal.
+        </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-8 border-b border-gray-200 dark:border-gray-800 mb-6">
+        <button id="tab-schedule"
+                class="tab-btn flex items-center gap-2 pb-3 text-sm font-medium text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors relative">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Schedule
+        </button>
+        <button id="tab-messages"
+                class="tab-btn active flex items-center gap-2 pb-3 text-sm font-medium text-gray-900 dark:text-white transition-colors relative">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Messages
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+        </button>
+    </div>
+
+    <!-- Messages Pane -->
+    <div id="pane-messages" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Unread Messages -->
+        <div class="lg:col-span-7">
+            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
+                    <h5 class="font-medium text-[15px] text-gray-900 dark:text-white">Unread messages</h5>
+                    <a href="#" class="text-[13px] font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-1">
+                        View all
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="divide-y divide-gray-200 dark:divide-gray-800">
+                    <!-- Message 1 -->
+                    <div class="px-6 py-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-gray-900 dark:bg-white flex-shrink-0 flex items-center justify-center text-white dark:text-gray-900 text-sm font-medium">
+                            A
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline">
+                                <p class="font-medium text-sm text-gray-900 dark:text-white">Administrator</p>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">11 Jul 2026 · 09:26am</span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
+                                First Aid Certificate Notification
+                            </p>
+                        </div>
+                        <a href="#" class="mt-1 px-4 py-2 text-[13px] font-medium bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg transition-colors">
+                            Read
+                        </a>
+                    </div>
+                    <!-- Message 2 -->
+                    <div class="px-6 py-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-gray-900 dark:bg-white flex-shrink-0 flex items-center justify-center text-white dark:text-gray-900 text-sm font-medium">
+                            J
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline">
+                                <p class="font-medium text-sm text-gray-900 dark:text-white">John Smith</p>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">10 Jul 2026 · 02:15pm</span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
+                                Reminder: Your practical assessment is scheduled for next week. Please review the pre-reading materials before attending.
+                            </p>
+                        </div>
+                        <a href="#" class="mt-1 px-4 py-2 text-[13px] font-medium bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg transition-colors">
+                            Read
+                        </a>
+                    </div>
+                    <!-- Message 3 -->
+                    <div class="px-6 py-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex gap-4 items-start">
+                        <div class="w-9 h-9 rounded-lg bg-gray-900 dark:bg-white flex-shrink-0 flex items-center justify-center text-white dark:text-gray-900 text-sm font-medium">
+                            S
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-baseline">
+                                <p class="font-medium text-sm text-gray-900 dark:text-white">Support Team</p>
+                                <span class="text-xs text-gray-400 whitespace-nowrap">08 Jul 2026 · 11:00am</span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
+                                Your account password was successfully updated. If you did not make this change, please contact us immediately.
+                            </p>
+                        </div>
+                        <a href="#" class="mt-1 px-4 py-2 text-[13px] font-medium bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg transition-colors">
+                            Read
+                        </a>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div id="category-tabs" class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                @foreach ($courses as $course)
-                    @foreach ($course->categories as $category)
-                        <button onclick="scrollToCategory({{ $category->id }})"
-                            class="category-tab shrink-0 group px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-brand-500 transition-all duration-300 focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-0 min-w-65"
-                            data-category-id="{{ $category->id }}">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 bg-linear-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center text-white shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 11H5m14-4H5m14 8H5m14 4H5" />
-                                    </svg>
-                                </div>
+        <!-- Sidebar / Enrolments -->
+        <div class="lg:col-span-5">
+            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6">
+                <h5 class="font-medium text-[15px] text-gray-900 dark:text-white">My enrolments</h5>
+                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1 mb-5">
+                    Click "Open course" to continue learning
+                </p>
 
-                                <div class="text-left min-w-0">
-                                    <h3
-                                        class="font-semibold text-slate-800 group-hover:text-brand-600 transition-colors line-clamp-1 text-lg md:text-xl lg:text-2xl">
-                                        {{ $category->name }}
-                                    </h3>
-                                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-brand-600 transition-colors">
-                                        {{ $course->name }}
-                                    </p>
+                <!-- Enrolment Card 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-gray-700 mb-4">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-emerald-100/60 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-md">ACTIVE</span>
+                        <h4 class="mt-3 text-[17px] font-medium text-gray-900 dark:text-white leading-tight">
+                            HLTAID011 Provide First Aid
+                        </h4>
+                    </div>
+                    <div class="mt-5 space-y-0">
+                        <div class="flex justify-between text-[13px] py-2.5 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-gray-400">Commences</span>
+                            <span class="font-medium text-gray-700 dark:text-gray-300">Fri, 12 Jun 2026</span>
+                        </div>
+                        <div class="flex justify-between text-[13px] py-2.5">
+                            <span class="text-gray-400">Progress</span>
+                            <div class="flex items-center gap-2">
+                                <div class="h-1.5 w-20 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full w-full bg-emerald-500 rounded-full"></div>
                                 </div>
+                                <span class="text-emerald-600 dark:text-emerald-400 font-medium text-xs">100%</span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex flex-col md:flex-row gap-6">
+                        <a href="{{route('student.Course-details')}}" class="w-full md:w-1/2 py-3.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Open course
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </a>
+                        <button class="w-full md:w-1/2 py-3 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 font-medium text-sm rounded-lg transition-colors">
+                            Leave feedback
                         </button>
-                    @endforeach
-                @endforeach
+                    </div>
+                </div>
+
+                <!-- Enrolment Card 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-amber-100/60 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded-md">PENDING</span>
+                        <h4 class="mt-3 text-[17px] font-medium text-gray-900 dark:text-white leading-tight">
+                            HLTAID009 CPR & AED
+                        </h4>
+                    </div>
+                    <div class="mt-5 space-y-0">
+                        <div class="flex justify-between text-[13px] py-2.5 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-gray-400">Commences</span>
+                            <span class="font-medium text-gray-700 dark:text-gray-300">Mon, 28 Jul 2026</span>
+                        </div>
+                        <div class="flex justify-between text-[13px] py-2.5">
+                            <span class="text-gray-400">Progress</span>
+                            <div class="flex items-center gap-2">
+                                <div class="h-1.5 w-20 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full w-[35%] bg-amber-500 rounded-full"></div>
+                                </div>
+                                <span class="text-amber-600 dark:text-amber-400 font-medium text-xs">35%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex flex-col md:flex-row gap-6">
+                        <a href="{{route('student.Course-details')}}" class="w-full md:w-1/2 py-3.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Open course
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </a>
+                        <button class="w-full md:w-1/2 py-3 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 font-medium text-sm rounded-lg transition-colors">
+                            Leave feedback
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Pane -->
+    <div id="pane-schedule" class="grid grid-cols-1 lg:grid-cols-12 gap-6 hidden">
+
+        <div class="lg:col-span-7">
+            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
+                    <h5 class="font-medium text-[15px] text-gray-900 dark:text-white">Upcoming sessions</h5>
+                    <a href="#" class="text-[13px] font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-1">
+                        View all
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Session 1 -->
+                <div class="px-6 py-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex gap-4 items-start border-b border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 flex-shrink-0 flex flex-col items-center justify-center text-center">
+                        <span class="text-[10px] font-medium text-gray-500 uppercase">Jul</span>
+                        <span class="text-lg font-semibold text-gray-900 dark:text-white leading-none">15</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-medium text-sm text-gray-900 dark:text-white">Practical Assessment — HLTAID011</p>
+                        <p class="text-xs text-gray-500 mt-1">09:00am — 01:00pm · Room 302, Building B</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="inline-block px-2 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-blue-100/60 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-md">CONFIRMED</span>
+                        </div>
+                    </div>
+                    <button class="mt-1 px-3 py-1.5 text-[12px] font-medium border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors">
+                        Details
+                    </button>
+                </div>
+
+                <!-- Session 2 -->
+                <div class="px-6 py-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex gap-4 items-start border-b border-gray-200 dark:border-gray-800">
+                    <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 flex-shrink-0 flex flex-col items-center justify-center text-center">
+                        <span class="text-[10px] font-medium text-gray-500 uppercase">Jul</span>
+                        <span class="text-lg font-semibold text-gray-900 dark:text-white leading-none">22</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-medium text-sm text-gray-900 dark:text-white">CPR Refresher — HLTAID009</p>
+                        <p class="text-xs text-gray-500 mt-1">02:00pm — 04:00pm · Online via Zoom</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="inline-block px-2 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-amber-100/60 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded-md">PENDING</span>
+                        </div>
+                    </div>
+                    <button class="mt-1 px-3 py-1.5 text-[12px] font-medium border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors">
+                        Details
+                    </button>
+                </div>
+
+                <!-- Session 3 -->
+                <div class="px-6 py-5 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 flex-shrink-0 flex flex-col items-center justify-center text-center">
+                        <span class="text-[10px] font-medium text-gray-500 uppercase">Aug</span>
+                        <span class="text-lg font-semibold text-gray-900 dark:text-white leading-none">05</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="font-medium text-sm text-gray-900 dark:text-white">Final Theory Exam — HLTAID011</p>
+                        <p class="text-xs text-gray-500 mt-1">10:00am — 12:00pm · Exam Hall A</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="inline-block px-2 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md">SCHEDULED</span>
+                        </div>
+                    </div>
+                    <button class="mt-1 px-3 py-1.5 text-[12px] font-medium border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg transition-colors">
+                        Details
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="mt-6 flex flex-col gap-6 md:gap-8 lg:gap-10">
-            @forelse ($courses as $course)
-                @foreach ($course->categories as $category)
-                    <div id="category-{{ $category->id }}"
-                        class="category-section scroll-mt-24 bg-white rounded-xl border border-slate-100 overflow-hidden">
-                        <div class="bg-linear-to-r from-brand-500 to-brand-500 px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
-                            <div class="flex items-center justify-between gap-4">
-                                <div class="min-w-0">
-                                    <h2 class="truncate text-lg font-bold text-white md:text-xl lg:text-2xl">
-                                        {{ $category->name }}
-                                    </h2>
-                                    <p class="mt-1 text-sm text-white/80 sm:text-base">
-                                        {{ $course->name }}
-                                    </p>
+        <div class="lg:col-span-5">
+            <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-6">
+                <h5 class="font-medium text-[15px] text-gray-900 dark:text-white">My enrolments</h5>
+                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1 mb-5">
+                    Click "Open course" to continue learning
+                </p>
+
+                <!-- Enrolment Card 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-gray-700 mb-4">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-emerald-100/60 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-md">ACTIVE</span>
+                        <h4 class="mt-3 text-[17px] font-medium text-gray-900 dark:text-white leading-tight">
+                            HLTAID011 Provide First Aid
+                        </h4>
+                    </div>
+                    <div class="mt-5 space-y-0">
+                        <div class="flex justify-between text-[13px] py-2.5 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-gray-400">Commences</span>
+                            <span class="font-medium text-gray-700 dark:text-gray-300">Fri, 12 Jun 2026</span>
+                        </div>
+                        <div class="flex justify-between text-[13px] py-2.5">
+                            <span class="text-gray-400">Progress</span>
+                            <div class="flex items-center gap-2">
+                                <div class="h-1.5 w-20 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full w-full bg-emerald-500 rounded-full"></div>
                                 </div>
+                                <span class="text-emerald-600 dark:text-emerald-400 font-medium text-xs">100%</span>
                             </div>
                         </div>
+                    </div>
+                    <div class="mt-6 flex flex-col md:flex-row gap-6">
+                        <a href="{{route('student.Course-details')}}" class="w-full md:w-1/2 py-3.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Open course
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </a>
+                        <button class="w-full md:w-1/2 py-3 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 font-medium text-sm rounded-lg transition-colors">
+                            Leave feedback
+                        </button>
+                    </div>
+                </div>
 
-                        <div class="p-3 sm:p-5 lg:p-6">
-                            @if ($category->sections->isNotEmpty())
-                                <div class="space-y-4 sm:space-y-6 lg:space-y-8">
-                                    @foreach ($category->sections as $section)
-                                        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/60">
-                                            <div class="border-b border-slate-200 bg-white px-4 py-3 sm:px-5 sm:py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div
-                                                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M19 11H5m14-4H5m14 8H5m14 4H5" />
-                                                        </svg>
-                                                    </div>
-
-                                                    <div class="min-w-0">
-                                                        <h3
-                                                            class="truncate text-lg font-semibold text-slate-800 sm:text-xl lg:text-2xl">
-                                                            {{ $section->section_name }}
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="divide-y divide-slate-200 bg-white">
-                                                @foreach ($section->rows as $row)
-                                                    @php
-                                                        $rowPermission = $rowPermissions[$row->id] ?? null;
-                                                        $canDownload =
-                                                            !empty($row->data['file']) &&
-                                                            $row->is_downloadable &&
-                                                            data_get($rowPermission, 'download', $row->is_downloadable);
-                                                        $canSubmit =
-                                                            !empty($row->data['file']) &&
-                                                            $row->is_document_submission &&
-                                                            data_get(
-                                                                $rowPermission,
-                                                                'submission',
-                                                                $row->is_document_submission,
-                                                            );
-                                                        $submission = $submissions[$row->id] ?? null;
-
-                                                    @endphp
-
-                                                    <div @class([
-                                                        'group px-4 transition-all duration-200 sm:px-5',
-                                                        'py-4 sm:py-5' => !empty($row->data['file']),
-                                                        'py-2 sm:py-2' => empty($row->data['file']),
-                                                    ])>
-                                                        <div
-                                                            class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                                                            <div @class([
-                                                                'flex flex-col lg:flex-row lg:items-center lg:justify-between ml-0 md:ml-7 lg:ml-10',
-                                                                'gap-4' => !empty($row->data['file']),
-                                                                'gap-0' => empty($row->data['file']),
-                                                            ])>
-                                                                @if (!empty($row->data['file']))
-                                                                    <div
-                                                                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 group-hover:bg-brand-50 group-hover:text-brand-600 transition-colors">
-                                                                        <svg class="h-6 w-6" fill="none"
-                                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                                            <path stroke-linecap="round"
-                                                                                stroke-linejoin="round" stroke-width="2"
-                                                                                d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-                                                                        </svg>
-                                                                    </div>
-                                                                @else
-                                                                    <div
-                                                                        class="flex h-10 w-10 shrink-0 items-center justify-center text-gray-500 group-hover:text-brand-600">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            class="h-6 w-6" fill="none"
-                                                                            viewBox="0 0 24 24" stroke="currentColor"
-                                                                            stroke-width="2">
-                                                                            <path stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                                                                        </svg>
-                                                                    </div>
-                                                                @endif
-
-
-
-                                                                @if (!empty($row->data['link']))
-                                                                    <div class="flex flex-col gap-1">
-                                                                        <a href="{{ route('student.rows.view', ['slug' => \Illuminate\Support\Str::slug($row->data['text'] ?? '')]) }}"
-                                                                            target="_blank" rel="noopener noreferrer"
-                                                                            class="line-clamp-1 text-sm md:text-base lg:text-lg text-gray-500 underline hover:text-brand-600 leading-relaxed font-medium">
-                                                                            {{ $row->data['text'] ?? '' }}
-                                                                        </a>
-                                                                    </div>
-                                                                @else
-                                                                    <span
-                                                                        class="text-sm md:text-base lg:text-lg text-gray-500 leading-relaxed font-medium line-clamp-1">
-                                                                        {{ $row->data['text'] ?? '' }}
-                                                                    </span>
-                                                                @endif
-                                                            </div>
-
-                                                            @if (!empty($row->data['file']))
-                                                                <div class="flex items-baseline gap-4 shrink-0">
-                                                                    
-                                                                        <a href="{{ route('student.rows.download', $row) }}"
-                                                                            class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
-                                                                            <svg class="w-3.5 h-3.5" fill="none"
-                                                                                stroke="currentColor" viewBox="0 0 24 24">
-                                                                                <path stroke-linecap="round"
-                                                                                    stroke-linejoin="round" stroke-width="2"
-                                                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                                                            </svg>
-                                                                            Download
-                                                                        </a>
-
-                                                                        <form
-                                                                            action="{{ route('student.rows.submit', $row) }}"
-                                                                            method="POST" enctype="multipart/form-data"
-                                                                            class="inline-block">
-                                                                            @csrf
-
-                                                                            <input type="file" name="file"
-                                                                                id="file-{{ $row->id }}"
-                                                                                class="hidden"
-                                                                                accept=".pdf,.doc,.docx,.zip,.rar,.png,.jpg,.jpeg"
-                                                                                onchange="this.form.submit()">
-
-                                                                            @if ($submission)
-                                                                                <div
-                                                                                    class="flex flex-col items-end justify-end gap-0.5">
-                                                                                    <button type="button"
-                                                                                        onclick="document.getElementById('file-{{ $row->id }}').click()"
-                                                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
-                                                                                        title="Update Assignment">
-                                                                                        <svg class="w-3.5 h-3.5"
-                                                                                            fill="none"
-                                                                                            stroke="currentColor"
-                                                                                            viewBox="0 0 24 24">
-                                                                                            <path stroke-linecap="round"
-                                                                                                stroke-linejoin="round"
-                                                                                                stroke-width="2"
-                                                                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                                                                                        </svg>
-                                                                                        Update Assignment
-                                                                                    </button>
-
-                                                                                    <div class="flex-1 min-w-0 mt-1">
-                                                                                        <a href="{{ asset($submission->file) }}"
-                                                                                            target="_blank"
-                                                                                            class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700">
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                class="h-3.5 w-3.5"
-                                                                                                fill="none"
-                                                                                                viewBox="0 0 24 24"
-                                                                                                stroke="currentColor"
-                                                                                                stroke-width="2">
-                                                                                                <path
-                                                                                                    stroke-linecap="round"
-                                                                                                    stroke-linejoin="round"
-                                                                                                    d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-                                                                                            </svg>
-                                                                                            View Current File
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            @else
-                                                                                <button type="button"
-                                                                                    onclick="document.getElementById('file-{{ $row->id }}').click()"
-                                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 border border-brand-500 px-3.5 py-1.5 text-sm font-medium text-brand-500 hover:bg-brand-50 hover:border-brand-500 transition-all focus:outline-none focus:ring-0 focus:ring-brand-500 focus:ring-offset-1"
-                                                                                    title="Submit Assignment">
-                                                                                    <svg class="w-3.5 h-3.5"
-                                                                                        fill="none"
-                                                                                        stroke="currentColor"
-                                                                                        viewBox="0 0 24 24">
-                                                                                        <path stroke-linecap="round"
-                                                                                            stroke-linejoin="round"
-                                                                                            stroke-width="2"
-                                                                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                                                                                    </svg>
-                                                                                    Submit Assignment
-                                                                                </button>
-                                                                            @endif
-                                                                        </form>
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @else
-                                    <div class="rounded-lg px-6 py-8 text-center">
-                                        <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
-                                        </svg>
-
-                                        <h3 class="mt-3 text-lg font-semibold text-gray-800">
-                                            No Permission
-                                        </h3>
-
-                                        <p class="mt-2 text-sm text-gray-600">
-                                            You don't have permission to access this category yet.
-                                        </p>
-                                    </div>
-                            @endif
+                <!-- Enrolment Card 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-5 border border-gray-200 dark:border-gray-700">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 text-[10px] font-mono font-medium tracking-wider bg-amber-100/60 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 rounded-md">PENDING</span>
+                        <h4 class="mt-3 text-[17px] font-medium text-gray-900 dark:text-white leading-tight">
+                            HLTAID009 CPR & AED
+                        </h4>
+                    </div>
+                    <div class="mt-5 space-y-0">
+                        <div class="flex justify-between text-[13px] py-2.5 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-gray-400">Commences</span>
+                            <span class="font-medium text-gray-700 dark:text-gray-300">Mon, 28 Jul 2026</span>
+                        </div>
+                        <div class="flex justify-between text-[13px] py-2.5">
+                            <span class="text-gray-400">Progress</span>
+                            <div class="flex items-center gap-2">
+                                <div class="h-1.5 w-20 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full w-[35%] bg-amber-500 rounded-full"></div>
+                                </div>
+                                <span class="text-amber-600 dark:text-amber-400 font-medium text-xs">35%</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="mt-6 flex flex-col md:flex-row gap-6">
+                        <a href="{{route('student.Course-details')}}" class="w-full md:w-1/2 py-3.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Open course
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </a>
+                        <button class="w-full md:w-1/2 py-3 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 font-medium text-sm rounded-lg transition-colors">
+                            Leave feedback
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        @endforeach
-    @empty
-        <div class="rounded-lg px-6 py-8 text-center">
-            <svg class="mx-auto h-10 w-10 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
-            </svg>
-
-            <h3 class="mt-3 text-lg font-semibold text-gray-800">
-                No Permission
-            </h3>
-
-            <p class="mt-2 text-sm text-gray-600">
-                You don't have permission to access this course yet.
-            </p>
-        </div>
-        @endforelse
     </div>
-    </div>
-@endsection
 
-<script>
-    function scrollToCategory(categoryId) {
-        const element = document.getElementById(`category-${categoryId}`);
-
-        if (element) {
-            const headerOffset = 100;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+    <!-- Tab styles -->
+    <style>
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: currentColor;
+            border-radius: 1px;
         }
-    }
-</script>
+    </style>
+
+    <!-- Tab script -->
+    <script>
+        (function() {
+            var ts = document.getElementById('tab-schedule');
+            var tm = document.getElementById('tab-messages');
+            var ps = document.getElementById('pane-schedule');
+            var pm = document.getElementById('pane-messages');
+
+            ts.addEventListener('click', function() {
+                ts.classList.add('active');
+                ts.classList.remove('text-gray-400');
+                ts.classList.add('text-gray-900','dark:text-white');
+                tm.classList.remove('active','text-gray-900','dark:text-white');
+                tm.classList.add('text-gray-400');
+                ps.classList.remove('hidden');
+                pm.classList.add('hidden');
+            });
+
+            tm.addEventListener('click', function() {
+                tm.classList.add('active');
+                tm.classList.remove('text-gray-400');
+                tm.classList.add('text-gray-900','dark:text-white');
+                ts.classList.remove('active','text-gray-900','dark:text-white');
+                ts.classList.add('text-gray-400');
+                pm.classList.remove('hidden');
+                ps.classList.add('hidden');
+            });
+        })();
+    </script>
+
+</div>
+@endsection

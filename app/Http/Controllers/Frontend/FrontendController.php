@@ -87,6 +87,18 @@ class FrontendController extends Controller
     {
         return view('frontend.lia-collage.first-aid-cpr');
     }
+     public function enrollmentSlot()
+    {
+        return view('frontend.pages.student.enrollment.enroll');
+    }
+     public function enrollmentCourseCheckout()
+    {
+        return view('frontend.pages.student.enrollment.checkout');
+    }
+      public function checkoutSuccess()
+    {
+        return view('frontend.pages.student.enrollment.checkout-message');
+    }
     public function leadershipManagement()
     {
         return view('frontend.lia-collage.leadership-management');

@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <title>{{ $title }}</title> --}}
-    <x-frontend.seo-meta />
-    <link rel="stylesheet" href="{{ asset('css/front-end-custom.css') }}">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
+    <title>{{ $title ?? 'Dashboard' }} | Lia Collage </title>
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Theme Store -->
     <script>
@@ -49,7 +43,7 @@
 
             Alpine.store('sidebar', {
                 // Initialize based on screen size
-                isExpanded: window.innerWidth >= 1280, // true for desktop, false for mobile
+                isExpanded: window.innerWidth >= 1280,
                 isMobileOpen: false,
                 isHovered: false,
 
@@ -93,28 +87,50 @@
             }
         })();
     </script>
+
+    @stack('styles')
 </head>
 
-<body class="min-h-screen flex flex-col">
+<body
+    x-data="{ 'loaded': true}"
+    x-init="$store.sidebar.isExpanded = window.innerWidth >= 1280;
+    const checkMobile = () => {
+        if (window.innerWidth < 1280) {
+            $store.sidebar.setMobileOpen(false);
+            $store.sidebar.isExpanded = false;
+        } else {
+            $store.sidebar.isMobileOpen = false;
+            $store.sidebar.isExpanded = true;
+        }
+    };
+    window.addEventListener('resize', checkMobile);">
 
-    @include('frontend.pages.student.layout.navbar')
+    {{-- preloader --}}
+    <x-preloader/>    
+    {{-- preloader end --}}
 
-    <main class="grow pt-22 md:pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
-        
-            <div class="w-full mx-auto">
-                {{-- <aside
-                    class="hidden md:flex h-1/2 w-64  bg-white border-r  dark:bg-gray-900 dark:border-gray-800 text-gray-900 transition-all duration-300 ease-in-out border-gray-200">
-                    @include('frontend.pages.student.layout.sidebar')
-                </aside> --}}
+    <div class="min-h-screen xl:flex">
+        @include('frontend.pages.student.layouts.backdrop')
+        @include('frontend.pages.student.layouts.sidebar')
 
+        <div class="flex-1 transition-all duration-300 ease-in-out"
+            :class="{
+                'xl:ml-[290px]': $store.sidebar.isExpanded || $store.sidebar.isHovered,
+                'xl:ml-[90px]': !$store.sidebar.isExpanded && !$store.sidebar.isHovered,
+                'ml-0': $store.sidebar.isMobileOpen
+            }">
+            <!-- app header start -->
+            @include('frontend.pages.student.layouts.app-header')
+            <!-- app header end -->
+            <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
                 @yield('content')
             </div>
-    </main>
+        </div>
 
-    @include('frontend.pages.student.layout.footer')
+    </div>
 
-    @stack('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </body>
+
+@stack('scripts')
 
 </html>
