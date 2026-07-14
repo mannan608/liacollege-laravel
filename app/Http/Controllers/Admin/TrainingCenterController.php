@@ -10,6 +10,7 @@ use App\Models\TrainingCenter;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreTrainingCenterRequest;
 use App\Http\Requests\UpdateTrainingCenterRequest;
+use App\Services\ActivityLogService;
 
 class TrainingCenterController extends Controller
 {
@@ -163,8 +164,20 @@ class TrainingCenterController extends Controller
             $trainingCenter->fill($data);
 
             if ($trainingCenter->isDirty()) {
+                 $oldValues = $trainingCenter->getOriginal();
                 $trainingCenter->save();
+                ActivityLogService::log(
+                    action: 'updated',
+                    module: 'TrainingCenter',
+                    description: 'Training Center updated successfully.',
+                    recordId: $trainingCenter->id,
+                    recordType: 'TrainingCenter',
+                    oldValues: $oldValues,
+                    newValues: $trainingCenter->fresh()->toArray()
+                );
             }
+
+
 
             DB::commit();
 
