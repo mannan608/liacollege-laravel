@@ -99,7 +99,7 @@
                                 <template x-for="(row, index) in includeRows" :key="row.id">
                                     <div class="flex items-center gap-3 animate-in">
                                         <div class="flex-1">
-                                            <input type="text" :name="`includes[${index}][title]`" x-model="row.tiltle"
+                                            <input type="text" :name="`includes[${index}][title]`" x-model="row.title"
                                                 placeholder="Enter CPR detail"
                                                 class="input-field w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white">
                                         </div>
@@ -130,6 +130,15 @@
             </div>
         </div>
     </form>
+    @if ($errors->any())
+    <div class="bg-red-100 p-4 rounded">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @endsection
 
 <script>
@@ -147,11 +156,11 @@
             },
 
             addCprRow() {
-                this.includeRows.push({
-                    id: this.cprCounter++,
-                    value: ''
-                });
-            },
+    this.includeRows.push({
+        id: this.cprCounter++,
+        title: ''
+    });
+},
 
             removeCprRow(id) {
                 this.includeRows = this.includeRows.filter(row => row.id !== id);

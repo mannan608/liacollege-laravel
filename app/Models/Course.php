@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Course extends Model
 {
@@ -22,7 +23,7 @@ class Course extends Model
         'includes_cpr',
         'thumbnail',
         'status',
-          'created_by',
+        'created_by',
         'updated_by',
     ];
 
@@ -30,6 +31,15 @@ class Course extends Model
         'includes_cpr' => 'boolean',
         'price' => 'decimal:2',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (self $course) {
+            if (empty($course->uuid)) {
+                $course->uuid = (string) Str::uuid();
+            }
+        });
+    }
 
     public function category()
     {

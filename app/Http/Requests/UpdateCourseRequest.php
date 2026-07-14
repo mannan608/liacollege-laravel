@@ -9,7 +9,7 @@ class UpdateCourseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->user()?->can('course.edit') === true;
     }
 
     public function rules(): array
@@ -20,27 +20,27 @@ class UpdateCourseRequest extends FormRequest
 
             'course_category_id' => [
                 'sometimes',
-                'exists:course_categories,id'
+                'exists:course_categories,id',
             ],
 
             'name' => [
                 'sometimes',
                 'string',
-                'max:255'
+                'max:255',
             ],
 
             'code' => [
                 'sometimes',
                 'nullable',
                 'string',
-                'max:100'
+                'max:100',
             ],
 
             'cricos' => [
                 'sometimes',
                 'nullable',
                 'string',
-                'max:100'
+                'max:100',
             ],
 
             'slug' => [
@@ -48,32 +48,32 @@ class UpdateCourseRequest extends FormRequest
                 'string',
                 'max:255',
                 Rule::unique('courses', 'slug')
-                    ->ignore($courseId)
+                    ->ignore($courseId),
             ],
 
             'description' => [
                 'sometimes',
                 'nullable',
-                'string'
+                'string',
             ],
 
             'price' => [
                 'sometimes',
                 'nullable',
                 'numeric',
-                'min:0'
+                'min:0',
             ],
 
             'duration' => [
                 'sometimes',
                 'nullable',
                 'string',
-                'max:255'
+                'max:255',
             ],
 
             'includes_cpr' => [
                 'sometimes',
-                'boolean'
+                'boolean',
             ],
 
             'thumbnail' => [
@@ -81,24 +81,23 @@ class UpdateCourseRequest extends FormRequest
                 'nullable',
                 'image',
                 'mimes:jpg,jpeg,png,webp',
-                'max:2048'
+                'max:2048',
             ],
 
             'status' => [
                 'sometimes',
-                'in:active,inactive'
+                'in:active,inactive',
             ],
-
 
             'includes' => [
                 'sometimes',
-                'array'
+                'array',
             ],
 
             'includes.*' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
         ];
     }
