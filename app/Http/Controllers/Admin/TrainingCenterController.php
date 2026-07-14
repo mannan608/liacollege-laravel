@@ -80,9 +80,7 @@ class TrainingCenterController extends Controller
             ]);
 
             DB::commit();
-
-            return redirect()
-                ->route('role.training-centers.index')
+            return redirect(role_route('role.training-centers.index'))
                 ->with('success', 'Training center created successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
@@ -122,25 +120,14 @@ class TrainingCenterController extends Controller
     /**
      * Edit Form
      */
-    public function edit(string $uuid, Request $request)
+    public function edit(TrainingCenter $training_center, Request $request)
     {
         $request->user()->can('training-centers.edit') || abort(403);
 
-        try {
-            $trainingCenter = TrainingCenter::where('uuid', $uuid)
-                ->firstOrFail();
-
-            return view(
-                'backend.pages.training-centers.edit',
-                compact('trainingCenter')
-            );
-        } catch (Throwable $e) {
-            report($e);
-
-            return redirect()
-                ->route('role.training-centers.index')
-                ->with('error', 'Training center not found.');
-        }
+        return view(
+            'backend.pages.training-centers.edit',
+            ['trainingCenter' => $training_center]
+        );
     }
 
     /**
@@ -159,7 +146,7 @@ class TrainingCenterController extends Controller
                 ->firstOrFail();
 
             $data = collect($request->validated())
-                ->filter(fn ($value) => $value !== '')
+                ->filter(fn($value) => $value !== '')
                 ->toArray();
 
             $trainingCenter->fill($data);
@@ -170,8 +157,7 @@ class TrainingCenterController extends Controller
 
             DB::commit();
 
-            return redirect()
-                ->route('role.training-centers.index')
+            return redirect(role_route('role.training-centers.index'))
                 ->with('success', 'Training center updated successfully.');
         } catch (Throwable $e) {
             DB::rollBack();

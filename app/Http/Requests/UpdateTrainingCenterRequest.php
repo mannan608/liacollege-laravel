@@ -13,7 +13,7 @@ class UpdateTrainingCenterRequest extends FormRequest
     public function authorize(): bool
     {
         // return false;
-        return $this->user()?->can('training-center.edit') === true;
+        return $this->user()?->can('training-centers.edit') === true;
     }
 
     /**

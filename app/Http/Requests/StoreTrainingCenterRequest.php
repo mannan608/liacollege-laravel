@@ -13,7 +13,7 @@ class StoreTrainingCenterRequest extends FormRequest
     public function authorize(): bool
     {
         // return true;
-        return $this->user()?->can('training-center.create') === true;
+        return $this->user()?->can('training-centers.create') === true;
     }
 
     /**
