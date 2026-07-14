@@ -13,6 +13,14 @@ use App\Http\Requests\UpdateTrainingCenterRequest;
 
 class TrainingCenterController extends Controller
 {
+    private function findTrainingCenter(string $identifier): TrainingCenter
+    {
+        return TrainingCenter::query()
+            ->where('uuid', $identifier)
+            ->orWhere('id', $identifier)
+            ->firstOrFail();
+    }
+
     /**
      * List Training Centers
      */
@@ -70,6 +78,8 @@ class TrainingCenterController extends Controller
      */
     public function store(StoreTrainingCenterRequest $request)
     {
+        $request->user()->can('training-centers.create') || abort(403);
+
         DB::beginTransaction();
 
         try {
@@ -96,13 +106,12 @@ class TrainingCenterController extends Controller
     /**
      * Show Details
      */
-    public function show(string $uuid, Request $request)
+    public function show(Request $request, string $role, string $training_center)
     {
         $request->user()->can('training-centers.view') || abort(403);
 
         try {
-            $trainingCenter = TrainingCenter::where('uuid', $uuid)
-                ->firstOrFail();
+            $trainingCenter = $this->findTrainingCenter($training_center);
 
             return view(
                 'backend.pages.training-centers.show',
@@ -120,13 +129,15 @@ class TrainingCenterController extends Controller
     /**
      * Edit Form
      */
-    public function edit(TrainingCenter $training_center, Request $request)
+    public function edit(Request $request, string $role, string $training_center)
     {
         $request->user()->can('training-centers.edit') || abort(403);
 
+        $trainingCenter = $this->findTrainingCenter($training_center);
+
         return view(
             'backend.pages.training-centers.edit',
-            ['trainingCenter' => $training_center]
+            ['trainingCenter' => $trainingCenter]
         );
     }
 
@@ -135,15 +146,15 @@ class TrainingCenterController extends Controller
      */
     public function update(
         UpdateTrainingCenterRequest $request,
-        string $uuid
+        string $role,
+        string $training_center
     ) {
         $request->user()->can('training-centers.edit') || abort(403);
 
         DB::beginTransaction();
 
         try {
-            $trainingCenter = TrainingCenter::where('uuid', $uuid)
-                ->firstOrFail();
+            $trainingCenter = $this->findTrainingCenter($training_center);
 
             $data = collect($request->validated())
                 ->filter(fn($value) => $value !== '')
@@ -173,15 +184,14 @@ class TrainingCenterController extends Controller
     /**
      * Delete
      */
-    public function destroy(string $uuid, Request $request)
+    public function destroy(Request $request, string $role, string $training_center)
     {
         $request->user()->can('training-centers.delete') || abort(403);
 
         DB::beginTransaction();
 
         try {
-            $trainingCenter = TrainingCenter::where('uuid', $uuid)
-                ->firstOrFail();
+            $trainingCenter = $this->findTrainingCenter($training_center);
 
             $trainingCenter->delete();
 

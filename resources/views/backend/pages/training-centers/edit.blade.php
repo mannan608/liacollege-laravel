@@ -21,7 +21,7 @@
 @endphp
 
 @section('content')
-    <form action="{{ role_route('role.training-centers.update', $trainingCenter->uuid) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ role_route('role.training-centers.update', ['training_center' => $trainingCenter->uuid]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
