@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\TrainingCenterController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -43,7 +44,7 @@ Route::prefix('{role}')
         //     ]);
         // })->middleware('permission:dashboard.view')->name('dashboard');
 
-           Route::get('dashboard', [DashboardController::class, 'index'])
+        Route::get('dashboard', [DashboardController::class, 'index'])
             ->middleware('permission:dashboard.view')
             ->name('dashboard');
 
@@ -64,17 +65,17 @@ Route::prefix('{role}')
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
         // Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
-        Route::get('courses/{course}/resource', [CourseController::class, 'courseResources'])->name('resource'); 
+        Route::get('courses/{course}/resource', [CourseController::class, 'courseResources'])->name('resource');
         Route::get('courses/{course}/resource/create', [CourseController::class, 'createResource'])->name('resource.create');
         Route::post('courses/{course}/resource', [CourseController::class, 'storeResource'])->name('resources.store');
         Route::get(
-    'courses/{course}/resource/{category}/edit',
-    [CourseController::class, 'editResource']
-)->name('resource.edit');
-Route::delete(
-    'courses/{course}/resource/{category}',
-    [CourseController::class, 'destroyResource']
-)->name('resource.destroy');
+            'courses/{course}/resource/{category}/edit',
+            [CourseController::class, 'editResource']
+        )->name('resource.edit');
+        Route::delete(
+            'courses/{course}/resource/{category}',
+            [CourseController::class, 'destroyResource']
+        )->name('resource.destroy');
         Route::resource('courses', CourseController::class);
 
         Route::resource('contacts', ContactController::class);
@@ -86,5 +87,5 @@ Route::delete(
         Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
 
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
-        
+        Route::resource('training-centers', TrainingCenterController::class);
     });
