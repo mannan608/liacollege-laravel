@@ -117,7 +117,7 @@
                     <template x-for="row in tableRowData" :key="row.uuid">
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="px-5 py-4">
-                                <span class="px-2 py-1 bg-gray-100 rounded text-xs font-mono" x-text="row.uuid">
+                                <span class="px-2 py-1 bg-gray-100 rounded text-xs font-mono" x-text="row.id">
                                 </span>
                             </td>
                             <td class="px-5 py-4 text-sm text-gray-700" x-text="row.name">
