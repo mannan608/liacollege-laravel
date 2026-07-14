@@ -91,13 +91,13 @@ class UpdateCourseRequest extends FormRequest
 
             'includes' => [
                 'sometimes',
-                'array',
+                'array'
             ],
 
-            'includes.*' => [
-                'required',
+            'includes.*.title' => [
+                'nullable',
                 'string',
-                'max:255',
+                'max:255'
             ],
         ];
     }

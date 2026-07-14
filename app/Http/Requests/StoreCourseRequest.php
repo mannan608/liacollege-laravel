@@ -75,7 +75,7 @@ class StoreCourseRequest extends FormRequest
             ],
 
             'status' => [
-                'required',
+                'nullable',
                 'in:active,inactive'
             ],
 
@@ -84,8 +84,8 @@ class StoreCourseRequest extends FormRequest
                 'array'
             ],
 
-            'includes.*' => [
-                'required',
+            'includes.*.title' => [
+                'nullable',
                 'string',
                 'max:255'
             ],

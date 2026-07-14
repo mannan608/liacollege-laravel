@@ -1,5 +1,19 @@
 @extends('backend.layouts.app')
 
+@php
+$oldIncludes = old('includes', []);
+if (!empty($oldIncludes)) {
+    $includeRows = collect($oldIncludes)->map(function($item, $index) {
+        return [
+            'id' => $index + 1,
+            'title' => $item['title'] ?? ''
+        ];
+    })->toArray();
+} else {
+    $includeRows = [['id' => 1, 'title' => '']];
+}
+@endphp
+
 @section('content')
     <form x-data="courseForm()" action="{{ role_route('role.courses.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -104,7 +118,7 @@
                                                 class="input-field w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white">
                                         </div>
 
-                                        <button type="button" @click="removeCprRow(row.id)" x-show="includeRows.length > 1"
+                                        <button type="button" @click="removeIncludeRow(row.id)" x-show="includeRows.length > 1"
                                             class="btn-danger inline-flex items-center justify-center rounded-lg border border-red-200 bg-red-50 p-2.5 text-red-600 hover:bg-red-100">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -115,7 +129,7 @@
                                     </div>
                                 </template>
 
-                                <button type="button" @click="addCprRow()"
+                                <button type="button" @click="addIncludeRow()"
                                     class="btn-primary inline-flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-brand-200 bg-brand-50/50 py-3 text-sm font-semibold text-brand-600 transition-all hover:border-brand-400 hover:bg-brand-100">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -130,39 +144,31 @@
             </div>
         </div>
     </form>
-    @if ($errors->any())
-    <div class="bg-red-100 p-4 rounded">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+ 
 @endsection
 
 <script>
     function courseForm() {
         return {
             includesCpr: {{ old('includes_cpr') ? 'true' : 'false' }},
-            includeRows: @json(old('includes', [['id' => 1, 'title' => '']])),
-            cprCounter: 2,
+            includeRows: @json($includeRows),
+            nextId: {{ count($includeRows) + 1 }},
 
             init() {
                 // If there are old values, set counter accordingly
                 if (this.includeRows.length > 0) {
-                    this.cprCounter = Math.max(...this.includeRows.map(r => r.id || 0)) + 1;
+                    this.nextId = Math.max(...this.includeRows.map(r => r.id || 0)) + 1;
                 }
             },
 
-            addCprRow() {
-    this.includeRows.push({
-        id: this.cprCounter++,
-        title: ''
-    });
-},
+            addIncludeRow() {
+                this.includeRows.push({
+                    id: this.nextId++,
+                    title: ''
+                });
+            },
 
-            removeCprRow(id) {
+            removeIncludeRow(id) {
                 this.includeRows = this.includeRows.filter(row => row.id !== id);
             }
         };
