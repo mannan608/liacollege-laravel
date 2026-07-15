@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\LMS\CourseModuleController;
 use App\Http\Controllers\Admin\LMS\CourseResourcesController;
+use App\Http\Controllers\Admin\LMS\CourseSlotController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -110,4 +111,8 @@ Route::prefix('{role}')
         Route::get('courses/{course}/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
 
         Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
+
+        Route::resource('course-slots',CourseSlotController::class
+        );
+
     });

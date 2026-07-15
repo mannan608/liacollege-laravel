@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\LMS\CourseSlot;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -34,4 +35,8 @@ class TrainingCenter extends Model
     {
         return 'uuid';
     }
+    public function slots()
+{
+    return $this->hasMany(CourseSlot::class);
+}
 }

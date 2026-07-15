@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\LMS\SlotTeacher;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -97,4 +99,12 @@ class User extends Authenticatable
             'id',
         );
     }
+
+    public function teachingSlots()
+{
+    return $this->hasMany(
+        SlotTeacher::class,
+        'teacher_id'
+    );
+}
 }

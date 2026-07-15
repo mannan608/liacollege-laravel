@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\LMS\CourseSlot;
 use App\Models\LMS\Module;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -62,4 +63,8 @@ class Course extends Model
         return $this->hasMany(Module::class)
             ->orderBy('id');
     }
+    public function slots()
+{
+    return $this->hasMany(CourseSlot::class);
+}
 }
