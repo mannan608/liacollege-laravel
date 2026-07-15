@@ -125,34 +125,36 @@ class CourseSlotController extends Controller
         }
     }
 
-    public function show(Request $request, CourseSlot $courseSlot)
+    public function show(Request $request, string $role, CourseSlot $course_slot)
     {
         $request->user()->can('course-slot.view') || abort(403);
 
-        $courseSlot->load([
+        $course_slot->load([
             'course',
             'trainingCenter',
             'users.user',
         ]);
 
-        return view('backend.pages.LMS.course-slot.show', compact('courseSlot'));
+        return view('backend.pages.LMS.course-slot.show', [
+            'courseSlot' => $course_slot,
+        ]);
     }
 
-    public function edit(Request $request, CourseSlot $courseSlot)
+    public function edit(Request $request, string $role, CourseSlot $course_slot)
     {
         $request->user()->can('course-slot.edit') || abort(403);
 
-        $courseSlot->load('users.user');
+        $course_slot->load('users.user');
 
         return view('backend.pages.LMS.course-slot.edit', [
-            'slot' => $courseSlot,
+            'slot' => $course_slot,
             'courses' => Course::orderBy('name')->get(),
             'trainingCenters' => TrainingCenter::orderBy('name')->get(),
             'teachers' => User::orderBy('name')->get(),
         ]);
     }
 
-    public function update(UpdateCourseSlotRequest $request, CourseSlot $courseSlot)
+    public function update(UpdateCourseSlotRequest $request, string $role, CourseSlot $course_slot)
     {
         $request->user()->can('course-slot.edit') || abort(403);
 
@@ -166,22 +168,22 @@ class CourseSlotController extends Controller
 
             if (
                 array_key_exists('capacity', $data)
-                && (int) $data['capacity'] !== (int) $courseSlot->capacity
+                && (int) $data['capacity'] !== (int) $course_slot->capacity
             ) {
-                $bookedSeats = $courseSlot->capacity - $courseSlot->available_seats;
+                $bookedSeats = $course_slot->capacity - $course_slot->available_seats;
                 $data['available_seats'] = max(0, (int) $data['capacity'] - $bookedSeats);
             }
 
-            $courseSlot->fill(collect($data)->filter(
+            $course_slot->fill(collect($data)->filter(
                 fn ($value) => $value !== ''
             )->toArray());
 
-            if ($courseSlot->isDirty()) {
-                $courseSlot->save();
+            if ($course_slot->isDirty()) {
+                $course_slot->save();
             }
 
             if (is_array($teacherIds)) {
-                $currentTeacherIds = $courseSlot->users()
+                $currentTeacherIds = $course_slot->users()
                     ->pluck('user_id')
                     ->map(fn ($value) => (int) $value)
                     ->sort()
@@ -195,11 +197,11 @@ class CourseSlotController extends Controller
                     ->all();
 
                 if ($currentTeacherIds !== $normalizedTeacherIds) {
-                    $courseSlot->users()->delete();
+                    $course_slot->users()->delete();
 
                     foreach ($normalizedTeacherIds as $teacherId) {
                         SlotTeacher::create([
-                            'course_slot_id' => $courseSlot->id,
+                            'course_slot_id' => $course_slot->id,
                             'user_id' => $teacherId,
                         ]);
                     }
@@ -222,14 +224,14 @@ class CourseSlotController extends Controller
         }
     }
 
-    public function destroy(Request $request, CourseSlot $courseSlot)
+    public function destroy(Request $request, string $role, CourseSlot $course_slot)
     {
         $request->user()->can('course-slot.delete') || abort(403);
 
         DB::beginTransaction();
 
         try {
-            $courseSlot->delete();
+            $course_slot->delete();
 
             DB::commit();
 
