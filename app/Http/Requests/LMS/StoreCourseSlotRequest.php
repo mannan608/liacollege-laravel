@@ -12,7 +12,8 @@ class StoreCourseSlotRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // return false;
+        return $this->user()?->can('course-slot.create') === true;
     }
 
     /**

@@ -143,6 +143,15 @@ class RolePermissionSeeder extends Seeder
             'course.delete',
             'course.status.change',
             'course.manage',
+
+            // create course schedule/slot
+            'course-slot.manage',
+            'course-slot.list',
+            'course-slot.create',
+            'course-slot.edit',
+            'course-slot.delete',
+            'course-slot.status.change',
+
         ];
 
         foreach ($permissions as $permission) {

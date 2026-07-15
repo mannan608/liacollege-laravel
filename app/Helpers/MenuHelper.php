@@ -94,6 +94,11 @@ class MenuHelper
                         'permission' => 'course.list',
                     ],  
                       [
+                        'name' => 'Course Slot',
+                        'route' => 'role.course-slot.index',
+                        'permission' => 'course-slot.list',
+                    ],  
+                    [
                         'name' => 'Categories',
                         'route' => 'role.course-categories.index',
                         'permission' => 'course-categories.list',

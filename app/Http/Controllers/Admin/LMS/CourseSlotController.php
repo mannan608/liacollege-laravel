@@ -24,7 +24,7 @@ class CourseSlotController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('admin.course-slots.index', compact('slots'));
+        return view('backend.pages.LMS.course-slot.index', compact('slots'));
     }
 
     /**
@@ -32,7 +32,7 @@ class CourseSlotController extends Controller
      */
     public function create()
     {
-        return view('admin.course-slots.create', [
+        return view('backend.pages.LMS.course-slot.create', [
 
             'courses' => Course::orderBy('title')->get(),
 
@@ -70,7 +70,7 @@ class CourseSlotController extends Controller
         });
 
         return redirect()
-            ->route('admin.course-slots.index')
+            ->route('backend.pages.LMS.course-slot.index')
             ->with('success', 'Course Slot Created Successfully.');
     }
 
@@ -85,7 +85,7 @@ class CourseSlotController extends Controller
             'users.user'
         ]);
 
-        return view('admin.course-slots.show', compact('courseSlot'));
+        return view('backend.pages.LMS.course-slot.show', compact('courseSlot'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CourseSlotController extends Controller
      */
     public function edit(CourseSlot $courseSlot)
     {
-        return view('admin.course-slots.edit', [
+        return view('backend.pages.LMS.course-slot.edit', [
 
             'slot' => $courseSlot->load('users'),
 
@@ -170,7 +170,7 @@ class CourseSlotController extends Controller
         });
 
         return redirect()
-            ->route('admin.course-slots.index')
+            ->route('backend.pages.LMS.course-slot.index')
             ->with('success', 'Course Slot Updated Successfully.');
     }
 
@@ -182,7 +182,7 @@ class CourseSlotController extends Controller
         $courseSlot->delete();
 
         return redirect()
-            ->route('admin.course-slots.index')
+            ->route('backend.pages.LMS.course-slot.index')
             ->with('success', 'Course Slot Deleted Successfully.');
     }
 }
