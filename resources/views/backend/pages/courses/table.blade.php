@@ -87,6 +87,7 @@
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Cricos</th>                       
+                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Course Resources</th>                       
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider text-right">
                             Action</th>
@@ -122,7 +123,12 @@
                             <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
                                 <span x-text="row.cricos"></span>
                             </td>
-
+                            <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" >
+                                    <a :href="courseBaseUrl + '/' + row.id + '/modules'"
+                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
+                                    Add Module
+                                </a>
+                            </td>
                             <td class="px-5 py-4 text-sm">
                                 <span
                                     :class="row.status === 'active' ? 'bg-green-100 text-green-700' :

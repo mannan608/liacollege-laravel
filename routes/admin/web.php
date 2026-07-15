@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\LMS\CourseResourcesController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -90,4 +91,10 @@ Route::prefix('{role}')
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         Route::resource('training-centers', TrainingCenterController::class);
         Route::resource('course-categories', CourseCategoryController::class);
+        // Route::resource('course-modules', CourseCategoryController::class);
+
+        // Add new module and lession
+        Route::get('courses/{course}/modules', [CourseResourcesController::class, 'index'])->name('modules.index');
+        Route::get('courses/{course}/module/create', [CourseResourcesController::class, 'create'])->name('module.create');
+        Route::post('courses/{course}/module', [CourseResourcesController::class, 'storeResource'])->name('module.store');
     });

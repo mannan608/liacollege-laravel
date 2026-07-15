@@ -7,12 +7,21 @@
                 return [
                     'id' => $module->id,
                     'title' => $module->title,
-                    
+                    'rows' => $module->rows->map(function ($row) {
+                        return [
+                            'id' => $row->id,
+                            'title' => $row->title ?? '',
+                            'content' => $row->content ?? '',
+                            'duration' => $row->duration ?? '',
+                            'lesson_types' => $row->lesson_types ?? [],
+                        ];
+                    })->values()->toArray(),
                 ];
             })
-            ->values();
+            ->values()
+            ->toArray();
     @endphp
-    <form  action="" method="POST" enctype="multipart/form-data">
+    <form x-data="courseBuilder({{ json_encode($initialSections) }})" @submit.prevent="submitForm" action="{{ route('your.route.here') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -44,7 +53,7 @@
 
                         <div>
                             <!-- Empty State -->
-                            <template x-if="module.length === 0">
+                            <template x-if="modules.length === 0">
                                 <div
                                     class="animate-in rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50/60 p-16 text-center">
                                     <div
@@ -70,7 +79,7 @@
                             </template>
 
                             <!-- ALL SECTIONS -->
-                            <template x-for="(module, moduleIndex) in module" :key="module.id">
+                            <template x-for="(module, moduleIndex) in modules" :key="module.id">
 
                                 <div
                                     class="section-card animate-in mb-6 overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm">
@@ -117,7 +126,7 @@
                                                 x-model="module.title"
                                                 placeholder="e.g., Week 1 Materials, Assignments, References"
                                                 class="input-field w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white">
-                                            <div x-show="errors[`moduless.${moduleIndex}.title`]" x-transition
+                                            <div x-show="errors[`modules.${moduleIndex}.title`}" x-transition
                                                 class="flex items-center gap-1.5 text-xs font-medium text-red-500"
                                                 x-text="errors[`modules.${moduleIndex}.title`]">
                                             </div>
@@ -139,7 +148,7 @@
                                                 </label>
                                             </div>
 
-                                            <template x-for="(row, rowIndex) in modules.rows" :key="row.id">
+                                            <template x-for="(row, rowIndex) in module.rows" :key="row.id">
 
                                                 <div
                                                     class="row-card animate-in rounded-xl border border-gray-200 bg-gray-50/50 p-5">
@@ -167,11 +176,27 @@
 
 
                                                     <div class="flex flex-col gap-4">
-                                                      <x-form.input-text name="title" label="Lesson Name" :value="row.title" placeholder="Enter lesson name..." />
-                                                      <x-form.textarea-input name="content" label="Lesson Name" :value="row.title" placeholder="Enter lesson content..." />
-                                                      <x-form.input-text name="duration" label="Lesson Duration" :value="row.duration" placeholder="Enter lesson duration..." />
-                                                      <x-form.multi-select name="lesson_types" label="Lesson types" :value="row.lesson_types" placeholder="Select lesson types..." />
-
+                                                      <div class="flex flex-col gap-2">
+                                                        <label class="text-sm font-medium text-gray-600">Lesson Name</label>
+                                                        <input type="text" :name="`modules[${moduleIndex}][rows][${rowIndex}][title]`" x-model="row.title" placeholder="Enter lesson name..." class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                                                      </div>
+                                                      <div class="flex flex-col gap-2">
+                                                        <label class="text-sm font-medium text-gray-600">Lesson Content</label>
+                                                        <textarea :name="`modules[${moduleIndex}][rows][${rowIndex}][content]`" x-model="row.content" placeholder="Enter lesson content..." rows="3" class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500"></textarea>
+                                                      </div>
+                                                      <div class="flex flex-col gap-2">
+                                                        <label class="text-sm font-medium text-gray-600">Lesson Duration</label>
+                                                        <input type="text" :name="`modules[${moduleIndex}][rows][${rowIndex}][duration]`" x-model="row.duration" placeholder="Enter lesson duration..." class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
+                                                      </div>
+                                                      <div class="flex flex-col gap-2">
+                                                        <label class="text-sm font-medium text-gray-600">Lesson Types</label>
+                                                        <select multiple :name="`modules[${moduleIndex}][rows][${rowIndex}][lesson_types][]`" x-model="row.lesson_types" class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 outline-none focus:border-brand-500">
+                                                            <option value="video">Video</option>
+                                                            <option value="pdf">PDF</option>
+                                                            <option value="quiz">Quiz</option>
+                                                            <option value="assignment">Assignment</option>
+                                                        </select>
+                                                      </div>
                                                     </div>
                                                 </div>
 
@@ -230,24 +255,16 @@
             </div>
         </div>
     </form>
-    @if ($errors->any())
-        <div class="bg-red-100 p-4 rounded">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
     <script>
         function courseBuilder(initialModules = []) {
             const normalizedModules = initialModules.map(module => ({
                 ...module,
-                
+                rows: module.rows || []
             }));
 
             const maxModuleId = normalizedModules.reduce((max, module) => Math.max(max, Number(module.id) || 0), 0);
-            const maxRowId = normalizedModules.flatMap(module => module.rows)
+            const maxRowId = normalizedModules.flatMap(module => module.rows || [])
                 .reduce((max, row) => Math.max(max, Number(row.id) || 0), 0);
             const hasInitialModules = normalizedModules.length > 0;
 
@@ -261,7 +278,7 @@
                 modules: hasInitialModules ? normalizedModules : [{
                     id: maxModuleId + 1,
                     title: '',
-                    
+                    rows: []
                 }],
 
                 async submitForm(event) {
@@ -303,7 +320,7 @@
                     this.modules.push({
                         id: this.moduleCounter++,
                         title: '',
-                       
+                        rows: []
                     });
 
                 },
@@ -325,7 +342,11 @@
                     if (!module) return;
 
                     module.rows.push({
-                        id: this.rowCounter++,                       
+                        id: this.rowCounter++,
+                        title: '',
+                        content: '',
+                        duration: '',
+                        lesson_types: []
                     });
 
                 },
