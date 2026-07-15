@@ -22,7 +22,6 @@ return new class extends Migration
 
     $table->longText('content')->nullable();
     $table->json('lesson_types')
-        ->default(json_encode(['text']))
         ->comment('Multiple lesson types: video, pdf, text, mixed, quiz, assignment, link');
 
     $table->unsignedInteger('duration')

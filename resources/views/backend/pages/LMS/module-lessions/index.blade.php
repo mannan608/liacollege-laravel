@@ -16,17 +16,17 @@
             </div>
         @endif
 
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-            <div>
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Course Module Management</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Manage Module.
-                </p>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">          
+             <div>
+                <h3 class="mt-1 text-2xl font-bold text-gray-900">{{ $course->name }}</h3>
+                <p class="mt-1 text-sm text-gray-500">Manage modules and lessons for this course.</p>
             </div>
             <a  href="{{ role_route('role.module.create', ['course' => $course->id]) }}"
                 class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition-colors">
                 + Add New Module
             </a>
         </div>
-       @include('backend.pages.LMS.module-lessions.table')
+       @include('backend.pages.LMS.module-lessions.table', ['items' => $course->modules])
+
     </div>
 @endsection

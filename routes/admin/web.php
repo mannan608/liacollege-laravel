@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\LMS\CourseModuleController;
 use App\Http\Controllers\Admin\LMS\CourseResourcesController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -94,7 +95,19 @@ Route::prefix('{role}')
         // Route::resource('course-modules', CourseCategoryController::class);
 
         // Add new module and lession
-        Route::get('courses/{course}/modules', [CourseResourcesController::class, 'index'])->name('modules.index');
-        Route::get('courses/{course}/module/create', [CourseResourcesController::class, 'create'])->name('module.create');
-        Route::post('courses/{course}/module', [CourseResourcesController::class, 'store'])->name('module.store');
+        // Route::get('courses/{course}/modules', [CourseResourcesController::class, 'index'])->name('modules.index');
+        // Route::get('courses/{course}/modules/create', [CourseResourcesController::class, 'create'])->name('module.create');
+        // Route::post('courses/{course}/modules', [CourseResourcesController::class, 'store'])->name('module.store');
+        // Route::get('courses/{course}/modules/{module}/edit', [CourseResourcesController::class, 'edit'])->name('module.edit');
+        // Route::put('courses/{course}/modules/{module}', [CourseResourcesController::class, 'update'])->name('module.update');
+
+        Route::get('courses/{course}/modules', [CourseModuleController::class, 'index'])->name('modules.index');
+
+        Route::get('courses/{course}/modules/create', [CourseModuleController::class, 'create'])->name('modules.create');
+
+        Route::post('courses/{course}/modules',[CourseModuleController::class, 'store'])->name('modules.store');
+
+        Route::get('courses/{course}/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
+
+        Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
     });
