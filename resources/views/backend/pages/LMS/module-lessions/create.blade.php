@@ -38,7 +38,7 @@
             </a>
         </div>
 
-        <form x-data="moduleLessonBuilder(@js($initialModules))" action="{{ $formAction ?? role_route('role.module.store', ['course' => $course->id]) }}"
+        <form x-data="moduleLessonBuilder(@js($initialModules))" action="{{ $formAction ?? role_route('role.modules.store', ['course' => $course->id]) }}"
             method="POST" class="space-y-6">
             @csrf
             @if (($formMethod ?? 'POST') !== 'POST')

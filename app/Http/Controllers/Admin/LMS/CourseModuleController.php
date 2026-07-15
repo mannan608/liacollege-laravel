@@ -30,7 +30,7 @@ class CourseModuleController extends Controller
         return view('backend.pages.LMS.module-lessions.create', [
             'course' => $course,
             'modules' => $this->blankModules(),
-            'formAction' => role_route('role.module.store', ['course' => $course->id]),
+            'formAction' => role_route('role.modules.store', ['course' => $course->id]),
             'formMethod' => 'POST',
             'isEdit' => false,
             'pageTitle' => 'Create Course Modules',
