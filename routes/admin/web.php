@@ -96,5 +96,5 @@ Route::prefix('{role}')
         // Add new module and lession
         Route::get('courses/{course}/modules', [CourseResourcesController::class, 'index'])->name('modules.index');
         Route::get('courses/{course}/module/create', [CourseResourcesController::class, 'create'])->name('module.create');
-        Route::post('courses/{course}/module', [CourseResourcesController::class, 'storeResource'])->name('module.store');
+        Route::post('courses/{course}/module', [CourseResourcesController::class, 'store'])->name('module.store');
     });

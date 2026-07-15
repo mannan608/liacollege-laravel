@@ -10,6 +10,8 @@
                 <p class="text-sm text-gray-500 mt-1">Create and organize your course modules</p>
             </div>
         </div>
+        <form action="{{ role_route('role.module-lessions.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
         <div class="space-y-6">
 
             <!-- Module Cards -->
@@ -324,6 +326,8 @@
                 </button>
             </div>
         </div>
+
+        </form>
 
 
     </div>
