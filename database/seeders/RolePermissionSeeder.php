@@ -147,6 +147,7 @@ class RolePermissionSeeder extends Seeder
             // create course schedule/slot
             'course-slot.manage',
             'course-slot.list',
+            'course-slot.view',
             'course-slot.create',
             'course-slot.edit',
             'course-slot.delete',

@@ -7,182 +7,241 @@ use App\Http\Requests\LMS\StoreCourseSlotRequest;
 use App\Http\Requests\LMS\UpdateCourseSlotRequest;
 use App\Models\Course;
 use App\Models\LMS\CourseSlot;
+use App\Models\LMS\SlotTeacher;
 use App\Models\TrainingCenter;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Throwable;
 
 class CourseSlotController extends Controller
 {
- public function index(Request $request)
+    private function normalizeNullableFields(array $data): array
     {
-        $slots = CourseSlot::with([
-                'course',
-                'trainingCenter',
-                'users.user'
-            ])
-            ->latest()
-            ->paginate(15);
+        foreach (['title', 'booking_open_at', 'booking_close_at', 'notes'] as $field) {
+            if (array_key_exists($field, $data) && $data[$field] === '') {
+                $data[$field] = null;
+            }
+        }
 
-        return view('backend.pages.LMS.course-slot.index', compact('slots'));
+        return $data;
     }
 
-    /**
-     * Show create form.
-     */
-    public function create()
+    public function index(Request $request)
     {
+        $request->user()->can('course-slot.list') || abort(403);
+
+        try {
+            $query = CourseSlot::query()->with([
+                'course',
+                'trainingCenter',
+                'users.user',
+            ]);
+
+            if ($request->filled('search')) {
+                $search = trim($request->search);
+
+                $query->where(function ($builder) use ($search) {
+                    $builder->where('title', 'like', "%{$search}%")
+                        ->orWhere('training_date', 'like', "%{$search}%")
+                        ->orWhereHas('course', function ($courseQuery) use ($search) {
+                            $courseQuery->where('name', 'like', "%{$search}%");
+                        })
+                        ->orWhereHas('trainingCenter', function ($centerQuery) use ($search) {
+                            $centerQuery->where('name', 'like', "%{$search}%");
+                        });
+                });
+            }
+
+            if ($request->filled('status')) {
+                $query->where('status', $request->status);
+            }
+
+            $slots = $query
+                ->latest()
+                ->paginate($request->integer('per_page', 15))
+                ->withQueryString();
+
+            return view('backend.pages.LMS.course-slot.index', compact('slots'));
+        } catch (Throwable $e) {
+            report($e);
+
+            return back()->with('error', 'Unable to load course slots.');
+        }
+    }
+
+    public function create(Request $request)
+    {
+        $request->user()->can('course-slot.create') || abort(403);
+
         return view('backend.pages.LMS.course-slot.create', [
-
-            'courses' => Course::orderBy('title')->get(),
-
+            'courses' => Course::orderBy('name')->get(),
             'trainingCenters' => TrainingCenter::orderBy('name')->get(),
-
-            'users' => User::orderBy('name')->get(),
-
+            'teachers' => User::orderBy('name')->get(),
         ]);
     }
 
-    /**
-     * Store new slot.
-     */
     public function store(StoreCourseSlotRequest $request)
     {
-        DB::transaction(function () use ($request) {
+        $request->user()->can('course-slot.create') || abort(403);
 
-            $data = $request->validated();
+        DB::beginTransaction();
 
-            $data['uuid'] = Str::uuid();
+        try {
+            $data = $this->normalizeNullableFields($request->validated());
+            $teacherIds = $data['teacher_ids'] ?? [];
 
+            unset($data['teacher_ids']);
+
+            $data['uuid'] = (string) Str::uuid();
             $data['available_seats'] = $data['capacity'];
+            $data['status'] = $data['status'] ?? 'active';
+            $data['booking_open_at'] = $data['booking_open_at'] ?? null;
+            $data['booking_close_at'] = $data['booking_close_at'] ?? null;
 
             $slot = CourseSlot::create($data);
 
-            if (!empty($data['user_ids'])) {
-
-                foreach ($data['user_ids'] as $userId) {
-
-                    $slot->users()->create([
-                        'user_id' => $userId,
-                    ]);
-                }
+            foreach ($teacherIds as $teacherId) {
+                SlotTeacher::create([
+                    'course_slot_id' => $slot->id,
+                    'user_id' => $teacherId,
+                ]);
             }
-        });
 
-        return redirect()
-            ->route('backend.pages.LMS.course-slot.index')
-            ->with('success', 'Course Slot Created Successfully.');
+            DB::commit();
+
+            return redirect()
+                ->to(role_route('role.course-slots.index'))
+                ->with('success', 'Course slot created successfully.');
+        } catch (Throwable $e) {
+            DB::rollBack();
+
+            report($e);
+
+            return back()
+                ->withInput()
+                ->with('error', 'Failed to create course slot.');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CourseSlot $courseSlot)
+    public function show(Request $request, CourseSlot $courseSlot)
     {
+        $request->user()->can('course-slot.view') || abort(403);
+
         $courseSlot->load([
             'course',
             'trainingCenter',
-            'users.user'
+            'users.user',
         ]);
 
         return view('backend.pages.LMS.course-slot.show', compact('courseSlot'));
     }
 
-    /**
-     * Show edit form.
-     */
-    public function edit(CourseSlot $courseSlot)
+    public function edit(Request $request, CourseSlot $courseSlot)
     {
+        $request->user()->can('course-slot.edit') || abort(403);
+
+        $courseSlot->load('users.user');
+
         return view('backend.pages.LMS.course-slot.edit', [
-
-            'slot' => $courseSlot->load('users'),
-
-            'courses' => Course::orderBy('title')->get(),
-
+            'slot' => $courseSlot,
+            'courses' => Course::orderBy('name')->get(),
             'trainingCenters' => TrainingCenter::orderBy('name')->get(),
-
-            'users' => User::orderBy('name')->get(),
-
+            'teachers' => User::orderBy('name')->get(),
         ]);
     }
 
-    /**
-     * Update the specified resource.
-     */
-    public function update(
-        UpdateCourseSlotRequest $request,
-        CourseSlot $courseSlot
-    ) {
-        DB::transaction(function () use ($request, $courseSlot) {
+    public function update(UpdateCourseSlotRequest $request, CourseSlot $courseSlot)
+    {
+        $request->user()->can('course-slot.edit') || abort(403);
 
-            $data = $request->validated();
+        DB::beginTransaction();
 
-            /*
-            |--------------------------------------------------------------------------
-            | Update only changed fields
-            |--------------------------------------------------------------------------
-            */
+        try {
+            $data = $this->normalizeNullableFields($request->validated());
+            $teacherIds = $data['teacher_ids'] ?? null;
 
-            $courseSlot->fill($data);
-
-            /*
-            |--------------------------------------------------------------------------
-            | Capacity Changed?
-            |--------------------------------------------------------------------------
-            */
+            unset($data['teacher_ids']);
 
             if (
-                isset($data['capacity']) &&
-                $courseSlot->capacity != $data['capacity']
+                array_key_exists('capacity', $data)
+                && (int) $data['capacity'] !== (int) $courseSlot->capacity
             ) {
-
                 $bookedSeats = $courseSlot->capacity - $courseSlot->available_seats;
-
-                $courseSlot->available_seats = max(
-                    0,
-                    $data['capacity'] - $bookedSeats
-                );
+                $data['available_seats'] = max(0, (int) $data['capacity'] - $bookedSeats);
             }
 
-            if ($courseSlot->isDirty()) {
+            $courseSlot->fill(collect($data)->filter(
+                fn ($value) => $value !== ''
+            )->toArray());
 
+            if ($courseSlot->isDirty()) {
                 $courseSlot->save();
             }
 
-            /*
-            |--------------------------------------------------------------------------
-            | Assigned Users
-            |--------------------------------------------------------------------------
-            */
+            if (is_array($teacherIds)) {
+                $currentTeacherIds = $courseSlot->users()
+                    ->pluck('user_id')
+                    ->map(fn ($value) => (int) $value)
+                    ->sort()
+                    ->values()
+                    ->all();
 
-            if (isset($data['user_ids'])) {
+                $normalizedTeacherIds = collect($teacherIds)
+                    ->map(fn ($value) => (int) $value)
+                    ->sort()
+                    ->values()
+                    ->all();
 
-                $courseSlot->users()->delete();
+                if ($currentTeacherIds !== $normalizedTeacherIds) {
+                    $courseSlot->users()->delete();
 
-                foreach ($data['user_ids'] as $userId) {
-
-                    $courseSlot->users()->create([
-                        'user_id' => $userId,
-                    ]);
+                    foreach ($normalizedTeacherIds as $teacherId) {
+                        SlotTeacher::create([
+                            'course_slot_id' => $courseSlot->id,
+                            'user_id' => $teacherId,
+                        ]);
+                    }
                 }
             }
 
-        });
+            DB::commit();
 
-        return redirect()
-            ->route('backend.pages.LMS.course-slot.index')
-            ->with('success', 'Course Slot Updated Successfully.');
+            return redirect()
+                ->to(role_route('role.course-slots.index'))
+                ->with('success', 'Course slot updated successfully.');
+        } catch (Throwable $e) {
+            DB::rollBack();
+
+            report($e);
+
+            return back()
+                ->withInput()
+                ->with('error', 'Failed to update course slot.');
+        }
     }
 
-    /**
-     * Remove the specified resource.
-     */
-    public function destroy(CourseSlot $courseSlot)
+    public function destroy(Request $request, CourseSlot $courseSlot)
     {
-        $courseSlot->delete();
+        $request->user()->can('course-slot.delete') || abort(403);
 
-        return redirect()
-            ->route('backend.pages.LMS.course-slot.index')
-            ->with('success', 'Course Slot Deleted Successfully.');
+        DB::beginTransaction();
+
+        try {
+            $courseSlot->delete();
+
+            DB::commit();
+
+            return redirect()
+                ->to(role_route('role.course-slots.index'))
+                ->with('success', 'Course slot deleted successfully.');
+        } catch (Throwable $e) {
+            DB::rollBack();
+
+            report($e);
+
+            return back()->with('error', 'Failed to delete course slot.');
+        }
     }
 }

@@ -101,10 +101,7 @@ class User extends Authenticatable
     }
 
     public function teachingSlots()
-{
-    return $this->hasMany(
-        SlotTeacher::class,
-        'teacher_id'
-    );
-}
+    {
+        return $this->hasMany(SlotTeacher::class, 'user_id');
+    }
 }

@@ -12,7 +12,6 @@ class StoreCourseSlotRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // return false;
         return $this->user()?->can('course-slot.create') === true;
     }
 
@@ -24,55 +23,20 @@ class StoreCourseSlotRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-            'course_id' => [
-                'required',
-                'exists:courses,id'
-            ],
-
-           
-            'training_center_id' => [
-                'required',
-                'exists:training_centers,id'
-            ],
-
-            'training_date' => [
-                'required',
-                'date'
-            ],
-
-            'start_time' => [
-                'required'
-            ],
-
-            'end_time' => [
-                'required',
-                'after:start_time'
-            ],
-
-            'capacity' => [
-                'required',
-                'integer',
-                'min:1'
-            ],
-
-            'price' => [
-                'required',
-                'numeric',
-                'min:0'
-            ],
-
-           
-            'teacher_ids' => [
-                'required',
-                'array'
-            ],
-
-            'teacher_ids.*.teacher_id' => [
-                'required',
-                'exists:users,id'
-            ],
-           
+            'course_id' => ['required', 'exists:courses,id'],
+            'training_center_id' => ['required', 'exists:training_centers,id'],
+            'title' => ['nullable', 'string', 'max:255'],
+            'training_date' => ['required', 'date'],
+            'start_time' => ['required'],
+            'end_time' => ['required', 'after:start_time'],
+            'capacity' => ['required', 'integer', 'min:1'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'booking_open_at' => ['nullable', 'date'],
+            'booking_close_at' => ['nullable', 'date'],
+            'status' => ['nullable', 'in:active,inactive'],
+            'notes' => ['nullable', 'string'],
+            'teacher_ids' => ['required', 'array', 'min:1'],
+            'teacher_ids.*' => ['required', 'integer', 'exists:users,id'],
         ];
     }
 }

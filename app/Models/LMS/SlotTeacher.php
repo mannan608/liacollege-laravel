@@ -11,6 +11,8 @@ class SlotTeacher extends Model
 {
     use HasFactory;
 
+    protected $table = 'slot_users';
+
     protected $fillable = [
 
         'course_slot_id',
@@ -34,6 +36,6 @@ class SlotTeacher extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'teacher_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

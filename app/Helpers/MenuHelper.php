@@ -93,9 +93,9 @@ class MenuHelper
                         'route' => 'role.courses.index',
                         'permission' => 'course.list',
                     ],  
-                      [
+                    [
                         'name' => 'Course Slot',
-                        'route' => 'role.course-slot.index',
+                        'route' => 'role.course-slots.index',
                         'permission' => 'course-slot.list',
                     ],  
                     [
