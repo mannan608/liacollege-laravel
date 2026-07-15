@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Lesson extends Model
 {
-   use SoftDeletes;
+    use SoftDeletes;
 
     protected $fillable = [
         'module_id',
         'title',
         'content',
-        'lesson_type',
+        'lesson_types',
         'duration',       
         'status',
     ];
@@ -24,9 +24,9 @@ class Lesson extends Model
     protected $casts = [
         'status' => 'boolean',
         'duration' => 'integer',
+        'lesson_types' => 'array',
     ];
 
- 
     /*
     |--------------------------------------------------------------------------
     | Relationships

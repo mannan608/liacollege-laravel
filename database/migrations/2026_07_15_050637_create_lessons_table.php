@@ -12,38 +12,32 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lessons', function (Blueprint $table) {
+    $table->id();
 
-            $table->id();
+    $table->foreignId('module_id')
+        ->constrained()
+        ->cascadeOnDelete();
 
-            $table->foreignId('module_id')
-                ->constrained()
-                ->cascadeOnDelete();
+    $table->string('title');
 
-            $table->string('title');
+    $table->longText('content')->nullable();
+    $table->json('lesson_types')
+        ->default(json_encode(['text']))
+        ->comment('Multiple lesson types: video, pdf, text, mixed, quiz, assignment, link');
 
-            $table->longText('content')->nullable();
+    $table->unsignedInteger('duration')
+        ->default(0)
+        ->comment('Duration in minutes');
 
-            $table->enum('lesson_type', [
-                'video',
-                'pdf',
-                'text',
-                'mixed',
-            ])->default('text');
+    $table->boolean('status')
+        ->default(true);
 
-            $table->unsignedInteger('duration')
-                ->default(0)
-                ->comment('Duration in minutes');
+    $table->timestamps();
+    $table->softDeletes();
 
-            $table->boolean('status')
-                ->default(true);
-
-            $table->timestamps();
-            $table->softDeletes();
-
-            $table->index('module_id');
-            $table->index('lesson_type');
-            $table->index('status');
-        });
+    $table->index('module_id');
+    $table->index('status');
+});
     }
 
     /**

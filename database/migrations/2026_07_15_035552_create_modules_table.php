@@ -24,7 +24,6 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->index('course_id');
-            $table->index(['course_id']);
         });
     }
 

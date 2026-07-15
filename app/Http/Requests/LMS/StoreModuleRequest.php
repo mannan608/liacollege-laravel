@@ -21,31 +21,57 @@ class StoreModuleRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
-            'course_id' => [
-                'required',
-                'integer',
-                'exists:courses,id',
-            ],
+   public function rules(): array
+{
+    return [
+        'course_id' => ['required', 'exists:courses,id'],
+        
+        'modules' => [
+            'required',
+            'array'
+        ],
 
-            'title' => [
-                'required',
-                'string',
-                'max:255',
-            ],
+        'modules.*.title' => [
+            'required',
+            'string',
+            'max:255'
+        ],
 
-            'description' => [
-                'nullable',
-                'string',
-            ],
+        'modules.*.lessons' => [
+            'required',
+            'array'
+        ],
 
-            'sort_order' => [
-                'nullable',
-                'integer',
-                'min:0',
-            ],
-        ];
-    }
+        'modules.*.lessons.*.title' => [
+            'required',
+            'string',
+            'max:255'
+        ],
+
+        'modules.*.lessons.*.content' => [
+            'nullable',
+            'string'
+        ],
+
+        'modules.*.lessons.*.duration' => [
+            'nullable',
+            'integer',
+            'min:0'
+        ],
+
+        // Changed: now accepts array of types
+        'modules.*.lessons.*.lesson_types' => [
+            'required',
+            'array',
+            'min:1'
+        ],
+
+        // Validate each item in the array
+        'modules.*.lessons.*.lesson_types.*' => [
+            'required',
+            'string',
+            'in:video,pdf,text,mixed,quiz,assignment,link'
+        ],
+    ];
+}
 }
