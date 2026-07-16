@@ -143,10 +143,10 @@ Route::post(
     [CourseEnrollmentController::class, 'checkout']
 )->name('course-enrollment.checkout');
 
-// Route::get(
-//     '/course-enrollment/success',
-//     [CourseEnrollmentController::class, 'success']
-// )->name('course-enrollment.success');
+Route::get(
+    '/course-enrollment/success',
+    [CourseEnrollmentController::class, 'success']
+)->name('course-enrollment.success');
 
 
 

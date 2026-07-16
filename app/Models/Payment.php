@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\LMS\Enrollment;
 use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
@@ -14,4 +15,14 @@ class Payment extends Model
         'payment_method',
         'status',
     ];
+
+    public function enrollment()
+{
+    return $this->belongsTo(Enrollment::class);
+}
+
+public function student()
+{
+    return $this->belongsTo(Student::class);
+}
 }

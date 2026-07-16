@@ -13,11 +13,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class CourseEnrollmentController extends Controller
 {
- public function create(Course $course,
+    public function create(Course $course,
     CourseSlot $slot)
     {
        abort_unless(
@@ -35,6 +36,11 @@ class CourseEnrollmentController extends Controller
         compact('course', 'slot')
     );
     }   
+
+    public function success()
+    {
+        return view('frontend.pages.course-enrollment.success');
+    }
   
 
 
@@ -131,22 +137,36 @@ class CourseEnrollmentController extends Controller
 public function checkout(Request $request)
 {
     $validated = $request->validate([
-        'course_id' => ['required'],
-        'slot_id' => ['required'],
+        'course_id' => ['required', 'integer', 'exists:courses,id'],
+        'slot_id' => ['required', 'integer', 'exists:course_slots,id'],
 
-        'name' => ['required'],
-        'email' => ['required', 'email'],
-        'phone' => ['required'],
-
-        'payment_method' => ['required'],
+        'first_name' => ['required', 'string', 'max:255'],
+        'last_name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'email', 'confirmed'],
+        'phone' => ['required', 'string', 'max:50'],
+        'payment_method' => ['required', Rule::in([
+            'visa',
+            'mastercard',
+            'bank_transfer',
+            'cash',
+        ])],
+        'voucher_code' => ['nullable', 'string', 'max:255'],
+        'purchase_order_ref' => ['nullable', 'string', 'max:255'],
     ]);
 
     DB::transaction(function () use ($validated) {
+
+        $course = Course::findOrFail($validated['course_id']);
 
         $slot = CourseSlot::with('course')
             ->findOrFail(
                 $validated['slot_id']
             );
+
+        abort_unless(
+            $slot->course_id === $course->id,
+            404
+        );
 
         $user = User::where(
             'email',
@@ -163,7 +183,7 @@ public function checkout(Request $request)
             $password = Str::random(8);
 
             $user = User::create([
-                'name' => $validated['name'],
+                'name' => trim($validated['first_name'].' '.$validated['last_name']),
                 'email' => $validated['email'],
                 'phone' => $validated['phone'],
                 'status' => 'active',
@@ -178,34 +198,38 @@ public function checkout(Request $request)
             'user_id' => $user->id,
         ]);
 
-        $enrollment = Enrollment::firstOrCreate(
+        $enrollment = Enrollment::updateOrCreate(
             [
                 'student_id' => $student->id,
                 'course_slot_id' => $slot->id,
             ],
             [
-                'course_version_id' => $slot->course_version_id,
                 'status' => 'pending',
+                'payment_status' => 'paid',
+                'payment_method' => $validated['payment_method'],
+                'amount' => $slot->price ?? $slot->course->sale_price ?? $slot->course->price ?? 0,
                 'enrolled_at' => now(),
+                'voucher_code' => $validated['voucher_code'] ?? null,
+                'purchase_order_ref' => $validated['purchase_order_ref'] ?? null,
             ]
         );
 
-        Payment::create([
-            'student_id' => $student->id,
-
-            'enrollment_id' => $enrollment->id,
-
-            'transaction_id' => strtoupper(
-                Str::random(12)
-            ),
-
-            'amount' => $slot->course->sale_price
-                ?? $slot->course->price,
-
-            'payment_method' => $validated['payment_method'],
-
-            'status' => 'paid',
-        ]);
+        Payment::updateOrCreate(
+            [
+                'enrollment_id' => $enrollment->id,
+            ],
+            [
+                'student_id' => $student->id,
+                'transaction_id' => strtoupper(
+                    Str::random(12)
+                ),
+                'amount' => $slot->price
+                    ?? $slot->course->sale_price
+                    ?? $slot->course->price,
+                'payment_method' => $validated['payment_method'],
+                'status' => 'paid',
+            ]
+        );
     });
 
     return redirect()->route(

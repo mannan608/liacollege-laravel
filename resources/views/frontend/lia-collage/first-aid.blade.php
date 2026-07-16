@@ -6,14 +6,6 @@
 @endsection
 
 @section('content')
-    @extends('frontend.lia-collage.layouts.app')
-@section('title', 'Find a First Aid, CPR or Childcare First Aid class')
-
-@section('tailwind-styles')
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-@endsection
-
-@section('content')
     <div class="">
         <section class="bg-[#e5b35d] text-white">
             <div class="container">
@@ -542,8 +534,5 @@
         </div>
 
     </div>
-
-@endsection
-
 
 @endsection

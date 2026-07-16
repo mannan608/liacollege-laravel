@@ -76,20 +76,23 @@
                     <form method="POST" action="{{ route('course-enrollment.checkout') }}" class="space-y-8">
                         @csrf
 
+                        <input type="hidden" name="course_id" value="{{ $course->id }}">
+                        <input type="hidden" name="slot_id" value="{{ $slot->id }}">
+
                     <!-- Name Fields -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div class="space-y-2">
                             <label class="block text-sm font-bold text-slate-800">
                                 First Name <span class="text-rose-400">*</span>
                             </label>
-                            <input type="text" placeholder="First name"
+                            <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="First name" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-bold text-slate-800">
                                 Surname <span class="text-rose-400">*</span>
                             </label>
-                            <input type="text" placeholder="Surname"
+                            <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Surname" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                         </div>
                     </div>
@@ -99,7 +102,7 @@
                         <label class="block text-sm font-bold text-slate-800">
                             Date of Birth <span class="text-rose-400">*</span>
                         </label>
-                        <input type="date"
+                        <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" required
                             class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                     </div>
 
@@ -109,7 +112,7 @@
                             <label class="block text-sm font-bold text-slate-800">
                                 E-mail Address <span class="text-rose-400">*</span>
                             </label>
-                            <input type="email" placeholder="email address"
+                            <input type="email" name="email" value="{{ old('email') }}" placeholder="email address" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                             <div
                                 class="flex items-start gap-2 mt-2 p-3 rounded-lg bg-amber-50/60 border border-amber-100/60">
@@ -133,7 +136,7 @@
                             <label class="block text-sm font-bold text-slate-800">
                                 Enter E-mail Again <span class="text-rose-400">*</span>
                             </label>
-                            <input type="email" placeholder="email address again"
+                            <input type="email" name="email_confirmation" value="{{ old('email_confirmation') }}" placeholder="email address again" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                         </div>
                     </div>
@@ -143,7 +146,7 @@
                         <label class="block text-sm font-bold text-slate-800">
                             Mobile Phone Number <span class="text-rose-400">*</span>
                         </label>
-                        <input type="tel" placeholder="mobile number"
+                        <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="mobile number" required
                             class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                     </div>
 
@@ -152,7 +155,7 @@
                         <label class="block text-sm font-bold text-slate-800">
                             U.S.I. <span class="text-rose-400">*</span>
                         </label>
-                        <input type="text" placeholder="USI"
+                        <input type="text" name="usi" value="{{ old('usi') }}" placeholder="USI" required
                             class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                         <p class="text-xs text-slate-500 mt-2">
                             If you do not yet have your USI, <a href="#"
@@ -166,7 +169,7 @@
                         <label class="block text-sm font-semibold text-slate-700">
                             Voucher Code <span class="text-slate-400 font-normal">(if you have one)</span>
                         </label>
-                        <input type="text" placeholder="voucher code"
+                        <input type="text" name="voucher_code" value="{{ old('voucher_code') }}" placeholder="voucher code"
                             class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                     </div>
 
@@ -175,7 +178,7 @@
                         <label class="block text-sm font-semibold text-slate-700">
                             Purchase Order Ref.
                         </label>
-                        <input type="text" placeholder="p.o. reference"
+                        <input type="text" name="purchase_order_ref" value="{{ old('purchase_order_ref') }}" placeholder="p.o. reference"
                             class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                     </div>
 
@@ -183,7 +186,7 @@
                     <div class="pt-2">
                         <label class="flex items-start gap-3 cursor-pointer group">
                             <div class="relative shrink-0 mt-0.5">
-                                <input type="checkbox" class="custom-checkbox sr-only peer">
+                                <input type="checkbox" name="terms" value="1" class="custom-checkbox sr-only peer" required>
                                 <div
                                     class="w-5 h-5 rounded-md border-2 border-slate-300 bg-white flex items-center justify-center transition-all duration-200 peer-focus:ring-2 peer-focus:ring-cyan-400/30 group-hover:border-cyan-400">
                                     <svg class="w-3 h-3 text-white hidden" fill="none" stroke="currentColor"
@@ -226,7 +229,7 @@
                                 <div>
                                     <p class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Amount Due
                                     </p>
-                                    <p class="text-xl font-bold text-slate-800">$95.00</p>
+                                    <p class="text-xl font-bold text-slate-800">${{ number_format($slot->price, 2) }}</p>
                                 </div>
                             </div>
                             <span class="text-xs text-emerald-600 font-medium bg-emerald-100/60 px-3 py-1 rounded-full">Due
@@ -237,11 +240,13 @@
                             <label class="block text-sm font-bold text-slate-800">
                                 Payment Method <span class="text-rose-400">*</span>
                             </label>
-                            <select
+                            <select name="payment_method" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200 appearance-none cursor-pointer">
                                 <option value="" disabled selected>Select payment method</option>
-                                <option value="credit-card">Visa</option>
-                                <option value="paypal">Mastercard</option>
+                                <option value="visa">Visa</option>
+                                <option value="mastercard">Mastercard</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                                <option value="cash">Cash</option>
                             </select>
                         </div>
                     </div>

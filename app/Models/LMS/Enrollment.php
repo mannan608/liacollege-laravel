@@ -2,7 +2,7 @@
 
 namespace App\Models\LMS;
 
-
+use App\Models\Payment;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -12,14 +12,6 @@ class Enrollment extends Model
     protected $fillable = [
         'student_id',
         'course_slot_id',
-
-        'voucher_code',
-        'purchase_order_ref',
-
-        'amount',
-
-        'payment_method',
-        'payment_status',
 
         'status',
 
@@ -37,6 +29,12 @@ class Enrollment extends Model
         'enrolled_at' => 'datetime',
         'completed_at' => 'datetime',
     ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
 
     public function student()
     {
@@ -57,5 +55,41 @@ class Enrollment extends Model
             User::class,
             'approved_by'
         );
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function latestPayment()
+    {
+        return $this->hasOne(Payment::class)->latestOfMany();
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Helpers
+    |--------------------------------------------------------------------------
+    */
+
+    public function isPending(): bool
+    {
+        return $this->status === 'pending';
+    }
+
+    public function isConfirmed(): bool
+    {
+        return $this->status === 'confirmed';
+    }
+
+    public function isCompleted(): bool
+    {
+        return $this->status === 'completed';
+    }
+
+    public function isCancelled(): bool
+    {
+        return $this->status === 'cancelled';
     }
 }
