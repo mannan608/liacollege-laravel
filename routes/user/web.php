@@ -133,6 +133,11 @@ Route::get('/first-aid', [FrontendController::class, 'firstAid'])
 
 // update route
 Route::get(
+    '/course-enrollment/{enrollment}/success',
+    [CourseEnrollmentController::class, 'success']
+)->name('course-enrollment.success');
+
+Route::get(
     '/course-enrollment/{course}/{slot}',
     [CourseEnrollmentController::class, 'create']
 )->name('course-enrollment.create');
@@ -143,10 +148,10 @@ Route::post(
     [CourseEnrollmentController::class, 'checkout']
 )->name('course-enrollment.checkout');
 
-Route::get(
-    '/course-enrollment/success',
-    [CourseEnrollmentController::class, 'success']
-)->name('course-enrollment.success');
+// Route::get(
+//     '/course-enrollment/{enrollment}/success',
+//     [CourseEnrollmentController::class, 'success']
+// )->name('course-enrollment.success');
 
 
 

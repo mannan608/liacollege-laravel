@@ -34,12 +34,12 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-sm text-gray-500">Course</p>
-                                <p class="font-semibold text-lg text-slate-800">HLTAID011 Provide First Aid</p>
+                                <p class="font-semibold text-lg text-slate-800">{{ $enrollment->slot->course->name }}</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-sm text-gray-500">Booking ID</p>
                                 <p class="font-mono font-semibold text-emerald-600">
-                                    #FA-{{ strtoupper(substr(md5(time()), 0, 8)) }}</p>
+                                    #ENR-{{ str_pad($enrollment->id, 6, '0', STR_PAD_LEFT) }}</p>
                             </div>
                         </div>
 
@@ -48,20 +48,27 @@
                         <div class="grid grid-cols-2 gap-6 text-sm">
                             <div>
                                 <p class="text-gray-500">Date</p>
-                                <p class="font-medium">Monday, 13 July 2026</p>
+                                <p class="font-medium">
+                                    {{ \Carbon\Carbon::parse($enrollment->slot->start_date)->format('l, d F Y') }}</p>
                             </div>
                             <div>
                                 <p class="text-gray-500">Time</p>
-                                <p class="font-medium">08:30 AM - 11:30 AM</p>
+                                <p class="font-medium">{{ $enrollment->slot->start_time }} -
+                                    {{ $enrollment->slot->end_time }}</p>
                             </div>
                             <div>
                                 <p class="text-gray-500">Location</p>
-                                <p class="font-medium leading-tight">Prince Centre, Level 5<br>8 Quay Street, Haymarket NSW
-                                    2000</p>
+                                <p class="font-medium leading-tight">{{ $enrollment->slot->trainingCenter->name }}
+
+                                    <br>
+
+                                    {{ $enrollment->slot->trainingCenter->address }}
+                                </p>
                             </div>
                             <div>
                                 <p class="text-gray-500">Amount Paid</p>
-                                <p class="font-semibold text-emerald-600">$149.00 AUD</p>
+                                <p class="font-semibold text-emerald-600">
+                                    ${{ number_format($enrollment->latestPayment?->amount ?? 0, 2) }} AUD</p>
                             </div>
                         </div>
                     </div>

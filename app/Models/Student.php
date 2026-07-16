@@ -15,6 +15,8 @@ class Student extends Model
 
     protected $fillable = [
         'user_id',
+        'date_of_birth',
+        'usi',
     ];
 
     public function user(): BelongsTo
@@ -29,6 +31,7 @@ class Student extends Model
             'enroll_course',
             'student_id',
             'course_id',
+
         );
     }
 
