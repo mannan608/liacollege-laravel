@@ -12,29 +12,60 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('enrollments', function (Blueprint $table) {
-    $table->id();
 
-    $table->foreignId('student_id')
-        ->constrained()
-        ->cascadeOnDelete();
+            $table->id();
 
-    $table->foreignId('course_slot_id')
-        ->constrained()
-        ->cascadeOnDelete();
+            $table->foreignId('student_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
-    $table->enum('status', [
-        'pending',
-        'confirmed',
-        'cancelled',
-        'completed'
-    ])->default('pending');
+            $table->foreignId('course_slot_id')
+                ->constrained()
+                ->cascadeOnDelete();
 
-    $table->timestamp('enrolled_at')->nullable();
-    $table->timestamp('completed_at')->nullable();
+            $table->string('voucher_code')->nullable();
 
-    $table->timestamps();
-    
-});
+            $table->string('purchase_order_ref')->nullable();
+
+            $table->decimal('amount', 10, 2)->default(0);
+
+            $table->enum('payment_method', [
+                'visa',
+                'mastercard',
+                'bank_transfer',
+                'cash'
+            ])->nullable();
+
+            $table->enum('payment_status', [
+                'unpaid',
+                'pending',
+                'paid',
+                'failed',
+                'refunded'
+            ])->default('unpaid');
+
+            $table->enum('status', [
+                'pending',
+                'confirmed',
+                'cancelled',
+                'completed'
+            ])->default('pending');
+
+            $table->text('remarks')->nullable();
+
+            $table->foreignId('approved_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
+            $table->timestamp('approved_at')->nullable();
+
+            $table->timestamp('enrolled_at')->nullable();
+
+            $table->timestamp('completed_at')->nullable();
+
+            $table->timestamps();
+        });
     }
 
     /**
