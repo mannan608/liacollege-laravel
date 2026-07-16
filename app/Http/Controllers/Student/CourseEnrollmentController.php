@@ -53,46 +53,77 @@ public function success(Enrollment $enrollment)
     );
 }
 
-    public function checkout(Request $request)
-    {
-        $validated = $request->validate([
-            'course_id' => ['required', 'integer', 'exists:courses,id'],
-            'slot_id' => ['required', 'integer', 'exists:course_slots,id'],
+   public function checkout(Request $request)
+{
+    $validated = $request->validate([
+        'course_id' => ['required', 'integer', 'exists:courses,id'],
+        'slot_id' => ['required', 'integer', 'exists:course_slots,id'],
 
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'confirmed'],
-            'phone' => ['required', 'string', 'max:50'],
-            'date_of_birth' => ['required', 'date'],
-            'usi' => ['required', 'string', 'max:255'],
-            'payment_method' => ['required', Rule::in([
-                'visa',
-                'mastercard',
-                'bank_transfer',
-                'cash',
-            ])],
-            'voucher_code' => ['nullable', 'string', 'max:255'],
-            'purchase_order_ref' => ['nullable', 'string', 'max:255'],
-        ]);
+        'first_name' => ['required', 'string', 'max:255'],
+        'last_name' => ['required', 'string', 'max:255'],
 
-        $enrollment = DB::transaction(function () use ($validated) {
+        'email' => ['required', 'email', 'confirmed'],
+        'phone' => ['required', 'string', 'max:50'],
 
-            $course = Course::findOrFail($validated['course_id']);
+        'date_of_birth' => ['required', 'date'],
+        'usi' => ['required', 'string', 'max:255'],
 
-            $slot = CourseSlot::with('course')
-                ->findOrFail(
-                    $validated['slot_id']
-                );
+        'payment_method' => ['required', Rule::in([
+            'visa',
+            'mastercard',
+            'bank_transfer',
+            'cash',
+        ])],
 
-            abort_unless(
-                $slot->course_id === $course->id,
-                404
-            );
+        'voucher_code' => ['nullable', 'string', 'max:255'],
+        'purchase_order_ref' => ['nullable', 'string', 'max:255'],
+    ]);
+
+    $enrollment = DB::transaction(function () use ($validated) {
+
+        $course = Course::findOrFail(
+            $validated['course_id']
+        );
+
+        $slot = CourseSlot::with([
+            'course',
+        ])->findOrFail(
+            $validated['slot_id']
+        );
+
+        abort_unless(
+            $slot->course_id === $course->id,
+            404
+        );
+
+        /*
+        |--------------------------------------------------------------------------
+        | Logged In User
+        |--------------------------------------------------------------------------
+        */
+
+        if (auth()->check()) {
+
+            $user = auth()->user();
+
+        } else {
+
+            /*
+            |--------------------------------------------------------------------------
+            | Existing User By Email
+            |--------------------------------------------------------------------------
+            */
 
             $user = User::where(
                 'email',
                 $validated['email']
             )->first();
+
+            /*
+            |--------------------------------------------------------------------------
+            | Create New User
+            |--------------------------------------------------------------------------
+            */
 
             if (! $user) {
 
@@ -104,7 +135,9 @@ public function success(Enrollment $enrollment)
                 $password = '12345678';
 
                 $user = User::create([
-                    'name' => trim($validated['first_name'] . ' ' . $validated['last_name']),
+                    'name' => trim(
+                        $validated['first_name'].' '.$validated['last_name']
+                    ),
                     'email' => $validated['email'],
                     'phone' => $validated['phone'],
                     'status' => 'active',
@@ -114,55 +147,96 @@ public function success(Enrollment $enrollment)
 
                 $user->assignRole($studentRole);
             }
+        }
 
-            $student = Student::updateOrCreate(
-                [
-                    'user_id' => $user->id,
-                ],
-                [
-                    'date_of_birth' => $validated['date_of_birth'],
-                    'usi' => $validated['usi'],
-                ]
-            );
+        /*
+        |--------------------------------------------------------------------------
+        | Update User Basic Info
+        |--------------------------------------------------------------------------
+        */
 
-            $enrollment = Enrollment::updateOrCreate(
-                [
-                    'student_id' => $student->id,
-                    'course_slot_id' => $slot->id,
-                ],
-                [
-                    'status' => 'pending',
-                    'payment_status' => 'paid',
-                    'payment_method' => $validated['payment_method'],
-                    'amount' => $slot->price ?? $slot->course->sale_price ?? $slot->course->price ?? 0,
-                    'enrolled_at' => now(),
-                    'voucher_code' => $validated['voucher_code'] ?? null,
-                    'purchase_order_ref' => $validated['purchase_order_ref'] ?? null,
-                ]
-            );
+        $user->update([
+            'name' => trim(
+                $validated['first_name'].' '.$validated['last_name']
+            ),
+            'phone' => $validated['phone'],
+        ]);
 
-            Payment::updateOrCreate(
-                [
-                    'enrollment_id' => $enrollment->id,
-                ],
-                [
-                    'student_id' => $student->id,
-                    'transaction_id' => strtoupper(
-                        Str::random(12)
-                    ),
-                    'amount' => $slot->price
-                        ?? $slot->course->sale_price
-                        ?? $slot->course->price,
-                    'payment_method' => $validated['payment_method'],
-                    'status' => 'paid',
-                ]
-            );
-            return $enrollment;
-        });
+        /*
+        |--------------------------------------------------------------------------
+        | Create Student If Missing
+        |--------------------------------------------------------------------------
+        */
 
-        return redirect()->route(
-            'course-enrollment.success',
-           $enrollment->id,
+        $student = Student::firstOrCreate([
+            'user_id' => $user->id,
+        ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Update Missing Student Information
+        |--------------------------------------------------------------------------
+        */
+
+        $student->update([
+            'date_of_birth' => $student->date_of_birth
+                ?: $validated['date_of_birth'],
+
+            'usi' => $student->usi
+                ?: $validated['usi'],
+        ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Prevent Duplicate Enrollment
+        |--------------------------------------------------------------------------
+        */
+
+        $enrollment = Enrollment::firstOrCreate(
+            [
+                'student_id' => $student->id,
+                'course_slot_id' => $slot->id,
+            ],
+            [
+                'status' => 'pending',
+                'enrolled_at' => now(),
+            ]
         );
-    }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Create Payment
+        |--------------------------------------------------------------------------
+        */
+
+        Payment::updateOrCreate(
+            [
+                'enrollment_id' => $enrollment->id,
+            ],
+            [
+                'student_id' => $student->id,
+
+                'transaction_id' => strtoupper(
+                    Str::random(12)
+                ),
+
+                'amount' => $slot->price
+                    ?? $slot->course->sale_price
+                    ?? $slot->course->price
+                    ?? 0,
+
+                'payment_method' => $validated['payment_method'],
+
+                'status' => 'paid',
+            ]
+        );
+
+        return $enrollment;
+    });
+
+    return redirect()->route(
+        'course-enrollment.success',
+        $enrollment->id
+    );
+}
 }

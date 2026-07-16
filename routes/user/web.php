@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
+use App\Http\Controllers\Student\LearningPortalController;
+use App\Http\Controllers\Student\StudentDashboardController;
 use App\SEO\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -148,10 +150,7 @@ Route::post(
     [CourseEnrollmentController::class, 'checkout']
 )->name('course-enrollment.checkout');
 
-// Route::get(
-//     '/course-enrollment/{enrollment}/success',
-//     [CourseEnrollmentController::class, 'success']
-// )->name('course-enrollment.success');
+
 
 
 
@@ -161,7 +160,7 @@ Route::prefix('student')
     ->name('student.')
     ->middleware(['auth', 'active.user'])
     ->group(function () {
-        Route::get('/dashboard', [StudentController::class, 'dashboard'])
+        Route::get('/dashboard', [StudentDashboardController::class, 'dashboard'])
             ->name('dashboard');
 
         Route::get('/profile', [StudentController::class, 'profileEdit'])
@@ -186,10 +185,17 @@ Route::prefix('student')
         Route::get('/billing', [StudentController::class, 'studentBilling'])
             ->name('billing');
 
-        Route::get('/courses', [StudentController::class, 'enrollmentCourses'])
+        Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])
             ->name('enrollment-courses');
-        Route::get('/course-details', [StudentController::class, 'CourseDetails'])
-            ->name('Course-details');
-             Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
+        Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])
+            ->name('course-details');
+
+            //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
+            // ->name('course-module');
+
+             Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseModule'])
             ->name('course-module');
+
+             Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
+            ->name('launch-portal');
     });
