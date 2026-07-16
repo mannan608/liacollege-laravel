@@ -3,131 +3,149 @@
 namespace App\Http\Controllers\Admin\LMS;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LMS\StoreModuleRequest;
-use App\Http\Requests\LMS\UpdateModuleRequest;
+use App\Http\Requests\LMS\StoreLessonResourceRequest;
 use App\Models\Course;
-use App\Models\LMS\Module;
-use Illuminate\Database\QueryException;
+use App\Models\LMS\Lesson;
+use App\Models\LMS\LessonResource;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class CourseResourcesController extends Controller
 {
-    public function index(Request $request): View
+    public function index(Request $request, string $role, Course $course): View
     {
-        $search = $request->search;
-        $courseId = $request->course_id;
+        $request->user()->can('modules.edit') || abort(403);
 
-        $modules = Module::query()
-            ->with('course')
-            ->when($search, function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%");
-            })
-            ->when($courseId, function ($query) use ($courseId) {
-                $query->where('course_id', $courseId);
-            })
-            ->latest()
-            ->paginate(15)
-            ->withQueryString();
+        $resources = LessonResource::query()
+            ->whereHas('lesson.module', fn ($q) => $q->where('course_id', $course->id))
+            ->with(['lesson.module', 'lesson'])
+            ->orderBy('lesson_id')
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->paginate(20);
 
-        return view('backend.pages.LMS.modules.index', [
-            'modules' => $modules,
-            'courses' => Course::orderBy('title')->get(),
-            'title' => 'Modules',
+        return view('backend.pages.LMS.resources.index', [
+            'course' => $course,
+            'resources' => $resources,
         ]);
     }
 
-    public function create(): View
+    public function create(Request $request, string $role, Course $course): View
     {
-        return view('backend.pages.LMS.modules.create', [
-            'courses' => Course::orderBy('title')->get(),
-            'title' => 'Create Module',
+        $request->user()->can('modules.create') || abort(403);
+
+        $lessons = Lesson::query()
+            ->whereHas('module', fn ($q) => $q->where('course_id', $course->id))
+            ->with('module')
+            ->orderBy('id')
+            ->get();
+
+        return view('backend.pages.LMS.resources.create', [
+            'course' => $course,
+            'lessons' => $lessons,
+            'resource' => null,
+            'resourceTypes' => LessonResource::RESOURCE_TYPES,
+            'formAction' => role_route('role.resources.store', ['course' => $course->id]),
+            'formMethod' => 'POST',
+            'pageTitle' => 'Add Lesson Resource',
+            'submitLabel' => 'Save Resource',
         ]);
     }
 
-    public function store(StoreModuleRequest $request): RedirectResponse
+    public function store(StoreLessonResourceRequest $request, string $role, Course $course): RedirectResponse
     {
-        try {
+        $validated = $request->validated();
 
-            Module::create([
-                'course_id' => $request->course_id,
-                'title' => $request->title,
-                'description' => $request->description,
-                'sort_order' => $request->sort_order ?? 0,
-            ]);
+        $data = [
+            'lesson_id' => $validated['lesson_id'],
+            'title' => trim($validated['title']),
+            'resource_type' => $validated['resource_type'],
+            'sort_order' => $validated['sort_order'] ?? 0,
+        ];
 
-             return redirect(role_route('role.modules.index'))
-                ->with('success', 'Module created successfully.');
-
-        } catch (QueryException $e) {
-
-            return back()
-                ->withInput()
-                ->with('error', 'Unable to create module.');
+        if ($request->hasFile('file')) {
+            $data['file_path'] = $request->file('file')->store('lesson-resources', 'public');
         }
+
+        LessonResource::create($data);
+
+        return redirect(role_route('role.resources.index', ['course' => $course->id]))
+            ->with('success', 'Lesson resource saved successfully.');
     }
 
-    public function show(Module $module): View
+    public function edit(Request $request, string $role, Course $course, LessonResource $resource): View
     {
-        $module->load([
-            'course',
-            'lessons',
-        ]);
+        $request->user()->can('modules.edit') || abort(403);
 
-        return view('backend.pages.LMS.modules.show', [
-            'module' => $module,
-            'title' => 'Module Details',
+        $this->ensureBelongsToCourse($course, $resource);
+
+        $lessons = Lesson::query()
+            ->whereHas('module', fn ($q) => $q->where('course_id', $course->id))
+            ->with('module')
+            ->orderBy('id')
+            ->get();
+
+        return view('backend.pages.LMS.resources.create', [
+            'course' => $course,
+            'lessons' => $lessons,
+            'resource' => $resource,
+            'resourceTypes' => LessonResource::RESOURCE_TYPES,
+            'formAction' => role_route('role.resources.update', ['course' => $course->id, 'resource' => $resource->id]),
+            'formMethod' => 'PUT',
+            'pageTitle' => 'Edit Lesson Resource',
+            'submitLabel' => 'Update Resource',
         ]);
     }
 
-    public function edit(Module $module): View
+    public function update(StoreLessonResourceRequest $request, string $role, Course $course, LessonResource $resource): RedirectResponse
     {
-        return view('backend.pages.LMS.modules.edit', [
-            'module' => $module,
-            'courses' => Course::orderBy('title')->get(),
-            'title' => 'Edit Module',
-        ]);
-    }
+        $request->user()->can('modules.edit') || abort(403);
 
-    public function update(
-        UpdateModuleRequest $request,
-        Module $module
-    ): RedirectResponse {
-        try {
+        $this->ensureBelongsToCourse($course, $resource);
 
-            $module->update([
-                'course_id' => $request->course_id,
-                'title' => $request->title,
-                'description' => $request->description,
-                'sort_order' => $request->sort_order ?? 0,
-            ]);
+        $validated = $request->validated();
 
-           return redirect(role_route('role.modules.index'))
-                ->with('success', 'Module updated successfully.');
+        $data = [
+            'lesson_id' => $validated['lesson_id'],
+            'title' => trim($validated['title']),
+            'resource_type' => $validated['resource_type'],
+            'sort_order' => $validated['sort_order'] ?? 0,
+        ];
 
-        } catch (QueryException $e) {
-
-            return back()
-                ->withInput()
-                ->with('error', 'Unable to update module.');
+        if ($request->hasFile('file')) {
+            if ($resource->file_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($resource->file_path);
+            }
+            $data['file_path'] = $request->file('file')->store('lesson-resources', 'public');
         }
+
+        $resource->update($data);
+
+        return redirect(role_route('role.resources.index', ['course' => $course->id]))
+            ->with('success', 'Lesson resource updated successfully.');
     }
 
-    public function destroy(Module $module): RedirectResponse
+    public function destroy(Request $request, string $role, Course $course, LessonResource $resource): RedirectResponse
     {
-        try {
+        $request->user()->can('modules.edit') || abort(403);
 
-            $module->delete();
-             return redirect()
-                ->route('role.modules.index')
-                ->with('success', 'Module deleted successfully.');
+        $this->ensureBelongsToCourse($course, $resource);
 
-        } catch (\Exception $e) {
+        if ($resource->file_path) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($resource->file_path);
+        }
 
-            return back()
-                ->with('error', 'Unable to delete module.');
+        $resource->delete();
+
+        return redirect(role_route('role.resources.index', ['course' => $course->id]))
+            ->with('success', 'Lesson resource deleted successfully.');
+    }
+
+    private function ensureBelongsToCourse(Course $course, LessonResource $resource): void
+    {
+        if ($resource->lesson?->module?->course_id !== $course->id) {
+            abort(404);
         }
     }
 }

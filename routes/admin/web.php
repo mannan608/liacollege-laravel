@@ -113,6 +113,17 @@ Route::prefix('{role}')
 
         Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
 
+        Route::resource('courses.resources', CourseResourcesController::class)
+            ->names([
+                'index' => 'resources.index',
+                'create' => 'resources.create',
+                'store' => 'resources.store',
+                'edit' => 'resources.edit',
+                'update' => 'resources.update',
+                'destroy' => 'resources.destroy',
+            ])
+            ->except(['show']);
+
         Route::resource('course-slots',CourseSlotController::class);
        Route::resource('enrollments', CourseEnrollmentController::class);
    

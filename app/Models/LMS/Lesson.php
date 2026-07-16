@@ -38,6 +38,13 @@ class Lesson extends Model
         return $this->belongsTo(Module::class);
     }
 
+    public function resources()
+    {
+        return $this->hasMany(LessonResource::class)
+            ->orderBy('sort_order')
+            ->orderBy('id');
+    }
+
     // public function resources(): HasMany
     // {
     //     return $this->hasMany(LessonResource::class);

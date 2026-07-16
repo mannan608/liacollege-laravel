@@ -1,4 +1,4 @@
-<div x-data="courseManager(@js($items), @js(role_route('role.modules.edit', ['course' => $course->id, 'module' => 'MODULE_ID'])))" x-init="init()">
+<div x-data="courseManager(@js($items), @js(role_route('role.modules.edit', ['course' => $course->id, 'module' => 'MODULE_ID'])), @js($resourceCreateUrl ?? ''))" x-init="init()">
 
     <!-- Empty State -->
     <div x-show="modules.length === 0" x-cloak class="py-16 text-center">
@@ -98,7 +98,7 @@
                                     <!-- Lesson Actions -->
                                     <div class="flex items-center gap-2">
 
-                                        <a :href="lessonResourceCreateUrl(lesson.id)"
+                                        <a :href="resourceCreateUrl(lesson.id)"
                                             class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700">
                                             <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"
                                                 viewBox="0 0 24 24">
@@ -108,7 +108,7 @@
                                             Add resource
                                         </a>
 
-                                        <a :href="lessonEditUrl(lesson.id)"
+                                        <a :href="moduleEditUrl(lesson.module_id)"
                                             class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700">
                                             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
                                                 stroke-width="2" viewBox="0 0 24 24">
@@ -159,10 +159,11 @@
 </div>
 
 <script>
-    function courseManager(modules = [], editUrlTemplate = '') {
+    function courseManager(modules = [], editUrlTemplate = '', resourceCreateUrlTemplate = '') {
         return {
             modules: modules,
             editUrlTemplate: editUrlTemplate,
+            resourceCreateUrlTemplate: resourceCreateUrlTemplate,
             activeModule: null,
 
             init() {
@@ -178,6 +179,10 @@
 
             moduleEditUrl(moduleId) {
                 return this.editUrlTemplate.replace('MODULE_ID', moduleId);
+            },
+
+            resourceCreateUrl(lessonId) {
+                return this.resourceCreateUrlTemplate.replace('LESSON_ID', lessonId);
             },
         }
     }
