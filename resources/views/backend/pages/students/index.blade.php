@@ -38,38 +38,32 @@
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Email</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500 max-w[50%]">Enroll
                             Courses</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Courses Permission</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Start Date</th>
                         {{-- <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Assignment</th> --}}
                         <th class="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                    @foreach ($students as $student)
+                    @foreach ($enrollments as $enrollment)
                         <tr>
                             <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">
-                                {{ $student->user?->name }}</td>
-                            <td class="px-4 py-3 text-sm text-gray-500">{{ $student->user?->email }}</td>
+                                {{ $enrollment->student->user?->name }}</td>
+                            <td class="px-4 py-3 text-sm text-gray-500">{{ $enrollment->student->user?->email }}</td>
                             <td class="px-4 py-3 text-sm text-gray-500 max-w[50%]">
                                 <div class="flex flex-wrap gap-2">
-                                    @foreach ($student->courses as $course)
+                                    {{-- @foreach ($student->courses as $course)
                                         <span class="inline-block rounded bg-blue-100 px-2 py-1 text-xs text-blue-700">
                                             {{ $course->name }}
                                         </span>
-                                    @endforeach
+                                    @endforeach --}}
+                                    {{ $enrollment->slot->course->name }}
                                 </div>
                             </td>
                             <td class="px-4 py-3 text-sm text-gray-500">
-                                @if ($student->courses->count() > 0)
-                                    <a href="{{ role_route('role.students.course-permission', [
-                                        'student' => $student,
-                                    ]) }}"
-                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                        Permission
-                                    </a>
-                                @endif
+                               {{ $enrollment->slot->training_date->format('d M Y') }}
 
                             </td>                          
-                            <td class="px-4 py-3 text-right">
+                            {{-- <td class="px-4 py-3 text-right">
                                 <div class="inline-flex items-center gap-1">
                                     @can('student.view')
                                         <a href="{{ role_route('role.students.show', ['student' => $student]) }}"
@@ -117,13 +111,13 @@
                                         </form>
                                     @endcan
                                 </div>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
 
-        {{ $students->links() }}
+        {{-- {{ $students->links() }} --}}
     </div>
 @endsection

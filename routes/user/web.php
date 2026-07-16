@@ -129,10 +129,7 @@ Route::get('/first-aid', [FrontendController::class, 'firstAid'])
 //     [FrontendController::class, 'enrollmentCourseCheckout']
 // )->name('enrollmentCourseCheckout');
 
-// Route::get(
-//     '/success-message',
-//     [FrontendController::class, 'checkoutSuccess']
-// )->name('checkoutSuccess');
+
 
 // update route
 Route::get(

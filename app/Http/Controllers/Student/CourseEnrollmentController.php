@@ -35,9 +35,9 @@ class CourseEnrollmentController extends Controller
     );
     }
 
-    public function checkout(Request $request)
-    {
-       $validated = $request->validate([
+   public function checkout(Request $request)
+{
+    $validated = $request->validate([
         'course_id' => ['required', 'exists:courses,id'],
         'slot_id' => ['required', 'exists:course_slots,id'],
 
@@ -46,26 +46,27 @@ class CourseEnrollmentController extends Controller
         'phone' => ['required', 'string'],
     ]);
 
-    DB::transaction(function () use ($validated) {
+    $course = Course::findOrFail(
+        $validated['course_id']
+    );
 
-        $course = Course::findOrFail(
-            $validated['course_id']
-        );
+    $slot = CourseSlot::with([
+        'course',
+        'trainingCenter',
+    ])->findOrFail(
+        $validated['slot_id']
+    );
 
-        $slot = CourseSlot::findOrFail(
-            $validated['slot_id']
-        );
+    abort_unless(
+        $slot->course_id === $course->id,
+        404
+    );
 
-        abort_unless(
-            $slot->course_id == $course->id,
-            404
-        );
-
-        /*
-        |--------------------------------------------------------------------------
-        | Create Student if not exists
-        |--------------------------------------------------------------------------
-        */
+    DB::transaction(function () use (
+        $validated,
+        $course,
+        $slot
+    ) {
 
         $user = User::where(
             'email',
@@ -96,20 +97,12 @@ class CourseEnrollmentController extends Controller
                 'user_id' => $user->id,
             ]);
 
-            // Mail/SMS send করতে পারো
-            // Login credential
         } else {
 
             $student = Student::firstOrCreate([
                 'user_id' => $user->id,
             ]);
         }
-
-        /*
-        |--------------------------------------------------------------------------
-        | Prevent duplicate enrollment
-        |--------------------------------------------------------------------------
-        */
 
         Enrollment::firstOrCreate(
             [
@@ -131,12 +124,30 @@ class CourseEnrollmentController extends Controller
             'validated'
         )
     );
-    }
+}
 
     public function success()
     {
         return view('frontend.pages.course-enrollment.success'
     );
     }
+
+//     public function index(Request $request)
+// {
+//     $enrollments = Enrollment::query()
+//         ->with([
+//             'student.user',
+//             'slot.trainingCenter',
+//         ])
+//         ->when($request->status, function ($query) use ($request) {
+//             $query->where('status', $request->status);
+//         })
+//         ->latest()
+//         ->paginate(20);
+
+//     return view('backend.pages.LMS.enrollments.index',
+//         compact('enrollments')
+//     );
+// }
 
 }

@@ -73,13 +73,12 @@
 
 
             {{-- Enrollment Form --}}
-            <form
-                method="POST"
-                action="{{ route('course-enrollment.create', [$course, $slot]) }}"
-                class="mt-8"
-            >
-
-                @csrf
+        <form
+    method="POST"
+    action="{{ route('course-enrollment.checkout') }}"
+    class="mt-8"
+>
+    @csrf
 
                 <input
                     type="hidden"

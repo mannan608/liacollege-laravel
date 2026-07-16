@@ -80,7 +80,7 @@
 
             {{-- Temporary complete enrolment --}}
             <a
-                href="{{ route('checkoutSuccess') }}"
+                href="{{ route('course-enrollment.success') }}"
                 class="mt-8 block w-full rounded-xl bg-emerald-600 px-6 py-4 text-center font-bold text-white transition hover:bg-emerald-700"
             >
                 Pay & Complete Enrolment

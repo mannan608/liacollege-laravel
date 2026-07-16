@@ -495,11 +495,6 @@ class FrontendController extends Controller
 //         )
 //     );
 // }
-//  public function checkoutSuccess()
-// {
-//     return view(
-//         'frontend.pages.student.enrollment.checkout-message'
-//     );
-// }
+
 
 }

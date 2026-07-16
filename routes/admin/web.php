@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\TrainingCenterController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\Http\Controllers\Student\StudentController;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
@@ -112,7 +113,8 @@ Route::prefix('{role}')
 
         Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
 
-        Route::resource('course-slots',CourseSlotController::class
-        );
+        Route::resource('course-slots',CourseSlotController::class);
+       Route::resource('enrollments', CourseEnrollmentController::class);
+   
 
     });
