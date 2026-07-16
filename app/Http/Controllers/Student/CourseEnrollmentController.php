@@ -80,7 +80,7 @@ class CourseEnrollmentController extends Controller
                 'student'
             )->firstOrFail();
 
-            $password = Str::random(8);
+           $password = '12345678';
 
             $user = User::create([
                 'name' => $validated['name'],

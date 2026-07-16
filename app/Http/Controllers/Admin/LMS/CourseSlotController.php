@@ -80,9 +80,11 @@ class CourseSlotController extends Controller
         return view('backend.pages.LMS.course-slot.create', [
             'courses' => Course::orderBy('name')->get(),
             'trainingCenters' => TrainingCenter::orderBy('name')->get(),
-            'teachers' => User::orderBy('name')->get(),
+            'teachers' => User::where('primary_role_id', '!=', 4)->orderBy('name')->get(),
         ]);
     }
+
+
 
     public function store(StoreCourseSlotRequest $request)
     {
