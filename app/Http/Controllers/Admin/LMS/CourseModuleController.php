@@ -40,22 +40,24 @@ class CourseModuleController extends Controller
         ]);
     }
 
-    public function edit(Request $request, string $role, Course $course): View
+    public function edit(Request $request, string $role, Course $course, Module $module): View
     {
         $request->user()->can('modules.edit') || abort(403);
 
-        $course->load([
-            'modules.lessons',
-        ]);
+        if ($module->course_id !== $course->id) {
+            abort(404);
+        }
+
+        $module->load('lessons');
 
         return view('backend.pages.LMS.module-lessions.create', [
             'course' => $course,
-            'modules' => $this->formatModulesForView($course),
-            'formAction' => role_route('role.modules.update', ['course' => $course->id]),
+            'modules' => $this->formatModuleForView($module),
+            'formAction' => role_route('role.modules.update', ['course' => $course->id, 'module' => $module->id]),
             'formMethod' => 'PUT',
             'isEdit' => true,
-            'pageTitle' => 'Edit Course Modules',
-            'submitLabel' => 'Update Modules',
+            'pageTitle' => 'Edit Course Module',
+            'submitLabel' => 'Update Module',
         ]);
     }
 
@@ -64,54 +66,49 @@ class CourseModuleController extends Controller
         $validated = $request->validated();
 
         DB::transaction(function () use ($course, $validated): void {
-            $this->syncStructure($course, $validated['modules'] ?? []);
+            $this->createStructure($course, $validated['modules'] ?? []);
         });
 
         return redirect(role_route('role.modules.index', ['course' => $course->id]))
             ->with('success', 'Course modules saved successfully.');
     }
 
-    public function update(StoreModuleRequest $request, string $role, Course $course): RedirectResponse
+    public function update(StoreModuleRequest $request, string $role, Course $course, Module $module): RedirectResponse
     {
+        if ($module->course_id !== $course->id) {
+            abort(404);
+        }
+
         $validated = $request->validated();
 
-        DB::transaction(function () use ($course, $validated): void {
-            $this->syncStructure($course, $validated['modules'] ?? []);
+        DB::transaction(function () use ($module, $validated): void {
+            $this->syncSingleModule($module, $validated['modules'][0] ?? []);
         });
 
         return redirect(role_route('role.modules.index', ['course' => $course->id]))
-            ->with('success', 'Course modules updated successfully.');
+            ->with('success', 'Course module updated successfully.');
     }
 
-    private function syncStructure(Course $course, array $modulesData): void
+    private function syncSingleModule(Module $module, array $moduleData): void
     {
-        $existingModules = $course->modules()
-            ->with('lessons')
-            ->get()
-            ->keyBy('id');
+        $module->fill([
+            'title' => $this->normalizeText($moduleData['title'] ?? ''),
+        ])->save();
 
-        $keptModuleIds = [];
+        $this->syncLessons($module, $moduleData['lessons'] ?? []);
+    }
 
+    private function createStructure(Course $course, array $modulesData): void
+    {
         foreach ($modulesData as $moduleData) {
-            $moduleId = ! empty($moduleData['id']) ? (int) $moduleData['id'] : null;
-            $module = $moduleId && $existingModules->has($moduleId)
-                ? $existingModules->get($moduleId)
-                : $course->modules()->create([
-                    'title' => $this->normalizeText($moduleData['title'] ?? ''),
-                ]);
-
-            $module->fill([
+            $module = $course->modules()->create([
                 'title' => $this->normalizeText($moduleData['title'] ?? ''),
-            ])->save();
+            ]);
 
-            $keptModuleIds[] = $module->id;
-            $this->syncLessons($module, $moduleData['lessons'] ?? []);
+            foreach ($moduleData['lessons'] ?? [] as $lessonData) {
+                $module->lessons()->create($this->buildLessonPayload($lessonData));
+            }
         }
-
-        $course->modules()
-            ->whereNotIn('id', $keptModuleIds)
-            ->get()
-            ->each->delete();
     }
 
     private function syncLessons(Module $module, array $lessonsData): void
@@ -164,30 +161,27 @@ class CourseModuleController extends Controller
         ];
     }
 
-    private function formatModulesForView(Course $course): array
+    private function formatModuleForView(Module $module): array
     {
-        return $course->modules
-            ->map(function (Module $module): array {
-                return [
-                    'id' => $module->id,
-                    'title' => $module->title,
-                    'lessons' => $module->lessons
-                        ->map(function ($lesson): array {
-                            return [
-                                'id' => $lesson->id,
-                                'title' => $lesson->title,
-                                'content' => $lesson->content,
-                                'duration' => $lesson->duration ?? 0,
-                                'lesson_types' => $lesson->lesson_types ?? ['text'],
-                                'status' => $lesson->status,
-                            ];
-                        })
-                        ->values()
-                        ->all(),
-                ];
-            })
-            ->values()
-            ->all();
+        return [
+            [
+                'id' => $module->id,
+                'title' => $module->title,
+                'lessons' => $module->lessons
+                    ->map(function ($lesson): array {
+                        return [
+                            'id' => $lesson->id,
+                            'title' => $lesson->title,
+                            'content' => $lesson->content,
+                            'duration' => $lesson->duration ?? 0,
+                            'lesson_types' => $lesson->lesson_types ?? ['text'],
+                            'status' => $lesson->status,
+                        ];
+                    })
+                    ->values()
+                    ->all(),
+            ],
+        ];
     }
 
     private function blankModules(): array
