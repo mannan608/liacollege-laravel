@@ -106,21 +106,35 @@ Route::get('/leadership-management', [FrontendController::class, 'leadershipMana
     ->name('leadershipManagement');
 
 Route::get('/project-management', [FrontendController::class, 'projectManagement'])
-    ->name('projectManagement');
-Route::get('/first-aid', [FrontendController::class, 'firstAid'])
-    ->name('firstAid');
-
-Route::get('/course-enrollment', [FrontendController::class, 'enrollmentSlot'])
-    ->name('enrollmentSlot');
-Route::get('/checkout', [FrontendController::class, 'enrollmentCourseCheckout'])
-    ->name('enrollmentCourseCheckout');
-
-Route::get('/success-message', [FrontendController::class, 'checkoutSuccess'])
-    ->name('checkoutSuccess');
+    ->name('projectManagement');   
 
 // Fast Track
 Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track_qualifications'])
     ->name('fast-track-qualifications');
+
+
+
+// enroll course
+Route::get('/first-aid', [FrontendController::class, 'firstAid'])
+    ->name('firstAid');
+
+Route::get(
+    '/first-aid/{course}/{slot}/course-enrollment',
+    [FrontendController::class, 'enrollmentSlot']
+)->name('enrollmentSlot');
+
+Route::post(
+    '/course-enrollment/checkout',
+    [FrontendController::class, 'enrollmentCourseCheckout']
+)->name('enrollmentCourseCheckout');
+
+Route::get(
+    '/success-message',
+    [FrontendController::class, 'checkoutSuccess']
+)->name('checkoutSuccess');
+
+
+
 
 
 

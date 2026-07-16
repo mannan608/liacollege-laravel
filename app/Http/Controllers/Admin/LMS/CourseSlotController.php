@@ -32,6 +32,8 @@ class CourseSlotController extends Controller
     {
         $request->user()->can('course-slot.list') || abort(403);
 
+        
+
         try {
             $query = CourseSlot::query()->with([
                 'course',
