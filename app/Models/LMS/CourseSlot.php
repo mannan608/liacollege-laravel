@@ -84,4 +84,8 @@ class CourseSlot extends Model
     {
         return $this->belongsTo(User::class,'created_by');
     }
+    public function enrollments()
+{
+    return $this->hasMany(Enrollment::class);
+}
 }

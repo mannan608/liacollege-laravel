@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\LMS\Enrollment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -40,4 +41,9 @@ class Student extends Model
     {
         return $this->hasMany(AssignmentSubmission::class);
     }
+
+    public function enrollments()
+{
+    return $this->hasMany(Enrollment::class);
+}
 }

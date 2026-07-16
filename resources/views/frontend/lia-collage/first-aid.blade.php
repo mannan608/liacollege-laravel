@@ -135,7 +135,7 @@
                                         </div>
                                     </div>
 
-                                    <a href="{{ route('enrollmentSlot', [
+                                    <a href="{{ route('course-enrollment.create', [
                                         'course' => $slot->course_id,
                                         'slot' => $slot->id,
                                     ]) }}"
@@ -145,7 +145,6 @@
                                         Enrol Now
                                         <i class="bi bi-arrow-right ms-2"></i>
                                     </a>
-
                                 </li>
 
                             @empty

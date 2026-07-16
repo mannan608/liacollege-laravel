@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\SEO\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -118,21 +119,36 @@ Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track
 Route::get('/first-aid', [FrontendController::class, 'firstAid'])
     ->name('firstAid');
 
+// Route::get(
+//     '/first-aid/{course}/{slot}/course-enrollment',
+//     [FrontendController::class, 'enrollmentSlot']
+// )->name('enrollmentSlot');
+
+// Route::post(
+//     '/course-enrollment/checkout',
+//     [FrontendController::class, 'enrollmentCourseCheckout']
+// )->name('enrollmentCourseCheckout');
+
+// Route::get(
+//     '/success-message',
+//     [FrontendController::class, 'checkoutSuccess']
+// )->name('checkoutSuccess');
+
+// update route
 Route::get(
-    '/first-aid/{course}/{slot}/course-enrollment',
-    [FrontendController::class, 'enrollmentSlot']
-)->name('enrollmentSlot');
+    '/course-enrollment/{course}/{slot}',
+    [CourseEnrollmentController::class, 'create']
+)->name('course-enrollment.create');
 
 Route::post(
     '/course-enrollment/checkout',
-    [FrontendController::class, 'enrollmentCourseCheckout']
-)->name('enrollmentCourseCheckout');
+    [CourseEnrollmentController::class, 'checkout']
+)->name('course-enrollment.checkout');
 
 Route::get(
-    '/success-message',
-    [FrontendController::class, 'checkoutSuccess']
-)->name('checkoutSuccess');
-
+    '/course-enrollment/success',
+    [CourseEnrollmentController::class, 'success']
+)->name('course-enrollment.success');
 
 
 
