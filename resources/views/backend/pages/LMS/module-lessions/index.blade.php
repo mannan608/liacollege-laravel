@@ -26,7 +26,10 @@
                 + Add New Module
             </a>
         </div>
-       @include('backend.pages.LMS.module-lessions.table', ['items' => $course->modules])
+        @include('backend.pages.LMS.module-lessions.table', [
+            'items' => $course->modules,
+            'editUrl' => role_route('role.modules.edit', ['course' => $course->id]),
+        ])
 
     </div>
 @endsection

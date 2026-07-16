@@ -107,11 +107,11 @@ Route::prefix('{role}')
 
         Route::get('courses/{course}/modules/create', [CourseModuleController::class, 'create'])->name('modules.create');
 
-        Route::post('courses/{course}/modules',[CourseModuleController::class, 'store'])->name('modules.store');
+        Route::post('courses/{course}/modules', [CourseModuleController::class, 'store'])->name('modules.store');
 
-        Route::get('courses/{course}/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
+        Route::get('courses/{course}/modules/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
 
-        Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
+        Route::put('courses/{course}/modules', [CourseModuleController::class, 'update'])->name('modules.update');
 
         Route::resource('course-slots',CourseSlotController::class);
        Route::resource('enrollments', CourseEnrollmentController::class);

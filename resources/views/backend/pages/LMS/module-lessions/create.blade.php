@@ -38,7 +38,7 @@
             </a>
         </div>
 
-        <form x-data="moduleLessonBuilder(@js($initialModules))" action="{{ $formAction ?? role_route('role.modules.store', ['course' => $course->id]) }}"
+        <form x-data="moduleLessonBuilder(@js($initialModules))" action="{{ $formAction ?? route('role.modules.store', ['course' => $course->id]) }}"
             method="POST" class="space-y-6">
             @csrf
             @if (($formMethod ?? 'POST') !== 'POST')
@@ -70,7 +70,9 @@
                     <div class="space-y-6 p-6">
                         <div class="space-y-2">
                             <label class="text-xs font-semibold uppercase tracking-wider text-gray-500">Module title</label>
-                            <input type="hidden" :name="`modules[${moduleIndex}][id]`" x-show="module.id" :value="module.id">
+                            <template x-if="module.id">
+                                <input type="hidden" :name="`modules[${moduleIndex}][id]`" :value="module.id">
+                            </template>
                             <input type="text" :name="`modules[${moduleIndex}][title]`" x-model="module.title"
                                 placeholder="e.g. Introduction"
                                 class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-all focus:border-brand-500 focus:bg-white">
@@ -101,9 +103,11 @@
                                     <div class="grid gap-4">
                                         <div class="space-y-2">
                                             <label class="text-sm font-medium text-gray-600">Lesson title</label>
-                                            <input type="hidden"
-                                                :name="`modules[${moduleIndex}][lessons][${lessonIndex}][id]`"
-                                                x-show="lesson.id" :value="lesson.id">
+                                            <template x-if="lesson.id">
+                                                <input type="hidden"
+                                                    :name="`modules[${moduleIndex}][lessons][${lessonIndex}][id]`"
+                                                    :value="lesson.id">
+                                            </template>
                                             <input type="text"
                                                 :name="`modules[${moduleIndex}][lessons][${lessonIndex}][title]`"
                                                 x-model="lesson.title" placeholder="Enter lesson title"
@@ -140,6 +144,17 @@
                                                     </label>
                                                 </template>
                                             </div>
+                                        </div>
+
+                                        <div class="space-y-2">
+                                            <label class="text-sm font-medium text-gray-600">Status</label>
+                                            <select
+                                                :name="`modules[${moduleIndex}][lessons][${lessonIndex}][status]`"
+                                                x-model="lesson.status"
+                                                class="w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 outline-none transition-all focus:border-brand-500">
+                                                <option :value="true">Active</option>
+                                                <option :value="false">Inactive</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

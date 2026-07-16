@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\LMS;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LMS\StoreModuleRequest;
 use App\Models\Course;
+use App\Models\LMS\Lesson;
 use App\Models\LMS\Module;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class CourseModuleController extends Controller
     public function create(Request $request, string $role, Course $course): View
     {
         $request->user()->can('modules.create') || abort(403);
+
         return view('backend.pages.LMS.module-lessions.create', [
             'course' => $course,
             'modules' => $this->blankModules(),
@@ -41,14 +43,15 @@ class CourseModuleController extends Controller
     public function edit(Request $request, string $role, Course $course): View
     {
         $request->user()->can('modules.edit') || abort(403);
+
         $course->load([
             'modules.lessons',
         ]);
 
         return view('backend.pages.LMS.module-lessions.create', [
             'course' => $course,
-            // 'modules' => $this->formatModulesForView($course),
-            'formAction' => role_route('role.module.update', ['course' => $course->id]),
+            'modules' => $this->formatModulesForView($course),
+            'formAction' => role_route('role.modules.update', ['course' => $course->id]),
             'formMethod' => 'PUT',
             'isEdit' => true,
             'pageTitle' => 'Edit Course Modules',
@@ -61,7 +64,7 @@ class CourseModuleController extends Controller
         $validated = $request->validated();
 
         DB::transaction(function () use ($course, $validated): void {
-            $this->createStructure($course, $validated['modules'] ?? []);
+            $this->syncStructure($course, $validated['modules'] ?? []);
         });
 
         return redirect(role_route('role.modules.index', ['course' => $course->id]))
@@ -80,19 +83,6 @@ class CourseModuleController extends Controller
             ->with('success', 'Course modules updated successfully.');
     }
 
-    private function createStructure(Course $course, array $modulesData): void
-    {
-        foreach ($modulesData as $moduleData) {
-            $module = $course->modules()->create([
-                'title' => $this->normalizeText($moduleData['title'] ?? ''),
-            ]);
-
-            foreach ($moduleData['lessons'] ?? [] as $lessonData) {
-                $module->lessons()->create($this->buildLessonPayload($lessonData));
-            }
-        }
-    }
-
     private function syncStructure(Course $course, array $modulesData): void
     {
         $existingModules = $course->modules()
@@ -103,35 +93,25 @@ class CourseModuleController extends Controller
         $keptModuleIds = [];
 
         foreach ($modulesData as $moduleData) {
-            $moduleId = isset($moduleData['id']) ? (int) $moduleData['id'] : null;
+            $moduleId = ! empty($moduleData['id']) ? (int) $moduleData['id'] : null;
             $module = $moduleId && $existingModules->has($moduleId)
                 ? $existingModules->get($moduleId)
                 : $course->modules()->create([
-                    'title' => '',
+                    'title' => $this->normalizeText($moduleData['title'] ?? ''),
                 ]);
 
-            $moduleUpdates = [];
-
-            if (array_key_exists('title', $moduleData)) {
-                $moduleUpdates['title'] = $this->normalizeText($moduleData['title'] ?? '');
-            }
-
-            if ($moduleUpdates !== []) {
-                $module->fill($moduleUpdates)->save();
-            }
+            $module->fill([
+                'title' => $this->normalizeText($moduleData['title'] ?? ''),
+            ])->save();
 
             $keptModuleIds[] = $module->id;
             $this->syncLessons($module, $moduleData['lessons'] ?? []);
         }
 
-        if ($keptModuleIds !== []) {
-            $course->modules()
-                ->whereNotIn('id', $keptModuleIds)
-                ->get()
-                ->each->delete();
-        } else {
-            $course->modules()->get()->each->delete();
-        }
+        $course->modules()
+            ->whereNotIn('id', $keptModuleIds)
+            ->get()
+            ->each->delete();
     }
 
     private function syncLessons(Module $module, array $lessonsData): void
@@ -143,76 +123,45 @@ class CourseModuleController extends Controller
         $keptLessonIds = [];
 
         foreach ($lessonsData as $lessonData) {
-            $lessonId = isset($lessonData['id']) ? (int) $lessonData['id'] : null;
+            $lessonId = ! empty($lessonData['id']) ? (int) $lessonData['id'] : null;
             $lesson = $lessonId && $existingLessons->has($lessonId)
                 ? $existingLessons->get($lessonId)
-                : $module->lessons()->create([
-                    'title' => '',
-                    'content' => null,
-                    'duration' => 0,
-                    'lesson_types' => ['text'],
-                    'status' => true,
-                ]);
+                : null;
 
-            $lessonUpdates = $this->buildLessonPayload($lessonData, $lesson->toArray(), $lesson->exists);
+            $payload = $this->buildLessonPayload($lessonData);
 
-            if ($lessonUpdates !== []) {
-                $lesson->fill($lessonUpdates)->save();
+            if ($lesson instanceof Lesson) {
+                $lesson->fill($payload)->save();
+            } else {
+                $lesson = $module->lessons()->create($payload);
             }
 
             $keptLessonIds[] = $lesson->id;
         }
 
-        if ($keptLessonIds !== []) {
-            $module->lessons()
-                ->whereNotIn('id', $keptLessonIds)
-                ->get()
-                ->each->delete();
-        } else {
-            $module->lessons()->get()->each->delete();
-        }
+        $module->lessons()
+            ->whereNotIn('id', $keptLessonIds)
+            ->get()
+            ->each->delete();
     }
 
-    private function buildLessonPayload(array $lessonData, array $existingLesson = [], bool $isExisting = false): array
+    private function buildLessonPayload(array $lessonData): array
     {
-        $payload = [];
+        $types = is_array($lessonData['lesson_types'] ?? null)
+            ? array_values(array_filter($lessonData['lesson_types'], static fn ($t) => $t !== null && $t !== ''))
+            : [];
 
-        if (array_key_exists('title', $lessonData)) {
-            $payload['title'] = $this->normalizeText($lessonData['title'] ?? '');
-        } elseif (! $isExisting && isset($existingLesson['title'])) {
-            $payload['title'] = $this->normalizeText($existingLesson['title']);
-        }
+        $duration = $lessonData['duration'] ?? null;
 
-        if (array_key_exists('content', $lessonData)) {
-            $content = $lessonData['content'];
-            $payload['content'] = $content === '' ? null : $content;
-        }
-
-        if (array_key_exists('duration', $lessonData)) {
-            $duration = $lessonData['duration'];
-            $payload['duration'] = ($duration === '' || $duration === null)
-                ? 0
-                : (int) $duration;
-        }
-
-        if (array_key_exists('lesson_types', $lessonData)) {
-            $types = is_array($lessonData['lesson_types']) ? $lessonData['lesson_types'] : [];
-            $payload['lesson_types'] = array_values(array_filter($types, static fn ($type) => $type !== null && $type !== ''));
-        } elseif (! $isExisting && isset($existingLesson['lesson_types'])) {
-            $payload['lesson_types'] = is_array($existingLesson['lesson_types']) && $existingLesson['lesson_types'] !== []
-                ? $existingLesson['lesson_types']
-                : ['text'];
-        }
-
-        if (array_key_exists('status', $lessonData)) {
-            $payload['status'] = filter_var($lessonData['status'], FILTER_VALIDATE_BOOLEAN);
-        }
-
-        if ($payload !== [] && (! isset($payload['lesson_types']) || $payload['lesson_types'] === [])) {
-            $payload['lesson_types'] = ['text'];
-        }
-
-        return $payload;
+        return [
+            'title' => $this->normalizeText($lessonData['title'] ?? ''),
+            'content' => ($lessonData['content'] ?? '') === '' ? null : $lessonData['content'],
+            'duration' => ($duration === '' || $duration === null) ? 0 : (int) $duration,
+            'lesson_types' => $types !== [] ? $types : ['text'],
+            'status' => isset($lessonData['status'])
+                ? filter_var($lessonData['status'], FILTER_VALIDATE_BOOLEAN)
+                : true,
+        ];
     }
 
     private function formatModulesForView(Course $course): array

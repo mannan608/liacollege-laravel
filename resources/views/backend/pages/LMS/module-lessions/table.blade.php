@@ -1,4 +1,4 @@
-<div x-data="courseManager(@js($items))" x-init="init()">
+<div x-data="courseManager(@js($items), @js($editUrl ?? ''))" x-init="init()">
 
     <!-- Empty State -->
     <div x-show="modules.length === 0" x-cloak class="py-16 text-center">
@@ -48,7 +48,7 @@
                             Add lesson
                         </a>
 
-                        <a :href="moduleEditUrl(module.id)"
+                        <a :href="moduleEditUrl()"
                             class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900">
                             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
@@ -159,9 +159,10 @@
 </div>
 
 <script>
-    function courseManager(modules = []) {
+    function courseManager(modules = [], editUrl = '') {
         return {
             modules: modules,
+            editUrl: editUrl,
             activeModule: null,
 
             init() {
@@ -175,21 +176,9 @@
                     this.activeModule === id ? null : id;
             },
 
-            moduleLessonCreateUrl(moduleId) {
-                return `/modules/${moduleId}/lessons/create`;
+            moduleEditUrl() {
+                return this.editUrl || '/modules';
             },
-
-            moduleEditUrl(moduleId) {
-                return `/modules/${moduleId}/edit`;
-            },
-
-            lessonResourceCreateUrl(lessonId) {
-                return `/lessons/${lessonId}/resources/create`;
-            },
-
-            lessonEditUrl(lessonId) {
-                return `/lessons/${lessonId}/edit`;
-            }
         }
     }
 </script>

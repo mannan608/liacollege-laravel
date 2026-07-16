@@ -12,8 +12,8 @@ class StoreModuleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // return false;
-        return $this->user()?->can('modules.create') === true;
+        return $this->user()?->can('modules.create') === true
+            || $this->user()?->can('modules.edit') === true;
     }
 
     /**
