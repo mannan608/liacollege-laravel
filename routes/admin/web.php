@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CampusController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
+use App\Http\Controllers\Admin\CourseResources\CourseContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\LMS\CourseModuleController;
@@ -94,14 +95,7 @@ Route::prefix('{role}')
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         Route::resource('training-centers', TrainingCenterController::class);
         Route::resource('course-categories', CourseCategoryController::class);
-        // Route::resource('course-modules', CourseCategoryController::class);
 
-        // Add new module and lession
-        // Route::get('courses/{course}/modules', [CourseResourcesController::class, 'index'])->name('modules.index');
-        // Route::get('courses/{course}/modules/create', [CourseResourcesController::class, 'create'])->name('module.create');
-        // Route::post('courses/{course}/modules', [CourseResourcesController::class, 'store'])->name('module.store');
-        // Route::get('courses/{course}/modules/{module}/edit', [CourseResourcesController::class, 'edit'])->name('module.edit');
-        // Route::put('courses/{course}/modules/{module}', [CourseResourcesController::class, 'update'])->name('module.update');
 
         Route::get('courses/{course}/modules', [CourseModuleController::class, 'index'])->name('modules.index');
 
@@ -124,8 +118,17 @@ Route::prefix('{role}')
             ])
             ->except(['show']);
 
-        Route::resource('course-slots',CourseSlotController::class);
-       Route::resource('enrollments', CourseEnrollmentController::class);
-   
+        Route::resource('course-slots', CourseSlotController::class);
+        Route::resource('enrollments', CourseEnrollmentController::class);
+
+
+        // updated route list area start
+        Route::get('courses/{course}/course-contents', [CourseContentController::class, 'index'])->name('course-contents.index');
+        Route::get('courses/{course}/course-content/create', [CourseContentController::class, 'create'])->name('course-content.create');
+        Route::post('courses/{course}/course-content', [CourseContentController::class, 'store'])->name('course-content.store');
+        Route::get('courses/{course}/course-content/{contentcategory}/edit', [CourseContentController::class, 'edit'])->name('course-content.edit');
+        Route::delete('courses/{course}/course-content/{contentcategory}', [CourseContentController::class, 'destroy'])->name('course-content.destroy');
+        // updated route list area end
+
 
     });

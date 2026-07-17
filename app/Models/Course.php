@@ -58,13 +58,18 @@ class Course extends Model
             ->orderBy('sort_order');
     }
 
-    public function modules(): HasMany
-    {
-        return $this->hasMany(Module::class)
-            ->orderBy('id');
-    }
+  
     public function slots()
 {
     return $this->hasMany(CourseSlot::class);
 }
+  public function contentcategories()
+    {
+        return $this->hasMany(CourseContentCategory::class);
+    }
+      public function modules(): HasMany
+    {
+        return $this->hasMany(Module::class)
+            ->orderBy('id');
+    }
 }

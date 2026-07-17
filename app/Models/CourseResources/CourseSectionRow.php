@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\CourseResources;
+
+use App\Models\CourseResources\CourseSection;
 
 use Illuminate\Database\Eloquent\Model;
 

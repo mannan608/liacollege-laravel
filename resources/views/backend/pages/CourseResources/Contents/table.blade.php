@@ -4,19 +4,14 @@
 
     $collection =
         $items instanceof \Illuminate\Pagination\AbstractPaginator ? $items->getCollection() : collect($items);
+        
 
-    $tableRowData = $collection
-        ->map(function ($course) {
-            return [
-                'id' => $course->id,                
-                'name' => $course->name,
-                'slug' => $course->slug,
-                'code' => $course->code,
-                'status' => $course->status,
-                'cricos' => $course->cricos,
-                'thumbnail' => $course->thumbnail ? asset($course->thumbnail) : null,
-            ];
-        })
+    $tableRowData = $collection->map(function ($category) {
+    return [
+        'id' => $category->id,
+        'name' => $category->name,
+    ];
+})
         ->values();
 
     // dd($tableRowData);
@@ -26,6 +21,7 @@
 <div x-data="{
     tableRowData: {{ \Illuminate\Support\Js::from($tableRowData) }},
     courseBaseUrl: {{ \Illuminate\Support\Js::from(url('/' . $role . '/courses')) }},
+    courseId: {{ $course->id }},
     showDeleteModal: false,
     rowToDelete: null,
 
@@ -45,7 +41,10 @@
     },
 
 }" @keydown.escape.window="closeDeleteModal()">
-    <form x-ref="deleteForm" :action="rowToDelete ? (courseBaseUrl + '/' + rowToDelete.id) : '#'" method="POST"
+    <form  x-ref="deleteForm"
+    :action="rowToDelete
+        ? (courseBaseUrl + '/' + courseId + '/resource/' + rowToDelete.id)
+        : '#'" method="POST"
         class="hidden">
         @csrf
         @method('DELETE')
@@ -83,12 +82,7 @@
                 <thead class="bg-gray-50 dark:bg-white/2 border-b border-gray-100 dark:border-white/5">
                     <tr>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Cricos</th>                       
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Course Resources</th>                       
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Section Name</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider text-right">
                             Action</th>
                     </tr>
@@ -108,43 +102,12 @@
                                     class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-xs font-mono"
                                     x-text="row.id"></span>
                             </td>
-                            <td class="px-5 py-4">
-                                <template x-if="row.thumbnail">
-                                    <img :src="row.thumbnail"
-                                        class="w-10 h-10 rounded border border-gray-200 object-contain" alt="thumbnail"
-                                        loading="lazy">
-                                </template>
-                                <template x-if="!row.thumbnail">
-                                    <span class="text-xs text-gray-400 italic">None</span>
-                                </template>
-                            </td>
                             <td class="px-5 py-4 text-sm text-gray-700 dark:text-gray-300" x-text="row.name"></td>
-                            <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="row.code"></td>
-                            <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
-                                <span x-text="row.cricos"></span>
-                            </td>
-                            <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" >
-                                    <div class="flex gap-4">
-                                        <a :href="courseBaseUrl + '/' + row.id + '/modules'"
-                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                    Add Quiz Module
-                                </a>
-                                <a :href="courseBaseUrl + '/' + row.id + '/course-contents'"
-                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                    Add Study Meterial
-                                </a>
-                                    </div>
-                            </td>
-                            <td class="px-5 py-4 text-sm">
-                                <span
-                                    :class="row.status === 'active' ? 'bg-green-100 text-green-700' :
-                                        'bg-red-100 text-red-700'"
-                                    class="px-2 py-0.5 rounded text-xs font-medium capitalize"
-                                    x-text="row.status"></span>
-                            </td>
+
+                           
                             <td class="px-5 py-4 text-right">
                                 <div class="flex justify-end gap-2">
-                                    <a :href="courseBaseUrl + '/' + row.id + '/edit'"
+                                    <a  :href="courseBaseUrl + '/' + courseId + '/resource/' + row.id + '/edit'"
                                         class="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-all">
                                         <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

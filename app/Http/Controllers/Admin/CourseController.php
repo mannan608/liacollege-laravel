@@ -21,9 +21,11 @@ class CourseController extends Controller
         private readonly CourseRepositoryInterface $courses
     ) {}
 
-    public function index(Request $request): View
+    public function index(Request $request)
     {
         $request->user()->can('course.list') || abort(403);
+
+        // return $this->courses->paginate();
 
         return view('backend.pages.courses.index', [
             'courses' => $this->courses->paginate(),

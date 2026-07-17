@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\CourseResources;
 
+use App\Models\Course;
+use App\Models\CourseContentCategory;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -10,7 +13,7 @@ class CoursePermissions extends Model
     protected $fillable = [
         'student_id',
         'course_id',
-        'category_id',
+        'course_content_category_id',
         'section_id',
         'row_id',
         'doc_permissions',
@@ -30,9 +33,9 @@ class CoursePermissions extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function category(): BelongsTo
+    public function contentcategory(): BelongsTo
     {
-        return $this->belongsTo(CourseCategory::class, 'category_id');
+        return $this->belongsTo(CourseContentCategory::class, 'course_content_category_id');
     }
 
     public function section(): BelongsTo

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\CourseResources;
 
+use App\Models\CourseContentCategory;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseSection extends Model
 {
     protected $fillable = [
-        'course_category_id',
+        'course_content_category_id',
         'section_name',
         'field_types'
     ];
@@ -23,8 +24,8 @@ class CourseSection extends Model
 public function category()
 {
     return $this->belongsTo(
-        CourseCategory::class,
-        'course_category_id'
+        CourseContentCategory::class,
+        'course_content_category_id'
     );
 }
 
