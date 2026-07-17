@@ -12,23 +12,46 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('lesson_id')
-                ->constrained('lessons')
+                ->constrained()
                 ->cascadeOnDelete();
 
             $table->string('title');
 
-            $table->enum('resource_type', ['video', 'pdf', 'ppt', 'zip', 'audio'])
-                ->default('pdf');
+            $table->enum('resource_type', [
+                'video',
+                'content',
+                'file',
+                'quiz'
+            ]);
+
+            /*
+    video = youtube url / vimeo url
+
+    content = html/text
+
+    file = pdf/doc/ppt
+
+    quiz = quiz_id
+    */
+
+            $table->text('description')->nullable();
+
+            $table->string('url')->nullable();
 
             $table->string('file_path')->nullable();
 
-            $table->unsignedInteger('sort_order')
+            $table->foreignId('quiz_id')
+                ->nullable()
+                ->constrained('quizzes')
+                ->nullOnDelete();
+
+            $table->integer('sort_order')
                 ->default(0);
 
-            $table->timestamps();
+            $table->boolean('status')
+                ->default(true);
 
-            $table->index('lesson_id');
-            $table->index('resource_type');
+            $table->timestamps();
         });
     }
 

@@ -14,8 +14,7 @@ class StoreQuizResourceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()?->can('modules.create') === true
-            || $this->user()?->can('modules.edit') === true;
+         return $this->user()?->can('course.edit') === true;
     }
 
     /**

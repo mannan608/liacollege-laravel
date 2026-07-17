@@ -26,7 +26,7 @@
                 + Add New Module
             </a>
         </div>
-       {{-- @include('backend.pages.CourseResources.Quizs.table', ['items' => $course->modules]) --}}
+       @include('backend.pages.CourseResources.Quizs.table', ['items' => $course->modules])
 
     </div>
 @endsection

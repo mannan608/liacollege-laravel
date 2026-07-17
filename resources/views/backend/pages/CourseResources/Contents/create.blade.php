@@ -56,7 +56,6 @@
                                     value="{{ old('name', $category->name ?? '') }}" placeholder="Enter course section name"
                                     class="input-field w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500">
                             </div>
-
                         </div>
 
                         <div>

@@ -12,23 +12,13 @@ class LessonResource extends Model
         'lesson_id',
         'title',
         'resource_type',
+        'description',
+        'url',
         'file_path',
+        'quiz_id',
         'sort_order',
+        'status',
     ];
 
-    protected $casts = [
-        'sort_order' => 'integer',
-    ];
-
-    public const RESOURCE_TYPES = ['video', 'pdf', 'ppt', 'zip', 'audio'];
-
-    public function lesson(): BelongsTo
-    {
-        return $this->belongsTo(Lesson::class);
-    }
-
-    public function getFileUrlAttribute(): ?string
-    {
-        return $this->file_path ? asset('storage/' . ltrim($this->file_path, '/')) : null;
-    }
+   
 }
