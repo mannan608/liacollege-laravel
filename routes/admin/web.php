@@ -97,15 +97,15 @@ Route::prefix('{role}')
         Route::resource('course-categories', CourseCategoryController::class);
 
 
-        Route::get('courses/{course}/modules', [CourseModuleController::class, 'index'])->name('modules.index');
+        // Route::get('courses/{course}/modules', [CourseModuleController::class, 'index'])->name('modules.index');
 
-        Route::get('courses/{course}/modules/create', [CourseModuleController::class, 'create'])->name('modules.create');
+        // Route::get('courses/{course}/modules/create', [CourseModuleController::class, 'create'])->name('modules.create');
 
-        Route::post('courses/{course}/modules', [CourseModuleController::class, 'store'])->name('modules.store');
+        // Route::post('courses/{course}/modules', [CourseModuleController::class, 'store'])->name('modules.store');
 
-        Route::get('courses/{course}/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
+        // Route::get('courses/{course}/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
 
-        Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
+        // Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
 
         Route::resource('courses.resources', CourseResourcesController::class)
             ->names([
@@ -126,8 +126,13 @@ Route::prefix('{role}')
         Route::get('courses/{course}/course-contents', [CourseContentController::class, 'index'])->name('course-contents.index');
         Route::get('courses/{course}/course-content/create', [CourseContentController::class, 'create'])->name('course-content.create');
         Route::post('courses/{course}/course-content', [CourseContentController::class, 'store'])->name('course-content.store');
-        Route::get('courses/{course}/course-content/{contentcategory}/edit', [CourseContentController::class, 'edit'])->name('course-content.edit');
-        Route::delete('courses/{course}/course-content/{contentcategory}', [CourseContentController::class, 'destroy'])->name('course-content.destroy');
+        Route::get('courses/{course}/course-content/{category}/edit', [CourseContentController::class, 'edit'])->name('course-content.edit');
+        Route::delete('courses/{course}/course-content/{category}', [CourseContentController::class, 'destroy'])->name('course-content.destroy');
+
+        Route::get('courses/{course}/modules', [CourseModuleController::class, 'index'])->name('modules.index');
+        Route::get('courses/{course}/module/create', [CourseModuleController::class, 'create'])->name('module.create');
+        Route::post('courses/{course}/module', [CourseModuleController::class, 'store'])->name('module.store');
+        Route::get('courses/{course}/module/{module}/edit', [CourseModuleController::class, 'edit'])->name('module.edit');
         // updated route list area end
 
 

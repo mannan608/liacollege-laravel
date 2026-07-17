@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\CourseResources;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreContentResourceRequest;
+use App\Http\Requests\CourseResources\StoreContentResourceRequest;
 use App\Models\Course;
 use App\Models\CourseContentCategory;
-use App\Models\CourseSection;
-use App\Models\CourseSectionRow;
+use App\Models\CourseResources\CourseSection;
+use App\Models\CourseResources\CourseSectionRow;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,18 +21,18 @@ class CourseContentController extends Controller
     use HandlesFiles;
     public function index(Request $request, string $role, Course $course)
     {
-        $categories = $course->contentcategories()->latest()->paginate(20);
-
+        $coursecontentcategories = $course->coursecontentcategories()->latest()->paginate(20);
+// return $coursecontentcategories;
         return view('backend.pages.CourseResources.Contents.index', [
             'course' => $course,
-            'items' => $categories,
+            'items' => $coursecontentcategories,
             'title' => 'Course Resources',
         ]);
     }
 
     public function create(Request $request, string $role, Course $course)
     {
-        $course->load('contentcategories.sections.rows');
+        $course->load('coursecontentcategories.sections.rows');
 
         return view('backend.pages.CourseResources.Contents.create', [
             'course' => $course,
@@ -42,8 +42,7 @@ class CourseContentController extends Controller
     }
 
     public function edit(Request $request,string $role,Course $course,CourseContentCategory $category) {
-        $category->load('sections.rows');
-
+       $category->load('sections.rows');
         return view('backend.pages.CourseResources.Contents.create', [
             'course' => $course,
             'category' => $category,

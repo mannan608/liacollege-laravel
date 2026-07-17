@@ -14,7 +14,7 @@
 })
         ->values();
 
-    // dd($tableRowData);
+    // dd($collection);
     $role = request()->route('role');
 @endphp
 
@@ -43,7 +43,7 @@
 }" @keydown.escape.window="closeDeleteModal()">
     <form  x-ref="deleteForm"
     :action="rowToDelete
-        ? (courseBaseUrl + '/' + courseId + '/resource/' + rowToDelete.id)
+        ? (courseBaseUrl + '/' + courseId + '/course-content/' + rowToDelete.id)
         : '#'" method="POST"
         class="hidden">
         @csrf
@@ -107,7 +107,7 @@
                            
                             <td class="px-5 py-4 text-right">
                                 <div class="flex justify-end gap-2">
-                                    <a  :href="courseBaseUrl + '/' + courseId + '/resource/' + row.id + '/edit'"
+                                    <a  :href="courseBaseUrl + '/' + courseId + '/course-content/' + row.id + '/edit'"
                                         class="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-all">
                                         <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

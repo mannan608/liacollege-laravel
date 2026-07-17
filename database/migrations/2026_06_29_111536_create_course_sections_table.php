@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('course_sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('course_content_category_id')->constrained()->cascadeOnDelete();
             $table->string('section_name'); /* Example: ["text","file"] */
             $table->json('field_types');
             $table->timestamps();

@@ -26,7 +26,7 @@
     @endphp
 
     <form x-data="courseBuilder({{ \Illuminate\Support\Js::from($initialSections) }})" @submit.prevent="submitForm($event)"
-        action="{{ role_route('role.resources.store', ['course' => $course]) }}" method="POST" enctype="multipart/form-data">
+        action="{{ role_route('role.course-content.store', ['course' => $course]) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
@@ -130,6 +130,7 @@
                                                 </svg>
                                                 Section Name
                                             </label>
+                                            
                                             <input type="text" :name="`sections[${sectionIndex}][section_name]`"
                                                 x-model="section.section_name"
                                                 placeholder="e.g., Week 1 Materials, Assignments, References"

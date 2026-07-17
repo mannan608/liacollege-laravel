@@ -8,7 +8,7 @@ use App\Http\Requests\StudentUpdateRequest;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use App\Models\CoursePermissions;
-use App\Models\CourseSectionRow;
+use App\Models\CourseResources\CourseSectionRow;
 use App\Models\LMS\Enrollment;
 use App\Models\Student;
 use App\Repositories\Interfaces\StudentRepositoryInterface;

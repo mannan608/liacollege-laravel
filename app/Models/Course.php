@@ -63,7 +63,7 @@ class Course extends Model
 {
     return $this->hasMany(CourseSlot::class);
 }
-  public function contentcategories()
+  public function coursecontentcategories()
     {
         return $this->hasMany(CourseContentCategory::class);
     }

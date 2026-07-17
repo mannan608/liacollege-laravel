@@ -26,6 +26,6 @@
                 + Add New Study Material
             </a>
         </div>
-        @include('backend.pages.courses.course_resources.table', ['items' => $course->categories])
+        @include('backend.pages.courses.course_resources.table', ['items' => $course->coursecontentcategories])
     </div>
 @endsection

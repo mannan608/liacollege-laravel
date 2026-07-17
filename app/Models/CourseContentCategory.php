@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\CourseResources\CourseSection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -19,9 +20,7 @@ class CourseContentCategory extends Model
 
 public function sections()
 {
-    return $this->hasMany(
-        CourseSection::class,
-        'course_content_category_id'
-    );
+    return $this->hasMany(CourseSection::class)
+        ->orderBy('id');
 }
 }
