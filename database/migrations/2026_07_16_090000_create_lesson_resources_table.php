@@ -39,12 +39,6 @@ return new class extends Migration
             $table->string('url')->nullable();
 
             $table->string('file_path')->nullable();
-
-            $table->foreignId('quiz_id')
-                ->nullable()
-                ->constrained('quizzes')
-                ->nullOnDelete();
-
             $table->integer('sort_order')
                 ->default(0);
 
