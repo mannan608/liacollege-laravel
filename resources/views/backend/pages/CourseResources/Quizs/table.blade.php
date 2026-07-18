@@ -1,265 +1,261 @@
 @php
-    use Illuminate\Support\Str;
-    use Illuminate\Support\Facades\Storage;
+    // Ensure proper data structure - map lessons to include module_id explicitly
+    $modules = $items instanceof \Illuminate\Pagination\AbstractPaginator
+        ? $items->getCollection()->values()
+        : collect($items)->values();
 
-    $collection = $items instanceof \Illuminate\Pagination\AbstractPaginator 
-        ? $items->getCollection() 
-        : collect($items);
-
-    $tableRowData = $collection->map(function ($module) {
+    // Prepare clean data for Alpine
+    $modulesData = $modules->map(function ($module) {
         return [
             'id' => $module->id,
-            'title' => $module->title,          // Fixed: was 'name', now matches display
+            'title' => $module->title,
+            'course_id' => $module->course_id,
             'created_at' => $module->created_at,
-            'lessons_count' => count($module->lessons ?? []),
-            'lessons' => collect($module->lessons ?? [])->map(function ($lesson) {
+            'updated_at' => $module->updated_at,
+            'lessons' => collect($module->lessons ?? [])->map(function ($lesson) use ($module) {
                 return [
                     'id' => $lesson->id,
                     'title' => $lesson->title,
-                    'type' => $lesson->lesson_types[0] ?? 'text',
-                    'duration' => $lesson->duration,
-                    'status' => $lesson->status,
+                    'module_id' => $lesson->module_id ?? $module->id, // Fallback to parent module id
+                    'content' => $lesson->content,
+                    'lesson_types' => $lesson->lesson_types ?? ['text'],
+                    'duration' => $lesson->duration ?? 0,
+                    'status' => $lesson->status ?? true,
+                    'created_at' => $lesson->created_at,
+                    'updated_at' => $lesson->updated_at,
+                    'resources' => $lesson->resources ?? [], // Include if exists, empty array if not
                 ];
             })->values(),
         ];
     })->values();
-
-    $role = request()->route('role');
 @endphp
 
-<div x-data="{
-    tableRowData: {{ \Illuminate\Support\Js::from($tableRowData) }},
-    courseBaseUrl: {{ \Illuminate\Support\Js::from(url('/' . $role . '/courses')) }},
-    courseId: {{ $course->id }},
-    showDeleteModal: false,
-    rowToDelete: null,
-    expandedRow: null,
+<div x-data="courseManager()" x-init="init()" class="space-y-4">
 
-    openDeleteModal(row) {
-        this.rowToDelete = row;
-        this.showDeleteModal = true;
-    },
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 
-    closeDeleteModal() {
-        this.showDeleteModal = false;
-        this.rowToDelete = null;
-    },
+    <!-- Empty State -->
+    <div x-show="modules.length === 0" x-cloak
+        class="rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 py-20 text-center">
+        <svg class="mx-auto h-12 w-12 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0111.25 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H7.5M12 9.75l-3 3m0 0l3 3m-3-3h7.5" />
+        </svg>
+        <h3 class="mt-4 text-sm font-semibold text-gray-900 dark:text-white">No modules yet</h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Get started by creating your first module.</p>
+        <a href="{{ url('/' . request()->route('role') . '/courses/' . $course->id . '/module/create') }}"
+            class="mt-4 inline-block rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
+            Add Module
+        </a>
+    </div>
 
-    confirmDelete() {
-        if (!this.rowToDelete) return;
-        this.$refs.deleteForm.submit();
-    },
+    <!-- Modules List -->
+    <div class="space-y-4">
 
-    toggleExpand(rowId) {
-        this.expandedRow = this.expandedRow === rowId ? null : rowId;
-    },
+        <template x-for="module in modules" :key="module.id">
+            <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm transition-shadow duration-200 hover:shadow-md">
 
-    formatDate(dateString) {
-        return new Date(dateString).toLocaleDateString('en-US', { 
-            month: 'short', day: 'numeric', year: 'numeric' 
-        });
-    }
-}" @keydown.escape.window="closeDeleteModal()">
+                <!-- Module Header -->
+                <div @click="toggleModule(module.id)"
+                    class="flex cursor-pointer select-none items-center justify-between px-5 py-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <div class="flex min-w-0 flex-1 items-center gap-4">
 
-    {{-- Delete Modal --}}
-    <form x-ref="deleteForm"
-        :action="rowToDelete
-            ? (courseBaseUrl + '/' + courseId + '/module/' + rowToDelete.id)
-            : '#'" 
-        method="POST"
-        class="hidden">
-        @csrf
-        @method('DELETE')
-    </form>
-
-    <div x-show="showDeleteModal" x-cloak class="fixed inset-0 z-[9999]">
-        <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm transition-opacity" 
-             @click="closeDeleteModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="w-full max-w-md rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-2xl transform transition-all"
-                 x-transition:enter="transition ease-out duration-200"
-                 x-transition:enter-start="opacity-0 scale-95"
-                 x-transition:enter-end="opacity-100 scale-100">
-                <div class="p-6">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="p-2 bg-red-100 dark:bg-red-900/30 rounded-full">
-                            <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        <!-- Chevron -->
+                        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-900/20 flex-shrink-0">
+                            <svg :class="activeModule === module.id ? 'rotate-90' : ''"
+                                class="h-4 w-4 text-indigo-600 dark:text-indigo-400 transition-transform duration-200"
+                                fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
                         </div>
-                        <div class="text-lg font-semibold text-gray-900 dark:text-white">Delete Module?</div>
+
+                        <!-- Module Info -->
+                        <div class="flex min-w-0 flex-col">
+                            <span x-text="module.title" class="truncate text-base font-semibold text-gray-900 dark:text-white"></span>
+                            <span class="text-xs text-gray-400 dark:text-gray-500">
+                                <span x-text="module.lessons.length"></span> lesson<span x-show="module.lessons.length !== 1">s</span>
+                                <span x-show="module.created_at"> · <span x-text="formatDate(module.created_at)"></span></span>
+                            </span>
+                        </div>
+
                     </div>
-                    <div class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                        This will permanently delete module 
-                        <span class="font-semibold text-gray-900 dark:text-gray-200" x-text="rowToDelete ? rowToDelete.title : ''"></span>
-                        <span x-show="rowToDelete && rowToDelete.lessons_count > 0">
-                            and its <span class="font-semibold" x-text="rowToDelete.lessons_count"></span> lesson(s)
-                        </span>.
-                        This action cannot be undone.
-                    </div>
-                    <div class="mt-6 flex justify-end gap-3">
-                        <button type="button" @click="closeDeleteModal()"
-                            class="inline-flex items-center justify-center rounded-xl border border-gray-300 dark:border-gray-700 px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                            Cancel
-                        </button>
-                        <button type="button" @click="confirmDelete()"
-                            class="inline-flex items-center justify-center rounded-xl bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 shadow-lg shadow-red-600/20 transition-all">
-                            <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+
+                    <!-- Module Actions -->
+                    <div class="flex items-center gap-2 flex-shrink-0" @click.stop>
+
+                        <a :href="moduleLessonCreateUrl(module.id)"
+                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:shadow">
+                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-                            Delete Module
-                        </button>
+                            Add lesson
+                        </a>
+
+                        <a :href="moduleEditUrl(module.id)"
+                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:shadow">
+                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                            </svg>
+                            Edit
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    {{-- Table Container --}}
-    <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
-        <div class="max-w-full overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-                <thead class="bg-gray-50/80 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700">
-                    <tr>
-                        <th class="px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider w-16">ID</th>
-                        <th class="px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Module Name</th>
-                        <th class="px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-center">Lessons</th>
-                        <th class="px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Created</th>
-                        <th class="px-5 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-right">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                    {{-- Empty State --}}
-                    <template x-if="tableRowData.length === 0">
-                        <tr>
-                            <td colspan="5" class="px-5 py-12 text-center">
-                                <div class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
-                                    <svg class="w-12 h-12 mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                                    </svg>
-                                    <p class="text-sm font-medium">No modules found</p>
-                                    <p class="text-xs mt-1">Get started by creating your first module</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </template>
+                <!-- Lessons Panel -->
+                <div x-show="activeModule === module.id" x-cloak
+                    x-transition:enter="transition-all ease-out duration-300"
+                    x-transition:enter-start="max-h-0 opacity-0"
+                    x-transition:enter-end="max-h-[2000px] opacity-100"
+                    x-transition:leave="transition-all ease-in duration-200"
+                    x-transition:leave-start="max-h-[2000px] opacity-100"
+                    x-transition:leave-end="max-h-0 opacity-0"
+                    class="overflow-hidden border-t border-gray-100 dark:border-gray-800">
 
-                    {{-- Data Rows --}}
-                    <template x-for="row in tableRowData" :key="row.id">
-                        <div>
-                            {{-- Main Row --}}
-                            <tr class="hover:bg-gray-50/60 dark:hover:bg-gray-800/40 transition-colors group">
-                                <td class="px-5 py-4">
-                                    <span class="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-lg text-xs font-mono font-medium min-w-[2.5rem]">
-                                        #<span x-text="row.id"></span>
-                                    </span>
-                                </td>
-                                <td class="px-5 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <button @click="toggleExpand(row.id)" 
-                                                class="p-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                                                :class="{ 'rotate-90': expandedRow === row.id }">
-                                            <svg class="w-4 h-4 text-gray-400 transition-transform duration-200" 
-                                                 :class="{ 'rotate-90 text-gray-600': expandedRow === row.id }"
-                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                            </svg>
-                                        </button>
-                                        <div>
-                                            <div class="text-sm font-semibold text-gray-900 dark:text-gray-100" x-text="row.title"></div>
-                                            <div class="text-xs text-gray-500 dark:text-gray-500 mt-0.5" x-show="row.lessons_count > 0">
-                                                <span x-text="row.lessons_count"></span> lesson<span x-show="row.lessons_count !== 1">s</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-5 py-4 text-center">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium"
-                                          :class="row.lessons_count > 0 ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-500'">
-                                        <span x-text="row.lessons_count"></span>
-                                    </span>
-                                </td>
-                                <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="formatDate(row.created_at)"></td>
-                                <td class="px-5 py-4 text-right">
-                                    <div class="flex justify-end gap-1">
-                                        <a :href="courseBaseUrl + '/' + courseId + '/module/' + row.id + '/edit'"
-                                            class="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-all"
-                                            title="Edit module">
-                                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                                            </svg>
-                                        </a>
-                                        <button type="button" @click="openDeleteModal(row)"
-                                            class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-all"
-                                            title="Delete module">
-                                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                    <div class="px-5 pb-5 pt-2">
 
-                            {{-- Expanded Lessons Panel --}}
-                            <tr x-show="expandedRow === row.id" x-collapse>
-                                <td colspan="5" class="bg-gray-50/50 dark:bg-gray-800/30 border-b border-gray-100 dark:border-gray-800">
-                                    <div class="px-5 py-4 pl-16">
-                                        <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                            </svg>
-                                            Lessons
-                                        </div>
-                                        
-                                        <template x-if="row.lessons.length === 0">
-                                            <div class="text-sm text-gray-500 dark:text-gray-500 italic py-2">
-                                                No lessons in this module yet.
-                                            </div>
-                                        </template>
-
-                                        <div class="space-y-2">
-                                            <template x-for="lesson in row.lessons" :key="lesson.id">
-                                                <div class="flex items-center justify-between p-3 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
-                                                    <div class="flex items-center gap-3">
-                                                        <div class="p-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
-                                                            <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                            </svg>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-sm font-medium text-gray-900 dark:text-gray-100" x-text="lesson.title"></div>
-                                                            <div class="flex items-center gap-2 mt-0.5">
-                                                                <span class="text-xs text-gray-500 dark:text-gray-500 capitalize" x-text="lesson.type"></span>
-                                                                <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-                                                                <span class="text-xs text-gray-500 dark:text-gray-500" x-text="lesson.duration + ' min'"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex items-center gap-2">
-                                                        <span class="px-2 py-1 rounded-md text-xs font-medium"
-                                                              :class="lesson.status ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-500'"
-                                                              x-text="lesson.status ? 'Active' : 'Draft'">
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </template>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                        <!-- No Lessons -->
+                        <div x-show="module.lessons.length === 0" class="flex flex-col items-center py-8 text-center">
+                            <svg class="h-8 w-8 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0111.25 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H7.5" />
+                            </svg>
+                            <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">No lessons yet. Add your first lesson.</p>
                         </div>
-                    </template>
-                </tbody>
-            </table>
-        </div>
 
-        @if ($items instanceof \Illuminate\Pagination\AbstractPaginator)
-            <div class="px-5 py-4 border-t border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
-                {{ $items->links() }}
+                        <!-- Lessons List -->
+                        <template x-for="lesson in module.lessons" :key="lesson.id">
+                            <div class="mb-3 rounded-lg border border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50 last:mb-0">
+
+                                <!-- Lesson Row -->
+                                <div class="flex items-center justify-between px-4 py-3">
+
+                                    <div class="flex min-w-0 flex-1 items-center gap-3">
+                                        <!-- Lesson Icon -->
+                                        <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-white dark:bg-gray-700 shadow-sm">
+                                            <!-- Text Lesson Icon -->
+                                            <svg x-show="(lesson.lesson_types && lesson.lesson_types[0] === 'text') || !lesson.lesson_types"
+                                                class="h-4 w-4 text-indigo-500 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                            </svg>
+                                            <!-- Video Lesson Icon -->
+                                            <svg x-show="lesson.lesson_types && lesson.lesson_types[0] === 'video'"
+                                                class="h-4 w-4 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                                            </svg>
+                                            <!-- Audio Lesson Icon -->
+                                            <svg x-show="lesson.lesson_types && lesson.lesson_types[0] === 'audio'"
+                                                class="h-4 w-4 text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="flex min-w-0 flex-col">
+                                            <span x-text="lesson.title" class="truncate text-sm font-medium text-gray-800 dark:text-gray-200"></span>
+                                            <div class="mt-0.5 flex items-center gap-2">
+                                                <!-- Lesson Type Badge -->
+                                                <span class="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-900/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:text-indigo-400 ring-1 ring-inset ring-indigo-700/10 dark:ring-indigo-400/20"
+                                                    x-text="(lesson.lesson_types || ['text']).join(', ')"></span>
+                                                <!-- Duration -->
+                                                <span class="text-xs text-gray-400 dark:text-gray-500" x-text="`Duration: ${lesson.duration ?? 0} min`"></span>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Lesson Actions -->
+                                    <div class="flex items-center gap-2 flex-shrink-0">
+
+                                        <a :href="resourceCreateUrl(lesson.id)"
+                                            x-show="lesson.lesson_types && lesson.lesson_types[0] !== 'text'"
+                                            class="inline-flex items-center gap-1 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-2.5 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                            <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                            </svg>
+                                            Add resource
+                                        </a>
+
+                                        <a :href="lessonEditUrl(lesson.id, lesson.module_id)"
+                                            class="inline-flex items-center gap-1 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-2.5 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                            Edit
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Resources -->
+                                <div x-show="lesson.resources && lesson.resources.length > 0"
+                                    class="mx-4 mb-3 space-y-1.5 rounded-lg border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-3">
+                                    <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">Resources</p>
+                                    <template x-for="resource in lesson.resources" :key="resource.id">
+                                        <div class="flex items-center gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700">
+                                            <div class="h-2 w-2 flex-shrink-0 rounded-full bg-indigo-400"></div>
+                                            <svg class="h-4 w-4 flex-shrink-0 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0111.25 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H7.5M12 9.75l-3 3m0 0l3 3m-3-3h7.5" />
+                                            </svg>
+                                            <span x-text="resource.name || resource.title || 'Unnamed resource'" class="text-xs text-gray-600 dark:text-gray-300"></span>
+                                        </div>
+                                    </template>
+                                </div>
+
+                            </div>
+                        </template>
+
+                    </div>
+                </div>
+
             </div>
-        @endif
+        </template>
+
     </div>
+
 </div>
+
+<script>
+    function courseManager() {
+        return {
+            modules: @json($modulesData),
+            activeModule: null,
+            deleteTarget: null,
+            courseId: {{ $course->id }},
+            role: '{{ request()->route('role') }}',
+
+            init() {
+                // Auto-expand first module if exists
+                if (this.modules.length > 0) {
+                    this.activeModule = this.modules[0].id;
+                }
+            },
+
+            toggleModule(id) {
+                this.activeModule = this.activeModule === id ? null : id;
+            },
+
+            formatDate(dateString) {
+                if (!dateString) return '';
+                return new Date(dateString).toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric'
+                });
+            },
+
+            // URL builders
+            moduleEditUrl(moduleId) {
+                return `/${this.role}/courses/${this.courseId}/module/${moduleId}/edit`;
+            },
+
+            moduleLessonCreateUrl(moduleId) {
+                return `/${this.role}/courses/${this.courseId}/module/${moduleId}/lesson/create`;
+            },
+
+            lessonEditUrl(lessonId, moduleId) {
+                return `/${this.role}/courses/${this.courseId}/module/${moduleId}/lesson/${lessonId}/edit`;
+            },
+
+            resourceCreateUrl(lessonId) {
+                return `/${this.role}/courses/${this.courseId}/lessons/${lessonId}/resources/create`;
+            },
+
+        }
+    }
+</script>
