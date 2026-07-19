@@ -22,7 +22,7 @@ class CourseContentController extends Controller
     public function index(Request $request, string $role, Course $course)
     {
         $coursecontentcategories = $course->coursecontentcategories()->latest()->paginate(20);
-// return $coursecontentcategories;
+
         return view('backend.pages.CourseResources.Contents.index', [
             'course' => $course,
             'items' => $coursecontentcategories,

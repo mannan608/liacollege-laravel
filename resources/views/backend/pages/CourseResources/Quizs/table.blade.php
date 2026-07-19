@@ -44,7 +44,7 @@
         </svg>
         <h3 class="mt-4 text-sm font-semibold text-gray-900 dark:text-white">No modules yet</h3>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Get started by creating your first module.</p>
-        <a href="{{ url('/' . request()->route('role') . '/courses/' . $course->id . '/module/create') }}"
+        <a href="{{ url('/' . request()->route('role') . '/courses/' . $course->id . '/modules/create') }}"
             class="mt-4 inline-block rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
             Add Module
         </a>
@@ -240,15 +240,15 @@
 
             // URL builders
             moduleEditUrl(moduleId) {
-                return `/${this.role}/courses/${this.courseId}/module/${moduleId}/edit`;
+                return `/${this.role}/courses/${this.courseId}/modules/${moduleId}/edit`;
             },
 
             moduleLessonCreateUrl(moduleId) {
-                return `/${this.role}/courses/${this.courseId}/module/${moduleId}/lesson/create`;
+                return `/${this.role}/courses/${this.courseId}/modules/${moduleId}/lesson/create`;
             },
 
             lessonEditUrl(lessonId, moduleId) {
-                return `/${this.role}/courses/${this.courseId}/module/${moduleId}/lesson/${lessonId}/edit`;
+                return `/${this.role}/courses/${this.courseId}/modules/${moduleId}/lesson/${lessonId}/edit`;
             },
 
             resourceCreateUrl(lessonId) {

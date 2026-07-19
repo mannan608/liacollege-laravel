@@ -26,7 +26,7 @@
 
     <form x-data="moduleLessonBuilder({{ \Illuminate\Support\Js::from($initialModules) }}, {{ \Illuminate\Support\Js::from($editMode) }})"
         @submit.prevent="submitForm($event)"
-        action="{{ $formAction ?? role_route($editMode ? 'role.module.update' : 'role.module.store', $editMode ? ['course' => $course->id, 'module' => $module->id] : ['course' => $course->id]) }}"
+        action="{{ $formAction ?? role_route($editMode ? 'role.modules.update' : 'role.modules.store', $editMode ? ['course' => $course->id, 'module' => $module->id] : ['course' => $course->id]) }}"
         method="POST" enctype="multipart/form-data">
 
         @csrf

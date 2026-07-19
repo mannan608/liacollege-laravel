@@ -21,7 +21,7 @@
                 <h3 class="mt-1 text-2xl font-bold text-gray-900">{{ $course->name }}</h3>
                 <p class="mt-1 text-sm text-gray-500">Manage modules and lessons for this course.</p>
             </div>
-            <a  href="{{ role_route('role.module.create', ['course' => $course->id]) }}"
+            <a  href="{{ role_route('role.modules.create', ['course' => $course->id]) }}"
                 class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition-colors">
                 + Add New Module
             </a>
