@@ -15,7 +15,6 @@ class LessonResource extends Model
         'description',
         'url',
         'file_path',
-        'quiz_id',
         'sort_order',
         'status',
     ];

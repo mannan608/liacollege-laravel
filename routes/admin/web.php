@@ -130,10 +130,7 @@ Route::prefix('{role}')
         Route::get('courses/{course}/course-content/{category}/edit', [CourseContentController::class, 'edit'])->name('course-content.edit');
         Route::delete('courses/{course}/course-content/{category}', [CourseContentController::class, 'destroy'])->name('course-content.destroy');
 
-        //  Route::get('courses/{course}/modules', [CourseQuizController::class, 'index'])->name('modules.index');
-        // Route::get('courses/{course}/module/create', [CourseQuizController::class, 'create'])->name('module.create');
-        // Route::post('courses/{course}/module', [CourseQuizController::class, 'store'])->name('module.store');
-        // Route::get('courses/{course}/module/{module}/edit', [CourseQuizController::class, 'edit'])->name('module.edit');
+   
 
         Route::prefix('courses/{course}')->group(function () {
 
@@ -155,6 +152,28 @@ Route::prefix('{role}')
             Route::delete('/modules/{module}', [CourseQuizController::class, 'destroy'])
                 ->name('modules.destroy');
         });
+
+                Route::prefix('courses/{course}/modules/{module}/lessons/{lesson}')->group(function () {
+
+            Route::get('/resources', [CourseQuizController::class, 'index'])
+                ->name('resources.index');
+
+            Route::get('/resources/create', [CourseQuizController::class, 'create'])
+                ->name('resources.create');
+
+            Route::post('/resources', [CourseQuizController::class, 'store'])
+                ->name('resources.store');
+
+            Route::get('/resources/{resource}/edit', [CourseQuizController::class, 'edit'])
+                ->name('resources.edit');
+
+            Route::put('/resources/{resource}', [CourseQuizController::class, 'update'])
+                ->name('resources.update');
+
+            Route::delete('/resources/{resource}', [CourseQuizController::class, 'destroy'])
+                ->name('resources.destroy');
+        });
+
         // updated route list area end
 
 
