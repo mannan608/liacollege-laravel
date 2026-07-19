@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\CourseResources\CourseContentController;
+use App\Http\Controllers\Admin\CourseResources\LessonResourceController;
 use App\Http\Controllers\Admin\CourseResources\CourseQuizController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
@@ -71,53 +72,22 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
-        // Route::get('courses/{course}/resource', [CourseController::class, 'editResource'])->name('resources.edit');
-        Route::get('courses/{course}/resource', [CourseController::class, 'courseResources'])->name('resource');
-        Route::get('courses/{course}/resource/create', [CourseController::class, 'createResource'])->name('resource.create');
-        Route::post('courses/{course}/resource', [CourseController::class, 'storeResource'])->name('resources.store');
-        Route::get(
-            'courses/{course}/resource/{category}/edit',
-            [CourseController::class, 'editResource']
-        )->name('resource.edit');
-        Route::delete(
-            'courses/{course}/resource/{category}',
-            [CourseController::class, 'destroyResource']
-        )->name('resource.destroy');
-        Route::resource('courses', CourseController::class);
+     
+     
 
         Route::resource('contacts', ContactController::class);
         Route::resource('subscribers', SubscriberController::class);
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+      
+        Route::resource('courses', CourseController::class);
 
         Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
         Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
 
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         Route::resource('training-centers', TrainingCenterController::class);
-        Route::resource('course-categories', CourseCategoryController::class);
-
-
-        Route::get('courses/{course}/modules', [CourseModuleController::class, 'index'])->name('modules.index');
-
-        Route::get('courses/{course}/modules/create', [CourseModuleController::class, 'create'])->name('modules.create');
-
-        Route::post('courses/{course}/modules', [CourseModuleController::class, 'store'])->name('modules.store');
-
-        Route::get('courses/{course}/modules/{module}/edit', [CourseModuleController::class, 'edit'])->name('modules.edit');
-
-        Route::put('courses/{course}/modules/{module}', [CourseModuleController::class, 'update'])->name('modules.update');
-
-        Route::resource('courses.resources', CourseResourcesController::class)
-            ->names([
-                'index' => 'resources.index',
-                'create' => 'resources.create',
-                'store' => 'resources.store',
-                'edit' => 'resources.edit',
-                'update' => 'resources.update',
-                'destroy' => 'resources.destroy',
-            ])
-            ->except(['show']);
+        Route::resource('course-categories', CourseCategoryController::class);         
 
         Route::resource('course-slots', CourseSlotController::class);
         Route::resource('enrollments', CourseEnrollmentController::class);
@@ -153,24 +123,24 @@ Route::prefix('{role}')
                 ->name('modules.destroy');
         });
 
-                Route::prefix('courses/{course}/modules/{module}/lessons/{lesson}')->group(function () {
+                Route::prefix('courses/{course}/modules/{module}/lesson/{lesson}')->group(function () {
 
-            Route::get('/resources', [CourseQuizController::class, 'index'])
+            Route::get('/resources', [LessonResourceController::class, 'index'])
                 ->name('resources.index');
 
-            Route::get('/resources/create', [CourseQuizController::class, 'create'])
+            Route::get('/resources/create', [LessonResourceController::class, 'create'])
                 ->name('resources.create');
 
-            Route::post('/resources', [CourseQuizController::class, 'store'])
+            Route::post('/resources', [LessonResourceController::class, 'store'])
                 ->name('resources.store');
 
-            Route::get('/resources/{resource}/edit', [CourseQuizController::class, 'edit'])
+            Route::get('/resources/{resource}/edit', [LessonResourceController::class, 'edit'])
                 ->name('resources.edit');
 
-            Route::put('/resources/{resource}', [CourseQuizController::class, 'update'])
+            Route::put('/resources/{resource}', [LessonResourceController::class, 'update'])
                 ->name('resources.update');
 
-            Route::delete('/resources/{resource}', [CourseQuizController::class, 'destroy'])
+            Route::delete('/resources/{resource}', [LessonResourceController::class, 'destroy'])
                 ->name('resources.destroy');
         });
 

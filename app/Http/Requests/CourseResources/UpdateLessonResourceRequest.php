@@ -4,7 +4,7 @@ namespace App\Http\Requests\CourseResources;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreLessonResourceRequest extends FormRequest
+class UpdateLessonResourceRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -26,7 +26,8 @@ class StoreLessonResourceRequest extends FormRequest
 
             'files' => ['nullable', 'array'],
             'files.*.title' => ['required', 'string', 'max:255'],
-            'files.*.file' => ['required', 'file', 'mimes:pdf,doc,docx,ppt,pptx', 'max:20480'],
+            'files.*.file' => ['nullable', 'file', 'mimes:pdf,doc,docx,ppt,pptx', 'max:20480'],
+            'files.*.existing_file_path' => ['nullable', 'string', 'max:2048'],
 
             'quizzes' => ['nullable', 'array'],
             'quizzes.*.quiz_id' => ['required', 'integer', 'min:1'],

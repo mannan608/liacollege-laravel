@@ -5,7 +5,7 @@ namespace App\Http\Requests\CourseResources;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateQuizResourceRequestRequest extends FormRequest
+class UpdateQuizResourceRequest extends FormRequest
 {
     public function authorize(): bool
     {

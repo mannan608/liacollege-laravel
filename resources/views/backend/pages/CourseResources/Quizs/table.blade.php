@@ -165,7 +165,7 @@
                                     <!-- Lesson Actions -->
                                     <div class="flex items-center gap-2 flex-shrink-0">
 
-                                        <a :href="resourceCreateUrl(lesson.id)"
+                                        <a :href="resourceCreateUrl(lesson.id, lesson.module_id)"
                                             class="inline-flex items-center gap-1 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-2.5 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400">
                                             <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -250,10 +250,11 @@
             lessonEditUrl(lessonId, moduleId) {
                 return `/${this.role}/courses/${this.courseId}/modules/${moduleId}/lesson/${lessonId}/edit`;
             },
-
-            resourceCreateUrl(lessonId) {
-                return `/${this.role}/courses/${this.courseId}/lessons/${lessonId}/resources/create`;
+             resourceCreateUrl(lessonId, moduleId) {
+                return `/${this.role}/courses/${this.courseId}/modules/${moduleId}/lesson/${lessonId}/resources/create`;
             },
+
+           
 
         }
     }

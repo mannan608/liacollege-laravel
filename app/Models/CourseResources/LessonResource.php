@@ -2,12 +2,13 @@
 
 namespace App\Models\CourseResources;
 
-use App\Models\LMS\Lesson;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LessonResource extends Model
 {
+    public const RESOURCE_TYPES = ['video', 'content', 'file', 'quiz'];
+
     protected $fillable = [
         'lesson_id',
         'title',
@@ -19,5 +20,20 @@ class LessonResource extends Model
         'status',
     ];
 
-   
+    protected $casts = [
+        'sort_order' => 'integer',
+        'status' => 'boolean',
+    ];
+
+    public function lesson(): BelongsTo
+    {
+        return $this->belongsTo(Lesson::class);
+    }
+
+    public function getFileUrlAttribute(): ?string
+    {
+        return $this->file_path
+            ? asset('storage/' . ltrim($this->file_path, '/'))
+            : null;
+    }
 }

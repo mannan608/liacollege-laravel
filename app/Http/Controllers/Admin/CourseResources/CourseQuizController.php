@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\CourseResources;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseResources\StoreQuizResourceRequest;
-use App\Http\Requests\CourseResources\UpdateQuizResourceRequestRequest;
+use App\Http\Requests\CourseResources\UpdateQuizResourceRequest;
 use App\Models\Course;
 use App\Models\CourseResources\Lesson;
 use App\Models\CourseResources\Module;
@@ -98,7 +98,7 @@ class CourseQuizController extends Controller
     }
 
     public function update(
-        UpdateQuizResourceRequestRequest $request,
+        UpdateQuizResourceRequest $request,
         string $role,
         Course $course,
         Module $module
