@@ -8,7 +8,7 @@
     $tableRowData = $collection
         ->map(function ($course) {
             return [
-                'id' => $course->id,                
+                'id' => $course->id,
                 'name' => $course->name,
                 'slug' => $course->slug,
                 'code' => $course->code,
@@ -86,8 +86,9 @@
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Cricos</th>                       
-                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Course Resources</th>                       
+                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Cricos</th>
+                        <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Course
+                            Resources</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                         <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider text-right">
                             Action</th>
@@ -123,17 +124,17 @@
                             <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
                                 <span x-text="row.cricos"></span>
                             </td>
-                            <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" >
-                                    <div class="flex gap-4">
-                                        <a :href="courseBaseUrl + '/' + row.id + '/modules'"
-                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                    Add Quiz Module
-                                </a>
-                                <a :href="courseBaseUrl + '/' + row.id + '/course-contents'"
-                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                    Add Study Meterial
-                                </a>
-                                    </div>
+                            <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
+                                <div class="flex gap-4">
+                                    <a :href="courseBaseUrl + '/' + row.id + '/modules/create'"
+                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
+                                        Add Module
+                                    </a>
+                                    <a :href="courseBaseUrl + '/' + row.id + '/course-contents'"
+                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
+                                        Add Study Meterial
+                                    </a>
+                                </div>
                             </td>
                             <td class="px-5 py-4 text-sm">
                                 <span

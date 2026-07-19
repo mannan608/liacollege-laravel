@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Throwable;
 
-class CourseModuleController extends Controller
+class CourseLessonController extends Controller
 {
     /**
      * Display modules.

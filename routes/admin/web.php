@@ -7,12 +7,12 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\CourseResources\CourseContentController;
+use App\Http\Controllers\Admin\CourseResources\CourseModuleController;
 use App\Http\Controllers\Admin\CourseResources\LessonResourceController;
 use App\Http\Controllers\Admin\CourseResources\CourseQuizController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\LMS\CourseModuleController;
-use App\Http\Controllers\Admin\LMS\CourseResourcesController;
+
 use App\Http\Controllers\Admin\LMS\CourseSlotController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -145,6 +145,14 @@ Route::prefix('{role}')
         });
 
         // updated route list area end
+
+
+        // course module route start
+             Route::resource('courses.modules', CourseModuleController::class)->names('modules');
+             Route::resource('courses.modules.lessons', CourseModuleController::class)->names('lessons');
+
+        // course module route start
+
 
 
     });
