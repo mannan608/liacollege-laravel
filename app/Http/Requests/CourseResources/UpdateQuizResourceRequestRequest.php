@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 
 
-class StoreQuizResourceRequest extends FormRequest
+class UpdateQuizResourceRequestRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,24 +26,27 @@ class StoreQuizResourceRequest extends FormRequest
     {
         return [
 
-            'title' => 'required|string|max:255',
+            'title'=>'required|string|max:255',
 
-            'lessons' => 'required|array|min:1',
+            'lessons'=>'required|array|min:1',
 
-            'lessons.*.title' => 'required|string|max:255',
+            'lessons.*.id'=>'nullable|exists:lessons,id',
 
-            'lessons.*.content' => 'nullable|string',
+            'lessons.*.title'=>'required|string|max:255',
 
-            'lessons.*.duration' => 'nullable|integer|min:0',
+            'lessons.*.content'=>'nullable|string',
 
-            'lessons.*.lesson_types' => 'nullable|array'
+            'lessons.*.duration'=>'nullable|integer|min:0',
+
+            'lessons.*.lesson_types'=>'nullable|array'
 
         ];
+
     }
 
     protected function prepareForValidation(): void
     {
-
+   
         $modules = $this->input('modules', []);
         foreach ($modules as $key => $module) {
             if (isset($module['id']) && $module['id'] === '') {

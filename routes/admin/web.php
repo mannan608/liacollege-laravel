@@ -130,10 +130,31 @@ Route::prefix('{role}')
         Route::get('courses/{course}/course-content/{category}/edit', [CourseContentController::class, 'edit'])->name('course-content.edit');
         Route::delete('courses/{course}/course-content/{category}', [CourseContentController::class, 'destroy'])->name('course-content.destroy');
 
-         Route::get('courses/{course}/modules', [CourseQuizController::class, 'index'])->name('modules.index');
-        Route::get('courses/{course}/module/create', [CourseQuizController::class, 'create'])->name('module.create');
-        Route::post('courses/{course}/module', [CourseQuizController::class, 'store'])->name('module.store');
-        Route::get('courses/{course}/module/{module}/edit', [CourseQuizController::class, 'edit'])->name('module.edit');
+        //  Route::get('courses/{course}/modules', [CourseQuizController::class, 'index'])->name('modules.index');
+        // Route::get('courses/{course}/module/create', [CourseQuizController::class, 'create'])->name('module.create');
+        // Route::post('courses/{course}/module', [CourseQuizController::class, 'store'])->name('module.store');
+        // Route::get('courses/{course}/module/{module}/edit', [CourseQuizController::class, 'edit'])->name('module.edit');
+
+        Route::prefix('courses/{course}')->group(function () {
+
+            Route::get('/modules', [CourseQuizController::class, 'index'])
+                ->name('modules.index');
+
+            Route::get('/modules/create', [CourseQuizController::class, 'create'])
+                ->name('modules.create');
+
+            Route::post('/modules', [CourseQuizController::class, 'store'])
+                ->name('modules.store');
+
+            Route::get('/modules/{module}/edit', [CourseQuizController::class, 'edit'])
+                ->name('modules.edit');
+
+            Route::put('/modules/{module}', [CourseQuizController::class, 'update'])
+                ->name('modules.update');
+
+            Route::delete('/modules/{module}', [CourseQuizController::class, 'destroy'])
+                ->name('modules.destroy');
+        });
         // updated route list area end
 
 

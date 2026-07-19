@@ -2,31 +2,37 @@
 
 @section('content')
     @php
-        $initialModules = $course->modules
-            ->map(function ($module) {
-                return [
+        $editMode = $editMode ?? false;
+        $initialModules = [];
+
+        if ($editMode && isset($module) && $module && $module->exists) {
+            $initialModules = [
+                [
                     'id' => $module->id,
                     'title' => $module->title,
-                    'lessons' => $module->lessons
-                        ->map(function ($lesson) {
-                            return [
-                                'id' => $lesson->id,
-                                'title' => $lesson->title,
-                                'content' => $lesson->content,
-                                'duration' => $lesson->duration,
-                                'lesson_types' => $lesson->lesson_types ?? [],
-                            ];
-                        })
-                        ->values(),
-                ];
-            })
-            ->values();
+                    'lessons' => $module->lessons->map(function ($lesson) {
+                        return [
+                            'id' => $lesson->id,
+                            'title' => $lesson->title,
+                            'content' => $lesson->content,
+                            'duration' => $lesson->duration,
+                            'lesson_types' => $lesson->lesson_types ?? [],
+                        ];
+                    })->values(),
+                ],
+            ];
+        }
     @endphp
 
-    <form x-data="moduleLessonBuilder({{ \Illuminate\Support\Js::from($initialModules) }})" @submit.prevent="submitForm($event)"
-        action="{{ role_route('role.module.store', ['course' => $course]) }}" method="POST" enctype="multipart/form-data">
+    <form x-data="moduleLessonBuilder({{ \Illuminate\Support\Js::from($initialModules) }}, {{ \Illuminate\Support\Js::from($editMode) }})"
+        @submit.prevent="submitForm($event)"
+        action="{{ $formAction ?? role_route($editMode ? 'role.module.update' : 'role.module.store', $editMode ? ['course' => $course->id, 'module' => $module->id] : ['course' => $course->id]) }}"
+        method="POST" enctype="multipart/form-data">
 
         @csrf
+        @if(($formMethod ?? 'POST') !== 'POST')
+            @method($formMethod)
+        @endif
 
         <input type="hidden" name="course_id" value="{{ $course->id }}">
 
@@ -282,7 +288,7 @@
                         <!-- ADD MODULE & SAVE -->
                         <div class="flex justify-between flex-col md:flex-row md:gap-10">
 
-                            <div x-show="modules.length > 0" class="mt-6 w-full md:w-1/2">
+                            <div x-show="!editMode && modules.length > 0" class="mt-6 w-full md:w-1/2">
                                 <button type="button" @click="addModule()"
                                     class="btn-primary inline-flex w-full items-center justify-center gap-2 border border-brand-600 rounded-xl bg-brand-50 px-5 py-3.5 text-sm font-semibold text-brand-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
@@ -324,7 +330,7 @@
     @endif
 
     <script>
-       function moduleLessonBuilder(initialModules = []) {
+       function moduleLessonBuilder(initialModules = [], editMode = false) {
     const normalizedModules = initialModules.map(module => ({
         ...module,
         uid: module.id || crypto.randomUUID(),
@@ -339,9 +345,9 @@
 
     return {
         errors: {},
+        editMode,
 
      
-
         modules: hasInitialModules ? normalizedModules : [{
             uid: crypto.randomUUID(),
             id: null,
@@ -395,6 +401,7 @@
         },
 
         addModule() {
+            if (this.editMode) return;
             this.modules.push({
                 uid: crypto.randomUUID(),
                 id: null,        
@@ -411,6 +418,7 @@
         },
 
         removeModule(moduleUid) {
+            if (this.editMode) return;
             if (this.modules.length <= 1) {
                 // Optional: Prevent deleting last module
                 // return;
