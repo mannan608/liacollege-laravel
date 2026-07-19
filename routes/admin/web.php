@@ -72,14 +72,14 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
-     
-     
+
+
 
         Route::resource('contacts', ContactController::class);
         Route::resource('subscribers', SubscriberController::class);
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-      
+
         Route::resource('courses', CourseController::class);
 
         Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
@@ -87,7 +87,7 @@ Route::prefix('{role}')
 
         Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
         Route::resource('training-centers', TrainingCenterController::class);
-        Route::resource('course-categories', CourseCategoryController::class);         
+        Route::resource('course-categories', CourseCategoryController::class);
 
         Route::resource('course-slots', CourseSlotController::class);
         Route::resource('enrollments', CourseEnrollmentController::class);
@@ -100,7 +100,7 @@ Route::prefix('{role}')
         Route::get('courses/{course}/course-content/{category}/edit', [CourseContentController::class, 'edit'])->name('course-content.edit');
         Route::delete('courses/{course}/course-content/{category}', [CourseContentController::class, 'destroy'])->name('course-content.destroy');
 
-   
+
 
         Route::prefix('courses/{course}')->group(function () {
 
@@ -123,7 +123,7 @@ Route::prefix('{role}')
                 ->name('modules.destroy');
         });
 
-                Route::prefix('courses/{course}/modules/{module}/lesson/{lesson}')->group(function () {
+        Route::prefix('courses/{course}/modules/{module}/lesson/{lesson}')->group(function () {
 
             Route::get('/resources', [LessonResourceController::class, 'index'])
                 ->name('resources.index');

@@ -159,18 +159,6 @@ class LessonResourceController extends Controller
             ->with('success', 'Lesson resources deleted successfully.');
     }
 
-    private function courseLessons(Course $course)
-    {
-        return Lesson::query()
-            ->whereHas('module', fn ($query) => $query->where('course_id', $course->id))
-            ->with([
-                'module',
-                'resources' => fn ($query) => $query->orderBy('sort_order')->orderBy('id'),
-            ])
-            ->orderBy('id')
-            ->get();
-    }
-
     private function ensureLessonBelongsToCourse(Course $course, Module $module, Lesson $lesson): Lesson
     {
         abort_if((int) $module->course_id !== (int) $course->id, 404);
