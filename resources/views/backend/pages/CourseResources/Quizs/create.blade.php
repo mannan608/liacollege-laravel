@@ -324,118 +324,126 @@
     @endif
 
     <script>
-        function moduleLessonBuilder(initialModules = []) {
-            const normalizedModules = initialModules.map(module => ({
-                ...module,
-                uid: module.id || crypto.randomUUID(),
-                lessons: (module.lessons || []).map(lesson => ({
-                    ...lesson,
-                    uid: lesson.id || crypto.randomUUID(),
-                    lesson_types: lesson.lesson_types || [],
-                })),
-            }));
+       function moduleLessonBuilder(initialModules = []) {
+    const normalizedModules = initialModules.map(module => ({
+        ...module,
+        uid: module.id || crypto.randomUUID(),
+        lessons: (module.lessons || []).map(lesson => ({
+            ...lesson,
+            uid: lesson.id || crypto.randomUUID(),
+            lesson_types: lesson.lesson_types || [],
+        })),
+    }));
 
-            const hasInitialModules = normalizedModules.length > 0;
+    const hasInitialModules = normalizedModules.length > 0;
 
-            return {
-                errors: {},
+    return {
+        errors: {},
 
-                moduleCounter: hasInitialModules ? Math.max(...normalizedModules.map(m => m.id || 0)) + 1 : 1,
-                lessonCounter: hasInitialModules
-                    ? Math.max(...normalizedModules.flatMap(m => m.lessons.map(l => l.id || 0))) + 1
-                    : 1,
+     
 
-                modules: hasInitialModules ? normalizedModules : [{
-                    uid: crypto.randomUUID(),
-                    id: null,
-                    title: '',
-                    lessons: [{
-                        uid: crypto.randomUUID(),
-                        id: null,
-                        title: '',
-                        content: '',
-                        duration: 0,
-                        lesson_types: [],
-                    }]
-                }],
+        modules: hasInitialModules ? normalizedModules : [{
+            uid: crypto.randomUUID(),
+            id: null,
+            title: '',
+            lessons: [{
+                uid: crypto.randomUUID(),
+                id: null,
+                title: '',
+                content: '',
+                duration: 0,
+                lesson_types: [],
+            }]
+        }],
 
-                lessonTypeOptions: [
-                    { value: 'video', label: 'Video' },
-                    { value: 'text', label: 'Text' },
-                    { value: 'quiz', label: 'Quiz' },
-                    { value: 'assignment', label: 'Assignment' },
-                    { value: 'live_session', label: 'Live Session' },
-                ],
+        lessonTypeOptions: [
+            { value: 'video', label: 'Video' },
+            { value: 'text', label: 'Text' },
+            { value: 'quiz', label: 'Quiz' },
+            { value: 'assignment', label: 'Assignment' },
+            { value: 'live_session', label: 'Live Session' },
+        ],
 
-                async submitForm(event) {
-                    this.errors = {};
-                    const form = event.target;
+        async submitForm(event) {
+            this.errors = {};
+            const form = event.target;
+            const formData = new FormData(form);
 
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'Accept': 'application/json'
-                        }
-                    });
+         
 
-                    const data = await response.json();
-
-                    if (response.status === 422) {
-                        Object.keys(data.errors).forEach(key => {
-                            this.errors[key] = data.errors[key][0];
-                        });
-                        return;
-                    }
-
-                    if (response.ok) {
-                        window.location.href = data.redirect;
-                    }
-                },
-
-                addModule() {
-                    this.modules.push({
-                        uid: crypto.randomUUID(),
-                        id: null,
-                        title: '',
-                        lessons: [{
-                            uid: crypto.randomUUID(),
-                            id: null,
-                            title: '',
-                            content: '',
-                            duration: 0,
-                            lesson_types: [],
-                        }]
-                    });
-                },
-
-                removeModule(moduleUid) {
-                    this.modules = this.modules.filter(module => module.uid !== moduleUid);
-                },
-
-                addLesson(moduleUid) {
-                    const module = this.modules.find(m => m.uid === moduleUid);
-                    if (!module) return;
-
-                    module.lessons.push({
-                        uid: crypto.randomUUID(),
-                        id: null,
-                        title: '',
-                        content: '',
-                        duration: 0,
-                        lesson_types: [],
-                    });
-                },
-
-                removeLesson(moduleUid, lessonUid) {
-                    const module = this.modules.find(m => m.uid === moduleUid);
-                    if (!module) return;
-
-                    module.lessons = module.lessons.filter(lesson => lesson.uid !== lessonUid);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
                 }
-            };
+            });
+
+            const data = await response.json();
+
+            if (response.status === 422) {
+                this.errors = data.errors || {};
+                return;
+            }
+
+            if (response.ok && data.success) {
+                window.location.href = data.redirect;
+            } else {
+                alert(data.message || 'Something went wrong');
+            }
+        },
+
+        addModule() {
+            this.modules.push({
+                uid: crypto.randomUUID(),
+                id: null,        
+                title: '',
+                lessons: [{
+                    uid: crypto.randomUUID(),
+                    id: null,    
+                    title: '',
+                    content: '',
+                    duration: 0,
+                    lesson_types: [],
+                }]
+            });
+        },
+
+        removeModule(moduleUid) {
+            if (this.modules.length <= 1) {
+                // Optional: Prevent deleting last module
+                // return;
+            }
+            this.modules = this.modules.filter(module => module.uid !== moduleUid);
+        },
+
+        addLesson(moduleUid) {
+            const module = this.modules.find(m => m.uid === moduleUid);
+            if (!module) return;
+
+            module.lessons.push({
+                uid: crypto.randomUUID(),
+                id: null,        
+                title: '',
+                content: '',
+                duration: 0,
+                lesson_types: [],
+            });
+        },
+
+        removeLesson(moduleUid, lessonUid) {
+            const module = this.modules.find(m => m.uid === moduleUid);
+            if (!module) return;
+
+            if (module.lessons.length <= 1) {
+                // Optional: Prevent deleting last lesson
+                // return;
+            }
+            module.lessons = module.lessons.filter(lesson => lesson.uid !== lessonUid);
         }
+    };
+}
     </script>
 
 @endsection
