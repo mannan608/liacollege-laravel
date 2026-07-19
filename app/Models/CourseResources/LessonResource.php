@@ -10,7 +10,7 @@ class LessonResource extends Model
     public const RESOURCE_TYPES = ['video', 'content', 'file', 'quiz'];
 
     protected $fillable = [
-        'lesson_id',
+              'lesson_id',
         'title',
         'resource_type',
         'description',
@@ -29,11 +29,5 @@ class LessonResource extends Model
     {
         return $this->belongsTo(Lesson::class);
     }
-
-    public function getFileUrlAttribute(): ?string
-    {
-        return $this->file_path
-            ? asset('storage/' . ltrim($this->file_path, '/'))
-            : null;
-    }
+   
 }

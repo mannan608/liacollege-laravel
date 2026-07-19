@@ -1,168 +1,197 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <form
-        action="{{ role_route('role.lessons.update', [
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
+    <div class="mx-auto max-w-5xl p-6"
+        x-data="lessonResourceForm(
+            @js($resource->resource_type)
+        )">
+
+        <div class="mb-6 flex items-center justify-between">
+
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900">
+                    Edit Lesson Resource
+                </h2>
+
+                <p class="mt-1 text-sm text-slate-500">
+                    {{ $lesson->title }}
+                </p>
+            </div>
+
+            <a href="{{ role_route('role.resources.index', [
+                'course' => $course->id,
+                'module' => $module->id,
+                'lesson' => $lesson->id,
+            ]) }}"
+                class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+
+                Back
+
+            </a>
+
+        </div>
+
+
+        <form action="{{ role_route('role.resources.update', [
             'course' => $course->id,
             'module' => $module->id,
             'lesson' => $lesson->id,
+            'resource' => $resource->id,
         ]) }}"
-        method="POST">
+            method="POST"
+            enctype="multipart/form-data"
+            class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
-        @csrf
-        @method('PUT')
+            @csrf
+            @method('PUT')
 
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
 
-            <div class="space-y-6 lg:col-span-8">
+            <div class="space-y-6">
 
-                {{-- Lesson Information --}}
-                <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+                {{-- Type --}}
+                <div>
 
-                    <div class="border-b border-gray-100 p-5 dark:border-gray-800">
+                    <label class="mb-2 block text-sm font-semibold text-slate-700">
+                        Resource Type
+                    </label>
 
-                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">
-                            Edit Lesson
-                        </h2>
+                    <select name="resource_type"
+                        x-model="resourceType"
+                        class="w-full rounded-lg border border-slate-200 px-3 py-3 text-sm outline-none focus:border-brand-500">
 
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                            Module: {{ $module->title }}
-                        </p>
+                        <option value="video">
+                            Video
+                        </option>
 
-                    </div>
+                        <option value="content">
+                            Content
+                        </option>
 
-                    <div class="space-y-5 p-5">
+                        <option value="file">
+                            File
+                        </option>
 
-                        {{-- Title --}}
-                        <x-form.input-text
-                            name="title"
-                            label="Lesson Title"
-                            value="{{ old('title', $lesson->title) }}"
-                            placeholder="Enter lesson title..."
-                        />
+                        <option value="quiz">
+                            Quiz
+                        </option>
 
-                        {{-- Duration --}}
-                        <div>
-
-                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Duration
-                            </label>
-
-                            <div class="relative">
-
-                                <input
-                                    type="number"
-                                    name="duration"
-                                    min="0"
-                                    value="{{ old('duration', $lesson->duration) }}"
-                                    placeholder="Enter duration in minutes"
-                                    class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 pr-24 text-sm text-gray-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                                >
-
-                                <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400">
-                                    Minutes
-                                </span>
-
-                            </div>
-
-                            @error('duration')
-                                <p class="mt-1 text-xs text-red-500">
-                                    {{ $message }}
-                                </p>
-                            @enderror
-
-                        </div>
-
-                        {{-- Content --}}
-                        <div>
-
-                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                Lesson Content
-                            </label>
-
-                            <textarea
-                                name="content"
-                                rows="8"
-                                placeholder="Write lesson content..."
-                                class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-800 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                            >{{ old('content', $lesson->content) }}</textarea>
-
-                            @error('content')
-                                <p class="mt-1 text-xs text-red-500">
-                                    {{ $message }}
-                                </p>
-                            @enderror
-
-                        </div>
-
-                    </div>
+                    </select>
 
                 </div>
 
 
-                {{-- Lesson Types --}}
-                @php
-                    $selectedLessonTypes = old(
-                        'lesson_types',
-                        $lesson->lesson_types ?? []
-                    );
-                @endphp
+                {{-- Dynamic Fields --}}
+                <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
 
-                <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+                    {{-- Title --}}
+                    <div class="mb-5">
 
-                    <div class="border-b border-gray-100 p-5 dark:border-gray-800">
+                        <label class="mb-2 block text-sm font-semibold text-slate-700">
+                            Resource Title
+                        </label>
 
-                        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">
-                            Lesson Types
-                        </h2>
-
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                            Select one or more lesson types.
-                        </p>
+                        <input type="text"
+                            name="title"
+                            value="{{ old('title', $resource->title) }}"
+                            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm outline-none focus:border-brand-500">
 
                     </div>
 
-                    <div class="p-5">
 
-                        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {{-- Video --}}
+                    <div x-show="resourceType === 'video'"
+                        x-cloak>
 
-                            @foreach (config('course.lesson_types', []) as $value => $label)
+                        <label class="mb-2 block text-sm font-semibold text-slate-700">
+                            Video URL
+                        </label>
 
-                                <label
-                                    class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-200 p-4 transition hover:border-brand-400 hover:bg-brand-50 dark:border-gray-700 dark:hover:border-brand-500 dark:hover:bg-brand-500/10">
+                        <input type="url"
+                            name="url"
+                            value="{{ old('url', $resource->url) }}"
+                            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm outline-none focus:border-brand-500">
 
-                                    <input
-                                        type="checkbox"
-                                        name="lesson_types[]"
-                                        value="{{ $value }}"
-                                        @checked(in_array(
-                                            $value,
-                                            $selectedLessonTypes
-                                        ))
-                                        class="size-4 rounded border-gray-300 text-brand-600 focus:ring-brand-500"
-                                    >
+                    </div>
 
-                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-                                        {{ $label }}
-                                    </span>
 
-                                </label>
+                    {{-- Content --}}
+                    <div x-show="resourceType === 'content'"
+                        x-cloak>
+
+                        <label class="mb-2 block text-sm font-semibold text-slate-700">
+                            Content
+                        </label>
+
+                        <textarea name="description"
+                            rows="8"
+                            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm outline-none focus:border-brand-500">{{ old('description', $resource->description) }}</textarea>
+
+                    </div>
+
+
+                    {{-- File --}}
+                    <div x-show="resourceType === 'file'"
+                        x-cloak>
+
+                        @if ($resource->file_path)
+
+                            <div class="mb-4 rounded-lg border border-slate-200 bg-white p-3 text-sm">
+
+                                Current File:
+
+                                <a href="{{ asset($resource->file_path) }}"
+                                    target="_blank"
+                                    class="font-semibold text-brand-600 hover:underline">
+
+                                    {{ basename($resource->file_path) }}
+
+                                </a>
+
+                            </div>
+
+                        @endif
+
+                        <label class="mb-2 block text-sm font-semibold text-slate-700">
+                            Replace File
+                        </label>
+
+                        <input type="file"
+                            name="file"
+                            accept=".pdf,.doc,.docx,.ppt,.pptx"
+                            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm outline-none focus:border-brand-500">
+
+                    </div>
+
+
+                    {{-- Quiz --}}
+                    <div x-show="resourceType === 'quiz'"
+                        x-cloak>
+
+                        <label class="mb-2 block text-sm font-semibold text-slate-700">
+                            Select Quiz
+                        </label>
+
+                        <select name="quiz_id"
+                            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm outline-none focus:border-brand-500">
+
+                            @foreach ($quizzes as $quiz)
+
+                                <option value="{{ $quiz['id'] }}"
+                                    @selected(old('quiz_id', $resource->url) == $quiz['id'])>
+
+                                    {{ $quiz['title'] }}
+
+                                </option>
 
                             @endforeach
 
-                        </div>
-
-                        @error('lesson_types')
-                            <p class="mt-2 text-xs text-red-500">
-                                {{ $message }}
-                            </p>
-                        @enderror
-
-                        @error('lesson_types.*')
-                            <p class="mt-2 text-xs text-red-500">
-                                {{ $message }}
-                            </p>
-                        @enderror
+                        </select>
 
                     </div>
 
@@ -170,55 +199,63 @@
 
 
                 {{-- Status --}}
-                <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+                <div>
 
-                    <div class="flex items-center justify-between gap-4 p-5">
+                    <input type="hidden"
+                        name="status"
+                        value="0">
 
-                        <div>
+                    <label class="inline-flex items-center gap-3">
 
-                            <h2 class="text-sm font-semibold text-gray-800 dark:text-white">
-                                Lesson Status
-                            </h2>
+                        <input type="checkbox"
+                            name="status"
+                            value="1"
+                            @checked(old('status', $resource->status))
+                            class="h-4 w-4 rounded border-slate-300 text-brand-600">
 
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                Make this lesson active.
-                            </p>
+                        <span class="text-sm font-medium text-slate-700">
+                            Active Resource
+                        </span>
 
-                        </div>
-
-                        <label class="relative inline-flex cursor-pointer items-center">
-
-                            <input
-                                type="checkbox"
-                                name="status"
-                                value="1"
-                                class="peer sr-only"
-                                @checked(old('status', $lesson->status))
-                            >
-
-                            <div class="h-6 w-11 rounded-full bg-gray-200 transition peer-checked:bg-brand-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-300 dark:bg-gray-700 dark:peer-focus:ring-brand-800"></div>
-
-                            <div class="absolute left-[2px] top-[2px] size-5 rounded-full border border-gray-300 bg-white transition peer-checked:translate-x-full peer-checked:border-white"></div>
-
-                        </label>
-
-                    </div>
+                    </label>
 
                 </div>
 
 
-                {{-- Submit --}}
-                <button
-                    type="submit"
-                    class="w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-500">
+                <div class="flex justify-end gap-3 border-t border-slate-200 pt-5">
 
-                    Update Lesson
+                    <a href="{{ role_route('role.resources.index', [
+                        'course' => $course->id,
+                        'module' => $module->id,
+                        'lesson' => $lesson->id,
+                    ]) }}"
+                        class="rounded-lg px-5 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100">
 
-                </button>
+                        Cancel
+
+                    </a>
+
+                    <button type="submit"
+                        class="rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">
+
+                        Update Resource
+
+                    </button>
+
+                </div>
 
             </div>
 
-        </div>
+        </form>
 
-    </form>
+    </div>
+
+
+    <script>
+        function lessonResourceForm(initialType) {
+            return {
+                resourceType: @json(old('resource_type', $resource->resource_type)),
+            };
+        }
+    </script>
 @endsection
