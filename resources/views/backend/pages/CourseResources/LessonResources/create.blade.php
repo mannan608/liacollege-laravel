@@ -19,14 +19,7 @@
         }
     </style>
 
-    <div class="mx-auto max-w-7xl p-6" x-data="lessonResourceForm(window.lessonResourceInitialState)">
-
-        @if (session('success'))
-            <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" x-transition
-                class="fixed right-5 top-5 z-50 w-full max-w-sm">
-                <x-ui.alert variant="success" title="" message="{{ session('success') }}" />
-            </div>
-        @endif
+    <div class="mx-auto max-w-7xl p-6" x-data="lessonResourceForm(window.lessonResourceInitialState)">      
 
         @if ($errors->any())
             <div class="mb-6 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
@@ -42,9 +35,7 @@
         <div
             class="mb-6 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between">
             <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">
-                    {{ $isEdit ? 'Edit' : 'Create' }}
-                </p>
+                
                 <h3 class="mt-1 text-2xl font-bold text-slate-900">{{ $pageTitle ?? 'Lesson Resources' }}</h3>
                 <p class="mt-1 text-sm text-slate-500">{{ $course->name }}</p>
             </div>
