@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class CourseLessonController extends Controller
+class CourseLessonResourceController extends Controller
 {
     /**
      * Display lessons.

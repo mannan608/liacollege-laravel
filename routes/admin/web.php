@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\CourseResources\CourseContentController;
+use App\Http\Controllers\Admin\CourseResources\CourseLessonController;
 use App\Http\Controllers\Admin\CourseResources\CourseModuleController;
 use App\Http\Controllers\Admin\CourseResources\LessonResourceController;
 use App\Http\Controllers\Admin\CourseResources\CourseQuizController;
@@ -150,6 +151,7 @@ Route::prefix('{role}')
         // course module route start
              Route::resource('courses.modules', CourseModuleController::class)->names('modules');
              Route::resource('courses.modules.lessons', CourseModuleController::class)->names('lessons');
+             Route::resource('courses.modules.lessons',CourseLessonController::class)->names('lessons');
 
         // course module route start
 

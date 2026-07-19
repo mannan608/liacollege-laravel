@@ -127,6 +127,10 @@
                             Module Name
                         </th>
 
+                          <th class="px-5 py-4 text-xs font-medium uppercase text-gray-500">
+                           Add Lesson
+                        </th>
+
                         <th class="px-5 py-4 text-right text-xs font-medium uppercase text-gray-500">
                             Action
                         </th>
@@ -172,6 +176,17 @@
 
                             <td class="px-5 py-4 text-sm text-gray-700"
                                 x-text="row.title">
+                            </td>
+
+                            <td class="px-5 py-4 text-sm text-gray-700" >
+                                <a :href="moduleBaseUrl + '/' + row.id + '/lessons'"
+                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300 shadow-sm transition-all hover:border-indigo-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:shadow">
+                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            Add lesson
+                        </a>
+
                             </td>
 
                             <td class="px-5 py-4">

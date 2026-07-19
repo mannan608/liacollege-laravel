@@ -126,7 +126,7 @@
                             </td>
                             <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
                                 <div class="flex gap-4">
-                                    <a :href="courseBaseUrl + '/' + row.id + '/modules/create'"
+                                    <a :href="courseBaseUrl + '/' + row.id + '/modules'"
                                         class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
                                         Add Module
                                     </a>
