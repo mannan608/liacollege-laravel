@@ -2,6 +2,7 @@
 
 namespace App\Models\CourseResources;
 
+use App\Models\Quiz;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -39,4 +40,8 @@ class LessonResource extends Model
     {
         return $this->belongsTo(LessonResourceSection::class);
     }
+    public function quiz()
+{
+    return $this->belongsTo(Quiz::class);
+}
 }

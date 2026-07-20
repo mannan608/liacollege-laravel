@@ -2,7 +2,7 @@
 
 namespace App\Models\CourseResources;
 
-
+use App\Models\Quiz;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,4 +54,8 @@ class Lesson extends Model
     return $this->hasMany(LessonResourceSection::class)
         ->orderBy('sort_order');
 }
+// public function quiz()
+// {
+//     return $this->belongsTo(Quiz::class);
+// }
 }
