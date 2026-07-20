@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseResources\Module;
 use App\Models\LMS\CourseSlot;
 use App\Models\LMS\Enrollment;
-use App\Models\LMS\Module;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\User;

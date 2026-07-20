@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\CourseResources\Module;
 use App\Models\LMS\CourseSlot;
-use App\Models\LMS\Module;
+// use App\Models\LMS\Module;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
