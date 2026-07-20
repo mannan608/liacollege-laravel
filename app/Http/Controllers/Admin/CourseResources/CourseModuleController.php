@@ -39,7 +39,6 @@ class CourseModuleController extends Controller
                 'backend.pages.CourseResources.Modules.index',
                 compact('modules', 'course')
             );
-
         } catch (Throwable $e) {
 
             report($e);
@@ -90,15 +89,18 @@ class CourseModuleController extends Controller
 
             DB::commit();
 
-            return redirect(
-                role_route('role.modules.index', [
-                    'course' => $course->id,
-                ])
-            )->with(
-                'success',
-                'Course module created successfully.'
-            );
-
+            return redirect()
+                ->to(
+                    role_route(
+                        'role.modules.index',
+                        [
+                            'course' => $course->id
+                        ]
+                    )
+                )->with(
+                    'success',
+                    'Course module created successfully.'
+                );
         } catch (Throwable $e) {
 
             DB::rollBack();
@@ -152,7 +154,9 @@ class CourseModuleController extends Controller
             404
         );
 
-        return view('backend.pages.CourseResources.Modules.edit',compact('course', 'module')
+        return view(
+            'backend.pages.CourseResources.Modules.edit',
+            compact('course', 'module')
         );
     }
 
@@ -198,7 +202,6 @@ class CourseModuleController extends Controller
                 'success',
                 'Course module updated successfully.'
             );
-
         } catch (Throwable $e) {
 
             DB::rollBack();
@@ -246,7 +249,6 @@ class CourseModuleController extends Controller
                 'success',
                 'Course module deleted successfully.'
             );
-
         } catch (Throwable $e) {
 
             DB::rollBack();

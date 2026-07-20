@@ -198,4 +198,12 @@ Route::prefix('student')
 
              Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
+
+            //student documnet
+
+              Route::get('/student-document', [StudentDashboardController::class, 'studentDocument'])
+            ->name('student-document');
+              Route::post('/student-document', [StudentDashboardController::class, 'storeStudentDocument'])
+            ->name('student-document');
+            Route::delete('/student-document/{document}', [StudentDashboardController::class,'destroyStudentDocument'])->name('student-document.destroy');
     });

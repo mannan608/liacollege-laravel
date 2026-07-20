@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\CourseResources\CoursePermissions;
 use App\Models\LMS\Enrollment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -48,5 +49,9 @@ class Student extends Model
     public function enrollments()
 {
     return $this->hasMany(Enrollment::class);
+}
+public function documents()
+{
+    return $this->morphMany(Document::class, 'documentable');
 }
 }

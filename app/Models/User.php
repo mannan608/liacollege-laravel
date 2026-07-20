@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\CourseResources\CoursePermissions;
 use App\Models\LMS\SlotTeacher;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -104,4 +105,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(SlotTeacher::class, 'user_id');
     }
+    public function documents()
+{
+    return $this->morphMany(Document::class, 'documentable');
+}
 }
