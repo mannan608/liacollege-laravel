@@ -358,8 +358,8 @@
                     Are you sure you want to delete <span id="delete-filename"
                         class="font-medium text-gray-700 dark:text-gray-300"></span>? This action cannot be undone.
                 </p>
-                <form id="delete-form" action="{{ route('student.student-document.destroy', $document) }}"
-                    method="POST" class="flex items-center justify-center gap-3">
+                <form id="delete-form" action="" method="POST"
+                    class="flex items-center justify-center gap-3">
                     @csrf
                     @method('DELETE')
                     <button type="button" onclick="closeDeleteModal()"
@@ -436,7 +436,7 @@
         function openDeleteModal(id, name) {
             const modal = document.getElementById('delete-modal');
             document.getElementById('delete-filename').textContent = name;
-            document.getElementById('delete-form').action = `/student/documents/${id}`;
+            document.getElementById('delete-form').action = `{{ url('/student/student-document') }}/${id}`;
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }

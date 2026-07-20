@@ -6,6 +6,7 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\Http\Controllers\Student\LearningPortalController;
 use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\Student\StudentDocumentController;
 use App\SEO\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -109,7 +110,7 @@ Route::get('/leadership-management', [FrontendController::class, 'leadershipMana
     ->name('leadershipManagement');
 
 Route::get('/project-management', [FrontendController::class, 'projectManagement'])
-    ->name('projectManagement');   
+    ->name('projectManagement');
 
 // Fast Track
 Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track_qualifications'])
@@ -190,20 +191,29 @@ Route::prefix('student')
         Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])
             ->name('course-details');
 
-            //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
-            // ->name('course-module');
+        //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
+        // ->name('course-module');
 
-             Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseModule'])
+        Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseModule'])
             ->name('course-module');
 
-             Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
+        Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
 
-            //student documnet
+        //student documnet
 
-              Route::get('/student-document', [StudentDashboardController::class, 'studentDocument'])
+        Route::get('/student-document', [StudentDocumentController::class, 'studentDocument'])
             ->name('student-document');
-              Route::post('/student-document', [StudentDashboardController::class, 'storeStudentDocument'])
+        Route::post('/student-document', [StudentDocumentController::class, 'storeStudentDocument'])
             ->name('student-document');
-            Route::delete('/student-document/{document}', [StudentDashboardController::class,'destroyStudentDocument'])->name('student-document.destroy');
+        Route::delete('/student-document/{document}', [StudentDocumentController::class, 'destroyStudentDocument'])->name('student-document.destroy');
+        Route::get('/confirmation-letter', [
+            StudentDocumentController::class,
+            'confirmationLetter'
+        ])->name('confirmation-letter');
+        Route::get('/signed-terms', [StudentDocumentController::class,    'signedTerms'])->name('signed-terms');
+        Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
+        Route::get('/tasks', [StudentDocumentController::class,    'tasks'])->name('tasks.index');
+
+
     });

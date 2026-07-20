@@ -41,7 +41,7 @@
                         Enrolment Documents
                     </a>
 
-                    <a href="#" target="_blank"
+                    <a href="{{ route('student.confirmation-letter') }}" target="_blank"
                         class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
                         <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -51,7 +51,7 @@
                         Confirmation Letter
                     </a>
 
-                    <a href="#" target="_blank"
+                    <a href="{{ route('student.signed-terms') }}" target="_blank"
                         class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
                         <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -64,7 +64,7 @@
                         Signed Terms
                     </a>
 
-                    <a href="#" target="_blank"
+                    <a href="{{ route('student.transcript') }}" target="_blank"
                         class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
                         <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -77,8 +77,8 @@
                         Academic Transcript
                     </a>
 
-                    <a href="#"
-                        class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-xl font-medium text-sm transition-all">
+                    <a href="{{ route('student.tasks.index') }}"
+                        class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
                             <line x1="8" y1="6" x2="21" y2="6" />
