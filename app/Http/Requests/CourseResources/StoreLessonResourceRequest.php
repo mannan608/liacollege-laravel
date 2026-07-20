@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\CourseResources;
 
+use App\Models\CourseResources\LessonResource;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -16,31 +17,26 @@ class StoreLessonResourceRequest extends FormRequest
     {
         return [
 
-        'sections'=>'required|array',
+        'sections' => ['required', 'array', 'min:1'],
 
-        'sections.*.title'=>'required|string|max:255',
+        'sections.*.title' => ['required', 'string', 'max:255'],
 
-        'sections.*.resource_type'=>[
+        'sections.*.resource_type' => [
             'required',
-            Rule::in([
-                'video',
-                'content',
-                'file',
-                'quiz'
-            ])
+            Rule::in(LessonResource::RESOURCE_TYPES),
         ],
 
-        'sections.*.items'=>'required|array|min:1',
+        'sections.*.items' => ['required', 'array', 'min:1'],
 
-        'sections.*.items.*.title'=>'required|string|max:255',
+        'sections.*.items.*.title' => ['required', 'string', 'max:255'],
 
-        'sections.*.items.*.description'=>'nullable',
+        'sections.*.items.*.description' => ['nullable', 'string'],
 
-        'sections.*.items.*.url'=>'nullable',
+        'sections.*.items.*.url' => ['nullable', 'url', 'max:2048'],
 
-        'sections.*.items.*.quiz_id'=>'nullable|exists:quizzes,id',
+        'sections.*.items.*.quiz_id' => ['nullable', 'integer', 'min:1'],
 
-        'sections.*.items.*.file'=>'nullable|file'
+        'sections.*.items.*.file' => ['nullable', 'file']
 
     ];
     }
@@ -59,8 +55,8 @@ class StoreLessonResourceRequest extends FormRequest
 
     private function hasAnyResourcePayload(): bool
     {
-        foreach (['videos', 'contents', 'files', 'quizzes'] as $key) {
-            if (! empty($this->input($key, []))) {
+        foreach ($this->input('sections', []) as $section) {
+            if (! empty($section['items'] ?? [])) {
                 return true;
             }
         }

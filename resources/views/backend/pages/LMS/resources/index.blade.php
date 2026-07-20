@@ -74,7 +74,7 @@
                                             class="rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-gray-50">
                                             Edit
                                         </a>
-                                        <form method="POST"
+                                        {{-- <form method="POST"
                                             action="{{ role_route('role.resources.destroy', ['course' => $course->id, 'resource' => $resource->id]) }}"
                                             onsubmit="return confirm('Delete this resource?');">
                                             @csrf
@@ -83,7 +83,7 @@
                                                 class="rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-100">
                                                 Delete
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </td>
                             </tr>

@@ -1,14 +1,13 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    {{-- <div x-data="sectionBuilder()" class="max-w-4xl mx-auto p-6 space-y-6"> --}}
     <form
         action="{{ isset($isEdit)
-            ? role_route('role.resources.update', [
+            ? role_route('resources.update', [
                 'course' => $course,
                 'module' => $module,
                 'lesson' => $lesson,
-                'resource' => $lesson,
+                'resource' => $resourceSection ?? $lesson->resourceSections->first(),
             ])
             : role_route('role.resources.store', [
                 'course' => $course,
@@ -22,6 +21,24 @@
         @isset($isEdit)
             @method('PUT')
         @endisset
+
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4">
+                <div class="flex items-center gap-2 text-red-700 font-semibold mb-2">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Please fix the following errors:
+                </div>
+                <ul class="list-disc list-inside text-sm text-red-600 space-y-1">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <!-- Page Title -->
         <div class="text-center mb-8">
             <h1 class="text-2xl font-bold text-gray-800">Dynamic Section Builder</h1>
@@ -53,8 +70,9 @@
 
         <!-- ALL SECTIONS -->
         <template x-for="(section, sectionIndex) in sections" :key="section.id">
-            <input type="hidden" :name="'sections[' + sectionIndex + '][id]'" :value="section.id">
             <div class="mb-6 overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm animate-in">
+                <!-- Hidden input moved inside the div -->
+                <input type="hidden" :name="'sections[' + sectionIndex + '][id]'" :value="section.id">
 
                 <!-- Section Header -->
                 <div
@@ -90,17 +108,20 @@
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                             </svg>
-                            Section Type
+                            Section Type *
                         </label>
                         <select x-model="section.type" :name="'sections[' + sectionIndex + '][resource_type]'"
                             @change="onTypeChange(section)"
-                            class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 outline-none focus:border-brand-500 focus:bg-white transition-colors cursor-pointer">
+                            class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 outline-none focus:border-brand-500 focus:bg-white transition-colors cursor-pointer"
+                            :class="{ 'border-red-300 bg-red-50': errors['sections.' + sectionIndex + '.resource_type'] }">
                             <option value="" disabled>Select a type...</option>
                             <option value="video">Video</option>
                             <option value="content">Content</option>
-                            <option value="quiz">Quiz</option>
                             <option value="file">File</option>
                         </select>
+                        @error('sections.*.resource_type')
+                            <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- SECTION NAME -->
@@ -111,12 +132,15 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
-                            Section Name
+                            Section Name *
                         </label>
                         <input type="text" x-model="section.name" :name="'sections[' + sectionIndex + '][title]'"
-                            :placeholder="'e.g., Week 1 ' + (section.type ? section.type.charAt(0).toUpperCase() + section.type.slice(
-                                1) + 's' : 'Materials')"
-                            class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white transition-colors">
+                            :placeholder="'e.g., Week 1 ' + (section.type ? section.type.charAt(0).toUpperCase() + section.type.slice(1) + 's' : 'Materials')"
+                            class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white transition-colors"
+                            :class="{ 'border-red-300 bg-red-50': errors['sections.' + sectionIndex + '.title'] }">
+                        @error('sections.*.title')
+                            <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- ITEMS -->
@@ -141,9 +165,10 @@
                         </template>
 
                         <template x-for="(item, itemIndex) in section.items" :key="item.id">
-                            <input type="hidden" :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][id]'"
-                                :value="item.id">
                             <div class="rounded-xl border border-gray-200 bg-gray-50/50 p-5 animate-in">
+                                <!-- Hidden input moved inside the div -->
+                                <input type="hidden" :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][id]'"
+                                    :value="item.id">
 
                                 <!-- Item Header -->
                                 <div class="mb-4 flex items-center justify-between">
@@ -169,15 +194,18 @@
 
                                     <!-- Title (common for all types) -->
                                     <div class="flex flex-col gap-2">
-                                        <label class="text-sm font-medium text-gray-600">Title</label>
+                                        <label class="text-sm font-medium text-gray-600">Title *</label>
                                         <input type="text" x-model="item.title"
                                             :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][title]'"
                                             :placeholder="'Enter ' + (section.type || 'item') + ' title'"
                                             class="w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 transition-colors">
+                                        @error('sections.*.items.*.title')
+                                            <p class="text-xs text-red-500">{{ $message }}</p>
+                                        @enderror
                                     </div>
 
-                                    <!-- URL (for video, link, image, audio) -->
-                                    <template x-if="['video','link','image','audio'].includes(section.type)">
+                                    <!-- URL (for video) -->
+                                    <template x-if="section.type === 'video'">
                                         <div class="flex flex-col gap-2">
                                             <label class="text-sm font-medium text-gray-600">URL</label>
                                             <div class="relative">
@@ -192,7 +220,7 @@
                                                 </div>
                                                 <input type="url" x-model="item.url"
                                                     :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][url]'"
-                                                    placeholder="https://example.com"
+                                                    placeholder="https://youtube.com/watch?v=..."
                                                     class="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 transition-colors">
                                             </div>
                                         </div>
@@ -207,8 +235,8 @@
                                             class="w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 resize-none transition-colors"></textarea>
                                     </div>
 
-                                    <!-- File upload (for document, file, image, audio) -->
-                                    <template x-if="['document','file','image','audio'].includes(section.type)">
+                                    <!-- File upload (for file type) -->
+                                    <template x-if="section.type === 'file'">
                                         <div class="flex flex-col gap-2">
                                             <label class="text-sm font-medium text-gray-600">Upload File</label>
                                             <div class="relative">
@@ -219,8 +247,8 @@
                                         </div>
                                     </template>
 
-                                    <!-- Duration (for video, audio) -->
-                                    <template x-if="['video','audio'].includes(section.type)">
+                                    <!-- Duration (for video) -->
+                                    <template x-if="section.type === 'video'">
                                         <div class="flex flex-col gap-2">
                                             <label class="text-sm font-medium text-gray-600">Duration <span
                                                     class="text-gray-300 font-normal">(optional)</span></label>
@@ -272,8 +300,6 @@
             </button>
         </div>
 
-
-
     </form>
 
     <script>
@@ -282,6 +308,33 @@
                 sections: [],
                 nextId: 1,
                 nextItemId: 1,
+
+                init() {
+                    // Pre-populate for edit mode
+                    @if(isset($isEdit) && $lesson->resourceSections)
+                        this.sections = {!! $lesson->resourceSections->map(function($section) {
+                            return [
+                                'id' => $section->id,
+                                'name' => $section->title,
+                                'type' => $section->resource_type,
+                                'items' => $section->resources->map(function($resource) {
+                                    return [
+                                        'id' => $resource->id,
+                                        'title' => $resource->title,
+                                        'description' => $resource->description,
+                                        'url' => $resource->url,
+                                        'duration' => $resource->duration,
+                                    ];
+                                })->toArray()
+                            ];
+                        })->toJson() !!};
+                        // Update next IDs to avoid conflicts
+                        const maxSectionId = Math.max(...this.sections.map(s => s.id || 0), 0);
+                        const maxItemId = Math.max(...this.sections.flatMap(s => s.items.map(i => i.id || 0)), 0);
+                        this.nextId = maxSectionId + 1;
+                        this.nextItemId = maxItemId + 1;
+                    @endif
+                },
 
                 addSection() {
                     this.sections.push({
@@ -297,7 +350,6 @@
                 },
 
                 onTypeChange(section) {
-                    // Auto-add first item when type is selected
                     if (section.items.length === 0) {
                         this.addItem(section.id);
                     }
@@ -313,11 +365,8 @@
                         description: ''
                     };
 
-                    // Add type-specific fields
-                    if (['video', 'link', 'image', 'audio'].includes(section.type)) {
+                    if (section.type === 'video') {
                         baseItem.url = '';
-                    }
-                    if (['video', 'audio'].includes(section.type)) {
                         baseItem.duration = '';
                     }
 
@@ -330,8 +379,6 @@
                         section.items = section.items.filter(i => i.id !== itemId);
                     }
                 },
-
-
             }
         }
     </script>
@@ -340,17 +387,9 @@
         .animate-in {
             animation: fadeSlideIn 0.3s ease-out;
         }
-
         @keyframes fadeSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 @endsection

@@ -150,10 +150,38 @@ Route::prefix('{role}')
 
 
         // course module route start
-             Route::resource('courses.modules', CourseModuleController::class)->names('modules');
-             Route::resource('courses.modules.lessons', CourseModuleController::class)->names('lessons');
-             Route::resource('courses.modules.lessons',CourseLessonController::class)->names('lessons');
-             Route::resource('courses.modules.lessons.resources',CourseLessonResourceController::class)->names('resources');
+        Route::resource('courses.modules', CourseModuleController::class)->names('modules');
+        //  Route::resource('courses.modules.lessons', CourseModuleController::class)->names('lessons');
+        Route::resource('courses.modules.lessons', CourseLessonController::class)->names('lessons');
+        // Route::resource('courses.modules.lessons.resources', CourseLessonResourceController::class)->names('resources');
+        // Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}/edit', [CourseLessonResourceController::class, 'edit'])
+        //     ->name('resources.edit');
+        // Route::put('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}', [CourseLessonResourceController::class, 'updateSingle'])
+        //     ->name('resources.update');
+        Route::get(
+    'courses/{course}/modules/{module}/lessons/{lesson}/resources',
+    [CourseLessonResourceController::class, 'index']
+)->name('resources.index');
+
+Route::get(
+    'courses/{course}/modules/{module}/lessons/{lesson}/resources/create',
+    [CourseLessonResourceController::class, 'create']
+)->name('resources.create');
+
+Route::post(
+    'courses/{course}/modules/{module}/lessons/{lesson}/resources',
+    [CourseLessonResourceController::class, 'store']
+)->name('resources.store');
+
+Route::get(
+    'courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}/edit',
+    [CourseLessonResourceController::class, 'edit']
+)->name('resources.edit');
+
+Route::put(
+    'courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}',
+    [CourseLessonResourceController::class, 'updateSingle']
+)->name('resources.update');
 
         // course module route start
 

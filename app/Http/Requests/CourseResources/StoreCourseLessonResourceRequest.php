@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\CourseResources;
 
+use App\Models\CourseResources\LessonResource;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -66,7 +67,7 @@ class StoreCourseLessonResourceRequest extends FormRequest
                 'nullable',
                 'required_if:resources.*.resource_type,quiz',
                 'integer',
-                Rule::in([1, 2, 3]),
+                'min:1',
             ],
 
         ];

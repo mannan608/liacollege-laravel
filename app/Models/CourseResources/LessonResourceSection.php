@@ -3,6 +3,7 @@
 namespace App\Models\CourseResources;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LessonResourceSection extends Model
@@ -17,12 +18,17 @@ class LessonResourceSection extends Model
 
     ];
 
-    public function lesson()
+    protected $casts = [
+        'sort_order' => 'integer',
+        'status' => 'boolean',
+    ];
+
+    public function lesson(): BelongsTo
     {
         return $this->belongsTo(Lesson::class);
     }
 
-    public function resources()
+    public function resources(): HasMany
     {
         return $this->hasMany(LessonResource::class)
             ->orderBy('sort_order');

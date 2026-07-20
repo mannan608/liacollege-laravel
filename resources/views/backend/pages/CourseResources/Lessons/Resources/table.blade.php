@@ -86,19 +86,17 @@
 
                         <div class="flex justify-end gap-2">
 
-                            <a href="{{ role_route('role.resources.edit', [
-                                'course' => $course->id,
-                                'module' => $module->id,
-                                'lesson' => $lesson->id,
-                                'resource' => $item->id,
-                            ]) }}"
-                                class="rounded-lg p-2 text-gray-500 hover:bg-blue-50 hover:text-blue-600">
+                           <a href="{{ route('role.resources.edit', [
+    'role'     => 'admin',
+    'course'   => $course->id,
+    'module'   => $module->id,
+    'lesson'   => $lesson->id,
+    'resource' => $item->id,
+]) }}">
+    Edit
+</a>
 
-                                Edit
-
-                            </a>
-
-                            <form action="{{ role_route('role.resources.destroy', [
+                            {{-- <form action="{{ role_route('role.resources.destroy', [
                                 'course' => $course->id,
                                 'module' => $module->id,
                                 'lesson' => $lesson->id,
@@ -117,7 +115,7 @@
 
                                 </button>
 
-                            </form>
+                            </form> --}}
 
                         </div>
 
