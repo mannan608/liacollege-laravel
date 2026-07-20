@@ -109,27 +109,4 @@ Route::prefix('{role}')
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}/edit', [CourseLessonResourceController::class, 'edit'])->name('resources.edit');
         Route::put('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}', [CourseLessonResourceController::class, 'updateSingle'])->name('resources.update');
 
-
-        
-
-        // Route::prefix('courses/{course}')->group(function () {
-
-        //     Route::get('/modules', [CourseQuizController::class, 'index'])
-        //         ->name('modules.index');
-
-        //     Route::get('/modules/create', [CourseQuizController::class, 'create'])
-        //         ->name('modules.create');
-
-        //     Route::post('/modules', [CourseQuizController::class, 'store'])
-        //         ->name('modules.store');
-
-        //     Route::get('/modules/{module}/edit', [CourseQuizController::class, 'edit'])
-        //         ->name('modules.edit');
-
-        //     Route::put('/modules/{module}', [CourseQuizController::class, 'update'])
-        //         ->name('modules.update');
-
-        //     Route::delete('/modules/{module}', [CourseQuizController::class, 'destroy'])
-        //         ->name('modules.destroy');
-        // });
     });
