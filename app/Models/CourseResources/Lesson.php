@@ -49,4 +49,9 @@ class Lesson extends Model
     // {
     //     return $this->hasMany(LessonResource::class);
     // }
+    public function resourceSections()
+{
+    return $this->hasMany(LessonResourceSection::class)
+        ->orderBy('sort_order');
+}
 }

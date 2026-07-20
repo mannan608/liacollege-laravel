@@ -6,30 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('lesson_resources', function (Blueprint $table) {
+        Schema::create('lesson_resource_sections', function (Blueprint $table) {
 
     $table->id();
 
-    $table->foreignId('lesson_resource_section_id')
+    $table->foreignId('lesson_id')
         ->constrained()
         ->cascadeOnDelete();
 
     $table->string('title');
 
-    $table->text('description')->nullable();
-
-    $table->string('url')->nullable();
-
-    $table->string('file_path')->nullable();
-
-    $table->foreignId('quiz_id')
-        ->nullable()
-        ->constrained()
-        ->nullOnDelete();
-
-    $table->integer('duration')->nullable();
+    $table->enum('resource_type',[
+        'video',
+        'content',
+        'file',
+        'quiz'
+    ]);
 
     $table->integer('sort_order')->default(0);
 
@@ -40,8 +37,11 @@ return new class extends Migration
 });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('lesson_resources');
+        Schema::dropIfExists('lesson_resource_sections');
     }
 };

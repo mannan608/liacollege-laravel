@@ -1,182 +1,153 @@
-@extends('backend.layouts.app')
+<div class="overflow-hidden rounded-xl border border-slate-200 bg-white">
 
-@section('content')
+    <table class="w-full text-left">
 
-    <div class="mx-auto max-w-7xl p-6">
+        <thead class="border-b border-slate-200 bg-slate-50">
 
-        <div class="mb-6 flex items-center justify-between">
+            <tr>
 
-            <div>
+                <th class="px-5 py-4 text-xs uppercase text-slate-500">
+                    ID
+                </th>
 
-                <h2 class="text-2xl font-bold text-slate-900">
-                    Lesson Resources
-                </h2>
+                <th class="px-5 py-4 text-xs uppercase text-slate-500">
+                    Section Title
+                </th>
 
-                <p class="mt-1 text-sm text-slate-500">
-                    {{ $lesson->title }}
-                </p>
+                <th class="px-5 py-4 text-xs uppercase text-slate-500">
+                    Type
+                </th>
 
-            </div>
+                <th class="px-5 py-4 text-xs uppercase text-slate-500">
+                    Resources
+                </th>
 
-            <a href="{{ role_route('role.resources.create', [
-                'course' => $course->id,
-                'module' => $module->id,
-                'lesson' => $lesson->id,
-            ]) }}"
-                class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">
+                <th class="px-5 py-4 text-xs uppercase text-slate-500">
+                    Status
+                </th>
 
-                + Add Resource
+                <th class="px-5 py-4 text-right text-xs uppercase text-slate-500">
+                    Action
+                </th>
 
-            </a>
+            </tr>
 
-        </div>
+        </thead>
 
+        <tbody class="divide-y divide-slate-100">
 
-        <div class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+            @forelse($items as $item)
 
-            <table class="w-full text-left">
+                <tr class="hover:bg-slate-50">
 
-                <thead class="border-b border-slate-200 bg-slate-50">
+                    <td class="px-5 py-4 text-sm">
+                        {{ $item->id }}
+                    </td>
 
-                    <tr>
+                    <td class="px-5 py-4 text-sm font-medium text-slate-700">
+                        {{ $item->title }}
+                    </td>
 
-                        <th class="px-5 py-4 text-xs uppercase text-slate-500">
-                            ID
-                        </th>
+                    <td class="px-5 py-4">
 
-                        <th class="px-5 py-4 text-xs uppercase text-slate-500">
-                            Title
-                        </th>
+                        <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
+                            {{ ucfirst($item->resource_type) }}
+                        </span>
 
-                        <th class="px-5 py-4 text-xs uppercase text-slate-500">
-                            Type
-                        </th>
+                    </td>
 
-                        <th class="px-5 py-4 text-xs uppercase text-slate-500">
-                            Status
-                        </th>
+                    <td class="px-5 py-4">
 
-                        <th class="px-5 py-4 text-right text-xs uppercase text-slate-500">
-                            Action
-                        </th>
+                        <span class="rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700">
+                            {{ $item->resources->count() }}
+                        </span>
 
-                    </tr>
+                    </td>
 
-                </thead>
+                    <td class="px-5 py-4">
 
-                <tbody class="divide-y divide-slate-100">
+                        @if($item->status)
 
-                    @forelse ($resources as $resource)
+                            <span class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
+                                Active
+                            </span>
 
-                        <tr class="hover:bg-slate-50">
+                        @else
 
-                            <td class="px-5 py-4 text-sm">
-                                {{ $resource->id }}
-                            </td>
+                            <span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
+                                Inactive
+                            </span>
 
-                            <td class="px-5 py-4 text-sm font-medium text-slate-700">
-                                {{ $resource->title }}
-                            </td>
+                        @endif
 
-                            <td class="px-5 py-4">
+                    </td>
 
-                                <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">
+                    <td class="px-5 py-4">
 
-                                    {{ ucfirst($resource->resource_type) }}
+                        <div class="flex justify-end gap-2">
 
-                                </span>
+                            <a href="{{ role_route('role.resources.edit', [
+                                'course' => $course->id,
+                                'module' => $module->id,
+                                'lesson' => $lesson->id,
+                                'resource' => $item->id,
+                            ]) }}"
+                                class="rounded-lg p-2 text-gray-500 hover:bg-blue-50 hover:text-blue-600">
 
-                            </td>
+                                Edit
 
-                            <td class="px-5 py-4">
+                            </a>
 
-                                @if ($resource->status)
+                            <form action="{{ role_route('role.resources.destroy', [
+                                'course' => $course->id,
+                                'module' => $module->id,
+                                'lesson' => $lesson->id,
+                                'resource' => $item->id,
+                            ]) }}"
+                                method="POST">
 
-                                    <span class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
-                                        Active
-                                    </span>
+                                @csrf
+                                @method('DELETE')
 
-                                @else
+                                <button type="submit"
+                                    onclick="return confirm('Delete this section?')"
+                                    class="rounded-lg p-2 text-gray-500 hover:bg-red-50 hover:text-red-600">
 
-                                    <span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
-                                        Inactive
-                                    </span>
+                                    Delete
 
-                                @endif
+                                </button>
 
-                            </td>
+                            </form>
 
-                            <td class="px-5 py-4">
+                        </div>
 
-                                <div class="flex justify-end gap-2">
+                    </td>
 
-                                    <a href="{{ role_route('role.resources.edit', [
-                                        'course' => $course->id,
-                                        'module' => $module->id,
-                                        'lesson' => $lesson->id,
-                                        'resource' => $resource->id,
-                                    ]) }}"
-                                        class="rounded-lg p-2 text-gray-500 hover:bg-blue-50 hover:text-blue-600">
+                </tr>
 
-                                        Edit
+            @empty
 
-                                    </a>
+                <tr>
 
+                    <td colspan="6"
+                        class="px-5 py-10 text-center text-sm text-slate-500">
 
-                                    <form action="{{ role_route('role.resources.destroy', [
-                                        'course' => $course->id,
-                                        'module' => $module->id,
-                                        'lesson' => $lesson->id,
-                                        'resource' => $resource->id,
-                                    ]) }}"
-                                        method="POST">
+                        No resource sections found.
 
-                                        @csrf
-                                        @method('DELETE')
+                    </td>
 
-                                        <button type="submit"
-                                            onclick="return confirm('Delete this resource?')"
-                                            class="rounded-lg p-2 text-gray-500 hover:bg-red-50 hover:text-red-600">
+                </tr>
 
-                                            Delete
+            @endforelse
 
-                                        </button>
+        </tbody>
 
-                                    </form>
+    </table>
 
-                                </div>
+    <div class="border-t border-slate-200 px-5 py-4">
 
-                            </td>
-
-                        </tr>
-
-                    @empty
-
-                        <tr>
-
-                            <td colspan="5"
-                                class="px-5 py-10 text-center text-sm text-slate-500">
-
-                                No resources found.
-
-                            </td>
-
-                        </tr>
-
-                    @endforelse
-
-                </tbody>
-
-            </table>
-
-            <div class="border-t border-slate-200 px-5 py-4">
-
-                {{ $resources->links() }}
-
-            </div>
-
-        </div>
+        {{ $items->links() }}
 
     </div>
 
-@endsection
+</div>

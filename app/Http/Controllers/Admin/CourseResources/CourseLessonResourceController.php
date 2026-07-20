@@ -8,6 +8,7 @@ use App\Http\Requests\CourseResources\UpdateCourseLessonResourceRequest;
 use App\Models\Course;
 use App\Models\CourseResources\Lesson;
 use App\Models\CourseResources\LessonResource;
+use App\Models\CourseResources\LessonResourceSection;
 use App\Models\CourseResources\Module;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
@@ -18,604 +19,423 @@ use Throwable;
 class CourseLessonResourceController extends Controller
 {
     use HandlesFiles;
+public function index(
+    Request $request,
+    string $role,
+    Course $course,
+    Module $module,
+    Lesson $lesson
 
-    /**
-     * Hardcoded quizzes for now.
-     */
-    private function quizzes(): array
-    {
-        return [
-            [
-                'id' => 1,
-                'title' => 'Quiz 1',
-            ],
-            [
-                'id' => 2,
-                'title' => 'Quiz 2',
-            ],
-            [
-                'id' => 3,
-                'title' => 'Quiz 3',
-            ],
-        ];
+)
+{
+    $sections = $lesson
+        ->resourceSections()
+        ->with('resources')
+        ->paginate(15);
+
+    return view(
+        'backend.pages.CourseResources.Lessons.Resources.index',
+        compact(
+            'course',
+            'module',
+            'lesson',
+            'sections'
+        )
+    );
+}
+public function create(
+    string $role,
+    Course $course,
+    Module $module,
+    Lesson $lesson
+)
+{
+    return view(
+        'backend.pages.CourseResources.Lessons.Resources.create',
+        compact(
+            'course',
+            'module',
+            'lesson'
+        )
+    );
+}
+public function store(
+    StoreLessonResourceRequest $request,
+    string $role,
+    Course $course,
+    Module $module,
+    Lesson $lesson
+): RedirectResponse
+{
+
+    try {
+
+        DB::transaction(function () use ($request, $lesson) {
+
+            foreach ($request->sections as $sectionIndex => $sectionData) {
+
+                $section = LessonResourceSection::create([
+
+                    'lesson_id'=>$lesson->id,
+
+                    'title'=>$sectionData['title'],
+
+                    'resource_type'=>$sectionData['resource_type'],
+
+                    'sort_order'=>$sectionIndex,
+
+                    'status'=>true
+
+                ]);
+
+                foreach ($sectionData['items'] as $itemIndex=>$item) {
+
+                    $file = null;
+
+                    if(isset($item['file'])){
+
+                        $file = $this->uploadFile(
+                            $item['file'],
+                            'lesson-resources'
+                        );
+
+                    }
+
+                    LessonResource::create([
+
+                        'lesson_resource_section_id'=>$section->id,
+
+                        'title'=>$item['title'],
+
+                        'description'=>$item['description'] ?? null,
+
+                        'url'=>$item['url'] ?? null,
+
+                        'file_path'=>$file,
+
+                        'quiz_id'=>$item['quiz_id'] ?? null,
+
+                        'duration'=>$item['duration'] ?? null,
+
+                        'sort_order'=>$itemIndex,
+
+                        'status'=>true
+
+                    ]);
+
+                }
+
+            }
+
+        });
+
+        return redirect()
+            ->route('resources.index',[
+                'role'=>$role,
+                'course'=>$course,
+                'module'=>$module,
+                'lesson'=>$lesson
+            ])
+            ->with('success','Lesson resources created successfully.');
+
+    } catch (Throwable $e) {
+
+        report($e);
+
+        return back()
+            ->withInput()
+            ->with('error',$e->getMessage());
+
     }
+}
+   public function edit(
+    string $role,
+    Course $course,
+    Module $module,
+    Lesson $lesson
+) {
+    $lesson->load([
+        'resourceSections.resources'
+    ]);
 
-    /**
-     * Resource types.
-     */
-    private function resourceTypes(): array
-    {
-        return LessonResource::RESOURCE_TYPES;
-    }
+    return view(
+        'backend.pages.CourseResources.Resources.edit',
+        compact(
+            'course',
+            'module',
+            'lesson'
+        )
+    );
+}
 
-    /**
-     * Display lesson resources.
-     */
-    public function index(
-        Request $request,
-        string $role,
-        Course $course,
-        Module $module,
-        Lesson $lesson
-    ) {
-        $this->authorizeCourseEdit($request);
-
-        $this->validateRelations(
-            $course,
-            $module,
-            $lesson
-        );
-
-        $resources = $lesson
-            ->resources()
-            ->orderBy('sort_order')
-            ->latest()
-            ->paginate(
-                $request->integer('per_page', 15)
-            )
-            ->withQueryString();
-
-        return view('backend.pages.CourseResources.Lessons.Resources.index',
-            compact(
-                'course',
-                'module',
-                'lesson',
-                'resources'
-            )
-        );
-    }
-
-    /**
-     * Show create form.
-     */
-    public function create(
-        Request $request,
-        string $role,
-        Course $course,
-        Module $module,
-        Lesson $lesson
-    ) {
-        $this->authorizeCourseEdit($request);
-
-        $this->validateRelations(
-            $course,
-            $module,
-            $lesson
-        );
-
-        return view('backend.pages.CourseResources.Lessons.Resources.create',
-            [
-                'course' => $course,
-                'module' => $module,
-                'lesson' => $lesson,
-                'quizzes' => $this->quizzes(),
-                'resourceTypes' => $this->resourceTypes(),
-            ]
-        );
-    }
-
-    /**
-     * Store ONE resource.
-     *
-     * One request = one resource.
-     */
-    public function store(
+public function update(
     StoreLessonResourceRequest $request,
     string $role,
     Course $course,
     Module $module,
     Lesson $lesson
 ): RedirectResponse {
-    $this->validateRelations(
-        $course,
-        $module,
-        $lesson
-    );
-
-    $validated = $request->validated();
-
-    DB::beginTransaction();
 
     try {
 
-        $lastSortOrder = $lesson
-            ->resources()
-            ->max('sort_order') ?? 0;
+        DB::transaction(function () use ($request, $lesson) {
 
-        foreach ($validated['resources'] as $index => $resource) {
+            $existingSectionIds = [];
 
-            $resourceType = $resource['resource_type'];
+            foreach ($request->sections as $sectionIndex => $sectionData) {
 
-            $resourceData = [
-                'title' => $resource['title'],
-                'resource_type' => $resourceType,
-                'sort_order' => ++$lastSortOrder,
-                'status' => $resource['status'] ?? true,
-            ];
+                /**
+                 * -------------------------
+                 * Update or Create Section
+                 * -------------------------
+                 */
 
-            if ($resourceType === 'video') {
+                if (!empty($sectionData['id'])) {
 
-                $resourceData['url'] =
-                    $resource['url'];
+                    $section = LessonResourceSection::where('lesson_id', $lesson->id)
+                        ->findOrFail($sectionData['id']);
 
+                    $section->update([
+
+                        'title' => $sectionData['title'],
+
+                        'resource_type' => $sectionData['resource_type'],
+
+                        'sort_order' => $sectionIndex,
+
+                        'status' => $sectionData['status'] ?? true
+
+                    ]);
+
+                } else {
+
+                    $section = LessonResourceSection::create([
+
+                        'lesson_id' => $lesson->id,
+
+                        'title' => $sectionData['title'],
+
+                        'resource_type' => $sectionData['resource_type'],
+
+                        'sort_order' => $sectionIndex,
+
+                        'status' => true
+
+                    ]);
+                }
+
+                $existingSectionIds[] = $section->id;
+
+                /**
+                 * -------------------------
+                 * Resources
+                 * -------------------------
+                 */
+
+                $existingResourceIds = [];
+
+                foreach ($sectionData['items'] as $itemIndex => $item) {
+
+                    $filePath = null;
+
+                    /**
+                     * upload file
+                     */
+
+                    if (!empty($item['file'])) {
+
+                        $filePath = $this->uploadFile(
+                            $item['file'],
+                            'lesson-resources'
+                        );
+                    }
+
+                    /**
+                     * Update
+                     */
+
+                    if (!empty($item['id'])) {
+
+                        $resource = LessonResource::findOrFail($item['id']);
+
+                        /**
+                         * replace file
+                         */
+
+                        if ($filePath) {
+
+                            if ($resource->file_path) {
+                                $this->deleteFile($resource->file_path);
+                            }
+
+                        } else {
+
+                            $filePath = $resource->file_path;
+
+                        }
+
+                        $resource->update([
+
+                            'title' => $item['title'],
+
+                            'description' => $item['description'] ?? null,
+
+                            'url' => $item['url'] ?? null,
+
+                            'file_path' => $filePath,
+
+                            'quiz_id' => $item['quiz_id'] ?? null,
+
+                            'duration' => $item['duration'] ?? null,
+
+                            'sort_order' => $itemIndex,
+
+                            'status' => $item['status'] ?? true
+
+                        ]);
+
+                    } else {
+
+                        $resource = LessonResource::create([
+
+                            'lesson_resource_section_id' => $section->id,
+
+                            'title' => $item['title'],
+
+                            'description' => $item['description'] ?? null,
+
+                            'url' => $item['url'] ?? null,
+
+                            'file_path' => $filePath,
+
+                            'quiz_id' => $item['quiz_id'] ?? null,
+
+                            'duration' => $item['duration'] ?? null,
+
+                            'sort_order' => $itemIndex,
+
+                            'status' => true
+
+                        ]);
+
+                    }
+
+                    $existingResourceIds[] = $resource->id;
+                }
+
+                /**
+                 * delete removed resources
+                 */
+
+                $deletedResources = LessonResource::where(
+                    'lesson_resource_section_id',
+                    $section->id
+                )
+                    ->whereNotIn('id', $existingResourceIds)
+                    ->get();
+
+                foreach ($deletedResources as $resource) {
+
+                    if ($resource->file_path) {
+                        $this->deleteFile($resource->file_path);
+                    }
+
+                    $resource->delete();
+                }
             }
 
-            if ($resourceType === 'content') {
+            /**
+             * delete removed sections
+             */
 
-                $resourceData['description'] =
-                    $resource['description'];
+            $deletedSections = LessonResourceSection::where(
+                'lesson_id',
+                $lesson->id
+            )
+                ->whereNotIn('id', $existingSectionIds)
+                ->get();
 
+            foreach ($deletedSections as $section) {
+
+                foreach ($section->resources as $resource) {
+
+                    if ($resource->file_path) {
+                        $this->deleteFile($resource->file_path);
+                    }
+
+                }
+
+                $section->delete();
             }
 
-            if ($resourceType === 'quiz') {
+        });
 
-                $resourceData['url'] =
-                    (string) $resource['quiz_id'];
+        return redirect()
+            ->route('resources.index', [
 
-            }
+                'role' => $role,
 
-            if ($resourceType === 'file') {
+                'course' => $course,
 
-                $resourceData['file_path'] =
-                    $this->uploadFile(
-                        $request->file(
-                            "resources.{$index}.file"
-                        ),
-                        'course-resources/' . $lesson->id
-                    );
+                'module' => $module,
 
-            }
+                'lesson' => $lesson
 
-            $lesson->resources()->create(
-                $resourceData
-            );
-        }
-
-        DB::commit();
-
-        return $this->redirectToResources(
-            $course,
-            $module,
-            $lesson
-        )->with(
-            'success',
-            count($validated['resources']) .
-            ' lesson resource(s) added successfully.'
-        );
+            ])
+            ->with('success', 'Lesson resources updated successfully.');
 
     } catch (Throwable $e) {
-
-        DB::rollBack();
 
         report($e);
 
         return back()
             ->withInput()
-            ->with(
-                'error',
-                'Failed to add lesson resources.'
-            );
+            ->with('error', $e->getMessage());
+
     }
+
 }
+public function destroy(
+    string $role,
+    Course $course,
+    Module $module,
+    Lesson $lesson,
+    LessonResourceSection $resource
+): RedirectResponse {
 
-    /**
-     * Display resource.
-     */
-    public function show(
-        Request $request,
-        string $role,
-        Course $course,
-        Module $module,
-        Lesson $lesson,
-        LessonResource $resource
-    ) {
-        $this->authorizeCourseEdit($request);
+    try {
 
-        $this->validateResourceBelongsToLesson(
-            $course,
-            $module,
-            $lesson,
-            $resource
-        );
+        DB::transaction(function () use ($resource) {
 
-        return view(
-            'backend.pages.CourseResources.Lessons.Resources.show',
-            compact(
-                'course',
-                'module',
-                'lesson',
-                'resource'
-            )
-        );
-    }
+            foreach ($resource->resources as $item) {
 
-    /**
-     * Show edit form.
-     */
-    public function edit(
-        Request $request,
-        string $role,
-        Course $course,
-        Module $module,
-        Lesson $lesson,
-        LessonResource $resource
-    ) {
-        $this->authorizeCourseEdit($request);
+                if ($item->file_path) {
 
-        $this->validateResourceBelongsToLesson(
-            $course,
-            $module,
-            $lesson,
-            $resource
-        );
+                    $this->deleteFile($item->file_path);
 
-        return view(
-            'backend.pages.CourseResources.Lessons.Resources.edit',
-            [
-                'course' => $course,
-                'module' => $module,
-                'lesson' => $lesson,
-                'resource' => $resource,
-                'quizzes' => $this->quizzes(),
-                'resourceTypes' => $this->resourceTypes(),
-            ]
-        );
-    }
-
-    /**
-     * Update ONE resource.
-     *
-     * Important:
-     * - Only sent fields are updated.
-     * - Missing fields keep original values.
-     * - If type changes, old type data is deleted.
-     * - Old file is deleted when replaced.
-     */
-    public function update(
-        UpdateCourseLessonResourceRequest $request,
-        string $role,
-        Course $course,
-        Module $module,
-        Lesson $lesson,
-        LessonResource $resource
-    ): RedirectResponse {
-        $this->validateResourceBelongsToLesson(
-            $course,
-            $module,
-            $lesson,
-            $resource
-        );
-
-        $validated = $request->validated();
-
-        DB::beginTransaction();
-
-        try {
-            $oldType = $resource->resource_type;
-
-            $newType = array_key_exists(
-                'resource_type',
-                $validated
-            )
-                ? $validated['resource_type']
-                : $oldType;
-
-            $typeChanged = $oldType !== $newType;
-
-            $updateData = [];
-
-            /*
-             |--------------------------------------------------------------------------
-             | COMMON FIELDS
-             |--------------------------------------------------------------------------
-             */
-
-            if (array_key_exists('title', $validated)) {
-                $updateData['title'] = $validated['title'];
-            }
-
-            if (array_key_exists('sort_order', $validated)) {
-                $updateData['sort_order'] = $validated['sort_order'];
-            }
-
-            if (array_key_exists('status', $validated)) {
-                $updateData['status'] = $validated['status'];
-            }
-
-            if (array_key_exists('resource_type', $validated)) {
-                $updateData['resource_type'] = $newType;
-            }
-
-            /*
-             |--------------------------------------------------------------------------
-             | TYPE CHANGED
-             |--------------------------------------------------------------------------
-             |
-             | Remove old type-specific data.
-             |
-             */
-
-            if ($typeChanged) {
-                $this->clearOldResourceData(
-                    $resource,
-                    $oldType,
-                    $updateData
-                );
-            }
-
-            /*
-             |--------------------------------------------------------------------------
-             | VIDEO
-             |--------------------------------------------------------------------------
-             */
-
-            if ($newType === 'video') {
-                if (array_key_exists('url', $validated)) {
-                    $updateData['url'] = $validated['url'];
                 }
-            }
 
-            /*
-             |--------------------------------------------------------------------------
-             | CONTENT
-             |--------------------------------------------------------------------------
-             */
-
-            if ($newType === 'content') {
-                if (array_key_exists('description', $validated)) {
-                    $updateData['description'] =
-                        $validated['description'];
-                }
-            }
-
-            /*
-             |--------------------------------------------------------------------------
-             | FILE
-             |--------------------------------------------------------------------------
-             */
-
-            if ($newType === 'file') {
-                if ($request->hasFile('file')) {
-                    $updateData['file_path'] = $this->replaceFile(
-                        $request->file('file'),
-                        $resource->file_path,
-                        'course-resources/' . $lesson->id
-                    );
-                }
-            }
-
-            /*
-             |--------------------------------------------------------------------------
-             | QUIZ
-             |--------------------------------------------------------------------------
-             */
-
-            if ($newType === 'quiz') {
-                if (array_key_exists('quiz_id', $validated)) {
-                    $updateData['url'] =
-                        (string) $validated['quiz_id'];
-                }
-            }
-
-            /*
-             |--------------------------------------------------------------------------
-             | UPDATE ONLY WHEN DATA EXISTS
-             |--------------------------------------------------------------------------
-             */
-
-            if (!empty($updateData)) {
-                $resource->update($updateData);
-            }
-
-            DB::commit();
-
-            return $this->redirectToResources(
-                $course,
-                $module,
-                $lesson
-            )->with(
-                'success',
-                'Lesson resource updated successfully.'
-            );
-        } catch (Throwable $e) {
-            DB::rollBack();
-
-            report($e);
-
-            return back()
-                ->withInput()
-                ->with(
-                    'error',
-                    'Failed to update lesson resource.'
-                );
-        }
-    }
-
-    /**
-     * Delete resource.
-     */
-    public function destroy(
-        Request $request,
-        string $role,
-        Course $course,
-        Module $module,
-        Lesson $lesson,
-        LessonResource $resource
-    ): RedirectResponse {
-        $this->authorizeCourseEdit($request);
-
-        $this->validateResourceBelongsToLesson(
-            $course,
-            $module,
-            $lesson,
-            $resource
-        );
-
-        DB::beginTransaction();
-
-        try {
-            if ($resource->file_path) {
-                $this->deleteFile(
-                    $resource->file_path
-                );
             }
 
             $resource->delete();
 
-            DB::commit();
+        });
 
-            return $this->redirectToResources(
-                $course,
-                $module,
-                $lesson
-            )->with(
-                'success',
-                'Lesson resource deleted successfully.'
-            );
-        } catch (Throwable $e) {
-            DB::rollBack();
-
-            report($e);
-
-            return back()->with(
-                'error',
-                'Failed to delete lesson resource.'
-            );
-        }
-    }
-
-    /**
-     * Clear old resource type data.
-     */
-    private function clearOldResourceData(
-        LessonResource $resource,
-        string $oldType,
-        array &$updateData
-    ): void {
-        /*
-         * VIDEO
-         */
-        if ($oldType === 'video') {
-            $updateData['url'] = null;
-        }
-
-        /*
-         * QUIZ
-         */
-        if ($oldType === 'quiz') {
-            $updateData['url'] = null;
-        }
-
-        /*
-         * CONTENT
-         */
-        if ($oldType === 'content') {
-            $updateData['description'] = null;
-        }
-
-        /*
-         * FILE
-         */
-        if ($oldType === 'file') {
-            if ($resource->file_path) {
-                $this->deleteFile(
-                    $resource->file_path
-                );
-            }
-
-            $updateData['file_path'] = null;
-        }
-    }
-
-    /**
-     * Authorize course edit.
-     */
-    private function authorizeCourseEdit(
-        Request $request
-    ): void {
-        abort_unless(
-            $request->user()?->can('course.edit'),
-            403
-        );
-    }
-
-    /**
-     * Validate Course → Module → Lesson.
-     */
-    private function validateRelations(
-        Course $course,
-        Module $module,
-        Lesson $lesson
-    ): void {
-        abort_unless(
-            (int) $module->course_id === (int) $course->id,
-            404
+        return back()->with(
+            'success',
+            'Resource section deleted successfully.'
         );
 
-        abort_unless(
-            (int) $lesson->module_id === (int) $module->id,
-            404
-        );
-    }
+    } catch (Throwable $e) {
 
-    /**
-     * Validate Resource belongs to Lesson.
-     */
-    private function validateResourceBelongsToLesson(
-        Course $course,
-        Module $module,
-        Lesson $lesson,
-        LessonResource $resource
-    ): void {
-        $this->validateRelations(
-            $course,
-            $module,
-            $lesson
+        report($e);
+
+        return back()->with(
+            'error',
+            $e->getMessage()
         );
 
-        abort_unless(
-            (int) $resource->lesson_id === (int) $lesson->id,
-            404
-        );
     }
 
-    /**
-     * Redirect to resource list.
-     */
-    private function redirectToResources(
-        Course $course,
-        Module $module,
-        Lesson $lesson
-    ): RedirectResponse {
-        return redirect(
-            role_route(
-                'role.resources',
-                [
-                    'course' => $course->id,
-                    'module' => $module->id,
-                    'lesson' => $lesson->id,
-                ]
-            )
-        );
-    }
+}
 }

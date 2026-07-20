@@ -7,27 +7,28 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LessonResource extends Model
 {
-    public const RESOURCE_TYPES = ['video', 'content', 'file', 'quiz'];
+   protected $fillable = [
 
-    protected $fillable = [
-              'lesson_id',
+        'lesson_resource_section_id',
         'title',
-        'resource_type',
         'description',
         'url',
         'file_path',
+        // 'quiz_id',
+        'duration',
         'sort_order',
-        'status',
+        'status'
+
     ];
 
-    protected $casts = [
-        'sort_order' => 'integer',
-        'status' => 'boolean',
-    ];
-
-    public function lesson(): BelongsTo
+    public function section()
     {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(LessonResourceSection::class);
     }
+
+    // public function quiz()
+    // {
+    //     return $this->belongsTo(Quiz::class);
+    // }
    
 }

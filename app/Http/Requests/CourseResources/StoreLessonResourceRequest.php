@@ -3,6 +3,7 @@
 namespace App\Http\Requests\CourseResources;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreLessonResourceRequest extends FormRequest
 {
@@ -14,23 +15,34 @@ class StoreLessonResourceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lesson_id' => ['required', 'exists:lessons,id'],
 
-            'videos' => ['nullable', 'array'],
-            'videos.*.title' => ['required', 'string', 'max:255'],
-            'videos.*.url' => ['required', 'url', 'max:2048'],
+        'sections'=>'required|array',
 
-            'contents' => ['nullable', 'array'],
-            'contents.*.title' => ['required', 'string', 'max:255'],
-            'contents.*.content' => ['required', 'string'],
+        'sections.*.title'=>'required|string|max:255',
 
-            'files' => ['nullable', 'array'],
-            'files.*.title' => ['required', 'string', 'max:255'],
-            'files.*.file' => ['required', 'file', 'mimes:pdf,doc,docx,ppt,pptx', 'max:20480'],
+        'sections.*.resource_type'=>[
+            'required',
+            Rule::in([
+                'video',
+                'content',
+                'file',
+                'quiz'
+            ])
+        ],
 
-            'quizzes' => ['nullable', 'array'],
-            'quizzes.*.quiz_id' => ['required', 'integer', 'min:1'],
-        ];
+        'sections.*.items'=>'required|array|min:1',
+
+        'sections.*.items.*.title'=>'required|string|max:255',
+
+        'sections.*.items.*.description'=>'nullable',
+
+        'sections.*.items.*.url'=>'nullable',
+
+        'sections.*.items.*.quiz_id'=>'nullable|exists:quizzes,id',
+
+        'sections.*.items.*.file'=>'nullable|file'
+
+    ];
     }
 
     public function withValidator($validator): void
