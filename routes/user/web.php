@@ -200,6 +200,11 @@ Route::prefix('student')
         Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
 
+        Route::get(
+            '/courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/resource',
+            [LearningPortalController::class, 'lessonResources']
+        )->name('lesson.resources');
+
         //student documnet
 
         Route::get('/student-document', [StudentDocumentController::class, 'studentDocument'])
@@ -207,13 +212,11 @@ Route::prefix('student')
         Route::post('/student-document', [StudentDocumentController::class, 'storeStudentDocument'])
             ->name('student-document');
         Route::delete('/student-document/{document}', [StudentDocumentController::class, 'destroyStudentDocument'])->name('student-document.destroy');
-        Route::get('/confirmation-letter', [StudentDocumentController::class,'confirmationLetter'])->name('confirmation-letter');
+        Route::get('/confirmation-letter', [StudentDocumentController::class, 'confirmationLetter'])->name('confirmation-letter');
         Route::get('/signed-terms', [StudentDocumentController::class,    'signedTerms'])->name('signed-terms');
         Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
         Route::get('/tasks', [StudentDocumentController::class,    'tasks'])->name('tasks.index');
 
-        Route::get('/learning-meterial/{document}/view',[StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
-        Route::get('/billing',[StudentDashboardController::class, 'studentPayment'])->name('student-payment');
-
-
+        Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
+        Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
     });
