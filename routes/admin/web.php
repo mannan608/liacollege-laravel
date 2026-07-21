@@ -78,9 +78,9 @@ Route::prefix('{role}')
         Route::resource('course-categories', CourseCategoryController::class);
         Route::resource('courses', CourseController::class);
 
-        Route::get('courses/{course}/documents',[CourseController::class, 'createDocument'])->name('documents.create');
-        Route::post('courses/{course}/documents',[CourseController::class, 'storeDocument'])->name('documents.store');
-        Route::delete('courses/{course}/documents',[CourseController::class, 'destroyDocument'])->name('documents.delete');
+        Route::get('courses/{course}/course-documents',[CourseController::class, 'createDocument'])->name('course-documents');
+        Route::post('courses/{course}/course-documents',[CourseController::class, 'storeDocument'])->name('course-documents.store');
+        Route::delete('courses/{course}/course-documents',[CourseController::class, 'destroyDocument'])->name('course-documents.delete');
 
 
         Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');

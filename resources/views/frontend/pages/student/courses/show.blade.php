@@ -121,7 +121,8 @@
                 </div>
                 <div class="p-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <a href="#" target="_blank"
+                        @foreach ($course->documents as $document)
+                            <a href="{{ route('student.learning-document.view', $document) }}" target="_blank"
                             class="group flex gap-4 items-start p-5 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all hover:bg-gray-50 dark:hover:bg-gray-800/50">
                             <div
                                 class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -138,8 +139,8 @@
                             <div class="flex-1 min-w-0">
                                 <p
                                     class="font-medium text-sm text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
-                                    Lia College Student Handbook.pdf</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">PDF · 2.4 MB</p>
+                                    {{$document->name}}</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">File Size · {{ number_format($document->size / 1024, 2) }} KB</p>
                             </div>
                             <svg class="w-4 h-4 text-gray-300 group-hover:text-gray-500 transition-colors flex-shrink-0 mt-1"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -147,33 +148,9 @@
                                 <polyline points="9 18 15 12 9 6" />
                             </svg>
                         </a>
+                        @endforeach
 
-                        <a href="#" target="_blank"
-                            class="group flex gap-4 items-start p-5 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                            <div
-                                class="w-10 h-10 bg-red-50 dark:bg-red-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                    <polyline points="14 2 14 8 20 8" />
-                                    <line x1="16" y1="13" x2="8" y2="13" />
-                                    <line x1="16" y1="17" x2="8" y2="17" />
-                                    <polyline points="10 9 9 9 8 9" />
-                                </svg>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <p
-                                    class="font-medium text-sm text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
-                                    Support for students at Lia College.pdf</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">PDF · 1.8 MB</p>
-                            </div>
-                            <svg class="w-4 h-4 text-gray-300 group-hover:text-gray-500 transition-colors flex-shrink-0 mt-1"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </a>
+                        
                     </div>
                 </div>
             </div>
@@ -321,7 +298,8 @@
                                 @foreach ($course->modules as $module)
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                                         <td class="pl-6 py-5">
-                                            <div class="font-medium text-gray-900 dark:text-white">{{ $module->title }}</div>
+                                            <div class="font-medium text-gray-900 dark:text-white">{{ $module->title }}
+                                            </div>
                                             <div class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">eLearning
                                                 Presentation
                                                 (SCORM)
@@ -338,7 +316,7 @@
                                                 'course' => $course->id,
                                                 'module' => $module->id,
                                             ]) }}"
-                                            class="px-5
+                                                class="px-5
                                                 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100
                                                 text-white dark:text-gray-900 rounded-lg text-xs font-medium
                                                 transition-colors">

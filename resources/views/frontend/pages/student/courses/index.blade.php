@@ -1,68 +1,6 @@
 @extends('frontend.pages.student.layouts.app')
 
 @section('content')
-    @php
-        $enrollments = [
-            [
-                'title' => 'Advanced Laravel Development',
-                'category' => 'Programming',
-                'thumbnail' => '/images/course/course-01.jpg',
-                'instructor' => 'John Wilson',
-                'avatar' => '/images/user/user-01.jpg',
-                'status' => 'Active',
-                'progress' => 72,
-                'grade' => null,
-                'enrolled' => '12 Jun 2026',
-                'last_activity' => '2 hours ago',
-            ],
-            [
-                'title' => 'UI/UX Design Masterclass',
-                'category' => 'Design',
-                'thumbnail' => '/images/course/course-02.jpg',
-                'instructor' => 'Emily Brown',
-                'avatar' => '/images/user/user-02.jpg',
-                'status' => 'Completed',
-                'progress' => 100,
-                'grade' => 'A+',
-                'enrolled' => '18 May 2026',
-                'last_activity' => 'Completed',
-            ],
-            [
-                'title' => 'Digital Marketing Bootcamp',
-                'category' => 'Marketing',
-                'thumbnail' => '/images/course/course-03.jpg',
-                'instructor' => 'James Cooper',
-                'avatar' => '/images/user/user-03.jpg',
-                'status' => 'Pending',
-                'progress' => 8,
-                'grade' => null,
-                'enrolled' => '08 Jul 2026',
-                'last_activity' => 'Not Started',
-            ],
-            [
-                'title' => 'Python for AI',
-                'category' => 'Programming',
-                'thumbnail' => '/images/course/course-04.jpg',
-                'instructor' => 'Sophia Miller',
-                'avatar' => '/images/user/user-04.jpg',
-                'status' => 'Active',
-                'progress' => 43,
-                'grade' => null,
-                'enrolled' => '25 Jun 2026',
-                'last_activity' => 'Yesterday',
-            ],
-        ];
-
-        function badge($status)
-        {
-            return match ($status) {
-                'Active' => 'bg-emerald-50 text-emerald-600 border border-emerald-200',
-                'Completed' => 'bg-blue-50 text-blue-600 border border-blue-200',
-                'Pending' => 'bg-amber-50 text-amber-600 border border-amber-200',
-                default => 'bg-gray-50 text-gray-600 border border-gray-200',
-            };
-        }
-    @endphp
 
     <div class="rounded-3xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
 
@@ -183,7 +121,7 @@
 
                                         </button>
                                     @else
-                                        <a href="{{route('student.Course-details')}}"
+                                        <a href=""
                                             class="rounded-xl bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700">
                                             Continue
                                         </a>

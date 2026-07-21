@@ -134,7 +134,7 @@
                                         class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
                                         Add Study Meterial Module
                                     </a>
-                                     <a :href="courseBaseUrl + '/' + row.id + '/documents'"
+                                     <a :href="courseBaseUrl + '/' + row.id + '/course-documents'"
                                         class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
                                         Study Meterial
                                     </a>

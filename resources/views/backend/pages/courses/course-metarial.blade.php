@@ -1,4 +1,4 @@
-@extends('frontend.pages.student.layouts.app')
+@extends('backend.layouts.app')
 
 @section('content')
     <div class="min-h-screen bg-gray-50 dark:bg-[#0c0c0f] text-gray-900 dark:text-white transition-colors duration-300">
@@ -259,10 +259,10 @@
                 </div>
        
                 <div class="p-6">
-                    <form action="{{ role_route('role.documents.store', ['course' => $course->id]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ role_route('role.course-documents.store', ['course' => $course->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                        <div class="flex flex-col gap-4">
-                         <x-form.input-text name="name" label="Document Name" placeholder="Enter Document Name" />
+                         {{-- <x-form.input-text name="name" label="Document Name" placeholder="Enter Document Name" /> --}}
                         <x-form.file-uploader name="document" label="Select Document" accept=".pdf,.jpg,.jpeg,.png" />
                         <input type="hidden" id="docIdUploadLibrary" name="docIdUploadLibrary" value="4250322">
                        </div>

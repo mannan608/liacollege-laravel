@@ -136,7 +136,6 @@ public function createDocument(
         Course $course
     ) {
         $request->validate([
-            'name'=> 'required',
             'document' => [
                 'required',
                 'file',
