@@ -78,6 +78,10 @@ Route::prefix('{role}')
         Route::resource('course-categories', CourseCategoryController::class);
         Route::resource('courses', CourseController::class);
 
+        Route::get('courses/{course}/documents',[CourseController::class, 'createDocument'])->name('documents.create');
+        Route::post('courses/{course}/documents',[CourseController::class, 'storeDocument'])->name('documents.store');
+        Route::delete('courses/{course}/documents',[CourseController::class, 'destroyDocument'])->name('documents.delete');
+
 
         Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
         Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');

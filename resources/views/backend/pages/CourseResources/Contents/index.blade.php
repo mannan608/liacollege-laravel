@@ -23,7 +23,7 @@
             </div>
             <a href="{{ role_route('role.course-content.create', ['course' => $course->id]) }}"
                 class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition-colors">
-                + Add New Study Material
+                + Add Study Material
             </a>
         </div>
         @include('backend.pages.CourseResources.Contents.table', ['items' => $course->coursecontentcategories])

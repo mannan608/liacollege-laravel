@@ -21,3 +21,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Git Auto Commit Generator learned data
+.git-auto-commit/

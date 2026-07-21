@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\Document;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
@@ -114,6 +115,77 @@ private function getCategories(): array
         ->orderBy('name')
         ->pluck('name', 'id')
         ->toArray();
+}
+
+
+public function createDocument(
+    Request $request,
+    string $role,
+    Course $course
+) {
+    $course->load('documents');
+
+    return view('backend.pages.courses.course-metarial', [
+        'course'    => $course,
+        'documents' => $course->documents,
+    ]);
+}
+ public function storeDocument(
+        Request $request,
+    string $role,
+        Course $course
+    ) {
+        $request->validate([
+            'name'=> 'required',
+            'document' => [
+                'required',
+                'file',
+                'mimes:pdf,jpg,jpeg,png,doc,docx',
+                'max:10240',
+            ],
+
+        ]);
+
+        $file = $request->file('document');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Get file information BEFORE moving the file
+        |--------------------------------------------------------------------------
+        */
+
+        $originalName = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $size = $file->getSize();
+
+        $path = $this->uploadFile(
+            $file,
+            'documents/courses/' . $course->id
+        );
+
+        $course->documents()->create([
+            'name'      => $originalName,
+            'file'       => $path,
+            'extension' => $extension,
+            'size'      => $size,
+        ]);
+
+        return back()->with(
+            'success',
+            'Course document uploaded successfully.'
+        );
+    }
+
+    public function destroyDocument(Document $document)
+{
+    
+    $this->deleteFile($document->file);
+    $document->delete();
+
+    return back()->with(
+        'success',
+        'Document deleted successfully.'
+    );
 }
  
 }

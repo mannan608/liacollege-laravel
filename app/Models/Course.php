@@ -73,4 +73,8 @@ class Course extends Model
         return $this->hasMany(Module::class)
             ->orderBy('id');
     }
+    public function documents()
+{
+    return $this->morphMany(Document::class, 'documentable');
+}
 }

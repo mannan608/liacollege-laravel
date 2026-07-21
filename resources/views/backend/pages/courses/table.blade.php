@@ -132,7 +132,11 @@
                                     </a>
                                     <a :href="courseBaseUrl + '/' + row.id + '/course-contents'"
                                         class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                        Add Study Meterial
+                                        Add Study Meterial Module
+                                    </a>
+                                     <a :href="courseBaseUrl + '/' + row.id + '/documents'"
+                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
+                                        Study Meterial
                                     </a>
                                 </div>
                             </td>
