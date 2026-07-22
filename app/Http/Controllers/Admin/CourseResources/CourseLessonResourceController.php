@@ -7,8 +7,8 @@ use App\Http\Requests\CourseResources\StoreLessonResourceRequest;
 use App\Http\Requests\CourseResources\UpdateLessonResourceSectionRequest;
 use App\Models\Course;
 use App\Models\CourseResources\Lesson;
-use App\Models\CourseResources\LessonResource;
 use App\Models\CourseResources\LessonResourceSection;
+use App\Models\CourseResources\LessonResource;
 use App\Models\CourseResources\Module;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
@@ -258,7 +258,6 @@ public function updateSingle(
 
          return redirect()
     ->to(role_route('role.resources.index', [
-        'role' => $role,
         'course' => $course,
         'module' => $module,
         'lesson' => $lesson,
@@ -269,5 +268,34 @@ public function updateSingle(
         report($e);
         return back()->withInput()->with('error', $e->getMessage());
     }
+}
+public function destroy(
+    string $role,
+    Course $course,
+    Module $module,
+    Lesson $lesson,
+    LessonResourceSection $resource
+) {
+    DB::transaction(function () use ($resource) {
+        $resource->load('resources');
+
+        foreach ($resource->resources as $item) {
+            if ($item->file_path) {
+                $this->deleteFile($item->file_path);
+            }
+
+            $item->delete();
+        }
+
+        $resource->delete();
+    });
+
+    return redirect()
+        ->to(role_route('role.resources.index', [
+            'course' => $course,
+            'module' => $module,
+            'lesson' => $lesson,
+        ]))
+        ->with('success', 'Section deleted successfully.');
 }
 }

@@ -112,5 +112,8 @@ Route::prefix('{role}')
         Route::post('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'store'])->name('resources.store');
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}/edit', [CourseLessonResourceController::class, 'edit'])->name('resources.edit');
         Route::put('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}', [CourseLessonResourceController::class, 'updateSingle'])->name('resources.update');
+       Route::delete('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}',
+    [CourseLessonResourceController::class, 'destroy']
+)->name('resources.destroy');
 
     });

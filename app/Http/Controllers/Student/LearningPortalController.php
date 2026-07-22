@@ -52,6 +52,8 @@ class LearningPortalController extends Controller
         $lesson->load([
             'resourceSections.resources',
         ]);
+        // return $lesson;
+
 
         return view(
             'frontend.pages.student.learning-portal.index',

@@ -1,19 +1,19 @@
 @extends('backend.layouts.app')
 
 @section('content')
+    @php
+        $initialSections = session()->hasOldInput()
+            ? old('sections', [])
+            : [];
+
+        $formAction = role_route('role.resources.store', [
+                'course' => $course,
+                'module' => $module,
+                'lesson' => $lesson,
+            ]);
+    @endphp
     <form
-        action="{{ isset($isEdit)
-            ? role_route('resources.update', [
-                'course' => $course,
-                'module' => $module,
-                'lesson' => $lesson,
-                'resource' => $resourceSection ?? $lesson->resourceSections->first(),
-            ])
-            : role_route('role.resources.store', [
-                'course' => $course,
-                'module' => $module,
-                'lesson' => $lesson,
-            ]) }}"
+        action="{{ $formAction }}"
         method="POST" enctype="multipart/form-data" x-data="sectionBuilder()">
 
         @csrf
@@ -224,16 +224,7 @@
                                                     class="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 transition-colors">
                                             </div>
                                         </div>
-                                    </template>
-
-                                    <!-- Description (optional for all types) -->
-                                    {{-- <div class="flex flex-col gap-2">
-                                        <label class="text-sm font-medium text-gray-600">Description <span
-                                                class="text-gray-300 font-normal">(optional)</span></label>
-                                        <textarea x-model="item.description" :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][description]'"
-                                            rows="2" placeholder="Add a brief description..."
-                                            class="w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 resize-none transition-colors"></textarea>
-                                    </div> --}}
+                                    </template>                                    
 
                                     <!-- Description (optional for all types) -->
                                         <div class="flex flex-col gap-2" x-data="quillEditor(item, 'description')">
@@ -331,30 +322,27 @@
                 nextItemId: 1,
 
                 init() {
-                    // Pre-populate for edit mode
-                    @if(isset($isEdit) && $lesson->resourceSections)
-                        this.sections = {!! $lesson->resourceSections->map(function($section) {
-                            return [
-                                'id' => $section->id,
-                                'name' => $section->title,
-                                'type' => $section->resource_type,
-                                'items' => $section->resources->map(function($resource) {
-                                    return [
-                                        'id' => $resource->id,
-                                        'title' => $resource->title,
-                                        'description' => $resource->description,
-                                        'url' => $resource->url,
-                                        'duration' => $resource->duration,
-                                    ];
-                                })->toArray()
-                            ];
-                        })->toJson() !!};
-                        // Update next IDs to avoid conflicts
-                        const maxSectionId = Math.max(...this.sections.map(s => s.id || 0), 0);
-                        const maxItemId = Math.max(...this.sections.flatMap(s => s.items.map(i => i.id || 0)), 0);
-                        this.nextId = maxSectionId + 1;
-                        this.nextItemId = maxItemId + 1;
-                    @endif
+                    this.sections = @json($initialSections);
+
+                    if (!Array.isArray(this.sections)) {
+                        this.sections = [];
+                    }
+
+                    const maxSectionId = this.sections.reduce((max, section) => {
+                        return Math.max(max, Number(section.id) || 0);
+                    }, 0);
+
+                    const maxItemId = this.sections.reduce((max, section) => {
+                        const sectionItems = Array.isArray(section.items) ? section.items : [];
+                        const sectionMax = sectionItems.reduce((itemMax, item) => {
+                            return Math.max(itemMax, Number(item.id) || 0);
+                        }, 0);
+
+                        return Math.max(max, sectionMax);
+                    }, 0);
+
+                    this.nextId = maxSectionId + 1;
+                    this.nextItemId = maxItemId + 1;
                 },
 
                 addSection() {
@@ -371,7 +359,7 @@
                 },
 
                 onTypeChange(section) {
-                    if (section.items.length === 0) {
+                    if (!Array.isArray(section.items) || section.items.length === 0) {
                         this.addItem(section.id);
                     }
                 },
@@ -379,6 +367,10 @@
                 addItem(sectionId) {
                     const section = this.sections.find(s => s.id === sectionId);
                     if (!section) return;
+
+                    if (!Array.isArray(section.items)) {
+                        section.items = [];
+                    }
 
                     const baseItem = {
                         id: this.nextItemId++,
@@ -403,11 +395,10 @@
             }
         }
         document.addEventListener('alpine:init', () => {
-    Alpine.data('quillEditor', (item, field) => ({
+        Alpine.data('quillEditor', (item, field) => ({
         quill: null,
         
         init() {
-            // Initialize Quill on the $refs.editor div
             this.quill = new Quill(this.$refs.editor, {
                 theme: 'snow',
                 placeholder: 'Add a brief description...',
@@ -422,14 +413,21 @@
                 }
             });
 
-            // Set initial content if editing
+            const syncValue = (html) => {
+                item[field] = html;
+                const hiddenInput = this.$el.querySelector('input[type="hidden"]');
+                if (hiddenInput) {
+                    hiddenInput.value = html;
+                }
+            };
+
             if (item[field]) {
                 this.quill.root.innerHTML = item[field];
+                syncValue(item[field]);
             }
 
-            // Sync Quill content to Alpine model on text change
             this.quill.on('text-change', () => {
-                item[field] = this.quill.root.innerHTML;
+                syncValue(this.quill.root.innerHTML);
             });
         }
     }));
