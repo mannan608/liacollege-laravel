@@ -20,49 +20,44 @@ use Spatie\Permission\Models\Role;
 
 class LearningPortalController extends Controller
 {
-  public function launchLearningPortal(Course $course,Module $module) {
-    abort_unless(
-        $module->course_id === $course->id,
-        404
-    );
+    public function launchLearningPortal(Course $course, Module $module)
+    {
+        abort_unless($module->course_id === $course->id, 404);
 
-    $module->load([
-        'lessons'
-    ]);
-// return $module;
+        $module->load([
+            'lessons.resourceSections.resources',
+        ]);
 
-    return view('frontend.pages.student.learning-portal.index',compact(
-            'course',
-            'module'
-        )
-    );
-}
+        $lesson = $module->lessons->first();
+        // return $lesson;
 
- public function lessonResources(
-    Course $course,
-    Module $module,
-    Lesson $lesson
-)
-{
-    abort_if($module->course_id != $course->id, 404);
+        return view(
+            'frontend.pages.student.learning-portal.index',
+            compact('course', 'module', 'lesson')
+        );
+    }
 
-    abort_if($lesson->module_id != $module->id, 404);
+    public function lessonResources(
+        Course $course,
+        Module $module,
+        Lesson $lesson
+    ) {
+        abort_unless($module->course_id === $course->id, 404);
+        abort_unless($lesson->module_id === $module->id, 404);
 
-    $module->load('lessons');
+        $module->load([
+            'lessons.resourceSections.resources',
+        ]);
 
-    $lesson->load([
-        'resourceSections.resources'
-    ]);
-return $lesson;
-    return view(
-        'frontend.pages.student.learning-portal.index',
-        compact(
-            'course',
-            'module',
-            'lesson'
-        )
-    );
-}
+        $lesson->load([
+            'resourceSections.resources',
+        ]);
+
+        return view(
+            'frontend.pages.student.learning-portal.index',
+            compact('course', 'module', 'lesson')
+        );
+    }
 
 
 }

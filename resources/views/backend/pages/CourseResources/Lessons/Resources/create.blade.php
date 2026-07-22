@@ -227,13 +227,34 @@
                                     </template>
 
                                     <!-- Description (optional for all types) -->
-                                    <div class="flex flex-col gap-2">
+                                    {{-- <div class="flex flex-col gap-2">
                                         <label class="text-sm font-medium text-gray-600">Description <span
                                                 class="text-gray-300 font-normal">(optional)</span></label>
                                         <textarea x-model="item.description" :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][description]'"
                                             rows="2" placeholder="Add a brief description..."
                                             class="w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 resize-none transition-colors"></textarea>
-                                    </div>
+                                    </div> --}}
+
+                                    <!-- Description (optional for all types) -->
+                                        <div class="flex flex-col gap-2" x-data="quillEditor(item, 'description')">
+                                            <label class="text-sm font-medium text-gray-600">
+                                                Description <span class="text-gray-300 font-normal">(optional)</span>
+                                            </label>
+                                            
+                                            <!-- Quill Editor Container -->
+                                            <div 
+                                                x-ref="editor" 
+                                                class="w-full rounded-lg border border-gray-200 bg-white text-sm text-gray-800"
+                                                :class="{ 'border-red-300': errors['sections.' + sectionIndex + '.items.' + itemIndex + '.description'] }"
+                                            ></div>
+                                            
+                                            <!-- Hidden input to store HTML for form submission -->
+                                            <input 
+                                                type="hidden" 
+                                                :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][description]'"
+                                                x-model="item.description"
+                                            >
+                                        </div>
 
                                     <!-- File upload (for file type) -->
                                     <template x-if="section.type === 'file'">
@@ -381,6 +402,38 @@
                 },
             }
         }
+        document.addEventListener('alpine:init', () => {
+    Alpine.data('quillEditor', (item, field) => ({
+        quill: null,
+        
+        init() {
+            // Initialize Quill on the $refs.editor div
+            this.quill = new Quill(this.$refs.editor, {
+                theme: 'snow',
+                placeholder: 'Add a brief description...',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        [{ 'header': [1, 2, 3, false] }],
+                        ['link', 'blockquote', 'code-block'],
+                        ['clean']
+                    ]
+                }
+            });
+
+            // Set initial content if editing
+            if (item[field]) {
+                this.quill.root.innerHTML = item[field];
+            }
+
+            // Sync Quill content to Alpine model on text change
+            this.quill.on('text-change', () => {
+                item[field] = this.quill.root.innerHTML;
+            });
+        }
+    }));
+});
     </script>
 
     <style>
@@ -391,5 +444,18 @@
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
+          .ql-toolbar.ql-snow + .ql-container.ql-snow{
+            border-top: 1px solid #ccc;
+            height: 260px;
+        }
     </style>
 @endsection
+
+{{-- In your layout or at the bottom of this blade file --}}
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+@endpush
+
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
+@endpush
