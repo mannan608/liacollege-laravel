@@ -41,7 +41,7 @@
                         $isAnswered = $attempt->getAnswerForQuestion($q->id) !== null;
                         $isCurrent = $q->id === $question->id;
                     @endphp
-                    <a href="{{ $isAnswered ? route('attempts.question', [$attempt, $q]) : '#' }}"
+                    <a href="{{ $isAnswered ? route('student.attempts.question', [$attempt, $q]) : '#' }}"
                        class="aspect-square rounded-lg flex items-center justify-center text-sm font-bold transition-all
                        {{ $isCurrent ? 'bg-emerald-600 text-white shadow-md' : '' }}
                        {{ !$isCurrent && $isAnswered ? 'bg-emerald-100 text-emerald-700' : '' }}
@@ -65,7 +65,7 @@
                 </div>
 
                 {{-- Abandon Button --}}
-                <form action="{{ route('attempts.abandon', $attempt) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure? Your progress will be lost.')">
+                <form action="{{ route('student.attempts.abandon', $attempt) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure? Your progress will be lost.')">
                     @csrf
                     <button type="submit" class="w-full text-xs text-red-500 hover:text-red-700 py-2 border border-red-200 rounded-lg hover:bg-red-50 transition-colors">
                         Abandon Quiz
@@ -94,7 +94,7 @@
                     </h2>
 
                     {{-- Options Form --}}
-                    <form action="{{ route('attempts.answer', [$attempt, $question]) }}" method="POST" id="answer-form">
+                    <form action="{{ route('student.attempts.answer', [$attempt, $question]) }}" method="POST" id="answer-form">
                         @csrf
                         
                         <div class="space-y-3">
@@ -129,7 +129,7 @@
                         {{-- Navigation Buttons --}}
                         <div class="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
                             @if($currentIndex > 0)
-                            <a href="{{ route('attempts.question', [$attempt, $questions[$currentIndex - 1]]) }}" 
+                            <a href="{{ route('student.attempts.question', [$attempt, $questions[$currentIndex - 1]]) }}" 
                                class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium transition-colors">
                                 <i class="ph ph-arrow-left"></i> Previous
                             </a>

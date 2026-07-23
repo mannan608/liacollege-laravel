@@ -94,7 +94,7 @@
                         </div>
                         <h3 class="font-semibold text-gray-900">In Progress</h3>
                         <p class="text-sm text-gray-500 mt-1">You have an unfinished attempt</p>
-                        <a href="{{ route('attempts.question', [$hasInProgress, $quiz->questions->first()]) }}" 
+                        <a href="{{ route('student.attempts.question', [$hasInProgress, $quiz->questions->first()]) }}" 
                            class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-5 py-3 rounded-xl font-medium transition-colors">
                             <i class="ph ph-play"></i> Resume Quiz
                         </a>

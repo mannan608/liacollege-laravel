@@ -67,7 +67,7 @@ class QuizAttemptController extends Controller
 
         $previousAnswer = $attempt->getAnswerForQuestion($question->id);
 
-        return view('student.attempts.question', compact(
+        return view('frontend.pages.quiz.attempts.question', compact(
             'attempt', 'quiz', 'question', 'questions', 
             'currentIndex', 'progress', 'previousAnswer'
         ));
