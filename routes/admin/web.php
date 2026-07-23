@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\LMS\CourseSlotController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\Quiz\QuestionController;
+use App\Http\Controllers\Admin\Quiz\QuizController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TrainingCenterController;
@@ -78,9 +80,9 @@ Route::prefix('{role}')
         Route::resource('course-categories', CourseCategoryController::class);
         Route::resource('courses', CourseController::class);
 
-        Route::get('courses/{course}/course-documents',[CourseController::class, 'createDocument'])->name('course-documents');
-        Route::post('courses/{course}/course-documents',[CourseController::class, 'storeDocument'])->name('course-documents.store');
-        Route::delete('courses/{course}/course-documents',[CourseController::class, 'destroyDocument'])->name('course-documents.delete');
+        Route::get('courses/{course}/course-documents', [CourseController::class, 'createDocument'])->name('course-documents');
+        Route::post('courses/{course}/course-documents', [CourseController::class, 'storeDocument'])->name('course-documents.store');
+        Route::delete('courses/{course}/course-documents', [CourseController::class, 'destroyDocument'])->name('course-documents.delete');
 
 
         Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
@@ -106,14 +108,26 @@ Route::prefix('{role}')
         // course lessons route
         Route::resource('courses.modules.lessons', CourseLessonController::class)->names('lessons');
 
+        //Quiz Route
+        Route::resource('quizzes', QuizController::class);
+
         // course lessons quiz resource route
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'index'])->name('resources.index');
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/create', [CourseLessonResourceController::class, 'create'])->name('resources.create');
         Route::post('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'store'])->name('resources.store');
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}/edit', [CourseLessonResourceController::class, 'edit'])->name('resources.edit');
         Route::put('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}', [CourseLessonResourceController::class, 'updateSingle'])->name('resources.update');
-       Route::delete('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}',
-    [CourseLessonResourceController::class, 'destroy']
-)->name('resources.destroy');
+        Route::delete('courses/{course}/modules/{module}/lessons/{lesson}/resources/{resource}', [CourseLessonResourceController::class, 'destroy'])->name('resources.destroy');
 
+
+        // Question Management (Nested under Quiz)
+        Route::get('quizzes/{quiz}/questions', [QuestionController::class, 'index'])->name('quizzes.questions.index');
+        Route::get('quizzes/{quiz}/questions/create', [QuestionController::class, 'create'])->name('quizzes.questions.create');
+        Route::post('quizzes/{quiz}/questions', [QuestionController::class, 'store'])->name('quizzes.questions.store');
+        Route::get('quizzes/{quiz}/questions/{question}/edit', [QuestionController::class, 'edit'])->name('quizzes.questions.edit');
+        Route::put('quizzes/{quiz}/questions/{question}', [QuestionController::class, 'update'])->name('quizzes.questions.update');
+        Route::delete('quizzes/{quiz}/questions/{question}', [QuestionController::class, 'destroy'])->name('quizzes.questions.destroy');
+
+        // Reorder Questions
+        Route::post('quizzes/{quiz}/questions/reorder', [QuestionController::class, 'reorder'])->name('quizzes.questions.reorder');
     });

@@ -5,6 +5,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\Http\Controllers\Student\LearningPortalController;
+use App\Http\Controllers\Student\QuizAttemptController;
+use App\Http\Controllers\Student\QuizController;
 use App\Http\Controllers\Student\StudentDashboardController;
 use App\Http\Controllers\Student\StudentDocumentController;
 use App\SEO\Controllers\SitemapController;
@@ -219,4 +221,29 @@ Route::prefix('student')
 
         Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
         Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
+
+
+        // Quiz List & Details
+        Route::get('quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+        Route::get('quizzes/{quiz:slug}', [QuizController::class, 'show'])->name('quizzes.show');
+
+        // Quiz Attempt Flow
+        Route::post('quizzes/{quiz:slug}/start', [QuizAttemptController::class, 'start'])->name('quizzes.start');
+        Route::get('attempts/{attempt}', [QuizAttemptController::class, 'show'])->name('attempts.show');
+
+        // One-by-One Question Flow
+        Route::get('attempts/{attempt}/question/{question}', [QuizAttemptController::class, 'question'])->name('attempts.question');
+        Route::post('attempts/{attempt}/question/{question}/answer', [QuizAttemptController::class, 'answer'])->name('attempts.answer');
+        Route::post('attempts/{attempt}/submit', [QuizAttemptController::class, 'submit'])->name('attempts.submit');
+
+        // All-at-Once Flow
+        Route::get('attempts/{attempt}/all-questions', [QuizAttemptController::class, 'allQuestions'])->name('attempts.all');
+        Route::post('attempts/{attempt}/submit-all', [QuizAttemptController::class, 'submitAll'])->name('attempts.submit-all');
+
+        // Results & History
+        Route::get('attempts/{attempt}/result', [QuizAttemptController::class, 'result'])->name('attempts.result');
+        Route::get('my-attempts', [QuizAttemptController::class, 'history'])->name('attempts.history');
+
+        // Abandon attempt
+        Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
     });
