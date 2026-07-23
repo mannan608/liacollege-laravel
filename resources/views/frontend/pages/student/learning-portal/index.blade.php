@@ -109,11 +109,7 @@
             <div class="max-w-5xl mx-auto px-6 lg:px-10 py-8 space-y-6">
                 @if ($lesson)
                     @forelse ($lesson->resourceSections as $section)
-                        {{-- Sections --}}
-                        @foreach ($lesson->resourceSections as $section)
-                            <div class="space-y-8">
-
-                                @foreach ($section->resources as $resource)
+                         @foreach ($section->resources as $resource)
                                     {{-- ================= VIDEO ================= --}}
                                     @if ($section->resource_type == 'video')
                                         @php
@@ -147,9 +143,6 @@
                                             </div>
                                         @endif
                                     @endif
-
-
-
                                     {{-- ================= CONTENT ================= --}}
                                     @if ($section->resource_type == 'content')
                                         <article class="prose max-w-none">
@@ -164,8 +157,6 @@
 
                                         </article>
                                     @endif
-
-
 
                                     {{-- ================= FILE ================= --}}
                                     @if ($section->resource_type == 'file')
@@ -211,10 +202,6 @@
 
                                         </div>
                                     @endif
-
-
-
-
                                     {{-- ================= QUIZ ================= --}}
                                     @if ($section->resource_type == 'quiz')
                                         <div class="rounded-2xl border border-orange-200 bg-orange-50 p-8">
@@ -253,9 +240,6 @@
                                         </div>
                                     @endif
                                 @endforeach
-
-                            </div>
-                        @endforeach
                     @empty
                         <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 lg:p-8">
                             <p class="text-sm text-slate-500">This lesson does not have any resource sections yet.</p>

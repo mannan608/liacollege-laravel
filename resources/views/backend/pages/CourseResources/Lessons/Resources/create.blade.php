@@ -446,9 +446,8 @@
             }
         }
 
-        .ql-toolbar.ql-snow+.ql-container.ql-snow {
-            border-top: 1px solid #ccc;
-            height: 260px;
-        }
+         .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    height: 280px;
+}
     </style>
 @endsection
