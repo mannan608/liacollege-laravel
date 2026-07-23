@@ -11,26 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quizzes', function (Blueprint $table) {
-               $table->id();
-
-    $table->foreignId('lesson_id')
-        ->constrained()
-        ->cascadeOnDelete();
-
-    $table->string('title');
-
-    $table->text('description')->nullable();
-
-    $table->integer('time_limit')->nullable(); // minutes
-
-    $table->integer('pass_mark')->default(50);
-
-    $table->integer('total_marks')->default(0);
-
-    $table->boolean('is_active')->default(true);
-
-    $table->timestamps();
+       Schema::create('quizzes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Admin/Creator
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->integer('time_limit_minutes')->nullable(); // Optional timer
+            $table->integer('passing_score')->default(60); // Percentage to pass
+            $table->integer('max_attempts')->nullable(); // Null = unlimited
+            $table->boolean('shuffle_questions')->default(false);
+            $table->boolean('show_correct_answers')->default(true);
+            $table->boolean('show_explanation')->default(true);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

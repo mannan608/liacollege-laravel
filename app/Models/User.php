@@ -6,6 +6,8 @@ namespace App\Models;
 
 use App\Models\CourseResources\CoursePermissions;
 use App\Models\LMS\SlotTeacher;
+use App\Models\QuizModels\Quiz;
+use App\Models\QuizModels\QuizAttempt;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -109,4 +111,23 @@ class User extends Authenticatable
 {
     return $this->morphMany(Document::class, 'documentable');
 }
+
+public function quizzesCreated()
+{
+    return $this->hasMany(Quiz::class, 'user_id');
+}
+
+public function quizAttempts()
+{
+    return $this->hasMany(QuizAttempt::class);
+}
+
+public function hasCompletedQuiz(Quiz $quiz): bool
+{
+    return $this->quizAttempts()
+        ->where('quiz_id', $quiz->id)
+        ->where('status', 'completed')
+        ->exists();
+}
+
 }
