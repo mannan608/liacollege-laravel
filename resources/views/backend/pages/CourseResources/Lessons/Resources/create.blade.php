@@ -2,19 +2,15 @@
 
 @section('content')
     @php
-        $initialSections = session()->hasOldInput()
-            ? old('sections', [])
-            : [];
+        $initialSections = session()->hasOldInput() ? old('sections', []) : [];
 
         $formAction = role_route('role.resources.store', [
-                'course' => $course,
-                'module' => $module,
-                'lesson' => $lesson,
-            ]);
+            'course' => $course,
+            'module' => $module,
+            'lesson' => $lesson,
+        ]);
     @endphp
-    <form
-        action="{{ $formAction }}"
-        method="POST" enctype="multipart/form-data" x-data="sectionBuilder()">
+    <form action="{{ $formAction }}" method="POST" enctype="multipart/form-data" x-data="sectionBuilder()">
 
         @csrf
 
@@ -27,7 +23,8 @@
             <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4">
                 <div class="flex items-center gap-2 text-red-700 font-semibold mb-2">
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     Please fix the following errors:
                 </div>
@@ -135,7 +132,8 @@
                             Section Name *
                         </label>
                         <input type="text" x-model="section.name" :name="'sections[' + sectionIndex + '][title]'"
-                            :placeholder="'e.g., Week 1 ' + (section.type ? section.type.charAt(0).toUpperCase() + section.type.slice(1) + 's' : 'Materials')"
+                            :placeholder="'e.g., Week 1 ' + (section.type ? section.type.charAt(0).toUpperCase() + section.type.slice(
+                                1) + 's' : 'Materials')"
                             class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 focus:bg-white transition-colors"
                             :class="{ 'border-red-300 bg-red-50': errors['sections.' + sectionIndex + '.title'] }">
                         @error('sections.*.title')
@@ -167,7 +165,8 @@
                         <template x-for="(item, itemIndex) in section.items" :key="item.id">
                             <div class="rounded-xl border border-gray-200 bg-gray-50/50 p-5 animate-in">
                                 <!-- Hidden input moved inside the div -->
-                                <input type="hidden" :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][id]'"
+                                <input type="hidden"
+                                    :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][id]'"
                                     :value="item.id">
 
                                 <!-- Item Header -->
@@ -224,28 +223,62 @@
                                                     class="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none focus:border-brand-500 transition-colors">
                                             </div>
                                         </div>
-                                    </template>                                    
+                                    </template>
 
                                     <!-- Description (optional for all types) -->
-                                        <div class="flex flex-col gap-2" x-data="quillEditor(item, 'description')">
+                                    {{-- <div class="flex flex-col gap-2" x-data="quillEditor(item, 'description')">
                                             <label class="text-sm font-medium text-gray-600">
                                                 Description <span class="text-gray-300 font-normal">(optional)</span>
                                             </label>
-                                            
-                                            <!-- Quill Editor Container -->
                                             <div 
                                                 x-ref="editor" 
                                                 class="w-full rounded-lg border border-gray-200 bg-white text-sm text-gray-800"
                                                 :class="{ 'border-red-300': errors['sections.' + sectionIndex + '.items.' + itemIndex + '.description'] }"
                                             ></div>
-                                            
-                                            <!-- Hidden input to store HTML for form submission -->
                                             <input 
                                                 type="hidden" 
                                                 :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][description]'"
                                                 x-model="item.description"
                                             >
-                                        </div>
+                                        </div> --}}
+
+                                    {{-- <div x-data x-init="$nextTick(() => {
+                                        $($refs.editor).summernote({
+                                            height: 300,
+                                            callbacks: {
+                                                onChange: function(contents) {
+                                                    item.description = contents;
+                                                }
+                                            }
+                                        });
+                                    });">
+                                        <textarea x-ref="editor"></textarea>
+
+                                        <input type="hidden" x-model="item.description"
+                                            :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][description]'">
+                                    </div> --}}
+
+                                    <div x-data x-init="ClassicEditor
+                                        .create($refs.editor)
+                                        .then(editor => {
+                                    
+                                            editor.setData(item.description || '');
+                                    
+                                            editor.model.document.on('change:data', () => {
+                                                item.description = editor.getData();
+                                            });
+                                    
+                                        })
+                                        .catch(error => console.error(error));">
+
+                                        <textarea x-ref="editor"></textarea>
+
+                                        <input type="hidden" x-model="item.description"
+                                            :name="'sections[' + sectionIndex + '][items][' + itemIndex + '][description]'">
+
+                                    </div>
+
+
 
                                     <!-- File upload (for file type) -->
                                     <template x-if="section.type === 'file'">
@@ -394,66 +427,28 @@
                 },
             }
         }
-        document.addEventListener('alpine:init', () => {
-        Alpine.data('quillEditor', (item, field) => ({
-        quill: null,
-        
-        init() {
-            this.quill = new Quill(this.$refs.editor, {
-                theme: 'snow',
-                placeholder: 'Add a brief description...',
-                modules: {
-                    toolbar: [
-                        ['bold', 'italic', 'underline', 'strike'],
-                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                        [{ 'header': [1, 2, 3, false] }],
-                        ['link', 'blockquote', 'code-block'],
-                        ['clean']
-                    ]
-                }
-            });
-
-            const syncValue = (html) => {
-                item[field] = html;
-                const hiddenInput = this.$el.querySelector('input[type="hidden"]');
-                if (hiddenInput) {
-                    hiddenInput.value = html;
-                }
-            };
-
-            if (item[field]) {
-                this.quill.root.innerHTML = item[field];
-                syncValue(item[field]);
-            }
-
-            this.quill.on('text-change', () => {
-                syncValue(this.quill.root.innerHTML);
-            });
-        }
-    }));
-});
     </script>
 
     <style>
         .animate-in {
             animation: fadeSlideIn 0.3s ease-out;
         }
+
         @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-          .ql-toolbar.ql-snow + .ql-container.ql-snow{
+
+        .ql-toolbar.ql-snow+.ql-container.ql-snow {
             border-top: 1px solid #ccc;
             height: 260px;
         }
     </style>
 @endsection
-
-{{-- In your layout or at the bottom of this blade file --}}
-@push('styles')
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
-@endpush
-
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
-@endpush
