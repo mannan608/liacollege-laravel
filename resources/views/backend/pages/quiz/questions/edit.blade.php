@@ -1,71 +1,312 @@
 @extends('backend.layouts.app')
 
 @section('content')
-<div class="max-w-3xl mx-auto">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
-        <div class="px-6 py-5 border-b border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800">Edit Question #{{ $question->order }}</h3>
-        </div>
-        
-        <form action="{{ role_route('role.quizzes.questions.update', ['quiz' => $quiz, 'question' => $question]) }}" method="POST" class="p-6 space-y-6">
-            @csrf @method('PUT')
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Question Text <span class="text-red-500">*</span></label>
-                <textarea name="question_text" rows="3" required
-                    class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all resize-none">{{ old('question_text', $question->question_text) }}</textarea>
-            </div>
+    <div x-data="questionEditor()" class="max-w-4xl mx-auto p-4 md:p-8">
+        <!-- Card Container -->
+        <div
+            class="bg-white dark:bg-gray-900 rounded-2xl shadow-[0_2px_20px_-4px_rgba(0,0,0,0.08)] border border-gray-100 dark:border-gray-800 overflow-hidden">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Question Type</label>
-                    <select name="type" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all bg-white">
-                        <option value="single_choice" {{ old('type', $question->type) === 'single_choice' ? 'selected' : '' }}>Single Choice</option>
-                        <option value="multiple_choice" {{ old('type', $question->type) === 'multiple_choice' ? 'selected' : '' }}>Multiple Choice</option>
-                        <option value="true_false" {{ old('type', $question->type) === 'true_false' ? 'selected' : '' }}>True / False</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Points</label>
-                    <input type="number" name="points" value="{{ old('points', $question->points) }}" min="1" required
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Explanation</label>
-                <textarea name="explanation" rows="2"
-                    class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all resize-none">{{ old('explanation', $question->explanation) }}</textarea>
-            </div>
-
-            {{-- Options --}}
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-3">Answer Options</label>
-                <div class="space-y-3">
-                    @foreach($question->options as $i => $option)
-                    <div class="option-row flex items-center gap-3">
-                        <div class="flex-shrink-0">
-                            <input type="{{ $question->type === 'multiple_choice' ? 'checkbox' : 'radio' }}" 
-                                name="options[{{ $i }}][is_correct]" value="1" 
-                                {{ $option->is_correct ? 'checked' : '' }}
-                                class="w-5 h-5 text-emerald-600 border-gray-300 focus:ring-emerald-500">
-                        </div>
-                        <input type="text" name="options[{{ $i }}][text]" value="{{ $option->option_text }}" required
-                            class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all">
+            <!-- Header -->
+            <div
+                class="px-8 py-7 border-b border-gray-100 dark:border-gray-800 bg-gradient-to-r from-gray-50/80 to-white dark:from-gray-800/50 dark:to-gray-900">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
                     </div>
-                    @endforeach
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Edit Question</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Update your quiz question and options</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200">
-                <a href="{{ role_route('role.quizzes.questions.index', ['quiz' => $quiz]) }}" class="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors">
-                    Cancel
-                </a>
-                <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors shadow-sm">
-                    Update Question
-                </button>
-            </div>
-        </form>
+            <form action="{{ role_route('role.quizzes.questions.update', ['quiz' => $quiz, 'question' => $question]) }}" method="POST"
+                class="p-8 space-y-8" id="question-form">
+                @csrf
+                @method('PUT')
+
+                <!-- Question Text -->
+                <div class="space-y-2.5">
+                    <label class="block mb-1 text-sm font-medium text-slate-700">
+                        Question Text <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative group">
+                        <textarea name="question_text" rows="3" required
+                            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                            placeholder="What would you like to ask your students?">{{ old('question_text', $question->question_text) }}</textarea>
+                        <div class="absolute bottom-3 right-3 text-xs text-gray-400 dark:text-gray-500 pointer-events-none">
+                            Markdown supported</div>
+                    </div>
+                    @error('question_text')
+                        <p class="text-sm text-red-500 mt-1.5 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Type & Points Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2.5">
+                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Question
+                            Type</label>
+                        <div class="relative">
+                            <select name="type" id="question-type" x-model="questionType" @change="handleTypeChange()"
+                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
+                                <option value="single_choice" {{ old('type', $question->type) === 'single_choice' ? 'selected' : '' }}>Single
+                                    Choice</option>
+                                <option value="multiple_choice" {{ old('type', $question->type) === 'multiple_choice' ? 'selected' : '' }}>
+                                    Multiple Choice</option>
+                                <option value="true_false" {{ old('type', $question->type) === 'true_false' ? 'selected' : '' }}>True / False
+                                </option>
+                            </select>
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5">
+                        <label class="block mb-1 text-sm font-medium text-slate-700">Points</label>
+                        <div class="relative">
+                            <input type="number" name="points" value="{{ old('points', $question->points) }}" min="1" required
+                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
+                            <div
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-400 dark:text-gray-500 pointer-events-none">
+                                pts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explanation -->
+                <div class="space-y-2.5">
+                    <label class="block mb-1 text-sm font-medium text-slate-700">
+                        Explanation <span class="text-xs font-normal text-gray-400 dark:text-gray-500 ml-1">— shown after
+                            quiz completion</span>
+                    </label>
+                    <textarea name="explanation" rows="2"
+                       class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                        placeholder="Explain why the correct answer is right...">{{ old('explanation', $question->explanation) }}</textarea>
+                </div>
+
+                <!-- Options Section -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label class="block mb-1 text-sm font-medium text-slate-700">Answer Options</label>
+                        <button type="button" @click="addOption()" x-show="questionType !== 'true_false'"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                            class="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-medium text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20 hover:bg-brand-100 dark:hover:bg-brand-900/30 rounded-lg transition-all duration-200 border border-brand-200 dark:border-brand-800/50">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                            Add Option
+                        </button>
+                    </div>
+
+                    <div class="space-y-2.5" id="options-container">
+                        <template x-for="(option, index) in options" :key="index">
+                            <div class="group flex items-center gap-3 p-1 rounded-xl transition-all duration-200"
+                                :class="option.is_correct ?
+                                    'bg-brand-50/50 dark:bg-brand-900/10 border border-brand-200 dark:border-brand-800/30' :
+                                    'bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm'">
+
+                                <!-- Selection Indicator -->
+                                <div class="flex-shrink-0 pl-3">
+                                    <label class="relative flex items-center cursor-pointer">
+                                        <input :type="questionType === 'multiple_choice' ? 'checkbox' : 'radio'"
+                                            :name="`options[${index}][is_correct]`" value="1"
+                                            x-model="option.is_correct" @change="handleCorrectChange(index)"
+                                            class="peer sr-only">
+                                        <div class="w-5 h-5 border-2 border-gray-300 dark:border-gray-600 peer-checked:border-brand-500 peer-checked:bg-brand-500 transition-all duration-200 flex items-center justify-center"
+                                            :class="questionType === 'multiple_choice' ? 'rounded-md' : 'rounded-full'">
+                                            <svg x-show="option.is_correct" class="w-3 h-3 text-white" fill="none"
+                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <!-- Option Input -->
+                                <div class="flex-1 min-w-0">
+                                    <input type="text" :name="`options[${index}][text]`" x-model="option.text" required
+                                        :readonly="questionType === 'true_false'"
+                                        class="w-full px-3 py-2.5 bg-transparent border-0 outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
+                                        :class="questionType === 'true_false' ? 'cursor-default' : ''"
+                                        :placeholder="questionType === 'true_false' ? '' : `Option ${index + 1}`">
+                                </div>
+
+                                <!-- Correct Badge -->
+                                <div x-show="option.is_correct" x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 scale-75"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    class="flex-shrink-0 px-2.5 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-semibold rounded-md">
+                                    Correct
+                                </div>
+
+                                <!-- Remove Button -->
+                                <button type="button" @click="removeOption(index)"
+                                    x-show="questionType !== 'true_false' && options.length > 2"
+                                    x-transition:enter="transition ease-out duration-150"
+                                    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                                    class="flex-shrink-0 p-2 mr-1 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Minimum Options Warning -->
+                    <div x-show="showMinWarning" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 -translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        class="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 px-4 py-2.5 rounded-lg border border-amber-200 dark:border-amber-800/30">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        Minimum 2 options required
+                    </div>
+
+                    @error('options')
+                        <p class="text-sm text-red-500 mt-2 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Footer Actions -->
+                <div class="flex items-center justify-end gap-3 pt-6 border-t border-gray-100 dark:border-gray-800">
+                    <a href="{{ role_route('role.quizzes.questions.index', ['quiz' => $quiz]) }}"
+                        class="px-6 py-2.5 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl font-medium transition-all duration-200">
+                        Cancel
+                    </a>
+                    <button type="submit"
+                        class="px-7 py-2.5 text-sm bg-brand-600 hover:bg-brand-700 active:scale-[0.98] text-white rounded-xl font-medium transition-all duration-200 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Update Question
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 @endsection
+
+@push('scripts')
+    <script>
+        function questionEditor() {
+            const existingOptions = @json($question->options->map(fn($opt) => ['text' => $opt->option_text, 'is_correct' => (bool) $opt->is_correct]));
+            const existingType = '{{ old('type', $question->type) }}';
+
+            return {
+                questionType: existingType,
+                showMinWarning: false,
+                options: existingOptions && existingOptions.length > 0 ?
+                    existingOptions.map((opt) => ({
+                        text: opt.text,
+                        is_correct: !!opt.is_correct
+                    })) : [{
+                            text: '',
+                            is_correct: true
+                        },
+                        {
+                            text: '',
+                            is_correct: false
+                        },
+                        {
+                            text: '',
+                            is_correct: false
+                        },
+                        {
+                            text: '',
+                            is_correct: false
+                        }
+                    ],
+
+                handleTypeChange() {
+                    if (this.questionType === 'true_false') {
+                        this.options = [{
+                                text: 'True',
+                                is_correct: true
+                            },
+                            {
+                                text: 'False',
+                                is_correct: false
+                            }
+                        ];
+                    } else {
+                        // Reset to default if coming from true_false
+                        if (this.options.length === 2 && this.options[0].text === 'True' && this.options[1].text ===
+                            'False') {
+                            this.options = [{
+                                    text: '',
+                                    is_correct: true
+                                },
+                                {
+                                    text: '',
+                                    is_correct: false
+                                },
+                                {
+                                    text: '',
+                                    is_correct: false
+                                },
+                                {
+                                    text: '',
+                                    is_correct: false
+                                }
+                            ];
+                        }
+                        // For single choice, ensure only one is selected
+                        if (this.questionType === 'single_choice') {
+                            const firstCorrect = this.options.findIndex(o => o.is_correct);
+                            this.options.forEach((opt, i) => {
+                                opt.is_correct = i === (firstCorrect !== -1 ? firstCorrect : 0);
+                            });
+                        }
+                    }
+                },
+
+                handleCorrectChange(index) {
+                    if (this.questionType === 'single_choice') {
+                        this.options.forEach((opt, i) => {
+                            if (i !== index) opt.is_correct = false;
+                        });
+                    }
+                },
+
+                addOption() {
+                    this.options.push({
+                        text: '',
+                        is_correct: false
+                    });
+                },
+
+                removeOption(index) {
+                    if (this.options.length <= 2) {
+                        this.showMinWarning = true;
+                        setTimeout(() => this.showMinWarning = false, 3000);
+                        return;
+                    }
+                    this.options.splice(index, 1);
+                }
+            }
+        }
+    </script>
+@endpush
