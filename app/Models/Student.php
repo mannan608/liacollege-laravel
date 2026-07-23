@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\CourseResources\CoursePermissions;
+use App\Models\LMS\Enrollment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -14,6 +16,8 @@ class Student extends Model
 
     protected $fillable = [
         'user_id',
+        'date_of_birth',
+        'usi',
     ];
 
     public function user(): BelongsTo
@@ -28,6 +32,7 @@ class Student extends Model
             'enroll_course',
             'student_id',
             'course_id',
+
         );
     }
 
@@ -40,4 +45,13 @@ class Student extends Model
     {
         return $this->hasMany(AssignmentSubmission::class);
     }
+
+    public function enrollments()
+{
+    return $this->hasMany(Enrollment::class);
+}
+public function documents()
+{
+    return $this->morphMany(Document::class, 'documentable');
+}
 }

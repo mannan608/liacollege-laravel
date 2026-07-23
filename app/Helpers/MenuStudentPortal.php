@@ -19,6 +19,18 @@ class MenuStudentPortal
                 'path' => 'student/courses',
             ],
 
+             [
+                'icon' => 'task',
+                'name' => 'Task',
+                'path' => 'student/tasks',
+            ],
+
+             [
+                'icon' => 'task',
+                'name' => 'Quiz',
+                'path' => 'student/quizzes',
+            ],
+
             [
                 'name' => 'Documents',
                 'icon' => 'pages',

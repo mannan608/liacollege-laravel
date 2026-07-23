@@ -30,6 +30,7 @@
                 </div>
             </div>
         </section>
+
         <div class="container">
             <section id="find" class="relative z-10 mx-auto -mt-20 scroll-mt-24 px-4 sm:px-6 w-75">
                 <div class="rounded-card border border-line bg-white p-6 shadow-lg shadow-brand-900/5 sm:p-8"
@@ -38,99 +39,136 @@
                     <p class="mt-1 text-sm text-muted">Pick a course and location to see live dates and book online in
                         minutes.
                     </p>
-                    <div class="mt-5 grid gap-4 sm:grid-cols-2"><label class="block"><span
-                                class="mb-1.5 block uppercase tracking-wide text-muted">1.
-                                Course</span><select
-                                class="w-full rounded-xl border border-line bg-white px-4 py-3 text-base font-medium text-ink outline-none transition-colors focus:border-brand-500 disabled:cursor-not-allowed disabled:bg-surface disabled:text-muted"
-                                aria-label="Course">
-                                <option value="">Choose a course…</option>
-                                <option value="HLTAID009">Provide CPR</option>
-                                <option value="HLTAID011">Provide First Aid — Includes CPR</option>
-                                <option value="HLTAID012">Childcare First Aid — Includes CPR &amp; First Aid</option>
-                            </select></label>
-                        <div class="block"><span class="mb-1.5 block  uppercase tracking-wide text-muted">2.
-                                Location</span><select
-                                class="w-full rounded-xl border border-line bg-white px-4 py-3 text-base font-medium text-ink outline-none transition-colors focus:border-brand-500 disabled:cursor-not-allowed disabled:bg-surface disabled:text-muted"
-                                aria-label="Location">
-                                <option value="">Choose a location…</option>
-                                <option value="__any__">Any location</option>
-                                <option value="Sydney">Sydney</option>
-                                <option value="Parramatta">Parramatta</option>
-                                <option value="Hornsby">Hornsby</option>
-                                <option value="Liverpool">Liverpool</option>
-                                <option value="Penrith">Penrith</option>
-                                <option value="Newcastle">Newcastle</option>
-                                <option value="Wollongong">Wollongong</option>
-                                <option value="Central Coast">Central Coast</option>
-                                <option value="Melbourne">Melbourne</option>
-                                <option value="Dandenong">Dandenong</option>
-                                <option value="Brisbane">Brisbane</option>
-                                <option value="Perth">Perth</option>
-                                <option value="Adelaide">Adelaide</option>
-                                <option value="Canberra">Canberra</option>
-                                <option value="Hobart">Hobart</option>
-                                <option value="Zoom">Zoom (online)</option>
-                            </select></div>
-                    </div>
+                    <form method="GET" action="{{ route('firstAid') }}" id="courseSearchForm">
+                        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+
+                            {{-- Course --}}
+                            <label class="block">
+                                <span class="mb-1.5 block uppercase tracking-wide text-muted">
+                                    1. Course
+                                </span>
+
+                                <select name="course_id"
+                                    class="w-full rounded-xl border border-line bg-white px-4 py-3 text-base font-medium text-ink outline-none focus:border-brand-500"
+                                    onchange="this.form.submit()">
+                                    <option value="">
+                                        Choose a course…
+                                    </option>
+
+                                    @foreach ($courses as $course)
+                                        <option value="{{ $course->id }}" @selected(request('course_id') == $course->id)>
+                                            {{ $course->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </label>
+
+
+                            {{-- Location --}}
+                            <div class="block">
+                                <span class="mb-1.5 block uppercase tracking-wide text-muted">
+                                    2. Location
+                                </span>
+
+                                <select name="city"
+                                    class="w-full rounded-xl border border-line bg-white px-4 py-3 text-base font-medium text-ink outline-none focus:border-brand-500"
+                                    onchange="this.form.submit()">
+                                    <option value="">
+                                        Choose a location…
+                                    </option>
+
+                                    <option value="__any__" @selected(request('city') === '__any__')>
+                                        Any location
+                                    </option>
+
+                                    @foreach ($locations as $location)
+                                        <option value="{{ $location->city }}" @selected(request('city') === $location->city)>
+                                            {{ $location->city }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+                    </form>
                     <div class="mt-6 border-t border-line pt-6">
                         <h6 class="text-xs font-bold uppercase tracking-wide text-muted">3. Choose a date</h6>
                         <ul class="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line">
-                            <li class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3">
-                                <div>
-                                    <div class="font-semibold text-ink">Sun, 12 July 2026<span
-                                            class="font-normal text-muted"> ·
-                                            1:30pm – 3:00pm</span></div>
-                                    <div class="text-muted text-2xl">$45<span class="font-semibold text-danger"> · Filling
-                                            fast</span></div>
-                                </div>
-                                <a href="{{route('enrollmentSlot')}}"
-                                    target="_blank" rel="noopener noreferrer" class="btn d-inline-flex align-items-center"
-                                    style="background:#198754; color:#fff; font-size:14px; font-weight:700; padding:12px 24px; border-radius:10px; border:none; text-decoration:none; transition:all .3s ease;"
-                                    onmouseover="this.style.background='#146c43'"
-                                    onmouseout="this.style.background='#198754'">
 
-                                    Enrol Now
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </a>
-                            </li>
-                            <li class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3">
-                                <div>
-                                    <div class="font-semibold text-ink">Sun, 12 July 2026<span
-                                            class="font-normal text-muted"> ·
-                                            1:30pm – 3:00pm</span></div>
-                                    <div class="text-muted text-2xl">$45<span class="font-semibold text-danger"> · Filling
-                                            fast</span></div>
-                                </div>
-                                <a href="https://elearner.net.au/elearning/enrol.php?s=158&amp;ttid=1177229&amp;_gl=1*df9q2w*_gcl_au*MjAwMjA1MjI2MS4xNzgzODM2OTAx"
-                                    target="_blank" rel="noopener noreferrer" class="btn d-inline-flex align-items-center"
-                                    style="background:#198754; color:#fff; font-size:14px; font-weight:700; padding:12px 24px; border-radius:10px; border:none; text-decoration:none; transition:all .3s ease;"
-                                    onmouseover="this.style.background='#146c43'"
-                                    onmouseout="this.style.background='#198754'">
+                            @forelse ($slots as $slot)
+                                <li class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3">
 
-                                    Enrol Now
-                                    <i class="bi bi-arrow-right ms-2"></i>
-                                </a>
-                            </li>
+                                    <div>
+                                        <div class="font-semibold text-ink">
+                                            {{ \Carbon\Carbon::parse($slot->training_date)->format('D, d F Y') }}
+
+                                            @if ($slot->start_time && $slot->end_time)
+                                                <span class="font-normal text-muted">
+                                                    ·
+                                                    {{ \Carbon\Carbon::parse($slot->start_time)->format('g:ia') }}
+                                                    –
+                                                    {{ \Carbon\Carbon::parse($slot->end_time)->format('g:ia') }}
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="text-muted text-sm">
+                                            {{ $slot->trainingCenter?->name }}
+                                        </div>
+
+                                        <div class="text-2xl text-muted">
+                                            ${{ number_format($slot->price, 2) }}
+
+                                            @if ($slot->users->count() >= 5)
+                                                <span class="font-semibold text-danger">
+                                                    · Filling fast
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <a href="{{ route('course-enrollment.create', [
+                                        'course' => $slot->course_id,
+                                        'slot' => $slot->id,
+                                    ]) }}"
+                                        class="btn d-inline-flex align-items-center"
+                                        style="background:#198754; color:#fff; font-size:14px; font-weight:700; padding:12px 24px; border-radius:10px; border:none; text-decoration:none;">
+
+                                        Enrol Now
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </a>
+                                </li>
+
+                            @empty
+
+                                @if (request()->filled('course_id'))
+                                    <li class="px-4 py-6 text-center text-muted">
+                                        No available slots found.
+                                    </li>
+                                @endif
+                            @endforelse
+
                         </ul>
-                        <div class="text-center mt-4">
-                            <button type="button" class="btn"
-                                style="background:#fff; color:#198754; border:1px solid #dee2e6; padding:6px 20px; font-size:15px; font-weight:700; border-radius:10px;">
-                                Load More Dates
-                            </button>
+                        {{-- <div class="text-center mt-4">
+                        <button type="button" class="btn"
+                            style="background:#fff; color:#198754; border:1px solid #dee2e6; padding:6px 20px; font-size:15px; font-weight:700; border-radius:10px;">
+                            Load More Dates
+                        </button>
+                    </div>
+                    <div class="mt-4 rounded-xl border border-line bg-gray-100 p-4">
+                        <p class="text-sm font-semibold text-ink">Need a later date?</p>
+                        <p class="mt-1 text-sm text-muted">Pick a date further ahead to enrol.</p>
+                        <div class="mt-3 flex flex-wrap items-center gap-3"><input min="2026-07-12"
+                                aria-label="Preferred date"
+                                class="rounded-lg border border-line bg-white px-3 py-2 text-sm font-medium text-ink outline-none focus:border-brand-500"
+                                type="date" value="">
                         </div>
-                        <div class="mt-4 rounded-xl border border-line bg-gray-100 p-4">
-                            <p class="text-sm font-semibold text-ink">Need a later date?</p>
-                            <p class="mt-1 text-sm text-muted">Pick a date further ahead to enrol.</p>
-                            <div class="mt-3 flex flex-wrap items-center gap-3"><input min="2026-07-12"
-                                    aria-label="Preferred date"
-                                    class="rounded-lg border border-line bg-white px-3 py-2 text-sm font-medium text-ink outline-none focus:border-brand-500"
-                                    type="date" value="">
-                            </div>
-                        </div>
+                    </div> --}}
                     </div>
                 </div>
             </section>
         </div>
+
         <section class="container my-5">
             <div class="bg-light border rounded-3 p-4 p-lg-5 w-75 mx-auto">
 
@@ -182,8 +220,7 @@
                                 <li class="d-flex align-items-start gap-2">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                        stroke-linejoin="round" aria-hidden="true"
-                                        class="mt-1 flex-shrink-0 text-success">
+                                        stroke-linejoin="round" aria-hidden="true" class="mt-1 flex-shrink-0 text-success">
                                         <path d="m5 12 4.5 4.5L19 7"></path>
                                     </svg>
                                     <span>HLTAID009 – Provide cardiopulmonary resuscitation</span>

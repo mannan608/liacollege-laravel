@@ -9,93 +9,96 @@ class UpdateCourseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->user()?->can('course.edit') === true;
     }
 
     public function rules(): array
     {
-        $courseId = $this->route('course')?->id ?? $this->route('course');
+        $courseId = $this->route('course')->id;
 
         return [
+
+            'course_category_id' => [
+                'sometimes',
+                'exists:course_categories,id',
+            ],
+
             'name' => [
-                'required',
+                'sometimes',
                 'string',
                 'max:255',
             ],
 
             'code' => [
+                'sometimes',
                 'nullable',
                 'string',
                 'max:100',
             ],
 
             'cricos' => [
+                'sometimes',
                 'nullable',
                 'string',
                 'max:100',
             ],
 
-            'price' => [
-                'nullable',
-                'numeric',
-                'min:0',
-                'max:99999999.99',
-            ],
-
-            'discount_percentage' => [
-                'nullable',
-                'integer',
-                'between:0,100',
-            ],
-
-            'status' => [
-                'nullable',
-                'in:active,inactive',
-            ],
-
-            'thumbnail' => [
-                'nullable',
-                'image',
-                'mimes:jpg,jpeg,png,webp',
-                'max:5120',
-            ],         
-
-            'overview' => [
-                'nullable',
+            'slug' => [
+                'sometimes',
                 'string',
-            ],
-
-            'entry_requirements' => [
-                'nullable',
-                'string',
+                'max:255',
+                Rule::unique('courses', 'slug')
+                    ->ignore($courseId),
             ],
 
             'description' => [
+                'sometimes',
                 'nullable',
                 'string',
             ],
 
-            'category_id' => [
+            'price' => [
+                'sometimes',
                 'nullable',
+                'numeric',
+                'min:0',
+            ],
+
+            'duration' => [
+                'sometimes',
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'includes_cpr' => [
+                'sometimes',
+                'boolean',
+            ],
+
+            'thumbnail' => [
+                'sometimes',
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+
+            'status' => [
+                'sometimes',
+                'in:active,inactive',
+            ],
+
+            'includes' => [
+                'sometimes',
+                'array'
+            ],
+
+            'includes.*.title' => [
+                'nullable',
+                'string',
+                'max:255'
             ],
         ];
-    }
-
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'price' => $this->price ?: 0,
-            'discount_percentage' => $this->discount_percentage ?: 0,
-        ]);
-    }
-
-    public function messages(): array
-    {
-        return (new StoreCourseRequest())->messages();
-    }
-
-    public function attributes(): array
-    {
-        return (new StoreCourseRequest())->attributes();
     }
 }

@@ -8,7 +8,8 @@ use App\Http\Requests\StudentUpdateRequest;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use App\Models\CoursePermissions;
-use App\Models\CourseSectionRow;
+use App\Models\CourseResources\CourseSectionRow;
+use App\Models\LMS\Enrollment;
 use App\Models\Student;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use App\Services\CoursePermissionService;
@@ -29,15 +30,46 @@ class StudentController extends Controller
         private readonly StudentRepositoryInterface $students,
     ) {}
 
-    public function index(Request $request): View
-    {
-        $request->user()->can('student.list') || abort(403);
+    // public function index(Request $request)
+    // {
+    //     $request->user()->can('student.list') || abort(403);
 
-        return view('backend.pages.students.index', [
-            'students' => $this->students->paginate(),
-            'title' => 'students',
-        ]);
-    }
+    //     // return $this->students->paginate();
+
+    //     return view('backend.pages.students.index', [
+    //         'students' => $this->students->paginate(),
+    //         'title' => 'students',
+    //     ]);
+    // }
+
+
+public function index(Request $request)
+{
+    $enrollments = Enrollment::query()
+        ->select([
+            'id',
+            'student_id',
+            'course_slot_id',
+        ])
+        ->with([
+            'student:id,user_id',
+            'student.user:id,name,email',
+            'slot:id,course_id,training_center_id,training_date,start_time,end_time',
+            'slot.course:id,name',
+            'slot.trainingCenter:id,name,city'
+        ])
+        ->when($request->status, function ($query) use ($request) {
+            $query->where('status', $request->status);
+        })
+        ->latest()
+        ->paginate(20);
+        // return $enrollments;
+
+    return view(
+        'backend.pages.students.index',
+        compact('enrollments')
+    );
+}
 
     public function create(Request $request): View
     {

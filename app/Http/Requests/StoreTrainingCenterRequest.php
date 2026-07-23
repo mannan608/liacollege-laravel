@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreTrainingCenterRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        // return true;
+        return $this->user()?->can('training-centers.create') === true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+       return [
+            'name' => ['required', 'string', 'max:255'],
+
+            'address' => ['nullable', 'string'],
+
+            'city' => ['nullable', 'string', 'max:100'],
+            'state' => ['nullable', 'string', 'max:100'],
+            'postcode' => ['nullable', 'string', 'max:30'],
+            'country' => ['nullable', 'string', 'max:100'],
+
+            'phone' => ['nullable', 'string', 'max:30'],
+
+            'email' => ['nullable', 'email', 'max:255'],
+
+            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
+
+            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
+
+            'status' => ['nullable', 'boolean'],
+        ];
+    }
+}

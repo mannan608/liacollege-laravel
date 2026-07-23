@@ -1,4 +1,4 @@
-@extends('frontend.pages.student.layouts.app')
+@extends('backend.layouts.fullscreen-layout')
 
 @section('content')
 <div class="min-h-screen bg-slate-50 py-12">
@@ -14,13 +14,13 @@
             <span class="text-slate-300">/</span>
 
             <a href="#" class="text-slate-500 hover:text-slate-900 transition">
-                Provide First Aid
+                {{$course->name}}
             </a>
 
             <span class="text-slate-300">/</span>
 
             <span class="text-slate-900 font-medium">
-                eLearning Presentation (SCORM)
+                {{$module->title}}
             </span>
         </nav>
 
@@ -38,11 +38,11 @@
 
                     <div>
                         <h1 class="text-3xl font-semibold text-slate-900">
-                            eLearning Package
+                            eLearning platform
                         </h1>
 
                         <p class="mt-1 text-slate-500">
-                            Part 1 • CPR Online Training & Quiz
+                            {{$module->title}}
                         </p>
                     </div>
 
@@ -96,8 +96,11 @@
                     <!-- Action -->
                     <div class="mt-10 flex justify-center">
 
-                        <button
-                            onclick="window.open('#')"
+                        <a href="{{ route('student.launch-portal', [
+    'course' => $course,
+    'module' => $module,
+]) }}"
+                            
                             class="group inline-flex items-center gap-3
                             bg-slate-900 hover:bg-slate-800
                             text-white font-medium
@@ -110,7 +113,7 @@
                             transition-transform duration-200
                             group-hover:translate-x-0.5"></i>
 
-                        </button>
+                    </a>
 
                     </div>
 

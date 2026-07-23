@@ -8,160 +8,87 @@ class StoreCourseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return $this->user()?->can('course.create') === true;
     }
 
     public function rules(): array
     {
         return [
+
+            'course_category_id' => [
+                'required',
+                'exists:course_categories,id'
+            ],
+
             'name' => [
                 'required',
                 'string',
-                'max:255',
+                'max:255'
             ],
 
             'code' => [
                 'nullable',
                 'string',
-                'max:100',
+                'max:100'
             ],
 
             'cricos' => [
                 'nullable',
                 'string',
-                'max:100',
+                'max:100'
+            ],
+
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                'unique:courses,slug'
+            ],
+
+            'description' => [
+                'nullable',
+                'string'
             ],
 
             'price' => [
                 'nullable',
                 'numeric',
-                'min:0',
-                'max:99999999.99',
+                'min:0'
             ],
 
-            'discount_percentage' => [
+            'duration' => [
                 'nullable',
-                'integer',
-                'between:0,100',
+                'string',
+                'max:255'
             ],
 
-            'status' => [
+            'includes_cpr' => [
                 'nullable',
-                'in:active,inactive',
+                'boolean'
             ],
 
             'thumbnail' => [
                 'nullable',
                 'image',
                 'mimes:jpg,jpeg,png,webp',
-                'max:5120', // 5MB
+                'max:2048'
             ],
 
-            'overview' => [
+            'status' => [
                 'nullable',
-                'string',
+                'in:active,inactive'
             ],
 
-            'entry_requirements' => [
+            'includes' => [
                 'nullable',
-                'string',
-            ],
-
-            'description' => [
-                'nullable',
-                'string',
-            ],
-
-            'category_id' => [
-                'nullable',
-            ],
-        ];
-    }
-
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'price' => $this->price ?: 0,
-            'discount_percentage' => $this->discount_percentage ?: 0,
-            'status' => $this->status ?: 'active',
-        ]);
-    }
-
-    public function messages(): array
-    {
-        // return [
-        //     'name.required' => 'Course name is required.',
-        //     'name.max' => 'Course name cannot exceed 255 characters.',
-
-        //     'slug.required' => 'Slug is required.',
-        //     'slug.unique' => 'This slug already exists.',
-        //     'slug.alpha_dash' => 'Slug may only contain letters, numbers, dashes and underscores.',
-
-        //     'price.numeric' => 'Price must be a valid number.',
-        //     'price.min' => 'Price cannot be negative.',
-
-        //     'discount_percentage.integer' => 'Discount must be a whole number.',
-        //     'discount_percentage.between' => 'Discount must be between 0 and 100.',
-
-        //     'thumbnail.image' => 'Thumbnail must be an image.',
-        //     'thumbnail.mimes' => 'Thumbnail must be JPG, JPEG, PNG or WEBP.',
-        //     'thumbnail.max' => 'Thumbnail size cannot exceed 5MB.',
-
-        //     'course_material.file' => 'Course material must be a valid file.',
-        //     'course_material.mimes' => 'Allowed files: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, ZIP, RAR.',
-        //     'course_material.max' => 'Course material size cannot exceed 50MB.',
-
-        //     'category_id.exists' => 'Selected category is invalid.',
-        // ];
-        return [
-
-            'name' => ['required', 'string'],
-
-            'sections' => ['required', 'array'],
-
-            'sections.*.section_name' => [
-                'required',
-                'string'
-            ],
-
-            'sections.*.field_types' => [
-                'required',
                 'array'
             ],
 
-            'sections.*.rows' => [
-                'required',
-                'array'
-            ],
-
-            'sections.*.rows.*.text' => [
+            'includes.*.title' => [
                 'nullable',
-                'string'
-            ],
-
-            'sections.*.rows.*.file' => [
-                'nullable',
-                'file',
-                'mimes:pdf,doc,docx,jpg,png',
-                'max:20480'
+                'string',
+                'max:255'
             ],
         ];
     }
-
-    // public function attributes(): array
-    // {
-    //     return [
-    //         'name' => 'course name',
-    //         'code' => 'course code',
-    //         'cricos' => 'CRICOS code',
-    //         'slug' => 'slug',
-    //         'price' => 'price',
-    //         'discount_percentage' => 'discount percentage',
-    //         'thumbnail' => 'thumbnail',
-    //         'category_id' => 'category',
-    //         'overview' => 'overview',
-    //         'entry_requirements' => 'entry requirements',
-    //         'description' => 'description',
-    //     ];
-    // }
 }

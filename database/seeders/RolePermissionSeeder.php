@@ -36,7 +36,7 @@ class RolePermissionSeeder extends Seeder
 
             // 'permission.list',
             // 'permission.sync',
-            
+
             // Blog permissions
             'blog.list',
             'blog.view',
@@ -84,14 +84,7 @@ class RolePermissionSeeder extends Seeder
             'provider.edit',
             'provider.delete',
 
-            // Course permissions
-            'course.list',
-            'course.create',
-            'course.view',
-            'course.edit',
-            'course.delete',
-            'course.status.change',
-            'course.manage',
+
 
             // Course Resource permissions
             'course.resource.create',
@@ -99,7 +92,7 @@ class RolePermissionSeeder extends Seeder
             'course.resource.edit',
             'course.resource.delete',
             'course.resource.list',
-            
+
 
             //contact
             'contact.list',
@@ -119,6 +112,64 @@ class RolePermissionSeeder extends Seeder
             'student.delete',
             'student.status.change',
             'student.manage',
+
+            // ..............................
+
+            // training-centers
+
+            'training-centers.list',
+            'training-centers.create',
+            'training-centers.view',
+            'training-centers.edit',
+            'training-centers.delete',
+            'training-centers.status.change',
+            'training-centers.manage',
+
+            // course-categories
+            'course-categories.list',
+            'course-categories.index',
+            'course-categories.create',
+            'course-categories.show',
+            'course-categories.edit',
+            'course-categories.delete',
+            'course-categories.status.change',
+            'course-categories.manage',
+
+            // Course permissions
+            'course.list',
+            'course.create',
+            'course.view',
+            'course.edit',
+            'course.delete',
+            'course.status.change',
+            'course.manage',
+
+            // create course schedule/slot
+            'course-slot.manage',
+            'course-slot.list',
+            'course-slot.view',
+            'course-slot.create',
+            'course-slot.edit',
+            'course-slot.delete',
+            'course-slot.status.change',
+
+            'modules.manage',
+            'modules.list',
+            'modules.view',
+            'modules.create',
+            'modules.edit',
+            'modules.delete',
+            'modules.status.change',
+
+            // Quiz permissions
+            'quizzes.list',
+            'quizzes.create',
+            'quizzes.view',
+            'quizzes.edit',
+            'quizzes.delete',
+            'quizzes.status.change',
+            'quizzes.manage',
+
         ];
 
         foreach ($permissions as $permission) {
@@ -131,17 +182,17 @@ class RolePermissionSeeder extends Seeder
         $superAdmin = Role::firstOrCreate([
             'name' => config('rbac.super_admin_role'),
             'guard_name' => config('rbac.default_guard', 'web'),
-        ]);      
+        ]);
 
         $adminRole = Role::firstOrCreate([
             'name' => 'admin',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
-         $defaultRole = Role::firstOrCreate([
+        $defaultRole = Role::firstOrCreate([
             'name' => 'default',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
-         $studentRole = Role::firstOrCreate([
+        $studentRole = Role::firstOrCreate([
             'name' => 'student',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);

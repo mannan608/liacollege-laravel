@@ -3,6 +3,12 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\Student\CourseEnrollmentController;
+use App\Http\Controllers\Student\LearningPortalController;
+use App\Http\Controllers\Student\QuizAttemptController;
+use App\Http\Controllers\Student\QuizController;
+use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\Student\StudentDocumentController;
 use App\SEO\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -107,16 +113,6 @@ Route::get('/leadership-management', [FrontendController::class, 'leadershipMana
 
 Route::get('/project-management', [FrontendController::class, 'projectManagement'])
     ->name('projectManagement');
-Route::get('/first-aid', [FrontendController::class, 'firstAid'])
-    ->name('firstAid');
-
-Route::get('/course-enrollment', [FrontendController::class, 'enrollmentSlot'])
-    ->name('enrollmentSlot');
-Route::get('/checkout', [FrontendController::class, 'enrollmentCourseCheckout'])
-    ->name('enrollmentCourseCheckout');
-
-Route::get('/success-message', [FrontendController::class, 'checkoutSuccess'])
-    ->name('checkoutSuccess');
 
 // Fast Track
 Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track_qualifications'])
@@ -124,11 +120,50 @@ Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track
 
 
 
+// enroll course
+Route::get('/first-aid', [FrontendController::class, 'firstAid'])
+    ->name('firstAid');
+
+// Route::get(
+//     '/first-aid/{course}/{slot}/course-enrollment',
+//     [FrontendController::class, 'enrollmentSlot']
+// )->name('enrollmentSlot');
+
+// Route::post(
+//     '/course-enrollment/checkout',
+//     [FrontendController::class, 'enrollmentCourseCheckout']
+// )->name('enrollmentCourseCheckout');
+
+
+
+// update route
+Route::get(
+    '/course-enrollment/{enrollment}/success',
+    [CourseEnrollmentController::class, 'success']
+)->name('course-enrollment.success');
+
+Route::get(
+    '/course-enrollment/{course}/{slot}',
+    [CourseEnrollmentController::class, 'create']
+)->name('course-enrollment.create');
+
+
+Route::post(
+    '/course-enrollment/checkout',
+    [CourseEnrollmentController::class, 'checkout']
+)->name('course-enrollment.checkout');
+
+
+
+
+
+
+
 Route::prefix('student')
     ->name('student.')
     ->middleware(['auth', 'active.user'])
     ->group(function () {
-        Route::get('/dashboard', [StudentController::class, 'dashboard'])
+        Route::get('/dashboard', [StudentDashboardController::class, 'dashboard'])
             ->name('dashboard');
 
         Route::get('/profile', [StudentController::class, 'profileEdit'])
@@ -153,10 +188,64 @@ Route::prefix('student')
         Route::get('/billing', [StudentController::class, 'studentBilling'])
             ->name('billing');
 
-        Route::get('/courses', [StudentController::class, 'enrollmentCourses'])
+        Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])
             ->name('enrollment-courses');
-        Route::get('/course-details', [StudentController::class, 'CourseDetails'])
-            ->name('Course-details');
-             Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
+        Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])
+            ->name('course-details');
+
+        //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
+        // ->name('course-module');
+
+        Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseModule'])
             ->name('course-module');
+
+        Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
+            ->name('launch-portal');
+
+        Route::get(
+            '/courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/resource',
+            [LearningPortalController::class, 'lessonResources']
+        )->name('lesson.resources');
+
+        //student documnet
+
+        Route::get('/student-document', [StudentDocumentController::class, 'studentDocument'])
+            ->name('student-document');
+        Route::post('/student-document', [StudentDocumentController::class, 'storeStudentDocument'])
+            ->name('student-document');
+        Route::delete('/student-document/{document}', [StudentDocumentController::class, 'destroyStudentDocument'])->name('student-document.destroy');
+        Route::get('/confirmation-letter', [StudentDocumentController::class, 'confirmationLetter'])->name('confirmation-letter');
+        Route::get('/signed-terms', [StudentDocumentController::class,    'signedTerms'])->name('signed-terms');
+        Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
+        Route::get('/tasks', [StudentDocumentController::class,    'tasks'])->name('tasks.index');
+
+        Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
+        Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
+
+
+        // Quiz List & Details
+        Route::get('quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+        Route::get('quizzes/{quiz:slug}', [QuizController::class, 'show'])->name('quizzes.show');
+
+        // Quiz Attempt Flow
+        Route::post('quizzes/{quiz:slug}/start', [QuizAttemptController::class, 'start'])->name('quizzes.start');
+        // Route::get('attempts/{attempt}', [QuizAttemptController::class, 'show'])->name('attempts.show');
+
+        // One-by-One Question Flow
+        Route::get('attempts/{attempt}/question/{question}', [QuizAttemptController::class, 'question'])->name('attempts.question');
+
+        Route::post('attempts/{attempt}/question/{question}/answer', [QuizAttemptController::class, 'answer'])->name('attempts.answer');
+        
+        Route::post('attempts/{attempt}/submit', [QuizAttemptController::class, 'submit'])->name('attempts.submit');
+
+        // All-at-Once Flow
+        Route::get('attempts/{attempt}/all-questions', [QuizAttemptController::class, 'allQuestions'])->name('attempts.all');
+        Route::post('attempts/{attempt}/submit-all', [QuizAttemptController::class, 'submitAll'])->name('attempts.submit-all');
+
+        // Results & History
+        Route::get('attempts/{attempt}/result', [QuizAttemptController::class, 'result'])->name('attempts.result');
+        Route::get('my-attempts', [QuizAttemptController::class, 'history'])->name('attempts.history');
+
+        // Abandon attempt
+        Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
     });

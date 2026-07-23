@@ -13,15 +13,15 @@
     return Application::configure(basePath: dirname(__DIR__))
         ->withRouting(
             web: [
-                __DIR__.'/../routes/user/web.php',
-                __DIR__.'/../routes/admin/web.php',
+                __DIR__ . '/../routes/user/web.php',
+                __DIR__ . '/../routes/admin/web.php',
             ],
 
-            commands: __DIR__.'/../routes/console.php',
+            commands: __DIR__ . '/../routes/console.php',
             health: '/up',
         )
         ->withMiddleware(function (Middleware $middleware): void {
-            $middleware->redirectGuestsTo(fn () => route('login'));
+            $middleware->redirectGuestsTo(fn() => route('login'));
 
             $middleware->alias([
                 'active.user' => EnsureUserIsActive::class,
@@ -31,7 +31,13 @@
                 'role_or_permission' => RoleOrPermissionMiddleware::class,
             ]);
         })
+          ->withMiddleware(function (Middleware $middleware) {
+            $middleware->alias([
+                'quiz.timer' => \App\Http\Middleware\CheckQuizTimer::class,
+            ]);
+        })
         ->withExceptions(function (Exceptions $exceptions): void {
             //
         })
+      
         ->create();

@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\CoursePermissions;
-use App\Models\CourseSectionRow;
+use App\Models\CourseResources\CoursePermissions;
+use App\Models\CourseResources\CourseSectionRow;
 use App\Models\Student;
 
 class CoursePermissionService

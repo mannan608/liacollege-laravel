@@ -3,22 +3,27 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contacts;
 use App\Models\Course;
-use App\Traits\CourseTrait;
-use App\Traits\RouteDiscoveryTrait;
+use App\Models\LMS\CourseSlot;
+use App\Models\LMS\Enrollment;
+use App\Models\Student;
+use App\Models\TrainingCenter;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class FrontendController extends Controller
 {
-   
+
     public function index()
     {
-        return view('frontend.lia-collage.welcome' );
+        return view('frontend.lia-collage.welcome');
     }
 
-     public function about()
+    public function about()
     {
         return view('frontend.lia-collage.about');
     }
@@ -28,7 +33,7 @@ class FrontendController extends Controller
         return view('frontend.lia-collage.contact');
     }
 
-     public function faq()
+    public function faq()
     {
         return view('frontend.faq');
     }
@@ -36,13 +41,13 @@ class FrontendController extends Controller
     {
         return view('frontend.policyAndProcedure');
     }
- 
+
     public function reassessmentPolicy()
     {
         return view('frontend.reassessmentPolicy');
     }
 
-  
+
     public function courseList()
     {
         return view('frontend.course');
@@ -83,22 +88,7 @@ class FrontendController extends Controller
     {
         return view('frontend.lia-collage.cardiopulmonary-resuscitation');
     }
-    public function firstAidCpr()
-    {
-        return view('frontend.lia-collage.first-aid-cpr');
-    }
-     public function enrollmentSlot()
-    {
-        return view('frontend.pages.student.enrollment.enroll');
-    }
-     public function enrollmentCourseCheckout()
-    {
-        return view('frontend.pages.student.enrollment.checkout');
-    }
-      public function checkoutSuccess()
-    {
-        return view('frontend.pages.student.enrollment.checkout-message');
-    }
+ 
     public function leadershipManagement()
     {
         return view('frontend.lia-collage.leadership-management');
@@ -108,10 +98,9 @@ class FrontendController extends Controller
         return view('frontend.lia-collage.project-management');
     }
 
-    public function firstAid(){
-        return view('frontend.lia-collage.first-aid');
-    }
-  
+
+
+
     public function store(Request $request)
     {
         // return $request->all();
@@ -327,7 +316,7 @@ class FrontendController extends Controller
         return response()->json($data);
     }
 
- 
+
     // public function documentDownload(Course $course)
     // {
     //     $filePath = public_path('uploads/courses/' . $course->course_material);
@@ -338,5 +327,174 @@ class FrontendController extends Controller
 
     //     return response()->download($filePath);
     // }
-   
+
+
+   public function firstAid(Request $request)
+{
+    $courses = Course::query()
+        ->whereHas('slots', function ($query) {
+            $query->where('status', 'active');
+        })
+        ->orderBy('name')
+        ->get();
+
+    // ALL training center cities
+    $locations = TrainingCenter::query()
+        ->select('city')
+        ->whereNotNull('city')
+        ->where('city', '!=', '')
+        ->distinct()
+        ->orderBy('city')
+        ->get();
+
+    $slots = collect();
+
+    if ($request->filled('course_id') && $request->filled('city')) {
+
+        $slots = CourseSlot::query()
+            ->with([
+                'course',
+                'trainingCenter',
+                'users.user',
+            ])
+            ->where('course_id', $request->course_id)
+            ->where('status', 'active')
+            ->whereDate('training_date', '>=', now())
+            ->when(
+                $request->city !== '__any__',
+                function ($query) use ($request) {
+                    $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
+                        $centerQuery->where('city', $request->city);
+                    });
+                }
+            )
+            ->orderBy('training_date')
+            ->get();
+    }
+
+    return view(
+        'frontend.lia-collage.first-aid',
+        compact('courses', 'locations', 'slots')
+    );
+}
+
+   public function firstAidCpr()
+    {
+        return view('frontend.lia-collage.first-aid-cpr');
+    }
+//   public function enrollmentSlot(Course $course, CourseSlot $slot) {
+//     abort_unless(
+//         $slot->course_id === $course->id,
+//         404
+//     );
+
+//     $slot->load([
+//         'course',
+//         'trainingCenter',
+//     ]);
+
+//     return view(
+//         'frontend.pages.student.enrollment.enroll',
+//         compact('course', 'slot')
+//     );
+// }
+//  public function enrollmentCourseCheckout(Request $request)
+// {
+//    $validated = $request->validate([
+//         'course_id' => ['required', 'exists:courses,id'],
+//         'slot_id' => ['required', 'exists:course_slots,id'],
+
+//         'name' => ['required', 'string', 'max:255'],
+//         'email' => ['required', 'email'],
+//         'phone' => ['required', 'string'],
+//     ]);
+
+//     DB::transaction(function () use ($validated) {
+
+//         $course = Course::findOrFail(
+//             $validated['course_id']
+//         );
+
+//         $slot = CourseSlot::findOrFail(
+//             $validated['slot_id']
+//         );
+
+//         abort_unless(
+//             $slot->course_id == $course->id,
+//             404
+//         );
+
+//         /*
+//         |--------------------------------------------------------------------------
+//         | Create Student if not exists
+//         |--------------------------------------------------------------------------
+//         */
+
+//         $user = User::where(
+//             'email',
+//             $validated['email']
+//         )->first();
+
+//         if (! $user) {
+
+//             $studentRole = Role::where(
+//                 'name',
+//                 'student'
+//             )->firstOrFail();
+
+//             $password = Str::random(8);
+
+//             $user = User::create([
+//                 'name' => $validated['name'],
+//                 'email' => $validated['email'],
+//                 'phone' => $validated['phone'],
+//                 'status' => 'active',
+//                 'primary_role_id' => $studentRole->id,
+//                 'password' => Hash::make($password),
+//             ]);
+
+//             $user->assignRole($studentRole);
+
+//             $student = Student::create([
+//                 'user_id' => $user->id,
+//             ]);
+
+//             // Mail/SMS send করতে পারো
+//             // Login credential
+//         } else {
+
+//             $student = Student::firstOrCreate([
+//                 'user_id' => $user->id,
+//             ]);
+//         }
+
+//         /*
+//         |--------------------------------------------------------------------------
+//         | Prevent duplicate enrollment
+//         |--------------------------------------------------------------------------
+//         */
+
+//         Enrollment::firstOrCreate(
+//             [
+//                 'student_id' => $student->id,
+//                 'course_slot_id' => $slot->id,
+//             ],
+//             [
+//                 'status' => 'pending',
+//                 'enrolled_at' => now(),
+//             ]
+//         );
+//     });
+
+//     return view(
+//         'frontend.pages.student.enrollment.checkout',
+//         compact(
+//             'course',
+//             'slot',
+//             'validated'
+//         )
+//     );
+// }
+
+
 }
