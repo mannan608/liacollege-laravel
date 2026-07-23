@@ -6,7 +6,7 @@
         <a href="{{ role_route('role.quizzes.index') }}" class="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
             <i class="ph ph-arrow-left"></i> Back to Quizzes
         </a>
-        <a href="{{ role_route('role.quizzes.questions.create', $quiz) }}" 
+        <a href="{{ role_route('role.quizzes.questions.create', ['quiz' => $quiz]) }}" 
            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors shadow-sm">
             <i class="ph ph-plus"></i>
             Add Question
@@ -54,11 +54,11 @@
                                 </div>
                             </div>
                             <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <a href="{{ route('admin.quizzes.questions.edit', [$quiz, $question]) }}" 
+                                <a href="{{ role_route('role.quizzes.questions.edit', ['quiz' => $quiz, 'question' => $question]) }}" 
                                    class="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" title="Edit">
                                     <i class="ph ph-pencil text-lg"></i>
                                 </a>
-                                <form action="{{ route('admin.quizzes.questions.destroy', [$quiz, $question]) }}" method="POST" class="inline" onsubmit="return confirm('Delete this question?')">
+                                <form action="{{ role_route('role.quizzes.questions.destroy', ['quiz' => $quiz, 'question' => $question]) }}" method="POST" class="inline" onsubmit="return confirm('Delete this question?')">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
                                         <i class="ph ph-trash text-lg"></i>
@@ -90,7 +90,7 @@
             <i class="ph ph-question text-5xl mb-4 block"></i>
             <p class="text-lg font-medium text-gray-600">No questions yet</p>
             <p class="text-sm mt-1">Add your first question to get started</p>
-            <a href="{{ route('admin.quizzes.questions.create', $quiz) }}" class="inline-flex items-center gap-2 mt-4 text-emerald-600 hover:text-emerald-700 font-medium">
+            <a href="{{ role_route('role.quizzes.questions.create', ['quiz' => $quiz]) }}" class="inline-flex items-center gap-2 mt-4 text-emerald-600 hover:text-emerald-700 font-medium">
                 <i class="ph ph-plus"></i> Add Question
             </a>
         </div>
@@ -107,7 +107,7 @@
                 <p class="text-sm text-emerald-700">This quiz has {{ $quiz->questions->count() }} questions and is ready to go live.</p>
             </div>
         </div>
-        <form action="{{ route('admin.quizzes.publish', $quiz) }}" method="POST">
+        <form action="{{ role_route('role.quizzes.publish', ['quiz' => $quiz]) }}" method="POST">
             @csrf
             <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors shadow-sm">
                 Publish Quiz
@@ -132,7 +132,7 @@
                     orders[item.dataset.id] = index + 1;
                 });
                 
-                fetch('{{ route("admin.quizzes.questions.reorder", $quiz) }}', {
+                fetch('{{ role_route("role.quizzes.questions.reorder", ["quiz" => $quiz]) }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

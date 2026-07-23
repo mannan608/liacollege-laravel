@@ -46,7 +46,7 @@ class QuestionController extends Controller
         }
 
         return redirect()
-            ->route('backend.pages.quiz.questions.index', $quiz)
+            ->to(role_route('role.quizzes.questions.index', ['quiz' => $quiz]))
             ->with('success', 'Question added successfully.');
     }
 
@@ -76,7 +76,7 @@ class QuestionController extends Controller
         }
 
         return redirect()
-            ->route('backend.pages.quiz.questions.index', $quiz)
+            ->to(role_route('role.quizzes.questions.index', ['quiz' => $quiz]))
             ->with('success', 'Question updated successfully.');
     }
 

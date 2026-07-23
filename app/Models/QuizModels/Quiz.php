@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Quiz extends Model
 {
@@ -15,6 +16,8 @@ class Quiz extends Model
         'user_id',
         'title',
         'description',
+        'slug',
+        'status',
         'time_limit_minutes',
         'passing_score',
         'max_attempts',
@@ -29,7 +32,15 @@ class Quiz extends Model
         'show_explanation' => 'boolean',
     ];
 
+    protected static function boot(): void
+    {
+        parent::boot();
+        static::creating(function ($quiz) {
+            $quiz->slug = $quiz->slug ?? Str::slug($quiz->title);
+        });
+    }
 
+    // ─── Relationships ─────────────────────────────
 
     public function creator()
     {
@@ -49,7 +60,24 @@ class Quiz extends Model
     public function userAttempts()
     {
         return $this->hasMany(QuizAttempt::class)->where('user_id', auth()->id());
-    }   
+    }
+
+    // ─── Scopes ─────────────────────────────────────
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    public function scopeDraft($query)
+    {
+        return $query->where('status', 'draft');
+    }
+
+    public function scopeArchived($query)
+    {
+        return $query->where('status', 'archived');
+    }
 
     // ─── Helpers ────────────────────────────────────
 

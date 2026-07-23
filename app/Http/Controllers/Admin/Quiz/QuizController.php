@@ -13,7 +13,7 @@ class QuizController extends Controller
 {
     public function index(): View
     {
-        $quizzes = Quiz::withCount('questions', 'attempts')
+        $quizzes = Quiz::withCount(['questions', 'attempts'])
             ->with('creator')
             ->latest()
             ->paginate(15);
@@ -26,18 +26,18 @@ class QuizController extends Controller
         return view('backend.pages.quiz.quizzes.create');
     }
 
-  public function store(StoreQuizRequest $request, string $role): RedirectResponse
-{
-    $quiz = Quiz::create([
-        ...$request->validated(),
-        'user_id' => auth()->id(),
-    ]);
+    public function store(StoreQuizRequest $request, string $role): RedirectResponse
+    {
+        $quiz = Quiz::create([
+            ...$request->validated(),
+            'user_id' => auth()->id(),
+            'status' => 'draft',
+        ]);
 
- 
-    return redirect()
-            ->route('role.quizzes.questions.index', $quiz)
+        return redirect()
+            ->to(role_route('role.quizzes.questions.index', ['quiz' => $quiz]))
             ->with('success', 'Quiz created! Now add questions.');
-}
+    }
 
     public function show(string $role, Quiz $quiz): View
     {
@@ -56,7 +56,7 @@ class QuizController extends Controller
         $quiz->update($request->validated());
 
         return redirect()
-            ->route('backend.pages.quiz.quizzes.index')
+            ->to(role_route('role.quizzes.index'))
             ->with('success', 'Quiz updated successfully.');
     }
 
@@ -65,7 +65,27 @@ class QuizController extends Controller
         $quiz->delete();
 
         return redirect()
-            ->route('backend.pages.quiz.quizzes.index')
+            ->to(role_route('role.quizzes.index'))
             ->with('success', 'Quiz moved to trash.');
     }
+
+    public function publish(string $role, Quiz $quiz): RedirectResponse
+    {
+        if ($quiz->questions()->count() === 0) {
+            return back()->with('error', 'Add at least one question before publishing.');
+        }
+
+        $quiz->update(['status' => 'published']);
+
+        return back()->with('success', 'Quiz published successfully.');
+    }
+
+    public function archive(string $role, Quiz $quiz): RedirectResponse
+    {
+        $quiz->update(['status' => 'archived']);
+
+        return back()->with('success', 'Quiz archived successfully.');
+    }
+
+ 
 }

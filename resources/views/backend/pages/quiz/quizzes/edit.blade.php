@@ -16,7 +16,7 @@
             </span>
         </div>
         
-        <form action="{{ route('admin.quizzes.update', $quiz) }}" method="POST" class="p-6 space-y-6">
+        <form action="{{ role_route('role.quizzes.update', ['quiz' => $quiz]) }}" method="POST" class="p-6 space-y-6">
             @csrf @method('PUT')
             
             <div>
@@ -79,7 +79,7 @@
             <div class="flex items-center justify-between pt-4 border-t border-gray-200">
                 <div class="flex gap-2">
                     @if($quiz->status !== 'archived')
-                        <form action="{{ route('admin.quizzes.archive', $quiz) }}" method="POST" onsubmit="return confirm('Archive this quiz?')">
+                        <form action="{{ role_route('role.quizzes.archive', ['quiz' => $quiz]) }}" method="POST" onsubmit="return confirm('Archive this quiz?')">
                             @csrf
                             <button type="submit" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg text-sm font-medium transition-colors">
                                 <i class="ph ph-archive-box mr-1"></i> Archive
@@ -88,7 +88,7 @@
                     @endif
                 </div>
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('admin.quizzes.index') }}" class="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors">
+                    <a href="{{ role_route('role.quizzes.index') }}" class="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors">
                         Cancel
                     </a>
                     <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors shadow-sm">

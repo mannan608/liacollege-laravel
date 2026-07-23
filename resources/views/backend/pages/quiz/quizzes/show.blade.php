@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="{{ route('admin.quizzes.edit', $quiz) }}" class="px-4 py-2 bg-amber-50 text-amber-700 rounded-lg hover:bg-amber-100 transition-colors text-sm font-medium">
+                <a href="{{ role_route('role.quizzes.edit', ['quiz' => $quiz]) }}" class="px-4 py-2 bg-amber-50 text-amber-700 rounded-lg hover:bg-amber-100 transition-colors text-sm font-medium">
                     <i class="ph ph-pencil mr-1"></i> Edit
                 </a>
-                <a href="{{ route('admin.quizzes.questions.index', $quiz) }}" class="px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors text-sm font-medium">
+                <a href="{{ role_route('role.quizzes.questions.index', ['quiz' => $quiz]) }}" class="px-4 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors text-sm font-medium">
                     <i class="ph ph-list-dashes mr-1"></i> Questions ({{ $quiz->questions_count }})
                 </a>
             </div>

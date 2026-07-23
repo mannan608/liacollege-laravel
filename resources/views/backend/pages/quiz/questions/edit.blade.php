@@ -7,7 +7,7 @@
             <h3 class="text-lg font-semibold text-gray-800">Edit Question #{{ $question->order }}</h3>
         </div>
         
-        <form action="{{ route('admin.quizzes.questions.update', [$quiz, $question]) }}" method="POST" class="p-6 space-y-6">
+        <form action="{{ role_route('role.quizzes.questions.update', ['quiz' => $quiz, 'question' => $question]) }}" method="POST" class="p-6 space-y-6">
             @csrf @method('PUT')
             
             <div>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200">
-                <a href="{{ route('admin.quizzes.questions.index', $quiz) }}" class="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors">
+                <a href="{{ role_route('role.quizzes.questions.index', ['quiz' => $quiz]) }}" class="px-5 py-2.5 text-gray-600 hover:bg-gray-100 rounded-lg font-medium transition-colors">
                     Cancel
                 </a>
                 <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors shadow-sm">

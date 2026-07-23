@@ -110,6 +110,8 @@ Route::prefix('{role}')
 
         //Quiz Route
         Route::resource('quizzes', QuizController::class);
+        Route::post('quizzes/{quiz}/publish', [QuizController::class, 'publish'])->name('quizzes.publish');
+        Route::post('quizzes/{quiz}/archive', [QuizController::class, 'archive'])->name('quizzes.archive');
 
         // course lessons quiz resource route
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'index'])->name('resources.index');

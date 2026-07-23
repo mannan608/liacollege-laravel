@@ -17,12 +17,12 @@ class QuizController extends Controller
             ->latest()
             ->paginate(12);
 
-        return view('user.quizzes.index', compact('quizzes'));
+        return view('frontend.pages.quiz.index', compact('quizzes'));
     }
 
     public function show(Quiz $quiz): View
     {
-        abort_if($quiz->status !== 'published', 404);
+        // abort_if($quiz->status !== 'published', 404);
 
         $quiz->loadCount('questions');
         
@@ -40,6 +40,6 @@ class QuizController extends Controller
             ->where('status', 'in_progress')
             ->first();
 
-        return view('user.quizzes.show', compact('quiz', 'attempts', 'canRetake', 'hasInProgress'));
+        return view('frontend.pages.quiz.show', compact('quiz', 'attempts', 'canRetake', 'hasInProgress'));
     }
 }

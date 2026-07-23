@@ -31,7 +31,7 @@ class QuizAttemptController extends Controller
             ->first();
 
         if ($existing) {
-            return redirect()->route('attempts.question', [$existing, $existing->quiz->questions->first()]);
+            return redirect()->route('student.attempts.question', [$existing, $existing->quiz->questions->first()]);
         }
 
         // Check retake limit
@@ -52,7 +52,7 @@ class QuizAttemptController extends Controller
             'total_points' => $quiz->totalPoints(),
         ]);
 
-        return redirect()->route('attempts.question', [$attempt, $quiz->questions->first()]);
+        return redirect()->route('student.attempts.question', [$attempt, $quiz->questions->first()]);
     }
 
     public function question(QuizAttempt $attempt, Question $question): View
@@ -67,7 +67,7 @@ class QuizAttemptController extends Controller
 
         $previousAnswer = $attempt->getAnswerForQuestion($question->id);
 
-        return view('user.attempts.question', compact(
+        return view('student.attempts.question', compact(
             'attempt', 'quiz', 'question', 'questions', 
             'currentIndex', 'progress', 'previousAnswer'
         ));
@@ -98,10 +98,10 @@ class QuizAttemptController extends Controller
         $nextQuestion = $questions->get($currentIndex + 1);
 
         if ($nextQuestion) {
-            return redirect()->route('attempts.question', [$attempt, $nextQuestion]);
+            return redirect()->route('student.attempts.question', [$attempt, $nextQuestion]);
         }
 
-        return redirect()->route('attempts.submit', $attempt);
+        return redirect()->route('student.attempts.submit', $attempt);
     }
 
     public function allQuestions(QuizAttempt $attempt): View
@@ -112,7 +112,7 @@ class QuizAttemptController extends Controller
         $quiz = $attempt->quiz->load(['questions.options']);
         $answers = $attempt->answers->keyBy('question_id');
 
-        return view('user.attempts.all', compact('attempt', 'quiz', 'answers'));
+        return view('student.attempts.all', compact('attempt', 'quiz', 'answers'));
     }
 
     public function submitAll(SubmitAllRequest $request, QuizAttempt $attempt): RedirectResponse
@@ -137,7 +137,7 @@ class QuizAttemptController extends Controller
             $this->scoringService->finalizeAttempt($attempt);
         });
 
-        return redirect()->route('attempts.result', $attempt);
+        return redirect()->route('student.attempts.result', $attempt);
     }
 
     public function submit(QuizAttempt $attempt): RedirectResponse
@@ -154,13 +154,13 @@ class QuizAttemptController extends Controller
                 ->first();
 
             return redirect()
-                ->route('attempts.question', [$attempt, $unanswered])
+                ->route('student.attempts.question', [$attempt, $unanswered])
                 ->with('warning', 'Please answer all questions before submitting.');
         }
 
         $this->scoringService->finalizeAttempt($attempt);
 
-        return redirect()->route('attempts.result', $attempt);
+        return redirect()->route('student.attempts.result', $attempt);
     }
 
     public function result(QuizAttempt $attempt): View
@@ -170,7 +170,7 @@ class QuizAttemptController extends Controller
 
         $attempt->load(['quiz.questions.options', 'answers.question']);
 
-        return view('user.attempts.result', compact('attempt'));
+        return view('student.attempts.result', compact('attempt'));
     }
 
     public function history(): View
@@ -182,7 +182,7 @@ class QuizAttemptController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('user.attempts.history', compact('attempts'));
+        return view('student.attempts.history', compact('attempts'));
     }
 
     public function abandon(QuizAttempt $attempt): RedirectResponse
@@ -191,7 +191,7 @@ class QuizAttemptController extends Controller
         
         $attempt->update(['status' => 'abandoned']);
 
-        return redirect()->route('quizzes.index')->with('info', 'Quiz attempt abandoned.');
+        return redirect()->route('student.quizzes.index')->with('info', 'Quiz attempt abandoned.');
     }
 
     // ─── Helpers ────────────────────────────────────
@@ -206,7 +206,7 @@ class QuizAttemptController extends Controller
     {
         if ($attempt->isTimeExpired()) {
             $this->scoringService->finalizeAttempt($attempt, 'timed_out');
-            redirect()->route('attempts.result', $attempt)->send();
+            redirect()->route('student.attempts.result', $attempt)->send();
             exit;
         }
     }

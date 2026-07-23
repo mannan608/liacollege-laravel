@@ -70,23 +70,23 @@
                     <td class="px-6 py-4 text-right">
                         <div class="flex items-center justify-end gap-2">
                             @if($quiz->status === 'draft')
-                                <form action="{{ route('admin.quizzes.publish', $quiz) }}" method="POST" class="inline">
+                                <form action="{{ role_route('role.quizzes.publish', ['quiz' => $quiz]) }}" method="POST" class="inline">
                                     @csrf
                                     <button type="submit" class="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="Publish">
                                         <i class="ph ph-globe text-lg"></i>
                                     </button>
                                 </form>
                             @endif
-                            <a href="{{ route('admin.quizzes.show', $quiz) }}" class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="View">
+                            <a href="{{ role_route('role.quizzes.show', ['quiz' => $quiz]) }}" class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="View">
                                 <i class="ph ph-eye text-lg"></i>
                             </a>
-                            <a href="{{ route('admin.quizzes.edit', $quiz) }}" class="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" title="Edit">
+                            <a href="{{ role_route('role.quizzes.edit', ['quiz' => $quiz]) }}" class="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" title="Edit">
                                 <i class="ph ph-pencil text-lg"></i>
                             </a>
-                            <a href="{{ route('admin.quizzes.questions.index', $quiz) }}" class="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors" title="Questions">
+                            <a href="{{ role_route('role.quizzes.questions.index', ['quiz' => $quiz]) }}" class="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors" title="Questions">
                                 <i class="ph ph-list-dashes text-lg"></i>
                             </a>
-                            <form action="{{ route('admin.quizzes.destroy', $quiz) }}" method="POST" class="inline" onsubmit="return confirm('Delete this quiz?')">
+                            <form action="{{ role_route('role.quizzes.destroy', ['quiz' => $quiz]) }}" method="POST" class="inline" onsubmit="return confirm('Delete this quiz?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
                                     <i class="ph ph-trash text-lg"></i>
