@@ -7,7 +7,7 @@
             <h1 class="text-2xl font-bold text-gray-900">My Quiz History</h1>
             <p class="text-gray-500 mt-1">Track your progress across all quizzes</p>
         </div>
-        <a href="{{ route('quizzes.index') }}" class="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium">
+        <a href="{{ route('student.quizzes.index') }}" class="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium">
             <i class="ph ph-arrow-left"></i> Browse More Quizzes
         </a>
     </div>
@@ -61,7 +61,7 @@
                     <td class="text-right px-6 py-4">
                         <div class="flex items-center justify-end gap-3">
                             <span class="text-sm text-gray-500">{{ $attempt->completed_at->format('M d, Y') }}</span>
-                            <a href="{{ route('attempts.result', $attempt) }}" class="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="View Result">
+                            <a href="{{ route('student.attempts.result', $attempt) }}" class="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="View Result">
                                 <i class="ph ph-eye text-lg"></i>
                             </a>
                         </div>
@@ -82,7 +82,7 @@
         </div>
         <h3 class="text-lg font-medium text-gray-900">No attempts yet</h3>
         <p class="text-gray-500 mt-1 mb-6">Start taking quizzes to see your history here</p>
-        <a href="{{ route('quizzes.index') }}" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-medium transition-colors">
+        <a href="{{ route('student.quizzes.index') }}" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-medium transition-colors">
             <i class="ph ph-rocket-launch"></i> Browse Quizzes
         </a>
     </div>

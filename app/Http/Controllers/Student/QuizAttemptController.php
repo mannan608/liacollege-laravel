@@ -55,6 +55,8 @@ class QuizAttemptController extends Controller
         return redirect()->route('student.attempts.question', [$attempt, $quiz->questions->first()]);
     }
 
+    
+
     public function question(QuizAttempt $attempt, Question $question): View
     {
         $this->authorizeAttempt($attempt);
@@ -73,36 +75,41 @@ class QuizAttemptController extends Controller
         ));
     }
 
-    public function answer(SubmitAnswerRequest $request, QuizAttempt $attempt, Question $question): RedirectResponse
-    {
-        $this->authorizeAttempt($attempt);
-        $this->checkTimer($attempt);
 
-        $selectedOptions = $request->input('options', []);
-        $isCorrect = $question->checkAnswer($selectedOptions);
-        $pointsEarned = $isCorrect ? $question->points : 0;
+public function answer(SubmitAnswerRequest $request, QuizAttempt $attempt, Question $question): RedirectResponse
+{
+    $this->authorizeAttempt($attempt);
+    $this->checkTimer($attempt);
 
-        $attempt->answers()->updateOrCreate(
-            ['question_id' => $question->id],
-            [
-                'selected_options' => $selectedOptions,
-                'is_correct' => $isCorrect,
-                'points_earned' => $pointsEarned,
-            ]
-        );
+    // Cast to integers to prevent string comparison issues
+    $selectedOptions = array_map('intval', $request->input('options', []));
+    
+    $isCorrect = $question->checkAnswer($selectedOptions);
+    $pointsEarned = $isCorrect ? $question->points : 0;
 
-        // Navigate to next question or finish
-        $quiz = $attempt->quiz;
-        $questions = $quiz->questions()->orderBy('order')->get();
-        $currentIndex = $questions->search(fn($q) => $q->id === $question->id);
-        $nextQuestion = $questions->get($currentIndex + 1);
+    $attempt->answers()->updateOrCreate(
+        ['question_id' => $question->id],
+        [
+            'selected_options' => $selectedOptions, // Now stored as integers
+            'is_correct' => $isCorrect,
+            'points_earned' => $pointsEarned,
+        ]
+    );
 
-        if ($nextQuestion) {
-            return redirect()->route('student.attempts.question', [$attempt, $nextQuestion]);
-        }
+    // Navigate to next question or finish
+    $quiz = $attempt->quiz;
+    $questions = $quiz->questions()->orderBy('order')->get();
+    $currentIndex = $questions->search(fn($q) => $q->id === $question->id);
+    $nextQuestion = $questions->get($currentIndex + 1);
 
-        return redirect()->route('student.attempts.submit', $attempt);
+    if ($nextQuestion) {
+        return redirect()->route('student.attempts.question', [$attempt, $nextQuestion]);
     }
+
+    $this->scoringService->finalizeAttempt($attempt);
+
+    return redirect()->route('student.attempts.result', $attempt);
+}
 
     public function allQuestions(QuizAttempt $attempt): View
     {
@@ -112,7 +119,7 @@ class QuizAttemptController extends Controller
         $quiz = $attempt->quiz->load(['questions.options']);
         $answers = $attempt->answers->keyBy('question_id');
 
-        return view('student.attempts.all', compact('attempt', 'quiz', 'answers'));
+        return view('frontend.pages.quiz.attempts.all', compact('attempt', 'quiz', 'answers'));
     }
 
     public function submitAll(SubmitAllRequest $request, QuizAttempt $attempt): RedirectResponse
@@ -170,7 +177,7 @@ class QuizAttemptController extends Controller
 
         $attempt->load(['quiz.questions.options', 'answers.question']);
 
-        return view('student.attempts.result', compact('attempt'));
+        return view('frontend.pages.quiz.attempts.result', compact('attempt'));
     }
 
     public function history(): View
@@ -182,7 +189,7 @@ class QuizAttemptController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('student.attempts.history', compact('attempts'));
+        return view('frontend.pages.quiz.attempts.history', compact('attempts'));
     }
 
     public function abandon(QuizAttempt $attempt): RedirectResponse

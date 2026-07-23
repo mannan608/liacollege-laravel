@@ -14,7 +14,7 @@ class CheckQuizTimer
 
         if ($attempt && $attempt->isInProgress() && $attempt->isTimeExpired()) {
             app(\App\Services\QuizScoringService::class)->finalizeAttempt($attempt, 'timed_out');
-            return redirect()->route('attempts.result', $attempt);
+            return redirect()->route('student.attempts.result', $attempt);
         }
 
         return $next($request);

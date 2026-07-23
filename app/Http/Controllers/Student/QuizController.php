@@ -12,8 +12,8 @@ class QuizController extends Controller
     public function index(): View
     {
         $quizzes = Quiz::published()
-            ->withCount('questions')
-            ->with(['userAttempts' => fn($q) => $q->where('user_id', auth()->id())])
+            // ->withCount('questions')
+            // ->with(['userAttempts' => fn($q) => $q->where('user_id', auth()->id())])
             ->latest()
             ->paginate(12);
 

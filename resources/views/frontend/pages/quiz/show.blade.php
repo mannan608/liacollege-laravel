@@ -6,7 +6,7 @@
     <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
         <a href="{{ route('student.quizzes.index') }}" class="hover:text-gray-700">Quizzes</a>
         <i class="ph ph-caret-right"></i>
-        <span class="text-gray-900 font-medium">{{ $quiz->title }}</span>
+        <span class="text-gray-900 font-medium">{{ $quiz->title }} asasdasd</span>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -55,32 +55,6 @@
                 </div>
             </div>
 
-            {{-- Settings Info --}}
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-                <h3 class="font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                    <i class="ph ph-gear"></i> Quiz Settings
-                </h3>
-                <div class="space-y-3">
-                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                        <span class="text-sm text-gray-600">Shuffle Questions</span>
-                        <span class="text-sm font-medium {{ $quiz->shuffle_questions ? 'text-emerald-600' : 'text-gray-400' }}">
-                            {{ $quiz->shuffle_questions ? 'Yes' : 'No' }}
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                        <span class="text-sm text-gray-600">Show Correct Answers</span>
-                        <span class="text-sm font-medium {{ $quiz->show_correct_answers ? 'text-emerald-600' : 'text-gray-400' }}">
-                            {{ $quiz->show_correct_answers ? 'Yes' : 'No' }}
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between py-2">
-                        <span class="text-sm text-gray-600">Show Explanations</span>
-                        <span class="text-sm font-medium {{ $quiz->show_explanation ? 'text-emerald-600' : 'text-gray-400' }}">
-                            {{ $quiz->show_explanation ? 'Yes' : 'No' }}
-                        </span>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {{-- Sidebar --}}
@@ -138,7 +112,7 @@
                 </h3>
                 <div class="space-y-3">
                     @foreach($attempts as $attempt)
-                    <a href="{{ route('attempts.result', $attempt) }}" class="block p-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all group">
+                    <a href="{{ route('student.attempts.result', $attempt) }}" class="block p-3 rounded-xl border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all group">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-lg {{ $attempt->percentage >= $quiz->passing_score ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-600' }} flex items-center justify-center font-bold text-sm">

@@ -78,18 +78,18 @@
                                 </form>
                             @endif
                             <a href="{{ role_route('role.quizzes.show', ['quiz' => $quiz]) }}" class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="View">
-                                <i class="ph ph-eye text-lg"></i>
+                                show
                             </a>
                             <a href="{{ role_route('role.quizzes.edit', ['quiz' => $quiz]) }}" class="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-colors" title="Edit">
                                 <i class="ph ph-pencil text-lg"></i>
                             </a>
                             <a href="{{ role_route('role.quizzes.questions.index', ['quiz' => $quiz]) }}" class="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors" title="Questions">
-                                <i class="ph ph-list-dashes text-lg"></i>
+                                question
                             </a>
                             <form action="{{ role_route('role.quizzes.destroy', ['quiz' => $quiz]) }}" method="POST" class="inline" onsubmit="return confirm('Delete this quiz?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Delete">
-                                    <i class="ph ph-trash text-lg"></i>
+                                    delete
                                 </button>
                             </form>
                         </div>

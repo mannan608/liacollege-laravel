@@ -229,11 +229,13 @@ Route::prefix('student')
 
         // Quiz Attempt Flow
         Route::post('quizzes/{quiz:slug}/start', [QuizAttemptController::class, 'start'])->name('quizzes.start');
-        Route::get('attempts/{attempt}', [QuizAttemptController::class, 'show'])->name('attempts.show');
+        // Route::get('attempts/{attempt}', [QuizAttemptController::class, 'show'])->name('attempts.show');
 
         // One-by-One Question Flow
         Route::get('attempts/{attempt}/question/{question}', [QuizAttemptController::class, 'question'])->name('attempts.question');
+
         Route::post('attempts/{attempt}/question/{question}/answer', [QuizAttemptController::class, 'answer'])->name('attempts.answer');
+        
         Route::post('attempts/{attempt}/submit', [QuizAttemptController::class, 'submit'])->name('attempts.submit');
 
         // All-at-Once Flow

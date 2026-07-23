@@ -1,92 +1,14 @@
 @extends('frontend.pages.student.layouts.app')
 
 @section('content')
-<div class="max-w-4xl mx-auto" x-data="quizTimer({{ $attempt->timeRemaining() ?? 'null' }})" x-init="start()">
-    {{-- Timer Bar --}}
-    @if($attempt->quiz->time_limit_minutes)
-    <div class="mb-6">
-        <div class="flex items-center justify-between mb-2">
-            <div class="flex items-center gap-2 text-sm font-medium" :class="timeLeft < 60 ? 'text-red-600' : 'text-gray-600'">
-                <i class="ph ph-clock" :class="timeLeft < 60 ? 'animate-pulse' : ''"></i>
-                <span x-text="formatTime(timeLeft)">--:--</span>
-            </div>
-            <span class="text-sm text-gray-500">Question {{ $currentIndex + 1 }} of {{ $questions->count() }}</span>
-        </div>
-        <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div class="h-full rounded-full transition-all duration-1000"
-                 :class="timeLeft < 60 ? 'bg-red-500' : 'bg-emerald-500'"
-                 :style="`width: ${(timeLeft / {{ $attempt->quiz->time_limit_minutes * 60 }}) * 100}%`">
-            </div>
-        </div>
-    </div>
-    @else
-    <div class="flex items-center justify-between mb-6">
-        <span class="text-sm text-gray-500">Question {{ $currentIndex + 1 }} of {{ $questions->count() }}</span>
-    </div>
-    @endif
+<div class="max-w-4xl mx-auto" x-data="quizTimer({{ $attempt->timeRemaining() ?? 'null' }})" x-init="start()"> 
 
-    {{-- Progress Bar --}}
-    <div class="h-1.5 bg-gray-200 rounded-full mb-8 overflow-hidden">
-        <div class="h-full bg-emerald-500 rounded-full transition-all duration-500" style="width: {{ $progress }}%"></div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {{-- Question Navigation Sidebar --}}
-        <div class="lg:col-span-1 order-2 lg:order-1">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 sticky top-24">
-                <h4 class="text-sm font-semibold text-gray-700 mb-3">Questions</h4>
-                <div class="grid grid-cols-5 gap-2">
-                    @foreach($questions as $index => $q)
-                    @php
-                        $isAnswered = $attempt->getAnswerForQuestion($q->id) !== null;
-                        $isCurrent = $q->id === $question->id;
-                    @endphp
-                    <a href="{{ $isAnswered ? route('student.attempts.question', [$attempt, $q]) : '#' }}"
-                       class="aspect-square rounded-lg flex items-center justify-center text-sm font-bold transition-all
-                       {{ $isCurrent ? 'bg-emerald-600 text-white shadow-md' : '' }}
-                       {{ !$isCurrent && $isAnswered ? 'bg-emerald-100 text-emerald-700' : '' }}
-                       {{ !$isCurrent && !$isAnswered ? 'bg-gray-100 text-gray-400' : '' }}
-                       {{ !$isAnswered && !$isCurrent ? 'cursor-not-allowed' : '' }}">
-                        {{ $index + 1 }}
-                    </a>
-                    @endforeach
-                </div>
-                
-                <div class="mt-4 pt-4 border-t border-gray-100">
-                    <div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
-                        <span class="w-3 h-3 rounded bg-emerald-600"></span> Current
-                    </div>
-                    <div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
-                        <span class="w-3 h-3 rounded bg-emerald-100"></span> Answered
-                    </div>
-                    <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <span class="w-3 h-3 rounded bg-gray-100"></span> Not answered
-                    </div>
-                </div>
-
-                {{-- Abandon Button --}}
-                <form action="{{ route('student.attempts.abandon', $attempt) }}" method="POST" class="mt-4" onsubmit="return confirm('Are you sure? Your progress will be lost.')">
-                    @csrf
-                    <button type="submit" class="w-full text-xs text-red-500 hover:text-red-700 py-2 border border-red-200 rounded-lg hover:bg-red-50 transition-colors">
-                        Abandon Quiz
-                    </button>
-                </form>
-            </div>
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">       
 
         {{-- Question Card --}}
         <div class="lg:col-span-3 order-1 lg:order-2">
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                <div class="p-6 md:p-8">
-                    {{-- Question Header --}}
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
-                            {{ str_replace('_', ' ', $question->type) }}
-                        </span>
-                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">
-                            {{ $question->points }} point{{ $question->points > 1 ? 's' : '' }}
-                        </span>
-                    </div>
+                <div class="p-6 md:p-8">                 
 
                     {{-- Question Text --}}
                     <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-relaxed mb-8">

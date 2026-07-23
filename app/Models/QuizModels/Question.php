@@ -52,12 +52,15 @@ class Question extends Model
         return $this->correctOptions()->pluck('id')->toArray();
     }
 
-    public function checkAnswer(array $selectedOptionIds): bool
-    {
-        $correctIds = $this->correctOptionIds();
-        sort($selectedOptionIds);
-        sort($correctIds);
+   public function checkAnswer(array $selectedOptionIds): bool
+{
+    // Cast all to integers for reliable comparison
+    $selectedIds = array_map('intval', $selectedOptionIds);
+    sort($selectedIds);
 
-        return $selectedOptionIds === $correctIds;
-    }
+    $correctIds = array_map('intval', $this->correctOptionIds());
+    sort($correctIds);
+
+    return $selectedIds === $correctIds;
+}
 }

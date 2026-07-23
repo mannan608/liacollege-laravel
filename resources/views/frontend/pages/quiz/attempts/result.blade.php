@@ -80,11 +80,11 @@
 
     {{-- Actions --}}
     <div class="flex items-center justify-center gap-4 mb-8">
-        <a href="{{ route('quizzes.index') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors">
+        <a href="{{ route('student.quizzes.index') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors">
             <i class="ph ph-arrow-left"></i> Back to Quizzes
         </a>
         @if($attempt->quiz->canRetake(auth()->user()))
-        <form action="{{ route('quizzes.start', $attempt->quiz) }}" method="POST">
+        <form action="{{ route('student.quizzes.start', $attempt->quiz) }}" method="POST">
             @csrf
             <button type="submit" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium transition-colors shadow-sm">
                 <i class="ph ph-arrow-counter-clockwise"></i> Retake Quiz
