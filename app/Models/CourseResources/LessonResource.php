@@ -34,6 +34,7 @@ class LessonResource extends Model
         'duration' => 'integer',
         'sort_order' => 'integer',
         'status' => 'boolean',
+        'description' => 'string',
     ];
 
     public function section(): BelongsTo

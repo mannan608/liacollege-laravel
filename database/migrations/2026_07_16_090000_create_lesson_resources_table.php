@@ -18,7 +18,7 @@ return new class extends Migration
 
     $table->string('title');
 
-    $table->text('description')->nullable();
+    $table->longText('description')->nullable();
 
     $table->string('url')->nullable();
 
