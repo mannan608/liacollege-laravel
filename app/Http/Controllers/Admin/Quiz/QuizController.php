@@ -18,53 +18,54 @@ class QuizController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('admin.quizzes.index', compact('quizzes'));
+        return view('backend.pages.quiz.quizzes.index', compact('quizzes'));
     }
 
-    public function create(): View
+    public function create(string $role): View
     {
-        return view('admin.quizzes.create');
+        return view('backend.pages.quiz.quizzes.create');
     }
 
-    public function store(StoreQuizRequest $request): RedirectResponse
-    {
-        $quiz = Quiz::create(array_merge(
-            $request->validated(),
-            ['user_id' => auth()->id()]
-        ));
+  public function store(StoreQuizRequest $request, string $role): RedirectResponse
+{
+    $quiz = Quiz::create([
+        ...$request->validated(),
+        'user_id' => auth()->id(),
+    ]);
 
-        return redirect()
-            ->route('admin.quizzes.questions.index', $quiz)
+ 
+    return redirect()
+            ->route('role.quizzes.questions.index', $quiz)
             ->with('success', 'Quiz created! Now add questions.');
-    }
+}
 
-    public function show(Quiz $quiz): View
+    public function show(string $role, Quiz $quiz): View
     {
         $quiz->load(['questions.options', 'attempts' => fn($q) => $q->latest()->limit(10)]);
         
-        return view('admin.quizzes.show', compact('quiz'));
+        return view('backend.pages.quiz.quizzes.show', compact('quiz'));
     }
 
-    public function edit(Quiz $quiz): View
+    public function edit(string $role, Quiz $quiz): View
     {
-        return view('admin.quizzes.edit', compact('quiz'));
+        return view('backend.pages.quiz.quizzes.edit', compact('quiz'));
     }
 
-    public function update(UpdateQuizRequest $request, Quiz $quiz): RedirectResponse
+    public function update(UpdateQuizRequest $request, string $role, Quiz $quiz): RedirectResponse
     {
         $quiz->update($request->validated());
 
         return redirect()
-            ->route('admin.quizzes.index')
+            ->route('backend.pages.quiz.quizzes.index')
             ->with('success', 'Quiz updated successfully.');
     }
 
-    public function destroy(Quiz $quiz): RedirectResponse
+    public function destroy(string $role, Quiz $quiz): RedirectResponse
     {
         $quiz->delete();
 
         return redirect()
-            ->route('admin.quizzes.index')
+            ->route('backend.pages.quiz.quizzes.index')
             ->with('success', 'Quiz moved to trash.');
     }
 }

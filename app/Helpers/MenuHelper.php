@@ -16,27 +16,27 @@ class MenuHelper
                 'route' => 'role.dashboard',
                 'permission' => 'dashboard.view',
             ],
-            [
-                'name' => 'CMS Manage',
-                'icon' => 'pages',
-                'subItems' => [
-                    [
-                        'name' => 'SEOs',
-                        'route' => 'role.seo.index',
-                        'permission' => 'seo.list',
-                    ],
-                    [
-                        'name' => 'Blogs',
-                        'route' => 'role.blogs.index',
-                        'permission' => 'blog.list',
-                    ],
-                    [
-                        'name' => 'Events',
-                        'route' => 'role.events.index',
-                        'permission' => 'event.list',
-                    ],
-                ],
-            ],
+            // [
+            //     'name' => 'CMS Manage',
+            //     'icon' => 'pages',
+            //     'subItems' => [
+            //         [
+            //             'name' => 'SEOs',
+            //             'route' => 'role.seo.index',
+            //             'permission' => 'seo.list',
+            //         ],
+            //         [
+            //             'name' => 'Blogs',
+            //             'route' => 'role.blogs.index',
+            //             'permission' => 'blog.list',
+            //         ],
+            //         [
+            //             'name' => 'Events',
+            //             'route' => 'role.events.index',
+            //             'permission' => 'event.list',
+            //         ],
+            //     ],
+            // ],
            
             [
                 'name' => 'Access Control',
@@ -102,7 +102,12 @@ class MenuHelper
                         'name' => 'Course Slot',
                         'route' => 'role.course-slots.index',
                         'permission' => 'course-slot.list',
-                    ],                 
+                    ],
+                    [
+                        'name' => 'Quizs',
+                        'route' => 'role.quizzes.index',
+                        'permission' => 'quizzes.list',
+                    ],              
                 ],
             ],
             [

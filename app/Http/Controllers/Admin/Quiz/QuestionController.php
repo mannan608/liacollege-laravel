@@ -13,19 +13,19 @@ use App\Models\QuizModels\Quiz;
 
 class QuestionController extends Controller
 {
-    public function index(Quiz $quiz): View
+    public function index(string $role, Quiz $quiz): View
     {
         $quiz->load(['questions.options']);
         
-        return view('admin.questions.index', compact('quiz'));
+        return view('backend.pages.quiz.questions.index', compact('quiz'));
     }
 
-    public function create(Quiz $quiz): View
+    public function create(string $role, Quiz $quiz): View
     {
-        return view('admin.questions.create', compact('quiz'));
+        return view('backend.pages.quiz.questions.create', compact('quiz'));
     }
 
-    public function store(StoreQuestionRequest $request, Quiz $quiz): RedirectResponse
+    public function store(StoreQuestionRequest $request,string $role,Quiz $quiz): RedirectResponse
     {
         $maxOrder = $quiz->questions()->max('order') ?? 0;
 
@@ -46,16 +46,16 @@ class QuestionController extends Controller
         }
 
         return redirect()
-            ->route('admin.quizzes.questions.index', $quiz)
+            ->route('backend.pages.quiz.questions.index', $quiz)
             ->with('success', 'Question added successfully.');
     }
 
-    public function edit(Quiz $quiz, Question $question): View
+    public function edit(string $role, Quiz $quiz,Question $question): View
     {
-        return view('admin.questions.edit', compact('quiz', 'question'));
+        return view('backend.pages.quiz.questions.edit', compact('quiz', 'question'));
     }
 
-    public function update(StoreQuestionRequest $request, Quiz $quiz, Question $question): RedirectResponse
+    public function update(StoreQuestionRequest $request,string $role, Quiz $quiz,  Question $question): RedirectResponse
     {
         $question->update([
             'question_text' => $request->question_text,
@@ -76,11 +76,11 @@ class QuestionController extends Controller
         }
 
         return redirect()
-            ->route('admin.quizzes.questions.index', $quiz)
+            ->route('backend.pages.quiz.questions.index', $quiz)
             ->with('success', 'Question updated successfully.');
     }
 
-    public function destroy(Quiz $quiz, Question $question): RedirectResponse
+    public function destroy(string $role,Quiz $quiz, Question $question): RedirectResponse
     {
         $question->delete();
 
@@ -92,7 +92,7 @@ class QuestionController extends Controller
         return back()->with('success', 'Question deleted.');
     }
 
-    public function reorder(Request $request, Quiz $quiz): JsonResponse
+    public function reorder(Request $request,string $role, Quiz $quiz): JsonResponse
     {
         $request->validate(['orders' => ['required', 'array']]);
         

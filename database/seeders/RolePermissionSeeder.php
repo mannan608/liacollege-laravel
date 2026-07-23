@@ -36,7 +36,7 @@ class RolePermissionSeeder extends Seeder
 
             // 'permission.list',
             // 'permission.sync',
-            
+
             // Blog permissions
             'blog.list',
             'blog.view',
@@ -84,7 +84,7 @@ class RolePermissionSeeder extends Seeder
             'provider.edit',
             'provider.delete',
 
-          
+
 
             // Course Resource permissions
             'course.resource.create',
@@ -92,7 +92,7 @@ class RolePermissionSeeder extends Seeder
             'course.resource.edit',
             'course.resource.delete',
             'course.resource.list',
-            
+
 
             //contact
             'contact.list',
@@ -135,7 +135,7 @@ class RolePermissionSeeder extends Seeder
             'course-categories.status.change',
             'course-categories.manage',
 
-              // Course permissions
+            // Course permissions
             'course.list',
             'course.create',
             'course.view',
@@ -153,13 +153,22 @@ class RolePermissionSeeder extends Seeder
             'course-slot.delete',
             'course-slot.status.change',
 
-                'modules.manage',
+            'modules.manage',
             'modules.list',
             'modules.view',
             'modules.create',
             'modules.edit',
             'modules.delete',
             'modules.status.change',
+
+            // Quiz permissions
+            'quizzes.list',
+            'quizzes.create',
+            'quizzes.view',
+            'quizzes.edit',
+            'quizzes.delete',
+            'quizzes.status.change',
+            'quizzes.manage',
 
         ];
 
@@ -173,17 +182,17 @@ class RolePermissionSeeder extends Seeder
         $superAdmin = Role::firstOrCreate([
             'name' => config('rbac.super_admin_role'),
             'guard_name' => config('rbac.default_guard', 'web'),
-        ]);      
+        ]);
 
         $adminRole = Role::firstOrCreate([
             'name' => 'admin',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
-         $defaultRole = Role::firstOrCreate([
+        $defaultRole = Role::firstOrCreate([
             'name' => 'default',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
-         $studentRole = Role::firstOrCreate([
+        $studentRole = Role::firstOrCreate([
             'name' => 'student',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
