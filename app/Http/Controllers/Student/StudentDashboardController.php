@@ -92,8 +92,7 @@ public function studentPayment()
         ->sortBy('created_at')
         ->first();
 
-    return view(
-        'frontend.pages.student.billing',
+    return view('student.billing.index',
         compact(
             'payments',
             'pendingPayments',
@@ -103,6 +102,8 @@ public function studentPayment()
         )
     );
 }
+
+
 
 
 }

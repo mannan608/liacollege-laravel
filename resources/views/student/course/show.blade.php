@@ -154,7 +154,8 @@
                 </div>
             </div>
 
-@include('frontend.pages.student.courses.course-module-sections', ['course' => $course])
+     @include('student.course.partials.module-sections', ['course' => $course])
+
 
             
             <!-- Practical Session Schedule -->

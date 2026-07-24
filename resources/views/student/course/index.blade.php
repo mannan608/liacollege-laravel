@@ -151,7 +151,7 @@
     </div>
 
    <div class="mt-10">
-     @include('frontend.pages.student.courses.course-module-sections', ['course' => $course])
+     @include('student.course.partials.module-sections', ['course' => $course])
    </div>
 
 

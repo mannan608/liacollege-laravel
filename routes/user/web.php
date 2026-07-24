@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
+use App\Http\Controllers\Student\HelpController;
 use App\Http\Controllers\Student\LearningPortalController;
+use App\Http\Controllers\Student\ProfileController;
 use App\Http\Controllers\Student\QuizAttemptController;
 use App\Http\Controllers\Student\QuizController;
 use App\Http\Controllers\Student\StudentDashboardController;
@@ -166,12 +168,14 @@ Route::prefix('student')
         Route::get('/dashboard', [StudentDashboardController::class, 'dashboard'])
             ->name('dashboard');
 
-        Route::get('/profile', [StudentController::class, 'profileEdit'])
-            ->name('profile');
-        Route::get('/profile/edit', [StudentController::class, 'profileEdit'])
-            ->name('profile.edit');
-        Route::put('/profile', [StudentController::class, 'studentProfileUpdate'])
-            ->name('profile.update');
+        // Route::get('/profile', [StudentController::class, 'profileEdit'])->name('profile');
+        // Route::get('/profile/edit', [StudentController::class, 'profileEdit'])->name('profile.edit');
+        // Route::put('/profile', [StudentController::class, 'studentProfileUpdate'])->name('profile.update');
+        // profile 
+         Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+        Route::get('/profile/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
+        Route::put('/profile', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
+
         Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
             ->name('rows.submit');
         Route::get('rows/{row}/download', [StudentController::class, 'download'])
@@ -184,8 +188,8 @@ Route::prefix('student')
         // Route::get('/document', [StudentDocumentController::class, 'studentDocumnet'])
         //     ->name('document');
 
-        Route::get('/billing', [StudentController::class, 'studentBilling'])
-            ->name('billing');
+        // Route::get('/billing', [StudentController::class, 'studentBilling'])
+        //     ->name('billing');
 
         Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])
             ->name('enrollment-courses');
@@ -245,4 +249,11 @@ Route::prefix('student')
 
         // Abandon attempt
         Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
+
+// help route
+        Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
+        Route::get('/links', [HelpController::class, 'portalLink'])->name('links');
+        Route::get('/technical-reports', [HelpController::class, 'portaReports'])->name('technical-reports');
+        Route::get('/lodge-formal-complaint', [HelpController::class, 'lodgeFormalComplaint'])->name('lodge-formal-complaint');
+        Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
     });
