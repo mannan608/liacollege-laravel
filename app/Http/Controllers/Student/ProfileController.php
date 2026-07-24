@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Student;
 
 
 use App\Http\Controllers\Controller;
+use App\Traits\HandlesFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+     use HandlesFiles;
     public function profile(Request $request): View
     {
         return view('student.profile.index', [
