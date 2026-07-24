@@ -2,7 +2,7 @@
 
 namespace App\Models\CourseResources;
 
-use App\Models\Quiz;
+use App\Models\QuizModels\Quiz;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -34,6 +34,7 @@ class LessonResource extends Model
         'duration' => 'integer',
         'sort_order' => 'integer',
         'status' => 'boolean',
+        'description' => 'string',
     ];
 
     public function section(): BelongsTo
