@@ -27,6 +27,6 @@ class HelpController extends Controller
     }
     public function contactAdmin()
     {
-        return view('student.help.lodge-formal-complaint');
+        return view('student.help.contact-admin');
     }
 }
