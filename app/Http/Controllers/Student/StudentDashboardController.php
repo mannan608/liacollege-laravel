@@ -26,15 +26,6 @@ class StudentDashboardController extends Controller
         return view('student.dashboard.index', compact('enrollments'));
     }
 
-    
-
-    public function CourseQuizModule(Course $course,Module $module)
-{
-    return view('student.course.module.quiz.index',
-        compact('course', 'module')
-    );
-}
-
 
 public function studentPayment()
 {

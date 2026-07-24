@@ -173,7 +173,7 @@ Route::prefix('student')
         // Route::get('/profile/edit', [StudentController::class, 'profileEdit'])->name('profile.edit');
         // Route::put('/profile', [StudentController::class, 'studentProfileUpdate'])->name('profile.update');
         // profile 
-         Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+        Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
         Route::get('/profile/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
 
@@ -199,7 +199,7 @@ Route::prefix('student')
         Route::get('/courses/{course}/content-modules', [CourseController::class, 'ContentModules'])->name('content-modules');
         Route::get('/courses/{course}/content-modules/{module}', [CourseController::class, 'ContentModule'])->name('content-module');
 
-         Route::get('/learning-meterial/{document}/view', [CourseController::class, 'viewlearningDocument'])->name('learning-document.view');
+        Route::get('/learning-meterial/{document}/view', [CourseController::class, 'viewlearningDocument'])->name('learning-document.view');
         //  Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
 
         // Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])->name('course-details');
@@ -209,8 +209,8 @@ Route::prefix('student')
 
         Route::get('/courses/{course}/quiz-modules/{module}', [CourseController::class, 'CourseQuizModule'])
             ->name('course-quiz-module');
-            //     Route::get('/courses/{course}/quiz-modules/{module}', [StudentDashboardController::class, 'CourseQuizModule'])
-            // ->name('course-quiz-module');
+        //     Route::get('/courses/{course}/quiz-modules/{module}', [StudentDashboardController::class, 'CourseQuizModule'])
+        // ->name('course-quiz-module');
 
         Route::get('/courses/{course}/quiz-modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
@@ -246,7 +246,7 @@ Route::prefix('student')
         Route::get('attempts/{attempt}/question/{question}', [QuizAttemptController::class, 'question'])->name('attempts.question');
 
         Route::post('attempts/{attempt}/question/{question}/answer', [QuizAttemptController::class, 'answer'])->name('attempts.answer');
-        
+
         Route::post('attempts/{attempt}/submit', [QuizAttemptController::class, 'submit'])->name('attempts.submit');
 
         // All-at-Once Flow
@@ -260,7 +260,7 @@ Route::prefix('student')
         // Abandon attempt
         Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
 
-// help route
+        // help route
         Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
         Route::get('/links', [HelpController::class, 'portalLink'])->name('links');
         Route::get('/technical-reports', [HelpController::class, 'portaReports'])->name('technical-reports');
