@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseContentCategory;
 use App\Models\CourseResources\Module;
+use App\Models\Document;
 use Illuminate\Http\Request;
+
 
 class CourseController extends Controller
 {
@@ -38,23 +40,25 @@ class CourseController extends Controller
         return view('student.course.show', compact('course','courseContentModule','courseQuizModule'));
     }
 
-//     public function CourseQuizModule(Course $course,Module $module)
-// {
-//     return view('student.course.module.quiz.index',
-//         compact('course', 'module')
-//     );
-// }
+    public function CourseQuizModule(Course $course,Module $module)
+{
+    return view('student.course.module.quiz.index',
+        compact('course', 'module')
+    );
+}
 
-// public function viewlearningDocument(Document $document)
-// {
+public function viewlearningDocument(Document $document)
+{
+
+ $student = auth()->user()->student;
   
-//  abort_unless(auth()->check(), 403);
-//     $path = public_path($document->file);
+ abort_unless(auth()->check(), 403);
+    $path = public_path($document->file);
 
-//     abort_unless(file_exists($path), 404);
+    abort_unless(file_exists($path), 404);
 
-//     return response()->file($path);
-// }
+    return response()->file($path);
+}
 
 
 

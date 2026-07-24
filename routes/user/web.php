@@ -199,15 +199,20 @@ Route::prefix('student')
         Route::get('/courses/{course}/content-modules', [CourseController::class, 'ContentModules'])->name('content-modules');
         Route::get('/courses/{course}/content-modules/{module}', [CourseController::class, 'ContentModule'])->name('content-module');
 
+         Route::get('/learning-meterial/{document}/view', [CourseController::class, 'viewlearningDocument'])->name('learning-document.view');
+        //  Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
+
         // Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])->name('course-details');
 
         //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
         // ->name('course-module');
 
-        Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseQuizModule'])
+        Route::get('/courses/{course}/quiz-modules/{module}', [CourseController::class, 'CourseQuizModule'])
             ->name('course-quiz-module');
+            //     Route::get('/courses/{course}/quiz-modules/{module}', [StudentDashboardController::class, 'CourseQuizModule'])
+            // ->name('course-quiz-module');
 
-        Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
+        Route::get('/courses/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
 
         Route::get(

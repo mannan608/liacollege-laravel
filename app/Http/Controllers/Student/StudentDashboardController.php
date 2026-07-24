@@ -26,31 +26,7 @@ class StudentDashboardController extends Controller
         return view('student.dashboard.index', compact('enrollments'));
     }
 
-    public function enrollmentCourses(Request $request)
-{
-     $student = auth()->user()->student;
-
-        $enrollments = $student->enrollments()->with(['slot', 'slot.course'])->latest()->get();
-
-        $courseContentModule = CourseContentCategory::all();
-        $courseQuizModule = Module::all();
-
-
-        // return $courseQuizModule;
-    return view('student.course.index', compact('enrollments','courseContentModule','courseQuizModule'));
-}
-
-
-    public function CourseDetails(Course $course)
-    {
-        $course->load([
-        'documents',
-        'modules.lessons',
-    ]);
-        //    return $course;
-
-        return view('student.course.show', compact('course'));
-    }
+    
 
     public function CourseQuizModule(Course $course,Module $module)
 {
@@ -58,18 +34,6 @@ class StudentDashboardController extends Controller
         compact('course', 'module')
     );
 }
-
-public function viewlearningDocument(Document $document)
-{
-  
- abort_unless(auth()->check(), 403);
-    $path = public_path($document->file);
-
-    abort_unless(file_exists($path), 404);
-
-    return response()->file($path);
-}
-
 
 
 public function studentPayment()
