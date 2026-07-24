@@ -1,4 +1,4 @@
-@extends('frontend.pages.student.layouts.app')
+@extends('student.layouts.app')
 
 @section('content')
 
@@ -151,7 +151,7 @@
     </div>
 
    <div class="mt-10">
-     @include('frontend.pages.student.courses.course-module-sections', ['course' => $course])
+     @include('student.course.partials.module-sections', ['course' => $course,'courseContentModules' => $courseContentModule,'courseQuizModules' => $courseQuizModule])
    </div>
 
 

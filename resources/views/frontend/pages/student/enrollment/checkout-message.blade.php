@@ -34,7 +34,7 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-sm text-gray-500">Course</p>
-                                <p class="font-semibold text-lg text-slate-800">HLTAID011 Provide First Aid</p>
+                                <p class="font-semibold text-lg text-slate-800">{{ $enrollment->slot->course->name }}</p>
                             </div>
                             <div class="text-right">
                                 <p class="text-sm text-gray-500">Booking ID</p>

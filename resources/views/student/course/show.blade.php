@@ -1,4 +1,4 @@
-@extends('frontend.pages.student.layouts.app')
+@extends('student.layouts.app')
 
 @section('content')
     <div class="min-h-screen bg-gray-50 dark:bg-gray-950">
@@ -23,7 +23,6 @@
                     <h1 class="text-2xl font-medium text-gray-900 dark:text-white tracking-tight leading-tight">
                         {{ $course->name }}
                     </h1>
-                    <p class="text-gray-500 dark:text-gray-400 mt-2 text-base">First Aid & CPR Certification</p>
                 </div>
 
                 <!-- Action Buttons -->
@@ -154,9 +153,7 @@
                 </div>
             </div>
 
-@include('frontend.pages.student.courses.course-module-sections', ['course' => $course])
-
-            
+     @include('student.course.partials.module-sections', ['course' => $course,'courseContentModules' => $courseContentModule,'courseQuizModules' => $courseQuizModule])
             <!-- Practical Session Schedule -->
             <div class="mb-8">
                 <h4 class="text-[20px] font-medium text-gray-900 dark:text-white mb-3">Practical Session Schedule</h4>

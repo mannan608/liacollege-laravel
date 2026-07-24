@@ -10,7 +10,8 @@
             'lesson' => $lesson,
         ]);
     @endphp
-    <form action="{{ $formAction }}" method="POST" enctype="multipart/form-data" x-data="sectionBuilder()">
+    <form action="{{ $formAction }}" method="POST" enctype="multipart/form-data"
+        x-data="sectionBuilder(@js($errors->getMessages()))">
 
         @csrf
 
@@ -33,6 +34,12 @@
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                {{ session('error') }}
             </div>
         @endif
 
@@ -347,10 +354,21 @@
 
     </form>
 
+    @if ($errors->any())
+    <div class="bg-red-100 p-4 rounded">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <script>
-        function sectionBuilder() {
+        function sectionBuilder(initialErrors = {}) {
             return {
                 sections: [],
+                errors: initialErrors || {},
                 nextId: 1,
                 nextItemId: 1,
 

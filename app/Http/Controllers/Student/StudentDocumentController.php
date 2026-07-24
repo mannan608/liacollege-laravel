@@ -22,8 +22,7 @@ public function studentDocument()
         ->latest()
         ->get();
 
-    return view(
-        'frontend.pages.student.certificates.my-document',
+    return view('student.documents.document',
         compact('documents')
     );
 }
@@ -123,6 +122,11 @@ public function tasks()
     abort_unless(auth()->check(), 403);
 
    return view('frontend.pages.student.tasks.index');
+}
+
+public function studentCertificate(){
+    return view('student.documents.certificate');
+    
 }
 
 }

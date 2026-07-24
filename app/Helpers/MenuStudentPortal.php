@@ -41,7 +41,7 @@ class MenuStudentPortal
                     ],
                     [
                         'name' => 'My Documents',
-                         'path' => 'student/document',
+                         'path' => 'student/student-document',
                     ],
                 ],
             ],
@@ -83,23 +83,23 @@ class MenuStudentPortal
                 'subItems' => [
                     [
                         'name' => 'Student Portal Guide',
-                        'route' => '',
+                        'path' => 'student/portal-guide-line',
                     ],
                     [
                         'name' => 'Links',
-                        'route' => '',
+                        'path' => 'student/links',
                     ],
                     [
                         'name' => 'Report Technical Problem or Error',
-                        'route' => '',
+                        'path' => 'student/technical-reports',
                     ],
                     [
                         'name' => 'Lodge Formal Complaint or Appeal',
-                        'route' => '',
+                        'path' => 'student/lodge-formal-complaint',
                     ],
                     [
                         'name' => 'Contact Admin',
-                        'route' => '',
+                        'path' => 'student/contact-admin',
                     ],
                 ],
             ],
