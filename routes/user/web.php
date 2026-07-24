@@ -212,7 +212,7 @@ Route::prefix('student')
             //     Route::get('/courses/{course}/quiz-modules/{module}', [StudentDashboardController::class, 'CourseQuizModule'])
             // ->name('course-quiz-module');
 
-        Route::get('/courses/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
+        Route::get('/courses/{course}/quiz-modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
 
         Route::get(
