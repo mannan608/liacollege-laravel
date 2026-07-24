@@ -64,10 +64,16 @@ class Course extends Model
 {
     return $this->hasMany(CourseSlot::class);
 }
-  public function coursecontentcategories()
+    // public function coursecontentcategories()
+    // {
+    //     return $this->hasMany(CourseContentCategory::class);
+    // }
+
+    public function coursecontentcategories()
     {
-        return $this->hasMany(CourseContentCategory::class);
+        return $this->hasMany(CourseContentCategory::class, 'course_id');
     }
+
       public function modules(): HasMany
     {
         return $this->hasMany(Module::class)

@@ -192,11 +192,14 @@ Route::prefix('student')
         // Route::get('/billing', [StudentController::class, 'studentBilling'])
         //     ->name('billing');
 
-        Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])->name('enrollment-courses');
+        // Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])->name('enrollment-courses');
 
+        Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+        Route::get('/courses/{course}', [CourseController::class, 'show'])->name('course-details');
         Route::get('/courses/{course}/content-modules', [CourseController::class, 'ContentModules'])->name('content-modules');
+        Route::get('/courses/{course}/content-modules/{module}', [CourseController::class, 'ContentModule'])->name('content-module');
 
-        Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])->name('course-details');
+        // Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])->name('course-details');
 
         //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
         // ->name('course-module');

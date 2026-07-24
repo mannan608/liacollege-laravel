@@ -11,8 +11,7 @@
                             class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden">
                             <div class="px-6 py-5 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
                                 <div class="flex items-center gap-3">
-                                    <span class="font-medium text-gray-900 dark:text-white">HLTAID011 Provide First
-                                        Aid</span>
+                                    <span class="font-medium text-gray-900 dark:text-white"> <span class="font-medium text-gray-900 dark:text-white">{{$course->name}}</span></span>
                                 </div>
                                 <a href="{{ route('student.content-modules', ['course' => $course]) }}" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100
                                                 text-white dark:text-gray-900 rounded-lg text-xs font-medium
@@ -33,20 +32,20 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                                    @foreach ($course->modules as $module)
+                                    @foreach ($courseContentModules as $module)
                                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                                             <td class="pl-6 py-5">
                                                 <div class="font-medium text-gray-900 dark:text-white">
-                                                    {{ $module->title }}
+                                                    {{ $module->name }}
                                                 </div>
-                                                <div class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">eLearning
+                                                {{-- <div class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">eLearning
                                                     Presentation
                                                     (SCORM)
-                                                </div>
+                                                </div> --}}
                                             </td>
 
                                             <td class="pr-6 text-right">
-                                                <a href="{{ route('student.course-quiz-module', [
+                                                <a href="{{ route('student.content-module', [
                                                     'course' => $course->id,
                                                     'module' => $module->id,
                                                 ]) }}"
@@ -78,8 +77,7 @@
                                 class="px-6 py-5 flex items-center justify-between border-b border-gray-200 dark:border-gray-800">
                                 <div class="flex items-center gap-3">
 
-                                    <span class="font-medium text-gray-900 dark:text-white">HLTAID011 Provide First
-                                        Aid</span>
+                                    <span class="font-medium text-gray-900 dark:text-white">{{$course->name}}</span>
                                 </div>
                             </div>
 
@@ -98,7 +96,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                                    @foreach ($course->modules as $module)
+                                    @foreach ($courseQuizModules as $module)
                                         <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                                             <td class="pl-6 py-5">
                                                 <div class="font-medium text-gray-900 dark:text-white">

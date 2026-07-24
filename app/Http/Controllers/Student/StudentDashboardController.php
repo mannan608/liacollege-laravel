@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseContentCategory;
 use App\Models\CourseResources\Module;
 use App\Models\Document;
 use App\Models\Payment;
@@ -30,8 +31,13 @@ class StudentDashboardController extends Controller
      $student = auth()->user()->student;
 
         $enrollments = $student->enrollments()->with(['slot', 'slot.course'])->latest()->get();
-        // return $enrollments;
-    return view('student.course.index', compact('enrollments'));
+
+        $courseContentModule = CourseContentCategory::all();
+        $courseQuizModule = Module::all();
+
+
+        // return $courseQuizModule;
+    return view('student.course.index', compact('enrollments','courseContentModule','courseQuizModule'));
 }
 
 
@@ -102,8 +108,5 @@ public function studentPayment()
         )
     );
 }
-
-
-
 
 }
