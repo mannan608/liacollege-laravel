@@ -230,7 +230,7 @@ Route::prefix('student')
         Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
         Route::get('/tasks', [StudentDocumentController::class,    'tasks'])->name('tasks.index');
 
-        Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
+        // Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
         Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
 
 
