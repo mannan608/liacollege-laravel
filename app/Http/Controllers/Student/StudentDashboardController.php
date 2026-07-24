@@ -22,8 +22,18 @@ class StudentDashboardController extends Controller
 
         // return $enrollments;
 
-        return view('frontend.pages.student.dashboard', compact('enrollments'));
+        return view('student.dashboard.index', compact('enrollments'));
     }
+
+    public function enrollmentCourses(Request $request)
+{
+     $student = auth()->user()->student;
+
+        $enrollments = $student->enrollments()->with(['slot', 'slot.course'])->latest()->get();
+        // return $enrollments;
+    return view('student.course.index', compact('enrollments'));
+}
+
 
     public function CourseDetails(Course $course)
     {
@@ -33,13 +43,12 @@ class StudentDashboardController extends Controller
     ]);
         //    return $course;
 
-        return view('frontend.pages.student.courses.show', compact('course'));
+        return view('student.course.show', compact('course'));
     }
 
-    public function CourseModule(Course $course,Module $module)
+    public function CourseQuizModule(Course $course,Module $module)
 {
-    return view(
-        'frontend.pages.student.course-module.index',
+    return view('student.course.module.quiz.index',
         compact('course', 'module')
     );
 }
@@ -55,14 +64,7 @@ public function viewlearningDocument(Document $document)
     return response()->file($path);
 }
 
-public function enrollmentCourses(Request $request)
-{
-     $student = auth()->user()->student;
 
-        $enrollments = $student->enrollments()->with(['slot', 'slot.course'])->latest()->get();
-        // return $enrollments;
-    return view('frontend.pages.student.courses.index', compact('enrollments'));
-}
 
 public function studentPayment()
 {

@@ -31,8 +31,7 @@ class LearningPortalController extends Controller
         $lesson = $module->lessons->first();
         // return $lesson;
 
-        return view(
-            'frontend.pages.student.learning-portal.index',
+        return view('student.course.module.quiz.portal',
             compact('course', 'module', 'lesson')
         );
     }
@@ -55,8 +54,7 @@ class LearningPortalController extends Controller
         // return $lesson;
 
 
-        return view(
-            'frontend.pages.student.learning-portal.index',
+       return view('student.course.module.quiz.portal',
             compact('course', 'module', 'lesson')
         );
     }

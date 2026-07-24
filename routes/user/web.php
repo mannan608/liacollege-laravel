@@ -180,10 +180,9 @@ Route::prefix('student')
             ->name('rows.view');
 
 
-        Route::get('/certificate', [StudentController::class, 'studentCertificate'])
-            ->name('certificate');
-        Route::get('/document', [StudentController::class, 'studentDocumnet'])
-            ->name('document');
+        Route::get('/certificate', [StudentDocumentController::class, 'studentCertificate'])->name('certificate');
+        // Route::get('/document', [StudentDocumentController::class, 'studentDocumnet'])
+        //     ->name('document');
 
         Route::get('/billing', [StudentController::class, 'studentBilling'])
             ->name('billing');
@@ -196,8 +195,8 @@ Route::prefix('student')
         //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
         // ->name('course-module');
 
-        Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseModule'])
-            ->name('course-module');
+        Route::get('/courses/{course}/modules/{module}', [StudentDashboardController::class, 'CourseQuizModule'])
+            ->name('course-quiz-module');
 
         Route::get('/courses/{course}/modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
@@ -209,10 +208,8 @@ Route::prefix('student')
 
         //student documnet
 
-        Route::get('/student-document', [StudentDocumentController::class, 'studentDocument'])
-            ->name('student-document');
-        Route::post('/student-document', [StudentDocumentController::class, 'storeStudentDocument'])
-            ->name('student-document');
+        Route::get('/student-document', [StudentDocumentController::class, 'studentDocument'])->name('student-document');
+        Route::post('/student-document', [StudentDocumentController::class, 'storeStudentDocument'])->name('student-document');
         Route::delete('/student-document/{document}', [StudentDocumentController::class, 'destroyStudentDocument'])->name('student-document.destroy');
         Route::get('/confirmation-letter', [StudentDocumentController::class, 'confirmationLetter'])->name('confirmation-letter');
         Route::get('/signed-terms', [StudentDocumentController::class,    'signedTerms'])->name('signed-terms');

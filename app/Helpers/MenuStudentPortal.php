@@ -41,7 +41,7 @@ class MenuStudentPortal
                     ],
                     [
                         'name' => 'My Documents',
-                         'path' => 'student/document',
+                         'path' => 'student/student-document',
                     ],
                 ],
             ],
