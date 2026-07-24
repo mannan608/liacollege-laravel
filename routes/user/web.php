@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Student\CourseController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\Http\Controllers\Student\HelpController;
@@ -191,10 +192,11 @@ Route::prefix('student')
         // Route::get('/billing', [StudentController::class, 'studentBilling'])
         //     ->name('billing');
 
-        Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])
-            ->name('enrollment-courses');
-        Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])
-            ->name('course-details');
+        Route::get('/courses', [StudentDashboardController::class, 'enrollmentCourses'])->name('enrollment-courses');
+
+        Route::get('/courses/{course}/content-modules', [CourseController::class, 'ContentModules'])->name('content-modules');
+
+        Route::get('/courses/{course}', [StudentDashboardController::class, 'CourseDetails'])->name('course-details');
 
         //  Route::get('/course-details/module', [StudentController::class, 'CourseModule'])
         // ->name('course-module');

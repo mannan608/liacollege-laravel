@@ -155,9 +155,6 @@
             </div>
 
      @include('student.course.partials.module-sections', ['course' => $course])
-
-
-            
             <!-- Practical Session Schedule -->
             <div class="mb-8">
                 <h4 class="text-[20px] font-medium text-gray-900 dark:text-white mb-3">Practical Session Schedule</h4>

@@ -14,7 +14,7 @@
                                     <span class="font-medium text-gray-900 dark:text-white">HLTAID011 Provide First
                                         Aid</span>
                                 </div>
-                                <a href="#" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100
+                                <a href="{{ route('student.content-modules', ['course' => $course, 'module' => $module]) }}" class="px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100
                                                 text-white dark:text-gray-900 rounded-lg text-xs font-medium
                                                 transition-colors">
                                                     Read All
