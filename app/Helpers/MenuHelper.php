@@ -128,17 +128,17 @@ class MenuHelper
                     [
                         'name' => 'Tech Reports',
                         'route' => 'role.help.reports.index',
-                        'permission' => 'help.reports.list',
+                        'permission' => 'help.report.list',
                     ],
                     [
                         'name' => 'Formal Complaints',
                         'route' => 'role.help.complaints.index',
-                        'permission' => 'help.complaints.list',
+                        'permission' => 'help.complaint.list',
                     ],
                     [
                         'name' => 'Admin Messages',
                         'route' => 'role.help.contacts.index',
-                        'permission' => 'help.amin-contacts.list',
+                        'permission' => 'help.contact.list',
                     ],
                 ],
             ],

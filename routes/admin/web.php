@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CourseResources\CourseLessonResourceController;
 use App\Http\Controllers\Admin\CourseResources\CourseModuleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\HelpFormController;
 use App\Http\Controllers\Admin\LMS\CourseSlotController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\Quiz\QuestionController;
