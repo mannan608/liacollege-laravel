@@ -40,41 +40,28 @@
                         Enrolment Documents
                     </a>
 
-                    <a href="{{ route('student.confirmation-letter') }}" target="_blank"
-                        class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
-                        <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                            <polyline points="22,6 12,13 2,6" />
-                        </svg>
-                        Confirmation Letter
-                    </a>
+                    <div class="flex flex-wrap gap-3">
+                        @forelse($documents as $document)
+                            <a href="{{ route('student.documents.show', $document) }}" target="_blank"
+                                class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
 
-                    <a href="{{ route('student.signed-terms') }}" target="_blank"
-                        class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
-                        <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="16" y1="13" x2="8" y2="13" />
-                            <line x1="16" y1="17" x2="8" y2="17" />
-                            <polyline points="10 9 9 9 8 9" />
-                        </svg>
-                        Signed Terms
-                    </a>
+                                <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="16" y1="13" x2="8" y2="13" />
+                                    <line x1="16" y1="17" x2="8" y2="17" />
+                                </svg>
 
-                    <a href="{{ route('student.transcript') }}" target="_blank"
-                        class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
-                        <svg class="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="16" y1="13" x2="8" y2="13" />
-                            <line x1="16" y1="17" x2="8" y2="17" />
-                            <polyline points="10 9 9 9 8 9" />
-                        </svg>
-                        Academic Transcript
-                    </a>
+                                {{ $document->document_type }}
+                            </a>
+                        @empty
+                            <div
+                                class="w-full rounded-lg border border-dashed border-gray-300 p-6 text-center text-gray-500">
+                                No documents available.
+                            </div>
+                        @endforelse
+                    </div>
 
                     <a href="{{ route('student.tasks.index') }}"
                         class="inline-flex items-center gap-2.5 px-4 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all text-sm font-medium text-gray-700 dark:text-gray-200">
@@ -89,6 +76,7 @@
                         </svg>
                         Tasks
                     </a>
+
                 </div>
             </div>
 
@@ -153,7 +141,11 @@
                 </div>
             </div>
 
-     @include('student.course.partials.module-sections', ['course' => $course,'courseContentModules' => $courseContentModule,'courseQuizModules' => $courseQuizModule])
+            @include('student.course.partials.module-sections', [
+                'course' => $course,
+                'courseContentModules' => $courseContentModule,
+                'courseQuizModules' => $courseQuizModule,
+            ])
             <!-- Practical Session Schedule -->
             <div class="mb-8">
                 <h4 class="text-[20px] font-medium text-gray-900 dark:text-white mb-3">Practical Session Schedule</h4>
@@ -211,9 +203,12 @@
                             <tr>
                                 <th class="text-left px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Date</th>
                                 <th class="text-left px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Time</th>
-                                <th class="text-left px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Location</th>
-                                <th class="text-left px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Status</th>
-                                <th class="text-right px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Action</th>
+                                <th class="text-left px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Location
+                                </th>
+                                <th class="text-left px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Status
+                                </th>
+                                <th class="text-right px-6 py-4 font-medium text-gray-500 dark:text-gray-400">Action
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100 dark:divide-gray-800">

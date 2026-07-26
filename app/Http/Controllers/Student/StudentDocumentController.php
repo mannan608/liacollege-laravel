@@ -84,49 +84,34 @@ public function destroyStudentDocument(Document $document)
         'Document deleted successfully.'
     );
 }
-public function confirmationLetter()
-{
-    abort_unless(auth()->check(), 403);
 
-    $file = public_path('confirmation_letter.pdf');
+
+public function show(Document $document)
+{
+    abort_unless(
+        $document->documentable_id === auth()->user()->student->id,
+        403
+    );
+
+    $file = public_path($document->file);
 
     abort_unless(file_exists($file), 404);
 
     return response()->file($file);
 }
 
-public function signedTerms()
-{
-    abort_unless(auth()->check(), 403);
 
-    $file = public_path('signed_terms.pdf');
 
-    abort_unless(file_exists($file), 404);
-
-    return response()->file($file);
-}
-
-public function transcript()
-{
-    abort_unless(auth()->check(), 403);
-
-    $file = public_path('transcript.pdf');
-
-    abort_unless(file_exists($file), 404);
-
-    return response()->file($file);
+public function studentCertificate(){
+    return view('student.documents.certificate');
+    
 }
 
 public function tasks()
 {
     abort_unless(auth()->check(), 403);
 
-   return view('frontend.pages.student.tasks.index');
-}
-
-public function studentCertificate(){
-    return view('student.documents.certificate');
-    
+   return view('student.tasks.index');
 }
 
 }
