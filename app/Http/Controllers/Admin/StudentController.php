@@ -173,7 +173,10 @@ class StudentController extends Controller
     }
 
 
+public function createDocument(Request $request, string $role, Student $student): View{
 
+    return view('backend.pages.students.student-documents', compact('student'));
+}
 
     public function storeDocument(
         Request $request,

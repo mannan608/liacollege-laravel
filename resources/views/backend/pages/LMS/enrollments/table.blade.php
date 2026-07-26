@@ -23,8 +23,9 @@
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Status</th>
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Approved By
                     </th>
-                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Status
-                    </th>
+                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Upload Document</th>
+
+                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Status</th>
                     <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Actions
                     </th>
                 </tr>
@@ -63,27 +64,9 @@
                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                             {{ $enrollment->approvedBy?->name ?? 'N/A' }}
                         </td>
-                        {{-- <td class="px-4 py-4 text-right">
-                            <div class="inline-flex flex-wrap items-center justify-end gap-2">
-                                @foreach ([
-        'pending' => 'Pending',
-        'confirmed' => 'Approve',
-        'cancelled' => 'Cancel',
-    ] as $status => $label)
-                                    <form method="POST"
-                                        action="{{ role_route('role.enrollments.update', ['enrollment' => $enrollment]) }}">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="{{ $status }}">
-                                        <button type="submit"
-                                            class="inline-flex items-center rounded-md border px-3 py-1.5 text-xs font-medium transition-colors
-                                            {{ $enrollment->status === $status ? 'border-gray-300 bg-gray-100 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400' : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800' }}">
-                                            {{ $label }}
-                                        </button>
-                                    </form>
-                                @endforeach
-                            </div>
-                        </td> --}}
+                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+                            <a href="{{ role_route('role.documents.create', ['student' => $enrollment->student]) }}" class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">Document Add</a>
+                        </td>
                         <td class="px-4 py-4 text-right">
                             <form method="POST"
                                 action="{{ role_route('role.enrollments.update', ['enrollment' => $enrollment]) }}">
