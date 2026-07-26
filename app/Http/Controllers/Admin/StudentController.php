@@ -47,7 +47,6 @@ class StudentController extends Controller
             })
             ->latest()
             ->paginate(20);
-        // return $enrollments;
 
         return view(
             'backend.pages.students.index',
@@ -55,21 +54,7 @@ class StudentController extends Controller
         );
     }
 
-// public function create(Request $request): View
-// {
-//     abort_unless($request->user()->can('student.create'), 403);
 
-//     $courses = Course::with('slots:id,course_id,name,start_date,end_date')
-//         ->orderBy('name')
-//         ->get();
-
-//     return view('backend.pages.students.create', [
-//         'student' => null,
-//         'roles' => $this->roles(),
-//         'courses' => $courses,
-//         'title' => 'Create Student',
-//     ]);
-// }
 public function create(Request $request): View
 {
     abort_unless($request->user()->can('student.create'), 403);

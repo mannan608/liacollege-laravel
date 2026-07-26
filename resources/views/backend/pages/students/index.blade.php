@@ -63,7 +63,7 @@
                                {{ $enrollment->slot->training_date->format('d M Y') }}
 
                             </td>                          
-                            {{-- <td class="px-4 py-3 text-right">
+                            <td class="px-4 py-3 text-right">
                                 <div class="inline-flex items-center gap-1">
                                     @can('student.view')
                                         <a href="{{ role_route('role.students.show', ['student' => $student]) }}"
@@ -111,7 +111,7 @@
                                         </form>
                                     @endcan
                                 </div>
-                            </td> --}}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

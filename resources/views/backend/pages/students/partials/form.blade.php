@@ -133,7 +133,7 @@
         </div>
 
         <!-- Courses -->
-        <div class="md:col-span-2">
+        <div class="group">
             <label class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
                 <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -202,6 +202,25 @@
                 </p>
             @enderror
         </div>
+        <div class="group">
+            <x-form.multi-select name="payment_method" label="Payment Method" :options="[
+                'cash' => 'Cash',
+                'bank_transfer' => 'Bank Transfer',
+                'credit_card' => 'Credit Card',
+                'debit_card' => 'Debit Card',
+                'mobile_banking' => 'Mobile Banking',
+                'cheque' => 'Cheque',
+            ]" :selected="old('payment_method', [])"
+                placeholder="Select Payment Method" />
+        </div>
+
+        <div class="group">
+            <x-form.multi-select name="payment_status" label="Payment Status" :options="[
+                'paid' => 'Paid',
+                'due' => 'Due',
+            ]" :selected="old('payment_status', [])"
+                placeholder="Select Payment Status" />
+        </div>
     </div>
 </div>
 
@@ -236,47 +255,47 @@
 
 
 @push('scripts')
-<script>
-function courseSlots() {
-    return {
+    <script>
+        function courseSlots() {
+            return {
 
-        course: '',
+                course: '',
 
-        slots: [],
+                slots: [],
 
-        loading: false,
+                loading: false,
 
-        async loadSlots() {
+                async loadSlots() {
 
-            this.slots = [];
+                    this.slots = [];
 
-            if (!this.course) {
-                return;
+                    if (!this.course) {
+                        return;
+                    }
+
+                    this.loading = true;
+
+                    try {
+
+                        const response = await fetch(
+                            "{{ route($role . '.courses.slots', ':id') }}".replace(':id', this.course)
+                        );
+
+                        this.slots = await response.json();
+
+                    } catch (e) {
+
+                        console.error(e);
+
+                    } finally {
+
+                        this.loading = false;
+
+                    }
+
+                }
+
             }
-
-            this.loading = true;
-
-            try {
-
-                const response = await fetch(
-                    "{{ route($role . '.courses.slots', ':id') }}".replace(':id', this.course)
-                );
-
-                this.slots = await response.json();
-
-            } catch (e) {
-
-                console.error(e);
-
-            } finally {
-
-                this.loading = false;
-
-            }
-
         }
-
-    }
-}
-</script>
+    </script>
 @endpush
