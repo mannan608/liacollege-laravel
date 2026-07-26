@@ -135,13 +135,25 @@ class StudentRepository implements StudentRepositoryInterface
     public function delete(User $user): bool
     {
         return DB::transaction(function () use ($user): bool {
-            $user->loadMissing('student');
+            $user->loadMissing([
+                'student.enrollments.payments',
+                'student.documents',
+            ]);
 
-            if ($user->student) {
-                $user->student->courses()->detach();
-                $user->student->coursePermissions()->delete();
-                $user->student->assignmentSubmissions()->delete();
-                $user->student->forceDelete();
+            $student = $user->student;
+
+            if ($student) {
+                $student->documents()->delete();
+                $student->courses()->detach();
+                $student->coursePermissions()->delete();
+                $student->assignmentSubmissions()->delete();
+
+                $student->enrollments->each(function (Enrollment $enrollment): void {
+                    $enrollment->payments()->delete();
+                    $enrollment->delete();
+                });
+
+                $student->forceDelete();
             }
 
             $user->syncRoles([]);

@@ -51,8 +51,9 @@ class StudentController extends Controller
             ->latest()
             ->paginate(20);
 
-        return view(
-            'backend.pages.students.index',
+            // return $enrollments;
+
+        return view('backend.pages.students.index',
             compact('enrollments')
         );
     }

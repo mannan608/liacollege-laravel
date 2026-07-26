@@ -137,7 +137,7 @@
                                         </a>
                                     @endcan
 
-                                    @can('student.delete')
+                                    {{-- @can('student.delete')
                                         <form method="POST"
                                             action="{{ role_route('role.students.destroy', ['student' => $enrollment->student]) }}"
                                             class="inline"
@@ -155,9 +155,8 @@
                                                 <span class="sr-only">Delete</span>
                                             </button>
                                         </form>
-                                    @endcan
+                                    @endcan --}}
                                 @else
-                                    <span class="text-xs text-gray-400">Student deleted</span>
                                 @endif
                             </div>
                         </td>
