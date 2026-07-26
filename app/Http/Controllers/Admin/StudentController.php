@@ -117,14 +117,18 @@ class StudentController extends Controller
             'user',
             'courses',
             'enrollments.slot.course',
+            'enrollments.latestPayment',
         ]);
+
+        $currentEnrollment = $student->enrollments->sortByDesc('created_at')->first();
 
         return view('backend.pages.students.edit', [
             'student' => $student,
             'courses' => Course::orderBy('name')->get(),
             'courseSlotsByCourse' => $this->courseSlotsByCourse(),
-            'selectedCourseId' => old('course_id', $student->enrollments->first()?->slot?->course_id),
-            'selectedSlotIds' => old('slot_ids', $student->enrollments->pluck('course_slot_id')->all()),
+            'selectedCourseId' => old('course_id', $currentEnrollment?->slot?->course_id),
+            'selectedSlotId' => old('slot_id', $currentEnrollment?->course_slot_id),
+            'selectedPaymentMethod' => old('payment_method', $currentEnrollment?->latestPayment?->payment_method),
             'title' => 'Edit Student',
         ]);
     }

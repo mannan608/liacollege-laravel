@@ -38,13 +38,13 @@
             </div>
 
             <!-- Assignment Button -->
-            <a href="{{ role_route('role.students.assignment', ['student' => $student]) }}"
+            {{-- <a href="{{ role_route('role.students.assignment', ['student' => $student]) }}"
                class="group inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
                 <svg class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                 </svg>
                 Assignment
-            </a>
+            </a> --}}
         </div>
 
         <!-- Divider -->

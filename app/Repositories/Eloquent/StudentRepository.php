@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Models\LMS\CourseSlot;
+use App\Models\LMS\Enrollment;
 use App\Models\Student;
 use App\Models\User;
 use App\Services\CourseEnrollmentCheckoutService;
@@ -52,41 +54,80 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function update(User $user, array $data): User
     {
-        $courseIds = $data['courses'] ?? null;
-        $slotIds = $data['slot_ids'] ?? null;
+        return DB::transaction(function () use ($user, $data): User {
+            $user->fill([
+                'name' => trim($data['first_name'] . ' ' . $data['last_name']),
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+            ]);
 
-        if (empty($data['password'])) {
-            unset($data['password']);
-        } else {
-            $data['password'] = bcrypt($data['password']);
-        }
-
-        unset($data['courses']);
-        unset($data['slot_ids']);
-
-        return DB::transaction(function () use ($user, $data, $courseIds, $slotIds): User {
-            if (! empty($data)) {
-                $user->fill($data);
-
-                if ($user->isDirty()) {
-                    $user->save();
-                }
+            if ($user->isDirty()) {
+                $user->save();
             }
 
             $user->loadMissing('student');
 
-            if ($courseIds !== null && $user->student) {
-                $user->student->courses()->sync($courseIds);
+            if (! $user->student) {
+                return $user->fresh();
             }
 
-            if (is_array($slotIds) && $user->student) {
-                $this->syncSlotEnrollments($user->student, $slotIds);
+            $student = $user->student;
+            $student->update([
+                'date_of_birth' => $data['date_of_birth'],
+                'usi' => $data['usi'],
+            ]);
+
+            $courseId = (int) $data['course_id'];
+            $slot = CourseSlot::query()
+                ->with('course')
+                ->findOrFail($data['slot_id']);
+
+            abort_unless((int) $slot->course_id === $courseId, 404);
+
+            $student->courses()->sync([$courseId]);
+
+            $enrollment = $student->enrollments()
+                ->latest('created_at')
+                ->first();
+
+            if ($enrollment) {
+                $enrollment->update([
+                    'course_slot_id' => $slot->id,
+                ]);
+            } else {
+                $enrollment = Enrollment::create([
+                    'student_id' => $student->id,
+                    'course_slot_id' => $slot->id,
+                    'status' => 'pending',
+                    'enrolled_at' => now(),
+                ]);
+            }
+
+            $payment = $enrollment->latestPayment ?: $enrollment->payments()->latest('created_at')->first();
+            $paymentData = [
+                'student_id' => $student->id,
+                'payment_method' => $data['payment_method'],
+            ];
+
+            if ($payment) {
+                $payment->update($paymentData);
+            } else {
+                $paymentData['enrollment_id'] = $enrollment->id;
+                $paymentData['transaction_id'] = null;
+                $paymentData['amount'] = $slot->price
+                    ?? data_get($slot, 'course.sale_price')
+                    ?? data_get($slot, 'course.price')
+                    ?? 0;
+                $paymentData['status'] = 'paid';
+
+                $enrollment->payments()->create($paymentData);
             }
 
             return $user->fresh([
                 'student.courses',
                 'student.enrollments.slot.course',
                 'student.enrollments.slot.trainingCenter',
+                'student.enrollments.latestPayment',
             ]);
         });
     }

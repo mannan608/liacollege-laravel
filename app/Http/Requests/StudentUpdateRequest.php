@@ -19,36 +19,42 @@ class StudentUpdateRequest extends FormRequest
         $userId = $student instanceof Student ? $student->user_id : null;
 
         return [
-            'name' => ['required', 'string', 'max:191'],
-            'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')->ignore($userId)],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'email',
+                'max:191',
+                'confirmed',
+                Rule::unique('users', 'email')->ignore($userId),
+            ],
+            'phone' => ['required', 'string', 'max:50'],
+            'date_of_birth' => ['required', 'date'],
+            'usi' => ['required', 'string', 'max:255'],
             'course_id' => ['required', 'integer', 'exists:courses,id'],
-            'slot_ids' => ['nullable', 'array'],
-            'slot_ids.*' => [
+            'slot_id' => [
+                'required',
                 'integer',
                 Rule::exists('course_slots', 'id')->where(function ($query) {
                     $query->where('course_id', $this->input('course_id'));
                 }),
             ],
-            'courses' => ['nullable', 'array'],
-            'courses.*' => ['integer', 'exists:courses,id'],
+            'payment_method' => [
+                'required',
+                Rule::in([
+                    'visa',
+                    'mastercard',
+                    'bank_transfer',
+                    'cash',
+                ]),
+            ],
+            'voucher_code' => ['nullable', 'string', 'max:255'],
+            'purchase_order_ref' => ['nullable', 'string', 'max:255'],
         ];
     }
 
     protected function prepareForValidation(): void
     {
-        if ($this->filled('course_id') && ! $this->has('courses')) {
-            $this->merge([
-                'courses' => [$this->input('course_id')],
-            ]);
-        }
-
-        if (! $this->has('courses')) {
-            $this->merge(['courses' => []]);
-        }
-
-        if (! $this->has('slot_ids')) {
-            $this->merge(['slot_ids' => []]);
-        }
+        //
     }
 }
