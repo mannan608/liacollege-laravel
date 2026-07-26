@@ -1,201 +1,90 @@
-<div x-data="courseManager(@js($items))" x-init="init()">
+@php
+    $items = $items ?? collect();
 
-    <!-- Empty State -->
-    <div x-show="modules.length === 0" x-cloak class="py-16 text-center">
-        <p class="text-sm text-gray-400">
-            No modules yet. Click "Add module" to get started.
-        </p>
-    </div>
+    $statusStyles = [
+        'pending' => 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+        'confirmed' => 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
+        'cancelled' => 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+        'completed' => 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+    ];
+@endphp
 
-    <!-- Modules List -->
-    <div class="space-y-3">
-
-        <template x-for="module in modules" :key="module.id">
-            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white transition-shadow hover:shadow-sm">
-
-                <!-- Module Header -->
-                <div @click="toggleModule(module.id)"
-                    class="flex cursor-pointer select-none items-center justify-between px-4 py-3.5 transition-colors bg-gray-50">
-
-                    <div class="flex min-w-0 flex-1 items-center gap-3">
-
-                        <!-- Chevron -->
-                        <svg :class="activeModule === module.id ? 'rotate-90' : ''"
-                            class="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform duration-200" fill="none"
-                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M9 18l6-6-6-6" />
-                        </svg>
-
-                        <!-- Module Title -->
-                        <span x-text="module.title" class="truncate text-base font-medium text-gray-900"></span>
-
-                        <!-- Lesson Count -->
-                        <span class="flex-shrink-0 rounded-md bg-gray-100 px-2 py-0.5 text-xs text-gray-400"
-                            x-text="module.lessons.length + ' lesson' + (module.lessons.length !== 1 ? 's' : '')"></span>
-
-                    </div>
-
-                    <!-- Module Actions -->
-                    <div class="flex items-center gap-2" @click.stop>
-
-                        <a :href="moduleLessonCreateUrl(module.id)"
-                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900">
-                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path d="M12 5v14M5 12h14" />
-                            </svg>
-
-                            Add lesson
-                        </a>
-
-                        <a :href="moduleEditUrl(module.id)"
-                            class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900">
-                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-                            </svg>
-
-                            Edit
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- Lessons -->
-                <div x-show="activeModule === module.id" x-cloak
-                    x-transition:enter="transition-all ease-out duration-300"
-                    x-transition:enter-start="max-h-0 opacity-0" x-transition:enter-end="max-h-[2000px] opacity-100"
-                    x-transition:leave="transition-all ease-in duration-200"
-                    x-transition:leave-start="max-h-[2000px] opacity-100" x-transition:leave-end="max-h-0 opacity-0"
-                    class="overflow-hidden">
-
-                    <div class="pb-4 pl-12 pr-4">
-
-                        <!-- No Lessons -->
-                        <div x-show="module.lessons.length === 0" class="py-3 text-sm text-gray-400">
-                            No lessons yet.
-                        </div>
-
-                        <!-- Lessons List -->
-                        <template x-for="lesson in module.lessons" :key="lesson.id">
-
-                            <div class="mb-2 border-b border-gray-200 last:mb-0 last:border-0">
-
-                                <!-- Lesson Row -->
-                                <div
-                                    class="flex items-center justify-between rounded-lg px-3 py-2.5 transition-colors hover:bg-gray-50">
-
-                                    <div class="flex min-w-0 flex-1 items-center gap-3">
-                                        <span x-text="lesson.title" class="truncate text-sm text-gray-600"></span>
-                                        <span x-text="(lesson.lesson_types ?? ['text']).join(', ')"
-                                            class="rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700"></span>
-                                        <span x-text="`Duration: ${lesson.duration ?? 0} minutes`"
-                                            class="truncate text-sm text-gray-600"></span>
-                                    </div>
-
-                                    <!-- Lesson Actions -->
-                                    <div class="flex items-center gap-2">
-
-                                        <a :href="lessonResourceCreateUrl(lesson.id)"
-                                            class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700">
-                                            <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"
-                                                viewBox="0 0 24 24">
-                                                <path d="M12 5v14M5 12h14" />
-                                            </svg>
-
-                                            Add resource
-                                        </a>
-
-                                        <a :href="lessonEditUrl(lesson.id)"
-                                            class="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs font-medium text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700">
-                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                                                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-
-                                            Edit
-                                        </a>
-
-                                    </div>
-
-                                </div>
-
-                                <!-- Resources -->
-                                <div x-show="lesson.resources && lesson.resources.length > 0"
-                                    class="ml-5 mt-1 space-y-1">
-
-                                    <template x-for="resource in lesson.resources" :key="resource.id">
-
-                                        <div
-                                            class="flex items-center gap-2 rounded-md px-2 py-1 transition-colors hover:bg-gray-50">
-
-                                            <div class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-300"></div>
-
-                                            <span x-text="resource.name" class="text-xs text-gray-400"></span>
-
-                                        </div>
-
-                                    </template>
-
-                                </div>
-
+<div class="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
+            <thead class="bg-gray-50 dark:bg-gray-800">
+                <tr>
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Student</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Course</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Slot</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Schedule</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Status</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Approved By</th>
+                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                @forelse ($items as $enrollment)
+                    <tr class="align-top">
+                        <td class="px-4 py-4">
+                            <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                {{ $enrollment->student?->user?->name ?? 'N/A' }}
                             </div>
-
-                        </template>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </template>
-
+                            <div class="text-sm text-gray-500">
+                                {{ $enrollment->student?->user?->email ?? 'N/A' }}
+                            </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-700 dark:text-gray-300">
+                            {{ $enrollment->slot?->course?->name ?? 'N/A' }}
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-700 dark:text-gray-300">
+                            {{ $enrollment->slot?->title ?? 'Slot #' . $enrollment->course_slot_id }}
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+                            <div>{{ optional($enrollment->slot?->training_date)->format('d M Y') ?? 'N/A' }}</div>
+                            <div>{{ $enrollment->slot?->start_time }} - {{ $enrollment->slot?->end_time }}</div>
+                            <div>{{ $enrollment->slot?->trainingCenter?->name }}</div>
+                        </td>
+                        <td class="px-4 py-4">
+                            <span class="inline-flex rounded-full px-2.5 py-1 text-xs font-medium capitalize {{ $statusStyles[$enrollment->status] ?? 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300' }}">
+                                {{ $enrollment->status }}
+                            </span>
+                            <div class="mt-1 text-xs text-gray-400">
+                                {{ $enrollment->approved_at ? $enrollment->approved_at->format('d M Y h:i A') : 'Not approved yet' }}
+                            </div>
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+                            {{ $enrollment->approvedBy?->name ?? 'N/A' }}
+                        </td>
+                        <td class="px-4 py-4 text-right">
+                            <div class="inline-flex flex-wrap items-center justify-end gap-2">
+                                @foreach ([
+                                    'pending' => 'Pending',
+                                    'confirmed' => 'Approve',
+                                    'cancelled' => 'Cancel',
+                                ] as $status => $label)
+                                    <form method="POST" action="{{ role_route('role.enrollments.update', ['enrollment' => $enrollment]) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="status" value="{{ $status }}">
+                                        <button type="submit"
+                                            class="inline-flex items-center rounded-md border px-3 py-1.5 text-xs font-medium transition-colors
+                                            {{ $enrollment->status === $status ? 'border-gray-300 bg-gray-100 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400' : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800' }}">
+                                            {{ $label }}
+                                        </button>
+                                    </form>
+                                @endforeach
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7" class="px-4 py-12 text-center text-sm text-gray-500">
+                            No enrollments found.
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-
 </div>
-
-<script>
-    function courseManager(modules = []) {
-        return {
-            modules: modules,
-            activeModule: null,
-
-            init() {
-                if (this.modules.length > 0) {
-                    this.activeModule = this.modules[0].id;
-                }
-            },
-
-            toggleModule(id) {
-                this.activeModule =
-                    this.activeModule === id ? null : id;
-            },
-
-            moduleLessonCreateUrl(moduleId) {
-                return `/modules/${moduleId}/lessons/create`;
-            },
-
-            moduleEditUrl(moduleId) {
-                return `/modules/${moduleId}/edit`;
-            },
-
-            lessonResourceCreateUrl(lessonId) {
-                return `/lessons/${lessonId}/resources/create`;
-            },
-
-            lessonEditUrl(lessonId) {
-                return `/lessons/${lessonId}/edit`;
-            }
-        }
-    }
-</script>
-
-<style>
-    [x-cloak] {
-        display: none !important;
-    }
-</style>

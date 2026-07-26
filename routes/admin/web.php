@@ -23,8 +23,8 @@ use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TrainingCenterController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\LMS\CourseEnrollmentController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 

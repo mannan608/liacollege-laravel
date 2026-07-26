@@ -5,16 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Models\Document;
+use App\Models\LMS\Enrollment;
+use App\Models\LMS\CourseSlot;
 use App\Models\Student;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
-
-
 use App\Http\Requests\StudentStoreRequest;
 use App\Models\Course;
-use App\Models\LMS\Enrollment;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
@@ -34,13 +32,19 @@ class StudentController extends Controller
                 'id',
                 'student_id',
                 'course_slot_id',
+                'status',
+                'remarks',
+                'approved_by',
+                'approved_at',
+                'enrolled_at',
             ])
             ->with([
                 'student:id,user_id',
                 'student.user:id,name,email',
-                'slot:id,course_id,training_center_id,training_date,start_time,end_time',
+                'slot:id,course_id,training_center_id,title,training_date,start_time,end_time',
                 'slot.course:id,name',
-                'slot.trainingCenter:id,name,city'
+                'slot.trainingCenter:id,name,city',
+                'approvedBy:id,name',
             ])
             ->when($request->status, function ($query) use ($request) {
                 $query->where('status', $request->status);
@@ -55,26 +59,29 @@ class StudentController extends Controller
     }
 
 
-public function create(Request $request): View
-{
-    abort_unless($request->user()->can('student.create'), 403);
+    public function create(Request $request): View
+    {
+        abort_unless($request->user()->can('student.create'), 403);
 
-    return view('backend.pages.students.create', [
-        'student' => null,
-        'roles' => $this->roles(),
-        'courses' => Course::orderBy('name')->get(),
-        'title' => 'Create Student',
-    ]);
-}
-public function courseSlots(Course $course): \Illuminate\Http\JsonResponse
-{
-    return response()->json(
-        $course->slots()
-            ->select('id', 'name', 'start_date', 'end_date')
-            ->orderBy('start_date')
-            ->get()
-    );
-}
+        return view('backend.pages.students.create', [
+            'student' => null,
+            'roles' => $this->roles(),
+            'courses' => Course::orderBy('name')->get(),
+            'courseSlotsByCourse' => $this->courseSlotsByCourse(),
+            'selectedCourseId' => old('course_id'),
+            'selectedSlotIds' => old('slot_ids', []),
+            'title' => 'Create Student',
+        ]);
+    }
+    public function courseSlots(Course $course): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(
+            $course->slots()
+                ->select('id', 'title', 'training_date', 'start_time', 'end_time')
+                ->orderBy('training_date')
+                ->get()
+        );
+    }
 
     public function store(StudentStoreRequest $request): RedirectResponse
     {
@@ -93,6 +100,9 @@ public function courseSlots(Course $course): \Illuminate\Http\JsonResponse
             'user.roles',
             'user.primaryRole',
             'courses',
+            'enrollments.slot.course',
+            'enrollments.slot.trainingCenter',
+            'enrollments.approvedBy',
         ]);
 
         return view('backend.pages.students.show', [
@@ -108,11 +118,15 @@ public function courseSlots(Course $course): \Illuminate\Http\JsonResponse
         $student->load([
             'user',
             'courses',
+            'enrollments.slot.course',
         ]);
 
         return view('backend.pages.students.edit', [
             'student' => $student,
             'courses' => Course::orderBy('name')->get(),
+            'courseSlotsByCourse' => $this->courseSlotsByCourse(),
+            'selectedCourseId' => old('course_id', $student->enrollments->first()?->slot?->course_id),
+            'selectedSlotIds' => old('slot_ids', $student->enrollments->pluck('course_slot_id')->all()),
             'title' => 'Edit Student',
         ]);
     }
@@ -146,6 +160,18 @@ public function courseSlots(Course $course): \Illuminate\Http\JsonResponse
     private function roles()
     {
         return Role::query()->orderBy('name')->get(['id', 'name']);
+    }
+
+    private function courseSlotsByCourse(): array
+    {
+        return CourseSlot::query()
+            ->select(['id', 'course_id', 'title', 'training_date', 'start_time', 'end_time'])
+            ->where('status', 'active')
+            ->orderBy('training_date')
+            ->get()
+            ->groupBy('course_id')
+            ->map(fn ($slots) => $slots->values()->all())
+            ->toArray();
     }
 
 

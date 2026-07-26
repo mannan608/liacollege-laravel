@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Student;
+use App\Models\LMS\Enrollment;
 use App\Models\User;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -36,57 +37,83 @@ class StudentRepository implements StudentRepositoryInterface
     public function create(array $data): Student
     {
         $courseIds = $data['courses'] ?? [];
+        $slotIds = $data['slot_ids'] ?? [];
         unset($data['courses']);
+        unset($data['slot_ids']);
 
-        $studentRole = Role::where('name', 'student')->firstOrFail();
+        return DB::transaction(function () use ($data, $courseIds, $slotIds): Student {
+            $studentRole = Role::where('name', 'student')->firstOrFail();
 
-        $data['status'] = 'active';
-        $data['primary_role_id'] = $studentRole->id;
+            $data['status'] = 'active';
+            $data['primary_role_id'] = $studentRole->id;
 
-        if (! empty($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        }
+            if (! empty($data['password'])) {
+                $data['password'] = bcrypt($data['password']);
+            }
 
-        $user = User::create($data);
+            $user = User::create($data);
 
-        $user->assignRole($studentRole);
+            $user->assignRole($studentRole);
 
-        $student = Student::create([
-            'user_id' => $user->id,
-        ]);
+            $student = Student::create([
+                'user_id' => $user->id,
+            ]);
 
-        if (! empty($courseIds)) {
-            $student->courses()->sync($courseIds);
-        }
+            if (! empty($courseIds)) {
+                $student->courses()->sync($courseIds);
+            }
 
-        return $student->load('user.roles', 'user.primaryRole', 'courses');
+            $this->syncSlotEnrollments($student, $slotIds);
+
+            return $student->load(
+                'user.roles',
+                'user.primaryRole',
+                'courses',
+                'enrollments.slot.course',
+                'enrollments.slot.trainingCenter'
+            );
+        });
     }
 
     public function update(User $user, array $data): User
     {
+        $courseIds = $data['courses'] ?? null;
+        $slotIds = $data['slot_ids'] ?? null;
+
         if (empty($data['password'])) {
             unset($data['password']);
         } else {
             $data['password'] = bcrypt($data['password']);
         }
 
-        $courseIds = $data['courses'] ?? null;
-
         unset($data['courses']);
+        unset($data['slot_ids']);
 
-        if (! empty($data)) {
-            $user->fill($data);
+        return DB::transaction(function () use ($user, $data, $courseIds, $slotIds): User {
+            if (! empty($data)) {
+                $user->fill($data);
 
-            if ($user->isDirty()) {
-                $user->save();
+                if ($user->isDirty()) {
+                    $user->save();
+                }
             }
-        }
 
-        if ($courseIds !== null && $user->student) {
-            $user->student->courses()->sync($courseIds);
-        }
+            $user->loadMissing('student');
 
-        return $user->fresh('student.courses');
+            if ($courseIds !== null && $user->student) {
+                $user->student->courses()->sync($courseIds);
+            }
+
+            if (is_array($slotIds) && $user->student) {
+                $this->syncSlotEnrollments($user->student, $slotIds);
+            }
+
+            return $user->fresh([
+                'student.courses',
+                'student.enrollments.slot.course',
+                'student.enrollments.slot.trainingCenter',
+            ]);
+        });
     }
 
     public function delete(User $user): bool
@@ -105,5 +132,21 @@ class StudentRepository implements StudentRepositoryInterface
 
             return (bool) $user->delete();
         });
+    }
+
+    private function syncSlotEnrollments(Student $student, array $slotIds): void
+    {
+        foreach ($slotIds as $slotId) {
+            Enrollment::firstOrCreate(
+                [
+                    'student_id' => $student->id,
+                    'course_slot_id' => $slotId,
+                ],
+                [
+                    'status' => 'pending',
+                    'enrolled_at' => now(),
+                ]
+            );
+        }
     }
 }

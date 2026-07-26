@@ -1,13 +1,15 @@
 @php
     $student ??= null;
     $user = $student?->user;
-    $selectedCourses = old('courses', $student?->courses?->pluck('id')->toArray() ?? []);
+    $selectedCourseId = old('course_id', $selectedCourseId ?? $student?->enrollments?->first()?->slot?->course_id);
+    $selectedSlotIds = old(
+        'slot_ids',
+        $selectedSlotIds ?? ($student?->enrollments?->pluck('course_slot_id')->all() ?? []),
+    );
 @endphp
 
 <div class="rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-
     <div class="grid gap-6 p-6 md:grid-cols-2">
-        <!-- Name -->
         <div class="group">
             <label for="name"
                 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -40,7 +42,6 @@
             @enderror
         </div>
 
-        <!-- Email -->
         <div class="group">
             <label for="email"
                 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -73,7 +74,6 @@
             @enderror
         </div>
 
-        <!-- Password -->
         <div class="group">
             <label for="password"
                 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -114,7 +114,6 @@
             @enderror
         </div>
 
-        <!-- Confirm Password -->
         <div class="group">
             <label for="password_confirmation"
                 class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -132,67 +131,49 @@
                 class="block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-gray-600 dark:bg-gray-900 dark:text-white dark:placeholder-gray-500 dark:focus:border-brand-500">
         </div>
 
-        <!-- Courses -->
         <div class="group">
             <label class="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300">
                 <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
-                Enrolled Courses
+                Enrollment
             </label>
-            {{-- <x-form.multi-select
-                name="courses"
-                label="Select Enroll Course"
-                :options="$courses"
-                :selected="$selectedCourses"
-                placeholder="Select Course"
-            /> --}}
-            <div x-data="courseSlots()" class="space-y-6">
 
-                {{-- Course --}}
+            <div class="space-y-6" data-selected-slots='@json($selectedSlotIds)'
+                data-course-slots='@json($courseSlotsByCourse ?? [])'>
                 <div>
-                    <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Course
-                    </label>
-
-                    <select x-model="course" @change="loadSlots" name="course_id"
+                    <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Course</label>
+                    <select id="course_id" name="course_id" onchange="dispatchSlotUpdate(this.value)"
                         class="w-full rounded-lg border border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-900">
                         <option value="">Select Course</option>
-
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">
+                            <option value="{{ $course->id }}" @selected((string) $selectedCourseId === (string) $course->id)>
                                 {{ $course->name }}
                             </option>
                         @endforeach
                     </select>
                 </div>
 
-                {{-- Slots --}}
-                <div x-show="slots.length">
-                    <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Course Slots
-                    </label>
-
-                    <select name="slot_ids[]" multiple
-                        class="w-full rounded-lg border border-gray-300 px-4 py-2.5 h-44 dark:border-gray-700 dark:bg-gray-900">
-                        <template x-for="slot in slots" :key="slot.id">
-                            <option :value="slot.id"
-                                x-text="slot.name + ' (' + slot.start_date + ' - ' + slot.end_date + ')'"></option>
-                        </template>
-                    </select>
+                <div id="slot_container" class="{{ $selectedCourseId ? '' : 'hidden' }}">
+                    <x-form.multi-select id="slot_ids" name="slot_ids[]" label="Course Slots" :options="[]"
+                        :selected="$selectedSlotIds" placeholder="Select Course Slot" />
                 </div>
-
-                {{-- Loading --}}
-                <div x-show="loading" class="text-sm text-gray-500">
-                    Loading slots...
-                </div>
-
             </div>
 
-            <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Choose one or more courses for this student to
-                enroll in.</p>
-            @error('courses')
+            <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
+                Choose the course and one or more slots for this student to enroll in.
+            </p>
+            @error('course_id')
+                <p class="mt-1.5 flex items-center gap-1 text-sm text-red-600">
+                    <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ $message }}
+                </p>
+            @enderror
+            @error('slot_ids')
                 <p class="mt-1.5 flex items-center gap-1 text-sm text-red-600">
                     <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -202,29 +183,9 @@
                 </p>
             @enderror
         </div>
-        <div class="group">
-            <x-form.multi-select name="payment_method" label="Payment Method" :options="[
-                'cash' => 'Cash',
-                'bank_transfer' => 'Bank Transfer',
-                'credit_card' => 'Credit Card',
-                'debit_card' => 'Debit Card',
-                'mobile_banking' => 'Mobile Banking',
-                'cheque' => 'Cheque',
-            ]" :selected="old('payment_method', [])"
-                placeholder="Select Payment Method" />
-        </div>
-
-        <div class="group">
-            <x-form.multi-select name="payment_status" label="Payment Status" :options="[
-                'paid' => 'Paid',
-                'due' => 'Due',
-            ]" :selected="old('payment_status', [])"
-                placeholder="Select Payment Status" />
-        </div>
     </div>
 </div>
 
-<!-- Actions -->
 <div class="mt-6 flex items-center justify-end gap-3 border-t border-gray-100 pt-6 dark:border-gray-700">
     <a href="{{ role_route('role.students.index') }}"
         class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
@@ -253,49 +214,53 @@
     }
 </script>
 
-
 @push('scripts')
     <script>
-        function courseSlots() {
-            return {
+        const courseSlotsByCourse = JSON.parse(
+            document.querySelector('[data-course-slots]')?.getAttribute('data-course-slots') || '{}'
+        );
+        const selectedSlotIds = JSON.parse(
+            document.querySelector('[data-selected-slots]')?.getAttribute('data-selected-slots') || '[]'
+        );
 
-                course: '',
-
-                slots: [],
-
-                loading: false,
-
-                async loadSlots() {
-
-                    this.slots = [];
-
-                    if (!this.course) {
-                        return;
-                    }
-
-                    this.loading = true;
-
-                    try {
-
-                        const response = await fetch(
-                            "{{ route($role . '.courses.slots', ':id') }}".replace(':id', this.course)
-                        );
-
-                        this.slots = await response.json();
-
-                    } catch (e) {
-
-                        console.error(e);
-
-                    } finally {
-
-                        this.loading = false;
-
-                    }
-
-                }
-
-            }
+        function normalizeSlots(slots) {
+            return (slots || []).map((slot) => ({
+                id: String(slot.id),
+                name: `${slot.title ?? ('Slot #' + slot.id)} (${slot.training_date} ${slot.start_time} - ${slot.end_time})`,
+            }));
         }
+
+        function dispatchSlotUpdate(courseId) {
+            const slotContainer = document.getElementById('slot_container');
+
+            if (!courseId) {
+                slotContainer.classList.add('hidden');
+                window.dispatchEvent(new CustomEvent('multi-select:update', {
+                    detail: {
+                        id: 'slot_ids',
+                        options: [],
+                        selected: [],
+                    }
+                }));
+                return;
+            }
+
+            slotContainer.classList.remove('hidden');
+            window.dispatchEvent(new CustomEvent('multi-select:update', {
+                detail: {
+                    id: 'slot_ids',
+                    options: normalizeSlots(courseSlotsByCourse[String(courseId)] || []),
+                    selected: selectedSlotIds.map(String),
+                }
+            }));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const courseSelect = document.getElementById('course_id');
+
+            if (courseSelect && courseSelect.value) {
+                dispatchSlotUpdate(courseSelect.value);
+            }
+        });
     </script>
 @endpush

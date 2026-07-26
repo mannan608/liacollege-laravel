@@ -22,6 +22,14 @@ class StudentUpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:191'],
             'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')->ignore($userId)],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'course_id' => ['required', 'integer', 'exists:courses,id'],
+            'slot_ids' => ['nullable', 'array'],
+            'slot_ids.*' => [
+                'integer',
+                Rule::exists('course_slots', 'id')->where(function ($query) {
+                    $query->where('course_id', $this->input('course_id'));
+                }),
+            ],
             'courses' => ['nullable', 'array'],
             'courses.*' => ['integer', 'exists:courses,id'],
         ];
@@ -29,8 +37,18 @@ class StudentUpdateRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        if ($this->filled('course_id') && ! $this->has('courses')) {
+            $this->merge([
+                'courses' => [$this->input('course_id')],
+            ]);
+        }
+
         if (! $this->has('courses')) {
             $this->merge(['courses' => []]);
+        }
+
+        if (! $this->has('slot_ids')) {
+            $this->merge(['slot_ids' => []]);
         }
     }
 }
