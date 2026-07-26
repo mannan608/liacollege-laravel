@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StudentStoreRequest;
 use App\Models\Course;
 use Illuminate\View\View;
-use Spatie\Permission\Models\Role;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 
 
@@ -65,12 +64,11 @@ class StudentController extends Controller
 
         return view('backend.pages.students.create', [
             'student' => null,
-            'roles' => $this->roles(),
             'courses' => Course::orderBy('name')->get(),
             'courseSlotsByCourse' => $this->courseSlotsByCourse(),
             'selectedCourseId' => old('course_id'),
-            'selectedSlotIds' => old('slot_ids', []),
-            'title' => 'Create Student',
+            'selectedSlotId' => old('slot_id'),
+            'title' => 'Create Student Checkout',
         ]);
     }
     public function courseSlots(Course $course): \Illuminate\Http\JsonResponse
@@ -89,7 +87,7 @@ class StudentController extends Controller
 
         return redirect()
             ->route('role.students.index', ['role' => $request->route('role')])
-            ->with('success', 'Student created successfully.');
+            ->with('success', 'Student checkout completed successfully.');
     }
 
     public function show(Request $request, string $role, Student $student): View
@@ -155,11 +153,6 @@ class StudentController extends Controller
         return redirect()
             ->route('role.students.index', ['role' => $request->route('role')])
             ->with('success', 'Student deleted successfully.');
-    }
-
-    private function roles()
-    {
-        return Role::query()->orderBy('name')->get(['id', 'name']);
     }
 
     private function courseSlotsByCourse(): array

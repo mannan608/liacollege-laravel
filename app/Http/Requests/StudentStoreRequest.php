@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StudentStoreRequest extends FormRequest
 {
@@ -24,36 +23,28 @@ class StudentStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:191'],
-            'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'confirmed'],
+            'phone' => ['required', 'string', 'max:50'],
+            'date_of_birth' => ['required', 'date'],
+            'usi' => ['required', 'string', 'max:255'],
             'course_id' => ['required', 'integer', 'exists:courses,id'],
-            'slot_ids' => ['nullable', 'array'],
-            'slot_ids.*' => [
+            'slot_id' => [
+                'required',
                 'integer',
-                Rule::exists('course_slots', 'id')->where(function ($query) {
+                \Illuminate\Validation\Rule::exists('course_slots', 'id')->where(function ($query) {
                     $query->where('course_id', $this->input('course_id'));
                 }),
             ],
-            'courses' => ['nullable', 'array'],
-            'courses.*' => ['integer', 'exists:courses,id'],
+            'payment_method' => ['required', \Illuminate\Validation\Rule::in([
+                'visa',
+                'mastercard',
+                'bank_transfer',
+                'cash',
+            ])],
+            'voucher_code' => ['nullable', 'string', 'max:255'],
+            'purchase_order_ref' => ['nullable', 'string', 'max:255'],
         ];
-    }
-
-    protected function prepareForValidation(): void
-    {
-        if ($this->filled('course_id') && ! $this->has('courses')) {
-            $this->merge([
-                'courses' => [$this->input('course_id')],
-            ]);
-        }
-
-        if (! $this->has('courses')) {
-            $this->merge(['courses' => []]);
-        }
-
-        if (! $this->has('slot_ids')) {
-            $this->merge(['slot_ids' => []]);
-        }
     }
 }

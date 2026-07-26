@@ -3,16 +3,19 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Student;
-use App\Models\LMS\Enrollment;
 use App\Models\User;
+use App\Services\CourseEnrollmentCheckoutService;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 
 class StudentRepository implements StudentRepositoryInterface
 {
+    public function __construct(
+        private readonly CourseEnrollmentCheckoutService $checkoutService,
+    ) {}
+
     public function paginate(int $perPage = 25): LengthAwarePaginator
     {
         return Student::query()
@@ -36,43 +39,15 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function create(array $data): Student
     {
-        $courseIds = $data['courses'] ?? [];
-        $slotIds = $data['slot_ids'] ?? [];
-        unset($data['courses']);
-        unset($data['slot_ids']);
+        $enrollment = $this->checkoutService->checkout($data);
 
-        return DB::transaction(function () use ($data, $courseIds, $slotIds): Student {
-            $studentRole = Role::where('name', 'student')->firstOrFail();
-
-            $data['status'] = 'active';
-            $data['primary_role_id'] = $studentRole->id;
-
-            if (! empty($data['password'])) {
-                $data['password'] = bcrypt($data['password']);
-            }
-
-            $user = User::create($data);
-
-            $user->assignRole($studentRole);
-
-            $student = Student::create([
-                'user_id' => $user->id,
-            ]);
-
-            if (! empty($courseIds)) {
-                $student->courses()->sync($courseIds);
-            }
-
-            $this->syncSlotEnrollments($student, $slotIds);
-
-            return $student->load(
-                'user.roles',
-                'user.primaryRole',
-                'courses',
-                'enrollments.slot.course',
-                'enrollments.slot.trainingCenter'
-            );
-        });
+        return $enrollment->student->load(
+            'user.roles',
+            'user.primaryRole',
+            'courses',
+            'enrollments.slot.course',
+            'enrollments.slot.trainingCenter'
+        );
     }
 
     public function update(User $user, array $data): User
@@ -132,21 +107,5 @@ class StudentRepository implements StudentRepositoryInterface
 
             return (bool) $user->delete();
         });
-    }
-
-    private function syncSlotEnrollments(Student $student, array $slotIds): void
-    {
-        foreach ($slotIds as $slotId) {
-            Enrollment::firstOrCreate(
-                [
-                    'student_id' => $student->id,
-                    'course_slot_id' => $slotId,
-                ],
-                [
-                    'status' => 'pending',
-                    'enrolled_at' => now(),
-                ]
-            );
-        }
     }
 }
