@@ -132,4 +132,29 @@ Route::prefix('{role}')
 
         // Reorder Questions
         Route::post('quizzes/{quiz}/questions/reorder', [QuestionController::class, 'reorder'])->name('quizzes.questions.reorder');
+
+
+         // Help Forms Management (Reports, Formal Complaints, Contact Admin Messages)
+        Route::prefix('help')->name('help.')->group(function () {
+            // Reports
+            Route::get('reports', [HelpFormController::class, 'reportsIndex'])->name('reports.index');
+            Route::get('reports/{report}', [HelpFormController::class, 'reportsShow'])->name('reports.show');
+            Route::get('reports/{report}/edit', [HelpFormController::class, 'reportsEdit'])->name('reports.edit');
+            Route::put('reports/{report}', [HelpFormController::class, 'reportsUpdate'])->name('reports.update');
+            Route::delete('reports/{report}', [HelpFormController::class, 'reportsDestroy'])->name('reports.destroy');
+
+            // Formal Complaints
+            Route::get('complaints', [HelpFormController::class, 'complaintsIndex'])->name('complaints.index');
+            Route::get('complaints/{complaint}', [HelpFormController::class, 'complaintsShow'])->name('complaints.show');
+            Route::get('complaints/{complaint}/edit', [HelpFormController::class, 'complaintsEdit'])->name('complaints.edit');
+            Route::put('complaints/{complaint}', [HelpFormController::class, 'complaintsUpdate'])->name('complaints.update');
+            Route::delete('complaints/{complaint}', [HelpFormController::class, 'complaintsDestroy'])->name('complaints.destroy');
+
+            // Contact Admin Messages
+            Route::get('contacts', [HelpFormController::class, 'contactsIndex'])->name('contacts.index');
+            Route::get('contacts/{message}', [HelpFormController::class, 'contactsShow'])->name('contacts.show');
+            Route::get('contacts/{message}/edit', [HelpFormController::class, 'contactsEdit'])->name('contacts.edit');
+            Route::put('contacts/{message}', [HelpFormController::class, 'contactsUpdate'])->name('contacts.update');
+            Route::delete('contacts/{message}', [HelpFormController::class, 'contactsDestroy'])->name('contacts.destroy');
+        });
     });

@@ -261,9 +261,12 @@ Route::prefix('student')
         Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
 
         // help route
-        Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
+         Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
         Route::get('/links', [HelpController::class, 'portalLink'])->name('links');
         Route::get('/technical-reports', [HelpController::class, 'portaReports'])->name('technical-reports');
+        Route::post('/technical-reports', [HelpController::class, 'storeReport'])->name('technical-reports.store');
         Route::get('/lodge-formal-complaint', [HelpController::class, 'lodgeFormalComplaint'])->name('lodge-formal-complaint');
+        Route::post('/lodge-formal-complaint', [HelpController::class, 'storeFormalComplaint'])->name('formal-complaint.store');
         Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
+        Route::post('/contact-admin', [HelpController::class, 'storeContactAdmin'])->name('contact-admin.store');
     });

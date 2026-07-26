@@ -121,6 +121,27 @@ class MenuHelper
                     ],                    
                 ],
             ],
+            [
+                'name' => 'Help & Forms',
+                'icon' => 'support-ticket',
+                'subItems' => [
+                    [
+                        'name' => 'Tech Reports',
+                        'route' => 'role.help.reports.index',
+                        'permission' => 'help.reports.list',
+                    ],
+                    [
+                        'name' => 'Formal Complaints',
+                        'route' => 'role.help.complaints.index',
+                        'permission' => 'help.complaints.list',
+                    ],
+                    [
+                        'name' => 'Admin Messages',
+                        'route' => 'role.help.contacts.index',
+                        'permission' => 'help.amin-contacts.list',
+                    ],
+                ],
+            ],
             // [
             //     'name' => 'Leads',
             //     'icon' => 'chat',
