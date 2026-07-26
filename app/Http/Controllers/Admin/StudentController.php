@@ -174,7 +174,7 @@ class StudentController extends Controller
     }
 
 
-    public function createDocument(Request $request, string $role, Student $student): View
+    public function createDocument(Request $request, string $role, Student $student)
     {
         $request->user()->can('student.view') || abort(403);
 
@@ -187,6 +187,8 @@ class StudentController extends Controller
             ->with('uploadedBy')
             ->latest()
             ->get();
+
+// return $documents;
 
         return view('backend.pages.students.student-documents', [
             'student' => $student,
@@ -210,12 +212,7 @@ class StudentController extends Controller
                 'string',
                 'in:' . implode(',', Document::getTypes()),
             ],
-            'documents' => [
-                'required',
-                'array',
-                'min:1',
-            ],
-            'documents.*' => [
+            'document' => [
                 'required',
                 'file',
                 'mimes:pdf,jpg,jpeg,png',
@@ -228,34 +225,29 @@ class StudentController extends Controller
             ],
         ]);
 
-        $uploadedCount = 0;
+        $file = $request->file('document');
+        $originalName = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $size = $file->getSize();
 
-        foreach ($request->file('documents') as $file) {
-            $originalName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $size = $file->getSize();
+        $path = $this->uploadFile(
+            $file,
+            'documents/students/' . $student->id
+        );
 
-            $path = $this->uploadFile(
-                $file,
-                'documents/students/' . $student->id
-            );
-
-            $student->documents()->create([
-                'name'          => $originalName,
-                'file'          => $path,
-                'extension'     => $extension,
-                'size'          => $size,
-                'document_type' => $request->document_type,
-                'notes'         => $request->notes,
-                'uploaded_by'   => $request->user()->id,
-            ]);
-
-            $uploadedCount++;
-        }
+        $student->documents()->create([
+            'name'          => $originalName,
+            'file'          => $path,
+            'extension'     => $extension,
+            'size'          => $size,
+            'document_type' => $request->document_type,
+            'notes'         => $request->notes,
+            'uploaded_by'   => $request->user()->id,
+        ]);
 
         return back()->with(
             'success',
-            "{$uploadedCount} document(s) uploaded successfully."
+            'Document uploaded successfully.'
         );
     }
 
