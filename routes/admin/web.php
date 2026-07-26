@@ -18,13 +18,13 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\Quiz\QuestionController;
 use App\Http\Controllers\Admin\Quiz\QuizController;
 use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TrainingCenterController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
-use App\Http\Controllers\Student\StudentController;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +66,9 @@ Route::prefix('{role}')
 
         Route::resource('users', UserController::class);
         Route::resource('students', StudentController::class);
+
+        Route::get('/courses/{course}/slots',    [StudentController::class, 'courseSlots'])->name('courses.slots');
+        
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
@@ -86,9 +89,9 @@ Route::prefix('{role}')
         Route::delete('courses/{course}/course-documents', [CourseController::class, 'destroyDocument'])->name('course-documents.delete');
 
 
-        Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
-        Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
-        Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
+        // Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
+        // Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
+        // Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
 
         Route::resource('training-centers', TrainingCenterController::class);
 
@@ -158,4 +161,6 @@ Route::prefix('{role}')
             Route::put('contacts/{message}', [HelpFormController::class, 'contactsUpdate'])->name('contacts.update');
             Route::delete('contacts/{message}', [HelpFormController::class, 'contactsDestroy'])->name('contacts.destroy');
         });
+
+        
     });

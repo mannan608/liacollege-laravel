@@ -372,42 +372,7 @@ public function index(Request $request)
     }
 
 
-    // public function assignmentSubmit(Request $request,    CourseSectionRow $row)
-    // {
-    //     $student = auth()->user()->student;
-    //     abort_unless($student, 403);
-
-    //     $rowAccess = $this->rowAccess($student, $row);
-    //     abort_unless($rowAccess['visible'] && $rowAccess['submission'], 403);
-
-
-    //     $request->validate([
-    //         'file' => 'required|file|mimes:pdf,doc,docx|max:10240',
-    //     ]);
-
-    //     $submission = AssignmentSubmission::where([
-    //         'student_id' => $student->id,
-    //         'course_section_row_id' => $row->id,
-    //     ])->first();
-
-    //     $path = $this->replaceFile(
-    //         $request->file('file'),
-    //         $submission?->file,
-    //         'submissions'
-    //     );
-
-    //     AssignmentSubmission::updateOrCreate(
-    //         [
-    //             'student_id' => $student->id,
-    //             'course_section_row_id' => $row->id,
-    //         ],
-    //         [
-    //             'file' => $path,
-    //         ]
-    //     );
-
-    //     return back()->with('success', 'Assignment submitted successfully.');
-    // }
+  
     public function assignmentSubmit(Request $request,    CourseSectionRow $row)
     {
         $student = auth()->user()->student;
@@ -440,19 +405,7 @@ public function index(Request $request)
 
         return back()->with('success', 'Assignment submitted successfully.');
     }
-    // public function download(CourseSectionRow $row)
-    // {
-
-    //     $student = auth()->user()->student;
-    //     abort_unless($student, 403);
-
-    //     $rowAccess = $this->rowAccess($student, $row);
-    //     abort_unless($rowAccess['visible'] && $rowAccess['download'], 403);
-
-    //     abort_unless(! empty($row->data['file']), 404);
-
-    //     return response()->download(public_path($row->data['file']));
-    // }
+   
     public function download(CourseSectionRow $row)
     {
 

@@ -177,12 +177,12 @@ Route::prefix('student')
         Route::get('/profile/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
 
-        Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
-            ->name('rows.submit');
-        Route::get('rows/{row}/download', [StudentController::class, 'download'])
-            ->name('rows.download');
-        Route::get('/course/view/{slug}', [StudentController::class, 'view'])
-            ->name('rows.view');
+        // Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
+        //     ->name('rows.submit');
+        // Route::get('rows/{row}/download', [StudentController::class, 'download'])
+        //     ->name('rows.download');
+        // Route::get('/course/view/{slug}', [StudentController::class, 'view'])
+        //     ->name('rows.view');
 
 
         Route::get('/certificate', [StudentDocumentController::class, 'studentCertificate'])->name('certificate');
