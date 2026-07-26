@@ -111,7 +111,7 @@
             <!-- Question ID -->
             <div>
                 <label class="block text-gray-700 font-medium mb-2">If the problem pertains to a single exam question, please supply the Question ID (QID) number here:</label>
-                <input type="text" name="question_id" value="{{ old('question_id') }}" class="w-full md:w-1/2 border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
+                <input type="text" name="question_id" value="{{ old('question_id') }}" class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                 @error('question_id')
                     <p class="mt-1 text-sm text-red-600 font-medium">{{ $message }}</p>
                 @enderror

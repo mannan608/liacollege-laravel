@@ -51,9 +51,10 @@ class StudentController extends Controller
             ->latest()
             ->paginate(20);
 
-            // return $enrollments;
+        // return $enrollments;
 
-        return view('backend.pages.students.index',
+        return view(
+            'backend.pages.students.index',
             compact('enrollments')
         );
     }
@@ -168,15 +169,33 @@ class StudentController extends Controller
             ->orderBy('training_date')
             ->get()
             ->groupBy('course_id')
-            ->map(fn ($slots) => $slots->values()->all())
+            ->map(fn($slots) => $slots->values()->all())
             ->toArray();
     }
 
 
-public function createDocument(Request $request, string $role, Student $student): View{
+    public function createDocument(Request $request, string $role, Student $student): View
+    {
+        $request->user()->can('student.view') || abort(403);
 
-    return view('backend.pages.students.student-documents', compact('student'));
-}
+        $student->loadMissing([
+            'user',
+            'documents.uploadedBy',
+        ]);
+
+        $documents = $student->documents()
+            ->with('uploadedBy')
+            ->latest()
+            ->get();
+
+        return view('backend.pages.students.student-documents', [
+            'student' => $student,
+            'documents' => $documents,
+            'groupedDocuments' => $documents->groupBy('document_type'),
+            'documentTypes' => Document::getTypes(),
+            'title' => 'Student Documents',
+        ]);
+    }
 
     public function storeDocument(
         Request $request,
@@ -301,64 +320,5 @@ public function createDocument(Request $request, string $role, Student $student)
         );
     }
 
-    public function replaceDocument(
-        Request $request,
-        string $role,
-        Student $student,
-        Document $document
-    ): RedirectResponse {
-        $request->user()->can('student.edit') || abort(403);
-
-        abort_unless(
-            $document->documentable_type === Student::class &&
-                (int) $document->documentable_id === (int) $student->id,
-            404
-        );
-
-        $request->validate([
-            'document' => [
-                'required',
-                'file',
-                'mimes:pdf,jpg,jpeg,png',
-                'max:10240',
-            ],
-            'document_type' => [
-                'nullable',
-                'string',
-                'in:' . implode(',', Document::getTypes()),
-            ],
-            'notes' => [
-                'nullable',
-                'string',
-                'max:1000',
-            ],
-        ]);
-
-        $file = $request->file('document');
-
-        $originalName = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $size = $file->getSize();
-
-        $path = $this->replaceFile(
-            $file,
-            $document->file,
-            'documents/students/' . $student->id
-        );
-
-        $document->update([
-            'name'          => $originalName,
-            'file'          => $path,
-            'extension'     => $extension,
-            'size'          => $size,
-            'document_type' => $request->filled('document_type') ? $request->document_type : $document->document_type,
-            'notes'         => $request->filled('notes') ? $request->notes : $document->notes,
-            'uploaded_by'   => $request->user()->id,
-        ]);
-
-        return back()->with(
-            'success',
-            'Document replaced successfully.'
-        );
-    }
+   
 }

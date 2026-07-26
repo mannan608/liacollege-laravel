@@ -166,7 +166,6 @@ Route::prefix('{role}')
         Route::post('students/{student}/documents', [StudentController::class, 'storeDocument'])->name('documents.store');
         Route::get('students/{student}/documents/{document}/download', [StudentController::class, 'downloadDocument'])->name('documents.download');
         Route::delete('students/{student}/documents/{document}', [StudentController::class, 'destroyDocument'])->name('documents.destroy');
-        Route::post('students/{student}/documents/{document}/replace', [StudentController::class, 'replaceDocument'])->name('documents.replace');
 
         
     });
