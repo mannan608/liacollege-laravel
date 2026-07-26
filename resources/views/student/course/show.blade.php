@@ -57,7 +57,7 @@
                             </a>
                         @empty
                             <div
-                                class="w-full rounded-lg border border-dashed border-gray-300 p-6 text-center text-gray-500">
+                                class="w-full rounded-lg flex items-center justify-center px-4 border border-dashed border-gray-300 text-center text-gray-500">
                                 No documents available.
                             </div>
                         @endforelse

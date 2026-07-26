@@ -102,9 +102,23 @@ public function show(Document $document)
 
 
 
-public function studentCertificate(){
-    return view('student.documents.certificate');
-    
+public function studentCertificate()
+{
+    $student = auth()->user()->student;
+
+    $course = $student->enrollments()
+        ->with(['slot.course'])
+        ->latest()
+        ->first();
+
+    $certificate = $student->documents()
+        ->where('document_type', 'certificate')
+        ->latest()
+        ->first();
+
+        // return $course;
+
+    return view('student.documents.certificate', compact('course', 'certificate'));
 }
 
 public function tasks()
