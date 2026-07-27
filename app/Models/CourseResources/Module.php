@@ -4,28 +4,28 @@ namespace App\Models\CourseResources;
 
 use App\Models\Course;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Module extends Model
 {
-   use SoftDeletes;
+    use SoftDeletes;
 
     protected $fillable = [
         'course_id',
         'title',
+        'slug',
     ];
 
     protected $casts = [
         'course_id' => 'integer',
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Relationships
-    |--------------------------------------------------------------------------
-    */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     public function course(): BelongsTo
     {

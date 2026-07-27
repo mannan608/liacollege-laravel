@@ -19,14 +19,7 @@ return new class extends Migration
         ->cascadeOnDelete();
 
     $table->string('title');
-
-    $table->longText('content')->nullable();
-    $table->json('lesson_types')
-        ->comment('Multiple lesson types: video, pdf, text, mixed, quiz, assignment, link');
-
-    $table->unsignedInteger('duration')
-        ->default(0)
-        ->comment('Duration in minutes');
+    $table->string('slug')->unique();   
 
     $table->boolean('status')
         ->default(true);

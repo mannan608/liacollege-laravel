@@ -11,6 +11,7 @@ use App\Models\CourseResources\Module;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Throwable;
 
 class CourseLessonController extends Controller
@@ -34,9 +35,10 @@ class CourseLessonController extends Controller
                 $request->integer('per_page', 15)
             )
             ->withQueryString();
-            // return $lessons;
+        // return $lessons;
 
-        return view('backend.pages.CourseResources.Lessons.index',compact(
+        return view('backend.pages.CourseResources.Lessons.index',
+            compact(
                 'course',
                 'module',
                 'lessons'
@@ -58,7 +60,8 @@ class CourseLessonController extends Controller
 
         $this->validateModuleBelongsToCourse($module, $course);
 
-        return view('backend.pages.CourseResources.Lessons.create',
+        return view(
+            'backend.pages.CourseResources.Lessons.create',
             compact(
                 'course',
                 'module'
@@ -85,10 +88,8 @@ class CourseLessonController extends Controller
         try {
 
             $module->lessons()->create([
-                'title' => $validated['title'],
-                'content' => $validated['content'] ?? null,
-                'duration' => $validated['duration'] ?? 0,
-                'lesson_types' => $validated['lesson_types'] ?? [],
+                'title'  => $validated['title'],
+                'slug'   => Str::slug($validated['title']),
                 'status' => $validated['status'] ?? true,
             ]);
 
@@ -103,7 +104,6 @@ class CourseLessonController extends Controller
                 'success',
                 'Lesson created successfully.'
             );
-
         } catch (Throwable $e) {
 
             DB::rollBack();
@@ -137,7 +137,8 @@ class CourseLessonController extends Controller
             $lesson
         );
 
-        return view('backend.pages.CourseResources.Lessons.show',
+        return view(
+            'backend.pages.CourseResources.Lessons.show',
             compact(
                 'course',
                 'module',
@@ -164,7 +165,8 @@ class CourseLessonController extends Controller
             $lesson
         );
 
-        return view('backend.pages.CourseResources.Lessons.edit',
+        return view(
+            'backend.pages.CourseResources.Lessons.edit',
             compact(
                 'course',
                 'module',
@@ -245,7 +247,6 @@ class CourseLessonController extends Controller
                 'success',
                 'Lesson updated successfully.'
             );
-
         } catch (Throwable $e) {
 
             DB::rollBack();
@@ -296,7 +297,6 @@ class CourseLessonController extends Controller
                 'success',
                 'Lesson deleted successfully.'
             );
-
         } catch (Throwable $e) {
 
             DB::rollBack();

@@ -6,17 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseResources\Lesson;
 use App\Models\CourseResources\Module;
-use App\Models\LMS\CourseSlot;
-use App\Models\LMS\Enrollment;
-use App\Models\Payment;
-use App\Models\Student;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\View;
 
 class LearningPortalController extends Controller
 {
@@ -24,40 +14,40 @@ class LearningPortalController extends Controller
     {
         abort_unless($module->course_id === $course->id, 404);
 
-        $module->load([
-            'lessons.resourceSections.resources',
+        $module->load('lessons');
+
+        $lesson = $module->lessons()->orderBy('id')->first();
+
+        abort_if(!$lesson, 404, 'No lessons found.');
+
+        $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
+
+        return view('student.course.module.quiz.portal', [
+            'course' => $course,
+            'module' => $module,
+            'lesson' => $lesson,
+            'activeLessonId' => $lesson->id,
+            'lessonView' => View::exists($lessonView) ? $lessonView : null,
         ]);
-
-        $lesson = $module->lessons->first();
-        // return $lesson;
-
-        return view('student.course.module.quiz.portal',
-            compact('course', 'module', 'lesson')
-        );
     }
 
-    public function lessonResources(
-        Course $course,
-        Module $module,
-        Lesson $lesson
-    ) {
+    public function show(Course $course, Module $module, Lesson $lesson)
+    {
         abort_unless($module->course_id === $course->id, 404);
         abort_unless($lesson->module_id === $module->id, 404);
 
-        $module->load([
-            'lessons.resourceSections.resources',
+        $module->load('lessons');
+
+        $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
+
+        // return  $lessonView ;
+
+        return view('student.course.module.quiz.portal', [
+            'course' => $course,
+            'module' => $module,
+            'lesson' => $lesson,
+            'activeLessonId' => $lesson->id,
+            'lessonView' => View::exists($lessonView) ? $lessonView : null,
         ]);
-
-        $lesson->load([
-            'resourceSections.resources',
-        ]);
-        // return $lesson;
-
-
-       return view('student.course.module.quiz.portal',
-            compact('course', 'module', 'lesson')
-        );
     }
-
-
 }

@@ -215,10 +215,10 @@ Route::prefix('student')
         Route::get('/courses/{course}/quiz-modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
 
-        Route::get(
-            '/courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/resource',
-            [LearningPortalController::class, 'lessonResources']
-        )->name('lesson.resources');
+        // Route::get(
+        //     '/courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/resource',
+        //     [LearningPortalController::class, 'lessonResources']
+        // )->name('lesson.resources');
 
         //student documnet
 
@@ -273,4 +273,7 @@ Route::prefix('student')
         Route::post('/lodge-formal-complaint', [HelpController::class, 'storeFormalComplaint'])->name('formal-complaint.store');
         Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
         Route::post('/contact-admin', [HelpController::class, 'storeContactAdmin'])->name('contact-admin.store');
+
+         Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
+        ->name('lesson.resources');
     });
