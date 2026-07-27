@@ -31,23 +31,23 @@ class LearningPortalController extends Controller
         ]);
     }
 
-    public function show(Course $course, Module $module, Lesson $lesson)
-    {
-        abort_unless($module->course_id === $course->id, 404);
-        abort_unless($lesson->module_id === $module->slug, 404);
+    // public function show(Course $course, Module $module, Lesson $lesson)
+    // {
+    //     abort_unless($module->course_id === $course->id, 404);
+    //     abort_unless($lesson->module_id === $module->id, 404);
 
-        $module->load('lessons');
+    //     $module->load('lessons');
 
-        $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
+    //     $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
 
-        // return  $lessonView ;
+   
 
-        return view('student.course.module.quiz.portal', [
-            'course' => $course,
-            'module' => $module,
-            'lesson' => $lesson,
-            'activeLessonId' => $lesson->id,
-            'lessonView' => View::exists($lessonView) ? $lessonView : null,
-        ]);
-    }
+    //     return view('student.course.module.quiz.portal', [
+    //         'course' => $course,
+    //         'module' => $module,
+    //         'lesson' => $lesson,
+    //         'activeLessonId' => $lesson->id,
+    //         'lessonView' => View::exists($lessonView) ? $lessonView : null,
+    //     ]);
+    // }
 }

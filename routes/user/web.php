@@ -274,6 +274,6 @@ Route::prefix('student')
         Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
         Route::post('/contact-admin', [HelpController::class, 'storeContactAdmin'])->name('contact-admin.store');
 
-         Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
-        ->name('lesson.resources');
+        //  Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
+        // ->name('lesson.resources');
     });
