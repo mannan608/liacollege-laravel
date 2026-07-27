@@ -12,18 +12,19 @@ use App\Http\Controllers\Admin\CourseResources\CourseLessonResourceController;
 use App\Http\Controllers\Admin\CourseResources\CourseModuleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\HelpFormController;
 use App\Http\Controllers\Admin\LMS\CourseSlotController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\Quiz\QuestionController;
 use App\Http\Controllers\Admin\Quiz\QuizController;
 use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TrainingCenterController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\LMS\CourseEnrollmentController;
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\Student\CourseEnrollmentController;
-use App\Http\Controllers\Student\StudentController;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,9 @@ Route::prefix('{role}')
 
         Route::resource('users', UserController::class);
         Route::resource('students', StudentController::class);
+
+        Route::get('/courses/{course}/slots',    [StudentController::class, 'courseSlots'])->name('courses.slots');
+        
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
@@ -85,9 +89,9 @@ Route::prefix('{role}')
         Route::delete('courses/{course}/course-documents', [CourseController::class, 'destroyDocument'])->name('course-documents.delete');
 
 
-        Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
-        Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
-        Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
+        // Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
+        // Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
+        // Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
 
         Route::resource('training-centers', TrainingCenterController::class);
 
@@ -132,4 +136,36 @@ Route::prefix('{role}')
 
         // Reorder Questions
         Route::post('quizzes/{quiz}/questions/reorder', [QuestionController::class, 'reorder'])->name('quizzes.questions.reorder');
+
+
+         // Help Forms Management (Reports, Formal Complaints, Contact Admin Messages)
+        Route::prefix('help')->name('help.')->group(function () {
+            // Reports
+            Route::get('reports', [HelpFormController::class, 'reportsIndex'])->name('reports.index');
+            Route::get('reports/{report}', [HelpFormController::class, 'reportsShow'])->name('reports.show');
+            Route::get('reports/{report}/edit', [HelpFormController::class, 'reportsEdit'])->name('reports.edit');
+            Route::put('reports/{report}', [HelpFormController::class, 'reportsUpdate'])->name('reports.update');
+            Route::delete('reports/{report}', [HelpFormController::class, 'reportsDestroy'])->name('reports.destroy');
+
+            // Formal Complaints
+            Route::get('complaints', [HelpFormController::class, 'complaintsIndex'])->name('complaints.index');
+            Route::get('complaints/{complaint}', [HelpFormController::class, 'complaintsShow'])->name('complaints.show');
+            Route::get('complaints/{complaint}/edit', [HelpFormController::class, 'complaintsEdit'])->name('complaints.edit');
+            Route::put('complaints/{complaint}', [HelpFormController::class, 'complaintsUpdate'])->name('complaints.update');
+            Route::delete('complaints/{complaint}', [HelpFormController::class, 'complaintsDestroy'])->name('complaints.destroy');
+
+            // Contact Admin Messages
+            Route::get('contacts', [HelpFormController::class, 'contactsIndex'])->name('contacts.index');
+            Route::get('contacts/{message}', [HelpFormController::class, 'contactsShow'])->name('contacts.show');
+            Route::get('contacts/{message}/edit', [HelpFormController::class, 'contactsEdit'])->name('contacts.edit');
+            Route::put('contacts/{message}', [HelpFormController::class, 'contactsUpdate'])->name('contacts.update');
+            Route::delete('contacts/{message}', [HelpFormController::class, 'contactsDestroy'])->name('contacts.destroy');
+        });
+
+        Route::get('students/{student}/documents', [StudentController::class, 'createDocument'])->name('documents.create');
+        Route::post('students/{student}/documents', [StudentController::class, 'storeDocument'])->name('documents.store');
+        Route::get('students/{student}/documents/{document}/download', [StudentController::class, 'downloadDocument'])->name('documents.download');
+        Route::delete('students/{student}/documents/{document}', [StudentController::class, 'destroyDocument'])->name('documents.destroy');
+
+        
     });

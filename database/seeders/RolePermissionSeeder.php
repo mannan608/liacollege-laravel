@@ -170,6 +170,21 @@ class RolePermissionSeeder extends Seeder
             'quizzes.status.change',
             'quizzes.manage',
 
+            // Help & Forms
+            'help.report.list',
+            'help.report.view',
+            'help.report.edit',
+            'help.report.delete',
+            'help.complaint.list',
+            'help.complaint.view',
+            'help.complaint.edit',
+            'help.complaint.delete',
+            'help.contact.list',
+            'help.contact.view',
+            'help.contact.edit',
+            'help.contact.delete',
+
+
         ];
 
         foreach ($permissions as $permission) {

@@ -358,8 +358,7 @@
                     Are you sure you want to delete <span id="delete-filename"
                         class="font-medium text-gray-700 dark:text-gray-300"></span>? This action cannot be undone.
                 </p>
-                <form id="delete-form" action="" method="POST"
-                    class="flex items-center justify-center gap-3">
+                <form id="delete-form" action="" method="POST" class="flex items-center justify-center gap-3">
                     @csrf
                     @method('DELETE')
                     <button type="button" onclick="closeDeleteModal()"

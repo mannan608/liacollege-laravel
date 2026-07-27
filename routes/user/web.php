@@ -177,12 +177,12 @@ Route::prefix('student')
         Route::get('/profile/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
 
-        Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
-            ->name('rows.submit');
-        Route::get('rows/{row}/download', [StudentController::class, 'download'])
-            ->name('rows.download');
-        Route::get('/course/view/{slug}', [StudentController::class, 'view'])
-            ->name('rows.view');
+        // Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
+        //     ->name('rows.submit');
+        // Route::get('rows/{row}/download', [StudentController::class, 'download'])
+        //     ->name('rows.download');
+        // Route::get('/course/view/{slug}', [StudentController::class, 'view'])
+        //     ->name('rows.view');
 
 
         Route::get('/certificate', [StudentDocumentController::class, 'studentCertificate'])->name('certificate');
@@ -225,10 +225,14 @@ Route::prefix('student')
         Route::get('/student-document', [StudentDocumentController::class, 'studentDocument'])->name('student-document');
         Route::post('/student-document', [StudentDocumentController::class, 'storeStudentDocument'])->name('student-document');
         Route::delete('/student-document/{document}', [StudentDocumentController::class, 'destroyStudentDocument'])->name('student-document.destroy');
-        Route::get('/confirmation-letter', [StudentDocumentController::class, 'confirmationLetter'])->name('confirmation-letter');
-        Route::get('/signed-terms', [StudentDocumentController::class,    'signedTerms'])->name('signed-terms');
-        Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
-        Route::get('/tasks', [StudentDocumentController::class,    'tasks'])->name('tasks.index');
+        // Route::get('/confirmation-letter', [StudentDocumentController::class, 'confirmationLetter'])->name('confirmation-letter');
+        // Route::get('/signed-terms', [StudentDocumentController::class,    'signedTerms'])->name('signed-terms');
+        // Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
+
+        Route::get('/documents/{document}', [StudentDocumentController::class, 'show'])
+    ->name('documents.show');
+
+        Route::get('/tasks', [StudentDocumentController::class,'tasks'])->name('tasks.index');
 
         // Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
         Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
@@ -261,9 +265,12 @@ Route::prefix('student')
         Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
 
         // help route
-        Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
+         Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
         Route::get('/links', [HelpController::class, 'portalLink'])->name('links');
         Route::get('/technical-reports', [HelpController::class, 'portaReports'])->name('technical-reports');
+        Route::post('/technical-reports', [HelpController::class, 'storeReport'])->name('technical-reports.store');
         Route::get('/lodge-formal-complaint', [HelpController::class, 'lodgeFormalComplaint'])->name('lodge-formal-complaint');
+        Route::post('/lodge-formal-complaint', [HelpController::class, 'storeFormalComplaint'])->name('formal-complaint.store');
         Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
+        Route::post('/contact-admin', [HelpController::class, 'storeContactAdmin'])->name('contact-admin.store');
     });

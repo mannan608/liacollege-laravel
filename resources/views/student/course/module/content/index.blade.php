@@ -155,14 +155,6 @@
                     </div>
                 </div>
             @empty
-                <div class="rounded-lg px-6 py-8 text-center">
-                    <h3 class="mt-3 text-lg font-semibold text-gray-800">
-                        No Permission
-                    </h3>
-                    <p class="mt-2 text-sm text-gray-600">
-                        You don't have permission to access this course yet.
-                    </p>
-                </div>
             @endforelse
         </div>
     </div>

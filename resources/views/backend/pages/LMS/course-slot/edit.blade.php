@@ -26,9 +26,9 @@
                         <x-form.input-text name="title" label="Slot Title" value="{{ old('title', $slot->title) }}" placeholder="Enter slot title..." />
 
                         <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
-                            <x-form.input-text name="training_date" label="Training Date" type="date" value="{{ old('training_date', optional($slot->training_date)->format('Y-m-d')) }}" />
-                            <x-form.input-text name="start_time" label="Start Time" type="time" value="{{ old('start_time', $slot->start_time) }}" />
-                            <x-form.input-text name="end_time" label="End Time" type="time" value="{{ old('end_time', $slot->end_time) }}" />
+                             <x-form.date-picker name="training_date" label="Training Date"  :defaultDate="$slot->training_date?->format('m/d/Y')" />
+                            <x-form.time-select name="start_time" label="Start Time" value="{{ old('start_time', $slot->start_time) }}" />
+                            <x-form.time-select name="end_time" label="End Time" value="{{ old('end_time', $slot->end_time) }}" />
                         </div>
 
                         <div class="grid grid-cols-1 gap-5 md:grid-cols-2">

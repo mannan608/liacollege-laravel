@@ -47,11 +47,11 @@
                             <x-form.input-text name="email" label="Email" type="email" value="{{ old('email', $trainingCenter->email) }}" placeholder="Enter Email..." />
                             <x-form.input-text name="phone" label="Phone" value="{{ old('phone', $trainingCenter->phone) }}" placeholder="Enter Phone No..." />  
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <x-form.input-text name="latitude" label="Latitude" value="{{ old('latitude', $trainingCenter->latitude) }}" placeholder="Enter Latitude..." />
                             <x-form.input-text name="longitude" label="Longitude" value="{{ old('longitude', $trainingCenter->longitude) }}" placeholder="Enter Longitude..." />
 
-                        </div>
+                        </div> --}}
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                             <x-form.input-text name="country" label="Country" value="Australia" readonly />

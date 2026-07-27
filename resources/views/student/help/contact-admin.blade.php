@@ -42,7 +42,13 @@
             <!-- Accent bar -->
             <div class="h-1 bg-gradient-to-r from-brand-500 via-purple-500 to-pink-500"></div>
 
-            <form action="" method="POST" class="p-8">
+            @if(session('success'))
+                <div class="mx-8 mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
+                    <p class="text-green-800 font-medium">{{ session('success') }}</p>
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('student.contact-admin.store') }}" class="p-8">
                 @csrf
 
                 <!-- Message -->

@@ -5,6 +5,7 @@
     'selected' => [],
     'placeholder' => 'Select options...',
     'required' => false,
+    'id' => null,
 ])
 
 @php
@@ -24,6 +25,30 @@
         search:'',
         options:@js($items),
         selected:@js(old($fieldName, $selected)),
+        selectName:@js($fieldName),
+        multiSelectId:@js($id ?? $fieldName),
+
+        init(){
+            window.addEventListener('multi-select:update', (event) => {
+                const payload = event.detail || {};
+
+                if (payload.name && payload.name !== this.selectName && payload.id !== this.multiSelectId) {
+                    return;
+                }
+
+                if (Array.isArray(payload.options)) {
+                    this.options = payload.options;
+                }
+
+                if (Array.isArray(payload.selected)) {
+                    this.selected = payload.selected;
+                }
+
+                if (typeof payload.placeholder === 'string') {
+                    this.placeholder = payload.placeholder;
+                }
+            });
+        },
 
         toggle(id){
             if(this.selected.includes(id)){
@@ -59,6 +84,8 @@
         }
     }"
     class="w-full"
+    data-multi-select-name="{{ $fieldName }}"
+    data-multi-select-id="{{ $id ?? $fieldName }}"
 >
 
     @if($label)

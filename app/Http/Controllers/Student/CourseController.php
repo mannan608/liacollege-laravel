@@ -8,7 +8,9 @@ use App\Models\Course;
 use App\Models\CourseContentCategory;
 use App\Models\CourseResources\Module;
 use App\Models\Document;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class CourseController extends Controller
@@ -31,13 +33,21 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        $course->load(['documents']);
-     $courseContentModule = CourseContentCategory::all();
-        $courseQuizModule = Module::all();
+       $course->load('documents');
 
-        //    return $course;
+    $courseContentModule = CourseContentCategory::all();
+    $courseQuizModule = Module::all();
 
-        return view('student.course.show', compact('course','courseContentModule','courseQuizModule'));
+    $student = Auth::user()->student;
+
+    $documents = $student->documents()
+        ->with('uploadedBy')
+        ->latest()
+        ->get();
+
+        //    return $documents;
+
+        return view('student.course.show', compact('course','courseContentModule','courseQuizModule','documents'));
     }
 
     public function CourseQuizModule(Course $course,Module $module)

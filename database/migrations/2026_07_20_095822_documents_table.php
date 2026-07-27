@@ -14,12 +14,22 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
 
+            // Polymorphic relationship
             $table->morphs('documentable');
 
+            // Document information
             $table->string('name');
+            $table->string('document_type')->nullable();
             $table->string('file');
             $table->string('extension')->nullable();
             $table->unsignedBigInteger('size')->nullable();
+            $table->text('notes')->nullable();
+
+            // User who uploaded the document
+            $table->foreignId('uploaded_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
 
             $table->timestamps();
         });
@@ -30,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-       Schema::dropIfExists('documents');
+        Schema::dropIfExists('documents');
     }
 };
