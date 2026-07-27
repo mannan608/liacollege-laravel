@@ -4,8 +4,8 @@
     <form
         action="{{ role_route('role.lessons.update', [
             'course' => $course->id,
-            'module' => $module->id,
-            'lesson' => $lesson->id,
+            'module' => $module->slug,
+            'lesson' => $lesson->slug,
         ]) }}"
         method="POST">
 

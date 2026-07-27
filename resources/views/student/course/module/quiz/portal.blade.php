@@ -43,10 +43,10 @@
                         <!-- Lesson -->
                         <a href="{{ route('student.lesson.resources', [$course, $module, $moduleLesson]) }}"
                             class="flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all border mb-1 group
-                            {{ $activeLessonId === $moduleLesson->id ? 'bg-brand-50 border-brand-200' : 'hover:bg-gray-50 border-gray-100 hover:border-gray-100' }}">
+                            {{ $activeLessonId === $moduleLesson->slug ? 'bg-brand-50 border-brand-200' : 'hover:bg-gray-50 border-gray-100 hover:border-gray-100' }}">
                             <div
                                 class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors
-                                {{ $activeLessonId === $moduleLesson->id ? 'bg-brand-100 text-brand-600' : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200' }}">
+                                {{ $activeLessonId === $moduleLesson->slug ? 'bg-brand-100 text-brand-600' : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200' }}">
                                 <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
@@ -54,13 +54,13 @@
                             <div class="flex-1 min-w-0">
                                 <h4
                                     class="font-medium text-sm truncate
-                                    {{ $activeLessonId === $moduleLesson->id ? 'text-slate-900' : 'text-slate-700 group-hover:text-slate-900' }}">
+                                    {{ $activeLessonId === $moduleLesson->slug ? 'text-slate-900' : 'text-slate-700 group-hover:text-slate-900' }}">
                                     {{ $moduleLesson->title }}</h4>
                                 <p class="text-xs text-slate-400 mt-0.5">{{ $moduleLesson->duration }} min</p>
                             </div>
                             <div
                                 class="w-5 h-5 rounded-full border-2 flex-shrink-0
-                                {{ $activeLessonId === $moduleLesson->id ? 'border-brand-500 bg-brand-500' : 'border-slate-300' }}">
+                                {{ $activeLessonId === $moduleLesson->slug ? 'border-brand-500 bg-brand-500' : 'border-slate-300' }}">
                             </div>
                         </a>
                     @endforeach

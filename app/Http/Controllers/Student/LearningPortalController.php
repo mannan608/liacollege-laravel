@@ -34,7 +34,7 @@ class LearningPortalController extends Controller
     public function show(Course $course, Module $module, Lesson $lesson)
     {
         abort_unless($module->course_id === $course->id, 404);
-        abort_unless($lesson->module_id === $module->id, 404);
+        abort_unless($lesson->module_id === $module->slug, 404);
 
         $module->load('lessons');
 

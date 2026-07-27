@@ -4,7 +4,7 @@
     <form method="POST"
         action="{{ role_route('role.resources.update', [
             'course' => $course->id,
-            'module' => $module->id,
+            'module' => $module->slug,
             'lesson' => $lesson->id,
             'resource' => $resource->id,
         ]) }}"
@@ -261,7 +261,7 @@
 
         <!-- Actions -->
         <div class="flex flex-col md:flex-row gap-4">
-            <a href="{{ role_route('role.resources.index', ['course' => $course->id, 'module' => $module->id, 'lesson' => $lesson->id]) }}"
+            <a href="{{ role_route('role.resources.index', ['course' => $course->id, 'module' => $module->slug, 'lesson' => $lesson->id]) }}"
                 class="inline-flex w-full md:w-1/2 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-4 text-sm font-bold text-gray-700 hover:bg-gray-50 transition-colors">
                 Cancel
             </a>

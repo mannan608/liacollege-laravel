@@ -7,7 +7,7 @@
     $tableRowData = $collection
         ->map(function ($module) {
             return [
-                'id' => $module->id,
+                'id' => $module->slug,
                 'title' => $module->title,
                 'slug' => $module->slug,
             ];

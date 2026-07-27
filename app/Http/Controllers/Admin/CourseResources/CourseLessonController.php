@@ -98,7 +98,7 @@ class CourseLessonController extends Controller
             return redirect(
                 role_route('role.lessons.index', [
                     'course' => $course->id,
-                    'module' => $module->id,
+                    'module' => $module->slug,
                 ])
             )->with(
                 'success',
@@ -241,7 +241,7 @@ class CourseLessonController extends Controller
             return redirect(
                 role_route('role.lessons.index', [
                     'course' => $course->id,
-                    'module' => $module->id,
+                    'module' => $module->slug,
                 ])
             )->with(
                 'success',
@@ -291,7 +291,7 @@ class CourseLessonController extends Controller
             return redirect(
                 role_route('role.lessons.index', [
                     'course' => $course->id,
-                    'module' => $module->id,
+                    'module' => $module->slug,
                 ])
             )->with(
                 'success',
@@ -333,7 +333,7 @@ class CourseLessonController extends Controller
         Lesson $lesson
     ): void {
         abort_unless(
-            $lesson->module_id === $module->id,
+            $lesson->module_id === $module->slug,
             404
         );
     }
