@@ -162,3 +162,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+
+
+<script>
+    quizContainer.addEventListener('click', async function (event) {
+
+    const button = event.target.closest('.retakeQuizBtn');
+
+    if (!button) return;
+
+    button.disabled = true;
+
+    button.textContent = 'Loading...';
+
+    try {
+
+        const response = await fetch(button.dataset.url, {
+
+            method: 'POST',
+
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+
+        });
+
+        const data = await response.json();
+
+        quizContainer.innerHTML = data.html;
+
+    } catch (e) {
+
+        console.error(e);
+
+    }
+
+});
+</script>

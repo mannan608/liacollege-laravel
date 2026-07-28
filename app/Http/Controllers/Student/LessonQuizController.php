@@ -258,23 +258,43 @@ class LessonQuizController extends Controller
         return view('student.quiz.review', compact('attempt'));
     }
 
-    public function retake(QuizAttempt $attempt): RedirectResponse
+    public function retake(QuizAttempt $attempt): JsonResponse
 {
     abort_if($attempt->user_id !== auth()->id(), 403);
 
-    $attempt->answers()->delete();
+    DB::transaction(function () use ($attempt) {
 
-    $attempt->update([
-        'status' => 'in_progress',
-        'score' => 0,
-        'total_points' => 0,
-        'percentage' => 0,
-        'grade' => null,
-        'completed_at' => null,
-        'started_at' => now(),
-        'time_taken_seconds' => null,
+        $attempt->answers()->delete();
+
+        $attempt->update([
+            'status' => 'in_progress',
+            'score' => 0,
+            'total_points' => 0,
+            'percentage' => 0,
+            'grade' => null,
+            'completed_at' => null,
+            'started_at' => now(),
+            'time_taken_seconds' => null,
+        ]);
+    });
+
+    $attempt->refresh();
+
+    $quiz = $attempt->quiz()->with('lesson', 'questions.options')->first();
+
+    $questions = $quiz->questions;
+
+    return response()->json([
+        'completed' => false,
+        'html' => view('student.quiz.quiz-question', [
+            'lesson'         => $quiz->lesson,
+            'quiz'           => $quiz,
+            'attempt'        => $attempt,
+            'question'       => $questions->first(),
+            'questions'      => $questions,
+            'currentIndex'   => 0,
+            'previousAnswer' => null,
+        ])->render(),
     ]);
-
-    return redirect()->route('student.lesson.quiz.show', $attempt->quiz->lesson);
 }
 }

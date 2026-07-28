@@ -283,7 +283,9 @@ Route::prefix('student')
         Route::get('/lessons/{lesson}/quiz', [LessonQuizController::class, 'show'])->name('lessonQuiz.show');
         Route::post('/attempt/{attempt}/submit', [LessonQuizController::class, 'submit'])->name('quiz.submit');
         Route::get('/attempt/{attempt}/review', [LessonQuizController::class, 'review'])->name('quiz.review');
-        Route::post('/lessons/{lesson}/quiz/{quiz}/retake', [LessonQuizController::class, 'retake'])
+        // Route::post('/lessons/{lesson}/quiz', [LessonQuizController::class, 'retake'])->name('quiz.retake');
+        // Route::post('/quiz/{quiz}/retake', [LessonQuizController::class, 'retake'])->name('quiz.retake');
+        Route::post('/quiz/attempt/{attempt}/retake', [LessonQuizController::class, 'retake'])
     ->name('quiz.retake');
 
 

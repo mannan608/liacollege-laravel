@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
             $table->text('description')->nullable();
             $table->integer('time_limit_minutes')->nullable(); // Optional timer
-            $table->integer('passing_score')->default(60); // Percentage to pass
+            $table->integer('passing_score')->default(100); // Percentage to pass
             $table->integer('max_attempts')->nullable(); // Null = unlimited
             $table->boolean('shuffle_questions')->default(false);
             $table->boolean('show_correct_answers')->default(true);

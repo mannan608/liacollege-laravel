@@ -70,7 +70,7 @@
                         value="{{ old('time_limit_minutes') }}" placeholder="Optional" min="1" max="300" />
 
                     <x-form.input-text name="passing_score" label="Passing Score (%)" type="number"
-                        value="{{ old('passing_score', 60) }}" min="0" max="100" required />
+                        value="{{ old('passing_score', 100) }}" min="0" max="100" required />
 
                     <x-form.input-text name="max_attempts" label="Max Attempts" type="number"
                         value="{{ old('max_attempts') }}" placeholder="Unlimited" min="1" />

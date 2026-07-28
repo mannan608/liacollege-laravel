@@ -418,28 +418,19 @@ class LearningPortalController extends Controller
         }
     }
 
-    public function lessonQuiz(Lesson $lesson)
-    {
+//     public function lessonQuiz(Lesson $lesson)
+//     {
 
-       $quiz = Quiz::where('lesson_id',$lesson->id)
-        ->where('status','published')
-        ->firstOrFail();
+//        $quiz = Quiz::where('lesson_id',$lesson->id)
+//         ->where('status','published')
+//         ->firstOrFail();
 
-    // return redirect()->route(
-    //     'student.attempts.start',
-    //     $quiz
-    // );
-
-    return view('student.quiz.quiz-question', [
-    'attempt' => $attempt,
-    'question' => $question,
-    'questions' => $questions,
-    'currentIndex' => $currentIndex,
-    'previousAnswer' => $previousAnswer,
-]);
-    
-        // return view('student.course.module.lessons.quiz', [
-        //     'lesson' => $lesson
-        // ]);
-    }
+//     return view('student.quiz.quiz-question', [
+//     'attempt' => $attempt,
+//     'question' => $question,
+//     'questions' => $questions,
+//     'currentIndex' => $currentIndex,
+//     'previousAnswer' => $previousAnswer,
+// ]);
+//     }
 }

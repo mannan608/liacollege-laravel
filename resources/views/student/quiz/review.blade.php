@@ -27,14 +27,13 @@
                     <p class="text-sm text-gray-500 uppercase tracking-wide">Attempt Status</p>
                     <p class="text-3xl font-bold text-gray-900 mt-3">Locked</p>
                     <p class="text-sm text-gray-500 mt-2">Cannot edit after completion</p>
-                    <form action="{{ route('student.quiz.retake', $attempt->quiz) }}" method="POST">
-                        @csrf
-
-                        <button type="submit"
-                            class="mt-4 inline-flex items-center rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700">
+                    @if ($attempt->percentage < $attempt->quiz->passing_score)
+                        <button type="button"
+                            class="retakeQuizBtn mt-4 inline-flex items-center rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                            data-url="{{ route('student.quiz.retake', $attempt) }}">
                             Retake Quiz
                         </button>
-                    </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -134,3 +133,4 @@
         @endforeach
     </div>
 </div>
+
