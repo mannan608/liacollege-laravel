@@ -230,9 +230,9 @@ Route::prefix('student')
         // Route::get('/transcript', [StudentDocumentController::class,    'transcript'])->name('transcript');
 
         Route::get('/documents/{document}', [StudentDocumentController::class, 'show'])
-    ->name('documents.show');
+            ->name('documents.show');
 
-        Route::get('/tasks', [StudentDocumentController::class,'tasks'])->name('tasks.index');
+        Route::get('/tasks', [StudentDocumentController::class, 'tasks'])->name('tasks.index');
 
         // Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
         Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
@@ -265,7 +265,7 @@ Route::prefix('student')
         Route::post('attempts/{attempt}/abandon', [QuizAttemptController::class, 'abandon'])->name('attempts.abandon');
 
         // help route
-         Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
+        Route::get('/portal-guide-line', [HelpController::class, 'portalGuideLine'])->name('portal-guide-line');
         Route::get('/links', [HelpController::class, 'portalLink'])->name('links');
         Route::get('/technical-reports', [HelpController::class, 'portaReports'])->name('technical-reports');
         Route::post('/technical-reports', [HelpController::class, 'storeReport'])->name('technical-reports.store');
@@ -274,6 +274,6 @@ Route::prefix('student')
         Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
         Route::post('/contact-admin', [HelpController::class, 'storeContactAdmin'])->name('contact-admin.store');
 
-        //  Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
-        // ->name('lesson.resources');
+         Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
+        ->name('lesson.resources');
     });
