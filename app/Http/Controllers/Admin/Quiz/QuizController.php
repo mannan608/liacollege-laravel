@@ -45,14 +45,16 @@ class QuizController extends Controller
 
     public function show(string $role, Quiz $quiz): View
     {
+         $lessons = Lesson::orderBy('title')->get();
         $quiz->load(['questions.options', 'attempts' => fn($q) => $q->latest()->limit(10)]);
         
-        return view('backend.pages.quiz.quizzes.show', compact('quiz'));
+        return view('backend.pages.quiz.quizzes.show', compact('quiz','lessons'));
     }
 
     public function edit(string $role, Quiz $quiz): View
     {
-        return view('backend.pages.quiz.quizzes.edit', compact('quiz'));
+         $lessons = Lesson::orderBy('title')->get();
+        return view('backend.pages.quiz.quizzes.edit', compact('quiz','lessons'));
     }
 
     public function update(UpdateQuizRequest $request, string $role, Quiz $quiz): RedirectResponse

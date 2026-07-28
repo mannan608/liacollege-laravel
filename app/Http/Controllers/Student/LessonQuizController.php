@@ -8,159 +8,273 @@ use App\Models\CourseResources\Lesson;
 use App\Models\QuizModels\Question;
 use App\Models\QuizModels\Quiz;
 use App\Models\QuizModels\QuizAttempt;
-use GuzzleHttp\Psr7\Request;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View as ViewResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LessonQuizController extends Controller
 {
+    public function show(Lesson $lesson): ViewResponse|JsonResponse
+    {
+        $lesson->load([
+            'quiz.questions.options',
+        ]);
 
-// public function show(Lesson $lesson)
-// {
-//     $lesson->load([
-//         'quiz.questions'
-//     ]);
+        $quiz = $lesson->quiz;
 
-//     $quiz = $lesson->quiz;
-//     $questions = $quiz?->questions;
+        abort_if(!$quiz, 404, 'Quiz not found.');
+        abort_if($quiz->questions->isEmpty(), 404, 'No quiz questions found.');
 
-//     if (request()->ajax()) {
-//         return view('student.quiz.quiz-question', compact(
-//             'lesson',
-//             'quiz',
-//             'questions'
-//         ));
-//     }
+        $attempt = $this->resolveAttempt($quiz);
 
-//     return view('student.quiz.quiz-question', compact(
-//         'lesson',
-//         'quiz',
-//         'questions'
-//     ));
-// }
+        if ($attempt->isCompleted()) {
+            $attempt->load(['quiz.questions.options', 'answers.question']);
 
-public function show(Lesson $lesson)
-{
-    $lesson->load([
-        'quiz.questions.options',
-    ]);
+            return $this->renderReviewResponse($attempt);
+        }
 
-    $quiz = $lesson->quiz;
-
-    if (!$quiz) {
-        abort(404, 'Quiz not found.');
-    }
-
-    $questions = $quiz->questions;
-
-    $question = $questions->first(); 
-
-    // Create or retrieve the student's attempt
-    $attempt = QuizAttempt::firstOrCreate(
-        [
-            'user_id' => auth()->id(),
-            'quiz_id' => $quiz->id,
-        ],
-        [
-            'started_at' => now(),
-        ]
-    );
-
-    $currentIndex = 0;
-
-    $previousAnswer = $attempt->answers()
-        ->where('question_id', $question->id)
-        ->first();
-
-    if (request()->ajax()) {
-        return view('student.quiz.quiz-question', compact(
-            'lesson',
-            'quiz',
-            'attempt',
-            'question',
-            'questions',
-            'currentIndex',
-            'previousAnswer'
-        ));
-    }
-
-    return view('student.quiz.quiz-question', compact(
-        'lesson',
-        'quiz',
-        'attempt',
-        'question',
-        'questions',
-        'currentIndex',
-        'previousAnswer'
-    ));
-}
-
-
-public function submit(QuizAttempt $attempt)
-{
-    abort_if($attempt->user_id != auth()->id(),403);
-
-    if($attempt->submitted_at){
-        return redirect()->route('student.quiz.review',$attempt);
-    }
-
-    $totalScore = 0;
-    $totalMarks = 0;
-
-    foreach($attempt->quiz->questions as $question){
-
-        $answer = $attempt->answers()
-            ->where('question_id',$question->id)
+        $questions = $quiz->questions;
+        $question = $this->currentQuestionForAttempt($attempt, $questions);
+        $currentIndex = $questions->search(fn ($item) => $item->id === $question->id) ?: 0;
+        $previousAnswer = $attempt->answers()
+            ->where('question_id', $question->id)
             ->first();
 
-        $correctOptions = $question->options()
-            ->where('is_correct',1)
-            ->pluck('id')
-            ->sort()
-            ->values()
-            ->toArray();
+        return $this->renderQuestionResponse([
+            'lesson' => $lesson,
+            'quiz' => $quiz,
+            'attempt' => $attempt,
+            'question' => $question,
+            'questions' => $questions,
+            'currentIndex' => $currentIndex,
+            'previousAnswer' => $previousAnswer,
+        ]);
+    }
 
-        $selected = collect($answer?->selected_options ?? [])
-            ->sort()
-            ->values()
-            ->toArray();
+    public function submit(Request $request, QuizAttempt $attempt): JsonResponse|RedirectResponse
+    {
+        abort_if($attempt->user_id !== auth()->id(), 403);
 
-        $correct = $correctOptions == $selected;
+        if ($attempt->isCompleted()) {
+            return $this->renderReviewResponse($attempt);
+        }
 
-        if($answer){
-            $answer->update([
-                'is_correct'=>$correct,
-                'points_earned'=>$correct ? $question->marks : 0,
+        $validated = $request->validate([
+            'question_id' => ['required', 'integer'],
+            'options' => ['required', 'array', 'min:1'],
+            'options.*' => ['integer'],
+        ], [
+            'options.required' => 'Please select at least one option before continuing.',
+            'options.min' => 'Please select at least one option before continuing.',
+        ]);
+
+        $selectedOptions = array_map(
+            'intval',
+            $request->input('options', [])
+        );
+
+        $quiz = $attempt->quiz->load(['questions.options']);
+        $questions = $quiz->questions;
+        abort_if($questions->isEmpty(), 404, 'No quiz questions found.');
+
+        $question = $questions->firstWhere('id', (int) $validated['question_id']);
+        abort_if(!$question, 404, 'Question not found.');
+
+        DB::transaction(function () use ($attempt, $question, $selectedOptions) {
+            $isCorrect = $question->checkAnswer($selectedOptions);
+
+            $attempt->answers()->updateOrCreate(
+                ['question_id' => $question->id],
+                [
+                    'selected_options' => array_values($selectedOptions),
+                    'is_correct' => $isCorrect,
+                    'points_earned' => $isCorrect ? $question->points : 0,
+                ]
+            );
+        });
+
+        $currentIndex = $questions->search(fn ($item) => $item->id === $question->id);
+        $nextQuestion = $questions->get($currentIndex + 1);
+
+        if ($nextQuestion) {
+            $previousAnswer = $attempt->answers()
+                ->where('question_id', $nextQuestion->id)
+                ->first();
+
+            return $this->renderQuestionResponse([
+                'lesson' => $attempt->quiz->lesson,
+                'quiz' => $quiz,
+                'attempt' => $attempt,
+                'question' => $nextQuestion,
+                'questions' => $questions,
+                'currentIndex' => $currentIndex + 1,
+                'previousAnswer' => $previousAnswer,
             ]);
         }
 
-        $totalMarks += $question->marks;
+        $this->finalizeAttempt($attempt);
+        $attempt->load(['quiz.questions.options', 'answers.question']);
 
-        if($correct){
-            $totalScore += $question->marks;
-        }
+        return $this->renderReviewResponse($attempt);
     }
 
-    $attempt->update([
-        'submitted_at'=>now(),
-        'score'=>$totalScore,
-        'total_marks'=>$totalMarks,
-        'passed'=>$totalScore >= ($totalMarks*0.4),
-    ]);
+    public function review(QuizAttempt $attempt): ViewResponse
+    {
+        abort_if($attempt->user_id !== auth()->id(), 403);
+        abort_if(!$attempt->isCompleted(), 404);
 
-    return redirect()->route('student.quiz.review',$attempt);
-}
+        $attempt->load(['quiz.questions.options', 'answers.question']);
 
-public function review(QuizAttempt $attempt)
+        return view('student.quiz.review', compact('attempt'));
+    }
+
+    private function resolveAttempt(Quiz $quiz): QuizAttempt
+    {
+        $userId = auth()->id();
+
+        $attempt = QuizAttempt::query()
+            ->where('quiz_id', $quiz->id)
+            ->where('user_id', $userId)
+            ->where('status', 'in_progress')
+            ->latest('id')
+            ->first();
+
+        if ($attempt) {
+            return $attempt;
+        }
+
+        $latestAttempt = QuizAttempt::query()
+            ->where('quiz_id', $quiz->id)
+            ->where('user_id', $userId)
+            ->latest('id')
+            ->first();
+
+        if ($latestAttempt && $latestAttempt->isCompleted()) {
+            return $latestAttempt;
+        }
+
+        return QuizAttempt::create([
+            'quiz_id' => $quiz->id,
+            'user_id' => $userId,
+            'attempt_number' => QuizAttempt::query()
+                ->where('quiz_id', $quiz->id)
+                ->where('user_id', $userId)
+                ->count() + 1,
+            'started_at' => now(),
+            'status' => 'in_progress',
+        ]);
+    }
+
+    private function currentQuestionForAttempt(QuizAttempt $attempt, $questions): Question
+    {
+        $answeredQuestionIds = $attempt->answers()
+            ->pluck('question_id')
+            ->all();
+
+        $question = $questions->first(
+            fn ($item) => !in_array($item->id, $answeredQuestionIds, true)
+        );
+
+        return $question ?? $questions->first();
+    }
+
+    private function finalizeAttempt(QuizAttempt $attempt): void
+    {
+        $attempt->loadMissing(['quiz.questions', 'answers']);
+
+        $score = 0;
+        $totalPoints = 0;
+
+        foreach ($attempt->quiz->questions as $question) {
+            $answer = $attempt->answers->firstWhere('question_id', $question->id);
+
+            $correctOptions = $question->correctOptionIds();
+            $selectedOptions = collect($answer?->selected_options ?? [])
+                ->map(fn ($value) => (int) $value)
+                ->sort()
+                ->values()
+                ->all();
+
+            $isCorrect = $correctOptions === $selectedOptions;
+
+            if ($answer) {
+                $answer->update([
+                    'is_correct' => $isCorrect,
+                    'points_earned' => $isCorrect ? $question->points : 0,
+                ]);
+            }
+
+            $totalPoints += (int) $question->points;
+
+            if ($isCorrect) {
+                $score += (int) $question->points;
+            }
+        }
+
+        $percentage = $totalPoints > 0
+            ? round(($score / $totalPoints) * 100, 2)
+            : 0;
+
+        $attempt->update([
+            'score' => $score,
+            'total_points' => $totalPoints,
+            'percentage' => $percentage,
+            'grade' => $attempt->quiz->getGrade($percentage),
+            'status' => 'completed',
+            'completed_at' => now(),
+            'time_taken_seconds' => $attempt->started_at
+                ? now()->diffInSeconds($attempt->started_at)
+                : null,
+        ]);
+    }
+
+    private function renderQuestionResponse(array $data): ViewResponse|JsonResponse
+    {
+        $html = view('student.quiz.quiz-question', $data)->render();
+
+        if (request()->expectsJson() || request()->ajax()) {
+            return response()->json([
+                'completed' => false,
+                'html' => $html,
+            ]);
+        }
+
+        return view('student.quiz.quiz-question', $data);
+    }
+
+    private function renderReviewResponse(QuizAttempt $attempt): ViewResponse|JsonResponse
+    {
+        $html = view('student.quiz.review', compact('attempt'))->render();
+
+        if (request()->expectsJson() || request()->ajax()) {
+            return response()->json([
+                'completed' => true,
+                'html' => $html,
+            ]);
+        }
+
+        return view('student.quiz.review', compact('attempt'));
+    }
+
+    public function retake(QuizAttempt $attempt): RedirectResponse
 {
-    abort_if($attempt->user_id!=auth()->id(),403);
+    abort_if($attempt->user_id !== auth()->id(), 403);
 
-    $attempt->load([
-        'quiz.questions.options',
-        'answers'
+    $attempt->answers()->delete();
+
+    $attempt->update([
+        'status' => 'in_progress',
+        'score' => 0,
+        'total_points' => 0,
+        'percentage' => 0,
+        'grade' => null,
+        'completed_at' => null,
+        'started_at' => now(),
+        'time_taken_seconds' => null,
     ]);
 
-    return view('student.quiz.review',compact('attempt'));
+    return redirect()->route('student.lesson.quiz.show', $attempt->quiz->lesson);
 }
-
-
 }

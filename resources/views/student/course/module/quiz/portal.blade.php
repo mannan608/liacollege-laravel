@@ -225,6 +225,7 @@
                         <p class="text-sm text-slate-500 mt-1">
                             Continue when you're ready.
                         </p>
+                        <p id="quiz-complete-notice" class="hidden mt-3 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2"></p>
                     </div>
 
                     <button type="button" id="complete-lesson-btn"
@@ -266,6 +267,7 @@
 
 @php
     $completeLessonUrl = route('student.lesson.complete', [$course, $module, $lesson]);
+    $quizNotice = request('quiz_notice');
 @endphp
 
 <script>
@@ -275,9 +277,16 @@
         const completeContainer = document.getElementById('lesson-complete-container');
         const completeButton = document.getElementById('complete-lesson-btn');
         const completeButtonText = document.getElementById('complete-btn-text');
+        const quizNotice = @json($quizNotice);
+        const quizNoticeEl = document.getElementById('quiz-complete-notice');
 
         if (!lessonContent || !completeContainer || !completeButton) {
             return;
+        }
+
+        if (quizNotice && quizNoticeEl) {
+            quizNoticeEl.textContent = quizNotice;
+            quizNoticeEl.classList.remove('hidden');
         }
 
         const completionElement =

@@ -8,6 +8,7 @@ use App\Models\CourseResources\Lesson;
 use App\Models\CourseResources\Module;
 use App\Models\CourseResources\UserLessonProgress;
 use App\Models\QuizModels\Quiz;
+use App\Models\QuizModels\QuizAttempt;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -182,6 +183,14 @@ class LearningPortalController extends Controller
 
         $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
 
+        $lessonQuizAttempt = $lesson->quiz
+            ? QuizAttempt::query()
+                ->where('quiz_id', $lesson->quiz->id)
+                ->where('user_id', $userId)
+                ->latest('id')
+                ->first()
+            : null;
+
         /*
         |--------------------------------------------------------------------------
         | Statistics
@@ -210,6 +219,7 @@ class LearningPortalController extends Controller
             'lessonView' => View::exists($lessonView)
                 ? $lessonView
                 : null,
+            'lessonQuizAttempt' => $lessonQuizAttempt,
             'completedCount' => $completedCount,
             'totalLessons' => $totalLessons,
             'progressPercentage' => $progressPercentage,
@@ -342,13 +352,20 @@ class LearningPortalController extends Controller
     */
 
     if (!$nextLesson) {
+        $notice = 'Quiz completed. There is no next lesson available yet.';
 
         return response()->json([
             'success' => true,
             'completed' => true,
             'has_next' => false,
             'message' => 'Module completed successfully.',
-            'redirect' => route('student.dashboard'),
+            'redirect' => route('student.lesson.resources', [
+                $course,
+                $module,
+                $lesson,
+            ]) . '?' . http_build_query([
+                'quiz_notice' => $notice,
+            ]),
         ]);
     }
 
