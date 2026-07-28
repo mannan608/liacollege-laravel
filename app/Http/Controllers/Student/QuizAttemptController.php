@@ -69,7 +69,7 @@ class QuizAttemptController extends Controller
 
         $previousAnswer = $attempt->getAnswerForQuestion($question->id);
 
-        return view('frontend.pages.quiz.attempts.question', compact(
+        return view('student.quiz.attempts.question', compact(
             'attempt', 'quiz', 'question', 'questions', 
             'currentIndex', 'progress', 'previousAnswer'
         ));
@@ -119,7 +119,7 @@ public function answer(SubmitAnswerRequest $request, QuizAttempt $attempt, Quest
         $quiz = $attempt->quiz->load(['questions.options']);
         $answers = $attempt->answers->keyBy('question_id');
 
-        return view('frontend.pages.quiz.attempts.all', compact('attempt', 'quiz', 'answers'));
+        return view('student.quiz.attempts.all', compact('attempt', 'quiz', 'answers'));
     }
 
     public function submitAll(SubmitAllRequest $request, QuizAttempt $attempt): RedirectResponse
@@ -177,7 +177,7 @@ public function answer(SubmitAnswerRequest $request, QuizAttempt $attempt, Quest
 
         $attempt->load(['quiz.questions.options', 'answers.question']);
 
-        return view('frontend.pages.quiz.attempts.result', compact('attempt'));
+        return view('student.quiz.attempts.result', compact('attempt'));
     }
 
     public function history(): View
@@ -189,7 +189,7 @@ public function answer(SubmitAnswerRequest $request, QuizAttempt $attempt, Quest
             ->latest()
             ->paginate(15);
 
-        return view('frontend.pages.quiz.attempts.history', compact('attempts'));
+        return view('student.quiz.attempts.history', compact('attempts'));
     }
 
     public function abandon(QuizAttempt $attempt): RedirectResponse

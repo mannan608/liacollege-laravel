@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Http\Requests\Quiz\StoreQuizRequest;
 use App\Http\Requests\Quiz\UpdateQuizRequest;
+use App\Models\CourseResources\Lesson;
 use App\Models\QuizModels\Quiz;
 
 class QuizController extends Controller
@@ -23,7 +24,8 @@ class QuizController extends Controller
 
     public function create(string $role): View
     {
-        return view('backend.pages.quiz.quizzes.create');
+         $lessons = Lesson::orderBy('title')->get();
+        return view('backend.pages.quiz.quizzes.create',compact('lessons'));
     }
 
     public function store(StoreQuizRequest $request, string $role): RedirectResponse

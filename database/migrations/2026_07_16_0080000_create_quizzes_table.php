@@ -14,6 +14,7 @@ return new class extends Migration
        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Admin/Creator
+            $table->foreignId('lesson_id')->nullable()->constrained()->nullOnDelete();
             $table->string('title');
             $table->string('slug')->unique();
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->boolean('shuffle_questions')->default(false);
             $table->boolean('show_correct_answers')->default(true);
             $table->boolean('show_explanation')->default(true);
+            $table->enum('type',['global','lesson'])->default('lesson');
             $table->timestamps();
             $table->softDeletes();
         });

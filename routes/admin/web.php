@@ -111,13 +111,16 @@ Route::prefix('{role}')
         Route::resource('courses.modules', CourseModuleController::class)->names('modules');
         // course lessons route
         Route::resource('courses.modules.lessons', CourseLessonController::class)->names('lessons');
+      
 
         //Quiz Route
         Route::resource('quizzes', QuizController::class);
         Route::post('quizzes/{quiz}/publish', [QuizController::class, 'publish'])->name('quizzes.publish');
         Route::post('quizzes/{quiz}/archive', [QuizController::class, 'archive'])->name('quizzes.archive');
 
-        // course lessons quiz resource route
+        //   Route::get('courses.modules.lessons/{lesson}/quiz',[CourseLessonController::class,'lessonQuiz'])->name('lessonQuiz.show');
+
+       
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'index'])->name('resources.index');
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/create', [CourseLessonResourceController::class, 'create'])->name('resources.create');
         Route::post('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'store'])->name('resources.store');
@@ -166,6 +169,9 @@ Route::prefix('{role}')
         Route::post('students/{student}/documents', [StudentController::class, 'storeDocument'])->name('documents.store');
         Route::get('students/{student}/documents/{document}/download', [StudentController::class, 'downloadDocument'])->name('documents.download');
         Route::delete('students/{student}/documents/{document}', [StudentController::class, 'destroyDocument'])->name('documents.destroy');
+
+
+        
 
         
     });

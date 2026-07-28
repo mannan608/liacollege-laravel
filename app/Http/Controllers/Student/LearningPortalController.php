@@ -179,6 +179,8 @@ class LearningPortalController extends Controller
         |--------------------------------------------------------------------------
         */
 
+        
+
         $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
 
         /*

@@ -337,4 +337,20 @@ class CourseLessonController extends Controller
             404
         );
     }
+
+//     public function lessonQuiz($slug)
+// {
+//     $lesson = Lesson::whereSlug($slug)
+
+//         ->with([
+//             'quizzes.questions.options'
+//         ])
+
+//         ->firstOrFail();
+
+//     return view(
+//         'student.lesson.show',
+//         compact('lesson')
+//     );
+// }
 }

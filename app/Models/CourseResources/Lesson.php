@@ -2,7 +2,7 @@
 
 namespace App\Models\CourseResources;
 
-use App\Models\Quiz;
+use App\Models\QuizModels\Quiz;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,4 +37,16 @@ class Lesson extends Model
     {
         return $this->hasMany(UserLessonProgress::class);
     }
+    public function quizzes()
+{
+    return $this->hasMany(Quiz::class);
+}
+
+public function quiz()
+{
+    return $this->hasOne(Quiz::class, 'lesson_id')
+        ->where('type', 'lesson')
+        ->where('status', 'published');
+}
+
 }
