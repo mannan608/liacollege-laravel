@@ -74,7 +74,7 @@
                     Cancel
                 </a>
                 <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium transition-colors shadow-sm">
-                    Create Quiz & Add Questions
+                    Create Quiz
                 </button>
             </div>
         </form>

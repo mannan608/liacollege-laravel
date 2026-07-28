@@ -276,4 +276,5 @@ Route::prefix('student')
 
          Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
         ->name('lesson.resources');
+         Route::post('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/complete',[LearningPortalController::class, 'complete'])->name('lesson.complete');
     });

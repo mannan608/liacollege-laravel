@@ -1,1 +1,5 @@
-Quiz for Basic First Aid Part 1
+<div data-completion-type="quiz">
+<div class="">
+    <p>Quiz</p>
+</div>
+</div>

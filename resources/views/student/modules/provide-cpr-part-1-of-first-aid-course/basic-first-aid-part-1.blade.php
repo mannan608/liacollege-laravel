@@ -1,4 +1,4 @@
-<div class="">
+<div data-completion-type="scroll">
      <!-- Important Instructions -->
     <section class="mb-8 sm:mb-10">
       <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 text-center leading-snug">
@@ -63,12 +63,5 @@
       <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
         You must complete the online learning prior to attending class. If you do not, you will need to rebook and pay for another class.
       </p>
-    </section>
-
-    <!-- Continue Button -->
-    <section class="pb-8 sm:pb-12 flex justify-center">
-      <button class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base sm:text-lg px-8 sm:px-12 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
-        CLICK HERE TO START ON MODULE 1 PART 1
-      </button>
     </section>
 </div>

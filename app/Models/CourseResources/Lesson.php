@@ -33,4 +33,8 @@ class Lesson extends Model
     {
         return $this->belongsTo(Module::class);
     }
+     public function progresses(): HasMany
+    {
+        return $this->hasMany(UserLessonProgress::class);
+    }
 }
