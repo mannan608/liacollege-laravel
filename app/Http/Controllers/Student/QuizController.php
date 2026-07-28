@@ -40,6 +40,8 @@ class QuizController extends Controller
             ->where('status', 'in_progress')
             ->first();
 
+            
+
         return view('student.quiz.show', compact('quiz', 'attempts', 'canRetake', 'hasInProgress'));
     }
 }

@@ -118,7 +118,7 @@ Route::prefix('{role}')
         Route::post('quizzes/{quiz}/publish', [QuizController::class, 'publish'])->name('quizzes.publish');
         Route::post('quizzes/{quiz}/archive', [QuizController::class, 'archive'])->name('quizzes.archive');
 
-        //   Route::get('courses.modules.lessons/{lesson}/quiz',[CourseLessonController::class,'lessonQuiz'])->name('lessonQuiz.show');
+         
 
        
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'index'])->name('resources.index');

@@ -140,6 +140,10 @@
                         </th>
 
                         <th class="px-5 py-4 text-xs font-medium uppercase text-gray-500">
+                            Lesson Slug
+                        </th>
+
+                        <th class="px-5 py-4 text-xs font-medium uppercase text-gray-500">
                             Lesson Name
                         </th>
 
@@ -196,7 +200,10 @@
 
                             </td>
 
+ <td class="px-5 py-4 text-sm text-gray-700"
+                                x-text="row.slug">
 
+                            </td>
                             {{-- Title --}}
                             <td class="px-5 py-4 text-sm text-gray-700"
                                 x-text="row.title">

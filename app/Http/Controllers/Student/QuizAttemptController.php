@@ -52,6 +52,8 @@ class QuizAttemptController extends Controller
             'total_points' => $quiz->totalPoints(),
         ]);
 
+        dd($$quiz->questions->first());
+
         return redirect()->route('student.attempts.question', [$attempt, $quiz->questions->first()]);
     }
 
@@ -68,6 +70,8 @@ class QuizAttemptController extends Controller
         $progress = (($currentIndex + 1) / $questions->count()) * 100;
 
         $previousAnswer = $attempt->getAnswerForQuestion($question->id);
+
+        
 
         return view('student.quiz.attempts.question', compact(
             'attempt', 'quiz', 'question', 'questions', 

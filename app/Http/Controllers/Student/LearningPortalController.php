@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\CourseResources\Lesson;
 use App\Models\CourseResources\Module;
 use App\Models\CourseResources\UserLessonProgress;
+use App\Models\QuizModels\Quiz;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -179,8 +180,6 @@ class LearningPortalController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        
-
         $lessonView = "student.modules.{$module->slug}.{$lesson->slug}";
 
         /*
@@ -198,6 +197,8 @@ class LearningPortalController extends Controller
         $progressPercentage = $totalLessons > 0
             ? round(($completedCount / $totalLessons) * 100)
             : 0;
+
+            // dd($lessonView);
 
         return view('student.course.module.quiz.portal', [
             'course' => $course,
@@ -398,5 +399,30 @@ class LearningPortalController extends Controller
                 404
             );
         }
+    }
+
+    public function lessonQuiz(Lesson $lesson)
+    {
+
+       $quiz = Quiz::where('lesson_id',$lesson->id)
+        ->where('status','published')
+        ->firstOrFail();
+
+    // return redirect()->route(
+    //     'student.attempts.start',
+    //     $quiz
+    // );
+
+    return view('student.quiz.quiz-question', [
+    'attempt' => $attempt,
+    'question' => $question,
+    'questions' => $questions,
+    'currentIndex' => $currentIndex,
+    'previousAnswer' => $previousAnswer,
+]);
+    
+        // return view('student.course.module.lessons.quiz', [
+        //     'lesson' => $lesson
+        // ]);
     }
 }

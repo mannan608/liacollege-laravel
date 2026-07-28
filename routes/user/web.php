@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CourseResources\CourseLessonController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\CourseController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\Http\Controllers\Student\HelpController;
 use App\Http\Controllers\Student\LearningPortalController;
+use App\Http\Controllers\Student\LessonQuizController;
 use App\Http\Controllers\Student\ProfileController;
 use App\Http\Controllers\Student\QuizAttemptController;
 use App\Http\Controllers\Student\QuizController;
@@ -277,4 +279,11 @@ Route::prefix('student')
          Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
         ->name('lesson.resources');
          Route::post('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/complete',[LearningPortalController::class, 'complete'])->name('lesson.complete');
+
+          Route::get('/lessons/{lesson}/quiz', [LessonQuizController::class, 'show'])->name('lessonQuiz.show');
+        //   Route::get('/question/{question}', [LessonQuizController::class, 'question'])->name('question.show');
+
+        Route::post('/attempt/{attempt}/submit',    [LessonQuizController::class,'submit'])    ->name('student.quiz.submit');
+
+
     });

@@ -30,6 +30,8 @@ class QuizController extends Controller
 
     public function store(StoreQuizRequest $request, string $role): RedirectResponse
     {
+
+    // dd($request->lesson_id);
         $quiz = Quiz::create([
             ...$request->validated(),
             'user_id' => auth()->id(),
