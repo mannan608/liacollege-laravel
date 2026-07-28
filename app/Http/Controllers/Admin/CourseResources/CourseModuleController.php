@@ -77,6 +77,7 @@ class CourseModuleController extends Controller
                 'string',
                 'max:255',
             ],
+
         ]);
 
         DB::beginTransaction();
@@ -85,6 +86,7 @@ class CourseModuleController extends Controller
 
             $course->modules()->create([
                 'title' => $validated['title'],
+                'slug'  => Str::slug($validated['title']),
             ]);
 
             DB::commit();

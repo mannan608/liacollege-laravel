@@ -3,7 +3,7 @@
 @section('content')
     <form action="{{ role_route('role.modules.update', [
         'course' => $course->id,
-        'module' => $module->id,
+        'module' => $module->slug,
     ]) }}"
         method="POST">
 

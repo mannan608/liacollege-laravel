@@ -21,7 +21,7 @@
               
                 <p class="mt-1 text-sm text-gray-500">Manage lessons for this course.</p>
             </div>
-            <a href="{{ role_route('role.lessons.create', ['course' => $course->id, 'module' => $module->id]) }}"
+            <a href="{{ role_route('role.lessons.create', ['course' => $course->id, 'module' => $module->slug]) }}"
                 class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-500 transition-colors">
                 + Add New Lessons
             </a>

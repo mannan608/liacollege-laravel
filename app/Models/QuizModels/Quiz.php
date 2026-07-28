@@ -2,6 +2,7 @@
 
 namespace App\Models\QuizModels;
 
+use App\Models\CourseResources\Lesson;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,6 +14,7 @@ class Quiz extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'lesson_id',
         'user_id',
         'title',
         'description',
@@ -46,6 +48,11 @@ class Quiz extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function lesson()
+{
+    return $this->belongsTo(Lesson::class);
+}
 
     public function questions()
     {

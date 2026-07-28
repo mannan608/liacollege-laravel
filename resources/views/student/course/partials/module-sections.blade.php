@@ -47,7 +47,7 @@
                                             <td class="pr-6 text-right">
                                                 <a href="{{ route('student.content-module', [
                                                     'course' => $course->id,
-                                                    'module' => $module->id,
+                                                    'module' => $module->slug,
                                                 ]) }}"
                                                     class="px-5
                                                 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100
@@ -116,7 +116,7 @@
                                             <td class="pr-6 text-right">
                                                 <a href="{{ route('student.course-quiz-module', [
                                                     'course' => $course->id,
-                                                    'module' => $module->id,
+                                                    'module' => $module->slug,
                                                 ]) }}"
                                                     class="px-5
                                                 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100

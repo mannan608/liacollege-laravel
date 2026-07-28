@@ -17,7 +17,7 @@ class QuizController extends Controller
             ->latest()
             ->paginate(12);
 
-        return view('frontend.pages.quiz.index', compact('quizzes'));
+        return view('student.quiz.index', compact('quizzes'));
     }
 
     public function show(Quiz $quiz): View
@@ -40,6 +40,8 @@ class QuizController extends Controller
             ->where('status', 'in_progress')
             ->first();
 
-        return view('frontend.pages.quiz.show', compact('quiz', 'attempts', 'canRetake', 'hasInProgress'));
+            
+
+        return view('student.quiz.show', compact('quiz', 'attempts', 'canRetake', 'hasInProgress'));
     }
 }

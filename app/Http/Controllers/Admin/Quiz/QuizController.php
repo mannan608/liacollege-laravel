@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Http\Requests\Quiz\StoreQuizRequest;
 use App\Http\Requests\Quiz\UpdateQuizRequest;
+use App\Models\CourseResources\Lesson;
 use App\Models\QuizModels\Quiz;
 
 class QuizController extends Controller
@@ -23,11 +24,14 @@ class QuizController extends Controller
 
     public function create(string $role): View
     {
-        return view('backend.pages.quiz.quizzes.create');
+         $lessons = Lesson::orderBy('title')->get();
+        return view('backend.pages.quiz.quizzes.create',compact('lessons'));
     }
 
     public function store(StoreQuizRequest $request, string $role): RedirectResponse
     {
+
+    // dd($request->lesson_id);
         $quiz = Quiz::create([
             ...$request->validated(),
             'user_id' => auth()->id(),
@@ -41,14 +45,16 @@ class QuizController extends Controller
 
     public function show(string $role, Quiz $quiz): View
     {
+         $lessons = Lesson::orderBy('title')->get();
         $quiz->load(['questions.options', 'attempts' => fn($q) => $q->latest()->limit(10)]);
         
-        return view('backend.pages.quiz.quizzes.show', compact('quiz'));
+        return view('backend.pages.quiz.quizzes.show', compact('quiz','lessons'));
     }
 
     public function edit(string $role, Quiz $quiz): View
     {
-        return view('backend.pages.quiz.quizzes.edit', compact('quiz'));
+         $lessons = Lesson::orderBy('title')->get();
+        return view('backend.pages.quiz.quizzes.edit', compact('quiz','lessons'));
     }
 
     public function update(UpdateQuizRequest $request, string $role, Quiz $quiz): RedirectResponse

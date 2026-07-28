@@ -2,9 +2,9 @@
 
 @section('content')
     <form
-        action="{{ role_route('role.lessons.store', [
+action="{{ role_route('role.lessons.store', [
             'course' => $course->id,
-            'module' => $module->id,
+            'module' => $module->slug,
         ]) }}"
         method="POST">
 

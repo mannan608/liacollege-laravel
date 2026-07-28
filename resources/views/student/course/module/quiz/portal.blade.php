@@ -1,10 +1,8 @@
 @extends('backend.layouts.fullscreen-layout')
 
-@section('content')
-    @php
-        $activeLessonId = $lesson?->id;
-    @endphp
 
+
+@section('content')
     <div class="flex h-screen overflow-hidden">
 
         <aside class="w-80 lg:w-96 bg-white border-r border-slate-200 flex flex-col flex-shrink-0">
@@ -17,22 +15,21 @@
                 </div>
                 <div class="relative">
                     <div class="flex items-center gap-2 mb-3">
-                        <span
-                            class="px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-md text-xs font-medium">{{ $course->name }}</span>
+                        <span class="px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-md text-xs font-medium">{{$course->name}}</span>
                     </div>
-                    <h2 class="text-2xl font-bold leading-snug">{{ $course->name }}</h2>
-                    <p class="text-brand-100 mt-1 text-sm">{{ $module->title }}</p>
+                    <p class="text-brand-100 mt-1 text-sm">{{$module->title}}</p>
                     <div class="mt-5">
                         <div class="flex justify-between text-sm mb-2 font-medium">
                             <span class="text-brand-100">Progress</span>
-                            <span>68%</span>
+                            <span>{{ $progressPercentage }}%</span>
                         </div>
                         <div class="h-2.5 bg-white/25 rounded-full overflow-hidden backdrop-blur-sm">
-                            <div
-                                class="h-full w-[68%] bg-white rounded-full shadow-sm transition-all duration-700 ease-out">
+                            <div style="width: {{ $progressPercentage }}%"
+                                class="h-full  bg-white rounded-full shadow-sm transition-all duration-700 ease-out">
                             </div>
                         </div>
-                        <p class="text-xs text-brand-100 mt-2">7 of 10 lessons completed</p>
+                        <p class="text-xs text-brand-100 mt-2">{{ $completedCount }} of {{ $totalLessons }} lessons
+                            completed</p>
                     </div>
                 </div>
             </div>
@@ -41,221 +38,218 @@
             <div class="flex-1 overflow-y-auto scrollbar-thin">
                 <div class="p-4">
                     <h3 class="text-slate-400 text-xs uppercase font-bold tracking-wider mb-4 px-2">Course Content</h3>
-                    @foreach ($module->lessons as $moduleLesson)
-                        <!-- Lesson -->
-                        <a href="{{ route('student.lesson.resources', [$course, $module, $moduleLesson]) }}"
-                            class="flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all border mb-1 group
-                            {{ $activeLessonId === $moduleLesson->id ? 'bg-brand-50 border-brand-200' : 'hover:bg-gray-50 border-gray-100 hover:border-gray-100' }}">
-                            <div
-                                class="w-10 h-10 rounded-lg flex items-center justify-center transition-colors
-                                {{ $activeLessonId === $moduleLesson->id ? 'bg-brand-100 text-brand-600' : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200' }}">
-                                <svg class="w-4 h-4 text-slate-500" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
+                    @foreach ($lessons as $moduleLesson)
+                        @php
+                            $lessonProgress = $progress->get($moduleLesson->id);
+
+                            $isCompleted = $lessonProgress?->is_completed ?? false;
+
+                            $isActive = $lesson->id === $moduleLesson->id;
+
+                            $lessonIndex = $lessons->search(fn($item) => $item->id === $moduleLesson->id);
+
+                            $activeIndex = $lessons->search(fn($item) => $item->id === $activeLesson->id);
+
+                            $isLocked = $lessonIndex > $activeIndex;
+                        @endphp
+
+
+                        @if (!$isLocked)
+                            <a href="{{ route('student.lesson.resources', [$course, $module, $moduleLesson]) }}"
+                                class="flex items-center gap-3 p-3 rounded-xl
+                   transition-all border mb-1 group
+                   {{ $isActive ? 'bg-brand-50 border-brand-200' : 'hover:bg-gray-50 border-gray-100' }}">
+                            @else
+                                <div
+                                    class="flex items-center gap-3 p-3 rounded-xl
+                   border border-gray-100 mb-1
+                   opacity-50 cursor-not-allowed">
+                        @endif
+
+
+                        {{-- Icon --}}
+                        <div
+                            class="w-10 h-10 rounded-lg flex items-center
+                   justify-center transition-colors
+
+            {{ $isCompleted
+                ? 'bg-green-100 text-green-600'
+                : ($isActive
+                    ? 'bg-brand-100 text-brand-600'
+                    : 'bg-slate-100 text-slate-400') }}">
+
+                            @if ($isCompleted)
+                                {{-- Check --}}
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+
                                 </svg>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h4
-                                    class="font-medium text-sm truncate
-                                    {{ $activeLessonId === $moduleLesson->id ? 'text-slate-900' : 'text-slate-700 group-hover:text-slate-900' }}">
-                                    {{ $moduleLesson->title }}</h4>
-                                <p class="text-xs text-slate-400 mt-0.5">{{ $moduleLesson->duration }} min</p>
-                            </div>
-                            <div
-                                class="w-5 h-5 rounded-full border-2 flex-shrink-0
-                                {{ $activeLessonId === $moduleLesson->id ? 'border-brand-500 bg-brand-500' : 'border-slate-300' }}">
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        </aside>
+                            @elseif ($isLocked)
+                                {{-- Lock --}}
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
-        <!-- Main Content -->
-        <main class="flex-1 overflow-y-auto bg-slate-50/50">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 11V7a4 4 0 118 0v4m-10 0h12v10H10V11z" />
 
-            <!-- Header -->
-            <div class="bg-white border-b border-slate-200 sticky top-0 z-40">
-                <div class="max-w-5xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-xs font-bold text-brand-500 uppercase tracking-wider">
-                                {{ $lesson ? 'Selected Lesson' : 'Choose a lesson' }}
-                            </span>
+                                </svg>
+                            @else
+                                {{-- Play --}}
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+
+                                    <path d="M8 5v14l11-7z" />
+
+                                </svg>
+                            @endif
+
                         </div>
-                        <h1 class="text-base md:text-lg lg:text-xl font-bold text-slate-900 tracking-tight">
-                            {{ $lesson?->title ?? 'Lesson content will appear here' }}
-                        </h1>
+
+
+                        {{-- Information --}}
+                        <div class="flex-1 min-w-0">
+
+                            <h4
+                                class="font-medium text-sm truncate
+                {{ $isActive ? 'text-slate-900' : 'text-slate-700' }}">
+
+                                {{ $moduleLesson->title }}
+
+                            </h4>
+
+                            @if ($isCompleted)
+                                <p class="text-xs text-green-600 mt-0.5">
+                                    Completed
+                                </p>
+                            @elseif ($isLocked)
+                                <p class="text-xs text-slate-400 mt-0.5">
+                                    Locked
+                                </p>
+                            @else
+                                <p class="text-xs text-brand-500 mt-0.5">
+                                    Current lesson
+                                </p>
+                            @endif
+
+                        </div>
+
+
+                        @if ($isCompleted)
+                            <div
+                                class="w-5 h-5 rounded-full
+                       bg-green-500 text-white
+                       flex items-center justify-center">
+
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7" />
+
+                                </svg>
+
+                            </div>
+                        @elseif ($isActive)
+                            <div
+                                class="w-5 h-5 rounded-full
+                       border-2 border-brand-500
+                       bg-brand-500">
+                            </div>
+                        @endif
+
+
+                        @if (!$isLocked)
+                            </a>
+                        @else
+                </div>
+                @endif
+                @endforeach
+            </div>
+    </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="learning-portal-main" class="flex-1 overflow-y-auto bg-slate-50/50">
+
+        <!-- Header -->
+        <div class="bg-white border-b border-slate-200 sticky top-0 z-40">
+            <div class="max-w-5xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-bold text-brand-500 uppercase tracking-wider">
+                            {{ $lesson ? 'Selected Lesson' : 'Choose a lesson' }}
+                        </span>
                     </div>
-                    <div class="flex items-center gap-3">
-                        {{-- <button
-                            class="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                            Notes
-                        </button> --}}
-                        <a href="{{route('student.dashboard')}}"
-                            class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold hover:from-brand-600 hover:to-brand-700 transition-all shadow-lg shadow-brand-500/25 flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Go to Dashboard
-                        </a>
-                    </div>
+                    <h1 class="text-base md:text-lg lg:text-xl font-bold text-slate-900 tracking-tight">
+                        {{ $lesson?->title ?? 'Lesson content will appear here' }}
+                    </h1>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="{{ route('student.dashboard') }}"
+                        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white text-sm font-semibold hover:from-brand-600 hover:to-brand-700 transition-all shadow-lg shadow-brand-500/25 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Go to Dashboard
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <div class="max-w-5xl mx-auto px-6 lg:px-10 py-8 space-y-6">
-                @if ($lesson)
-                    @forelse ($lesson->resourceSections as $section)
-                         @foreach ($section->resources as $resource)
-                                    {{-- ================= VIDEO ================= --}}
-                                    @if ($section->resource_type == 'video')
-                                        @php
-                                            $videoId = null;
-                                            if ($resource->url) {
-                                                parse_str(parse_url($resource->url, PHP_URL_QUERY), $query);
-                                                $videoId = $query['v'] ?? null;
-                                            }
-                                        @endphp
+        <div class="max-w-5xl mx-auto px-6 lg:px-10 py-8 space-y-6">
+            <section id="lesson-content" class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 lg:p-8">
 
-                                        @if ($videoId)
-                                            <div class="overflow-hidden rounded-2xl border shadow-sm">
-                                                <div class="aspect-video">
-                                                    <iframe class="w-full h-full"
-                                                        src="https://www.youtube.com/embed/{{ $videoId }}?autoplay=1&mute=1&rel=0"
-                                                        title="{{ $resource->title }}" frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        allowfullscreen>
-                                                    </iframe>
-                                                </div>
-                                                <div class="p-6">
-                                                    <h3 class="text-xl font-semibold">
-                                                        {{ $resource->title }}
-                                                    </h3>
-                                                    @if ($resource->description)
-                                                        <p class="mt-3 text-slate-600">
-                                                            {{ $resource->description }}
-                                                        </p>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endif
-                                    {{-- ================= CONTENT ================= --}}
-                                    @if ($section->resource_type == 'content')
-                                        <article class="prose max-w-none">
-
-                                            <h2>
-
-                                                {{ $resource->title }}
-
-                                            </h2>
-
-                                            {!! $resource->description !!}
-
-                                        </article>
-                                    @endif
-
-                                    {{-- ================= FILE ================= --}}
-                                    @if ($section->resource_type == 'file')
-                                        <div class="rounded-xl border border-slate-200 p-5 hover:bg-slate-50 transition">
-
-                                            <div class="flex items-center justify-between">
-
-                                                <div class="flex items-center gap-4">
-
-                                                    <div
-                                                        class="h-14 w-14 rounded-xl bg-red-100 flex items-center justify-center text-2xl">
-
-                                                        📄
-
-                                                    </div>
-
-                                                    <div>
-
-                                                        <h3 class="font-semibold">
-
-                                                            {{ $resource->title }}
-
-                                                        </h3>
-
-                                                        <p class="text-sm text-slate-500">
-
-                                                            {{ $resource->description }}
-
-                                                        </p>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <a href="{{ asset($resource->file_path) }}" target="_blank"
-                                                    class="rounded-lg bg-orange-500 px-5 py-2 text-white hover:bg-orange-600">
-
-                                                    Download
-
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-                                    @endif
-                                    {{-- ================= QUIZ ================= --}}
-                                    @if ($section->resource_type == 'quiz')
-                                        <div class="rounded-2xl border border-orange-200 bg-orange-50 p-8">
-
-                                            <div class="flex items-center justify-between">
-
-                                                <div>
-
-                                                    <h3 class="text-2xl font-bold">
-
-                                                        {{ $resource->title }}
-
-                                                    </h3>
-
-                                                    <p class="mt-3 text-slate-600">
-
-                                                        {{ $resource->description }}
-
-                                                    </p>
-
-                                                </div>
-
-                                                <div>
-
-                                                    <a href="#"
-                                                        class="rounded-xl bg-orange-500 px-6 py-3 text-white font-semibold hover:bg-orange-600">
-
-                                                        Start Quiz
-
-                                                    </a>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    @endif
-                                @endforeach
-                    @empty
-                        <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 lg:p-8">
-                            <p class="text-sm text-slate-500">This lesson does not have any resource sections yet.</p>
-                        </section>
-                    @endforelse
+                @if ($lessonView)
+                    @include($lessonView)
                 @else
-                    <section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 lg:p-8">
-                        <h2 class="text-lg font-semibold text-slate-900">Select a lesson</h2>
-                        <p class="mt-2 text-sm text-slate-500">
-                            Choose a lesson from the left sidebar to load its content, resource sections, and resources.
-                        </p>
-                    </section>
+                    <p class="text-sm text-slate-500">
+                        Lesson content not found.
+                    </p>
                 @endif
 
+            </section>
+
+            <div id="lesson-complete-container"
+                class="hidden opacity-0 translate-y-3
+           transition-all duration-500">
+
+                <div
+                    class="bg-white border border-slate-200
+               rounded-2xl shadow-sm p-5
+               flex items-center justify-between">
+
+                    <div>
+                        <h3 class="font-semibold text-slate-900">
+                            Lesson completed
+                        </h3>
+
+                        <p class="text-sm text-slate-500 mt-1">
+                            Continue when you're ready.
+                        </p>
+                        <p id="quiz-complete-notice" class="hidden mt-3 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2"></p>
+                    </div>
+
+                    <button type="button" id="complete-lesson-btn"
+                        class="px-6 py-3 rounded-xl
+                   bg-gradient-to-r
+                   from-brand-500 to-brand-600
+                   text-white font-semibold
+                   hover:from-brand-600
+                   hover:to-brand-700
+                   transition-all shadow-lg
+                   shadow-brand-500/20">
+
+                        <span id="complete-btn-text">
+                            Complete & Continue
+                        </span>
+
+                    </button>
+
+                </div>
+
             </div>
-        </main>
+
+        </div>
+    </main>
 
     </div>
 @endsection
@@ -270,3 +264,252 @@
         border-radius: 20px;
     }
 </style>
+
+@php
+    $completeLessonUrl = route('student.lesson.complete', [$course, $module, $lesson]);
+    $quizNotice = request('quiz_notice');
+@endphp
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const lessonContent = document.getElementById('lesson-content');
+        const completeContainer = document.getElementById('lesson-complete-container');
+        const completeButton = document.getElementById('complete-lesson-btn');
+        const completeButtonText = document.getElementById('complete-btn-text');
+        const quizNotice = @json($quizNotice);
+        const quizNoticeEl = document.getElementById('quiz-complete-notice');
+
+        if (!lessonContent || !completeContainer || !completeButton) {
+            return;
+        }
+
+        if (quizNotice && quizNoticeEl) {
+            quizNoticeEl.textContent = quizNotice;
+            quizNoticeEl.classList.remove('hidden');
+        }
+
+        const completionElement =
+            lessonContent.querySelector('[data-completion-type]');
+
+        if (!completionElement) {
+            console.warn('No lesson completion type found.');
+            return;
+        }
+
+        const completionType = completionElement.dataset.completionType;
+
+        let lessonReady = false;
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Unlock Complete Button
+        |--------------------------------------------------------------------------
+        */
+
+        function unlockCompleteButton() {
+
+            if (lessonReady) {
+                return;
+            }
+
+            lessonReady = true;
+
+            completeContainer.classList.remove('hidden');
+
+            requestAnimationFrame(function() {
+
+                completeContainer.classList.remove(
+                    'opacity-0',
+                    'translate-y-3'
+                );
+
+                completeContainer.classList.add(
+                    'opacity-100',
+                    'translate-y-0'
+                );
+
+            });
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | VIDEO
+        |--------------------------------------------------------------------------
+        */
+
+        if (completionType === 'video') {
+
+            const video =
+                completionElement.querySelector('[data-lesson-video]');
+
+            if (!video) {
+                console.warn('Video element not found.');
+                return;
+            }
+
+            video.addEventListener('ended', function() {
+                unlockCompleteButton();
+            });
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CONTENT / SCROLL
+        |--------------------------------------------------------------------------
+        */
+
+        if (completionType === 'scroll') {
+
+    const scrollContainer =
+        document.getElementById('learning-portal-main');
+
+    if (!scrollContainer) {
+        console.warn('Learning portal scroll container not found.');
+        return;
+    }
+
+    function checkScrollCompletion() {
+
+        const contentRect =
+            completionElement.getBoundingClientRect();
+
+        const containerRect =
+            scrollContainer.getBoundingClientRect();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Lesson bottom has reached the visible bottom of main container
+        |--------------------------------------------------------------------------
+        */
+
+        const hasReachedBottom =
+            contentRect.bottom <= containerRect.bottom + 30;
+
+        if (hasReachedBottom) {
+
+            unlockCompleteButton();
+
+            scrollContainer.removeEventListener(
+                'scroll',
+                checkScrollCompletion
+            );
+        }
+    }
+
+    // Check immediately in case lesson is short
+    checkScrollCompletion();
+
+    scrollContainer.addEventListener(
+        'scroll',
+        checkScrollCompletion,
+        { passive: true }
+    );
+}
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | QUIZ
+        |--------------------------------------------------------------------------
+        */
+
+        if (completionType === 'quiz') {
+
+            window.addEventListener(
+                'lesson-quiz-completed',
+                function() {
+                    unlockCompleteButton();
+                }
+            );
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | COMPLETE & CONTINUE
+        |--------------------------------------------------------------------------
+        */
+
+        completeButton.addEventListener('click', async function() {
+
+            if (!lessonReady) {
+                return;
+            }
+
+            completeButton.disabled = true;
+
+            completeButton.classList.add(
+                'opacity-60',
+                'cursor-not-allowed'
+            );
+
+            completeButtonText.textContent = 'Completing...';
+
+            try {
+
+                const response = await fetch(
+                    @json($completeLessonUrl), {
+                        method: 'POST',
+
+                        headers: {
+                            'X-CSRF-TOKEN': document
+                                .querySelector('meta[name="csrf-token"]')
+                                .getAttribute('content'),
+
+                            'Accept': 'application/json',
+
+                            'Content-Type': 'application/json'
+                        },
+
+                        body: JSON.stringify({})
+                    }
+                );
+
+                const data = await response.json();
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        'Unable to complete lesson.'
+                    );
+                }
+
+                completeButtonText.textContent =
+                    data.has_next ?
+                    'Loading next lesson...' :
+                    'Completed!';
+
+                setTimeout(function() {
+
+                    window.location.href = data.redirect;
+
+                }, 400);
+
+            } catch (error) {
+
+                console.error(error);
+
+                completeButton.disabled = false;
+
+                completeButton.classList.remove(
+                    'opacity-60',
+                    'cursor-not-allowed'
+                );
+
+                completeButtonText.textContent =
+                    'Complete & Continue';
+
+                alert(
+                    error.message ||
+                    'Something went wrong.'
+                );
+            }
+        });
+
+    });
+</script>

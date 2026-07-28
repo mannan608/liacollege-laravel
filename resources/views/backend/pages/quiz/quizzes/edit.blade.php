@@ -21,6 +21,51 @@
             <form action="{{ role_route('role.quizzes.update', ['quiz' => $quiz]) }}" method="POST" class="p-6 space-y-6">
                 @csrf
                 @method('PUT')
+                <div class="grid grid-cols-2 gap-6">
+
+                    <div>
+                        <label class="block mb-2 font-medium">
+                            Quiz Type
+                        </label>
+
+                        <select name="quiz_type" id="quiz_type" class="w-full rounded-lg border" onchange="toggleLesson()">
+
+                            <option value="global">
+                                Global Quiz
+                            </option>
+
+                            <option value="lesson">
+                                Lesson Quiz
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div id="lessonSelect" style="display:none">
+
+                        <label class="block mb-2 font-medium">
+                            Lesson
+                        </label>
+
+                        <select name="lesson_id" class="w-full rounded-lg border">
+
+                            <option value="">
+                                Select Lesson
+                            </option>
+
+                            @foreach ($lessons as $lesson)
+                                <option value="{{ $lesson->id }}">
+
+                                    {{ $lesson->title }}
+
+                                </option>
+                            @endforeach
+
+                        </select>
+
+                    </div>
+
+                </div>
 
                 <x-form.input-text name="title" label="Quiz Title" value="{{ old('title', $quiz->title) }}"
                     placeholder="e.g., JavaScript Fundamentals" required />
@@ -96,3 +141,20 @@
         </div>
     </div>
 @endsection
+
+<script>
+
+function toggleLesson(){
+
+    let type=document.getElementById('quiz_type').value;
+
+    document.getElementById('lessonSelect').style.display=
+        type=='lesson'
+        ?'block'
+        :'none';
+
+}
+
+toggleLesson();
+
+</script>

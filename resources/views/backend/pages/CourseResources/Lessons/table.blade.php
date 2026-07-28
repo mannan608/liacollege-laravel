@@ -9,6 +9,7 @@
             return [
                 'id' => $lesson->id,
                 'title' => $lesson->title,
+                'slug' => $lesson->slug,
                 'duration' => $lesson->duration,
                 'status' => (bool) $lesson->status,
             ];
@@ -25,7 +26,7 @@
         url(
             '/' . $role .
             '/courses/' . $course->id .
-            '/modules/' . $module->id .
+            '/modules/' . $module->slug .
             '/lessons'
         )
     ) }},
@@ -54,7 +55,7 @@
     {{-- Delete Form --}}
     <form x-ref="deleteForm"
         :action="rowToDelete
-            ? (lessonBaseUrl + '/' + rowToDelete.id)
+            ? (lessonBaseUrl + '/' + rowToDelete.slug)
             : '#'"
         method="POST"
         class="hidden">
@@ -139,6 +140,10 @@
                         </th>
 
                         <th class="px-5 py-4 text-xs font-medium uppercase text-gray-500">
+                            Lesson Slug
+                        </th>
+
+                        <th class="px-5 py-4 text-xs font-medium uppercase text-gray-500">
                             Lesson Name
                         </th>
 
@@ -146,9 +151,7 @@
                             Duration
                         </th>
 
-                        <th class="px-5 py-4 text-xs font-medium uppercase text-gray-500">
-                            Add Ressouce
-                        </th>
+                       
 
                         <th class="px-5 py-4 text-right text-xs font-medium uppercase text-gray-500">
                             Action
@@ -197,7 +200,10 @@
 
                             </td>
 
+ <td class="px-5 py-4 text-sm text-gray-700"
+                                x-text="row.slug">
 
+                            </td>
                             {{-- Title --}}
                             <td class="px-5 py-4 text-sm text-gray-700"
                                 x-text="row.title">
@@ -214,15 +220,7 @@
                             </td>
 
 
-                            {{-- Status --}}
-                            <td class="px-5 py-4">
-
-                                <a :href="lessonBaseUrl + '/' + row.id + '/resources'"
-                                        class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                        Add Resource
-                                    </a>
-
-                            </td>
+                            
 
 
                             {{-- Action --}}
@@ -234,7 +232,7 @@
                                     {{-- Edit --}}
                                     @can('course.edit')
 
-                                        <a :href="lessonBaseUrl + '/' + row.id + '/edit'"
+                                        <a :href="lessonBaseUrl + '/' + row.slug + '/edit'"
                                             class="rounded-lg p-2 text-gray-500 hover:bg-blue-50 hover:text-blue-600">
 
                                             <svg class="size-5"

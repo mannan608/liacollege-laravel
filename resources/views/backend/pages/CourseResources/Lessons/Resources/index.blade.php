@@ -18,8 +18,8 @@
 
         <a href="{{ role_route('role.resources.create', [
             'course' => $course->id,
-            'module' => $module->id,
-            'lesson' => $lesson->id,
+            'module' => $module->slug,
+            'lesson' => $lesson->slug,
         ]) }}"
             class="rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">
 

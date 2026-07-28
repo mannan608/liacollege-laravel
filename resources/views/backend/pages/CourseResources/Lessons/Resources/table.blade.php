@@ -83,8 +83,8 @@
 
                             <a href="{{ role_route('role.resources.edit', [
                                 'course' => $course->id,
-                                'module' => $module->id,
-                                'lesson' => $lesson->id,
+                                'module' => $module->slug,
+                                'lesson' => $lesson->slug,
                                 'resource' => $item->id,
                             ]) }}"
                                 class="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded-lg transition-all">
@@ -97,7 +97,7 @@
                             <form
                                 action="{{ role_route('role.resources.destroy', [
                                     'course' => $course->id,
-                                    'module' => $module->id,
+                                    'module' => $module->slug,
                                     'lesson' => $lesson->id,
                                     'resource' => $item->id,
                                 ]) }}"
