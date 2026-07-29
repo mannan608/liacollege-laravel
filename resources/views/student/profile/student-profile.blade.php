@@ -1,5 +1,6 @@
 @extends('student.layouts.app')
 
+
 @section('content')
 <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
         <!-- Header -->
@@ -20,19 +21,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Title</label>
-                        <input type="text" value="Ms" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                        <input type="text" value="Ms" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">First name</label>
-                        <input type="text" value="Sudikshya" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                        <input type="text" value="Sudikshya" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Middle name(s)</label>
-                        <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white">
+                        <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Surname</label>
-                        <input type="text" value="Khanal" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                        <input type="text" value="Khanal" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                     </div>
                 </div>
 
@@ -43,11 +44,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Name Commonly Known As</label>
-                        <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white">
+                        <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Gender</label>
-                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white">
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                             <option value="">Please select...</option>
                             <option value="female">Female</option>
                             <option value="male">Male</option>
@@ -60,28 +61,28 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Date of birth</label>
-                        <input type="text" value="05/11/1997" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                        <input type="text" value="05/11/1997" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Country of birth</label>
-                        <input type="text" value="Nepal" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                        <input type="text" value="Nepal" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                     </div>
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-sm font-semibold text-gray-700 mb-1">City of birth<br><span class="text-xs font-normal text-gray-500">(exactly as per your USI identification records)</span></label>
-                    <input type="text" value="Kathmandu" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                    <input type="text" value="Kathmandu" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-sm font-semibold text-gray-700 mb-1">Unique Student identifier (USI) - required for accredited VET courses from 1 Jan 2015.<br><a href="#" class="text-blue-600 hover:underline text-xs font-normal">Click here for more info or to obtain your new USI</a></label>
-                    <input type="text" value="H7JMEDZXUP" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent uppercase tracking-widest font-mono">
+                    <input type="text" value="H7JMEDZXUP" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent uppercase tracking-widest font-mono">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Indigenous status</label>
-                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white">
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                             <option value="not-aboriginal" selected>I am NOT of Aboriginal or Torres Strait Island origin</option>
                             <option value="aboriginal">Aboriginal</option>
                             <option value="torres-strait-islander">Torres Strait Islander</option>
@@ -91,7 +92,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Citizenship status</label>
-                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white">
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                             <option value="">Please select...</option>
                             <option value="australian">Australian Citizen</option>
                             <option value="permanent-resident">Permanent Resident</option>
@@ -104,7 +105,7 @@
 
                 <div class="mb-4">
                     <label class="block text-sm font-semibold text-gray-700 mb-1">Main language spoken at home</label>
-                    <input type="text" value="English" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                    <input type="text" value="English" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                 </div>
 
                 <div class="mb-4">
@@ -123,7 +124,7 @@
 
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-1">If you have any learning disability which warrants our consideration or if you have special requirements regarding delivery of your program of study, please describe these here.</label>
-                    <textarea rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent resize-y bg-white"></textarea>
+                    <textarea rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent resize-y bg-white"></textarea>
                 </div>
             </div>
 
@@ -134,11 +135,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">E-mail address</label>
-                        <input type="email" value="placement@liacollege.edu.au" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
+                        <input type="email" value="placement@liacollege.edu.au" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent">
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Alternate E-mail address</label>
-                        <input type="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white">
+                        <input type="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 focus:border-transparent bg-white">
                     </div>
                 </div>
 
@@ -146,37 +147,37 @@
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Home Telephone<br><span class="text-xs font-normal text-gray-500">country/area code/number</span></label>
                         <div class="flex gap-2">
-                            <select class="w-1/2 border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <select class="w-1/2 border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                                 <option selected>+61 Australia</option>
                                 <option>+1 USA</option>
                                 <option>+44 UK</option>
                                 <option>+977 Nepal</option>
                             </select>
-                            <input type="tel" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="tel" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Work Telephone<br><span class="text-xs font-normal text-gray-500">country/area code/number</span></label>
                         <div class="flex gap-2">
-                            <select class="w-1/2 border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <select class="w-1/2 border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                                 <option selected>+61 Australia</option>
                                 <option>+1 USA</option>
                                 <option>+44 UK</option>
                                 <option>+977 Nepal</option>
                             </select>
-                            <input type="tel" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="tel" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Mobile Telephone<br><span class="text-xs font-normal text-gray-500">country/number</span></label>
                         <div class="flex gap-2">
-                            <select class="w-1/2 border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <select class="w-1/2 border border-gray-300 rounded-md px-2 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                                 <option selected>+61 Australia</option>
                                 <option>+1 USA</option>
                                 <option>+44 UK</option>
                                 <option>+977 Nepal</option>
                             </select>
-                            <input type="tel" value="0405106199" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="tel" value="0405106199" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
                 </div>
@@ -187,55 +188,55 @@
                     
                     <div class="mb-4">
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Search:</label>
-                        <input type="text" placeholder="Begin typing address and select..." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <input type="text" placeholder="Begin typing address and select..." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Floor no.</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Building name</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-xs font-semibold text-gray-600 mb-1">Unit or Apartment no.</label>
-                        <input type="text" value="4" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                        <input type="text" value="4" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Street no.</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Street Name</label>
-                            <input type="text" value="Bousloff Street" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="Bousloff Street" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">City or suburb</label>
-                            <input type="text" value="WHITLAM" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="WHITLAM" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">State</label>
-                            <input type="text" value="Australian Capital Territory" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="Australian Capital Territory" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Post code</label>
-                            <input type="text" value="2611" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="2611" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Country</label>
-                            <input type="text" value="Australia" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="Australia" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
                 </div>
@@ -246,33 +247,33 @@
                     
                     <div class="mb-4">
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Search:</label>
-                        <input type="text" placeholder="Begin typing address and select..." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <input type="text" placeholder="Begin typing address and select..." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Floor no.</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Building name</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-xs font-semibold text-gray-600 mb-1">Unit or apartment no.</label>
-                        <input type="text" value="4" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                        <input type="text" value="4" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Street no.</label>
-                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                            <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Street name</label>
-                            <input type="text" value="Bousloff Street" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="Bousloff Street" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
 
@@ -280,28 +281,28 @@
 
                     <div class="mb-4">
                         <label class="block text-xs font-semibold text-gray-600 mb-1">Post office box details (e.g. PO Box 123)</label>
-                        <input type="text" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <input type="text" class="w-full md:w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">City or suburb</label>
-                            <input type="text" value="WHITLAM" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="WHITLAM" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">State</label>
-                            <input type="text" value="Australian Capital Territory" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="Australian Capital Territory" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Post code</label>
-                            <input type="text" value="2611" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="2611" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">Country</label>
-                            <input type="text" value="Australia" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500">
+                            <input type="text" value="Australia" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 focus:outline-none focus:ring-1 focus:ring-slate-500">
                         </div>
                     </div>
                 </div>
@@ -327,7 +328,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">If YES, what type of school are you attending?</label>
-                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                             <option>...</option>
                             <option>Government School</option>
                             <option>Non-Government School</option>
@@ -339,7 +340,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">What is your HIGHEST completed school level?</label>
-                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                             <option>...</option>
                             <option>Never attended school</option>
                             <option>Year 8 or below</option>
@@ -351,7 +352,7 @@
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">In which YEAR did you complete that level? (optional)</label>
-                        <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                     </div>
                 </div>
 
@@ -360,35 +361,35 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Bachelor or Higher Degree</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Adv. Diploma or Assoc. Degree</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Diploma Level</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Certificate IV</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Certificate III</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Certificate II</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Certificate I</span>
                         </label>
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" class="w-4 h-4 text-slate-700 rounded border-gray-300 focus:ring-slate-500 cursor-pointer">
-                            <span class="text-sm text-gray-700">...</span>
+                            <span class="text-sm text-gray-700">Miscellaneous Education</span>
                         </label>
                     </div>
                 </div>
@@ -396,7 +397,7 @@
                 <div class="space-y-4 mb-6">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Which of the following categories BEST describes your current employment status:</label>
-                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                             <option>...</option>
                             <option>Full-time employee</option>
                             <option>Part-time employee</option>
@@ -410,7 +411,7 @@
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">If you are employed, please indicate the industry in which you are employed:</label>
-                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                             <option>...</option>
                             <option>Agriculture, Forestry and Fishing</option>
                             <option>Mining</option>
@@ -423,7 +424,7 @@
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">If you are employed, please indicate the broad category of your occupation:</label>
-                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                             <option>...</option>
                             <option>Managers</option>
                             <option>Professionals</option>
@@ -436,7 +437,7 @@
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-1">Which of the following BEST describes your main reason for undertaking the course(s) for which you are registering:</label>
-                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500 bg-white">
+                        <select class="w-full md:w-2/3 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-slate-500 bg-white">
                             <option>...</option>
                             <option>To get a job</option>
                             <option>To develop my existing business</option>
