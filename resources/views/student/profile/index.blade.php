@@ -31,7 +31,7 @@
                         <p class="text-xs text-slate-500">Update your personal information and password</p>
                     </div>
                 </div>
-                <a href="{{route('student.student-profile')}}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-semibold shadow-lg shadow-brand-500/25 hover:bg-brand-700 hover:shadow-brand-500/30 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 active:scale-[0.98] transition-all duration-200">Update Student Profile</a>
+                <a href="{{route('student.studentProfile')}}" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-semibold shadow-lg shadow-brand-500/25 hover:bg-brand-700 hover:shadow-brand-500/30 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 active:scale-[0.98] transition-all duration-200">Update Student Profile</a>
             </div>
 
             <form action="{{ route('student.profile.update') }}" method="POST"

@@ -73,17 +73,16 @@ class Student extends Model
         'ncver_consent',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'date_of_birth' => 'date',
-            'has_disability' => 'boolean',
-            'postal_same_as_residential' => 'boolean',
-            'attending_secondary_school' => 'boolean',
-            'ncver_consent' => 'boolean',
-            'qualifications_completed' => 'array',
-        ];
-    }
+  protected $casts = [
+
+    'date_of_birth' => 'date',
+    'has_disability' => 'boolean',
+    'postal_same_as_residential' => 'boolean',
+    'attending_secondary_school' => 'boolean',
+    'ncver_consent' => 'boolean',
+    'qualifications_completed' => 'array',
+
+];
 
     public function user(): BelongsTo
     {
