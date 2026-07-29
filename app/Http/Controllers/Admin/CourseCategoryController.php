@@ -69,8 +69,12 @@ class CourseCategoryController extends Controller
 
             DB::commit();
 
-            return redirect(role_route('role.course-categories.index'))
-                ->with('success', 'Course category created successfully.');
+            return redirect()
+            ->route('role.course-categories.index', [
+                'role' => $request->route('role'),
+            ])
+            ->with('success', 'Course category created successfully.');
+
         } catch (Throwable $e) {
             DB::rollBack();
 

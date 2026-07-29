@@ -36,7 +36,6 @@ return new class extends Migration
             $table->string('last_name', 100)->nullable();
             $table->string('name_commonly_known_as', 100)->nullable();
             $table->string('gender', 20)->nullable();
-            $table->date('date_of_birth')->nullable();
             $table->string('country_of_birth', 100)->nullable();
             $table->string('city_of_birth', 100)->nullable();
             $table->string('indigenous_status', 50)->nullable();

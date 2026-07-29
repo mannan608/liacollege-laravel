@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
 
      protected $fillable = [
         'user_id',
@@ -82,7 +82,6 @@ class Student extends Model
             'attending_secondary_school' => 'boolean',
             'ncver_consent' => 'boolean',
             'qualifications_completed' => 'array',
-            'deleted_at' => 'datetime',
         ];
     }
 
