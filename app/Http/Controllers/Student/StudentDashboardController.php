@@ -15,16 +15,23 @@ use Illuminate\Http\Request;
 class StudentDashboardController extends Controller
 {
     use HandlesFiles;
-    public function dashboard(Request $request)
-    {
-        $student = auth()->user()->student;
+public function dashboard(Request $request)
+{
+    $student = auth()->user()->student;
 
-        $enrollments = $student->enrollments()->with(['slot', 'slot.course'])->latest()->get();
+    $enrollments = $student->enrollments()
+        // ->where('status', 'confirmed')
+        ->with(['slot', 'slot.course'])
+        ->latest()
+        ->get();
 
-        // return $enrollments;
+    // if ($enrollments->isEmpty()) {
+    //     return redirect()->route('student.enrollments.index')
+    //         ->with('error', 'Your enrollment has not been confirmed yet.');
+    // }
 
-        return view('student.dashboard.index', compact('enrollments'));
-    }
+    return view('student.dashboard.index', compact('enrollments'));
+}
 
 
 public function studentPayment()

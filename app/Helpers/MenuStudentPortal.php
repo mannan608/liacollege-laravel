@@ -25,11 +25,11 @@ class MenuStudentPortal
                 'path' => 'student/tasks',
             ],
 
-             [
-                'icon' => 'task',
-                'name' => 'Quiz',
-                'path' => 'student/quizzes',
-            ],
+            //  [
+            //     'icon' => 'task',
+            //     'name' => 'Quiz',
+            //     'path' => 'student/quizzes',
+            // ],
 
             [
                 'name' => 'Documents',
