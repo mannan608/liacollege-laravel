@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Student;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Student;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +14,7 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
      use HandlesFiles;
-    public function profile(Request $request): View
+    public function userProfile(Request $request)
     {
         return view('student.profile.index', [
             'user' => $request->user(),
@@ -21,7 +23,7 @@ class ProfileController extends Controller
 
 
 
-    public function ProfileUpdate(Request $request)
+    public function userProfileUpdate(Request $request)
     {
         $user = $request->user();
 
@@ -92,5 +94,88 @@ class ProfileController extends Controller
             'Profile updated successfully.'
         );
     }
+
+
+
+    public function studentProfile(Request $request): View
+    {
+        $user = $request->user();
+
+        return view('student.profile.student-profile', [
+            'user'    => $user,
+            'student' => $user->student ?? new Student(),
+        ]);
+    }
+
+    /**
+     * Update detailed student profile.
+     * Only sent fields are validated and updated. Old data remains untouched.
+     */
+ public function studentProfileUpdate(ProfileUpdateRequest $request)
+{
+    $user = $request->user();
+
+    $validated = $request->validated();
+
+    if (empty($validated)) {
+        return back()->with('info', 'No changes were submitted.');
+    }
+
+    DB::transaction(function () use ($user, $validated) {
+
+        /*
+        |--------------------------------------------------------------------------
+        | UPDATE USER TABLE
+        |--------------------------------------------------------------------------
+        */
+
+        $userData = [];
+
+        if (array_key_exists('email', $validated)) {
+            $userData['email'] = $validated['email'];
+        }
+
+        if (array_key_exists('first_name', $validated)) {
+            $userData['first_name'] = $validated['first_name'];
+        }
+
+        if (array_key_exists('last_name', $validated)) {
+            $userData['last_name'] = $validated['last_name'];
+        }
+
+        if (
+            isset($validated['first_name']) ||
+            isset($validated['last_name'])
+        ) {
+            $userData['name'] =
+                ($validated['first_name'] ?? $user->first_name) .
+                ' ' .
+                ($validated['last_name'] ?? $user->last_name);
+        }
+
+        if (!empty($userData)) {
+            $user->update($userData);
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | UPDATE STUDENT TABLE
+        |--------------------------------------------------------------------------
+        */
+
+        $studentData = collect($validated)->except([
+            'email'
+        ])->toArray();
+
+        $user->student()->updateOrCreate(
+            ['user_id' => $user->id],
+            $studentData
+        );
+    });
+
+    return redirect()
+        ->back()
+        ->with('success', 'Profile updated successfully.');
+}
 
 }

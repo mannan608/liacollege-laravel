@@ -175,9 +175,11 @@ Route::prefix('student')
         // Route::get('/profile/edit', [StudentController::class, 'profileEdit'])->name('profile.edit');
         // Route::put('/profile', [StudentController::class, 'studentProfileUpdate'])->name('profile.update');
         // profile 
-        Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
-        Route::get('/profile/edit', [ProfileController::class, 'profileEdit'])->name('profile.edit');
-        Route::put('/profile', [ProfileController::class, 'ProfileUpdate'])->name('profile.update');
+        Route::get('/profile', [ProfileController::class, 'userProfile'])->name('profile');
+        Route::get('/profile/edit', [ProfileController::class, 'userProfileEdit'])->name('profile.edit');
+        Route::put('/profile', [ProfileController::class, 'userProfileUpdate'])->name('profile.update');
+        Route::get('/my-profile', [ProfileController::class, 'studentProfile'])->name('studentProfile');
+        Route::put('/my-profile', [ProfileController::class, 'updateStudentProfile'])->name('updateStudentProfile.update');
 
         // Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
         //     ->name('rows.submit');
