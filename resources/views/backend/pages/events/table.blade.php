@@ -41,7 +41,7 @@
 
     statusBadgeClass(status) {
         if (status === 'upcoming') return 'bg-blue-50 text-blue-700 dark:bg-blue-500/15 dark:text-blue-400';
-        if (status === 'ongoing') return 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-500';
+        if (status === 'ongoing') return 'bg-green-50 text-green-700 dark:bg-success-500/15 dark:text-green-500';
         if (status === 'completed') return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
         if (status === 'cancelled') return 'bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-500';
         return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';

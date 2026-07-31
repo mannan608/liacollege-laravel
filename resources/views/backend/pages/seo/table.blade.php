@@ -43,7 +43,7 @@
     },
 
     getScoreClass(score) {
-        if (score >= 80) return 'bg-green-50 text-green-700 dark:bg-green-500/15 dark:text-green-500';
+        if (score >= 80) return 'bg-green-50 text-green-700 dark:bg-success-500/15 dark:text-green-500';
         if (score >= 50) return 'bg-yellow-50 text-yellow-700 dark:bg-yellow-500/15 dark:text-yellow-400';
         return 'bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-500';
     }

@@ -135,7 +135,7 @@
                         @if ($isCompleted)
                             <div
                                 class="w-5 h-5 rounded-full
-                       bg-green-500 text-white
+                       bg-success-500 text-white
                        flex items-center justify-center">
 
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

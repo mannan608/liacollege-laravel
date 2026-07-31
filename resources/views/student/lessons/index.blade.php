@@ -113,7 +113,7 @@
                         </div>
 
                         @if ($isCompleted)
-                            <div class="w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center">
+                            <div class="w-5 h-5 rounded-full bg-success-500 text-white flex items-center justify-center">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                         d="M5 13l4 4L19 7" />
@@ -162,7 +162,7 @@
                 </div>
             </div>
 
-            <div class="max-w-5xl mx-auto px-6 lg:px-10 py-8 space-y-6">
+            <div class="mx-auto px-6 lg:px-10 py-8 space-y-6">
                 <section id="lesson-content" class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 lg:p-8">
 
                     @if ($currentLesson)

@@ -10,7 +10,7 @@
 @php
     $variantClasses = [
         'success' => [
-            'container' => 'border-green-500 bg-green-50 dark:border-green-500/30 dark:bg-green-500/15',
+            'container' => 'border-green-500 bg-green-50 dark:border-green-500/30 dark:bg-success-500/15',
             'icon' => 'text-green-500',
         ],
         'error' => [
