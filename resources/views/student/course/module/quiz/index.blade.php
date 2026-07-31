@@ -96,7 +96,7 @@
                     <!-- Action -->
                     <div class="mt-10 flex justify-center">
 
-                        <a href="{{ route('student.launch-portal', [
+                        {{-- <a href="{{ route('student.launch-portal', [
     'course' => $course,
     'module' => $module,
 ]) }}"
@@ -113,7 +113,26 @@
                             transition-transform duration-200
                             group-hover:translate-x-0.5"></i>
 
-                    </a>
+                    </a> --}}
+
+                    <a href="{{ route('student.lessons.index', [
+                                'course' => $course,
+                                'module' => $module,
+                            ]) }}"
+                                class="group inline-flex items-center gap-3
+                            bg-slate-900 hover:bg-slate-800
+                            text-white font-medium
+                            px-8 py-4 rounded-xl
+                            transition-all duration-200">
+
+                                <span>Launch eLearning Module</span>
+
+                                <i
+                                    class="fa-solid fa-arrow-up-right-from-square text-sm
+                            transition-transform duration-200
+                            group-hover:translate-x-0.5"></i>
+
+                            </a>
 
                     </div>
 
