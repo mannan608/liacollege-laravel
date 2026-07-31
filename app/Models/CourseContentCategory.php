@@ -23,4 +23,5 @@ public function sections()
     return $this->hasMany(CourseSection::class)
         ->orderBy('id');
 }
+
 }
