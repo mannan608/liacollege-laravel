@@ -1,7 +1,4 @@
 @extends('backend.layouts.fullscreen-layout')
-
-
-
 @section('content')
     <div class="flex h-screen overflow-hidden">
 
@@ -15,9 +12,10 @@
                 </div>
                 <div class="relative">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-md text-xs font-medium">{{$course->name}}</span>
+                        <span
+                            class="px-2 py-0.5 bg-white/20 backdrop-blur-sm rounded-md text-xs font-medium">{{ $course->name }}</span>
                     </div>
-                    <p class="text-brand-100 mt-1 text-sm">{{$module->title}}</p>
+                    <p class="text-brand-100 mt-1 text-sm">{{ $module->title }}</p>
                     <div class="mt-5">
                         <div class="flex justify-between text-sm mb-2 font-medium">
                             <span class="text-brand-100">Progress</span>
@@ -225,7 +223,9 @@
                         <p class="text-sm text-slate-500 mt-1">
                             Continue when you're ready.
                         </p>
-                        <p id="quiz-complete-notice" class="hidden mt-3 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2"></p>
+                        <p id="quiz-complete-notice"
+                            class="hidden mt-3 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
+                        </p>
                     </div>
 
                     <button type="button" id="complete-lesson-btn"
@@ -364,51 +364,52 @@
 
         if (completionType === 'scroll') {
 
-    const scrollContainer =
-        document.getElementById('learning-portal-main');
+            const scrollContainer =
+                document.getElementById('learning-portal-main');
 
-    if (!scrollContainer) {
-        console.warn('Learning portal scroll container not found.');
-        return;
-    }
+            if (!scrollContainer) {
+                console.warn('Learning portal scroll container not found.');
+                return;
+            }
 
-    function checkScrollCompletion() {
+            function checkScrollCompletion() {
 
-        const contentRect =
-            completionElement.getBoundingClientRect();
+                const contentRect =
+                    completionElement.getBoundingClientRect();
 
-        const containerRect =
-            scrollContainer.getBoundingClientRect();
+                const containerRect =
+                    scrollContainer.getBoundingClientRect();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Lesson bottom has reached the visible bottom of main container
-        |--------------------------------------------------------------------------
-        */
+                /*
+                |--------------------------------------------------------------------------
+                | Lesson bottom has reached the visible bottom of main container
+                |--------------------------------------------------------------------------
+                */
 
-        const hasReachedBottom =
-            contentRect.bottom <= containerRect.bottom + 30;
+                const hasReachedBottom =
+                    contentRect.bottom <= containerRect.bottom + 30;
 
-        if (hasReachedBottom) {
+                if (hasReachedBottom) {
 
-            unlockCompleteButton();
+                    unlockCompleteButton();
 
-            scrollContainer.removeEventListener(
+                    scrollContainer.removeEventListener(
+                        'scroll',
+                        checkScrollCompletion
+                    );
+                }
+            }
+
+            // Check immediately in case lesson is short
+            checkScrollCompletion();
+
+            scrollContainer.addEventListener(
                 'scroll',
-                checkScrollCompletion
+                checkScrollCompletion, {
+                    passive: true
+                }
             );
         }
-    }
-
-    // Check immediately in case lesson is short
-    checkScrollCompletion();
-
-    scrollContainer.addEventListener(
-        'scroll',
-        checkScrollCompletion,
-        { passive: true }
-    );
-}
 
 
         /*
