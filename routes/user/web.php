@@ -228,6 +228,9 @@ Route::prefix('student')
         Route::get('/e-learning-portal/lessons/content/{slug}', [LessonController::class, 'content'])
             ->name('lessons.content');
 
+            Route::post('/e-learning-portal/lessons/{slug}/complete', [LessonController::class, 'complete'])
+    ->name('lessons.complete');
+
 
         // Route::get(
         //     '/courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/resource',
