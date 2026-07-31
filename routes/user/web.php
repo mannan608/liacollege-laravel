@@ -8,6 +8,7 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
 use App\Http\Controllers\Student\HelpController;
 use App\Http\Controllers\Student\LearningPortalController;
+use App\Http\Controllers\Student\LessonController;
 use App\Http\Controllers\Student\LessonQuizController;
 use App\Http\Controllers\Student\ProfileController;
 use App\Http\Controllers\Student\QuizAttemptController;
@@ -219,6 +220,15 @@ Route::prefix('student')
         Route::get('/courses/{course}/quiz-modules/{module}/learning-portal', [LearningPortalController::class, 'launchLearningPortal'])
             ->name('launch-portal');
 
+
+
+        Route::get('/e-learning-portal/lessons/{slug?}', [LessonController::class, 'index'])
+            ->name('lessons.index');
+
+        Route::get('/e-learning-portal/lessons/content/{slug}', [LessonController::class, 'content'])
+            ->name('lessons.content');
+
+
         // Route::get(
         //     '/courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/resource',
         //     [LearningPortalController::class, 'lessonResources']
@@ -278,9 +288,9 @@ Route::prefix('student')
         Route::get('/contact-admin', [HelpController::class, 'contactAdmin'])->name('contact-admin');
         Route::post('/contact-admin', [HelpController::class, 'storeContactAdmin'])->name('contact-admin.store');
 
-         Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
-        ->name('lesson.resources');
-         Route::post('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/complete',[LearningPortalController::class, 'complete'])->name('lesson.complete');
+        Route::get('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}', [LearningPortalController::class, 'show'])
+            ->name('lesson.resources');
+        Route::post('courses/{course}/modules/{module}/learning-portal/lesson/{lesson}/complete', [LearningPortalController::class, 'complete'])->name('lesson.complete');
 
         Route::get('/lessons/{lesson}/quiz', [LessonQuizController::class, 'show'])->name('lessonQuiz.show');
         Route::post('/attempt/{attempt}/submit', [LessonQuizController::class, 'submit'])->name('quiz.submit');
@@ -288,7 +298,5 @@ Route::prefix('student')
         // Route::post('/lessons/{lesson}/quiz', [LessonQuizController::class, 'retake'])->name('quiz.retake');
         // Route::post('/quiz/{quiz}/retake', [LessonQuizController::class, 'retake'])->name('quiz.retake');
         Route::post('/quiz/attempt/{attempt}/retake', [LessonQuizController::class, 'retake'])
-    ->name('quiz.retake');
-
-
+            ->name('quiz.retake');
     });

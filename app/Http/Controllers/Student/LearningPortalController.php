@@ -352,7 +352,7 @@ class LearningPortalController extends Controller
     */
 
     if (!$nextLesson) {
-        $notice = 'Quiz completed. There is no next lesson available yet.';
+        $notice = 'There is no next lesson available yet.';
 
         return response()->json([
             'success' => true,
