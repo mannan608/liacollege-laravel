@@ -92,7 +92,8 @@
                         </div>
                     </form>
                     <div class="mt-6">
-                        <h6 class="text-xs font-bold uppercase tracking-wide text-muted mb-0" style="font-size: 14px">3. Choose a date</h6>
+                        <h6 class="text-xs font-bold uppercase tracking-wide text-muted mb-0" style="font-size: 14px">3.
+                            Choose a date</h6>
                         <ul class="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line">
 
                             @forelse ($slots as $slot)
@@ -179,12 +180,11 @@
                 <div class="d-flex flex-wrap gap-2">
 
                     @foreach ($courses as $course)
-                        <a href="{{ route('firstAid', ['course_id' => $course->id]) }}"
+                        <a href="{{ route('courses.show', $course->slug) }}"
                             class="btn btn-light border rounded-pill fw-semibold px-4 py-2 text-dark">
                             {{ $course->name }}
                             <i class="bi bi-arrow-right ms-2"></i>
                         </a>
-                        
                     @endforeach
 
                 </div>
@@ -195,83 +195,142 @@
             <section class="mx-auto w-75 px-4 pb-16 pt-14 sm:px-6">
                 <h4 class="text-2xl font-bold sm:text-3xl">First Aid &amp; CPR courses</h4>
                 <div class="mt-8 grid gap-6 md:grid-cols-2">
-                    <article class="flex flex-col rounded-card border border-line bg-white p-6">
-                        <div class="flex items-start justify-between gap-3">
-                            <h6 class="text-xl font-bold text-green-700">HLTAID009 Provide CPR</h6><span
-                                class="shrink-0 text-right"><span class="text-muted">from </span><span
-                                    class="font-extrabold text-green-700">$45</span></span>
-                        </div>
-                        <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-muted"><span>1.5
-                                hours</span></div>
-                        <p class="mt-3 text-body">CPR skills (adults, children and infants) including how to operate an
-                            AED.
-                        </p>
-                        <div class="mt-4 border-t border-line pt-4">
-                            <p class=" font-bold uppercase tracking-wide text-muted">What's included</p>
-                            <ul class="mt-2 p-0">
-                                <li class="d-flex align-items-start gap-2">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                        stroke-linejoin="round" aria-hidden="true" class="mt-1 flex-shrink-0 text-success">
-                                        <path d="m5 12 4.5 4.5L19 7"></path>
-                                    </svg>
+
+                    <!-- HLTAID009 Provide CPR -->
+                        <article class="h-100 rounded-4 border bg-white p-4 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-start gap-3">
+                                <h5 class="fw-bold text-success mb-0">HLTAID009 Provide CPR</h5>
+                                <div class="text-end">
+                                    <small class="text-muted d-block">from</small>
+                                    <span class="fw-bold fs-4 text-success">$45</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 text-muted">
+                                <i class="fa-regular fa-clock me-2"></i>1.5 hours
+                            </div>
+
+                            <p class="mt-3 mb-0">
+                                CPR skills (adults, children and infants) including how to operate an AED.
+                            </p>
+
+                            <hr>
+
+                            <p class="fw-bold text-uppercase text-muted small mb-3">
+                                What's included
+                            </p>
+
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex align-items-start mb-2">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
                                     <span>HLTAID009 – Provide cardiopulmonary resuscitation</span>
                                 </li>
                             </ul>
-                        </div>
-                    </article>
-                    <article class="flex flex-col rounded-card border border-line bg-white p-6">
-                        <div class="flex items-start justify-between gap-3">
-                            <h6 class="text-xl font-bold text-green-700">HLTAID009 Provide CPR</h6><span
-                                class="shrink-0 text-right"><span class="text-muted">from </span><span
-                                    class="font-extrabold text-green-700">$45</span></span>
-                        </div>
-                        <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-muted"><span>1.5
-                                hours</span></div>
-                        <p class="mt-3 text-body">CPR skills (adults, children and infants) including how to operate an
-                            AED.
-                        </p>
-                        <div class="mt-4 border-t border-line pt-4">
-                            <p class=" font-bold uppercase tracking-wide text-muted">What's included</p>
-                            <ul class="mt-2 p-0">
-                                <li class="d-flex align-items-start gap-2">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                        stroke-linejoin="round" aria-hidden="true"
-                                        class="mt-1 flex-shrink-0 text-success">
-                                        <path d="m5 12 4.5 4.5L19 7"></path>
-                                    </svg>
+                        </article>
+
+                    <!-- HLTAID011 Provide First Aid -->
+                        <article class="h-100 rounded-4 border bg-white p-4 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-start gap-3">
+                                <h5 class="fw-bold text-success mb-0">HLTAID011 Provide First Aid</h5>
+                                <div class="text-end">
+                                    <small class="text-muted d-block">from</small>
+                                    <span class="fw-bold fs-4 text-success">$95</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 text-muted">
+                                <i class="fa-regular fa-clock me-2"></i>3 hours
+                            </div>
+
+                            <div class="mt-2">
+                                <span class="badge bg-success-subtle text-success border border-success">
+                                    Includes CPR
+                                </span>
+                            </div>
+
+                            <p class="mt-3 mb-0">
+                                The complete workplace first aid certificate. Includes CPR — most workplaces ask for this
+                                one.
+                            </p>
+
+                            <hr>
+
+                            <p class="fw-bold text-uppercase text-muted small mb-3">
+                                What's included
+                            </p>
+
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex align-items-start mb-2">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
                                     <span>HLTAID009 – Provide cardiopulmonary resuscitation</span>
                                 </li>
-                            </ul>
-                        </div>
-                    </article>
-                    <article class="flex flex-col rounded-card border border-line bg-white p-6">
-                        <div class="flex items-start justify-between gap-3">
-                            <h6 class="text-xl font-bold text-green-700">HLTAID009 Provide CPR</h6><span
-                                class="shrink-0 text-right"><span class="text-muted">from </span><span
-                                    class="font-extrabold text-green-700">$45</span></span>
-                        </div>
-                        <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-muted"><span>1.5
-                                hours</span></div>
-                        <p class="mt-3 text-body">CPR skills (adults, children and infants) including how to operate an
-                            AED.
-                        </p>
-                        <div class="mt-4 border-t border-line pt-4">
-                            <p class=" font-bold uppercase tracking-wide text-muted">What's included</p>
-                            <ul class="mt-2 p-0">
-                                <li class="d-flex align-items-start gap-2">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                        stroke-linejoin="round" aria-hidden="true"
-                                        class="mt-1 flex-shrink-0 text-success">
-                                        <path d="m5 12 4.5 4.5L19 7"></path>
-                                    </svg>
-                                    <span>HLTAID009 – Provide cardiopulmonary resuscitation</span>
+
+                                <li class="d-flex align-items-start mb-2">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                                    <span>HLTAID010 – Provide basic emergency life support</span>
+                                </li>
+
+                                <li class="d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                                    <span>HLTAID011 – Provide First Aid</span>
                                 </li>
                             </ul>
-                        </div>
-                    </article>
+                        </article>
+
+                    <!-- HLTAID012 Childcare First Aid -->
+                        <article class="h-100 rounded-4 border bg-white p-4 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-start gap-3">
+                                <h5 class="fw-bold text-success mb-0">HLTAID012 Childcare First Aid</h5>
+                                <div class="text-end">
+                                    <small class="text-muted d-block">from</small>
+                                    <span class="fw-bold fs-4 text-success">$115</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 text-muted">
+                                <i class="fa-regular fa-clock me-2"></i>3.5 hours
+                            </div>
+
+                            <div class="mt-2">
+                                <span class="badge bg-success-subtle text-success border border-success">
+                                    Includes CPR &amp; First Aid
+                                </span>
+                            </div>
+
+                            <p class="mt-3 mb-0">
+                                For educators and care staff. Covers everything in Provide First Aid plus child-specific
+                                content — and includes CPR.
+                            </p>
+
+                            <hr>
+
+                            <p class="fw-bold text-uppercase text-muted small mb-3">
+                                What's included
+                            </p>
+
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex align-items-start mb-2">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                                    <span>HLTAID009 – Provide cardiopulmonary resuscitation</span>
+                                </li>
+
+                                <li class="d-flex align-items-start mb-2">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                                    <span>HLTAID010 – Provide basic emergency life support</span>
+                                </li>
+
+                                <li class="d-flex align-items-start mb-2">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                                    <span>HLTAID011 – Provide First Aid</span>
+                                </li>
+
+                                <li class="d-flex align-items-start">
+                                    <i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+                                    <span>HLTAID012 – Provide first aid in an education and care setting</span>
+                                </li>
+                            </ul>
+                        </article>
+
                 </div>
                 <p class="mt-5 text-muted">Ready to book? Use the class finder above to see live dates and secure
                     your
@@ -280,34 +339,7 @@
         </div>
 
         <section class="bg-white px-14 py-24">
-            <div class="container">
-                <div class="px-14 py-24">
-                    <h6 class="text-2xl font-bold sm:text-3xl">What students say about Lia College First Aid &amp; CPR</h6>
-                    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                        <figure class="card border border-light bg-light h-100 p-4 rounded-3">
-                            <div class="d-flex gap-1 text-warning mb-4" role="img" aria-label="5 out of 5 stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-
-                            <blockquote class="blockquote mb-3 flex-grow-1 lh-base text-secondary m-0"
-                                style="font-size: 14px">
-                                “This was really good, very helpful and engaging and made it easy to learn, I would give 10
-                                stars.”
-                            </blockquote>
-
-                            <figcaption class="mt-auto">
-                                <strong class="text-dark">Katie Louise Bryant</strong>
-                                <span class="text-muted"> · Google review</span>
-                            </figcaption>
-                        </figure>
-
-                    </div>
-                </div>
-            </div>
+            @include('frontend.lia-collage.first-aid.partials.student-review')
         </section>
         <div class="bg-gray-100 px-14 py-24">
 
@@ -319,7 +351,7 @@
                 </div>
                 <ul class="row g-4 list-unstyled mt-4">
                     <li class="col-12 col-sm-6">
-                        <a class="d-flex flex-column h-100 text-decoration-none rounded-4 border bg-white p-4 shadow-sm transition-shadow"
+                        <a href="{{ route('first-aid.renew') }}" class="d-flex flex-column h-100 text-decoration-none rounded-4 border bg-white p-4 shadow-sm transition-shadow"
                             style="transition: box-shadow 0.2s;" onmouseover="this.classList.add('shadow');"
                             onmouseout="this.classList.remove('shadow');"
                             href="/guides/how-often-renew-first-aid-certificate">
@@ -397,113 +429,12 @@
             </section>
         </div>
         <section class="bg-[#e5b35d] px-14 py-24 ">
-            <div class="container">
-                <div class="mx-auto" style="max-width: 50%;">
-                    <h4 class="fw-bold h3">Frequently asked questions</h4>
-                    <div class="mt-4 d-flex flex-column gap-3">
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                Is this course nationally recognised?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">Yes. Lia College is a Registered Training Organisation (RTO 46049)
-                                and you receive a nationally recognised statement of attainment on completion.</p>
-                        </details>
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                Do I need a USI?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">Yes — a Unique Student Identifier (USI) is required before a
-                                nationally recognised certificate can be issued. It's free to create at usi.gov.au.</p>
-                        </details>
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                How do I book a place?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">Use the class finder above to choose your course, location and date,
-                                then enrol and pay online to secure your spot.</p>
-                        </details>
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                Can you train my team or workplace?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">Yes — we run group and onsite bookings. Call 1300 628 299 to arrange
-                                one.</p>
-                        </details>
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                Which first aid course do I need?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">HLTAID009 CPR is the CPR unit on its own. HLTAID011 Provide First Aid
-                                is the full workplace certificate and includes CPR — it's the one most workplaces ask for.
-                                HLTAID012 Childcare First Aid adds child-specific content for educators and care staff, and
-                                includes CPR and first aid.</p>
-                        </details>
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                How often do I need to renew?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">As a general guide, most workplaces require CPR to be renewed every
-                                12 months and Provide First Aid every 3 years. Check your workplace's specific requirements.
-                            </p>
-                        </details>
-                        <details class="rounded-4 border bg-white p-4">
-                            <summary
-                                class="d-flex cursor-pointer list-unstyled align-items-center justify-content-between gap-3 fw-bold text-dark">
-                                Is there any pre-course work?
-                                <span class="text-muted transition-transform" style="transition: transform 0.2s;">▾</span>
-                            </summary>
-                            <p class="mt-3 text-body">Yes — there's a short online learning module to complete before your
-                                in-person session. You'll receive the link after you book.</p>
-                        </details>
-                    </div>
-                </div>
-            </div>
+            @include('frontend.lia-collage.first-aid.partials.faq')
+
         </section>
         <section class="bg-light px-14 py-24">
-            <div class="container">
-                <h5 class="fw-bold h3">First Aid &amp; CPR by location</h5>
-                <p class="mt-3 text-body">Delivered face-to-face at 15 centres. Choose your nearest centre to see its class
-                    dates and book.</p>
-                <ul class="row g-3 list-unstyled mt-4">
-                    <li class="col-12 col-sm-6 col-lg-4">
-                        <a class="d-flex h-100 gap-3 text-decoration-none rounded-4 border bg-white p-4 shadow-sm transition-shadow"
-                            style="transition: box-shadow 0.2s;" onmouseover="this.classList.add('shadow');"
-                            onmouseout="this.classList.remove('shadow');" href="/courses/first-aid/sydney">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-                                class="mt-1 flex-shrink-0 text-primary">
-                                <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"></path>
-                                <circle cx="12" cy="10" r="2.5"></circle>
-                            </svg>
-                            <div>
-                                <p class="fw-bold text-dark mb-0">Sydney</p>
-                                <p class="mt-1 small lh-sm text-muted">Level 5, 8 Quay Street (Prince Centre), Haymarket
-                                    NSW 2000</p>
-                                <span class="mt-2 d-inline-flex align-items-center gap-1 small fw-bold text-success">
-                                    See Sydney dates
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                                        stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M5 12h14M13 6l6 6-6 6"></path>
-                                    </svg>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            @include('frontend.lia-collage.first-aid.partials.location')
+
         </section>
         <div class="bg-white px-4 px-md-5 py-5">
             <section class="container">

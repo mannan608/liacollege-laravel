@@ -130,6 +130,14 @@ Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track
 Route::get('/first-aid', [FrontendController::class, 'firstAid'])
     ->name('firstAid');
 
+    Route::get('/first-aid/{course:slug}', [FrontendController::class, 'firstAidShow'])
+    ->name('courses.show');
+
+Route::view(
+    '/first-aid/how-often-renew-first-aid-certificate',
+    'frontend.lia-collage.first-aid.cpr-guides.how-often-renew-first-aid-certificate'
+)->name('first-aid.renew');
+
 // Route::get(
 //     '/first-aid/{course}/{slot}/course-enrollment',
 //     [FrontendController::class, 'enrollmentSlot']
