@@ -111,4 +111,25 @@ public function viewlearningDocument(Document $document)
             'student' => $student,
         ]);
     }
+
+ 
+
+      public function contentMetarialLinkView(string $slug)
+    {
+        if (!Auth::check()) {
+            abort(403);
+        }
+
+        $student = Auth::user()->student;
+
+        if (!$student) {
+            abort(403);
+        }
+
+        $view = "frontend.pages.student.private-pages.$slug";
+
+        abort_unless(view()->exists($view), 404);
+
+        return view($view, compact('student'));
+    }
 }
