@@ -10,41 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CoursePermissions extends Model
 {
-    protected $fillable = [
-        'student_id',
-        'course_id',
-        'course_content_category_id',
-        'section_id',
-        'row_id',
-        'doc_permissions',
-    ];
+protected $fillable = ['permission_role_id', 'entity_type', 'entity_id'];
 
-    protected $casts = [
-        'doc_permissions' => 'array',
-    ];
-
-    public function student(): BelongsTo
+    public function role()
     {
-        return $this->belongsTo(Student::class);
-    }
-
-    public function course(): BelongsTo
-    {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function contentcategory(): BelongsTo
-    {
-        return $this->belongsTo(CourseContentCategory::class, 'course_content_category_id');
-    }
-
-    public function section(): BelongsTo
-    {
-        return $this->belongsTo(CourseSection::class);
-    }
-
-    public function row(): BelongsTo
-    {
-        return $this->belongsTo(CourseSectionRow::class);
+        return $this->belongsTo(CoursePermissionRole::class, 'permission_role_id');
     }
 }
+    

@@ -42,6 +42,7 @@ return new class extends Migration
     $table->timestamp('enrolled_at')->nullable();
 
     $table->timestamp('completed_at')->nullable();
+    $table->foreignId('permission_role_id')->nullable()->constrained('course_permission_roles')->onDelete('set null');
 
     $table->timestamps();
 

@@ -2,6 +2,7 @@
 
 namespace App\Models\LMS;
 
+use App\Models\CourseResources\CoursePermissionRole;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\User;
@@ -92,4 +93,9 @@ class Enrollment extends Model
     {
         return $this->status === 'cancelled';
     }
+
+    public function permissionRole()
+{
+    return $this->belongsTo(CoursePermissionRole::class, 'permission_role_id');
+}
 }

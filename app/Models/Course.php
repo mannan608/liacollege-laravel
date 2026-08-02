@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\CourseResources\Module;
 use App\Models\LMS\CourseSlot;
+use App\Models\LMS\Enrollment;
 // use App\Models\LMS\Module;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -83,4 +84,21 @@ class Course extends Model
 {
     return $this->morphMany(Document::class, 'documentable');
 }
+
+public function permissionRoles()
+{
+    return $this->hasMany(CourseResources\CoursePermissionRole::class);
+}
+
+public function students()
+{
+    return $this->belongsToMany(Student::class, 'course_student')
+                ->withPivot('permission_role_id');
+}
+
+public function enrollments()
+{
+    return $this->hasMany(Enrollment::class);
+}
+
 }
