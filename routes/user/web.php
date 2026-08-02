@@ -302,4 +302,7 @@ Route::prefix('student')
         // Route::post('/quiz/{quiz}/retake', [LessonQuizController::class, 'retake'])->name('quiz.retake');
         Route::post('/quiz/attempt/{attempt}/retake', [LessonQuizController::class, 'retake'])
             ->name('quiz.retake');
+
+
+        Route::get('/course/view/{slug}', [CourseController::class, 'contentMetarialLinkView'])->name('rows.view');
     });
