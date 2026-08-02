@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Role;
 
 class FrontendController extends Controller
@@ -371,130 +372,21 @@ class FrontendController extends Controller
             ->orderBy('training_date')
             ->get();
     }
+  
 
     return view(
-        'frontend.lia-collage.first-aid',
+        'frontend.lia-collage.first-aid.index',
         compact('courses', 'locations', 'slots')
     );
 }
 
-   public function firstAidCpr()
+   public function firstAidShow(string $slug)
     {
-        return view('frontend.lia-collage.first-aid-cpr');
+           $view = "frontend.lia-collage.first-aid.$slug";
+
+    abort_unless(View::exists($view), 404);
+
+    return view($view);
     }
-//   public function enrollmentSlot(Course $course, CourseSlot $slot) {
-//     abort_unless(
-//         $slot->course_id === $course->id,
-//         404
-//     );
-
-//     $slot->load([
-//         'course',
-//         'trainingCenter',
-//     ]);
-
-//     return view(
-//         'frontend.pages.student.enrollment.enroll',
-//         compact('course', 'slot')
-//     );
-// }
-//  public function enrollmentCourseCheckout(Request $request)
-// {
-//    $validated = $request->validate([
-//         'course_id' => ['required', 'exists:courses,id'],
-//         'slot_id' => ['required', 'exists:course_slots,id'],
-
-//         'name' => ['required', 'string', 'max:255'],
-//         'email' => ['required', 'email'],
-//         'phone' => ['required', 'string'],
-//     ]);
-
-//     DB::transaction(function () use ($validated) {
-
-//         $course = Course::findOrFail(
-//             $validated['course_id']
-//         );
-
-//         $slot = CourseSlot::findOrFail(
-//             $validated['slot_id']
-//         );
-
-//         abort_unless(
-//             $slot->course_id == $course->id,
-//             404
-//         );
-
-//         /*
-//         |--------------------------------------------------------------------------
-//         | Create Student if not exists
-//         |--------------------------------------------------------------------------
-//         */
-
-//         $user = User::where(
-//             'email',
-//             $validated['email']
-//         )->first();
-
-//         if (! $user) {
-
-//             $studentRole = Role::where(
-//                 'name',
-//                 'student'
-//             )->firstOrFail();
-
-//             $password = Str::random(8);
-
-//             $user = User::create([
-//                 'name' => $validated['name'],
-//                 'email' => $validated['email'],
-//                 'phone' => $validated['phone'],
-//                 'status' => 'active',
-//                 'primary_role_id' => $studentRole->id,
-//                 'password' => Hash::make($password),
-//             ]);
-
-//             $user->assignRole($studentRole);
-
-//             $student = Student::create([
-//                 'user_id' => $user->id,
-//             ]);
-
-//             // Mail/SMS send করতে পারো
-//             // Login credential
-//         } else {
-
-//             $student = Student::firstOrCreate([
-//                 'user_id' => $user->id,
-//             ]);
-//         }
-
-//         /*
-//         |--------------------------------------------------------------------------
-//         | Prevent duplicate enrollment
-//         |--------------------------------------------------------------------------
-//         */
-
-//         Enrollment::firstOrCreate(
-//             [
-//                 'student_id' => $student->id,
-//                 'course_slot_id' => $slot->id,
-//             ],
-//             [
-//                 'status' => 'pending',
-//                 'enrolled_at' => now(),
-//             ]
-//         );
-//     });
-
-//     return view(
-//         'frontend.pages.student.enrollment.checkout',
-//         compact(
-//             'course',
-//             'slot',
-//             'validated'
-//         )
-//     );
-// }
-
 
 }
