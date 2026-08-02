@@ -19,20 +19,20 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Code of Conduct Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE8)</span></h1>
+                    <h1><span style="color: #132b4e;">Code of Conduct Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE8)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
                     <p>The purpose of the <em>Code of Conduct Policy</em> is designed to outline the standard of behaviour
-                        expected by employees at Banksia Care. In addition, the policy serves to ensure that all staff at
-                        Banksia Care behave in a manner that does not compromise these legal obligations.</p>
+                        expected by employees at Lia College. In addition, the policy serves to ensure that all staff at
+                        Lia College behave in a manner that does not compromise these legal obligations.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to clients, families, auxiliary staff, management, contractors, visiting Medical
                         and Allied Health professionals and visitors.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>At Banksia Care, our client’s safety, dignity and wellbeing are paramount to our core values and
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>At Lia College, our client’s safety, dignity and wellbeing are paramount to our core values and
                         objectives.</p>
                     <p>Our mission is “to provide exceptional care, accommodation and support services so that our valued
                         residents enjoy the quality of life they deserve, where individual needs are met to enable everyone
@@ -49,7 +49,7 @@
                         discrimination and harassment-free workplace and the responsibility to ensure that they do not
                         discriminate against or harass other employees or clients.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Racial Discrimination Act (1975)</li>
                         <li>Sex Discrimination Act (1984)</li>
@@ -69,13 +69,13 @@
                         <li>Aged Care Quality and Safety Commission Rules 2018</li>
                         <li>Aged Care Act 1997</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>We pride ourselves on the professionalism and ability of our employees to meet client needs. We
                         strive to be a leading service provider and provide a safe, healthy and happy workplace.</p>
                     <p>This Code of Conduct is designed to ensure that all employees and community members are treated in a
                         manner that reflects the organisation’s mission, culture and legal obligations.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -129,19 +129,19 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies</span></h2>
                     <ul>
                         <li>Equity, Anti-discrimination and Workplace Harassment Policy and Procedure</li>
                         <li>Workplace Health and Safety Policy and Procedure</li>
                         <li>Information Management Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires all staff to participate in a full induction on commencing employment, as well
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires all staff to participate in a full induction on commencing employment, as well
                         as an annual Code of Conduct refresher course as a minimum requirement of employment.</p>
                     <p>In addition, we promote information sharing at staff meetings, sharing information received from
                         industry trends or changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -170,12 +170,12 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Confidentiality Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Confidentiality Procedure</span></h2>
                     <h3><span style="color: #fcb53b;">Compliance</span></h3>
                     <p>All employees and management are expected to:</p>
                     <ul>

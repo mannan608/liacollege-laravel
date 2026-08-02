@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Restrictive Practices Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE5)</span></h1>
+                    <h1><span style="color: #132b4e;">Restrictive Practices Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE5)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Restrictive Practices Policy at Banksia Care is to provide mandatory requirements
-                        for Banksia Care staff (particularly the support staff) concerning the use of restrictive practices.
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Restrictive Practices Policy at Lia College is to provide mandatory requirements
+                        for Lia College staff (particularly the support staff) concerning the use of restrictive practices.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to support staff, management and specialist services at Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to support staff, management and specialist services at Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Aged Care and Other Legislative Amendment (Royal Commission Response No.1) Act 2021 (Cth)</li>
                         <li>Disability Discrimination Act 1992 (Cth)</li>
                         <li>Equal Opportunity Act 1984</li>
                         <li>National Disability Insurance Scheme Act 2013</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Restrictive Practices Procedure is carried out in accordance with the
                         principles of our Restrictive Practices Policy.</p>
                     <p>Our Policy:</p>
@@ -50,7 +50,7 @@
                             needed to protect the welfare of individuals and/or the safety of third parties.</li>
                         <li>Supports Positive Behaviour Support (PBS) Practitioners to implement PBS plans.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -195,7 +195,7 @@
                 </div>
 
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Safety and Risk Management Policy and Procedure</li>
                         <li>Privacy and Confidentiality Policy and Procedure</li>
@@ -203,13 +203,13 @@
                         <li>Code of Conduct Policy and Procedure</li>
                         <li>Code of Ethics</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Restrictive
-                        Practices Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Restrictive
+                        Practices Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -227,14 +227,14 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed on a yearly basis. However, if at any time the legislative, policy or
                         funding environment is so altered that the policy is no longer appropriate in its current form, the
                         policy shall be reviewed immediately and amended accordingly.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Restrictive Practices Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Restrictive Practices Procedure</span></h2>
                     <ul></ul>
-                    <h3><span style="color: #fcb53b;">Banksia Care staff who work directly with members are responsible for
+                    <h3><span style="color: #fcb53b;">Lia College staff who work directly with members are responsible for
                             the following:</span></h3>
                     <ul>
                         <li>Understand changes in behaviour.</li>

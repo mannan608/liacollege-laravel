@@ -19,39 +19,39 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Communication Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE2)</span></h1>
+                    <h1><span style="color: #132b4e;">Communication Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE2)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Communication Policy</em> at Banksia Care is to specify the various channels
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Communication Policy</em> at Lia College is to specify the various channels
                         of communication within our organisation, determine their intended purpose, and the roles and
                         responsibilities of staff in accessing and using them.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Internal communication is used to reinforce Banksia Care’s priorities and objectives. This involves
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Internal communication is used to reinforce Lia College’s priorities and objectives. This involves
                         ensuring that information disseminated to staff is valid, reliable, relevant, easy to access, and
                         appropriate.</p>
-                    <p>Banksia Care aims to continue to develop and trial new communication ideas, channels, and tools to
+                    <p>Lia College aims to continue to develop and trial new communication ideas, channels, and tools to
                         improve information sharing and collaboration between staff members.</p>
-                    <p>Staff are actively encouraged to share information within the workplace. Banksia Care expects staff
+                    <p>Staff are actively encouraged to share information within the workplace. Lia College expects staff
                         to use the communication channels and associated tools for business work practices and comply with
                         this and other relevant policies and procedures</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Privacy Act 1988</li>
                         <li>Information Privacy Act 2009</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Communication Procedure is carried out in accordance with the
                         principles of our <em>Communication Policy</em>.</p>
                     <h3><span style="color: #fcb53b;">Communication Channels</span></h3>
-                    <p>Banksia Care has several communication channels for intended purposes, including the following:</p>
+                    <p>Lia College has several communication channels for intended purposes, including the following:</p>
                     <ul>
                         <li>Email: Used for messages to staff, clients, and other stakeholders.</li>
                         <li>Client surveys: Used to gather information and feedback from clients for a range of purposes.
@@ -79,15 +79,15 @@
                         and the matter is urgent, you may contact the manager/coordinator of for your department in the
                         other sections of the facility to escalate your issue.</p>
                     <h3><span style="color: #fcb53b;">Meeting Etiquette</span></h3>
-                    <p>This policy applies to all meetings organised by Banksia Care management and staff members and
+                    <p>This policy applies to all meetings organised by Lia College management and staff members and
                         includes formal and informal meetings. All attendees of a meeting must adhere to the following
                         meeting etiquette:</p>
                     <ul>
                         <li>All meetings must be fair and transparent and implement open and informed decision-making.</li>
-                        <li>All attendees must exhibit the Banksia Care values of being inclusive, honest, accountable,
+                        <li>All attendees must exhibit the Lia College values of being inclusive, honest, accountable,
                             sustainable, and professional at all times.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -106,7 +106,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies </span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies </span></h2>
                     <ul>
                         <li>Privacy and Confidentiality Policy and Procedures</li>
                         <li>Customer Service Policy and Procedures</li>
@@ -114,12 +114,12 @@
                         <li>Duty of Care Policy and Procedures</li>
                         <li>Staff Health and Wellbeing Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Communication
-                            Policy</em> to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Communication
+                            Policy</em> to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -137,11 +137,11 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Communication Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Communication Procedure</span></h2>
                     <h3><span style="color: #fcb53b;">Meeting Preparation:</span></h3>
                     <p>Prior to a meeting taking place, the presenter should consider the following:</p>
                     <ul>
@@ -158,7 +158,7 @@
                     <h3><span style="color: #fcb53b;">Meeting Agenda:</span></h3>
                     <ul>
                         <li>The management’s responsibility is to organise formal meetings and delegate meeting preparation
-                            tasks to relevant Banksia Care staff members.</li>
+                            tasks to relevant Lia College staff members.</li>
                         <li>All information relating to the meeting topic and focus of discussion must be added to the
                             agenda and numbered consecutively as agenda items.</li>
                         <li>Each agenda item must be allocated appropriate timing and ensure specific timeframes are
@@ -191,12 +191,12 @@
                     </ul>
                     <h3><span style="color: #fcb53b;">Other Resources:</span></h3>
                     <ul>
-                        <li>The Banksia Care staff member responsible for making meeting arrangements must identify all
+                        <li>The Lia College staff member responsible for making meeting arrangements must identify all
                             resources required for effectively running the meeting, for e.g., technology requirements,
                             internet connectivity, ensuring there is no noise disturbance, proper signs are available to
                             indicate an ongoing meeting, conference phones and speakers, presentation screen and projectors
                             etc.</li>
-                        <li>The Banksia Care staff member must ensure that they take approval from the management for using
+                        <li>The Lia College staff member must ensure that they take approval from the management for using
                             all the extra resources required for organising the meeting effectively, for e.g., equipment
                             required, internet connection availability and any other associated resources and finalise
                             arrangements for the set-up of all resources required for the meeting, at least one day prior to
@@ -226,7 +226,7 @@
                     <ul>
                         <li>Document the meeting.</li>
                         <li>Distribute the meeting minutes to all attendees.</li>
-                        <li>Upload the meeting minutes to the organisation’s cloud-based storage system following Banksia
+                        <li>Upload the meeting minutes to the organisation’s cloud-based storage system following Lia College
                             Care’s Document Management Policy &amp; Procedures.</li>
                         <li>Follow up with attendees on actions they have been assigned during the meeting to ensure they
                             are completed.</li>

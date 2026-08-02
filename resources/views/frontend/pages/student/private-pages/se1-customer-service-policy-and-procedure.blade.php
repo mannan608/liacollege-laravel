@@ -19,34 +19,34 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Customer Service Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE1)</span></h1>
+                    <h1><span style="color: #132b4e;">Customer Service Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Customer Service Policy</em> at Banksia Care is to demonstrate our commitment
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Customer Service Policy</em> at Lia College is to demonstrate our commitment
                         to providing superior medical care and service to our patients. The safety, wellbeing and protection
                         of our residents is the paramount consideration in all decisions staff make and is managed in
                         accordance with professional standards, community expectations and legal requirements. We seek to
                         maintain and enhance our reputation by consistently providing high-quality services.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to all Banksia Care employees in respect of their conduct of workplace duties.
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to all Lia College employees in respect of their conduct of workplace duties.
                         This policy covers all customer service issues and concerning matters that are under the control and
-                        management of Banksia Care.</p>
+                        management of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
                         our core values and objectives. We also acknowledge that as far as reasonably practicable, we are
                         responsible and accountable for the safety of all residents as well as anyone who is attending,
-                        visiting or providing services to Banksia Care.</p>
+                        visiting or providing services to Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Australian Consumer Law (ACL)</li>
                         <li>Competition and Consumer Act 2010</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our <em>Customer Service Procedure</em> is carried out in accordance with
                         the principles of our <em>Customer Service Policy</em>.</p>
                     <p>We pride ourselves on the following values when dealing with our customers:</p>
@@ -68,7 +68,7 @@
                     <p>To create a sense of belonging, where everyone feels safe and comfortable, feels part of a community
                         and can obtain services and support for their health and well-being.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -87,26 +87,26 @@
                                     <td width="302">These are customers from diverse backgrounds and/or with special
                                         needs.
                                     </td>
-                                    <td width="160">Banksia Care</td>
+                                    <td width="160">Lia College</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Staff Induction Policy and Procedure.</li>
                         <li>Customer Complaints Policy and Procedure.</li>
                         <li>Inclusion and Diversity Policy and Procedure.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Customer Service
-                        Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care promotes
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Customer Service
+                        Policy to enable staff to fulfil their roles effectively. In addition, Lia College promotes
                         information sharing at staff meetings, sharing of information received from industry trends or
                         changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -129,13 +129,13 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually, and more regularly if changes are necessary. The Manager is
                         responsible for initiating the review and ensuring the amendment of the policy. Staff will be
                         consulted to provide input during the policy review period over a ten working day period. Customers
                         may be engaged to provide feedback on the customer service policy and procedures.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Customer Service Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Customer Service Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Face-to-Face Customers:</span></h3>
                     <ul>
@@ -143,7 +143,7 @@
                             changes that may affect their workplace.</li>
                         <li>Welcome all individuals as they enter the facility or as you walk past with ‘Good
                             morning/afternoon’ in a polite tone of voice and with a genuine smile.</li>
-                        <li>Residents should be acknowledged within 30 seconds of them entering Banksia Care.</li>
+                        <li>Residents should be acknowledged within 30 seconds of them entering Lia College.</li>
                         <li>Try and engage the patients, residents, carers and family in a conversation where possible and
                             appropriate.</li>
                         <li>In a friendly, professional manner, always let patients, residents, carers and family know you
@@ -160,7 +160,7 @@
                         encounter face-to-face. They should be treated with the same priority and respect.</p>
                     <ul>
                         <li>The phone must be answered within two rings where possible.</li>
-                        <li>The standard greeting will be: ‘Thank you for calling Banksia Care, ________ speaking. How may I
+                        <li>The standard greeting will be: ‘Thank you for calling Lia College, ________ speaking. How may I
                             help you?’</li>
                         <li>Actively listen to the callers’ requests and assist accordingly.</li>
                     </ul>
@@ -176,7 +176,7 @@
                     </ul>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Diverse Customers</span></h3>
-                    <p>Banksia Care has residents and patients from diverse backgrounds, including those with physical and
+                    <p>Lia College has residents and patients from diverse backgrounds, including those with physical and
                         intellectual disabilities, non-English speaking backgrounds, and diverse cultural beliefs. All
                         employees will treat every customer with dignity and respect, no matter the situation.</p>
                     <p>Some points to remember when dealing with diverse customers are:</p>
@@ -189,7 +189,7 @@
                     </ul>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Customer Information</span></h3>
-                    <p>Banksia Care holds the privacy of our staff and stakeholders in the highest regard.</p>
+                    <p>Lia College holds the privacy of our staff and stakeholders in the highest regard.</p>
                     <ul>
                         <li>The personal information of all stakeholders will be kept securely and will only be accessed by
                             authorised staff.</li>
@@ -198,8 +198,8 @@
                         </li>
                         <li>When you have finished using the computer, ALWAYS log out. NEVER walk away and leave the
                             computer unsecured.</li>
-                        <li>Banksia Care will not sell or release personal information of any customers to third parties
-                            under any circumstances. Banksia Care employees must comply with the Privacy Act 1988.</li>
+                        <li>Lia College will not sell or release personal information of any customers to third parties
+                            under any circumstances. Lia College employees must comply with the Privacy Act 1988.</li>
                         <li>Patient information will only be released where required by law or in cases where unlawful
                             activity has taken place.</li>
                     </ul>

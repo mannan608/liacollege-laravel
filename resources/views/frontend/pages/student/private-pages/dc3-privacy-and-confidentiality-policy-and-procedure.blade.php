@@ -15,25 +15,25 @@
 
             <div class="">
                 <div class="et_pb_slide_description et_pb_slide_title">
-                    <h1 class=""><span style="color: #006d5d;">Privacy and Confidentiality Policy and Procedure</span>
+                    <h1 class=""><span style="color: #132b4e;">Privacy and Confidentiality Policy and Procedure</span>
                     </h1>
-                    <h1><span style="color: #006d5d;">(DC3)</span></h1>
+                    <h1><span style="color: #132b4e;">(DC3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
                     <p>The purpose of the Privacy and Confidentiality Policy is to ensure the safety, well-being and
-                        protection of our residents at Banksia Care is the paramount consideration in all decisions staff at
+                        protection of our residents at Lia College is the paramount consideration in all decisions staff at
                         this service make about confidentiality and that confidentiality and privacy is managed in
                         accordance with professional standards, community expectations and legal requirements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>The establishment of trust between residents, consumers, external providers, management, board
                         members, and staff is an essential part of the ethos of our service which enables protection and
                         appropriateness in the care supports and services provided to consumers within and outside the
-                        organisation. Aligned with Banksia’s commitment to person-centred care, everyone needs to know the
+                        organisation. Aligned with Lia College’s commitment to person-centred care, everyone needs to know the
                         boundaries of confidentiality to feel safe and comfortable discussing personal issues and concerns.
                     </p>
                     <p>Our attitude to confidentiality and privacy is open and easily understood, and everyone should be
@@ -42,12 +42,12 @@
                         confidentiality.</p>
                     <p>We hold two types of information which are covered by this policy, personal and organisational
                         information.</p>
-                    <p>Banksia Care ensures it collects, stores, and secures personal information on individuals in a manner
+                    <p>Lia College ensures it collects, stores, and secures personal information on individuals in a manner
                         that meets the legal requirements of the Australia Privacy Act 1988 (Cth), its associated 13
                         Australian Privacy Principles (APPs), and the Aged Care Quality Standards which protect and enhance
                         the safety, health, wellbeing and quality of life of aged care consumers.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Information Privacy Act 2014</li>
                         <li>Privacy Act 1988</li>
@@ -58,7 +58,7 @@
                         <li>Mental Health Act 2014</li>
                         <li>Children, Youth and Families Act 2005.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Privacy and Confidentiality Procedure is carried out in accordance with
                         the principles of our Privacy and Confidentiality Policy.</p>
                     <ul>
@@ -74,9 +74,9 @@
                         <li>All staff, Board members, students and volunteers are to have an appropriate level of
                             understanding about how to meet the organisation’s legal and ethical obligations to ensure
                             privacy and confidentiality.</li>
-                        <li>Banksia Care ensures each individual:
+                        <li>Lia College ensures each individual:
                             <ul>
-                                <li>is made aware of any legal requirement for Banksia Care to collect the information</li>
+                                <li>is made aware of any legal requirement for Lia College to collect the information</li>
                                 <li>is able to access their personal information upon request</li>
                                 <li>does not receive unwanted direct marketing</li>
                                 <li>can ask for personal information that is incorrect to be corrected</li>
@@ -84,7 +84,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -139,7 +139,7 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Whistleblowers Protection Policy and Procedure</li>
                         <li>Mandatory Reporting Policy and Procedure</li>
@@ -147,15 +147,15 @@
                         <li>Customer Complaint Policy and Procedures</li>
                         <li>Record Keeping Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Privacy and
-                        Confidentiality Policy to enable staff to fulfil their roles effectively. In addition Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Privacy and
+                        Confidentiality Policy to enable staff to fulfil their roles effectively. In addition Lia College
                         promotes ongoing commitment to understanding and applying the principles of the Privacy and
                         Confidentiality Procedure within workforce capacity building resources, forums and activities
                         including (but not limited to) meetings, industry policy and legislative changes, and in line with
-                        Banksia Care’s governance frameworks.</p>
+                        Lia College’s governance frameworks.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -178,11 +178,11 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Privacy and Confidentiality Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Privacy and Confidentiality Procedure</span></h2>
                     <p>The privacy of personal information is defined by legislation, Privacy Act 1988 (Cth). At all times,
                         we act according to these legal requirements underpinned by the procedures outlined below.</p>
                     <p>We also strive to respect the confidentiality of other sensitive information. However, in the spirit
@@ -218,8 +218,8 @@
                     </ul>
                     <p>In general, personal information (including health information) may be collected from a consumer
                         and/or their represented decision-makers; any person or organisation that assesses health status or
-                        care requirements, for example, the Banksia care staff; other service providers; family members.</p>
-                    <p>Banksia Care will collect personal information directly from you unless: we have your consent to
+                        care requirements, for example, the Lia College staff; other service providers; family members.</p>
+                    <p>Lia College will collect personal information directly from you unless: we have your consent to
                         collect the information from someone else, or we are required or authorised by law to collect the
                         information from someone else, or it is unreasonable or impractical to do so.</p>
                     <p>The types of personal information collected include:</p>
@@ -242,7 +242,7 @@
                     <h3><span style="color: #fcb53b;">Use and Disclosure</span></h3>
                     <p>We only use personal information for the purposes for which it was given or for purposes directly
                         related to one of the functions or activities of the organisation.</p>
-                    <p>Banksia Care may use the personal information provided by an individual to market other internal
+                    <p>Lia College may use the personal information provided by an individual to market other internal
                         services to them. An individual may opt out of being contacted for marketing purposes at any time by
                         contacting our office. Information will not be passed onto any third-party marketing companies
                         without the prior written consent of the individual.</p>
@@ -366,12 +366,12 @@
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Complaints about Privacy</span></h3>
                     <p>Any individual wishing to make a complaint or appeal about how information has been handled within
-                        Banksia Care can do so by following Banksia Care’s Complaints and Appeals Policy and Procedure.</p>
+                        Lia College can do so by following Lia College’s Complaints and Appeals Policy and Procedure.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Privacy Notices</span></h3>
-                    <p>The Privacy and Confidentiality Policy and Procedure will be accessible on Banksia Care’s website.
+                    <p>The Privacy and Confidentiality Policy and Procedure will be accessible on Lia College’s website.
                     </p>
-                    <p>Banksia Care will ensure a privacy notice and declaration are included on other forms that may be
+                    <p>Lia College will ensure a privacy notice and declaration are included on other forms that may be
                         required to collect personal or sensitive information from individuals and that these are only used
                         in compliance with Clause 1 of this policy.</p>
                     <ul></ul>
@@ -380,7 +380,7 @@
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Request to Access Records</span></h3>
                     <p>Individuals may request to access their records using the Request to Access Records Form. Written
-                        requests should be sent to Banksia Care Headquarters.</p>
+                        requests should be sent to Lia College Headquarters.</p>
                     <p>Upon receiving a completed form, confirm the request is valid and has been made by the individual (or
                         representative decision-maker) to which the records relate – check identification documents.</p>
                     <p>Arrangements for the provision of records should be made as suitable – mailing copies, providing a

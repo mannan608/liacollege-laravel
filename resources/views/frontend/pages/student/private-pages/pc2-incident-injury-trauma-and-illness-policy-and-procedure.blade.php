@@ -19,21 +19,21 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Incident, Injury, Trauma and Illness Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(PC2)</span></h1>
+                    <h1><span style="color: #132b4e;">Incident, Injury, Trauma and Illness Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(PC2)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Incident, Injury, Trauma and Illness Policy</em> at Banksia Care is to have
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Incident, Injury, Trauma and Illness Policy</em> at Lia College is to have
                         strong and reliable processes to ensure the health and safety of staff, residents and visitors. We
                         have established this policy to protect and reduce the chances of harm in any form and effectively
                         manage any incident, illness, trauma or injury.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to residents, staff, management, medical professionals, volunteers and visitors
-                        of Banksia Care.</p>
+                        of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Caring for our residents comes with a duty of care towards those clients. All Banksia Care staff,
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Caring for our residents comes with a duty of care towards those clients. All Lia College staff,
                         therefore, have a responsibility and a duty of care to act to prevent any incident, injury, trauma
                         or illness to anyone at the service. As a licensed and regulated service, we must have policies and
                         procedures in place in the event that a resident is injured, becomes ill or suffers trauma. Being
@@ -44,14 +44,14 @@
                         preventing the spread of infection through implementing hygiene practices and precautions to prevent
                         the spread of germs.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Occupational Health and Safety Act 2004.</li>
                         <li>Occupational Health and Safety Regulations 2017.</li>
                         <li>Australian and New Zealand Standard Risk Management Principles and Guidelines<br>
                             AS/NZS ISO 310002009</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our <em>Incident, Injury, Trauma</em><em> and Illness Procedure</em> is
                         carried out in accordance with the principles of our <em>Incident, Injury, Trauma and Illness
                             Policy</em>.</p>
@@ -70,7 +70,7 @@
                             common illnesses and guide staff on initial responses to such.</li>
                     </ul>
                     <h3><span style="color: #fcb53b;">Considerations for Safety and Hygiene</span></h3>
-                    <p>In relation to all Banksia Care’s staff’s health and safety:</p>
+                    <p>In relation to all Lia College’s staff’s health and safety:</p>
                     <ul>
                         <li>Comply with all health and safety-related policies.</li>
                         <li>Implement prevention and responsive practices when required.</li>
@@ -93,7 +93,7 @@
                         <li>Clean hands of both staff and residents.</li>
                         <li>Clean the environment adequately and regularly.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -119,7 +119,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Administration of Medication Policy and Procedure</li>
                         <li>Safety and Risk Management Policy and Procedure</li>
@@ -129,13 +129,13 @@
                         <li>Emergency Management Policy and Procedure</li>
                         <li>Health and Nutrition Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Incident,
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Incident,
                             Injury, Trauma and Illness Policy</em> to enable staff to fulfil their roles effectively. In
-                        addition, Banksia Care promotes information sharing at staff meetings, sharing of information
+                        addition, Lia College promotes information sharing at staff meetings, sharing of information
                         received from industry trends or changes in legislation, and in consultation at policy review
                         sessions.</p>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -164,11 +164,11 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with all staff at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with all staff at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Incident, Injury, Trauma and Illness Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Incident, Injury, Trauma and Illness Procedure</span></h2>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
                         <li>Develop a range of health and safety-related policies in line with Regulatory requirements.</li>
@@ -196,7 +196,7 @@
                             regarding incidents, illnesses, injury and trauma within 24 hours.</li>
                         <li>Enforce exclusions of staff and isolation of residents where required.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Illness</span></h2>
+                    <h2><span style="color: #e6bb73;">Illness</span></h2>
                     <h3><span style="color: #fcb53b;">Symptoms Indicating Illness in Both Staff and Residents May
                             Include:</span></h3>
                     <ul>
@@ -317,11 +317,11 @@
                         <li>Monitor the rash and the person’s health.</li>
                         <li>Complete the illness, incident, trauma and illness record form and submit to management.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Incident, Injury, Trauma</span></h2>
+                    <h2><span style="color: #e6bb73;">Incident, Injury, Trauma</span></h2>
                     <h3><span style="color: #fcb53b;">Serious Incident procedure</span></h3>
                     <p>The Serious Incident Procedure has the following aims:</p>
                     <ul>
-                        <li>to reduce the risk of abuse and neglect for Banksia Care clients</li>
+                        <li>to reduce the risk of abuse and neglect for Lia College clients</li>
                         <li>to ensure that any person who suffers from abuse or neglect receives immediate health care,
                             including counselling</li>
                         <li>to ensure that any person who alleges abuse or neglect or suffers from abuse or neglect has the
@@ -352,8 +352,8 @@
                     </ul>
                     <p>Any deviation from these procedures by a staff member may result in instant dismissal.</p>
                     <ul></ul>
-                    <h2><strong><span style="color: #da591f;">SERIOUS INCIDENT REPORT GUIDELINES</span></strong></h2>
-                    <p>In response to any allegation, evidence or suspicion of abuse or neglect, Banksia Care employees,
+                    <h2><strong><span style="color: #e6bb73;">SERIOUS INCIDENT REPORT GUIDELINES</span></strong></h2>
+                    <p>In response to any allegation, evidence or suspicion of abuse or neglect, Lia College employees,
                         contractors and volunteers must complete a Serious Incident Report and submit it to the supervisor
                         <strong><em>within12 hours</em></strong>.</p>
                     <p>As this is a legal document, all necessary information must be included in the Serious Incident

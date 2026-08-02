@@ -20,28 +20,28 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Management of Falls Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(AP5)</span></h1>
+                    <h1><span style="color: #132b4e;">Management of Falls Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(AP5)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>At Banksia Care, we aim to create a safe environment for clients.</p>
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>At Lia College, we aim to create a safe environment for clients.</p>
                     <p>The Management of Falls Policy aims to prevent falls by assessing client risk factors, implementing
                         proactive systems of support to reduce the risk of falls, creating clear guidelines for responding
                         to falls, and ensuring quality care following a fall.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management, contractors and volunteers of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management, contractors and volunteers of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>In the past year, 1 in 3 elderly people in Australia experienced a fall, with 1 in 5 requiring
                         hospitalisation. Falls can seriously impact a person’s health, mental wellbeing and confidence.
                         Falls can cause Psychomotor Regression Syndrome, a complex set of neurological, physiological and
                         psychological changes that may affect the person’s behaviour, balance, gait, psychological state and
                         muscle control, among other factors.</p>
-                    <p>Due to the serious health ramifications associated with falls, Banksia Care adopts a proactive falls
+                    <p>Due to the serious health ramifications associated with falls, Lia College adopts a proactive falls
                         prevention and harm minimisation strategy.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>National Disability Insurance Scheme (Restrictive Practices and Behaviour Support) Rules 2018
                         </li>
@@ -53,13 +53,13 @@
                         <li>Aged Care Act 1997</li>
                         <li>Australian Human Rights Commission Act 1986</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Management of Falls Procedure is conducted in accordance with the
                         principles of our Management of Falls Policy.</p>
-                    <p>At Banksia Care, we uphold and protect the rights and dignity of clients in our care. We are
+                    <p>At Lia College, we uphold and protect the rights and dignity of clients in our care. We are
                         committed to providing quality care that upholds clients’ rights and dignity while also supporting
                         their safety and wellbeing.</p>
-                    <p>The Falls Policy and Procedure reflect Banksia Care’s commitment to the following values:</p>
+                    <p>The Falls Policy and Procedure reflect Lia College’s commitment to the following values:</p>
                     <ul>
                         <li>Protect – the rights, choices and dignity of individuals.</li>
                         <li>Compassion – respond to needs, provide comfort and implement the highest standard of personal
@@ -67,9 +67,9 @@
                         <li>Hope – enhance independence, promote enjoyment and provide help to ensure a rich and fulfilled
                             life.</li>
                     </ul>
-                    <p>At Banksia Care, we embrace falls prevention as a strategy to empower our clients to live more
+                    <p>At Lia College, we embrace falls prevention as a strategy to empower our clients to live more
                         independently and in better health for longer.</p>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -114,7 +114,7 @@
                         </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Duty of Care Policy and Procedure</li>
                         <li>Code of Conduct Policy and Procedure</li>
@@ -123,16 +123,16 @@
                         <li>Individualised Plans Policy and Procedure</li>
                         <li>Incident, Injury, Trauma and Illness Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Management of
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Management of
                         Falls Policy to enable staff to fulfil their roles effectively.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
-                    <p>All staff must complete FRAT training upon commencement of employment at Banksia Care.</p>
-                    <p>All staff must receive Falls First Responder training upon commencement of employment at Banksia
+                    <p>All staff must complete FRAT training upon commencement of employment at Lia College.</p>
+                    <p>All staff must receive Falls First Responder training upon commencement of employment at Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -150,12 +150,12 @@
                         </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed every three years or on the occurrence of any relevant legislative
-                        change. Management of Banksia Care will conduct reviews in consultation with the team at staff
+                        change. Management of Lia College will conduct reviews in consultation with the team at staff
                         meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Management of Falls Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Management of Falls Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Initial Assessment</span></h3>
                     <p>Upon initial intake, every client will be assessed using the Falls Risk Assessment Tool to provide a
@@ -165,8 +165,8 @@
                         muscle and joint strength and function, continence, falls history, psychological state,
                         physiological health and medications. Even when the client’s risk of falls is assessed as low,
                         preventative risk control action must be taken.</p>
-                    <p>The FRAT may be conducted by Banksia Care nursing or support workers.</p>
-                    <p>Upon completion, the FRAT must be lodged and securely stored in the Banksia Care client Information
+                    <p>The FRAT may be conducted by Lia College nursing or support workers.</p>
+                    <p>Upon completion, the FRAT must be lodged and securely stored in the Lia College client Information
                         Management System (IMS). The FRAT must be updated at the following times:</p>
                     <ul>
                         <li>after a fall</li>
@@ -191,7 +191,7 @@
                     <p>In the event that a client experiences a fall, the following procedure will be followed by any staff
                         member or volunteer nearby at the time.</p>
                     <ul>
-                        <li>IMMEDIATELY call the shift supervisor. The supervisor will notify the Banksia Care Nurse and
+                        <li>IMMEDIATELY call the shift supervisor. The supervisor will notify the Lia College Nurse and
                             call an ambulance.</li>
                         <li>First responders WILL NOT ATTEMPT TO MOVE OR TREAT THE CLIENT unless they are a qualified
                             medical practitioner, such as a Registered Nurse, Ambulance Officer or GP.</li>
@@ -206,12 +206,12 @@
                             changes in the consciousness of the person after the fall or if the person experiences headaches
                             or vomiting.</li>
                         <li>The first staff member at the scene will write a detailed report documenting the fall, the
-                            location, the time of day and what was occurring at the time of the fall using a Banksia Care
+                            location, the time of day and what was occurring at the time of the fall using a Lia College
                             Incident, Injury, Trauma and Illness Record. This must be submitted to the shift supervisor
                             within 12 hours of the fall occurring.</li>
                         <li>The Incident, Injury, Trauma and Illness Record is an important legal document and must be
                             completed factually and in detail. Within 12 hours after the fall, the Incident, Injury, Trauma
-                            and Illness Record must be lodged and securely stored in the Banksia Care client Information
+                            and Illness Record must be lodged and securely stored in the Lia College client Information
                             Management System (IMS).</li>
                         <li>After the fall, within 48 hours, the client’s FRAT must be updated, and a revised multifactorial
                             risk assessment for the client must be completed.</li>
@@ -222,13 +222,13 @@
                     </ul>
                     <h3><span style="color: #fcb53b;">Referral Procedure</span></h3>
                     <p>To refer a client to a health care professional, the support worker will make a recommendation to the
-                        shift supervisor or the Banksia Care nurse, Heather Brinkley.</p>
+                        shift supervisor or the Lia College nurse, Heather Brinkley.</p>
                     <p>The following policies apply to referrals:</p>
                     <p>A client will be referred to a physiotherapist in the following circumstances:</p>
                     <ul>
                         <li>If gait changes, balance issues or “sliding steps” are observed during a routine FRAT.</li>
                         <li>A client will automatically be referred to a physiotherapist as part of a Post Fall Plan.</li>
-                        <li>If other mobility issues are observed by a staff member and verified by the Banksia Care nurse
+                        <li>If other mobility issues are observed by a staff member and verified by the Lia College nurse
                             or shift supervisor.</li>
                     </ul>
                     <p>A client will be referred to their GP:</p>
@@ -250,7 +250,7 @@
                     </p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Rights and Responsibilities of Staff</span></h3>
-                    <p>All staff must complete FRAT training upon commencement of employment at Banksia Care.</p>
+                    <p>All staff must complete FRAT training upon commencement of employment at Lia College.</p>
                     <p>Staff are responsible for understanding and correctly implementing each client’s FRAT.</p>
                     <p>Support workers, volunteers and all other staff are responsible for lodging an Incident, Injury,
                         Trauma and Illness Record if they witness or are the first responder when a client falls.</p>

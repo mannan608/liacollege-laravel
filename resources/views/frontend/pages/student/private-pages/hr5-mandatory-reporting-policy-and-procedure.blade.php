@@ -19,19 +19,19 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Mandatory Reporting Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(HR5)</span></h1>
+                    <h1><span style="color: #132b4e;">Mandatory Reporting Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(HR5)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Mandatory Reporting Policy is to ensure the organisation complies with Banksia
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Mandatory Reporting Policy is to ensure the organisation complies with Lia College
                         Care’s legal and moral obligations. As a result of this policy, staff will be aware of their
                         mandatory reporting responsibilities and duty of care obligations. Staff can identify abuse
                         indicators with the help of this tool.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management and medical professionals of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management and medical professionals of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>In Australia, designated professionals are required to report suspected “abuse and neglect” cases to
                         government authorities.</p>
                     <p>An abuser can be physically abused, sexually abused, affected emotionally or psychologically, or even
@@ -47,13 +47,13 @@
                         made in good faith, the reporter cannot be held liable in any civil, criminal, or administrative
                         proceeding.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Information Privacy Act 2014</li>
                         <li>Privacy Act 1988</li>
                         <li>Children, Youth and Families Act 2005.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Mandatory Procedure is carried out in accordance with the principles of
                         our Mandatory Policy.</p>
                     <ul>
@@ -63,16 +63,16 @@
                             managed.</li>
                         <li>All individuals, including clients, stakeholders, staff, board members, students and volunteers,
                             have legislated rights to privacy of personal information.</li>
-                        <li>Banksia Care recognises the importance of connecting clients with community services. Reporting
-                            abuse and neglect is Banksia Care’s duty to clients and at-risk youth. Identifying and
-                            responding to suspected abuse and neglect cases is Banksia Care’s legal and moral
+                        <li>Lia College recognises the importance of connecting clients with community services. Reporting
+                            abuse and neglect is Lia College’s duty to clients and at-risk youth. Identifying and
+                            responding to suspected abuse and neglect cases is Lia College’s legal and moral
                             responsibility.</li>
                         <li>In cases where privacy, confidentiality, or privilege may be claimed, mandatory reporting
                             requirements take precedence over professional codes of practice. If abuse or neglect is
                             suspected, staff respect confidentiality and are to minimise the number of people involved in
                             the case.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -124,20 +124,20 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Whistleblowers Protection Policies and Procedures</li>
                         <li>Code of Conduct</li>
                         <li>Record-Keeping Policies and Procedures</li>
                         <li>Staff Management and Professional Development Policies and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Mandatory
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Mandatory
                         Reporting Policy to enable staff to fulfil their roles effectively. In addition, management provides
-                        Mandatory Reporting training for all staff during their induction and orientation to Banksia Care.
+                        Mandatory Reporting training for all staff during their induction and orientation to Lia College.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -166,12 +166,12 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Mandatory Reporting Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Mandatory Reporting Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Indicators of Abuse</span></h3>
                     <p>A number of indicators indicate that someone has been abused or neglected. A single indicator, or a
@@ -189,7 +189,7 @@
                     <p>Staff must notify their manager immediately whenever a client requires protection from suspected
                         abuse.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Reporting Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Reporting Procedure</span></h2>
                     <p>Staff must notify their manager immediately whenever a client requires protection from suspected
                         abuse.</p>
                     <ul></ul>
@@ -206,7 +206,7 @@
                         reasons for the concern.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">3. File the report</span></h3>
-                    <p>File according to legislative guidelines and Banksia Care’s Record-Keeping Policy and Procedure. The
+                    <p>File according to legislative guidelines and Lia College’s Record-Keeping Policy and Procedure. The
                         police should be contacted if criminal charges are suspected. Discuss this with your immediate
                         manager.</p>
 

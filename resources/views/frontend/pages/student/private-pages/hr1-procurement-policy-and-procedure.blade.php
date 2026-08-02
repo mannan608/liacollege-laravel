@@ -19,20 +19,20 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Performance Management Procurement Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(HR1)</span></h1>
+                    <h1><span style="color: #132b4e;">Performance Management Procurement Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(HR1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Performance Management Policy at Banksia Care is to support the development and
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Performance Management Policy at Lia College is to support the development and
                         skill of our staff and provide them with the opportunity to acquire professional development and
                         receive real-time feedback regarding their performance. We aim to ensure the highest quality of
                         service to all stakeholders through our support systems for managers and staff (including
                         volunteers).</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to auxiliary staff, management and educators at Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to auxiliary staff, management and educators at Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Our Performance Management Policy aims to support the effective leadership and management of our
                         service that contributes to quality environments for residents’ care and wellbeing.</p>
                     <p>High-quality internal systems comply with regulatory requirements and clearly set out how our service
@@ -40,12 +40,12 @@
                         focus on delivering quality care. An ongoing cycle of planning, review and evaluation, driven by
                         strategic leadership and effective administrative systems, enables our service to engage in
                         continuous quality improvement.</p>
-                    <p>Banksia Care understands its responsibilities for meeting the needs of its stakeholders. This
+                    <p>Lia College understands its responsibilities for meeting the needs of its stakeholders. This
                         includes ensuring that we continue to deliver high-quality care and support to residents. As a
                         service, we also need to be prepared if a staff member breaches one of our regulations or policies
                         and can manage and support all those included.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Public Service Act 1999</li>
                         <li>Racial Discrimination Act 1975</li>
@@ -56,7 +56,7 @@
                         <li>Fair Work Act 2009</li>
                         <li>The Work Health and Safety Act 2011</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Performance Management Procedure is carried out in accordance with the
                         principles of our Performance Management Policy.</p>
                     <ul>
@@ -70,11 +70,11 @@
                         <li>Our commitment to governance and leadership is enabled through our service philosophy, policies
                             and procedures.</li>
                         <li>General Considerations</li>
-                        <li>Banksia Care views our staff as our greatest assets, and in order to ensure we deliver
+                        <li>Lia College views our staff as our greatest assets, and in order to ensure we deliver
                             high-quality care, we need to support our staff in continued learning and development.</li>
                         <li>As a service, we are also responsible for ensuring all staff are meeting their requirements and
                             completing their set duties.</li>
-                        <li>Our service must ensure all staff comply with legal requirements and Banksia Care’s policies and
+                        <li>Our service must ensure all staff comply with legal requirements and Lia College’s policies and
                             procedures.</li>
                         <li>The service will respond immediately when a breach has been identified and implement the
                             performance management process.</li>
@@ -86,7 +86,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -112,20 +112,20 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Staff Wellbeing and Support Policy and Procedure</li>
                         <li>Confidentiality Policy and Procedure</li>
                         <li>Skills Development Policy and Procedure</li>
                         <li>Continuous Improvement Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Performance
-                        Management Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Performance
+                        Management Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -154,11 +154,11 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with staff at staff meetings.</p>
+                        Management of Lia College will conduct reviews in consultation with staff at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Performance Management Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Performance Management Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Professional Development</span></h3>
                     <p>Professional development refers to formal or informal training and may include:</p>
@@ -174,13 +174,13 @@
                         <li>engage in professional reflection (journals)</li>
                         <li>further formal study.</li>
                     </ul>
-                    <p>Professional development within Banksia Care:</p>
+                    <p>Professional development within Lia College:</p>
                     <ul>
                         <li>Management will arrange a variety of professional development opportunities throughout the year.
                         </li>
                         <li>A variety of professional development types will be provided to suit all staff.</li>
                         <li>Concepts and topics will be decided based on the staff and manager’s needs at the time.</li>
-                        <li>Professional development will not be at the cost of Banksia Care employees or volunteers.</li>
+                        <li>Professional development will not be at the cost of Lia College employees or volunteers.</li>
                         <li>Managers and staff must engage in three professional development opportunities per year.</li>
                         <li>Managers and staff are encouraged to implement new skills and knowledge within the service.</li>
                         <li>Managers and staff must engage in professional and respectful practice during professional
@@ -217,7 +217,7 @@
                             their work colleagues, a resident or a visitor but does not include a breach.</li>
                         <li>Issues or concerns will be addressed straight away, thus preventing the development of conflict
                             or major problems.</li>
-                        <li>Banksia Care will comply with the ‘Customer Complaints Policy’ in order to manage the complaint.
+                        <li>Lia College will comply with the ‘Customer Complaints Policy’ in order to manage the complaint.
                         </li>
                     </ul>
                     <p>In the event a staff member makes a breach of a Regulation or Policy, the following will be
@@ -245,7 +245,7 @@
                     </ul>
                     <h3><span style="color: #fcb53b;">Termination</span></h3>
                     <ul>
-                        <li>Banksia Care holds the right to terminate an employee immediately if they engage in a misconduct
+                        <li>Lia College holds the right to terminate an employee immediately if they engage in a misconduct
                             offence and is deemed by the law.</li>
                         <li>In most cases, employees will not have their contract terminated unless management has
                             implemented three written warnings within a reasonable timeframe and provided adequate feedback

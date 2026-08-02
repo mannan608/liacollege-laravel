@@ -19,26 +19,26 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Health and Nutrition Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SS2)</span></h1>
+                    <h1><span style="color: #132b4e;">Health and Nutrition Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SS2)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>At Banksia Care, we aim to create a safe, nurturing and empowering environment for clients “where
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>At Lia College, we aim to create a safe, nurturing and empowering environment for clients “where
                         individual needs are met to enable everyone to maintain optimum levels of physical, social and
                         emotional wellbeing.” In addition, the nutritional needs of our clients are an equal responsibility
                         to ensure optimal health, manage weight and support any dietary requirements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management, contractors and volunteers of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management, contractors and volunteers of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Especially for those who are frail, elderly, unwell or weakened from injury, good nutrition is
                         important to everyone. Those working in an aged and disability care service play a crucial role in
                         ensuring our clients’ health and nutritional needs are met.</p>
                     <p>Food not only provides the requirement for physical health but plays an important role in our
                         clients’ and residents’ mental health and general wellbeing.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>National Disability Insurance Scheme (Restrictive Practices and Behaviour Support) Rules 2018
                         </li>
@@ -52,10 +52,10 @@
                         <li>Age Discrimination Act 1992</li>
                         <li>Australian Human Rights Commission Act 1986</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Health and Nutrition Procedure is conducted in accordance with the
                         principles of our Health and Nutrition Policy.</p>
-                    <p>At Banksia Care, we uphold and protect the rights and dignity of clients in our care. We seek to
+                    <p>At Lia College, we uphold and protect the rights and dignity of clients in our care. We seek to
                         create an environment where each client enjoys optimum levels of good health and nutrition, where
                         dietary requirements are met, and mealtime is an enjoyable and rewarding social experience.</p>
                     <p>Our approach seeks to ensure the following:</p>
@@ -68,7 +68,7 @@
                         <li>Identify individual nutritional needs through an initial assessment to minimise risk to health.
                         </li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -110,7 +110,7 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Inclusion and Diversity Policy and Procedure</li>
                         <li>Duty of Care Policy and Procedure</li>
@@ -121,14 +121,14 @@
                         <li>Palliative Care Management Policy and Procedure</li>
                         <li>Food Safety Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Health and
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Health and
                         Nutrition Policy to enable staff to fulfil their roles effectively. In addition, staff must complete
-                        Banksia Care training sessions on Food Safety before commencing employment.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                        Lia College training sessions on Food Safety before commencing employment.</p>
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -157,11 +157,11 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with the team at staff meetings.</p>
+                        Management of Lia College will conduct reviews in consultation with the team at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Health and Nutrition Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Health and Nutrition Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will be responsible for the following:</span></h3>
                     <ul>
@@ -169,7 +169,7 @@
                         <li>Implement the health and nutrition policy.</li>
                         <li>Ensure all clinicians are consistent in implementing any nutrition plan and their instructions
                             align with the policy.</li>
-                        <li>Ensure all Banksia Care staff incorporate the goals of this and other related policies into any
+                        <li>Ensure all Lia College staff incorporate the goals of this and other related policies into any
                             food-related activity, event, incursion or excursion.</li>
                         <li>Train staff in identifying early signs of malnutrition or obesity in clients or residents being
                             admitted to care.</li>
@@ -181,7 +181,7 @@
                             their own room.</li>
                         <li>Review and report any nutritional care incidents.</li>
                         <li>Develop a process for introducing and assessing new food products, packaging, and utensils for
-                            ease of accessibility and suitability to the clients’/residents’ needs at Banksia Care.</li>
+                            ease of accessibility and suitability to the clients’/residents’ needs at Lia College.</li>
                     </ul>
                     <h3><span style="color: #fcb53b;">Staff will ensure the following:</span></h3>
                     <ul>
@@ -189,7 +189,7 @@
                             met.</li>
                         <li>Ensure they regularly conduct weight assessments and nutrition screening to develop individual
                             action plans.</li>
-                        <li>Complete Banksia Care training session on Food Safety before commencing employment.</li>
+                        <li>Complete Lia College training session on Food Safety before commencing employment.</li>
                         <li>Provide any aids and support required to assist residents with eating.</li>
                         <li>Encourage self help in eating as a way to maintain independence.</li>
                         <li>Cater to individuals’ cultural and religious needs in regard to meal options, routines, rituals

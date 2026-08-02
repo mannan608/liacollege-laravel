@@ -19,42 +19,42 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Workplace Health and Safety Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE4)</span></h1>
+                    <h1><span style="color: #132b4e;">Workplace Health and Safety Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE4)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The Workplace Health and Safety Policy at Banksia aims to ensure the safety, wellbeing and protection
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The Workplace Health and Safety Policy at Lia College aims to ensure the safety, wellbeing and protection
                         of our residents is the paramount consideration in all decisions staff make and is managed in
                         accordance with professional standards, community expectations and legal requirements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates the safety, dignity and well-being of everyone in our care is paramount to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates the safety, dignity and well-being of everyone in our care is paramount to
                         our core values and objectives. We also acknowledge that as far as reasonably practicable, we are
                         responsible and accountable for the safety of all residents as well as anyone who is attending,
-                        visiting or providing services to Banksia Care.</p>
+                        visiting or providing services to Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <ul>
                         <li>All decision-making about our Workplace<em> Health and Safety Procedure</em> is carried out in
                             accordance with the principles of our <em>Workplace Health and Safety Policy</em>.</li>
-                        <li>Banksia Care respects that duty under the Act and Legislation cannot be transferred to another
+                        <li>Lia College respects that duty under the Act and Legislation cannot be transferred to another
                             entity or person.</li>
                         <li>This policy is to be read in conjunction with the Risk Management Plan and Risk Management
                             Policy and Procedure as it provides further guidance on our approach to managing risk and
                             hazards at the school.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -78,7 +78,7 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Emergency Management Plan</li>
                         <li>Hazard Report Form</li>
@@ -88,13 +88,13 @@
                         <li>Staff Health and Wellbeing P&amp;P</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Workplace
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Workplace
                             Health and Safety Policy</em> to enable staff to fulfil their roles effectively. In addition,
-                        Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                        Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                   <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -117,18 +117,18 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Workplace Health and Safety Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Workplace Health and Safety Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
                         <li>Regularly consult with the team wherever practical on all WHS issues and regulatory or workplace
                             changes that may affect their workplace.</li>
                         <li>Be proactive in identifying any potential hazards or risks and implement control measures.</li>
-                        <li>Ensure Banksia Care complies with all State guidelines and regulatory requirements in relation
+                        <li>Ensure Lia College complies with all State guidelines and regulatory requirements in relation
                             to WHS.</li>
                         <li>Attend any professional training or leadership workshops related to WHS to ensure staff are
                             aware and informed of industry changes and trends.</li>
@@ -143,24 +143,24 @@
                     <h3><span style="color: #fcb53b;">In relation to managing accidents, all staff will refer to:</span>
                     </h3>
                     <ul>
-                        <li>Banksia Care PC2 – Incident, Injury, Illness and Trauma Policy and Procedure</li>
-                        <li>Banksia Care P.C. T1 – Incident, Injury, Illness and Trauma Record</li>
-                        <li>Banksia Care S.E. T2 – Serious Incident Report Form</li>
-                        <li>Banksia Care SE5 – Risk Management Policy and Procedure</li>
-                        <li>Banksia Care S.E. T1 – Hazard Report Form</li>
-                        <li>Banksia Care S.E. D1 – Emergency Management Plan</li>
+                        <li>Lia College PC2 – Incident, Injury, Illness and Trauma Policy and Procedure</li>
+                        <li>Lia College P.C. T1 – Incident, Injury, Illness and Trauma Record</li>
+                        <li>Lia College S.E. T2 – Serious Incident Report Form</li>
+                        <li>Lia College SE5 – Risk Management Policy and Procedure</li>
+                        <li>Lia College S.E. T1 – Hazard Report Form</li>
+                        <li>Lia College S.E. D1 – Emergency Management Plan</li>
                     </ul>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">In relation to medical emergencies, all staff will refer to:</span>
                     </h3>
                     <ul>
-                        <li>Banksia Care PC1 – Infection Control Policy and Procedure</li>
-                        <li>Banksia Care PC3 – Administration of Medication Policy and Procedure</li>
-                        <li>Banksia Care P.C. T3 – Medication Administration Log</li>
-                        <li>Banksia Care P.C. T2 – Medication Authority Form</li>
-                        <li>Banksia Care PC T4 – Referral Form</li>
-                        <li>Banksia Care P.C. T1 – Incident, Injury, Illness and Trauma Record</li>
-                        <li>Banksia Care PC2 – Incident, Injury, Illness and Trauma Policy and Procedure</li>
+                        <li>Lia College PC1 – Infection Control Policy and Procedure</li>
+                        <li>Lia College PC3 – Administration of Medication Policy and Procedure</li>
+                        <li>Lia College P.C. T3 – Medication Administration Log</li>
+                        <li>Lia College P.C. T2 – Medication Authority Form</li>
+                        <li>Lia College PC T4 – Referral Form</li>
+                        <li>Lia College P.C. T1 – Incident, Injury, Illness and Trauma Record</li>
+                        <li>Lia College PC2 – Incident, Injury, Illness and Trauma Policy and Procedure</li>
                     </ul>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">In relation to chemical spills/toxic emissions, all staff will follow
@@ -217,7 +217,7 @@
                         </li>
                         <li>If able, turn off electricity, gas and water.</li>
                         <li>If inside, evacuate everybody outside, away from buildings, trees and power lines by the safest
-                            route. Refer to Banksia Care’s “Evacuation Procedure”.</li>
+                            route. Refer to Lia College’s “Evacuation Procedure”.</li>
                         <li>Contact the Residential Manager or Care Coordinator by mobile phone.</li>
                         <li>Follow any advice or instruction given by local authorities or emergency crew.</li>
                         <li>Be on alert for aftershocks. Never re-enter buildings even if no visible damage until declared
@@ -232,8 +232,8 @@
                     <ul>
                         <li>Next of kin/family of residents will be contacted to assist with alternate care within the hour.
                             If unable to be cared for by family in the short term, or if medical assistance is required,
-                            Banksia Care will source alternate accommodation.</li>
-                        <li>If roads to the service are already flooded, Banksia Care will arrange accommodation for those
+                            Lia College will source alternate accommodation.</li>
+                        <li>If roads to the service are already flooded, Lia College will arrange accommodation for those
                             stranded.</li>
                         <li>Early release will be arranged for employees who are at risk of being cut off from accessing
                             homes or have properties threatened.</li>
@@ -249,11 +249,11 @@
                     </ul>
                     <p>If no warning is received, or insufficient time is given to evacuate:</p>
                     <ul>
-                        <li>Safety of all at Banksia Care is priority. No time should be spent on collecting items, stacking
+                        <li>Safety of all at Lia College is priority. No time should be spent on collecting items, stacking
                             items, turning off utilities, or calling family members. Emergency medical bag / first aid kit
                             should be taken only.</li>
                         <li>If time allows, the service will be evacuated immediately, and buses will take residents to the
-                            closest high safety zone previously identified. In the case of Bankia Care, this is Patricks
+                            closest high safety zone previously identified. In the case of Lia College, this is Patricks
                             Residential Care on Markspoint Avenue. For those requiring medical assistance, ambulances will
                             be called.</li>
                         <li>If evacuation is not possible by bus option, move residents immediately to the highest point in
@@ -262,7 +262,7 @@
                     </ul>
                     <p>After the flood:</p>
                     <ul>
-                        <li>If Banksia Care is closed for an extended period of time, arrange alternate care for residents.
+                        <li>If Lia College is closed for an extended period of time, arrange alternate care for residents.
                         </li>
                     </ul>
                     <ul></ul>
@@ -276,7 +276,7 @@
                         <li>Secure all doors.</li>
                         <li>Instruct anyone with a mobile phone to put it on silent and non-vibrate.</li>
                         <li>If outside, relocate residents to the closest inside the secure area.</li>
-                        <li>If on an external outing, do not return to Banksia Care. Relocate residents to St. Patricks
+                        <li>If on an external outing, do not return to Lia College. Relocate residents to St. Patricks
                             Residential Care.</li>
                         <li>Remain in the secure area until further instruction from authorities or on advice threat has
                             passed.</li>

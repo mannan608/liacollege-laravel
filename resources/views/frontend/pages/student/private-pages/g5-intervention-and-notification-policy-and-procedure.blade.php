@@ -19,20 +19,20 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Intervention and Notification Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(G5)</span></h1>
+                    <h1><span style="color: #132b4e;">Intervention and Notification Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(G5)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>At Banksia Care, we aim to create a safe, nurturing and empowering environment for clients “where
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>At Lia College, we aim to create a safe, nurturing and empowering environment for clients “where
                         individual needs are met to enable everyone to maintain optimum levels of physical, social and
                         emotional wellbeing”. We strive to protect the rights and dignity of individuals in our care at all
-                        times. This policy outlines the acceptable interventions to be used at Banksia Care to respond to
+                        times. This policy outlines the acceptable interventions to be used at Lia College to respond to
                         residents’ challenging, inappropriate or harmful behaviour.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management, contractors and volunteers of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management, contractors and volunteers of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>In order to balance the rights and safety of our clients, this policy aims to provide clear guidance
                         on the use of interventions to respond to residents’ challenging, inappropriate or harmful
                         behaviour.</p>
@@ -43,10 +43,10 @@
                         <li>to ensure restrictive practices are only used as an absolute last resort in response to risk of
                             harm and only after first attempting to use preferred strategies (Positive Behaviour Support)
                         </li>
-                        <li>to ensure that staff are educated about prohibited practices and are aware of Banksia Care’s
+                        <li>to ensure that staff are educated about prohibited practices and are aware of Lia College’s
                             zero-tolerance approach to the use of these practices.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>National Disability Insurance Scheme (Restrictive Practices and Behaviour Support) Rules 2018
                         </li>
@@ -60,11 +60,11 @@
                         <li>Age Discrimination Act 1992</li>
                         <li>Australian Human Rights Commission Act 1986</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Intervention and Notification Procedure is conducted in accordance with
                         the principles of our Intervention and Notification Policy. The procedure outlines how interventions
                         will be used and what reporting obligations must be followed.</p>
-                    <p>At Banksia Care, we uphold and protect the rights and dignity of clients in our care. We seek to
+                    <p>At Lia College, we uphold and protect the rights and dignity of clients in our care. We seek to
                         create an environment where each client enjoys optimum levels of physical, social and emotional
                         wellbeing.</p>
                     <p>To this end, we commit to adopting person-centred, right-based approaches in our response to
@@ -80,7 +80,7 @@
                         <li>be accountable to clients and their family members</li>
                         <li>comply with legislative requirements through clear reporting.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -141,19 +141,19 @@
                                 <td width="160">Mechanical restraint</td>
                                 <td width="255">Mechanical restraint involves using equipment or a device to restrict the
                                     client’s movement to modify behaviour</td>
-                                <td width="226">Banksia Care</td>
+                                <td width="226">Lia College</td>
                             </tr>
                             <tr>
                                 <td width="160">Seclusion</td>
                                 <td width="255">Seclusion involves confining a client in an area alone to modify their
                                     behaviour.</td>
-                                <td width="226">Banksia Care</td>
+                                <td width="226">Lia College</td>
                             </tr>
                         </tbody>
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Reporting and Recording Behaviour Policy and Procedures</li>
                         <li>Duty of Care Policy and Procedures</li>
@@ -163,15 +163,15 @@
                         <li>Mandatory Reporting Policy and Procedures</li>
                         <li>Whistle-blowers Protection Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Intervention and
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Intervention and
                         Notification Policy to enable staff to fulfil their roles effectively. In addition, staff must
-                        complete Banksia Care training sessions on Behaviour Support, Restrictive Practices and Prohibited
+                        complete Lia College training sessions on Behaviour Support, Restrictive Practices and Prohibited
                         Practices before commencing employment.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -200,12 +200,12 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed every three years or on the occurrence of any relevant legislative
-                        change. Management of Banksia Care will conduct reviews in consultation with the team at staff
+                        change. Management of Lia College will conduct reviews in consultation with the team at staff
                         meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;"> Notification and Intervention Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;"> Notification and Intervention Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will be responsible for the following:</span></h3>
                     <ul>
@@ -217,7 +217,7 @@
                             interventions have failed.</li>
                         <li>Request the presence of the nurse if a person presents a risk of harm to themselves or others
                             and if other positive behaviour interventions have failed.</li>
-                        <li>Ensure the Banksia Care Restrictive Practices Register is updated daily and submitted to NDIS
+                        <li>Ensure the Lia College Restrictive Practices Register is updated daily and submitted to NDIS
                             every 28 days.</li>
                     </ul>
                     <h3><span style="color: #fcb53b;">Staff will ensure the following:</span></h3>
@@ -226,11 +226,11 @@
                         <li>Ensure they understand and comply with each client’s Behaviour Support Plan.</li>
                         <li>Notify the Care Coordinator if they do not understand any aspect of the Behaviour Support Plan.
                         </li>
-                        <li>Complete Banksia Care training session on Behaviour Support, Restrictive Practices and
+                        <li>Complete Lia College training session on Behaviour Support, Restrictive Practices and
                             Prohibited Practices before commencing employment.</li>
                         <li>Get approval from their nominated manager or supervisor to use restrictive practices if they are
                             not authorised to do so in the Behaviour Support Plan.</li>
-                        <li>Log any use of restrictive practices on the Banksia Care Restrictive Practices Register.</li>
+                        <li>Log any use of restrictive practices on the Lia College Restrictive Practices Register.</li>
                         <li>Request assistance from the nurse or a supervisor if they believe a client presents a danger to
                             themselves or others.</li>
                         <li>Report any use of prohibited practices by any staff member, contractor or volunteer to the Care
@@ -239,7 +239,7 @@
                     <h3><span style="color: #fcb53b;">In Relation to Behaviour Support Assessment</span></h3>
                     <p>An NDIS accredited behaviour support practitioner must assess any client who displays challenging
                         behaviour. The assessment process should aim to involve the client, their family members, carers or
-                        guardians, and the Banksia Care Nurse, Heather Brinkley. The values informing the assessment process
+                        guardians, and the Lia College Nurse, Heather Brinkley. The values informing the assessment process
                         must be based on a person-centred approach.</p>
                     <ul>
                         <li>Behaviour support assessment involves a five-step cycle:
@@ -262,7 +262,7 @@
                     </ul>
                     <h3><span style="color: #fcb53b;">In Relation to Collection of Information</span></h3>
                     <ul>
-                        <li>As an overarching policy across all Banksia Care residential facilities, restrictive practices
+                        <li>As an overarching policy across all Lia College residential facilities, restrictive practices
                             are to be used only as an absolute last resort, in a manner approved by an accredited Behaviour
                             Support practitioner and only after other positive intervention strategies have failed.</li>
                         <li>In instances where a support worker uses a restrictive practice, a supervisor must approve this.
@@ -270,12 +270,12 @@
                         <li>Chemical restraint may only be administered as an absolute last resort when other approaches
                             have failed to calm the person down and where a serious risk of harm to self or others is
                             involved.</li>
-                        <li>All use of restrictive practices must be logged in the Banksia Care Restrictive Practices
+                        <li>All use of restrictive practices must be logged in the Lia College Restrictive Practices
                             Register, which is reported to the NDIS every 28 days by the relevant Care Coordinator.</li>
                     </ul>
                     <h3><span style="color: #fcb53b;">In Relation to Prohibited Practices</span></h3>
                     <ul>
-                        <li>Prohibited practices as defined by the NDIS must never be used at a Banksia Care facility or by
+                        <li>Prohibited practices as defined by the NDIS must never be used at a Lia College facility or by
                             any staff member, consultant or volunteer.</li>
                     </ul>
 

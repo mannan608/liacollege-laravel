@@ -19,28 +19,28 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Palliative Care Management Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(PC5)</span></h1>
+                    <h1><span style="color: #132b4e;">Palliative Care Management Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(PC5)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
                     <p>The purpose of the <em>Palliative Care Management Policy and Procedure</em> is to ensure the support
                         of terminally ill residents/clients to die with dignity by providing the ease and well being of the
-                        resident/client and their family and friends throughout the final phases of life. Banksia Care is
+                        resident/client and their family and friends throughout the final phases of life. Lia College is
                         committed to meeting the needs where possible, considering all individuals need physical, emotional,
                         social, spiritual, cultural and environmental.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy recognises and supports the rights of all residents with the goal of improving the
                         comfort of individuals coming to the end of life.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>The establishment of trust between patients and staff is an essential part of the ethos of our
                         service. Everyone needs to know the boundaries of confidentiality to feel safe and comfortable in
                         discussing and transitioning through the end-of-life phase.</p>
-                    <p>Banksia Care works tirelessly to provide adequate pain management, cultural and spiritual preferences
+                    <p>Lia College works tirelessly to provide adequate pain management, cultural and spiritual preferences
                         and a supportive environment to residents and their loved ones.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>The Care Act 2014</li>
                         <li>The Privacy Act 1988</li>
@@ -48,7 +48,7 @@
                         <li>End of life and palliative care framework 2019-2025</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision making about palliative care is carried out in accordance with the principles of our
                         <em>Palliative Care Management Policy:</em></p>
                     <ul>
@@ -66,7 +66,7 @@
                             symptom management.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -111,7 +111,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies</span></h2>
                     <ul>
                         <li>Inclusion and Diversity Policy and Procedures</li>
                         <li>Choice and Independnaec Policy and Procedures</li>
@@ -120,13 +120,13 @@
                         <li>Communication Policy and Procedures</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care ensures that induction and ongoing training of all staff include the Palliative Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College ensures that induction and ongoing training of all staff include the Palliative Care
                         Management Policy and Procedure to enable staff to fulfil their roles effectively. In addition, we
                         promote information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -149,15 +149,15 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Palliative Care Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Palliative Care Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Training for Staff</span></h3>
-                    <p>Banksia staff hold a minimum level of core competencies to provide care for individuals at the end of
+                    <p>Lia College staff hold a minimum level of core competencies to provide care for individuals at the end of
                         life.</p>
                     <p>In accordance with the Royal Commission into Aged Care and Quality and Safety, this includes, at a
                         minimum:</p>

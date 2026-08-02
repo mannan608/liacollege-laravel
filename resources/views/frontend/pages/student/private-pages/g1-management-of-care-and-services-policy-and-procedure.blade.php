@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Management of Care and Services Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(G1)</span></h1>
+                    <h1><span style="color: #132b4e;">Management of Care and Services Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(G1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Management of Care and Services Policy at Banksia Care is to acknowledge our
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Management of Care and Services Policy at Lia College is to acknowledge our
                         commitment to meeting our regulatory requirements in relation to staffing and affirm our belief that
                         our staff are our most valuable asset in assuring the provision of high-quality care in our service.
-                        Banksia Care is committed to supporting our staff by ensuring an informative orientation program,
+                        Lia College is committed to supporting our staff by ensuring an informative orientation program,
                         ongoing professional development, a supportive, inclusive and safe work environment, and providing
                         guidelines for conduct.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to management, auxiliary staff, volunteers and contractors of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to management, auxiliary staff, volunteers and contractors of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>To comply with the Aged Care Services National Regulations, Banksia Care has developed this policy
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>To comply with the Aged Care Services National Regulations, Lia College has developed this policy
                         document to outline staffing and professional development procedures.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>The Aged Care Act 1997</li>
                         <li>Occupational Health and Safety Act 2004</li>
@@ -51,7 +51,7 @@
                         <li>National Code of Conduct for Health Care Workers</li>
                         <li>Guide to the Aged Care National Quality Standard</li>
                     </ul>
-                    <h2><span style="color: #da591f;">National Quality Standards (NQS)</span></h2>
+                    <h2><span style="color: #e6bb73;">National Quality Standards (NQS)</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -104,7 +104,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Management of Care and Services Procedure is carried out in accordance
                         with the principles of our Management of Care and Services Policy.</p>
                     <ul>
@@ -150,12 +150,12 @@
                             break-out areas or outdoor seating areas.</li>
                         <li>Provide access to information and resources that increase worker knowledge and awareness around
                             key health areas.</li>
-                        <li>Banksia Care will ensure they are meeting its Workplace Health and Safety (WHS) requirements to
+                        <li>Lia College will ensure they are meeting its Workplace Health and Safety (WHS) requirements to
                             avoid injury or illness.</li>
                         <li>Information on various support services will always be readily available such as the Black Dog
                             Institute, Beyond Blue and Lifeline.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                  <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -186,7 +186,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies</span></h2>
                     <ul>
                         <li>Communications Policy</li>
                         <li>Duty of Care Policy</li>
@@ -195,13 +195,13 @@
                         <li>Workplace Health and Safety Policy</li>
                         <li>Staff Health and Wellbeing Policy</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Management of
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Management of
                             Care and Services Policy</em> to enable staff to fulfil their roles effectively. In addition,
-                        Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                        Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -230,11 +230,11 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Staff Management and Professional Development Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Staff Management and Professional Development Procedure</span></h2>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
                         <li>Appoint a nominated supervisor for periods when the service or the approved provider is absent.

@@ -19,26 +19,26 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Customer Complaint Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(FC1)</span></h1>
+                    <h1><span style="color: #132b4e;">Customer Complaint Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(FC1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Customer Complaint Policy</em> is to ensure that any persons utilising Banksia
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Customer Complaint Policy</em> is to ensure that any persons utilising Lia College
                         Care services have the right to lodge a complaint and have their concerns addressed to ensure
                         access, equality, fairness, accountability and transparency.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to patients, families, staff, management and visitors to the service.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Establishing trust between patients and staff is an essential part of the ethos of our service.
                         Everyone needs to know the boundaries of confidentiality to feel safe and comfortable discussing
                         personal issues and concerns.</p>
                     <p>Our attitude to customer complaints is that it enables our organisation to grow and evolve its
-                        service. Banksia Care is committed to listening to all complaints, discussing solutions, acting in a
+                        service. Lia College is committed to listening to all complaints, discussing solutions, acting in a
                         timely manner and following up.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li><a href="https://www.legislation.gov.au/Latest/C2018C00437">Competition and Consumer Act
                                 2010</a></li>
@@ -46,17 +46,17 @@
                         <li>Public Records Act 2002</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <ul>
                         <li>All decision-making about complaint handling is carried out in accordance with the principles of
                             our <em>Customer Complaint Policy.</em></li>
-                        <li>Banksia Care is committed to ensuring that complaints are addressed in a responsive manner.</li>
+                        <li>Lia College is committed to ensuring that complaints are addressed in a responsive manner.</li>
                         <li>All stakeholders have the right to lodge a complaint.</li>
                         <li>Complaints will be treated with respect and confidentiality.</li>
                         <li>Complaints are managed in an objective and impartial manner.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -84,18 +84,18 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies</span></h2>
                     <ul>
                         <li>Continuous Improvement Policy</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care ensures that induction and ongoing training of all staff include the <em>Customer
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College ensures that induction and ongoing training of all staff include the <em>Customer
                             Complaint Policy</em> to enable staff to fulfil their roles effectively. In addition, we promote
                         information sharing at staff meetings, sharing information received from industry trends or changes
                         in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -118,19 +118,19 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Customer Complaint Procedure</span></h2>
-                    <p>Any individual wishing to make a complaint may do so in writing or in person to a Banksia Care staff
+                    <h2><span style="color: #e6bb73;">Customer Complaint Procedure</span></h2>
+                    <p>Any individual wishing to make a complaint may do so in writing or in person to a Lia College staff
                         member.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Complaint Management</span></h3>
                     <p>The internal reviewer responsible for managing a complaint will ensure the following:</p>
                     <ul>
-                        <li>Register the complaint using the Banksia Care complaint register.</li>
+                        <li>Register the complaint using the Lia College complaint register.</li>
                         <li>Inform the complainant that their concern has been received and provide them with details of the
                             process followed when investigating their complaint.</li>
                         <li>Ensure complaints are examined within ten business days of the complaint being filed.</li>

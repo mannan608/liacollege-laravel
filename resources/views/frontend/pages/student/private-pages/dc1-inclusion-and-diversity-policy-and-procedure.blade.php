@@ -19,28 +19,28 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Inclusion and Diversity Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(DC1)</span></h1>
+                    <h1><span style="color: #132b4e;">Inclusion and Diversity Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(DC1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Inclusion and Diversity Policy at Banksia is to ensure the safety, wellbeing and
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Inclusion and Diversity Policy at Lia College is to ensure the safety, wellbeing and
                         protection of our residents is the paramount consideration in all decisions staff make and is
                         managed in accordance with professional standards, community expectations and legal requirements.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care recognises that everyone has the right to be treated with fairness and equity. It is of
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College recognises that everyone has the right to be treated with fairness and equity. It is of
                         utmost importance that our stakeholders feel a sense of belonging and are respected for their
                         individual needs. We aim to support the wellbeing of others and embrace individual and cultural
-                        diversity. Banksia Care actively supports the inclusion of all residents and provides an environment
+                        diversity. Lia College actively supports the inclusion of all residents and provides an environment
                         which is free from bias and prejudice in which everyone benefits from the principles of fairness and
                         respect.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Public Service Act 1999</li>
                         <li>Racial Discrimination Act 1975</li>
@@ -51,10 +51,10 @@
                         <li>Fair Work Act 2009</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision making about our <em>Inclusion and Diversity Procedure</em> is carried out in accordance
                         with the principles of our <em>Inclusion and Diversity Policy</em>.</p>
-                    <p>Banksia Care is diverse. Every resident brings their own unique set of strengths and challenges.</p>
+                    <p>Lia College is diverse. Every resident brings their own unique set of strengths and challenges.</p>
                     <p>Our <em>Inclusion and Diversity Policy</em> ensures that all stakeholders have the strategies needed
                         to understand and accept cultural diversity and embracing each resident’s uniqueness within our
                         service.</p>
@@ -69,7 +69,7 @@
                         <li>Supporting and inclusion of additional needs.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -111,7 +111,7 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Anti-Discrimination Act 1991</li>
                         <li>Sex Discrimination Act 1984</li>
@@ -120,13 +120,13 @@
                         </li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Inclusion and
-                            Diversity Policy</em> to enable staff to fulfil their roles effectively. In addition, Banksia
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Inclusion and
+                            Diversity Policy</em> to enable staff to fulfil their roles effectively. In addition, Lia College
                         Care promotes information sharing at staff meetings, sharing of information received from industry
                         trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -149,12 +149,12 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with the team at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with the team at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Inclusion and Diversity Procedure</span></h2>
-                    <p>Banksia Care will achieve an inclusive environment for all residents through the following actions:
+                    <h2><span style="color: #e6bb73;">Inclusion and Diversity Procedure</span></h2>
+                    <p>Lia College will achieve an inclusive environment for all residents through the following actions:
                     </p>
                     <ul>
                         <li>Implementation of Gender Equity (residents and staff):
@@ -182,7 +182,7 @@
                                     when making inappropriate cultural statements.</li>
                                 <li>Staff will help residents to become aware of our shared physical characteristics of what
                                     makes us all human.</li>
-                                <li>Banksia Care will value and recognise cultural diversity through Multicultural
+                                <li>Lia College will value and recognise cultural diversity through Multicultural
                                     Celebrations.</li>
                             </ul>
                         </li>
@@ -193,17 +193,17 @@
                                     regularly reflecting together as a team to embed Indigenous and Torres Strait Islander
                                     perspectives and culture.</li>
                                 <li>To develop an acknowledgment of the country, which will be displayed and demonstrated at
-                                    special events at Banksia.</li>
+                                    special events at Lia College.</li>
                                 <li>Staff will show respect for the Indigenous and Torres Strait Islander culture, aiming to
                                     instil sensitivity/appreciation of the culture and a knowing and valuing of individuals.
                                 </li>
-                                <li>Banksia will ensure the organisation is made accessible to Aboriginal and Torres Strait
+                                <li>Lia College will ensure the organisation is made accessible to Aboriginal and Torres Strait
                                     Islander students to access academic, social and cultural support through targeted
                                     programs.</li>
                                 <li>Staff will show sensitivity and respect to the numerous Indigenous and Torres Strait
                                     Islander languages by incorporating, where possible verbal and visual language into the
                                     environment.</li>
-                                <li>Banksia Care will commit to a NAIDOC celebration each year.</li>
+                                <li>Lia College will commit to a NAIDOC celebration each year.</li>
                                 <li>Staff will access and encourage involvement of the Indigenous and Torres Strait Islander
                                     families, staff and community members who have a vast knowledge of their culture.</li>
                             </ul>
@@ -214,12 +214,12 @@
                                     and support individual needs.</li>
                                 <li>Staff will undergo professional development to increase knowledge of additional need
                                     varieties and develop skills to support them.</li>
-                                <li>Banksia Care will wherever possible, provide the required resources to support residents
+                                <li>Lia College will wherever possible, provide the required resources to support residents
                                     – ex-visual aids.</li>
                                 <li>Provide Individualised Planning processes.</li>
                             </ul>
                         </li>
-                        <li>Banksia Care offers the following support services to all residents:
+                        <li>Lia College offers the following support services to all residents:
                             <ul>
                                 <li>personal support</li>
                                 <li>social support</li>
@@ -230,7 +230,7 @@
                                 <li>home modifications and maintenance.</li>
                             </ul>
                         </li>
-                        <li>Banksia care links with many support services, including:
+                        <li>Lia College links with many support services, including:
                             <ul>
                                 <li>Headspace</li>
                                 <li>Beyond Blue</li>

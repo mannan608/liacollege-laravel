@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Staff Health and Wellbeing Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(HR3)</span></h1>
+                    <h1><span style="color: #132b4e;">Staff Health and Wellbeing Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(HR3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>Banksia Care strives to create a place that is warm and genuine. We see our staff as an extension of
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>Lia College strives to create a place that is warm and genuine. We see our staff as an extension of
                         our family and take great responsibility for ensuring their health and wellbeing. We appreciate our
                         staff’s passion for their jobs and advocate a healthy work-life balance. We understand the
                         challenges that life and work can place on each individual and how every member of the team can
                         impact and contribute to the health of others and the environment. Therefore, the purpose of the
-                        Staff Health and Wellbeing Policy at Banksia Care is to make it a focus of our organisation to
+                        Staff Health and Wellbeing Policy at Lia College is to make it a focus of our organisation to
                         support our staff’s physical and mental health, to promote and support healthy work and life balance
                         for all staff, and to encourage positive physical and mental health that will be reflected within
                         the culture of our organisation.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Apart from providing a source of income, work plays an important part in all our lives. Work provides
                         a sense of purpose. A social connection enables personal achievement, promotes self-esteem and
                         builds friendships. Often, we spend more hours in our week at work than at home, so if the workplace
@@ -47,12 +47,12 @@
                     <p>Where the workplace has an open-door policy, flexibility is offered if possible. A work-life balance
                         is encouraged, staff are made to feel included, supported and valued, and the culture is inclusive
                         and welcoming, then work can also have a significant positive effect on a person’s mental and
-                        physical health. Banksia Care believes we have a duty of care to all our staff to strive for a
-                        workplace that encompasses all the best aspects of a positive work environment. Banksia Care also
+                        physical health. Lia College believes we have a duty of care to all our staff to strive for a
+                        workplace that encompasses all the best aspects of a positive work environment. Lia College also
                         acknowledges that during the pandemic, staff may feel more stressed, worried or anxious and may need
                         additional support with their mental health and an increase in flexible work arrangements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Public Service Act 1999</li>
                         <li>Racial Discrimination Act 1975</li>
@@ -63,7 +63,7 @@
                         <li>Fair Work Act 2009</li>
                         <li>The Work Health and Safety Act 2011</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Staff Health and Wellbeing Procedure is carried out in accordance with
                         the principles of our Staff Health and Wellbeing Policy.</p>
                     <ul>
@@ -105,12 +105,12 @@
                             attendance at work or their ability to perform work duties.</li>
                         <li>The pandemic can affect the mental health and wellbeing of staff, so strict adherence to COVID
                             safe practices is critical.</li>
-                        <li>Banksia Care will ensure they are meeting its Workplace Health and Safety (WHS) requirements to
+                        <li>Lia College will ensure they are meeting its Workplace Health and Safety (WHS) requirements to
                             avoid injury or illness.</li>
                         <li>Information on various support services will always be readily available such as the Black Dog
                             Institute, Beyond Blue and Lifeline.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -140,7 +140,7 @@
                     </table>
                 </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Infection Control Policy and Procedures</li>
                         <li>Incident, Injury, Trauma and Illness Policy and Procedures</li>
@@ -149,13 +149,13 @@
                         <li>Workplace Health and Safety Policy and Procedures</li>
                         <li>Code of Conduct Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Staff Health and
-                        Wellbeing Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Staff Health and
+                        Wellbeing Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -184,13 +184,13 @@
                     </table>
                 </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with staff at staff meetings.</p>
+                        Management of Lia College will conduct reviews in consultation with staff at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Staff Health and Wellbeing Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Staff Health and Wellbeing Procedure</span></h2>
                     <p>The emphasis on social, emotional and physical wellbeing is crucial and emphasises that good social,
-                        emotional and physical health is an important component in a holistic learning framework. Banksia
+                        emotional and physical health is an important component in a holistic learning framework. Lia College
                         Care believes you cannot have a workforce to whom we entrust the care of patients who are not a
                         model of wellbeing. We, therefore, value, promote and strive to maintain a workplace that supports
                         and protects the positive physical and mental health of all staff.</p>

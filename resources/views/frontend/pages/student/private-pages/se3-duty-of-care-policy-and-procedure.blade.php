@@ -19,22 +19,22 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Duty of Care Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE3)</span></h1>
+                    <h1><span style="color: #132b4e;">Duty of Care Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Duty of Care Policy</em> at Banksia Care is to ensure our organisation
-                        understands the non-delegable duty of care obligations that all staff at Banksia Care owe to our
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Duty of Care Policy</em> at Lia College is to ensure our organisation
+                        understands the non-delegable duty of care obligations that all staff at Lia College owe to our
                         residents and patients and any person who may visit and use the organisation’s premises. In
-                        addition, the policy serves to ensure all staff at Banksia Care behave in a manner that does not
+                        addition, the policy serves to ensure all staff at Lia College behave in a manner that does not
                         compromise these legal obligations.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to clients, families, auxiliary staff, management, contractors, visiting Medical
                         and Allied Health professionals and visitors.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>At Banksia Care, our clients’ safety, dignity and wellbeing are paramount to our core values and
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>At Lia College, our clients’ safety, dignity and wellbeing are paramount to our core values and
                         objectives.</p>
                     <p>Our mission is “to provide exceptional care, accommodation and support services so that our valued
                         residents enjoy the quality of life they deserve, where individual needs are met to enable everyone
@@ -43,7 +43,7 @@
                         safety of all clients while they are in our care, as well as anyone who is attending, visiting or
                         providing services to one of our residential facilities.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
@@ -51,7 +51,7 @@
                         <li>Aged Care Quality and Safety Commission Rules 2018 (Rules)</li>
                         <li>Aged Care Act 1997</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our <em>Duty of Care Procedure</em> is carried out in accordance with the
                         principles of our <em>Duty of Care Policy</em>.</p>
                     <ul>
@@ -66,7 +66,7 @@
                             reasonable steps to reduce the risk of reasonably foreseeable harm when external providers have
                             been engaged to plan for or conduct an activity involving our residents.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -96,7 +96,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies</span></h2>
                     <ul>
                         <li>Inclusion and Diversity Policy and Procedures</li>
                         <li>Choice and Independence Policy and Procedures</li>
@@ -108,13 +108,13 @@
                         <li>Food Safety Policy and Procedures</li>
                         <li>Health and Nutrition Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Duty of Care
-                            Policy</em> to enable staff to fulfil their roles effectively. In addition, Banksia promotes
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Duty of Care
+                            Policy</em> to enable staff to fulfil their roles effectively. In addition, Lia College promotes
                         information sharing at staff meetings, sharing of information received from industry trends or
                         changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -143,11 +143,11 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Workplace Health and Safety Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Workplace Health and Safety Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
@@ -161,7 +161,7 @@
                                 <li>managing employee recruitment, conduct and performance.</li>
                             </ul>
                         </li>
-                        <li>Inform all staff of their Duty of Care as part of Banksia Care’s Induction Program and ongoing
+                        <li>Inform all staff of their Duty of Care as part of Lia College’s Induction Program and ongoing
                             Professional Development.</li>
                         <li>Ensure ‘Duty of Care’ will be an agenda item at staff meetings.</li>
                         <li>Ensure staff completes a risk assessment, including duty of care when completing planning for

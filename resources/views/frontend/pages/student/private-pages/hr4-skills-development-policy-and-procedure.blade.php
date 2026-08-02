@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Skills Development Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(HR4)</span></h1>
+                    <h1><span style="color: #132b4e;">Skills Development Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(HR4)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>This policy describes Banksia’s skills development framework.</p>
-                    <p>The purpose of the Skills Development Policy at Banksia Care is to ensure the following:</p>
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>This policy describes Lia College’s skills development framework.</p>
+                    <p>The purpose of the Skills Development Policy at Lia College is to ensure the following:</p>
                     <ul>
-                        <li>Describe Banksia’s model for skills development of Banksia Care staff.</li>
+                        <li>Describe Lia College’s model for skills development of Lia College staff.</li>
                         <li>Describe the procedure for how staff can collaborate to develop workplace skills relevant to
-                            their role at Banksia Care.</li>
+                            their role at Lia College.</li>
                         <li>Maintain our priority to be the health and wellbeing of those in our care.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to the staff of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to the staff of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care acknowledges that as an organisation, if we expect to see growth, we must invest in the
-                        skills development of our team. We want everyone at Banksia Care to believe that their role with
-                        Banksia Care is a career, not just a job. By providing an opportunity to acquire further knowledge,
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College acknowledges that as an organisation, if we expect to see growth, we must invest in the
+                        skills development of our team. We want everyone at Lia College to believe that their role with
+                        Lia College is a career, not just a job. By providing an opportunity to acquire further knowledge,
                         understand changes in industry trends and practices, and learn new skills, they will be more
                         invested in a long and meaningful career.</p>
                     <p>In the community services sector, growth is continual and changes in both legislation and practices
@@ -45,8 +45,8 @@
                         we must provide regular, valuable and relevant opportunities for skills development to meet industry
                         changes and client expectations.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
-                    <p>Banksia Care delivery must at all times meet various government applicable regulations. Staff skills
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
+                    <p>Lia College delivery must at all times meet various government applicable regulations. Staff skills
                         are required to meet the requirements of:</p>
                     <ul>
                         <li>The Occupational Health and Safety Act 2011 and applicable State/Territory WHS legislation</li>
@@ -59,12 +59,12 @@
                         <li>Age Discrimination Act 2004</li>
                         <li>Racial Discrimination Act 1975</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Skills Development Procedure is carried out in accordance with the
                         principles of our Skills Development Policy.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">In Relation to Aged Care</span></h3>
-                    <p>Working in the aged care sector, Banksia Care always needs to meet Aged Care Quality Standards. These
+                    <p>Working in the aged care sector, Lia College always needs to meet Aged Care Quality Standards. These
                         standards describe the acceptable standards of care that Aged Care facilities must meet.</p>
                     <p>The standards are administered by the Australian government and audited to ensure that the elderly in
                         their own home or in an aged care home are:</p>
@@ -82,15 +82,15 @@
                     </ol>
                     <p>This policy responds to Aged Care Quality Standards to ensure the following:</p>
                     <ul>
-                        <li>Staff are skilled and capable in the services Banksia Care delivers.</li>
+                        <li>Staff are skilled and capable in the services Lia College delivers.</li>
                         <li>Staff relate to Aged Care consumers’ dignity and show respect.</li>
-                        <li>Banksia Care at all times delivers reliable, quality services.</li>
-                        <li>Banksia Care always takes a collaborative approach to the delivery of services.</li>
+                        <li>Lia College at all times delivers reliable, quality services.</li>
+                        <li>Lia College always takes a collaborative approach to the delivery of services.</li>
                     </ul>
                     <p>We listen to the people we care for to gather feedback and address complaints.</p>
                     <h3><span style="color: #fcb53b;">In Relation to Disability Care</span></h3>
                     <p>In addition to meeting the Aged Care Standards for our residential and supported independent living
-                        disability clients who are elderly, Banksia Care also needs to acknowledge and abide by requirements
+                        disability clients who are elderly, Lia College also needs to acknowledge and abide by requirements
                         under the Disability Services Act 2014 for any of our residents who are disabled, despite age.</p>
                     <p>This policy responds to the Disability Services Act 2014 to ensure the following:</p>
                     <ul>
@@ -101,13 +101,13 @@
                         <li>The service or program has systems to strengthen and maintain organisational capabilities to
                             directly support the achievement of individual goals and outcomes.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">Further, Across all Banksia Care divisions</span></h3>
+                    <h3><span style="color: #fcb53b;">Further, Across all Lia College divisions</span></h3>
                     <ul>
                         <li>Feedback is acted on, and appropriate and timely action is taken.</li>
-                        <li>Residents receive quality care from skilled, capable and knowledgeable Banksia Care staff.</li>
+                        <li>Residents receive quality care from skilled, capable and knowledgeable Lia College staff.</li>
                         <li>We have confidence in the services and care we provide.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -128,7 +128,7 @@
                 </div>
                     <h2></h2>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Administration of Medication Policy and Procedure</li>
                         <li>Safety and Risk Management Policy and Procedure</li>
@@ -139,14 +139,14 @@
                         <li>Emergency Management Policy and Procedure</li>
                         <li>Health and Nutrition Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Health and
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Health and
                         Nutrition Policy to enable staff to fulfil their roles effectively. In addition, staff must complete
-                        Banksia Care training sessions on Food Safety before commencing employment.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                        Lia College training sessions on Food Safety before commencing employment.</p>
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -176,15 +176,15 @@
                 </div>
                     <h2></h2>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings</p>
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Skills Development Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Skills Development Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will be responsible for the following:</span></h3>
                     <ul>
-                        <li>Ensure Banksia Care pays for staff training costs and time in training is considered hours
+                        <li>Ensure Lia College pays for staff training costs and time in training is considered hours
                             worked.</li>
                         <li>Provide all staff with relevant and up-to-date training to ensure they can perform their duties
                             to meet all relevant legislative requirements.</li>
@@ -192,41 +192,41 @@
                             <ul>
                                 <li>be VET-accredited training</li>
                                 <li>contribute to higher qualifications (University)</li>
-                                <li>be unaccredited training providing upskilling to Banksia Care staff as needed.</li>
+                                <li>be unaccredited training providing upskilling to Lia College staff as needed.</li>
                             </ul>
                         </li>
                         <li>Ensure all staff receive Work Health and Safety (WHS) training relevant to their role when
                             individuals:
                             <ul>
-                                <li>first become Banksia Care staff</li>
+                                <li>first become Lia College staff</li>
                                 <li>have their role changed such that additional WHS training is needed</li>
-                                <li>are directed by Banksia Care’s training department to ensure work safety thinking is
+                                <li>are directed by Lia College’s training department to ensure work safety thinking is
                                     kept current.</li>
                             </ul>
                         </li>
                         <li>Provide staff training that has specific curriculums depending on what role staff play.</li>
-                        <li>Instruct training to be scheduled and arranged by Banksia Care’s staff training coordinator.
+                        <li>Instruct training to be scheduled and arranged by Lia College’s staff training coordinator.
                         </li>
                         <li>Ensure new staff do not commence work until they have completed:
                             <ul>
-                                <li>Banksia Care induction training;</li>
+                                <li>Lia College induction training;</li>
                                 <li>Work Health and Safety training relevant to their role; and</li>
                                 <li>relevant skills training to ensure the care they deliver meets relevant legislative
                                     requirements.</li>
                             </ul>
                         </li>
-                        <li>Enable staff who join Banksia Care with certified Higher or VET Qualifications can undergo
+                        <li>Enable staff who join Lia College with certified Higher or VET Qualifications can undergo
                             recognition for prior learning.</li>
-                        <li>Staff training is provided to all Banksia Care staff with equal opportunity regardless of age,
+                        <li>Staff training is provided to all Lia College staff with equal opportunity regardless of age,
                             physical or mental challenges, sex or race in accordance with their training requirements.</li>
                     </ul>
                     <h3><span style="color: #fcb53b;">Additional Training</span></h3>
                     <p>Aside from training provided to staff members as required by the role, additional training may be
                         provided where an employee is not providing service to the standards expected of their role.</p>
                     <p>Remedial training is provided to grow competency and improve service delivery. Additional training
-                        provided will be in line with the role they fulfil at Banksia Care:</p>
+                        provided will be in line with the role they fulfil at Lia College:</p>
                     <ul>
-                        <li>where an employee requests additional training to enhance their service delivery at Banksia
+                        <li>where an employee requests additional training to enhance their service delivery at Lia College
                             Care.</li>
                         <li>The procedure for consideration for additional training is described later in this document.
                         </li>
@@ -236,18 +236,18 @@
                         Training and management will work with staff to provide tailored support. Insight from disability
                         advocates is welcomed in designing beneficial training for these staff members.</p>
                     <h3><span style="color: #fcb53b;">Requesting Additional Training</span></h3>
-                    <p>Banksia Care staff can request additional training to enhance the services they deliver in their
+                    <p>Lia College staff can request additional training to enhance the services they deliver in their
                         current role. Requests are to be forwarded to their manager for consideration. A request may or may
                         not be approved.</p>
                     <ul>
-                        <li>Training may be approved where there is a direct benefit to the consumers of Banksia Care.</li>
+                        <li>Training may be approved where there is a direct benefit to the consumers of Lia College.</li>
                         <li>Training should be aligned with the current role the staff member performs.</li>
-                        <li>Banksia Care will pay for training where approved, and the time to complete the training will be
+                        <li>Lia College will pay for training where approved, and the time to complete the training will be
                             considered as working hours.</li>
                         <li>Where a request is not approved, staff can request the reasons for the decision.</li>
                         <li>Additional training requests that reciprocate training already scheduled at a later date will
                             not be approved.</li>
-                        <li>All permanent staff can request additional training regardless of when they joined Banksia Care.
+                        <li>All permanent staff can request additional training regardless of when they joined Lia College.
                         </li>
                     </ul>
 
