@@ -19,28 +19,28 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Administration of Medication Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(PC3)</span></h1>
+                    <h1><span style="color: #132b4e;">Administration of Medication Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(PC3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Administration of Medication Policy at Banksia Care is to acknowledge that
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Administration of Medication Policy at Lia College is to acknowledge that
                         medication can improve symptoms, actively treat illness or disease and therefore improve the quality
                         of life and comfort of our residents. The policy further ensures the safe administration and storage
                         of prescribed medications. We acknowledge that administering medication is a high-risk task and take
                         all necessary precautions to ensure this process takes place safely and respectfully.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management, and medical professionals of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management, and medical professionals of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
                         our core values and objectives. We also acknowledge that many people in aged and disability care
                         services need to take medicine, with many taking several types for various reasons. As far as
                         reasonably practicable, we are responsible and accountable for the safety of all residents,
                         including administering any medication prescribed or bought over the counter and supervision of
                         administering medication.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
@@ -49,13 +49,13 @@
                         <li>Aged Care Act 1997</li>
                         <li>Drugs, Poisons and Controlled Substances Act 1981</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <ul>
                         <li>All decision-making about our Administration of Medication Procedure is carried out according to
                             our Administration of Medication Policy principles.</li>
-                        <li>Banksia Care respects that people entering aged or disability support services can be frail,
+                        <li>Lia College respects that people entering aged or disability support services can be frail,
                             older, dependent, forgetful, and reliant on others to support health care needs.</li>
-                        <li>Residents of Banksia Care will have more complex needs and often require specialist care.
+                        <li>Residents of Lia College will have more complex needs and often require specialist care.
                             Chronic conditions are prevalent with age. This will result in complex and involved pain or
                             health management plans.</li>
                         <li>Due to the above, residents’ use of several medications, often high risk medications, is common,
@@ -63,14 +63,14 @@
                         <li>Staff movement and the movement of residents across care settings can pose challenges to the
                             continuity of medication management.</li>
                         <li>The administration and supervision of medication must comply with regulatory requirements.</li>
-                        <li>Medication abuse has unfortunately occurred in aged care settings. Banksia Care will not
+                        <li>Medication abuse has unfortunately occurred in aged care settings. Lia College will not
                             tolerate any abuse of responsibilities or ignorance related to the significant responsibility of
                             administering medication to residents.</li>
                         <li>Medication refers to any prescribed or over-the-counter substance that is used to prevent or
                             treat illness. This can include homoeopathic substances, vitamins, oral medication, injections,
                             eye and ear drops, creams and oils.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -119,7 +119,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Incident, Injury, Trauma and Illness Policy and Procedure</li>
                         <li>Palliative Care Management Policy and Procedure</li>
@@ -131,13 +131,13 @@
                         <li>Medication Administration Log</li>
                         <li>Whistleblowers Protection Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Administration of
-                        Medication Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Administration of
+                        Medication Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -166,18 +166,18 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Administration of Medication Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Administration of Medication Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
                         <li>Regularly consult with the team wherever practical on all medication administration issues and
                             regulatory or workplace changes that may affect their workplace.</li>
-                        <li>Ensure Banksia Care complies with all State guidelines and regulatory requirements in relation
+                        <li>Ensure Lia College complies with all State guidelines and regulatory requirements in relation
                             to the administration of medication.</li>
                         <li>Attend any professional training or leadership workshops related to medication management to
                             ensure staff are aware and informed of industry changes and trends.</li>

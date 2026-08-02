@@ -19,21 +19,21 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Individualised Plans Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(AP4)</span></h1>
+                    <h1><span style="color: #132b4e;">Individualised Plans Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(AP4)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Individualised Plans Policy is to ensure that Banksia Care works in partnership
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Individualised Plans Policy is to ensure that Lia College works in partnership
                         with consumers to plan their care and services appropriately. The planned care and services should
                         meet each consumer’s needs, goals and preferences and optimise their health and wellbeing. This
                         policy aligns with the Australian Government Aged Care Quality and Safety Commission standards.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to Banksia Care consumers, representatives of consumers, external service
-                        providers, Banksia Care board members, staff, management and medical professionals.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to Lia College consumers, representatives of consumers, external service
+                        providers, Lia College board members, staff, management and medical professionals.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care embeds a person-centred care approach to service delivery. This requires prioritising
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College embeds a person-centred care approach to service delivery. This requires prioritising
                         the consumer’s aspirations and strengths within the context of their capacity. It enables the
                         planning of care and services to align with individualised needs whilst providing opportunities for
                         consumer self-agency, participation and growth. Consistent review of care and services also ensures
@@ -43,7 +43,7 @@
                         planning process and decision-making will assist consumers in making informed decisions about their
                         options, including how much they want to be involved and consideration of their capacity.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Aged Care Act 1997 (Cth) User Rights Amendment (Charter of Aged Care Rights) Principles 2019
                         </li>
@@ -58,15 +58,15 @@
                         <li>NDIS Practice Standards</li>
                         <li>UN Convention on the Rights of Persons with Disabilities</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Individualised Plans Procedure is conducted in accordance with the
                         principles of our Individualised Plans Policy.</p>
                     <h3><span style="color: #fcb53b;">In Relation to Consumer Needs</span></h3>
                     <ul>
-                        <li>Banksia Care has a culture of inclusion and respect for consumers.</li>
-                        <li>Banksia Care supports consumers to exercise choice and independence and actively partners with
+                        <li>Lia College has a culture of inclusion and respect for consumers.</li>
+                        <li>Lia College supports consumers to exercise choice and independence and actively partners with
                             the consumer to inform ongoing care assessment and planning.</li>
-                        <li>Banksia Care will carry out an ongoing assessment and planning with the consumer, their
+                        <li>Lia College will carry out an ongoing assessment and planning with the consumer, their
                             representatives and others who the consumer wants to be involved in their care and services
                             assessment and planning.</li>
                         <li>Consistent and ongoing sharing of information, asking for feedback from the consumer, and
@@ -79,16 +79,16 @@
                             decisions about their care. Where a consumer cannot make decisions, they may have a court or
                             tribunal-appointed guardian to make decisions on their behalf.</li>
                         <li>Assessment and planning are also expected to include other organisations, individuals or service
-                            providers involved in caring for consumers. Banksia Care will ensure an effective communication
+                            providers involved in caring for consumers. Lia College will ensure an effective communication
                             framework is in place with other service providers and relevant other parties such as unpaid
                             carers, family and friends. Collaborative assessment and planning (if the consumer wishes) can
-                            help Banksia Care improve its knowledge and sensitivity related to the consumer’s needs, goals
+                            help Lia College improve its knowledge and sensitivity related to the consumer’s needs, goals
                             and preferences and improve continuity of care and services for the consumer.</li>
-                        <li>Banksia Care respects consumer privacy and will comply with obligations relating to the privacy
+                        <li>Lia College respects consumer privacy and will comply with obligations relating to the privacy
                             of information when coordinating care and information exchange with other organisations,
                             individuals or service providers.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <thead>
@@ -151,7 +151,7 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Reporting and Recording Behaviour Policy and Procedures</li>
                         <li>Duty of Care Policy and Procedures</li>
@@ -162,13 +162,13 @@
                         <li>Communications Policy and Procedures</li>
                         <li>Privacy Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Individualised
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Individualised
                         Plans Policy to enable staff to fulfil their roles effectively.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -197,19 +197,19 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed every three years or on the occurrence of any relevant legislative
-                        change. Management of Banksia Care will conduct reviews in consultation with the team at staff
+                        change. Management of Lia College will conduct reviews in consultation with the team at staff
                         meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Individualised Plans Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Individualised Plans Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Prior to Service Entry</span></h3>
                     <ul>
                         <li>Consultation will take place with the person and their family, advocate, guardian and/or others
                             as appropriate, about the various perceptions of the person’s needs and issues which may impact
                             the delivery of services.</li>
-                        <li>Communication and support needs of the individual who will be receiving services from Banksia
+                        <li>Communication and support needs of the individual who will be receiving services from Lia College
                             Care will be addressed to maximise their participation in the planning process.</li>
                         <li>Staff responsible for the individualised plan will take the time to get to know the person (and
                             family) and facilitate opportunities to express aspirations, preferences, and choices. All

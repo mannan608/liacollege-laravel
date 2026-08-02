@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Infection Control Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(PC1)</span></h1>
+                    <h1><span style="color: #132b4e;">Infection Control Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(PC1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Infection Control Policy and Procedure</em> at Banksia Care is to reduce the
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Infection Control Policy and Procedure</em> at Lia College is to reduce the
                         risk of infection or cross infection, decrease the expansion of resistant pathogens and minimise
                         risk of spread through standard and transmission based precaution practices.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy outlines Banksia Care’s commitment to providing a safe workplace for all stakeholders.
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy outlines Lia College’s commitment to providing a safe workplace for all stakeholders.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
                         our core values and objectives. We also acknowledge that as far as reasonably practicable, we are
                         responsible and accountable for the safety of all residents as well as anyone who is attending,
-                        visiting or providing services to Banksia Care.</p>
+                        visiting or providing services to Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
@@ -45,10 +45,10 @@
                         <li>Public Health (Control of Diseases) Act 1984</li>
                         <li>Public Health (Infectious Diseases) Regulations 1988</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All our infection control decision-making is carried out according to the <em>Infection Control
                             Policy’s</em></p>
-                    <p>Banksia Care aims to ensure the following:</p>
+                    <p>Lia College aims to ensure the following:</p>
                     <ul>
                         <li>Manage the risk of cross-infection through the use of practices that meet standard and universal
                             precautions.</li>
@@ -59,7 +59,7 @@
                         <li>Implement a best-practice approach to infection control to ensure the safety and health of all
                             stakeholders.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <thead>
@@ -120,7 +120,7 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Emergency Management Plan</li>
                         <li>Hazard Report Form</li>
@@ -129,13 +129,13 @@
                         <li>Duty of Care Policy and Procedure</li>
                         <li>Staff Health and Wellbeing Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires induction and ongoing training of all staff to include Infection Control
-                        Policy, enabling them to fulfil their roles effectively. In addition, Banksia Care promotes
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires induction and ongoing training of all staff to include Infection Control
+                        Policy, enabling them to fulfil their roles effectively. In addition, Lia College promotes
                         information sharing at staff meetings, sharing of information received from industry trends or
                         changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -164,14 +164,14 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Infection Control Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Infection Control Procedure</span></h2>
                     <ul></ul>
-                    <h3><span style="color: #fcb53b;">Banksia Care will:</span></h3>
+                    <h3><span style="color: #fcb53b;">Lia College will:</span></h3>
                     <ul>
                         <li>provide adequate and appropriate resources and facilities for handwashing such as clean water,
                             sensor taps, soap, paper towel and sanitiser</li>
@@ -231,8 +231,8 @@
                     <p>Nails should be kept clean and neatly trimmed. Nail polish must not be flaking as it causes a risk to
                         patient health.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Hand Hygiene&nbsp;Procedure</span></h2>
-                    <p>Banksia Care will adhere to the National Hand Hygiene Initiative (NHNI) ‘5 moments for hand hygiene’
+                    <h2><span style="color: #e6bb73;">Hand Hygiene&nbsp;Procedure</span></h2>
+                    <p>Lia College will adhere to the National Hand Hygiene Initiative (NHNI) ‘5 moments for hand hygiene’
                         to minimise the incidence of infectious diseases.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">When to Perform Hand Hygiene</span></h3>
@@ -298,7 +298,7 @@
                             and repeat this several times.</li>
                         <li>Report immediately to supervisor.</li>
                     </ol>
-                    <h2><span style="color: #da591f;">Personal Protection Equipment</span></h2>
+                    <h2><span style="color: #e6bb73;">Personal Protection Equipment</span></h2>
                     <p>Personal protective equipment (PPE) must be worn when workers find themselves in situations where
                         they may be exposed to infection risk.</p>
                     <ul></ul>
@@ -349,7 +349,7 @@
                     <p>are conducted following hazard inspections. Risk assessment should include risk, likelihood,
                         consequence, level, and selected risk controls.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Infection Hazards</span></h2>
+                    <h2><span style="color: #e6bb73;">Infection Hazards</span></h2>
                     <p>Infection risk controls can include:</p>
                     <ul>
                         <li>using personal protective equipment</li>
@@ -364,12 +364,12 @@
                     </ul>
                     <p>In response to the COVID-19 pandemic, the following additional precautions may be required:</p>
                     <ul>
-                        <li>restricting visitor access to the Banksia Care facility</li>
+                        <li>restricting visitor access to the Lia College facility</li>
                         <li>social distance in rules</li>
                         <li>self-isolate of residents</li>
                         <li>reducing physical contact with surfaces and objects.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Environmental Cleaning</span></h2>
+                    <h2><span style="color: #e6bb73;">Environmental Cleaning</span></h2>
                     <p>The surfaces people regularly come into contact with in the work environment must be cleaned
                         regularly. Workers must:</p>
                     <ul>
@@ -383,7 +383,7 @@
                         <li>clean frequently touched parts of the building throughout the day, such as doors, door
                             handles/push plates, handrails, and lift buttons.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Equipment Cleaning</span></h2>
+                    <h2><span style="color: #e6bb73;">Equipment Cleaning</span></h2>
                     <p>Anything that has come into contact with bodily fluids or contaminated food threatens workers’
                         health. As a result, it must be disinfected to prevent the spread of infectious diseases.
                         Contaminated equipment can include:</p>

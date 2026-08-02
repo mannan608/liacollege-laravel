@@ -19,18 +19,18 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Home Visiting Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SS4)</span></h1>
+                    <h1><span style="color: #132b4e;">Home Visiting Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SS4)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Home Visiting Policy and Procedure is to ensure that all home visits by Banksia
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Home Visiting Policy and Procedure is to ensure that all home visits by Lia College
                         Care staff are conducted in a safe and secure manner.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to clients, families, auxiliary staff, management, contractors, visiting medical
                         and allied health professionals and visitors.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Home visits are regarded as a workplace activity, and the following Workplace Health and Safety (WHS)
                         legislative requirements apply:</p>
                     <ul>
@@ -42,10 +42,10 @@
                             employee’s place of work and who may be affected by the employee’s acts or omissions at work.
                         </li>
                     </ul>
-                    <p>As part of any safe workplace, Banksia Care staff are strongly encouraged to use past experience and
+                    <p>As part of any safe workplace, Lia College staff are strongly encouraged to use past experience and
                         to consult with colleagues and managers at all times.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Workplace Health and Safety Act 1989</li>
                         <li>Disability Discrimination Act 1992</li>
@@ -57,11 +57,11 @@
                         <li>Aged Care Quality and Safety Commission Rules 2018</li>
                         <li>Aged Care Act 1997</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Home Visiting Procedure is conducted in accordance with the principles
                         of our</p>
                     <p>Home Visiting Policy.</p>
-                    <p>As a part of visiting clients in their homes, staff members must adhere to Banksia Care’s mission,
+                    <p>As a part of visiting clients in their homes, staff members must adhere to Lia College’s mission,
                         culture and legal obligations.</p>
                     <p>Home visits must:</p>
                     <ul>
@@ -72,7 +72,7 @@
                         <li>provide demonstrative hygienic practices</li>
                         <li>ensure that clients and their families are listened to.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -92,20 +92,20 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Code of Conduct Policy and Procedure</li>
                         <li>Workplace Health and Safety Policy and Procedure</li>
                         <li>Safety and Risk Management Policy and Procedure</li>
                         <li>Emergency Management Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Home Visiting
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Home Visiting
                         Policy to enable staff to fulfil their roles effectively.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -134,13 +134,13 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Home Visiting Procedure</span></h2>
-                    <p>The following procedure allows staff employed by Banksia Care to carry out home visits with a high
+                    <h2><span style="color: #e6bb73;">Home Visiting Procedure</span></h2>
+                    <p>The following procedure allows staff employed by Lia College to carry out home visits with a high
                         level of safety.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Conduct Risk Assessment</span></h3>
@@ -178,7 +178,7 @@
                     <h3><span style="color: #fcb53b;">Document Risk Management Plan</span></h3>
                     <p>In making decisions regarding home visits, all factors need to be considered, including mitigating
                         circumstances such as physical disability, presence of supportive relatives, etc.</p>
-                    <p>Where risk is assessed as medium/significant or high/extreme, Banksia Care staff should never visit a
+                    <p>Where risk is assessed as medium/significant or high/extreme, Lia College staff should never visit a
                         residence until they have discussed the risk with their supervisor and a management plan is
                         developed.</p>
                     <p>Management plans must always contain risk minimisation strategies.</p>
@@ -386,7 +386,7 @@
                                 <li>Facilitate debriefing and support for the client and others involved.</li>
                             </ul>
                             <h3><span style="color: #fcb53b;">Responsibilities</span></h3>
-                            <p>Banksia Care Managers will ensure the followings:</p>
+                            <p>Lia College Managers will ensure the followings:</p>
                             <ul>
                                 <li>Establish and communicate guidelines, policies and procedures for safe home visiting,
                                     with clearly defined employee roles and responsibilities.</li>
@@ -398,7 +398,7 @@
                                 <li>Manage violence and aggression in the work environment, with support for injured workers
                                     and return-to-work strategies.</li>
                             </ul>
-                            <p>Banksia Care Staff will ensure the following:</p>
+                            <p>Lia College Staff will ensure the following:</p>
                             <ul>
                                 <li>Comply with this procedure.</li>
                                 <li>Take responsibility for your own and others’ safety.</li>

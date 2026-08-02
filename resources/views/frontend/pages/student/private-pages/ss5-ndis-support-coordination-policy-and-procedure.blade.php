@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">NDIS Support Coordination Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SS5)</span></h1>
+                    <h1><span style="color: #132b4e;">NDIS Support Coordination Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SS5)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>This policy outlines the procedure to be followed at Banksia Care to support client who have been
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>This policy outlines the procedure to be followed at Lia College to support client who have been
                         approved as a participant in the NDIS scheme.</p>
-                    <p>The procedure outlines how NDIS Plan Managers and NDIS Support Coordinators within Banksia Care will
+                    <p>The procedure outlines how NDIS Plan Managers and NDIS Support Coordinators within Lia College will
                         assist clients to understand and implement their NDIS plans, use their NDIS funded budgets and what
                         administration reporting processes must be followed to meet NDIS compliance.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management, contractors and volunteers of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management, contractors and volunteers of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>At Banksia Care, we uphold and protect the rights and dignity of clients in our care. We commit to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>At Lia College, we uphold and protect the rights and dignity of clients in our care. We commit to
                         adopting person centred, right based approaches in providing and understanding of the NDIS, its
                         systems and implementation.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>National Disability Insurance Scheme Act 2013</li>
                         <li>Disability Discrimination Act 1992</li>
@@ -48,7 +48,7 @@
                         <li>Aged Care Quality and Safety Commission Rules 2018 (Rules)</li>
                         <li>Aged Care Act 1997</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our NDIS Support Coordination Procedure is conducted in accordance with the
                         principles of our NDIS Support Coordination Policy. The procedure outlines how interventions are to
                         be used and what reporting obligations must be followed.</p>
@@ -63,7 +63,7 @@
                         <li>respond to feedback and complaints, referring to the appropriate delegation where necessary.
                         </li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -108,32 +108,32 @@
                                     <td width="141">Support Coordinator</td>
                                     <td width="265">A support coordinator assists NDIS participants to understand and use
                                         their NDIS plan.</td>
-                                    <td width="236">Banksia Care</td>
+                                    <td width="236">Lia College</td>
                                 </tr>
                                 <tr>
                                     <td width="141">Plan Manager</td>
                                     <td width="265">For Participants that are not self-managed, a plan manager assists
                                         with
                                         budgeting planning, invoicing and payment of supports.</td>
-                                    <td width="236">Banksia Care</td>
+                                    <td width="236">Lia College</td>
                                 </tr>
                                 <tr>
                                     <td width="141">Service Agreement</td>
                                     <td width="265">Required documentation for the engagement of supports.</td>
-                                    <td width="236">Banksia Care</td>
+                                    <td width="236">Lia College</td>
                                 </tr>
                                 <tr>
                                     <td width="141">Support Log</td>
                                     <td width="265">Required documentation for support coordinators to record their
                                         service
                                         hours</td>
-                                    <td width="236">Banksia Care</td>
+                                    <td width="236">Lia College</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Conflict of Interest Policy and Procedure</li>
                         <li>Privacy and Confidentiality Policy and Procedure</li>
@@ -149,7 +149,7 @@
                         <li>NDIS Participant Case Notes</li>
                         <li>NDIS Support Log</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -167,17 +167,17 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the NDIS Support
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the NDIS Support
                         Coordination Policy to enable staff to fulfil their roles effectively. In addition, staff must
-                        complete Banksia Care induction training session on the NDIS Insurance scheme, NDIS implementation
+                        complete Lia College induction training session on the NDIS Insurance scheme, NDIS implementation
                         and NDIS administration and before commencing employment.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with the team at staff meetings.</p>
+                        Management of Lia College will conduct reviews in consultation with the team at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">NDIS Support Coordination Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">NDIS Support Coordination Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">The Allocated NDIS Support Coordinator:</span></h3>
                     <ul>
@@ -229,7 +229,7 @@
                     <p>Management have the right to refuse employment or engagement if these requirements are not met in
                         full.</p>
                     <p>Management must examine participant complaints within ten business days, providing a response within
-                        15 business days, in line with the Banksia Care Customer Complaint Policy and procedure.</p>
+                        15 business days, in line with the Lia College Customer Complaint Policy and procedure.</p>
                     <h3><span style="color: #fcb53b;">Key Contacts and External Organisations:</span></h3>
                     <p>The NDIS Commission Office:</p>
                     <p>Refer to the NDIS Commission Office in each state, available at:</p>

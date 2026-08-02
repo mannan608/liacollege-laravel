@@ -16,32 +16,32 @@
             <div class="">
                 <div class="et_pb_module et_pb_post_content et_pb_post_content_0_tb_body">
 
-                    <h1><span style="color: #006d5d;">Safety and Risk Management Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(AP1)</span></h1>
+                    <h1><span style="color: #132b4e;">Safety and Risk Management Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(AP1)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Safety and Risk Management Policy at Banksia Care is to meet our duty of care
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Safety and Risk Management Policy at Lia College is to meet our duty of care
                         requirements for all stakeholders by developing and supporting a service culture where risk
-                        assessments are routinely undertaken to minimise risk of all Banksia Care operations and ensure the
+                        assessments are routinely undertaken to minimise risk of all Lia College operations and ensure the
                         safety of all.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to residents, staff, management, medical professionals, volunteers and visitors
-                        of Banksia Care.</p>
+                        of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>The Royal Commission into Aged Care Quality and Safety (aged care royal commission) hearings (and
                         others in industries outside our sector) illustrated the serious outcomes that occur when an
-                        organisation fails to manage risk with the level of attention it warrants. Banksia Care appreciates
+                        organisation fails to manage risk with the level of attention it warrants. Lia College appreciates
                         that the safety and wellbeing of everyone at our service are paramount to our core values and
                         objectives. We also acknowledge that as far as reasonably practicable, we are responsible and
                         accountable for the safety of all residents as well as anyone who is attending, visiting or
-                        providing services to Banksia Care. Due to their vulnerability, elderly people are susceptible to
+                        providing services to Lia College. Due to their vulnerability, elderly people are susceptible to
                         various risks, both within independent living arrangements and at aged care facilities. As managing
                         risk is the responsibility of everyone, having the guidelines and ability to identify and manage
                         risk increases everyone’s ability to make sound decisions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Public Administrations Act 2004.</li>
                         <li>Occupational Health and Safety Act 2004.</li>
@@ -49,10 +49,10 @@
                         <li>Australian and New Zealand Standard Risk Management Principles and Guidelines AS/NZS ISO
                             310002009</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our <em>Safety and Risk Management</em><em> Procedure</em> is carried out
                         in accordance with the principles of our <em>Safety and Risk Management Policy</em>.</p>
-                    <p>Banksia Care identifies the following as areas of potential risks, particularly in relation to the
+                    <p>Lia College identifies the following as areas of potential risks, particularly in relation to the
                         elderly:</p>
                     <ul>
                         <li>theft</li>
@@ -64,7 +64,7 @@
                         <li>depression</li>
                         <li>elder abuse.</li>
                     </ul>
-                    <p>At Banksia Care, all risk assessments will:</p>
+                    <p>At Lia College, all risk assessments will:</p>
                     <ul>
                         <li>outline the activity, location, participants and equipment</li>
                         <li>identify potential hazards</li>
@@ -75,7 +75,7 @@
                         <li>state any further action required</li>
                         <li>be given a risk score using the tables in the Safety and Risk Management Procedure.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <table style="width: 1200px; border-style: solid; border-color: #000000;" border="1"
                         cellpadding="10">
                         <tbody>
@@ -100,7 +100,7 @@
                         </tbody>
                     </table>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Administration of Medication P&amp;P</li>
                         <li>Risk Assessment and Management Plan</li>
@@ -113,13 +113,13 @@
                         <li>Hazard Report</li>
                         <li>Serious Incident Report</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Safety and
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Safety and
                             Risk Management Policy</em> to enable staff to fulfil their roles effectively. In addition,
-                        Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                        Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <table style="width: 1200px; border-style: solid; border-color: #000000;" border="1"
                         cellpadding="10">
                         <tbody>
@@ -147,11 +147,11 @@
                         </tbody>
                     </table>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Safety and Risk Management Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Safety and Risk Management Procedure</span></h2>
                     <p>Management will facilitate the following:</p>
                     <ul>
                         <li>Ensure risk assessments are completed by delegation to key roles, including but not limited to
@@ -176,7 +176,7 @@
                     </ul>
                     <p>Key roles will ensure the following:</p>
                     <ul>
-                        <li>Comply with Banksia Care’s Safety and Risk Management Policy.</li>
+                        <li>Comply with Lia College’s Safety and Risk Management Policy.</li>
                         <li>Implement a documented framework for managing risk, using an ‘identify, detect and respond’ risk
                             cycle.</li>
                         <li>Complete a risk assessment for any activity organised that falls under their area of
@@ -208,7 +208,7 @@
                             and repositioning residents.</li>
                         <li>Develop the skills to use manual handling equipment efficiently.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Determining a Risk Score and Risk Management Plan</span></h2>
+                    <h2><span style="color: #e6bb73;">Determining a Risk Score and Risk Management Plan</span></h2>
                     <table style="width: 1200px; border-style: solid; border-color: #000000;" border="1" width="1200"
                         cellpadding="10">
                         <tbody>

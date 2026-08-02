@@ -19,25 +19,25 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Manual Handling Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(PC7)</span></h1>
+                    <h1><span style="color: #132b4e;">Manual Handling Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(PC7)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The Personal Support of Clients Policy and Procedure at Banksia aims to ensure the safety, wellbeing,
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The Personal Support of Clients Policy and Procedure at Lia College aims to ensure the safety, wellbeing,
                         dignity and protection of our staff, clients and residents. The policy is managed in accordance with
                         professional standards, community expectations and legal requirements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to staff, management, contractors, medical professionals and volunteers of
-                        Banksia Care.</p>
+                        Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
                         our core values and objectives. We also acknowledge that as far as reasonably practicable, we are
                         responsible and accountable for the safety of all clients and residents as well as anyone who is
-                        attending, visiting or providing services to Banksia Care.</p>
+                        attending, visiting or providing services to Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
@@ -49,20 +49,20 @@
                         <li>National Standards for Manual Tasks</li>
                         <li>Workcover Manual Handling Code of Practice</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Manual Handling Procedure is conducted in accordance with the
                         principles of our Manual Handling Policy.</p>
                     <ul>
                         <li>This policy provides guidance for all managers and staff involved in manual handling to ensure
                             that risk management strategies are in place to maintain a safe and healthy working environment.
                         </li>
-                        <li>Banksia Care respects that a duty under the Act and Legislation cannot be transferred to another
+                        <li>Lia College respects that a duty under the Act and Legislation cannot be transferred to another
                             entity or person.</li>
                         <li>This policy is to be read in conjunction with the Risk Management Plan and Risk Management
                             Policy and Procedure as it provides further guidance on our approach to managing risk and
                             hazards.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                   <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -111,7 +111,7 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Emergency Management Plans Policy and Procedure</li>
                         <li>Duty of Care Plans Policy and Procedure</li>
@@ -123,13 +123,13 @@
                         <li>Staff Health and Wellbeing Plans Policy and Procedure</li>
                         <li>No-lifting Principles and Policies</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Manual Handling
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Manual Handling
                         Policy to enable staff to fulfil their roles effectively.</p>
-                    <p>Banksia Care promotes information sharing at staff meetings, sharing of information received from
+                    <p>Lia College promotes information sharing at staff meetings, sharing of information received from
                         industry trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                   <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -158,14 +158,14 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed every three years or on the occurrence of any relevant legislative
-                        change. Management of Banksia Care will conduct reviews in consultation with the team at staff
+                        change. Management of Lia College will conduct reviews in consultation with the team at staff
                         meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Workplace Health and Safety Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Workplace Health and Safety Procedure</span></h2>
                     <ul></ul>
-                    <h3><span style="color: #fcb53b;">Banksia Care will ensure the following:</span></h3>
+                    <h3><span style="color: #fcb53b;">Lia College will ensure the following:</span></h3>
                     <ul>
                         <li>All clients are assessed as to their physical capabilities and manual handling needs.</li>
                         <li>Any change from time to time staff are frequently revised and updated.</li>
@@ -435,12 +435,12 @@
                     </ul>
                     <h3><span style="color: #fcb53b;">When managing accidents, all staff will refer to:</span></h3>
                     <ul>
-                        <li>Banksia Care PC2 – Incident, Injury, Illness and Trauma Policy and Procedure</li>
-                        <li>Banksia Care PC T1 – Incident, Injury, Illness and Trauma Record</li>
-                        <li>Banksia Care SE T2 – Serious Incident Report Form</li>
-                        <li>Banksia Care SE5 – Risk Management Policy and Procedure</li>
-                        <li>Banksia Care SE T1 – Hazard Report Form</li>
-                        <li>Banksia Care SE D1 – Emergency Management Plan</li>
+                        <li>Lia College PC2 – Incident, Injury, Illness and Trauma Policy and Procedure</li>
+                        <li>Lia College PC T1 – Incident, Injury, Illness and Trauma Record</li>
+                        <li>Lia College SE T2 – Serious Incident Report Form</li>
+                        <li>Lia College SE5 – Risk Management Policy and Procedure</li>
+                        <li>Lia College SE T1 – Hazard Report Form</li>
+                        <li>Lia College SE D1 – Emergency Management Plan</li>
                     </ul>
                     <p>&nbsp;</p>
 

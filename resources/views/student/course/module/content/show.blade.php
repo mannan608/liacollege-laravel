@@ -84,19 +84,21 @@
                                                         </svg>
                                                     </div>
                                                     <div class="min-w-0">
-                                                        @if (!empty($row->data['link']))
-                                                            <a href="{{ $row->data['link'] }}"
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                class="line-clamp-1 text-sm md:text-base text-gray-500 underline hover:text-brand-600 leading-relaxed font-medium">
-                                                                {{ $row->data['text'] ?? 'Open resource' }}
-                                                            </a>
-                                                        @else
-                                                            <span class="text-sm md:text-base text-gray-500 leading-relaxed font-medium line-clamp-1">
-                                                                {{ $row->data['text'] ?? '' }}
-                                                            </span>
-                                                        @endif
-                                                    </div>
+                                                                @if (!empty($row->data['link']))
+                                                                    <div class="flex flex-col gap-1">
+                                                                        <a href="{{ route('student.rows.view', ['slug' => \Illuminate\Support\Str::slug($row->data['text'] ?? '')]) }}"
+                                                                            target="_blank" rel="noopener noreferrer"
+                                                                            class="line-clamp-1 text-sm md:text-base lg:text-lg text-gray-500 underline hover:text-brand-600 leading-relaxed font-medium">
+                                                                            {{ $row->data['text'] ?? '' }}
+                                                                        </a>
+                                                                    </div>
+                                                                @else
+                                                                    <span
+                                                                        class="text-sm md:text-base lg:text-lg text-gray-500 leading-relaxed font-medium line-clamp-1">
+                                                                        {{ $row->data['text'] ?? '' }}
+                                                                    </span>
+                                                                @endif
+                                                            </div>
                                                 </div>
 
                                                 @if (!empty($row->data['file']))

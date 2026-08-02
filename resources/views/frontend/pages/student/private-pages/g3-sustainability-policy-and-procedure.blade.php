@@ -19,32 +19,32 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Sustainability Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(G3)</span></h1>
+                    <h1><span style="color: #132b4e;">Sustainability Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(G3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Sustainability Policy at Banksia Care is to demonstrate that Banksia Care holds
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Sustainability Policy at Lia College is to demonstrate that Lia College holds
                         sustainable practices to its core. We encourage awareness of environmental responsibilities and
                         implement practices that contribute to a sustainable future. Staff, residents and visitors are
                         supported to become environmentally responsible and respect the environment.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care cares for the environment and supports our community to become environmentally
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College cares for the environment and supports our community to become environmentally
                         responsible. Through positive and meaningful experiences and engagement in sustainability practices,
                         the foundations are laid for the development of environmentally responsible people.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Environmental Protection Act 1997</li>
                         <li>Environment Protection Regulation 2005</li>
                         <li>Water Resources Act 2007</li>
                         <li>Water Resources Regulation 2007</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Sustainability Procedure is carried out in accordance with the
                         principles of our Sustainability Policy.</p>
                     <h3><span style="color: #fcb53b;">General Considerations</span></h3>
@@ -52,7 +52,7 @@
                         <li>Learning about sustainability starts with everyday practice.</li>
                         <li>We believe environmentally sustainable practices should be embedded into the operations of the
                             service.</li>
-                        <li>Banksia Care is committed to protecting our environment to ensure a sustainable future for all.
+                        <li>Lia College is committed to protecting our environment to ensure a sustainable future for all.
                             This involves management, staff, medical professionals, families and visitors working together
                             to protect our environment to ensure a sustainable future for ourselves and our future
                             generations through continuous improvement we strive to improve every day.</li>
@@ -61,7 +61,7 @@
                             practices, resources and interactions.</li>
                         <li>Sustainable practice will be encouraged within the service assisting everyone to become
                             advocates for a sustainable future.</li>
-                        <li>Banksia Care aims to reduce its ecological footprint and to educate staff on making
+                        <li>Lia College aims to reduce its ecological footprint and to educate staff on making
                             environmentally friendly choices for life.</li>
                     </ul>
                     <h3><span style="color: #fcb53b;">Considerations to Energy</span></h3>
@@ -81,7 +81,7 @@
                         regularly conduct water audits regarding indoor and outdoor use and install water-saving devices in
                         toilets, bathrooms, kitchens and wet areas.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -116,7 +116,7 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Safety and Risk Management Policy and Procedures</li>
                         <li>Continuous Improvement Policy and Procedures</li>
@@ -124,13 +124,13 @@
                         <li>Staff Health and Wellbeing Policy and Procedures</li>
                         <li>Consumer Needs Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Sustainability
-                        Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care promotes
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Sustainability
+                        Policy to enable staff to fulfil their roles effectively. In addition, Lia College promotes
                         information sharing at staff meetings, sharing of information received from industry trends or
                         changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -159,12 +159,12 @@
                         </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Sustainability Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Sustainability Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
@@ -172,7 +172,7 @@
                             sustainability.</li>
                         <li>Encourage staff, medical professionals, families, visitors and residents to engage in innovative
                             practices and appreciate the natural environment.</li>
-                        <li>Ensure Banksia Care liaises with other similar services and the department and keeps up to date
+                        <li>Ensure Lia College liaises with other similar services and the department and keeps up to date
                             on practices and ideas for sustainability.</li>
                         <li>Where relevant, review policies and procedures within the service to find more sustainable
                             outcomes.</li>
@@ -183,7 +183,7 @@
                         <li>Endorse the positions of Sustainability Leaders within the staff community.</li>
                         <li>Support and encourage the promoted practices of the Sustainability Leaders.</li>
                     </ul>
-                    <p>Directed through the provision of Sustainability Leaders within the staff cohort, Banksia Care has
+                    <p>Directed through the provision of Sustainability Leaders within the staff cohort, Lia College has
                         adopted a whole of community approach to Sustainable Solutions. A whole-community approach
                         reinforces what has been learnt. It moves staff and residents beyond just developing knowledge and
                         skills about sustainability towards providing the motivation and opportunities to act for

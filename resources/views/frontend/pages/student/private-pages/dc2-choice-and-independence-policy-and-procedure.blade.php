@@ -19,31 +19,31 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Choice and Independence Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(DC2)</span></h1>
+                    <h1><span style="color: #132b4e;">Choice and Independence Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(DC2)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
                     <p>The purpose of the Choice and Independence Policy and associated procedures are designed to ensure
-                        that Banksia Care supports and respects consumers to make decisions about their own care and the way
+                        that Lia College supports and respects consumers to make decisions about their own care and the way
                         care and services are delivered to them. This recognises that making decisions is an essential right
                         of each consumer and where possible that decisions are made by consumers themselves.This aligns with
                         the Aged Care Quality Standards. Standard 1 supports all of the other Quality Standards, the Aged
                         Care Charter of Rights, consumer and other responsibilities under the Aged Care Act 1997, and
                         obligations under competition and consumer law.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Consumers need to be supported and respected to act independently, make their own choices and take
                         part in their community because this contributes towards their overall sense of self and belonging
                         in society, their health and well-being. Consumers are shaped by personal characteristics,
                         experiences, values and beliefs which affects the care, services and supports they need and the
-                        choice and independence they want to pursue. Banksia Care embeds a person-centred care approach to
+                        choice and independence they want to pursue. Lia College embeds a person-centred care approach to
                         ensure that every consumer is supported according to their unique individual needs.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Aged Care Act 1997 (Cth)</li>
                         <li>User Rights Amendment (Charter of Aged Care Rights) Principles 2019</li>
@@ -52,7 +52,7 @@
                         <li>Quality of Care Principles 2014</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about <em>Choice and Independence</em> is carried out in accordance with the
                         principles of our <em>Choice and Independence Policy</em>.</p>
                     <p>Choice and Independence Principles</p>
@@ -88,7 +88,7 @@
                             this according to relevant law and best practice guidance.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -143,7 +143,7 @@
                     </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Confidentiality Policy and Procedures</li>
                         <li>Complaints and Appeals Policy and Procedures</li>
@@ -153,15 +153,15 @@
                         <li>Staff Health and Wellbeing Policy and Procedures</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Choice and
-                        Independence Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Choice and
+                        Independence Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes ongoing commitment to understanding and applying the principles of the Choice and
                         Independence Policy and Procedure within workforce capacity, building resources, forums and
                         activities, including (but not limited to) meetings, industry policy and legislative changes, and in
-                        line with Banksia Care’s governance frameworks.</p>
+                        line with Lia College’s governance frameworks.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -184,12 +184,12 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <p>Choice and Independence Procedure</p>
                     <ul>
-                        <li>Banksia Staff will ensure the following:</li>
+                        <li>Lia College Staff will ensure the following:</li>
                         <li>Utilise appropriate communication tools, mechanisms and resources to listen to the aspirations
                             of the consumer and other representatives (with consumer’s consent) involved in their life and
                             centre these views in any planning and provision of care services. Staff will communicate
@@ -213,7 +213,7 @@
                             legislative requirements for staff, and this will be reviewed annually.</li>
                         <li>Record, monitor and review tools and processes annually to ensure continuous improvement of
                             service provision in relation to consumer choice and independence.</li>
-                        <li>Banksia Care’s Privacy and Policy Procedure will govern the collection, storage and exchange of
+                        <li>Lia College’s Privacy and Policy Procedure will govern the collection, storage and exchange of
                             consumer information with the consumer, representatives and service providers.</li>
                     </ul>
 

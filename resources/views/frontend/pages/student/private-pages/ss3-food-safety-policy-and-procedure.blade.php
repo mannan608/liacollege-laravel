@@ -19,27 +19,27 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Food Safety Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SS3)</span></h1>
+                    <h1><span style="color: #132b4e;">Food Safety Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SS3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>Banksia Care understands the importance of safe food handling when preparing and serving food. With a
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>Lia College understands the importance of safe food handling when preparing and serving food. With a
                         large number of care recipients and staff eating multiple meals across the day there is increased
                         risk of spread of bacteria and contamination. Safe food practices in the kitchen and room
                         environments ensure food is handled with care, consideration and is fresh and safe.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Mealtimes provide a great opportunity for care recipients and staff to come together, socialise and
                         connect. It’s a positive and fun event that occurs multiple times during the day.</p>
-                    <p>Banksia Care is dedicated to ensuring these times are safe and limit the growth of bacteria and
+                    <p>Lia College is dedicated to ensuring these times are safe and limit the growth of bacteria and
                         contamination by implementing the following procedures.</p>
                     <p>Care recipients should be supervised whilst eating at all times.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li><em>Food Standards Australia New Zealand Act 1991</em><em>(Cth)</em></li>
                         <li>Australia New Zealand Food Standards Code</li>
@@ -73,16 +73,16 @@
                             href="https://www.betterhealth.vic.gov.au/health/healthyliving/food-safety-and-storage">https://www.betterhealth.vic.gov.au/health/healthyliving/food-safety-and-storage</a>
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <ul>
                         <li>All decision-making about our <em>Food Safety</em><em> Procedure</em> is carried out in
                             accordance with the principles of our <em>Food Safety Policy</em>.</li>
-                        <li>Banksia Care respects that a duty under the Act and Legislation cannot be transferred to another
+                        <li>Lia College respects that a duty under the Act and Legislation cannot be transferred to another
                             entity or person.</li>
                         <li>We aim to ensure the implementation of safe food practices when preparing and serving of food
                             within the service.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -106,7 +106,7 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Infection Control Policy and Procedure</li>
                         <li>Safety and Risk Management Policy and Procedure</li>
@@ -115,7 +115,7 @@
                         <li>Consumer Needs Policy and Procedure</li>
                         <li>Inclusion and Diversity Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Aged Care Quality Standards</span></h2>
+                    <h2><span style="color: #e6bb73;">Aged Care Quality Standards</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -173,13 +173,13 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Workplace Health
-                        and Safety Policy to enable staff to fulfil their roles effectively. In addition Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Workplace Health
+                        and Safety Policy to enable staff to fulfil their roles effectively. In addition Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -208,12 +208,12 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Food Safety Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Food Safety Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will:</span></h3>
                     <ul>

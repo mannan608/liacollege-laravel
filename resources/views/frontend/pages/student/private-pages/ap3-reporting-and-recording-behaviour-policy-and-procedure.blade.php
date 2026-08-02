@@ -19,43 +19,43 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Reporting and Recording Behaviour Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(AP3)</span></h1>
+                    <h1><span style="color: #132b4e;">Reporting and Recording Behaviour Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(AP3)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Reporting and Recording Behaviour Policy at Banksia Care is to provide mandatory
-                        requirements for Banksia Care staff (particularly the support staff) concerning Reporting and
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Reporting and Recording Behaviour Policy at Lia College is to provide mandatory
+                        requirements for Lia College staff (particularly the support staff) concerning Reporting and
                         Recording Behaviours</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to staff, management and medical professionals of Banksia Care.</p>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to staff, management and medical professionals of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Comprehensive recording and report writing, based on vigilant observation of behaviour and events, is
                         essential to verify that something occurred and to record the event’s details. Organising
                         information can be very helpful in clarifying concerns and confirming that important details are not
                         omitted. In most cases, a report does not need to be made in haste and good preparation of a report
                         can result in a more effective and timely response.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Aged Care and Other Legislative Amendment (Royal Commission Response No.1) Act 2021 (Cth)</li>
                         <li>Disability Discrimination Act 1992 (Cth)</li>
                         <li>Equal Opportunity Act 1984</li>
                         <li>National Disability Insurance Scheme Act 2013</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Reporting and Recording Procedure is carried out in accordance with the
                         principles of our Reporting and Recording Policy.</p>
                     <p>Our objectives are as follows:</p>
                     <ul>
-                        <li>Reduce risk of injury Banksia Care staff and residents from behaviours of concern that correlate
+                        <li>Reduce risk of injury Lia College staff and residents from behaviours of concern that correlate
                             to aggressive behaviours that can challenge us.</li>
                         <li>Consistently ensure a safe environment exists for staff and residents.</li>
                         <li>Support Positive Behaviour Support (PBS) Practitioners to implement PBS plans when required.
                         </li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                      <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <thead>
@@ -102,13 +102,13 @@
                                 <td width="359">This is determined when a situation where the employee has taken all
                                     appropriate actions or strategies to defuse that behaviour, are unable to do so and the
                                     behaviour stays the same or escalate further.</td>
-                                <td width="160">Banksia Care</td>
+                                <td width="160">Lia College</td>
                             </tr>
                         </tbody>
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Safety and Risk Management Policy and Procedures</li>
                         <li>Incident, Injury, Illness and Trauma Policy and Procedures</li>
@@ -117,13 +117,13 @@
                         <li>Palliative Care Management Policy and Procedures</li>
                         <li>Restrictive Practice Policy and Procedures</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Reporting and
-                        Recording Behaviour Policy to enable staff to fulfil their roles effectively. In addition, Banksia
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Reporting and
+                        Recording Behaviour Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         Care promotes information sharing at staff meetings, sharing of information received from industry
                         trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                  <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -152,16 +152,16 @@
                     </table>
                     </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Reporting and Recording Behaviour &nbsp;Procedure</span></h2>
-                    <p>Banksia Care staff who work directly with residents are responsible for the following.</p>
+                    <h2><span style="color: #e6bb73;">Reporting and Recording Behaviour &nbsp;Procedure</span></h2>
+                    <p>Lia College staff who work directly with residents are responsible for the following.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Understanding Changes in Behaviour</span></h3>
-                    <p>Banksia Care’s Privacy and Policy Procedures will govern consumer information collection, storage and
+                    <p>Lia College’s Privacy and Policy Procedures will govern consumer information collection, storage and
                         exchange with the consumer, reparative and service providers.</p>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Positive behaviour support strategies which may reduce behaviours of
@@ -298,7 +298,7 @@
                         <li>Employees involved can be offered counselling services provided by the supervisor on how to
                             access the services.</li>
                     </ul>
-                    <h4><span style="color: #b67318;">Banksia Care staff who work directly with members are responsible for
+                    <h4><span style="color: #b67318;">Lia College staff who work directly with members are responsible for
                             the following</span></h4>
                     <ul>
                         <li>Understand and comply with this policy.</li>
@@ -309,7 +309,7 @@
                             member’s goals, aspirations, interests, preferences, strengths and capabilities.</li>
                         <li>Work collaboratively with the BSP Practitioner to develop a BSP plan.</li>
                         <li>Report any use of a Restrictive Practice, as per NDIS Commission’s regulatory requirements.</li>
-                        <li>Banksia Care will provide training and support for the above and engage approved specialist BSP
+                        <li>Lia College will provide training and support for the above and engage approved specialist BSP
                             Practitioners (as required) to develop BSP plans to reduce and eliminate the use of Restrictive
                             Practices.</li>
                     </ul>

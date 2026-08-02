@@ -19,39 +19,39 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Incident, Injury, Trauma and Illness Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(SE7)</span></h1>
+                    <h1><span style="color: #132b4e;">Incident, Injury, Trauma and Illness Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(SE7)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Emergemcy Management Policy</em> at Banksia Care is to demonstrate we are
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Emergemcy Management Policy</em> at Lia College is to demonstrate we are
                         committed to the health and safety of our staff, management, residents, volunteers, medical
                         professionals and visitors. It is paramount that that our service is prepared for the unlikely event
                         of an emergency. A well planned and rehearsed emergency response will increase the chances of saving
                         lives and reducing injury and trauma significantly.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to residents, staff, management, medical professionals, volunteers and visitors
-                        of Banksia Care.</p>
+                        of Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates that the safety, dignity and wellbeing of everyone at our service is
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates that the safety, dignity and wellbeing of everyone at our service is
                         paramount to our core values and objectives. We also acknowledge that as far as reasonably
                         practicable, we are responsible and accountable for the safety of all residents as well as anyone
-                        who is attending, visiting or providing services to Banksia Care.</p>
+                        who is attending, visiting or providing services to Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our <em>Emergency Management</em><em> Procedure</em> is carried out in
                         accordance with the principles of our <em>Emergency Management Policy</em>.</p>
                     <ul>
                         <li>We aim of our respond efficiently and effectively to an emergency situation to protect the
                             health, safety and wellbeing of residents, staff, management, medical professionals, volunteers
                             and visitors.</li>
-                        <li>Banksia Care staff will ensure the highest level of emergency safety through a range of
+                        <li>Lia College staff will ensure the highest level of emergency safety through a range of
                             different strategies. These will include:
                             <ul>
                                 <li>Risk assessments of potential harm preventing an emergency situation.</li>
@@ -77,7 +77,7 @@
                         <li>evacuating the building</li>
                         <li>lock down.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -91,13 +91,13 @@
                                 <td width="435">An event that is unplanned, unexpected or requires a response immediately
                                     to protect Staff, children, families, visitors, community or the building from harm,
                                     injury, illness, death or damage.</td>
-                                <td width="104">Banksia Care</td>
+                                <td width="104">Lia College</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies </span><span style="color: #da591f;">and
+                    <h2><span style="color: #e6bb73;">Links to other Policies </span><span style="color: #e6bb73;">and
                             Documents</span></h2>
                     <ul>
                         <li>Emergency Management Plan</li>
@@ -108,12 +108,12 @@
                         <li>Staff Health and Wellbeing Policy and Procedure</li>
                         <li>Workplace Health and Safety Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Emergency
-                            Management Policy</em> to enable staff to fulfil their roles effectively. In addition Banksia
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Emergency
+                            Management Policy</em> to enable staff to fulfil their roles effectively. In addition Lia College
                         Care promotes information sharing at staff meetings, sharing of information received from industry
                         trends or changes in legislation, and in consultation at policy review sessions.</p>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -142,11 +142,11 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative Management of
-                        Banksia Care will conduct reviews in consultation with educators at staff meetings.</p>
+                        Lia College will conduct reviews in consultation with educators at staff meetings.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Emergency Management &nbsp;Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Emergency Management &nbsp;Procedure</span></h2>
                     <h3><span style="color: #fcb53b;">Management will</span></h3>
                     <ul>
                         <li>comply with the emergency response procedure</li>

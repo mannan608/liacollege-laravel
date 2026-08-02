@@ -19,21 +19,21 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Continuous Improvement Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(FC2)</span></h1>
+                    <h1><span style="color: #132b4e;">Continuous Improvement Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(FC2)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the <em>Continuous Improvement Policy</em> at Banksia Care is to detail our approach
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the <em>Continuous Improvement Policy</em> at Lia College is to detail our approach
                         to implementing continuous improvement. The primary goal is to foster organisational excellence,
                         ensuring such improvement strategies are managed according to professional standards, stakeholder
                         expectations and operational requirements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to clients, families, auxiliary staff, management, contractors, visiting medical
                         and allied health professionals and visitors.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>At Banksia Care, our client’s safety, dignity and wellbeing are paramount to our core values and
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>At Lia College, our client’s safety, dignity and wellbeing are paramount to our core values and
                         objectives.</p>
                     <p>Our mission is “to provide exceptional care, accommodation and support services so that our valued
                         residents enjoy the quality of life they deserve, where individual needs are met to enable everyone
@@ -43,7 +43,7 @@
                         performance, compliance and stakeholder satisfaction, the longevity and security of the business, in
                         general, is more assured.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li><a href="https://www.legislation.gov.au/Series/C2018A00149">Aged Care Quality and Safety
                                 Commission Act 2018</a></li>
@@ -51,7 +51,7 @@
                                 Commission Rules 2018</a></li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our <em>Continuous Improvement Procedure</em> is carried out in accordance
                         with the principles of our <em>Continuous Improvement Policy</em>.</p>
                     <ul>
@@ -61,7 +61,7 @@
                             as such initiate continuous improvement.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -87,7 +87,7 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Links to other Policies</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies</span></h2>
                     <ul>
                         <li>Staff Induction Policy and Procedure</li>
                         <li>Customer Service Policy and Procedure</li>
@@ -99,13 +99,13 @@
                         <li>Performance Management Policy and Procedure</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the <em>Continuous
-                            Improvement Policy</em> to enable staff to fulfil their roles effectively. In addition, Banksia
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Continuous
+                            Improvement Policy</em> to enable staff to fulfil their roles effectively. In addition, Lia College
                         Care promotes information sharing at staff meetings, sharing of information received from industry
                         trends or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                    <div class="table-responsive mt-3">
     <table class="table table-bordered mb-0" style="min-width: 760px;">
                         <tbody>
@@ -128,12 +128,12 @@
                     </table>
                 </div>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation at management meetings or at the
+                        Management of Lia College will conduct reviews in consultation at management meetings or at the
                         request of the Board.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Continuous Improvement Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Continuous Improvement Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
@@ -155,7 +155,7 @@
                         <li>Understand that continuous improvement is a whole team responsibility and not a task/job
                             assigned to one individual or team.</li>
                         <li>Acknowledge continuous improvement is a cycle and, therefore, ongoing.</li>
-                        <li>Focus on supporting and understanding the needs of Banksia Care’s customers and strive for
+                        <li>Focus on supporting and understanding the needs of Lia College’s customers and strive for
                             customer satisfaction.</li>
                         <li>Complete the continuous improvement register for any aspect of the business that identifies a
                             potential improvement is required.</li>
@@ -165,17 +165,17 @@
                         <li>Identify teamwork as an effective method of achieving desired outcomes.</li>
                         <li>Maintain a culture that appreciates continuous improvement is a routine process of ongoing
                             change and positive growth.</li>
-                        <li>Strive to maintain a reputation at Banksia Care that is one of reliability, quality and
+                        <li>Strive to maintain a reputation at Lia College that is one of reliability, quality and
                             innovation.</li>
                         <li>Use customer surveys and feedback to improve service, quality of product and a driver for
                             improvement.</li>
                     </ul>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Continuous Improvement Cycle</span></h2>
+                    <h2><span style="color: #e6bb73;">Continuous Improvement Cycle</span></h2>
                     <p><img decoding="async" class="alignnone wp-image-4190 size-full"
-                            src="https://banksia.eduworks.com.au/wp-content/uploads/Banksia-SD-FC2.jpg" alt=""
+                            src="https://Lia College.eduworks.com.au/wp-content/uploads/Lia College-SD-FC2.jpg" alt=""
                             width="985" height="703"
-                            srcset="https://banksia.eduworks.com.au/wp-content/uploads/Banksia-SD-FC2.jpg 985w, https://banksia.eduworks.com.au/wp-content/uploads/Banksia-SD-FC2-980x699.jpg 980w, https://banksia.eduworks.com.au/wp-content/uploads/Banksia-SD-FC2-480x343.jpg 480w"
+                            srcset="https://Lia College.eduworks.com.au/wp-content/uploads/Lia College-SD-FC2.jpg 985w, https://Lia College.eduworks.com.au/wp-content/uploads/Lia College-SD-FC2-980x699.jpg 980w, https://Lia College.eduworks.com.au/wp-content/uploads/Lia College-SD-FC2-480x343.jpg 480w"
                             sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) 985px, 100vw">
                     </p>
                     <ul>

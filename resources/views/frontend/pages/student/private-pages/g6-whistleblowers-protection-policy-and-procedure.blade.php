@@ -19,37 +19,37 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Whistleblowers Protection Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(G6)</span></h1>
+                    <h1><span style="color: #132b4e;">Whistleblowers Protection Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(G6)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The purpose of the Whistleblowers Protection Policy at Banksia Care is to encourage the reporting of
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The purpose of the Whistleblowers Protection Policy at Lia College is to encourage the reporting of
                         any actual or suspected illegal or undesirable conduct through a mechanism that ensures staff can do
                         so without any fear of repercussion.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Banksia
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
+                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
                         Care.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
-                    <p>Banksia Care appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
+                    <p>Lia College appreciates the safety, dignity and wellbeing of everyone in our care is paramount to
                         our core values and objectives. We also acknowledge that as far as reasonably practicable, we are
                         responsible and accountable for the safety of all residents as well as anyone who is attending,
-                        visiting or providing services to Banksia Care. We, therefore, will not tolerate any person being
+                        visiting or providing services to Lia College. We, therefore, will not tolerate any person being
                         bullied, victimised, scrutinised or the subject of any detriment if they have spoken up out of
                         genuine concern.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Accountability Principles 2014</li>
                         <li>Information Principles 2014</li>
                         <li>Aged Care Act 1997</li>
                         <li>Aged Care Quality and Safety Commission Act 2018</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <p>All decision-making about our Whistleblowers Protection Procedure is carried out in accordance with
                         the principles of our Whistleblowers Protection Policy.</p>
-                    <p>Banksia Care is also informed by the newly formed Whistleblower Law, which was enacted on 1 July
+                    <p>Lia College is also informed by the newly formed Whistleblower Law, which was enacted on 1 July
                         2019.</p>
                     <ul>
                         <li>Enhanced whistleblower protections: From 1 July 2019, all companies must comply with enhanced
@@ -60,7 +60,7 @@
                             Failure to comply with this requirement is a criminal offence, and significant penalties may
                             apply.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <thead>
@@ -94,7 +94,7 @@
                         </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Mandatory Reporting Policy and Procedure</li>
                         <li>Risk Management Policy and Procedure</li>
@@ -103,13 +103,13 @@
                         <li>Staff Health and Wellbeing Policy and Procedure</li>
                         <li>Consumer Needs Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Whistleblowers
-                        Protection Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Whistleblowers
+                        Protection Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -138,22 +138,22 @@
                         </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Community Engagement Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Community Engagement Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">Management will ensure the following:</span></h3>
                     <ul>
                         <li>Appoint a Whistleblower Protection Officer (WPO) who will have specific responsibilities under
                             this policy.</li>
-                        <li>Ensure that all persons at Banksia who identify suspected or actual misconduct are encouraged to
+                        <li>Ensure that all persons at Lia College who identify suspected or actual misconduct are encouraged to
                             disclose in confidence, knowing they will be supported and protected.</li>
-                        <li>Deter any misconduct through Banksia Care’s risk management framework.</li>
+                        <li>Deter any misconduct through Lia College’s risk management framework.</li>
                         <li>Be proactive in identifying any potential hazards or risks and implement control measures.</li>
-                        <li>Ensure Banksia Care complies with all State guidelines and regulatory requirements concerning
+                        <li>Ensure Lia College complies with all State guidelines and regulatory requirements concerning
                             the Whistleblower Law 2019.</li>
                         <li>Attend any professional training or leadership workshops related to whistleblowing to ensure
                             staff are aware and informed of industry changes and trends.</li>

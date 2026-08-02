@@ -20,26 +20,26 @@
 
 
 
-                    <h1><span style="color: #006d5d;">Personal Support of Clients Policy and Procedure</span></h1>
-                    <h1><span style="color: #006d5d;">(PC8)</span></h1>
+                    <h1><span style="color: #132b4e;">Personal Support of Clients Policy and Procedure</span></h1>
+                    <h1><span style="color: #132b4e;">(PC8)</span></h1>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Statement</span></h2>
-                    <p>The Personal Support of Clients Policy and Procedure at Banksia aims to ensure the safety, wellbeing,
+                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
+                    <p>The Personal Support of Clients Policy and Procedure at Lia College aims to ensure the safety, wellbeing,
                         dignity and protection of our staff, clients and residents. The policy is managed in accordance with
                         professional standards, community expectations and legal requirements.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Scope</span></h2>
+                    <h2><span style="color: #e6bb73;">Scope</span></h2>
                     <p>This policy applies to clients, residents, staff, management, medical professionals and visitors of
-                        Banksia Care.</p>
+                        Lia College.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Background</span></h2>
+                    <h2><span style="color: #e6bb73;">Background</span></h2>
                     <p>Assisting patients with basic hygiene and eating not only creates a personal connection between
-                        Banksia Care staff and clients but also is vital to maintaining client health. Banksia Care staff
-                        has to balance the correct amount of grooming. At Banksia Care, clients are supported to assist with
+                        Lia College staff and clients but also is vital to maintaining client health. Lia College staff
+                        has to balance the correct amount of grooming. At Lia College, clients are supported to assist with
                         their own hygiene, grooming and eating routines to the best of their ability. Assistance may be
                         needed for tasks such as shaving, brushing and styling hair, oral care, and bathing.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Legislative Requirements</span></h2>
+                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
                     <ul>
                         <li>Work Health and Safety Act 2011</li>
                         <li>Work Health and Safety Regulations 2011</li>
@@ -51,16 +51,16 @@
                         <li>Age Discrimination Act 1992</li>
                         <li>Australian Human Rights Commission Act 1986</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Principles that Inform our Policy</span></h2>
+                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
                     <ul>
                         <li>All decision-making about our Personal Support for Clients Procedure is carried out in
                             accordance with the principles of our Personal Support for Clients Policy.</li>
                         <li>This Policy provides guidance for all managers and staff involved in personal support to ensure
                             a safe and healthy working environment.</li>
-                        <li>Banksia Care respects that duty under the Act and Legislation cannot be transferred to another
+                        <li>Lia College respects that duty under the Act and Legislation cannot be transferred to another
                             entity or person.</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Key Terms</span></h2>
+                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <thead>
@@ -99,7 +99,7 @@
                         </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Links to other Policies and Documents</span></h2>
+                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
                     <ul>
                         <li>Palliative Care Policy and Procedure</li>
                         <li>Manual Handling Policy and Procedure</li>
@@ -107,13 +107,13 @@
                         <li>Consumer Needs Policy and Procedure</li>
                         <li>Individualised Plans Policy and Procedure</li>
                     </ul>
-                    <h2><span style="color: #da591f;">Induction and Ongoing Training</span></h2>
-                    <p>Banksia Care requires that induction and ongoing training of all staff include the Personal Support
-                        of Clients Policy to enable staff to fulfil their roles effectively. In addition, Banksia Care
+                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
+                    <p>Lia College requires that induction and ongoing training of all staff include the Personal Support
+                        of Clients Policy to enable staff to fulfil their roles effectively. In addition, Lia College
                         promotes information sharing at staff meetings, sharing of information received from industry trends
                         or changes in legislation, and in consultation at policy review sessions.</p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Policy Created/Reviewed</span></h2>
+                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered mb-0" style="min-width: 760px;">
                             <tbody>
@@ -142,12 +142,12 @@
                         </table>
                     </div>
                     <p>&nbsp;</p>
-                    <h2><span style="color: #da591f;">Monitoring, Evaluation and Review</span></h2>
+                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
                     <p>This policy will be reviewed annually or on the occurrence of any relevant legislative change.
-                        Management of Banksia Care will conduct reviews in consultation with educators at staff meetings.
+                        Management of Lia College will conduct reviews in consultation with educators at staff meetings.
                     </p>
                     <ul></ul>
-                    <h2><span style="color: #da591f;">Personal Support for Clients Procedure</span></h2>
+                    <h2><span style="color: #e6bb73;">Personal Support for Clients Procedure</span></h2>
                     <ul></ul>
                     <h3><span style="color: #fcb53b;">All staff will ensure the following:</span></h3>
                     <ul>
@@ -176,7 +176,7 @@
                             favourite care staff).</li>
                         <li>Re-attend with alternative care staff.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">When preparing a client for a bath, Banksia Care staff will ensure the
+                    <h3><span style="color: #fcb53b;">When preparing a client for a bath, Lia College staff will ensure the
                             following:</span></h3>
                     <ul>
                         <li>Check the clients’ care plan to ensure which style of bathing is appropriate for them.</li>
@@ -190,7 +190,7 @@
                         <li>Ensure the client is safely in the bed, so they do not fall out during the bathing process.</li>
                         <li>Always wear protective gloves.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">When giving a client a bath in bed, Banksia Care staff will ensure the
+                    <h3><span style="color: #fcb53b;">When giving a client a bath in bed, Lia College staff will ensure the
                             following:</span></h3>
                     <ul>
                         <li>Explain to the client what they are about to do, and throughout the bathing, keep the client
@@ -220,7 +220,7 @@
                         <li>Remove the towels and replace the top sheet at the same time.</li>
                         <li>Change the water. Wash the hair with ‘no-rinse’ or dry shampoo.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">After bathing a client, Banksia Care staff will ensure the
+                    <h3><span style="color: #fcb53b;">After bathing a client, Lia College staff will ensure the
                             following:</span></h3>
                     <ul>
                         <li>Dress the resident, supporting them to do as much themselves as possible.</li>
@@ -232,7 +232,7 @@
                         <li>Wash their hands.</li>
                         <li>Complete documentation.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">When shaving a client with an electric shaver, Banksia staff will
+                    <h3><span style="color: #fcb53b;">When shaving a client with an electric shaver, Lia College staff will
                             ensure the following:</span></h3>
                     <ul>
                         <li>Wash and towel dry the area being shaved.</li>
@@ -242,7 +242,7 @@
                         <li>Apply moisturiser or aftershave if the client requests it.</li>
                         <li>Clean the shaver according to the directions on the package.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">When shaving a client with a standard razor, Banksia Care staff will
+                    <h3><span style="color: #fcb53b;">When shaving a client with a standard razor, Lia College staff will
                             ensure the following:</span></h3>
                     <ul>
                         <li>Place supplies in a spot that’s easy Wash the face with warm water to soften the hair.</li>
@@ -255,7 +255,7 @@
                         <li>Apply moisturiser or aftershave if the client requests it.</li>
                         <li>Rinse the razor well before storing it.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">When dressing and undressing a client, Banksia Care staff will ensure
+                    <h3><span style="color: #fcb53b;">When dressing and undressing a client, Lia College staff will ensure
                             the following:</span></h3>
                     <ul>
                         <li>Wash hands and observe standard precautions as necessary.</li>
@@ -265,7 +265,7 @@
                         <li>Explain the procedure.</li>
                         <li>Provide for privacy.</li>
                     </ul>
-                    <h3><span style="color: #fcb53b;">When removing and putting on clothing on a client, Banksia Care staff
+                    <h3><span style="color: #fcb53b;">When removing and putting on clothing on a client, Lia College staff
                             will ensure the following:</span></h3>
                     <ul>
                         <li>Gently lift the client’s head and shoulders and gather the top and bottom of the garment
@@ -399,7 +399,7 @@
                             every meal. Clients are provided with custom cutlery, plates, bowls, plate guards, nonslip trays
                             and drinking aids to support them.</li>
                         <li>Staff observe food service policies and procedures to ensure safe food preparation, handling and
-                            storage for meals supplied by Banksia Care and food and drink brought in by family and friends.
+                            storage for meals supplied by Lia College and food and drink brought in by family and friends.
                         </li>
                         <li>Clients, their families and carers have access to beverages, water and snacks between meals to
                             increase independence, comfort and wellbeing.</li>
