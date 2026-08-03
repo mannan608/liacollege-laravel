@@ -53,9 +53,7 @@ class StudentController extends Controller
 
         // return $enrollments;
 
-        return view(
-            'backend.pages.students.index',
-            compact('enrollments')
+        return view('backend.pages.students.index',compact('enrollments')
         );
     }
 

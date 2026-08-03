@@ -98,10 +98,6 @@
                                             </option>
                                         @endforeach
                                     </select>
-
-                                    <div class="text-xs text-gray-400">
-                                        Select the role for this student in the course.
-                                    </div>
                                 </form>
                             @else
                                 <span class="text-xs text-gray-400">No course</span>
