@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class CoursePermissionRole extends Model
 {
+    protected $table = 'course_permission_roles';
+
     protected $fillable = ['course_id', 'name', 'description', 'is_full_access'];
 
-    // Allow JSON casting for future permissions
     protected $casts = [
         'is_full_access' => 'boolean',
     ];
@@ -19,13 +20,18 @@ class CoursePermissionRole extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function accessRules()
+    public function permissions()
     {
-        return $this->hasMany(CoursePermissions::class, 'permission_role_id');
+        return $this->hasMany(CoursePermissions::class, 'course_permission_role_id');
     }
 
-      public function permissions()
-{
-    return $this->hasMany(CoursePermissions::class);
-}
+    public function accessRules()
+    {
+        return $this->permissions();
+    }
+
+    public function isFullAccess(): bool
+    {
+        return (bool) $this->is_full_access;
+    }
 }

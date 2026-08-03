@@ -13,6 +13,7 @@ class Enrollment extends Model
     protected $fillable = [
         'student_id',
         'course_slot_id',
+        'course_permission_role_id',
 
         'status',
 
@@ -68,6 +69,11 @@ class Enrollment extends Model
         return $this->hasOne(Payment::class)->latestOfMany();
     }
 
+    public function permissionRole()
+    {
+        return $this->belongsTo(CoursePermissionRole::class, 'course_permission_role_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Helpers
@@ -93,9 +99,4 @@ class Enrollment extends Model
     {
         return $this->status === 'cancelled';
     }
-
-    public function permissionRole()
-{
-    return $this->belongsTo(CoursePermissionRole::class, 'permission_role_id');
-}
 }

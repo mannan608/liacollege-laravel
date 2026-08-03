@@ -124,19 +124,19 @@
                                                             </div>
                                                         </div>
 
-                                                        @if (!empty($row->data['file']))
-                                                            <div class="flex items-baseline gap-4 shrink-0">
-                                                                <a href="{{ asset($row->data['file']) }}"
-                                                                    target="_blank"
-                                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
-                                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                                                    </svg>
-                                                                   Download
-                                                                </a>
-                                                            </div>
-                                                        @endif
+                                                                @if (!empty($row->data['file']) && $row->is_downloadable)
+                                                                    <div class="flex items-baseline gap-4 shrink-0">
+                                                                        <a href="{{ route('student.rows.download', $row) }}"
+                                                                            target="_blank"
+                                                                            class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3.5 py-2 text-sm font-medium text-white hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-1">
+                                                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                                                            </svg>
+                                                                           Download
+                                                                        </a>
+                                                                    </div>
+                                                                @endif
                                                     </div>
                                                 </div>
                                             @endforeach

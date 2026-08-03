@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\CourseResources\CourseContentController;
 use App\Http\Controllers\Admin\CourseResources\CourseLessonController;
 use App\Http\Controllers\Admin\CourseResources\CourseLessonResourceController;
+use App\Http\Controllers\Admin\CourseResources\CoursePermissionController;
 use App\Http\Controllers\Admin\CourseResources\CourseModuleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
@@ -84,14 +85,22 @@ Route::prefix('{role}')
         Route::resource('course-categories', CourseCategoryController::class);
         Route::resource('courses', CourseController::class);
 
+        Route::prefix('course-permissions')->name('course-permissions.')->group(function () {
+            Route::get('/', [CoursePermissionController::class, 'index'])->name('course-permissions');
+            Route::get('/create', [CoursePermissionController::class, 'create'])->name('create');
+            Route::post('/', [CoursePermissionController::class, 'store'])->name('store');
+            Route::get('/{permission_role}/edit', [CoursePermissionController::class, 'edit'])->name('edit');
+            Route::put('/{permission_role}', [CoursePermissionController::class, 'update'])->name('update');
+            Route::delete('/{permission_role}', [CoursePermissionController::class, 'destroy'])->name('destroy');
+        });
+
         Route::get('courses/{course}/course-documents', [CourseController::class, 'createDocument'])->name('course-documents');
         Route::post('courses/{course}/course-documents', [CourseController::class, 'storeDocument'])->name('course-documents.store');
         Route::delete('courses/{course}/course-documents', [CourseController::class, 'destroyDocument'])->name('course-documents.delete');
 
-
         // Route::get('students/{student}/course-permission', [StudentController::class, 'coursePermission'])->name('students.course-permission');
-        // Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
         // Route::post('students/{student}/course-permission', [StudentController::class, 'saveCoursePermission'])->name('students.course-permission.store');
+        // Route::get('students/{student}/assignment', [StudentController::class, 'assignment'])->name('students.assignment');
 
         Route::resource('training-centers', TrainingCenterController::class);
 

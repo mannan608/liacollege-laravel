@@ -12,17 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_permissions', function (Blueprint $table) {
-                    $table->id();
-
+            $table->id();
             $table->foreignId('course_permission_role_id')
                 ->constrained('course_permission_roles')
                 ->cascadeOnDelete();
 
-            // Polymorphic relation
             $table->morphs('permissionable');
-            // Creates:
-            // permissionable_type
-            // permissionable_id
 
             $table->timestamps();
 

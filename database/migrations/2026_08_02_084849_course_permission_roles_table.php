@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_full_access')->default(false);
             $table->timestamps();
+
+            $table->unique(['course_id', 'name']);
         });
     }
 

@@ -2,8 +2,6 @@
 
 namespace App\Models\CourseResources;
 
-use App\Models\CourseResources\CourseSection;
-
 use Illuminate\Database\Eloquent\Model;
 
 class CourseSectionRow extends Model
@@ -28,9 +26,6 @@ class CourseSectionRow extends Model
 
     public function permissions()
     {
-        return $this->morphMany(
-            CoursePermissions::class,
-            'permissionable'
-        );
+        return $this->morphMany(CoursePermissions::class, 'permissionable');
     }
 }

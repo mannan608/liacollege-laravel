@@ -90,10 +90,9 @@ public function permissionRoles()
     return $this->hasMany(CourseResources\CoursePermissionRole::class);
 }
 
-public function students()
+    public function students()
 {
-    return $this->belongsToMany(Student::class, 'course_student')
-                ->withPivot('permission_role_id');
+    return $this->belongsToMany(Student::class, 'enroll_course');
 }
 
 public function enrollments()

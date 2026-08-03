@@ -16,6 +16,12 @@ class MenuHelper
                 'route' => 'role.dashboard',
                 'permission' => 'dashboard.view',
             ],
+             [
+                'icon' => 'tables',
+                'name' => 'Course Permission',
+                'route' => 'role.course-permissions',
+                'permission' => 'course-permission.list',
+            ],
             // [
             //     'name' => 'CMS Manage',
             //     'icon' => 'pages',
@@ -93,11 +99,11 @@ class MenuHelper
                         'route' => 'role.course-categories.index',
                         'permission' => 'course-categories.list',
                     ],  
-                       [
+                    [
                         'name' => 'Courses',
                         'route' => 'role.courses.index',
                         'permission' => 'course.list',
-                    ],  
+                    ],                   
                     [
                         'name' => 'Course Slot',
                         'route' => 'role.course-slots.index',
@@ -110,6 +116,7 @@ class MenuHelper
                     ],              
                 ],
             ],
+             
             [
                 'name' => 'Settings',
                 'icon' => 'setting',

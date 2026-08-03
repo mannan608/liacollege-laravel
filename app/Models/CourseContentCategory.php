@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\CourseResources\CourseSection;
+use App\Models\CourseResources\CoursePermissions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -22,6 +23,11 @@ public function sections()
 {
     return $this->hasMany(CourseSection::class)
         ->orderBy('id');
+}
+
+public function permissions()
+{
+    return $this->morphMany(CoursePermissions::class, 'permissionable');
 }
 
 }

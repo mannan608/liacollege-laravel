@@ -4,102 +4,181 @@ namespace App\Http\Controllers\Admin\CourseResources;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseContentCategory;
 use App\Models\CourseResources\CoursePermissionRole;
-use App\Models\CourseResources\CoursePermissions;
-use App\Models\Student;
+use App\Models\CourseResources\CourseSection;
+use App\Models\CourseResources\CourseSectionRow;
+use App\Repositories\Interfaces\CourseRepositoryInterface;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class CoursePermissionController extends Controller
 {
-    // 1. List all roles for a course
-    public function index(Course $course)
-    {
-        $roles = $course->permissionRoles()->withCount('accessRules')->get();
-        return view('admin.courses.permissions.index', compact('course', 'roles'));
+       public function __construct(
+        private readonly CourseRepositoryInterface $courses
+    ) {}
+    // public function index(string $role,Course $course): View
+    // {
+    //     $course->loadCount('coursecontentcategories as categories_count');
+
+    //     $roles = $course->permissionRoles()
+    //         ->withCount('permissions')
+    //         ->latest()
+    //         ->get();
+            
+
+    //     return view('backend.pages.course-permission.permission-role.index', [
+    //         'course' => $course,
+    //         'roles' => $roles,
+    //     ]);
+    // }
+
+        public function index()
+    {      
+        return view('backend.pages.course-permission.permission-role.index', [
+            'courses' =>$this->courses->paginate(),
+        ]);
     }
 
-    // 2. Store a new role
-    public function store(Request $request, Course $course)
+    public function create(string $role,Course $course): View
     {
-        $request->validate([
-            'name' => 'required|string',
-            'description' => 'nullable|string',
-            'is_full_access' => 'boolean',
+        $course->load('coursecontentcategories.sections.rows');
+
+        return view('backend.pages.course-permission.permission-role.create', [
+            'course' => $course,
+            'role' => new CoursePermissionRole([
+                'course_id' => $course->id,
+            ]),
+        ]);
+    }
+
+    public function store(string $role,Request $request, Course $course): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:191'],
+            'description' => ['nullable', 'string'],
+            'is_full_access' => ['sometimes', 'boolean'],
         ]);
 
-        $course->permissionRoles()->create([
-            'name' => $request->name,
-            'description' => $request->description,
+        $role = $course->permissionRoles()->create([
+            'name' => $data['name'],
+            'description' => $data['description'] ?? null,
             'is_full_access' => $request->boolean('is_full_access'),
-            // Default future capabilities
-            'capabilities' => ['can_download' => false, 'can_submit_assignment' => false]
         ]);
 
-        return back()->with('success', 'Role created successfully.');
+        return redirect()
+            ->route('role.course-permissions.index', [
+                'role' => $request->route('role'),
+                'course' => $course->id,
+            ])
+            ->with('success', 'Permission role created successfully.');
     }
 
-    // 3. Edit Role Permissions (Content Tree)
-    public function edit(Course $course, CoursePermissionRole $role)
+    public function edit(string $role,Course $course, CoursePermissionRole $permission_role): View
     {
-        $course->load(['contentCategories.sections.rows']);
-        
-        $allowedCategories = $role->accessRules()->where('entity_type', 'category')->pluck('entity_id')->toArray();
-        $allowedSections = $role->accessRules()->where('entity_type', 'section')->pluck('entity_id')->toArray();
-        $allowedRows = $role->accessRules()->where('entity_type', 'row')->pluck('entity_id')->toArray();
+        $this->ensureCourseRole($course, $permission_role);
 
-        return view('admin.courses.permissions.edit', compact('course', 'role', 'allowedCategories', 'allowedSections', 'allowedRows'));
-    }
+        $course->load('coursecontentcategories.sections.rows');
+        $permission_role->load('permissions');
 
-    // 4. Update Role Permissions (Content Tree)
-    public function update(Request $request, Course $course, CoursePermissionRole $role)
-    {
-        if ($role->is_full_access) {
-            return back()->with('success', 'Full Access role requires no content changes.');
-        }
-
-        $role->accessRules()->delete();
-
-        // Sync Categories
-        if ($request->has('categories')) {
-            foreach ($request->categories as $id) {
-                CoursePermissions::create(['permission_role_id' => $role->id, 'entity_type' => 'category', 'entity_id' => $id]);
-            }
-        }
-        // Sync Sections
-        if ($request->has('sections')) {
-            foreach ($request->sections as $id) {
-                CoursePermissions::create(['permission_role_id' => $role->id, 'entity_type' => 'section', 'entity_id' => $id]);
-            }
-        }
-        // Sync Rows
-        if ($request->has('rows')) {
-            foreach ($request->rows as $id) {
-                CoursePermissions::create(['permission_role_id' => $role->id, 'entity_type' => 'row', 'entity_id' => $id]);
-            }
-        }
-
-        return redirect()->route('backend.courses.permissions.index', $course)->with('success', 'Permissions updated.');
-    }
-
-    // 5. Update Future Capabilities (Downloads, Submissions)
-    public function updateCapabilities(Request $request, Course $course, CoursePermissionRole $role)
-    {
-        $role->update([
-            'capabilities' => $request->only(['can_download', 'can_submit_assignment'])
+        return view('backend.pages.course-permission.permission-role.edit', [
+            'course' => $course,
+            'role' => $permission_role,
+            'selectedCategories' => $this->selectedIds($permission_role, CourseContentCategory::class),
+            'selectedSections' => $this->selectedIds($permission_role, CourseSection::class),
+            'selectedRows' => $this->selectedIds($permission_role, CourseSectionRow::class),
         ]);
-        return back()->with('success', 'Capabilities updated.');
     }
 
-    // 6. Assign Role to Student
-    public function assignStudent(Request $request, Course $course, Student $student)
+    public function update(string $role, Request $request, Course $course, CoursePermissionRole $permission_role): RedirectResponse
     {
-        $request->validate(['permission_role_id' => 'nullable|exists:course_permission_roles,id']);
+        $this->ensureCourseRole($course, $permission_role);
 
-        // Update pivot table
-        $course->students()->updateExistingPivot($student->id, [
-            'permission_role_id' => $request->permission_role_id
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:191'],
+            'description' => ['nullable', 'string'],
+            'is_full_access' => ['sometimes', 'boolean'],
+            'categories' => ['nullable', 'array'],
+            'categories.*' => ['integer', 'exists:course_content_categories,id'],
+            'sections' => ['nullable', 'array'],
+            'sections.*' => ['integer', 'exists:course_sections,id'],
+            'rows' => ['nullable', 'array'],
+            'rows.*' => ['integer', 'exists:course_section_rows,id'],
         ]);
 
-        return back()->with('success', 'Student role updated.');
+        DB::transaction(function () use ($request, $permission_role, $data): void {
+            $permission_role->update([
+                'name' => $data['name'],
+                'description' => $data['description'] ?? null,
+                'is_full_access' => $request->boolean('is_full_access'),
+            ]);
+
+            $permission_role->permissions()->delete();
+
+            if ($permission_role->isFullAccess()) {
+                return;
+            }
+
+            $this->syncPermissions($permission_role, $data);
+        });
+
+        return redirect()
+            ->route('role.course-permissions.edit', [
+                'role' => $request->route('role'),
+                'course' => $course->id,
+                'permission_role' => $permission_role->id,
+            ])
+            ->with('success', 'Permission role updated successfully.');
+    }
+
+    public function destroy(string $role, Request $request, Course $course, CoursePermissionRole $permission_role): RedirectResponse
+    {
+        $this->ensureCourseRole($course, $permission_role);
+
+        $permission_role->delete();
+
+        return redirect()
+            ->route('role.course-permissions.index', [
+                'role' => $request->route('role'),
+                'course' => $course->id,
+            ])
+            ->with('success', 'Permission role deleted successfully.');
+    }
+
+    private function ensureCourseRole(Course $course, CoursePermissionRole $permission_role): void
+    {
+        abort_unless((int) $permission_role->course_id === (int) $course->id, 404);
+    }
+
+    private function selectedIds(CoursePermissionRole $role, string $modelClass): array
+    {
+        return $role->permissions()
+            ->where('permissionable_type', $modelClass)
+            ->pluck('permissionable_id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+    }
+
+    private function syncPermissions(CoursePermissionRole $role, array $data): void
+    {
+        foreach ($data['categories'] ?? [] as $categoryId) {
+            CourseContentCategory::find($categoryId)?->permissions()->create([
+                'course_permission_role_id' => $role->id,
+            ]);
+        }
+
+        foreach ($data['sections'] ?? [] as $sectionId) {
+            CourseSection::find($sectionId)?->permissions()->create([
+                'course_permission_role_id' => $role->id,
+            ]);
+        }
+
+        foreach ($data['rows'] ?? [] as $rowId) {
+            CourseSectionRow::find($rowId)?->permissions()->create([
+                'course_permission_role_id' => $role->id,
+            ]);
+        }
     }
 }

@@ -184,6 +184,13 @@ class RolePermissionSeeder extends Seeder
             'help.contact.edit',
             'help.contact.delete',
 
+            // Course Permission & Role Management
+            'course-permission.list',
+            'course-permission.create',
+            'course-permission.view',
+            'course-permission.edit',
+            'course-permission.delete',
+
 
         ];
 
