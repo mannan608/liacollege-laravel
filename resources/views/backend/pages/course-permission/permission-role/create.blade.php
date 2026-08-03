@@ -18,7 +18,7 @@
                     <div>
                         <label class="mb-2 block text-sm font-medium text-slate-700">Role Name</label>
                         <input type="text" name="name" value="{{ old('name') }}"
-                            class="w-full rounded-xl border-slate-300 focus:border-brand-500 focus:ring-brand-500"
+                            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                             placeholder="Full Access">
                         @error('name')
                             <p class="mt-1 text-sm text-rose-600">{{ $message }}</p>
@@ -40,7 +40,7 @@
                 <div>
                     <label class="mb-2 block text-sm font-medium text-slate-700">Description</label>
                     <textarea name="description" rows="4"
-                        class="w-full rounded-xl border-slate-300 focus:border-brand-500 focus:ring-brand-500"
+                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         placeholder="Short note for admin use">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="mt-1 text-sm text-rose-600">{{ $message }}</p>

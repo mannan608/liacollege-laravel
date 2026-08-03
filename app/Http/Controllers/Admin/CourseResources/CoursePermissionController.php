@@ -27,18 +27,9 @@ public function index(string $role, ?Course $course = null)
         ->latest()
         ->paginate(20);
 
-    // $roles = Role::query()
-    //     ->latest()
-    //     ->get();
-
-    // dd($courses);
-
-    return $courses;
-
     return view('backend.pages.course-permission.permission-role.index', [
         
         'courses' => $courses,
-        // 'roles'   => $roles,
     ]);
 }
 
@@ -134,14 +125,9 @@ public function index(string $role, ?Course $course = null)
             }
 
             $this->syncPermissions($permission_role, $data);
-        });
+        });     
 
-        return redirect()
-            ->route('role.course-permissions.edit', [
-                'course' => $course->id,
-                'permission_role' => $permission_role->id,
-            ])
-            ->with('success', 'Permission role updated successfully.');
+        return redirect()->to(role_route('role.course-permissions.index',['course' => $course->id]))->with('success', "Permission role updated successfully.");
     }
 
     public function destroy(string $role, Request $request, Course $course, CoursePermissionRole $permission_role): RedirectResponse
