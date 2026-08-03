@@ -16,10 +16,10 @@ class MenuHelper
                 'route' => 'role.dashboard',
                 'permission' => 'dashboard.view',
             ],
-             [
+            [
                 'icon' => 'tables',
                 'name' => 'Course Permission',
-                'route' => 'role.course-permissions',
+                'route' => 'role.course-permissions.index',
                 'permission' => 'course-permission.list',
             ],
             // [

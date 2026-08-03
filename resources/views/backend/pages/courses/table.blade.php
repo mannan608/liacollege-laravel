@@ -138,10 +138,10 @@
                                         class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
                                         Study Meterial
                                     </a>
-                                    {{-- <a :href="courseBaseUrl + '/course-permissions'"
+                                    <a :href="courseBaseUrl.replace('/courses', '/course-permissions') + '/' + row.id"
                                         class="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white">
                                         Permission Roles
-                                    </a> --}}
+                                    </a>
                                 </div>
                             </td>
                             <td class="px-5 py-4 text-sm">

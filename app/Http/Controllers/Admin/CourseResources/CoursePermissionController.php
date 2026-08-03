@@ -16,33 +16,33 @@ use Illuminate\View\View;
 
 class CoursePermissionController extends Controller
 {
-       public function __construct(
+    public function __construct(
         private readonly CourseRepositoryInterface $courses
     ) {}
-    // public function index(string $role,Course $course): View
-    // {
-    //     $course->loadCount('coursecontentcategories as categories_count');
 
-    //     $roles = $course->permissionRoles()
-    //         ->withCount('permissions')
-    //         ->latest()
-    //         ->get();
-            
+public function index(string $role, ?Course $course = null)
+{
+    $courses = Course::query()
+        ->with('permissionRoles')
+        ->latest()
+        ->paginate(20);
 
-    //     return view('backend.pages.course-permission.permission-role.index', [
-    //         'course' => $course,
-    //         'roles' => $roles,
-    //     ]);
-    // }
+    // $roles = Role::query()
+    //     ->latest()
+    //     ->get();
 
-        public function index()
-    {      
-        return view('backend.pages.course-permission.permission-role.index', [
-            'courses' =>$this->courses->paginate(),
-        ]);
-    }
+    // dd($courses);
 
-    public function create(string $role,Course $course): View
+    return $courses;
+
+    return view('backend.pages.course-permission.permission-role.index', [
+        
+        'courses' => $courses,
+        // 'roles'   => $roles,
+    ]);
+}
+
+    public function create(string $role, Course $course): View
     {
         $course->load('coursecontentcategories.sections.rows');
 
@@ -51,32 +51,44 @@ class CoursePermissionController extends Controller
             'role' => new CoursePermissionRole([
                 'course_id' => $course->id,
             ]),
+            'selectedCategories' => [],
+            'selectedSections' => [],
+            'selectedRows' => [],
         ]);
     }
 
-    public function store(string $role,Request $request, Course $course): RedirectResponse
+    public function store(string $role, Request $request, Course $course): RedirectResponse
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:191'],
             'description' => ['nullable', 'string'],
             'is_full_access' => ['sometimes', 'boolean'],
+            'categories' => ['nullable', 'array'],
+            'categories.*' => ['integer', 'exists:course_content_categories,id'],
+            'sections' => ['nullable', 'array'],
+            'sections.*' => ['integer', 'exists:course_sections,id'],
+            'rows' => ['nullable', 'array'],
+            'rows.*' => ['integer', 'exists:course_section_rows,id'],
         ]);
 
-        $role = $course->permissionRoles()->create([
-            'name' => $data['name'],
-            'description' => $data['description'] ?? null,
-            'is_full_access' => $request->boolean('is_full_access'),
-        ]);
+        $permissionRole = DB::transaction(function () use ($course, $request, $data) {
+            $permissionRole = $course->permissionRoles()->create([
+                'name' => $data['name'],
+                'description' => $data['description'] ?? null,
+                'is_full_access' => $request->boolean('is_full_access'),
+            ]);
 
-        return redirect()
-            ->route('role.course-permissions.index', [
-                'role' => $request->route('role'),
-                'course' => $course->id,
-            ])
-            ->with('success', 'Permission role created successfully.');
+            if (! $permissionRole->isFullAccess()) {
+                $this->syncPermissions($permissionRole, $data);
+            }
+
+            return $permissionRole;
+        });
+
+        return redirect()->to(role_route('role.course-permissions.index',['course' => $course->id]))->with('success', "Permission role created successfully.");
     }
 
-    public function edit(string $role,Course $course, CoursePermissionRole $permission_role): View
+    public function edit(string $role, Course $course, CoursePermissionRole $permission_role): View
     {
         $this->ensureCourseRole($course, $permission_role);
 
@@ -126,7 +138,6 @@ class CoursePermissionController extends Controller
 
         return redirect()
             ->route('role.course-permissions.edit', [
-                'role' => $request->route('role'),
                 'course' => $course->id,
                 'permission_role' => $permission_role->id,
             ])
@@ -141,7 +152,6 @@ class CoursePermissionController extends Controller
 
         return redirect()
             ->route('role.course-permissions.index', [
-                'role' => $request->route('role'),
                 'course' => $course->id,
             ])
             ->with('success', 'Permission role deleted successfully.');
