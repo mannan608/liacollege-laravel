@@ -16,6 +16,7 @@ class MenuHelper
                 'route' => 'role.dashboard',
                 'permission' => 'dashboard.view',
             ],
+            
             // [
             //     'name' => 'CMS Manage',
             //     'icon' => 'pages',
@@ -93,11 +94,11 @@ class MenuHelper
                         'route' => 'role.course-categories.index',
                         'permission' => 'course-categories.list',
                     ],  
-                       [
+                    [
                         'name' => 'Courses',
                         'route' => 'role.courses.index',
                         'permission' => 'course.list',
-                    ],  
+                    ],                   
                     [
                         'name' => 'Course Slot',
                         'route' => 'role.course-slots.index',
@@ -110,6 +111,13 @@ class MenuHelper
                     ],              
                 ],
             ],
+            [
+                'icon' => 'content-lock',
+                'name' => 'Course Permission',
+                'route' => 'role.course-permissions.index',
+                'permission' => 'course-permission.list',
+            ],
+             
             [
                 'name' => 'Settings',
                 'icon' => 'setting',
@@ -271,6 +279,12 @@ class MenuHelper
                             fill="currentColor"
                         />
                         </svg>',
+                        'content-lock'=>'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500">
+    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <rect x="8" y="13" width="8" height="6" rx="1"/>
+    <path d="M10 13V11a2 2 0 0 1 4 0v2"/>
+</svg>'
         ];
 
         return $icons[$iconName] ?? '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>';

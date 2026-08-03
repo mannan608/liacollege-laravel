@@ -70,7 +70,6 @@ class UserRepository implements UserRepositoryInterface
 
             if ($user->student) {
                 $user->student->courses()->detach();
-                $user->student->coursePermissions()->delete();
                 $user->student->assignmentSubmissions()->delete();
                 $user->student->forceDelete();
             }

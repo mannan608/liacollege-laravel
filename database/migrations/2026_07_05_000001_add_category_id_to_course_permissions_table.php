@@ -11,13 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('course_permissions', function (Blueprint $table) {
-            $table->foreignId('category_id')
-                ->nullable()
-                ->after('course_id')
-                ->constrained('course_categories')
-                ->nullOnDelete();
-        });
     }
 
     /**
@@ -25,8 +18,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('course_permissions', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('category_id');
-        });
     }
 };

@@ -9,25 +9,31 @@ use App\Models\CourseContentCategory;
 use App\Models\CourseResources\Module;
 use App\Models\Document;
 use App\Models\Student;
+use App\Services\CoursePermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 class CourseController extends Controller
 {
+    public function __construct(
+        private readonly CoursePermissionService $coursePermissionService,
+    ) {}
 
   public function index(Request $request)
 {
      $student = auth()->user()->student;
 
         $enrollments = $student->enrollments()->with(['slot', 'slot.course'])->latest()->get();
-
-        $courseContentModule = CourseContentCategory::all();
+        $course = $enrollments->first()?->slot?->course;
+        $courseContentModule = $course
+            ? $this->coursePermissionService->filterCourseContentForStudent($course, $student)
+            : collect();
         $courseQuizModule = Module::all();
 
 
         // return $courseQuizModule;
-    return view('student.course.index', compact('enrollments','courseContentModule','courseQuizModule'));
+    return view('student.course.index', compact('enrollments','course','courseContentModule','courseQuizModule'));
 }
 
 
@@ -35,7 +41,7 @@ class CourseController extends Controller
     {
        $course->load('documents');
 
-    $courseContentModule = CourseContentCategory::all();
+    $courseContentModule = $this->coursePermissionService->filterCourseContentForStudent($course, auth()->user()->student);
     $courseQuizModule = Module::all();
 
     $student = Auth::user()->student;
@@ -78,9 +84,10 @@ public function viewlearningDocument(Document $document)
 
         abort_unless($student, 403);
 
-        $course->load([
-            'coursecontentcategories.sections.rows',
-        ]);
+        $course->setRelation(
+            'coursecontentcategories',
+            $this->coursePermissionService->filterCourseContentForStudent($course, $student)
+        );
 
         return view('student.course.module.content.index', [
             'course' => $course,
@@ -94,16 +101,9 @@ public function viewlearningDocument(Document $document)
 
         abort_unless($student, 403);
 
-        // Make sure module/category belongs to this course
-        // abort_unless(
-        //     (int) $module->course_id === (int) $course->id,
-        //     404
-        // );
-
-        // Only this module/category's sections + rows
-        $module->load([
-            'sections.rows',
-        ]);
+        $visibleCategories = $this->coursePermissionService->filterCourseContentForStudent($course, $student);
+        $module = $visibleCategories->firstWhere('id', $module->id);
+        abort_unless($module, 403);
 
         return view('student.course.module.content.show', [
             'course' => $course,

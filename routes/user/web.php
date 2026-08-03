@@ -196,6 +196,10 @@ Route::prefix('student')
         //     ->name('rows.download');
         // Route::get('/course/view/{slug}', [StudentController::class, 'view'])
         //     ->name('rows.view');
+        Route::get('rows/{row}/download', [StudentController::class, 'download'])
+            ->name('rows.download');
+        Route::post('rows/{row}/submit', [StudentController::class, 'assignmentSubmit'])
+            ->name('rows.submit');
 
 
         Route::get('/certificate', [StudentDocumentController::class, 'studentCertificate'])->name('certificate');

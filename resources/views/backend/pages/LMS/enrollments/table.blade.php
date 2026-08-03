@@ -7,6 +7,8 @@
         'cancelled' => 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
         'completed' => 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
     ];
+
+  
 @endphp
 
 <div class="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
@@ -24,6 +26,7 @@
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Approved By
                     </th>
                     <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Upload Document</th>
+                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Assign Permission</th>
 
                     <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Status</th>
                     <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Actions
@@ -72,6 +75,32 @@
                                 </a>
                             @else
                                 <span class="text-xs text-gray-400">No student</span>
+                            @endif
+                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
+                            @if ($enrollment->student && $enrollment->slot?->course)
+                                <form method="POST"
+                                    action="{{ role_route('role.enrollments.update', ['enrollment' => $enrollment]) }}"
+                                    class="space-y-2">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <input type="hidden" name="status" value="{{ $enrollment->status }}">
+
+                                    <select name="course_permission_role_id"
+                                        onchange="this.form.submit()"
+                                        class="min-w-48 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
+                                        <option value="">No role assigned</option>
+                                        @foreach ($enrollment->slot->course->permissionRoles as $permissionRole)
+                                            <option value="{{ $permissionRole->id }}"
+                                                @selected((int) $enrollment->course_permission_role_id === (int) $permissionRole->id)>
+                                                {{ $permissionRole->name }}{{ $permissionRole->is_full_access ? ' - Full Access' : '' }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </form>
+                            @else
+                                <span class="text-xs text-gray-400">No course</span>
                             @endif
                         </td>
                         <td class="px-4 py-4 text-right">

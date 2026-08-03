@@ -33,5 +33,10 @@ public function category()
     {
         return $this->hasMany(CourseSectionRow::class);
     }
+
+    public function permissions()
+    {
+        return $this->morphMany(CoursePermissions::class, 'permissionable');
+    }
   
 }

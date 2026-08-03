@@ -145,7 +145,6 @@ class StudentRepository implements StudentRepositoryInterface
             if ($student) {
                 $student->documents()->delete();
                 $student->courses()->detach();
-                $student->coursePermissions()->delete();
                 $student->assignmentSubmissions()->delete();
 
                 $student->enrollments->each(function (Enrollment $enrollment): void {

@@ -20,6 +20,7 @@ class CourseEnrollmentController extends Controller
                 'id',
                 'student_id',
                 'course_slot_id',
+                'course_permission_role_id',
                 'status',
                 'remarks',
                 'approved_by',
@@ -32,8 +33,10 @@ class CourseEnrollmentController extends Controller
                 'student.user:id,name,email',
                 'slot:id,course_id,training_center_id,title,training_date,start_time,end_time',
                 'slot.course:id,name',
+                'slot.course.permissionRoles:id,course_id,name,is_full_access',
                 'slot.trainingCenter:id,name,city',
                 'approvedBy:id,name',
+                'permissionRole:id,course_id,name,is_full_access',
             ])
             ->when($request->filled('status'), function ($query) use ($request) {
                 $query->where('status', $request->status);
@@ -42,7 +45,9 @@ class CourseEnrollmentController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('backend.pages.LMS.enrollments.index', compact('enrollments'));
+            // resources\views\backend\pages\students\index.blade.php
+
+        return view('backend.pages.students.index', compact('enrollments'));
     }
 
     public function update(Request $request, string $role, Enrollment $enrollment): RedirectResponse
@@ -51,6 +56,7 @@ class CourseEnrollmentController extends Controller
 
         $data = $request->validate([
             'status' => ['required', Rule::in(['pending', 'confirmed', 'cancelled'])],
+            'course_permission_role_id' => ['nullable', 'integer', 'exists:course_permission_roles,id'],
             'remarks' => ['nullable', 'string', 'max:2000'],
         ]);
 
@@ -66,6 +72,8 @@ class CourseEnrollmentController extends Controller
             $update['approved_by'] = null;
             $update['approved_at'] = null;
         }
+
+        $update['course_permission_role_id'] = $data['course_permission_role_id'] ?? $enrollment->course_permission_role_id;
 
         $enrollment->update($update);
 

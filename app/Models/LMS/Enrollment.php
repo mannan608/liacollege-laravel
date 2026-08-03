@@ -2,6 +2,7 @@
 
 namespace App\Models\LMS;
 
+use App\Models\CourseResources\CoursePermissionRole;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Models\User;
@@ -12,6 +13,7 @@ class Enrollment extends Model
     protected $fillable = [
         'student_id',
         'course_slot_id',
+        'course_permission_role_id',
 
         'status',
 
@@ -65,6 +67,11 @@ class Enrollment extends Model
     public function latestPayment()
     {
         return $this->hasOne(Payment::class)->latestOfMany();
+    }
+
+    public function permissionRole()
+    {
+        return $this->belongsTo(CoursePermissionRole::class, 'course_permission_role_id');
     }
 
     /*

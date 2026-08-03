@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Models\CourseResources\CoursePermissions;
 use App\Models\LMS\SlotTeacher;
 use App\Models\QuizModels\Quiz;
 use App\Models\QuizModels\QuizAttempt;
@@ -89,18 +88,6 @@ class User extends Authenticatable
     public function isStudent()
     {
         return $this->student()->exists();
-    }
-
-    public function coursePermissions(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            CoursePermissions::class,
-            Student::class,
-            'user_id',
-            'student_id',
-            'id',
-            'id',
-        );
     }
 
     public function teachingSlots()
