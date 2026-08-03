@@ -25,4 +25,12 @@ class CourseSectionRow extends Model
     {
         return $this->belongsTo(CourseSection::class);
     }
+
+    public function permissions()
+    {
+        return $this->morphMany(
+            CoursePermissions::class,
+            'permissionable'
+        );
+    }
 }

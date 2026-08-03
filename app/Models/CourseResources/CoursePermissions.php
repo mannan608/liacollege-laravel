@@ -10,11 +10,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CoursePermissions extends Model
 {
-protected $fillable = ['permission_role_id', 'entity_type', 'entity_id'];
+    protected $fillable = [
+        'course_permission_role_id',
+        'permissionable_type',
+        'permissionable_id',
+    ];
 
     public function role()
     {
-        return $this->belongsTo(CoursePermissionRole::class, 'permission_role_id');
+        return $this->belongsTo(CoursePermissionRole::class, 'course_permission_role_id');
+    }
+
+    public function permissionable()
+    {
+        return $this->morphTo();
     }
 }
     
