@@ -99,5 +99,9 @@ public function enrollments()
 {
     return $this->hasMany(Enrollment::class);
 }
+public function assignments(): HasMany
+{
+    return $this->hasMany(Assignment::class);
+}
 
 }
