@@ -54,6 +54,7 @@
                 'selectedCategories' => $selectedCategories,
                 'selectedSections' => $selectedSections,
                 'selectedRows' => $selectedRows,
+                'selectedAssignments' => $selectedAssignments,
             ])
 
             <div class="flex items-center gap-3">
