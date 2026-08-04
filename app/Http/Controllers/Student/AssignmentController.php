@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Assignment;
 use App\Models\AssignmentSubmission;
 use App\Models\Course;
+use App\Services\CoursePermissionService;
 use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,6 +16,9 @@ use Illuminate\View\View;
 class AssignmentController extends Controller
 {
      use HandlesFiles;
+       public function __construct(
+        private readonly CoursePermissionService $coursePermissionService,
+    ) {}
     /**
      * Display all assignments with their course.
      */
@@ -40,7 +44,11 @@ public function index()
             }
         ])
         ->latest()
-        ->paginate(15);
+        ->get();
+
+    // Filter by permission
+    $assignments = $this->coursePermissionService
+        ->filterAssignmentsForStudent($assignments, $student);
 
     return view('student.tasks.index', compact('assignments'));
 }

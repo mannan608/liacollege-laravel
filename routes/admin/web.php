@@ -206,13 +206,4 @@ Route::prefix('{role}')
 
         Route::put('students/{student}/assignments/{submission}/grade', [StudentController::class, 'grade'])->name('assignments.submissions.grade');
 
-        // Route::get('assignments/submissions', [AssignmentController::class, 'submitedAssignments'])->name('assignments.submissions.index');
-
-        // Route::get('assignments/{assignment}/submissions', [AssignmentController::class, 'assignmentSubmissions'])->name('assignments.submissions.assignment');
-
-        // Route::get('assignments/{assignment}/submissions/{submission}', [AssignmentController::class, 'showSubmissionAssignment'])->name('assignments.submissions.show');
-
-        // Route::put('assignments/{assignment}/submissions/{submission}/grade', [AssignmentController::class, 'grade'])->name('assignments.submissions.grade');
-
-        // Route::get('assignments/{assignment}/submissions/{submission}/download', [AssignmentController::class, 'download'])->name('assignments.submissions.download');
     });

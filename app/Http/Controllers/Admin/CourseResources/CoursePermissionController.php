@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\CourseResources;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\CourseContentCategory;
 use App\Models\CourseResources\CoursePermissionRole;
@@ -27,6 +28,8 @@ public function index(string $role, ?Course $course = null)
         ->latest()
         ->paginate(20);
 
+    // return  $courses;
+
     return view('backend.pages.course-permission.permission-role.index', [
         
         'courses' => $courses,
@@ -35,7 +38,8 @@ public function index(string $role, ?Course $course = null)
 
     public function create(string $role, Course $course): View
     {
-        $course->load('coursecontentcategories.sections.rows');
+        $course->load('coursecontentcategories.sections.rows','assignments');
+    // return  $course;
 
         return view('backend.pages.course-permission.permission-role.create', [
             'course' => $course,
@@ -45,6 +49,7 @@ public function index(string $role, ?Course $course = null)
             'selectedCategories' => [],
             'selectedSections' => [],
             'selectedRows' => [],
+            'selectedAssignments' => [],
         ]);
     }
 
@@ -60,6 +65,8 @@ public function index(string $role, ?Course $course = null)
             'sections.*' => ['integer', 'exists:course_sections,id'],
             'rows' => ['nullable', 'array'],
             'rows.*' => ['integer', 'exists:course_section_rows,id'],
+            'assignments' => ['nullable', 'array'],
+            'assignments.*' => ['integer', 'exists:assignments,id'],
         ]);
 
         $permissionRole = DB::transaction(function () use ($course, $request, $data) {
@@ -83,7 +90,7 @@ public function index(string $role, ?Course $course = null)
     {
         $this->ensureCourseRole($course, $permission_role);
 
-        $course->load('coursecontentcategories.sections.rows');
+        $course->load('coursecontentcategories.sections.rows', 'assignments');
         $permission_role->load('permissions');
 
         return view('backend.pages.course-permission.permission-role.edit', [
@@ -92,6 +99,7 @@ public function index(string $role, ?Course $course = null)
             'selectedCategories' => $this->selectedIds($permission_role, CourseContentCategory::class),
             'selectedSections' => $this->selectedIds($permission_role, CourseSection::class),
             'selectedRows' => $this->selectedIds($permission_role, CourseSectionRow::class),
+            'selectedAssignments' => $this->selectedIds($permission_role, Assignment::class),
         ]);
     }
 
@@ -109,6 +117,8 @@ public function index(string $role, ?Course $course = null)
             'sections.*' => ['integer', 'exists:course_sections,id'],
             'rows' => ['nullable', 'array'],
             'rows.*' => ['integer', 'exists:course_section_rows,id'],
+            'assignments' => ['nullable', 'array'],
+            'assignments.*' => ['integer', 'exists:assignments,id'],
         ]);
 
         DB::transaction(function () use ($request, $permission_role, $data): void {
@@ -173,6 +183,12 @@ public function index(string $role, ?Course $course = null)
 
         foreach ($data['rows'] ?? [] as $rowId) {
             CourseSectionRow::find($rowId)?->permissions()->create([
+                'course_permission_role_id' => $role->id,
+            ]);
+        }
+
+        foreach ($data['assignments'] ?? [] as $assignmentId) {
+            Assignment::find($assignmentId)?->permissions()->create([
                 'course_permission_role_id' => $role->id,
             ]);
         }

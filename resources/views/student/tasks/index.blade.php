@@ -10,7 +10,7 @@
             </div>
         </div>
         <!-- Stats Bar -->
-        <div class="my-8 grid grid-cols-3 gap-4">
+        {{-- <div class="my-8 grid grid-cols-3 gap-4">
             <div
                 class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
                 <div class="text-3xl font-extrabold text-slate-800">{{ $assignments->total() }}</div>
@@ -18,17 +18,15 @@
             </div>
             <div
                 class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <div class="text-3xl font-extrabold text-amber-500">{{ $assignments->where('status', 'pending')->count() }}
-                </div>
+                <div class="text-3xl font-extrabold text-amber-500">{{ $assignments->where('status', 'pending')->count() }}</div>
                 <div class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">Pending</div>
             </div>
             <div
                 class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <div class="text-3xl font-extrabold text-emerald-500">
-                    {{ $assignments->where('status', 'completed')->count() }}</div>
+                <div class="text-3xl font-extrabold text-emerald-500">{{ $assignments->where('status', 'completed')->count() }}</div>
                 <div class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">Completed</div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Tasks -->
 

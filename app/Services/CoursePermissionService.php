@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\CourseResources\CoursePermissionRole;
 use App\Models\CourseResources\CourseSection;
@@ -88,7 +89,7 @@ class CoursePermissionService
                 return true;
             }
 
-            return $section->rows->contains(fn (CourseSectionRow $row) => in_array($row->id, $allowedRows, true));
+            return $section->rows->contains(fn(CourseSectionRow $row) => in_array($row->id, $allowedRows, true));
         });
     }
 
@@ -114,7 +115,7 @@ class CoursePermissionService
 
         $section->loadMissing('rows');
 
-        return $section->rows->contains(fn (CourseSectionRow $row) => in_array($row->id, $allowedRows, true));
+        return $section->rows->contains(fn(CourseSectionRow $row) => in_array($row->id, $allowedRows, true));
     }
 
     public function canAccessRowWithRole(CoursePermissionRole $role, CourseSectionRow $row): bool
@@ -193,12 +194,49 @@ class CoursePermissionService
             ->values();
     }
 
+    // assignments section
+    public function canAccessAssignment(Student $student, Assignment $assignment): bool
+    {
+        $role = $this->getRoleForStudentCourse($student, $assignment->course);
+
+        return $role
+            ? $this->canAccessAssignmentWithRole($role, $assignment)
+            : false;
+    }
+
+    public function canAccessAssignmentWithRole(
+        CoursePermissionRole $role,
+        Assignment $assignment
+    ): bool {
+        if ($role->isFullAccess()) {
+            return true;
+        }
+
+        $allowedAssignments = $this->rolePermissionIds(
+            $role,
+            Assignment::class
+        );
+
+        return in_array($assignment->id, $allowedAssignments, true);
+    }
+
+    public function filterAssignmentsForStudent(
+        Collection $assignments,
+        Student $student
+    ): Collection {
+        return $assignments->filter(function (Assignment $assignment) use ($student) {
+            return $this->canAccessAssignment($student, $assignment);
+        })->values();
+    }
+
+    // assignments section
+
     public function rolePermissionIds(CoursePermissionRole $role, string $modelClass): array
     {
         return $role->permissions()
             ->where('permissionable_type', $modelClass)
             ->pluck('permissionable_id')
-            ->map(fn ($id) => (int) $id)
+            ->map(fn($id) => (int) $id)
             ->all();
     }
 }
