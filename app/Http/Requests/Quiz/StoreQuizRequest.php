@@ -16,7 +16,9 @@ class StoreQuizRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'lesson_id' => ['nullable','exists:lessons,id'],
+            'course_id' => ['nullable', 'integer', 'exists:courses,id'],
+            'module_id' => ['nullable', 'integer', 'exists:modules,id'],
+            'lesson_id' => ['nullable', 'integer', 'exists:lessons,id'],
             'description' => ['nullable', 'string'],
             'time_limit_minutes' => ['nullable', 'integer', 'min:1', 'max:300'],
             'passing_score' => ['required', 'integer', 'min:0', 'max:100'],

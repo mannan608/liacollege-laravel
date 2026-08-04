@@ -2,7 +2,9 @@
 
 namespace App\Models\QuizModels;
 
+use App\Models\Course;
 use App\Models\CourseResources\Lesson;
+use App\Models\CourseResources\Module;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,11 +16,14 @@ class Quiz extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'course_id',
+        'module_id',
         'lesson_id',
         'user_id',
         'title',
         'description',
         'slug',
+        'type',
         'status',
         'time_limit_minutes',
         'passing_score',
@@ -29,6 +34,9 @@ class Quiz extends Model
     ];
 
     protected $casts = [
+        'course_id' => 'integer',
+        'module_id' => 'integer',
+        'lesson_id' => 'integer',
         'shuffle_questions' => 'boolean',
         'show_correct_answers' => 'boolean',
         'show_explanation' => 'boolean',
@@ -49,10 +57,20 @@ class Quiz extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function module()
+    {
+        return $this->belongsTo(Module::class);
+    }
+
     public function lesson()
-{
-    return $this->belongsTo(Lesson::class);
-}
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 
     public function questions()
     {

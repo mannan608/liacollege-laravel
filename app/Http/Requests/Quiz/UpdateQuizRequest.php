@@ -16,7 +16,9 @@ class UpdateQuizRequest extends FormRequest
     {
        return [
             'title' => ['sometimes', 'required', 'string', 'max:255'],
-            'lesson_id' => ['sometimes', 'exists:lessons,id'],
+            'course_id' => ['sometimes', 'nullable', 'integer', 'exists:courses,id'],
+            'module_id' => ['sometimes', 'nullable', 'integer', 'exists:modules,id'],
+            'lesson_id' => ['sometimes', 'nullable', 'integer', 'exists:lessons,id'],
             'description' => ['sometimes', 'nullable', 'string'],
             'status' => ['sometimes', 'required', 'in:draft,published,archived'],
             'time_limit_minutes' => ['sometimes', 'nullable', 'integer', 'min:1', 'max:300'],
