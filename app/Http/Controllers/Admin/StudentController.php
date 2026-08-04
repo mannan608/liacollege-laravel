@@ -12,6 +12,8 @@ use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentStoreRequest;
+use App\Models\Assignment;
+use App\Models\AssignmentSubmission;
 use App\Models\Course;
 use Illuminate\View\View;
 use App\Repositories\Interfaces\StudentRepositoryInterface;
@@ -309,6 +311,101 @@ class StudentController extends Controller
             'Document deleted successfully.'
         );
     }
+
+    public function assignments(string $role, Student $student): View
+    {
+        $submissions = AssignmentSubmission::query()
+            ->with([
+                'assignment.course',
+                'student.user',
+            ])
+            ->where('student_id', $student->id)
+            ->latest('submitted_at')
+            ->paginate(20);
+
+            // return  $submissions;
+
+        return view('backend.pages.students.assignments', compact('submissions', 'student'));
+    }
+
+
+    public function showAssignment( string $role,
+        Student $student,
+        AssignmentSubmission $submission
+    ) {
+        abort_unless(
+            $submission->student_id === $student->id,
+            404
+        );
+
+        $submission->load([
+            'assignment.course',
+            'student.user',
+        ]);
+
+        return view('backend.pages.students.show-assignment',compact(
+                'student',
+                'submission'
+            )
+        );
+    }
+
+    /**
+     * Grade submission.
+     */
+    public function grade(
+      string $role,
+        Student $student,
+        AssignmentSubmission $submission,
+        Request $request
+    ) {
+        abort_unless(
+            $submission->student_id === $student->id,
+            404
+        );
+
+        $assignment = $submission->assignment;
+
+        $validated = $request->validate([
+            'marks' => [
+                'required',
+                'numeric',
+                'min:0',
+                'max:' . $assignment->total_marks,
+            ],
+
+            'feedback' => [
+                'nullable',
+                'string',
+                'max:5000',
+            ],
+        ]);
+
+        $submission->update([
+            'marks' => $validated['marks'],
+            'feedback' => $validated['feedback'] ?? null,
+            'status' => 'graded',
+        ]);
+
+        return redirect()
+            ->route(
+                'role.students.assignments.show',
+                [
+                    'student' => $student,
+                    'submission' => $submission,
+                    'role' => $role
+                ]
+            )
+            ->with(
+                'success',
+                'Assignment graded successfully.'
+            );
+    }
+
+    /**
+     * Download student's submitted file.
+     */
+    
 
    
 }

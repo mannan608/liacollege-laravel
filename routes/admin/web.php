@@ -201,13 +201,18 @@ Route::prefix('{role}')
         Route::delete('assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
         // Route::resource('assignments', AssignmentController::class);
 
+        Route::get('students/{student}/assignments', [StudentController::class, 'assignments'])->name('students.assignments');
+        Route::get('students/{student}/assignments/{submission}', [StudentController::class, 'showAssignment'])->name('students.assignments.show');
 
+        Route::put('students/{student}/assignments/{submission}/grade', [StudentController::class, 'grade'])->name('assignments.submissions.grade');
 
-        Route::get('assignments/{assignment}/submissions',[AssignmentController::class, 'submitedAssignments'])->name('assignments.submissions.index');
+        // Route::get('assignments/submissions', [AssignmentController::class, 'submitedAssignments'])->name('assignments.submissions.index');
 
-        Route::get('assignments/{assignment}/submissions/{submission}',[AssignmentController::class, 'showSubmissionAssignment'])->name('assignments.submissions.show');
+        // Route::get('assignments/{assignment}/submissions', [AssignmentController::class, 'assignmentSubmissions'])->name('assignments.submissions.assignment');
 
-        Route::put('assignments/{assignment}/submissions/{submission}/grade',[AssignmentController::class, 'grade'])->name('assignments.submissions.grade');
+        // Route::get('assignments/{assignment}/submissions/{submission}', [AssignmentController::class, 'showSubmissionAssignment'])->name('assignments.submissions.show');
 
-        Route::get('assignments/{assignment}/submissions/{submission}/download', [AssignmentController::class, 'download'])->name('assignments.submissions.download');
+        // Route::put('assignments/{assignment}/submissions/{submission}/grade', [AssignmentController::class, 'grade'])->name('assignments.submissions.grade');
+
+        // Route::get('assignments/{assignment}/submissions/{submission}/download', [AssignmentController::class, 'download'])->name('assignments.submissions.download');
     });

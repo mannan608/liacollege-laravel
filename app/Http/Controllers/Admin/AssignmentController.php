@@ -257,8 +257,28 @@ class AssignmentController extends Controller
         );
     }  
     
-  public  function submitedAssignments( string $role,Assignment $assignment): View
+    public function submitedAssignments(string $role): View
     {
+        $submissions = AssignmentSubmission::query()
+            ->with([
+                'assignment.course',
+                'student.user',
+            ])
+            ->latest('submitted_at')
+            ->paginate(20);
+
+        return view('backend.pages.assignments.submissions.global',
+            compact('submissions')
+        );
+    }
+
+    /**
+     * Display submissions for one assignment.
+     */
+    public function assignmentSubmissions(
+        string $role,
+        Assignment $assignment
+    ): View {
         $assignment->load('course');
 
         $submissions = $assignment->submissions()

@@ -9,8 +9,7 @@
 
         <a
             href="{{ role_route(
-                'admin.assignments.submissions.index',
-                ['assignment' => $assignment]
+                'role.assignments.submissions.index'
             ) }}"
             class="inline-flex items-center gap-2
                    text-sm font-medium text-slate-500
@@ -200,7 +199,7 @@
 
                         <a
                             href="{{ role_route(
-                                'admin.assignments.submissions.download',
+                                'role.assignments.submissions.download',
                                 [
                                     'assignment' => $assignment,
                                     'submission' => $submission,
@@ -284,7 +283,7 @@
                 <form
                     method="POST"
                     action="{{ role_route(
-                        'admin.assignments.submissions.grade',
+                        'role.assignments.submissions.grade',
                         [
                             'assignment' => $assignment,
                             'submission' => $submission,
