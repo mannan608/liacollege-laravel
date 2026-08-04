@@ -8,9 +8,7 @@
     <div class="mb-6">
 
         <a
-            href="{{ role_route('role.assignments.index', [
-                'course' => $course
-            ]) }}"
+            href="{{ role_route('role.assignments.index') }}"
             class="inline-flex items-center gap-1 text-sm
                    text-gray-500 hover:text-gray-900
                    dark:text-gray-400 dark:hover:text-white mb-4"
@@ -23,8 +21,7 @@
         </h1>
 
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Update assignment for
-            <strong>{{ $course->name }}</strong>.
+            Update assignment
         </p>
 
     </div>
@@ -54,7 +51,6 @@
     <form
         method="POST"
         action="{{ role_route('role.assignments.update', [
-            'course' => $course,
             'assignment' => $assignment,
         ]) }}"
         enctype="multipart/form-data"
@@ -97,8 +93,8 @@
                     class="w-full rounded-lg border border-gray-300
                            dark:border-gray-600 dark:bg-gray-700
                            dark:text-white px-4 py-2.5
-                           focus:ring-2 focus:ring-primary-500
-                           focus:border-primary-500"
+                           focus:ring-2 focus:ring-brand-500
+                           focus:border-brand-500"
                 >
 
             </div>
@@ -122,7 +118,7 @@
                     class="w-full rounded-lg border border-gray-300
                            dark:border-gray-600 dark:bg-gray-700
                            dark:text-white px-4 py-2.5
-                           focus:ring-2 focus:ring-primary-500"
+                           focus:ring-2 focus:ring-brand-500"
                 >{{ old('description', $assignment->description) }}</textarea>
 
             </div>
@@ -146,7 +142,7 @@
                     class="w-full rounded-lg border border-gray-300
                            dark:border-gray-600 dark:bg-gray-700
                            dark:text-white px-4 py-2.5
-                           focus:ring-2 focus:ring-primary-500"
+                           focus:ring-2 focus:ring-brand-500"
                 >{{ old('instructions', $assignment->instructions) }}</textarea>
 
             </div>
@@ -190,7 +186,7 @@
                         class="w-full rounded-lg border border-gray-300
                                dark:border-gray-600 dark:bg-gray-700
                                dark:text-white px-4 py-2.5
-                               focus:ring-2 focus:ring-primary-500"
+                               focus:ring-2 focus:ring-brand-500"
                     >
 
                 </div>
@@ -221,7 +217,7 @@
                         class="w-full rounded-lg border border-gray-300
                                dark:border-gray-600 dark:bg-gray-700
                                dark:text-white px-4 py-2.5
-                               focus:ring-2 focus:ring-primary-500"
+                               focus:ring-2 focus:ring-brand-500"
                     >
 
                 </div>
@@ -376,7 +372,6 @@
 
             <a
                 href="{{ role_route('role.assignments.show', [
-                    'course' => $course,
                     'assignment' => $assignment,
                 ]) }}"
                 class="px-5 py-2.5 rounded-lg
@@ -390,7 +385,7 @@
             <button
                 type="submit"
                 class="px-5 py-2.5 rounded-lg
-                       bg-primary-600 hover:bg-primary-700
+                       bg-brand-600 hover:bg-brand-700
                        text-white text-sm font-medium"
             >
                 Update Assignment

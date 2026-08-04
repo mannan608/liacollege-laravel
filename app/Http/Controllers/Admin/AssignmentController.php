@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Assignment;
+use App\Models\AssignmentSubmission;
 use App\Models\Course;
+use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +14,7 @@ use Illuminate\View\View;
 
 class AssignmentController extends Controller
 {
+    use HandlesFiles;
     /**
      * Display all assignments with their course.
      */
@@ -92,11 +95,12 @@ class AssignmentController extends Controller
             ],
         ]);
 
-        if ($request->hasFile('attachment')) {
-            $validated['attachment'] = $request
-                ->file('attachment')
-                ->store('assignments', 'public');
-        }
+       if ($request->hasFile('attachment')) {
+    $validated['attachment'] = $this->uploadFile(
+        $request->file('attachment'),
+        'assignments'
+    );
+}
 
         $validated['created_by'] = auth()->id();
 
@@ -135,17 +139,13 @@ class AssignmentController extends Controller
      */
     public function edit(
         string $role,
-        Course $course,
         Assignment $assignment
     ): View {
-        $this->ensureAssignmentBelongsToCourse(
-            $course,
-            $assignment
-        );
+       
 
         return view(
             'backend.pages.assignments.edit',
-            compact('course', 'assignment')
+            compact('assignment')
         );
     }
 
@@ -205,23 +205,11 @@ class AssignmentController extends Controller
             ],
         ]);
 
-        if ($request->hasFile('attachment')) {
-
-            if (
-                $assignment->attachment &&
-                Storage::disk('public')->exists(
-                    $assignment->attachment
-                )
-            ) {
-                Storage::disk('public')->delete(
-                    $assignment->attachment
-                );
-            }
-
-            $validated['attachment'] = $request
-                ->file('attachment')
-                ->store('assignments', 'public');
-        }
+        $validated['attachment'] = $this->replaceFile(
+    $request->file('attachment'),
+    $assignment->attachment,
+    'assignments'
+);
 
         $assignment->update($validated);
 
@@ -243,29 +231,11 @@ class AssignmentController extends Controller
             $assignment
         );
 
-        if (
-            $assignment->attachment &&
-            Storage::disk('public')->exists(
-                $assignment->attachment
-            )
-        ) {
-            Storage::disk('public')->delete(
-                $assignment->attachment
-            );
-        }
+        $this->deleteFile($assignment->attachment);
 
         foreach ($assignment->submissions as $submission) {
-            if (
-                $submission->file &&
-                Storage::disk('public')->exists(
-                    $submission->file
-                )
-            ) {
-                Storage::disk('public')->delete(
-                    $submission->file
-                );
-            }
-        }
+    $this->deleteFile($submission->file);
+}
 
         $assignment->delete();
 
@@ -285,5 +255,125 @@ class AssignmentController extends Controller
             $assignment->course_id === $course->id,
             404
         );
+    }  
+    
+  public  function submitedAssignments( string $role,Assignment $assignment): View
+    {
+        $assignment->load('course');
+
+        $submissions = $assignment->submissions()
+            ->with([
+                'student.user',
+            ])
+            ->latest('submitted_at')
+            ->paginate(20);
+
+        return view(
+            'backend.pages.assignments.submissions.index',
+            compact(
+                'assignment',
+                'submissions'
+            )
+        );
     }
+
+     public function showSubmissionAssignment( string $role,
+        Assignment $assignment,
+        AssignmentSubmission $submission
+    ): View {
+        abort_unless(
+            $submission->assignment_id === $assignment->id,
+            404
+        );
+
+        $assignment->load('course');
+
+        $submission->load([
+            'student.user',
+        ]);
+
+        return view(
+            'backend.pages.assignments.submissions.show',
+            compact(
+                'assignment',
+                'submission'
+            )
+        );
+    }
+
+    /**
+     * Grade submission.
+     */
+    public function grade( string $role,
+        Request $request,
+        Assignment $assignment,
+        AssignmentSubmission $submission
+    ): RedirectResponse {
+        abort_unless(
+            $submission->assignment_id === $assignment->id,
+            404
+        );
+
+        $validated = $request->validate([
+            'marks' => [
+                'required',
+                'numeric',
+                'min:0',
+                'max:' . $assignment->total_marks,
+            ],
+
+            'feedback' => [
+                'nullable',
+                'string',
+                'max:5000',
+            ],
+        ]);
+
+        $submission->update([
+            'marks' => $validated['marks'],
+            'feedback' => $validated['feedback'] ?? null,
+            'status' => 'graded',
+        ]);
+
+        return redirect()
+            ->route(
+                'role.assignments.submissions.show',
+                [
+                    'assignment' => $assignment,
+                    'submission' => $submission,
+                ]
+            )
+            ->with(
+                'success',
+                'Submission graded successfully.'
+            );
+    }
+
+    /**
+     * Download student's submitted file.
+     */
+    public function download(
+        string $role,
+        Assignment $assignment,
+        AssignmentSubmission $submission
+    ) {
+        abort_unless(
+            $submission->assignment_id === $assignment->id,
+            404
+        );
+
+        abort_unless(
+            $submission->file &&
+            Storage::disk('public')->exists(
+                $submission->file
+            ),
+            404
+        );
+
+        return Storage::disk('public')->download(
+            $submission->file,
+            basename($submission->file)
+        );
+    }
+
 }

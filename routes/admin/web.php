@@ -192,11 +192,22 @@ Route::prefix('{role}')
 
         Route::post('assignments', [AssignmentController::class, 'store'])->name('assignments.store');
 
-        Route::get('courses/{course}/assignments/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
+        Route::get('assignments/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
 
-        Route::get('courses/{course}/assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignments.edit');
+        Route::get('assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignments.edit');
 
-        Route::put('courses/{course}/assignments/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
+        Route::put('assignments/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
 
-        Route::delete('courses/{course}/assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+        Route::delete('assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+        // Route::resource('assignments', AssignmentController::class);
+
+
+
+        Route::get('assignments/{assignment}/submissions',[AssignmentController::class, 'submitedAssignments'])->name('assignments.submissions.index');
+
+        Route::get('assignments/{assignment}/submissions/{submission}',[AssignmentController::class, 'showSubmissionAssignment'])->name('assignments.submissions.show');
+
+        Route::put('assignments/{assignment}/submissions/{submission}/grade',[AssignmentController::class, 'grade'])->name('assignments.submissions.grade');
+
+        Route::get('assignments/{assignment}/submissions/{submission}/download', [AssignmentController::class, 'download'])->name('assignments.submissions.download');
     });

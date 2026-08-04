@@ -11,7 +11,7 @@
             <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
                 <a
                     href="{{ role_route('role.courses.index') }}"
-                    class="hover:text-primary-600"
+                    class="hover:text-brand-600"
                 >
                     Courses
                 </a>
@@ -33,7 +33,7 @@
         <a
             href="{{ role_route('role.assignments.create') }}"
             class="inline-flex items-center justify-center gap-2 px-4 py-2.5
-                   bg-primary-600 hover:bg-primary-700
+                   bg-brand-600 hover:bg-brand-700
                    text-white text-sm font-medium rounded-lg
                    transition"
         >
@@ -158,7 +158,7 @@
                                 {{-- Course --}}
                                 <td class="px-6 py-4 whitespace-nowrap">
 
-                                    <div class="text-sm font-medium text-primary-600">
+                                    <div class="text-sm font-medium text-brand-600">
                                         {{ $assignment->course?->name ?? 'Unknown course' }}
                                     </div>
 
@@ -262,7 +262,6 @@
 
                                         <a
                                             href="{{ role_route('role.assignments.edit', [
-                                                'course' => $assignment->course_id,
                                                 'assignment' => $assignment,
                                             ]) }}"
                                             class="px-3 py-1.5 text-sm
@@ -356,7 +355,7 @@
                 <a
                     href="{{ role_route('role.assignments.create') }}"
                     class="inline-flex mt-5 px-4 py-2.5
-                           bg-primary-600 hover:bg-primary-700
+                           bg-brand-600 hover:bg-brand-700
                            text-white rounded-lg text-sm font-medium"
                 >
                     Create Assignment

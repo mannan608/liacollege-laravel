@@ -21,8 +21,9 @@ class AssignmentSubmission extends Model
         'status',
     ];
 
-    protected $casts = [
+   protected $casts = [
         'submitted_at' => 'datetime',
+        'marks' => 'decimal:2',
     ];
 
     public function assignment(): BelongsTo

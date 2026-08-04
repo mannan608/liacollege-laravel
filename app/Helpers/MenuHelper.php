@@ -113,7 +113,12 @@ class MenuHelper
                         'name' => 'Assignments',
                         'route' => 'role.assignments.index',
                         'permission' => 'assignment.list',
-                    ],              
+                    ],    
+                    [
+                        'name' => 'Submissions',
+                        'route' => 'role.assignments.submissions.index',
+                        'permission' => 'assignment-submission.list',
+                    ],            
                 ],
             ],
             [

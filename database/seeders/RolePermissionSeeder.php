@@ -200,6 +200,12 @@ class RolePermissionSeeder extends Seeder
             'assignment.status.change',
             'assignment.manage',
 
+            // Assignment Submission
+            'assignment-submission.list',
+            'assignment-submission.view',
+            'assignment-submission.edit',
+            'assignment-submission.delete',
+
 
         ];
 
