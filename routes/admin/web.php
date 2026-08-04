@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AssignmentController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CampusController;
@@ -69,7 +70,7 @@ Route::prefix('{role}')
         Route::resource('students', StudentController::class);
 
         Route::get('/courses/{course}/slots',    [StudentController::class, 'courseSlots'])->name('courses.slots');
-        
+
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', CourseProviderController::class);
@@ -124,16 +125,16 @@ Route::prefix('{role}')
         Route::resource('courses.modules', CourseModuleController::class)->names('modules');
         // course lessons route
         Route::resource('courses.modules.lessons', CourseLessonController::class)->names('lessons');
-      
+
 
         //Quiz Route
         Route::resource('quizzes', QuizController::class);
         Route::post('quizzes/{quiz}/publish', [QuizController::class, 'publish'])->name('quizzes.publish');
         Route::post('quizzes/{quiz}/archive', [QuizController::class, 'archive'])->name('quizzes.archive');
 
-         
 
-       
+
+
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'index'])->name('resources.index');
         Route::get('courses/{course}/modules/{module}/lessons/{lesson}/resources/create', [CourseLessonResourceController::class, 'create'])->name('resources.create');
         Route::post('courses/{course}/modules/{module}/lessons/{lesson}/resources', [CourseLessonResourceController::class, 'store'])->name('resources.store');
@@ -154,7 +155,7 @@ Route::prefix('{role}')
         Route::post('quizzes/{quiz}/questions/reorder', [QuestionController::class, 'reorder'])->name('quizzes.questions.reorder');
 
 
-         // Help Forms Management (Reports, Formal Complaints, Contact Admin Messages)
+        // Help Forms Management (Reports, Formal Complaints, Contact Admin Messages)
         Route::prefix('help')->name('help.')->group(function () {
             // Reports
             Route::get('reports', [HelpFormController::class, 'reportsIndex'])->name('reports.index');
@@ -184,7 +185,34 @@ Route::prefix('{role}')
         Route::delete('students/{student}/documents/{document}', [StudentController::class, 'destroyDocument'])->name('documents.destroy');
 
 
-        
+        // assignment route
+        Route::get('assignments', [AssignmentController::class, 'index'])->name('assignments.index');
 
-        
+        Route::get('assignments/create', [AssignmentController::class, 'create'])->name('assignments.create');
+
+        Route::post('assignments', [AssignmentController::class, 'store'])->name('assignments.store');
+
+        Route::get('assignments/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
+
+        Route::get('assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignments.edit');
+
+        Route::put('assignments/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
+
+        Route::delete('assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+        // Route::resource('assignments', AssignmentController::class);
+
+        Route::get('students/{student}/assignments', [StudentController::class, 'assignments'])->name('students.assignments');
+        Route::get('students/{student}/assignments/{submission}', [StudentController::class, 'showAssignment'])->name('students.assignments.show');
+
+        Route::put('students/{student}/assignments/{submission}/grade', [StudentController::class, 'grade'])->name('assignments.submissions.grade');
+
+        // Route::get('assignments/submissions', [AssignmentController::class, 'submitedAssignments'])->name('assignments.submissions.index');
+
+        // Route::get('assignments/{assignment}/submissions', [AssignmentController::class, 'assignmentSubmissions'])->name('assignments.submissions.assignment');
+
+        // Route::get('assignments/{assignment}/submissions/{submission}', [AssignmentController::class, 'showSubmissionAssignment'])->name('assignments.submissions.show');
+
+        // Route::put('assignments/{assignment}/submissions/{submission}/grade', [AssignmentController::class, 'grade'])->name('assignments.submissions.grade');
+
+        // Route::get('assignments/{assignment}/submissions/{submission}/download', [AssignmentController::class, 'download'])->name('assignments.submissions.download');
     });

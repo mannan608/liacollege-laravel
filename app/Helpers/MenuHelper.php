@@ -108,7 +108,17 @@ class MenuHelper
                         'name' => 'Quizs',
                         'route' => 'role.quizzes.index',
                         'permission' => 'quizzes.list',
-                    ],              
+                    ], 
+                    [
+                        'name' => 'Assignments',
+                        'route' => 'role.assignments.index',
+                        'permission' => 'assignment.list',
+                    ],    
+                    [
+                        'name' => 'Submissions',
+                        'route' => 'role.assignments.submissions.index',
+                        'permission' => 'assignment-submission.list',
+                    ],            
                 ],
             ],
             [

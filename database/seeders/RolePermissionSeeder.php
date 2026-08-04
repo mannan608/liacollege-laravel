@@ -191,6 +191,21 @@ class RolePermissionSeeder extends Seeder
             'course-permission.edit',
             'course-permission.delete',
 
+             // Assignment
+            'assignment.list',
+            'assignment.create',
+            'assignment.view',
+            'assignment.edit',
+            'assignment.delete',
+            'assignment.status.change',
+            'assignment.manage',
+
+            // Assignment Submission
+            'assignment-submission.list',
+            'assignment-submission.view',
+            'assignment-submission.edit',
+            'assignment-submission.delete',
+
 
         ];
 

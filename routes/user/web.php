@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Student\AssignmentController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\CourseResources\CourseLessonController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Student\CourseController;
 use App\Http\Controllers\Student\StudentController;
@@ -130,7 +130,7 @@ Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track
 Route::get('/first-aid', [FrontendController::class, 'firstAid'])
     ->name('firstAid');
 
-    Route::get('/first-aid/{course:slug}', [FrontendController::class, 'firstAidShow'])
+Route::get('/first-aid/{course:slug}', [FrontendController::class, 'firstAidShow'])
     ->name('courses.show');
 
 Route::view(
@@ -240,8 +240,8 @@ Route::prefix('student')
         Route::get('/e-learning-portal/lessons/content/{slug}', [LessonController::class, 'content'])
             ->name('lessons.content');
 
-            Route::post('/e-learning-portal/lessons/{slug}/complete', [LessonController::class, 'complete'])
-    ->name('lessons.complete');
+        Route::post('/e-learning-portal/lessons/{slug}/complete', [LessonController::class, 'complete'])
+            ->name('lessons.complete');
 
 
         // Route::get(
@@ -261,7 +261,7 @@ Route::prefix('student')
         Route::get('/documents/{document}', [StudentDocumentController::class, 'show'])
             ->name('documents.show');
 
-        Route::get('/tasks', [StudentDocumentController::class, 'tasks'])->name('tasks.index');
+
 
         // Route::get('/learning-meterial/{document}/view', [StudentDashboardController::class, 'viewlearningDocument'])->name('learning-document.view');
         Route::get('/billing', [StudentDashboardController::class, 'studentPayment'])->name('student-payment');
@@ -317,4 +317,12 @@ Route::prefix('student')
 
 
         Route::get('/course/view/{slug}', [CourseController::class, 'contentMetarialLinkView'])->name('rows.view');
+
+        Route::get('/tasks', [AssignmentController::class, 'index'])->name('tasks.index');
+
+        Route::get('tasks/{assignment}', [AssignmentController::class, 'show'])->name('tasks.show');
+
+        Route::get('tasks/{assignment}/submit', [AssignmentController::class, 'submit'])->name('tasks.submit');
+
+        Route::post('tasks/{assignment}/submit',[AssignmentController::class, 'store'])->name('tasks.store');
     });

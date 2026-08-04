@@ -2,31 +2,37 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AssignmentSubmission extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
+        'assignment_id',
         'student_id',
-        'course_section_row_id',
         'file',
+        'comment',
+        'submitted_at',
+        'marks',
+        'feedback',
+        'status',
     ];
 
-    protected $casts = [
-        'file' => 'string',
+   protected $casts = [
+        'submitted_at' => 'datetime',
+        'marks' => 'decimal:2',
     ];
 
-    public function student()
+    public function assignment(): BelongsTo
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Assignment::class);
     }
 
-    public function courseSectionRow()
+    public function student(): BelongsTo
     {
-        return $this->belongsTo(
-            CourseSectionRow::class,
-            'course_section_row_id'
-        );
+        return $this->belongsTo(Student::class);
     }
 }

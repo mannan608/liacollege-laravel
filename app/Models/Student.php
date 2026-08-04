@@ -112,4 +112,5 @@ public function documents()
 {
     return $this->morphMany(Document::class, 'documentable');
 }
+
 }
