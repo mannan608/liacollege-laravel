@@ -22,38 +22,35 @@ class AssignmentController extends Controller
     /**
      * Display all assignments with their course.
      */
-public function index()
+public function index(Course $course): View
 {
     $student = auth()->user()->student;
 
-    $courseIds = $student->enrollments()
-        ->with('slot')
-        ->get()
-        ->pluck('slot.course_id')
-        ->filter()
-        ->unique()
-        ->values();
+    // Check student is enrolled in this course
+    $isEnrolled = $student->enrollments()
+        ->whereHas('slot', function ($query) use ($course) {
+            $query->where('course_id', $course->id);
+        })
+        ->exists();
+
+    abort_unless($isEnrolled, 403);
 
     $assignments = Assignment::query()
-        ->whereIn('course_id', $courseIds)
+        ->where('course_id', $course->id)
         ->where('status', 'active')
-        ->with('course')
         ->with([
+            'course',
             'submissions' => function ($query) use ($student) {
                 $query->where('student_id', $student->id);
-            }
+            },
         ])
         ->latest()
         ->get();
 
-    // Filter by permission
-    $assignments = $this->coursePermissionService
-        ->filterAssignmentsForStudent($assignments, $student);
-
-    return view('student.tasks.index', compact('assignments'));
+    return view('student.tasks.index', compact('course', 'assignments'));
 }
 
-public function show(Assignment $assignment): View
+public function show(Course $course, Assignment $assignment): View
     {
         $student = auth()->user()->student;
 
@@ -75,6 +72,7 @@ public function show(Assignment $assignment): View
             'student.tasks.show',
             compact(
                 'assignment',
+                'course',
                 'submission'
             )
         );
@@ -83,7 +81,7 @@ public function show(Assignment $assignment): View
     /**
      * Show submission form.
      */
-    public function submit(Assignment $assignment): View
+    public function submit(Course $course, Assignment $assignment): View
     {
         $student = auth()->user()->student;
 
@@ -99,10 +97,9 @@ public function show(Assignment $assignment): View
             ->where('student_id', $student->id)
             ->first();
 
-        return view(
-            'student.tasks.submit',
-            compact(
+        return view('student.tasks.submit',compact(
                 'assignment',
+                'course',
                 'submission'
             )
         );
@@ -113,9 +110,11 @@ public function show(Assignment $assignment): View
      */
     public function store(
         Request $request,
+        Course $course,
         Assignment $assignment
     ): RedirectResponse {
         $student = auth()->user()->student;
+        abort_if($assignment->course_id !== $course->id, 404);
 
         $this->ensureStudentCanAccessAssignment(
             $student,

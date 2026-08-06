@@ -9,26 +9,6 @@
                 <p class="text-slate-500 mt-1 text-sm">Stay on top of your tasks and deadlines</p>
             </div>
         </div>
-        <!-- Stats Bar -->
-        {{-- <div class="my-8 grid grid-cols-3 gap-4">
-            <div
-                class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <div class="text-3xl font-extrabold text-slate-800">{{ $assignments->total() }}</div>
-                <div class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">Total Tasks</div>
-            </div>
-            <div
-                class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <div class="text-3xl font-extrabold text-amber-500">{{ $assignments->where('status', 'pending')->count() }}</div>
-                <div class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">Pending</div>
-            </div>
-            <div
-                class="bg-white rounded-2xl p-5 text-center border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-                <div class="text-3xl font-extrabold text-emerald-500">{{ $assignments->where('status', 'completed')->count() }}</div>
-                <div class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wider">Completed</div>
-            </div>
-        </div> --}}
-
-        <!-- Tasks -->
 
         @forelse($assignments as $assignment)
             @php
@@ -193,6 +173,7 @@
 
                         {{-- View --}}
                         <a href="{{ role_route('student.tasks.show', [
+                            'course' => $course,
     'assignment' => $assignment
 ]) }}"
                             class="px-4 py-2.5 rounded-xl text-sm font-semibold
@@ -216,6 +197,7 @@
                         {{-- Submit / Resubmit --}}
                         @if (!$submission)
                             <a href="{{ role_route('student.tasks.submit', [
+                                'course' => $course,
     'assignment' => $assignment
 ]) }}"
                                 class="px-4 py-2.5 rounded-xl text-sm font-semibold

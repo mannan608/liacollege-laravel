@@ -36,7 +36,7 @@
     <div class="mb-6">
 
         <a
-            href="{{ route('student.tasks.index') }}"
+            href="{{ route('student.tasks.index', $assignment->course) }}"
             class="inline-flex items-center gap-2
                    text-sm font-medium
                    text-slate-500 hover:text-orange-600"

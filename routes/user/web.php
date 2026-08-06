@@ -318,11 +318,11 @@ Route::prefix('student')
 
         Route::get('/course/view/{slug}', [CourseController::class, 'contentMetarialLinkView'])->name('rows.view');
 
-        Route::get('/tasks', [AssignmentController::class, 'index'])->name('tasks.index');
+        Route::get('/courses/{course}/tasks', [AssignmentController::class, 'index'])->name('tasks.index');
 
-        Route::get('tasks/{assignment}', [AssignmentController::class, 'show'])->name('tasks.show');
+        Route::get('/courses/{course}/tasks/{assignment}', [AssignmentController::class, 'show'])->name('tasks.show');
 
-        Route::get('tasks/{assignment}/submit', [AssignmentController::class, 'submit'])->name('tasks.submit');
+        Route::get('/courses/{course}/tasks/{assignment}/submit', [AssignmentController::class, 'submit'])->name('tasks.submit');
 
-        Route::post('tasks/{assignment}/submit',[AssignmentController::class, 'store'])->name('tasks.store');
+        Route::post('/courses/{course}/tasks/{assignment}/submit',[AssignmentController::class, 'store'])->name('tasks.store');
     });

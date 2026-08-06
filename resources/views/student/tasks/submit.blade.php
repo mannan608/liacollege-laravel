@@ -7,16 +7,17 @@
     {{-- Back --}}
     <div class="mb-6">
 
-        <a
-            href="{{ route('student.tasks.show', [
-                'assignment' => $assignment
-            ]) }}"
-            class="inline-flex items-center gap-2
-                   text-sm font-medium
-                   text-slate-500 hover:text-orange-600"
-        >
-            ← Back to Assignment
-        </a>
+       <a
+    href="{{ route('student.tasks.show', [
+        'course' => $assignment->course_id,
+        'assignment' => $assignment->id,
+    ]) }}"
+    class="inline-flex items-center gap-2
+           text-sm font-medium
+           text-slate-500 hover:text-orange-600"
+>
+    ← Back to Assignment
+</a>
 
     </div>
 
@@ -122,6 +123,7 @@
     <form
         method="POST"
         action="{{ route('student.tasks.store', [
+            'course' => $assignment->course,
             'assignment' => $assignment
         ]) }}"
         enctype="multipart/form-data"
@@ -278,17 +280,18 @@
         {{-- Submit --}}
         <div class="flex items-center justify-end gap-3">
 
-            <a
-                href="{{ route('student.tasks.show', [
-                    'assignment' => $assignment
-                ]) }}"
-                class="px-5 py-3 rounded-xl
-                       border border-slate-300
-                       text-sm font-semibold text-slate-600
-                       hover:bg-slate-50"
-            >
-                Cancel
-            </a>
+           <a
+    href="{{ route('student.tasks.show', [
+        'course' => $assignment->course_id,
+        'assignment' => $assignment->id,
+    ]) }}"
+    class="px-5 py-3 rounded-xl
+           border border-slate-300
+           text-sm font-semibold text-slate-600
+           hover:bg-slate-50"
+>
+    Cancel
+</a>
 
             <button
                 type="submit"
