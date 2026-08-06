@@ -61,7 +61,7 @@
                                                          of Leadership and Management</a></li>
                                                  <li><a href="{{ url('project-management') }}">BSB50820 Diploma of
                                                          Project Management</a></li>
-                                                 <li><a href="{{ url('first-aid') }}">First Aid & CPR</a></li>
+                                                 {{-- <li><a href="{{ url('first-aid') }}">First Aid & CPR</a></li> --}}
                                              </ul>
                                          </li>
                                          <li class="navigation__menu--item">
