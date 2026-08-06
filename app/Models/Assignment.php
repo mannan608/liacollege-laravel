@@ -47,4 +47,13 @@ class Assignment extends Model
     {
         return $this->morphMany(CoursePermissions::class, 'permissionable');
     }
+
+     public function scopeVisibleTo($query, $user)
+{
+    if ($user->hasAnyRole(['admin', 'super_admin'])) {
+        return $query;
+    }
+
+    return $query->where('created_by', $user->id);
+}
 }

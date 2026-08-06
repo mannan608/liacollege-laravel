@@ -46,10 +46,11 @@ class CourseController extends Controller
 
     $student = Auth::user()->student;
 
-    $documents = $student->documents()
-        ->with('uploadedBy')
-        ->latest()
-        ->get();
+   $documents = $student->documents()
+    ->where('course_id', $course->id)
+    ->with('uploadedBy')
+    ->latest()
+    ->get();
 
         //    return $documents;
 

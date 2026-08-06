@@ -18,10 +18,11 @@ class AssignmentController extends Controller
     /**
      * Display all assignments with their course.
      */
-    public function index(string $role): View
+    public function index(Request $request, string $role): View
     {
         $assignments = Assignment::query()
             ->with('course')
+             ->visibleTo($request->user())
             ->withCount('submissions')
             ->latest()
             ->paginate(15);

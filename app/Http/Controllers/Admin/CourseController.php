@@ -23,16 +23,21 @@ class CourseController extends Controller
     ) {}
 
     public function index(Request $request)
-    {
-        $request->user()->can('course.list') || abort(403);
+{
+    $request->user()->can('course.list') || abort(403);
 
-        // return $this->courses->paginate();
+    $courses = Course::query()
+        ->visibleTo($request->user())
+        ->latest()
+        ->paginate();
 
-        return view('backend.pages.courses.index', [
-            'courses' => $this->courses->paginate(),
-            'title' => 'Courses',
-        ]);
-    }
+        // return $courses;
+
+    return view('backend.pages.courses.index', [
+        'courses' => $courses,
+        'title' => 'Courses',
+    ]);
+}
 
     public function create(Request $request): View
     {

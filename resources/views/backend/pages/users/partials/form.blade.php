@@ -10,8 +10,8 @@
 <div class="grid gap-5 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900 md:grid-cols-2">
     <div>
         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300" for="name">Name</label>
-        <input id="name" name="name" value="{{ old('name', $user?->name) }}" required
-            class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+        <input id="name" name="name" value="{{ old('name', $user?->name) }}" required placeholder="Full Name"
+            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
         @error('name')
             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -19,8 +19,8 @@
 
     <div>
         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300" for="email">Email</label>
-        <input id="email" type="email" name="email" value="{{ old('email', $user?->email) }}" required
-            class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+        <input id="email" type="email" name="email" value="{{ old('email', $user?->email) }}" required placeholder="student@example.com"
+            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
         @error('email')
             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -28,8 +28,8 @@
 
     <div>
         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300" for="password">Password</label>
-        <input id="password" type="password" name="password" @if (! $user) required @endif
-            class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+        <input id="password" placeholder="Enter password" type="password" name="password" @if (! $user)  required @endif
+            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
         @error('password')
             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -37,14 +37,14 @@
 
     <div>
         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300" for="password_confirmation">Confirm Password</label>
-        <input id="password_confirmation" type="password" name="password_confirmation" @if (! $user) required @endif
-            class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+        <input id="password_confirmation" type="password" placeholder="Re-enter password" name="password_confirmation" @if (! $user) required @endif
+            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
     </div>
 
     <div>
         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300" for="status">Status</label>
         <select id="status" name="status" required
-            class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
             @foreach (['active', 'inactive', 'suspended'] as $status)
                 <option value="{{ $status }}" @selected(old('status', $user?->status ?? 'active') === $status)>{{ ucfirst($status) }}</option>
             @endforeach
@@ -57,7 +57,7 @@
     <div>
         <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300" for="primary_role_id">Primary Role</label>
         <select id="primary_role_id" name="primary_role_id" required
-            class="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm text-gray-800 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
             <option value="">Select role</option>
             @foreach ($roles as $role)
                 <option value="{{ $role->id }}" @selected((string) $selectedPrimaryRole === (string) $role->id)>{{ $role->name }}</option>

@@ -104,4 +104,13 @@ public function assignments(): HasMany
     return $this->hasMany(Assignment::class);
 }
 
+public function scopeVisibleTo($query, $user)
+{
+    if ($user->hasAnyRole(['admin', 'super_admin'])) {
+        return $query;
+    }
+
+    return $query->where('created_by', $user->id);
+}
+
 }

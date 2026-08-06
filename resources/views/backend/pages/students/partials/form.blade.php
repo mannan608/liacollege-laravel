@@ -61,7 +61,7 @@
                 Confirm Email <span class="text-red-500">*</span>
             </label>
             <input id="email_confirmation" name="email_confirmation" type="email"
-                value="{{ old('email_confirmation') }}" required placeholder="Re-enter email"
+                value="{{ old('email_confirmation', $user?->email) }}" required placeholder="Re-enter email"
                 class="block w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:border-gray-600 dark:bg-gray-900 dark:text-white">
         </div>
 

@@ -27,7 +27,7 @@
             </a>
         </div>
 
-        <form method="GET" class="grid grid-cols-1 gap-4 rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900 lg:grid-cols-4">
+        {{-- <form method="GET" class="grid grid-cols-1 gap-4 rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900 lg:grid-cols-4">
             <div class="lg:col-span-2">
                 <x-form.input-text name="search" label="Search" value="{{ request('search') }}" placeholder="Search by title, course, or center..." />
             </div>
@@ -50,7 +50,7 @@
                     Reset
                 </a>
             </div>
-        </form>
+        </form> --}}
 
         <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
             <div class="overflow-x-auto">
