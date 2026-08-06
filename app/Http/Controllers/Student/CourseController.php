@@ -29,7 +29,9 @@ class CourseController extends Controller
         $courseContentModule = $course
             ? $this->coursePermissionService->filterCourseContentForStudent($course, $student)
             : collect();
-        $courseQuizModule = Module::all();
+
+        // $courseQuizModule = Module::all();
+        $courseQuizModule = $course->modules()->get();
 
 
         // return $courseQuizModule;
@@ -42,15 +44,14 @@ class CourseController extends Controller
        $course->load('documents');
 
     $courseContentModule = $this->coursePermissionService->filterCourseContentForStudent($course, auth()->user()->student);
-    $courseQuizModule = Module::all();
+    $courseQuizModule = $course->modules()->get();
 
     $student = Auth::user()->student;
 
-   $documents = $student->documents()
-    ->where('course_id', $course->id)
-    ->with('uploadedBy')
-    ->latest()
-    ->get();
+    $documents = $student->documents()
+        ->with('uploadedBy')
+        ->latest()
+        ->get();
 
         //    return $documents;
 
