@@ -25,6 +25,7 @@ class Document extends Model
     }
 
     protected $fillable = [
+        'course_id',
         'name',
         'file',
         'extension',
