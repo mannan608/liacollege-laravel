@@ -24,8 +24,8 @@
 
                 </button>
                 <!-- Logo -->
-                <div class="w-14">
-                    <a href="/" >
+                <div class="w-34">
+                    <a href="/">
                         <img src="{{ asset('logo.webp') }}" alt="logo" class="w-auto h-auto">
                     </a>
                 </div>
@@ -50,7 +50,7 @@
                             after:absolute after:left-0 after:-bottom-1.5
                             after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300"
                         type="button">
-                        Our Courses
+                        Our Courses gfgfhfgh
                         <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

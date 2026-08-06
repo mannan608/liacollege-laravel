@@ -168,9 +168,21 @@ Route::post(
 )->name('course-enrollment.checkout');
 
 
+// New design ui route
+// Route::get('/', [FrontendController::class, 'landingPage'])->name('landing-page');
+// Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
+// Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
+// Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
+// Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
+// Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
+// Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
+// Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
+// Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
+//     ->name('enroll-course');
 
-
-
+// Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
+//     ->name('course.enroll');
+// New design ui route
 
 
 Route::prefix('student')

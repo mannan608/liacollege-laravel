@@ -21,7 +21,7 @@
 
                 <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                     <span class="font-semibold text-slate-700">Mail:</span>
-                    info@liacollege.edu.au
+                    info@pentagoncollege.edu.au
                 </li>
 
                 <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
@@ -158,7 +158,7 @@
             class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
 
             <p class="text-slate-500 text-xs sm:text-sm">
-                Copyright © 2026 Lia College. All rights reserved.
+                Copyright © 2026 Pentagon College. All rights reserved.
             </p>
 
             <span class="text-slate-400 text-xs sm:text-sm">
