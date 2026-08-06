@@ -92,18 +92,18 @@ class StudentController extends Controller
             ->with('success', 'Student checkout completed successfully.');
     }
 
-    public function show(Request $request, string $role, Student $student): View
+    public function show(Request $request, string $role, Student $student)
     {
         $request->user()->can('student.view') || abort(403);
 
         $student->load([
-            'user.roles',
-            'user.primaryRole',
             'courses',
             'enrollments.slot.course',
             'enrollments.slot.trainingCenter',
             'enrollments.approvedBy',
         ]);
+
+        // return $student;
 
         return view('backend.pages.students.show', [
             'student' => $student,
@@ -174,21 +174,20 @@ class StudentController extends Controller
     }
 
 
-    public function createDocument(Request $request, string $role, Student $student)
+    public function createDocument(Request $request, string $role, Student $student): View
     {
         $request->user()->can('student.view') || abort(403);
 
         $student->loadMissing([
             'user',
             'documents.uploadedBy',
-        ]);
+            'enrollments.slot.course',
+        ]);    
 
         $documents = $student->documents()
             ->with('uploadedBy')
             ->latest()
             ->get();
-
-// return $documents;
 
         return view('backend.pages.students.student-documents', [
             'student' => $student,
@@ -211,6 +210,11 @@ class StudentController extends Controller
                 'required',
                 'string',
                 'in:' . implode(',', Document::getTypes()),
+            ],
+            'course_id' => [
+                'nullable',
+                'integer',
+                'exists:courses,id',
             ],
             'document' => [
                 'required',
@@ -242,6 +246,7 @@ class StudentController extends Controller
             'size'          => $size,
             'document_type' => $request->document_type,
             'notes'         => $request->notes,
+            'course_id'     => $request->course_id,
             'uploaded_by'   => $request->user()->id,
         ]);
 

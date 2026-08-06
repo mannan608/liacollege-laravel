@@ -206,6 +206,22 @@
                 <form action="{{ role_route('role.documents.store', ['student' => $student]) }}" method="POST" enctype="multipart/form-data" class="space-y-5 px-6 py-6">
                     @csrf
 
+                     <div>
+                        <label for="enrolled_course" class="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-700 dark:text-gray-300">
+                            Select course <span class="text-red-500">*</span>
+                        </label>
+                        <select id="enrolled_course" name="course_id" required
+                            class="block w-full rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 focus:border-brand-500 focus:ring-brand-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                            <option value="">Select course</option>
+                            @foreach ($student->enrollments->pluck('slot.course')->unique() as $course)
+                                <option value="{{ $course->id }}" @selected(old('course_id') === $course->id)>{{ $course->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('course_id')
+                            <p class="mt-1 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <div>
                         <label for="document_type" class="mb-1.5 block text-xs font-medium uppercase tracking-wide text-gray-700 dark:text-gray-300">
                             Document Type <span class="text-red-500">*</span>
