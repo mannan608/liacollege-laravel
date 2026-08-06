@@ -21,14 +21,13 @@ class CoursePermissionController extends Controller
         private readonly CourseRepositoryInterface $courses
     ) {}
 
-public function index(string $role, ?Course $course = null)
+public function index(Request $request,string $role, ?Course $course = null,)
 {
     $courses = Course::query()
+    ->visibleTo($request->user())
         ->with('permissionRoles')
         ->latest()
         ->paginate(20);
-
-    // return  $courses;
 
     return view('backend.pages.course-permission.permission-role.index', [
         

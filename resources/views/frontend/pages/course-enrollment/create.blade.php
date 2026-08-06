@@ -2,7 +2,9 @@
 
 @section('content')
 @php
-    $fullName = explode(' ', auth()->user()->name, 2);
+    $user = auth()->user();
+
+    $fullName = explode(' ', $user?->name ?? '', 2);
 
     $firstName = $fullName[0] ?? '';
     $lastName = $fullName[1] ?? '';

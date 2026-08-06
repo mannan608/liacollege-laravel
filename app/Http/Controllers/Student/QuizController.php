@@ -5,20 +5,27 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\QuizModels\Quiz;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class QuizController extends Controller
 {
-    public function index(): View
-    {
-        $quizzes = Quiz::published()
-            // ->withCount('questions')
-            // ->with(['userAttempts' => fn($q) => $q->where('user_id', auth()->id())])
-            ->latest()
-            ->paginate(12);
+public function index(Request $request): View
+{
+    $user = $request->user();
 
-        return view('student.quiz.index', compact('quizzes'));
-    }
+    $quizzes = Quiz::query()
+        ->when(
+            ! $user->hasAnyRole(['admin', 'super_admin']),
+            function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            }
+        )
+        ->latest()
+        ->paginate(12);
+
+    return view('backend.pages.quizzes.index', compact('quizzes'));
+}
 
     public function show(Quiz $quiz): View
     {

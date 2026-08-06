@@ -143,4 +143,13 @@ class Quiz extends Model
     {
         return $percentage >= $this->passing_score;
     }
+
+ public function scopeVisibleTo($query, $user)
+{
+    if ($user->hasAnyRole(['admin', 'super_admin'])) {
+        return $query;
+    }
+
+    return $query->where('user_id', $user->id);
+}
 }

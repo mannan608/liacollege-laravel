@@ -26,8 +26,32 @@ class StudentController extends Controller
         private readonly StudentRepositoryInterface $students,
     ) {}
 
-   public function index(Request $request)
+//    public function index(Request $request)
+// {
+//     $students = Student::query()
+//         ->with([
+//             'user:id,name,email,phone',
+//             'enrollments' => function ($query) {
+//                 $query->select([
+//                     'id',
+//                     'student_id',
+//                     'status',
+//                     'approved_by',
+//                 ])->with([
+//                     'approvedBy:id,name',
+//                 ]);
+//             },
+//         ])
+//         ->latest()
+//         ->paginate(20);
+
+//     return view('backend.pages.students.index', compact('students'));
+// }
+
+public function index(Request $request)
 {
+    $user = $request->user();
+
     $students = Student::query()
         ->with([
             'user:id,name,email,phone',
@@ -35,13 +59,23 @@ class StudentController extends Controller
                 $query->select([
                     'id',
                     'student_id',
+                    'course_slot_id',
                     'status',
                     'approved_by',
                 ])->with([
                     'approvedBy:id,name',
                 ]);
             },
-        ])
+        ]);
+
+    // Only Admin & Super Admin can see all students
+    if (! in_array($user->primary_role_id, [1, 2])) {
+        $students->whereHas('enrollments.slot', function ($query) use ($user) {
+            $query->where('created_by', $user->id);
+        });
+    }
+
+    $students = $students
         ->latest()
         ->paginate(20);
 

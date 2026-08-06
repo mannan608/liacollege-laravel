@@ -32,29 +32,19 @@ class CourseSlotController extends Controller
     {
         $request->user()->can('course-slot.list') || abort(403);
 
-        
-
         try {
-            $query = CourseSlot::query()->with([
-                'course',
-                'trainingCenter',
-                'users.user',
-            ]);
+           $user = $request->user();
 
-            if ($request->filled('search')) {
-                $search = trim($request->search);
+$query = CourseSlot::query()->with([
+    'course',
+    'trainingCenter',
+    'users.user',
+]);
 
-                $query->where(function ($builder) use ($search) {
-                    $builder->where('title', 'like', "%{$search}%")
-                        ->orWhere('training_date', 'like', "%{$search}%")
-                        ->orWhereHas('course', function ($courseQuery) use ($search) {
-                            $courseQuery->where('name', 'like', "%{$search}%");
-                        })
-                        ->orWhereHas('trainingCenter', function ($centerQuery) use ($search) {
-                            $centerQuery->where('name', 'like', "%{$search}%");
-                        });
-                });
-            }
+if (! in_array($user->primary_role_id, [1, 2])) {
+    $query->where('created_by', $user->id);
+}
+           
 
             if ($request->filled('status')) {
                 $query->where('status', $request->status);
@@ -99,6 +89,7 @@ class CourseSlotController extends Controller
             unset($data['teacher_ids']);
 
             $data['uuid'] = (string) Str::uuid();
+            $data['created_by'] = auth()->id();
             $data['available_seats'] = $data['capacity'];
             $data['status'] = $data['status'] ?? 'active';
             $data['booking_open_at'] = $data['booking_open_at'] ?? null;
@@ -179,7 +170,7 @@ class CourseSlotController extends Controller
             }
 
             $course_slot->fill(collect($data)->filter(
-                fn ($value) => $value !== ''
+                fn($value) => $value !== ''
             )->toArray());
 
             if ($course_slot->isDirty()) {
@@ -189,13 +180,13 @@ class CourseSlotController extends Controller
             if (is_array($teacherIds)) {
                 $currentTeacherIds = $course_slot->users()
                     ->pluck('user_id')
-                    ->map(fn ($value) => (int) $value)
+                    ->map(fn($value) => (int) $value)
                     ->sort()
                     ->values()
                     ->all();
 
                 $normalizedTeacherIds = collect($teacherIds)
-                    ->map(fn ($value) => (int) $value)
+                    ->map(fn($value) => (int) $value)
                     ->sort()
                     ->values()
                     ->all();
