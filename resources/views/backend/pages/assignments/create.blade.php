@@ -311,7 +311,7 @@
             <input
                 type="file"
                 name="attachment"
-                accept=".pdf,.doc,.docx"
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip"
                 class="block w-full text-sm text-gray-600
                        file:mr-4 file:py-2.5 file:px-4
                        file:rounded-lg file:border-0

@@ -262,7 +262,6 @@
                                         <form
                                             method="POST"
                                             action="{{ role_route('role.assignments.destroy', [
-                                                'course' => $assignment->course_id,
                                                 'assignment' => $assignment,
                                             ]) }}"
                                             onsubmit="return confirm('Are you sure you want to delete this assignment?')"

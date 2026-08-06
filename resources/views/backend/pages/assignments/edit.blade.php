@@ -21,7 +21,7 @@
         </h1>
 
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Update assignment
+            Update the assignment details below.
         </p>
 
     </div>
@@ -61,7 +61,7 @@
         @method('PUT')
 
 
-        {{-- Assignment Information --}}
+        {{-- Basic Information --}}
         <div class="bg-white dark:bg-gray-800
                     border border-gray-200 dark:border-gray-700
                     rounded-xl shadow-sm p-6">
@@ -70,6 +70,43 @@
                        text-gray-900 dark:text-white mb-5">
                 Assignment Information
             </h2>
+
+
+            {{-- Course --}}
+            <div class="mb-5">
+
+                <label
+                    for="course_id"
+                    class="block text-sm font-medium
+                           text-gray-700 dark:text-gray-300 mb-2"
+                >
+                    Course
+                    <span class="text-red-500">*</span>
+                </label>
+
+                <select
+                    id="course_id"
+                    name="course_id"
+                    required
+                    class="w-full rounded-lg border border-gray-300
+                           dark:border-gray-600 dark:bg-gray-700
+                           dark:text-white px-4 py-2.5
+                           focus:ring-2 focus:ring-brand-500
+                           focus:border-brand-500"
+                >
+                    <option value="">Select a course</option>
+
+                    @foreach($courses as $course)
+                        <option
+                            value="{{ $course->id }}"
+                            @selected(old('course_id', $assignment->course_id) == $course->id)
+                        >
+                            {{ $course->name }}
+                        </option>
+                    @endforeach
+                </select>
+
+            </div>
 
 
             {{-- Title --}}
@@ -90,6 +127,7 @@
                     name="title"
                     value="{{ old('title', $assignment->title) }}"
                     required
+                    placeholder="e.g. First Aid Risk Assessment"
                     class="w-full rounded-lg border border-gray-300
                            dark:border-gray-600 dark:bg-gray-700
                            dark:text-white px-4 py-2.5
@@ -114,11 +152,13 @@
                 <textarea
                     id="description"
                     name="description"
-                    rows="4"
+                    rows="3"
+                    placeholder="Brief description of the assignment..."
                     class="w-full rounded-lg border border-gray-300
                            dark:border-gray-600 dark:bg-gray-700
                            dark:text-white px-4 py-2.5
-                           focus:ring-2 focus:ring-brand-500"
+                           focus:ring-2 focus:ring-brand-500
+                           focus:border-brand-500"
                 >{{ old('description', $assignment->description) }}</textarea>
 
             </div>
@@ -139,10 +179,12 @@
                     id="instructions"
                     name="instructions"
                     rows="8"
+                    placeholder="Provide detailed instructions for students..."
                     class="w-full rounded-lg border border-gray-300
                            dark:border-gray-600 dark:bg-gray-700
                            dark:text-white px-4 py-2.5
-                           focus:ring-2 focus:ring-brand-500"
+                           focus:ring-2 focus:ring-brand-500
+                           focus:border-brand-500"
                 >{{ old('instructions', $assignment->instructions) }}</textarea>
 
             </div>
@@ -150,7 +192,7 @@
         </div>
 
 
-        {{-- Settings --}}
+        {{-- Assignment Settings --}}
         <div class="bg-white dark:bg-gray-800
                     border border-gray-200 dark:border-gray-700
                     rounded-xl shadow-sm p-6">
@@ -192,7 +234,7 @@
                 </div>
 
 
-                {{-- Marks --}}
+                {{-- Total Marks --}}
                 <div>
 
                     <label
@@ -208,12 +250,9 @@
                         type="number"
                         id="total_marks"
                         name="total_marks"
+                        value="{{ old('total_marks', $assignment->total_marks) }}"
                         min="1"
                         required
-                        value="{{ old(
-                            'total_marks',
-                            $assignment->total_marks
-                        ) }}"
                         class="w-full rounded-lg border border-gray-300
                                dark:border-gray-600 dark:bg-gray-700
                                dark:text-white px-4 py-2.5
@@ -239,25 +278,20 @@
                         name="status"
                         class="w-full rounded-lg border border-gray-300
                                dark:border-gray-600 dark:bg-gray-700
-                               dark:text-white px-4 py-2.5"
+                               dark:text-white px-4 py-2.5
+                               focus:ring-2 focus:ring-brand-500"
                     >
 
                         <option
                             value="active"
-                            @selected(
-                                old('status', $assignment->status)
-                                === 'active'
-                            )
+                            @selected(old('status', $assignment->status) === 'active')
                         >
                             Active
                         </option>
 
                         <option
                             value="inactive"
-                            @selected(
-                                old('status', $assignment->status)
-                                === 'inactive'
-                            )
+                            @selected(old('status', $assignment->status) === 'inactive')
                         >
                             Inactive
                         </option>
@@ -271,16 +305,21 @@
         </div>
 
 
-        {{-- Current Attachment --}}
+        {{-- Attachment --}}
         <div class="bg-white dark:bg-gray-800
                     border border-gray-200 dark:border-gray-700
                     rounded-xl shadow-sm p-6">
 
             <h2 class="text-lg font-semibold
-                       text-gray-900 dark:text-white mb-4">
+                       text-gray-900 dark:text-white mb-2">
                 Assignment Attachment
             </h2>
 
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">
+                Optional. Students will be able to download this file.
+            </p>
+
+            {{-- Current Attachment Preview --}}
             @if($assignment->attachment)
 
                 <div class="flex items-center justify-between gap-4
@@ -290,10 +329,11 @@
                     <div class="flex items-center gap-3">
 
                         <div class="w-10 h-10 rounded-lg
-                                    bg-blue-100 flex items-center justify-center">
+                                    bg-blue-100 dark:bg-blue-900/30
+                                    flex items-center justify-center">
 
                             <svg
-                                class="w-5 h-5 text-blue-600"
+                                class="w-5 h-5 text-blue-600 dark:text-blue-400"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -314,7 +354,7 @@
                                 Current attachment
                             </p>
 
-                            <p class="text-xs text-gray-500">
+                            <p class="text-xs text-gray-500 dark:text-gray-400">
                                 {{ basename($assignment->attachment) }}
                             </p>
                         </div>
@@ -322,10 +362,10 @@
                     </div>
 
                     <a
-                        href="{{ asset('storage/' . $assignment->attachment) }}"
+                        href="{{ asset($assignment->attachment) }}"
                         target="_blank"
                         class="text-sm font-medium text-blue-600
-                               hover:text-blue-800"
+                               hover:text-blue-800 dark:text-blue-400"
                     >
                         View File
                     </a>
@@ -341,7 +381,7 @@
                        text-gray-700 dark:text-gray-300 mb-2"
             >
                 {{ $assignment->attachment
-                    ? 'Replace Attachment'
+                    ? 'Replace Attachment (optional)'
                     : 'Upload Attachment'
                 }}
             </label>
@@ -359,25 +399,26 @@
                        hover:file:bg-gray-200"
             >
 
-            <p class="mt-2 text-xs text-gray-500">
-                Leave empty to keep the current attachment.
-                Maximum 20 MB.
+            <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                PDF, Word, Excel, PowerPoint or ZIP. Maximum 20 MB.
+                @if($assignment->attachment)
+                    Leave empty to keep the current file.
+                @endif
             </p>
 
         </div>
 
 
-        {{-- Actions --}}
-        <div class="flex items-center justify-between">
+        {{-- Buttons --}}
+        <div class="flex items-center justify-end gap-3">
 
             <a
-                href="{{ role_route('role.assignments.show', [
-                    'assignment' => $assignment,
-                ]) }}"
-                class="px-5 py-2.5 rounded-lg
-                       border border-gray-300
-                       text-gray-700 hover:bg-gray-50
-                       text-sm font-medium"
+                href="{{ role_route('role.assignments.index') }}"
+                class="px-5 py-2.5 rounded-lg border
+                       border-gray-300 text-gray-700
+                       hover:bg-gray-50 text-sm font-medium
+                       dark:border-gray-600 dark:text-gray-300
+                       dark:hover:bg-gray-700"
             >
                 Cancel
             </a>
