@@ -187,7 +187,10 @@ if ($submission) {
         return redirect()
             ->route(
                 'student.tasks.show',
-                $assignment
+                [
+                    'course' => $course,
+                    'assignment' => $assignment,
+                ]
             )
             ->with(
                 'success',

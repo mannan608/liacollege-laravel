@@ -234,6 +234,7 @@
                             </span>
                         @else
                             <a href="{{ role_route('student.tasks.submit', [
+                                'course' => $course,
                                 'assignment' => $assignment,
                             ]) }}"
                                 class="px-4 py-2.5 rounded-xl text-sm font-semibold

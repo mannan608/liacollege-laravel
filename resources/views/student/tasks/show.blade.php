@@ -508,6 +508,7 @@
 
                         <a
                             href="{{ route('student.tasks.submit', [
+                                'course' => $assignment->course,
                                 'assignment' => $assignment
                             ]) }}"
                             class="mt-5 w-full inline-flex
