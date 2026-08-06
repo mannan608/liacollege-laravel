@@ -11,7 +11,7 @@
                             3000</span><br />
 
                         <i class="fa fa-phone"></i> <span>0479 110 567</span><br />
-                        <i class="fa fa-phone"></i> <span>0468 092 898 (Urgent Enquiry)</span><br />
+                        <i class="fa fa-phone"></i> <span>0468 092 898 (Admission & Enrolment Only)</span><br />
                         <i class="fa fa-envelope"></i> <span>training@liacollege.edu.au</span><br />
 
                         <span>RTO CODE: 46049</span><br />
