@@ -11,18 +11,20 @@ use Illuminate\View\View;
 use App\Http\Requests\Quiz\StoreQuizRequest;
 use App\Http\Requests\Quiz\UpdateQuizRequest;
 use App\Models\QuizModels\Quiz;
+use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-    public function index(): View
-    {
-        $quizzes = Quiz::withCount(['questions', 'attempts'])
-            ->with('creator')
-            ->latest()
-            ->paginate(15);
 
-        return view('backend.pages.quiz.quizzes.index', compact('quizzes'));
-    }
+
+      public function index(Request $request): View
+{
+    $quizzes = Quiz::visibleTo($request->user())
+        ->latest()
+        ->paginate(12);
+
+    return view('backend.pages.quiz.quizzes.index', compact('quizzes'));
+}
 
     public function create(string $role): View
     {
