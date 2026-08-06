@@ -53,6 +53,7 @@ public function index(Course $course): View
 public function show(Course $course, Assignment $assignment): View
     {
         $student = auth()->user()->student;
+        abort_if($assignment->course_id !== $course->id, 404);
 
         $this->ensureStudentCanAccessAssignment(
             $student,
@@ -84,6 +85,7 @@ public function show(Course $course, Assignment $assignment): View
     public function submit(Course $course, Assignment $assignment): View
     {
         $student = auth()->user()->student;
+        abort_if($assignment->course_id !== $course->id, 404);
 
         $this->ensureStudentCanAccessAssignment(
             $student,
