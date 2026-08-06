@@ -19,10 +19,15 @@ use Spatie\Permission\Models\Role;
 class FrontendController extends Controller
 {
 
-    public function index()
+    public function landingPage()
     {
-        return view('frontend.lia-collage.welcome');
+        return view('frontend.pages.home');
     }
+
+    // public function index()
+    // {
+    //     return view('frontend.lia-collage.welcome');
+    // }
 
     public function about()
     {

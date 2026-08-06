@@ -1,5 +1,5 @@
     <header
-        class="fixed top-0 left-0 w-full z-50 border-b bg-secondary-500 backdrop-blur-md border-white/10  dark:border-gray-800 dark:bg-gray-900/95">
+        class="fixed top-0 left-0 w-full z-50 border-b bg-brand-500 backdrop-blur-md border-white/10  dark:border-gray-800 dark:bg-gray-900/95">
 
         <nav class="max-w-7xl mx-auto px-5 lg:px-8">
 
@@ -24,8 +24,8 @@
 
                 </button>
                 <!-- Logo -->
-                <div class="w-34">
-                    <a href="/">
+                <div class="w-14">
+                    <a href="/" >
                         <img src="{{ asset('logo.webp') }}" alt="logo" class="w-auto h-auto">
                     </a>
                 </div>
@@ -36,9 +36,9 @@
                     {{-- Home --}}
                     <a href="{{ route('home') }}"
                         class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('home') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('home') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300">
 
                         Home
                     </a>
@@ -46,11 +46,11 @@
                     <a href="#" id="dropdownHoverButton" data-dropdown-toggle="dropdownHover"
                         data-dropdown-trigger="hover"
                         class="flex items-center relative font-normal transition-all duration-300
-                            {{ request()->routeIs('') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                            {{ request()->routeIs('') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                             after:absolute after:left-0 after:-bottom-1.5
-                            after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300"
+                            after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300"
                         type="button">
-                        Our Courses gfgfhfgh
+                        Our Courses
                         <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -84,18 +84,18 @@
                     {{-- About --}}
                     <a href="{{ route('about') }}"
                         class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('about') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('about') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300">
 
                         About
                     </a>
                     {{-- student --}}
                     <a href="{{ route('student-information') }}"
                         class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('student-information') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('student-information') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300">
 
                         Student Information
                     </a>
@@ -103,27 +103,27 @@
                     {{-- Contact --}}
                     <a href="{{ route('contact') }}"
                         class="relative font-normal transition-all duration-300
-                            {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                            {{ request()->routeIs('contact') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                             after:absolute after:left-0 after:-bottom-1.5
-                            after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                            after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300">
 
                         Contact
                     </a>
 
                     {{-- <a href="{{ route('blogs') }}"
                     class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('blogs') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('blogs') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300">
 
                     Blogs
                 </a> --}}
 
                     {{-- <a href="{{ route('events') }}"
                     class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('contact') ? 'text-secondary-500 font-normal after:w-full' : 'text-white hover:text-secondary-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-secondary-500 after:transition-all after:duration-300">
 
                     Events
                 </a> --}}
@@ -176,24 +176,24 @@
 
             <div class="flex flex-col px-6 py-5 space-y-3 text-sm lg:text-[15px]">
                 <a href="{{ route('home') }}"
-                    class="{{ request()->routeIs('home') ? 'text-brand-600 font-medium' : 'text-white' }}">Home</a>
+                    class="{{ request()->routeIs('home') ? 'text-secondary-500 font-medium' : 'text-white' }}">Home</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('courses') ? 'text-brand-600 font-medium' : 'text-white' }}">Our
+                    class="{{ request()->routeIs('courses') ? 'text-secondary-500 font-medium' : 'text-white' }}">Our
                     Courses</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('about') ? 'text-brand-600 font-medium' : 'text-white' }}">About</a>
+                    class="{{ request()->routeIs('about') ? 'text-secondary-500 font-medium' : 'text-white' }}">About</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('student-information') ? 'text-brand-600 font-medium' : 'text-white' }}">Student
+                    class="{{ request()->routeIs('student-information') ? 'text-secondary-500 font-medium' : 'text-white' }}">Student
                     Information</a>
                 <a href="{{ route('contact') }}"
-                    class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>
+                    class="{{ request()->routeIs('contact') ? 'text-secondary-500 font-medium' : 'text-white' }}">Contact</a>
 
                 @auth
                     <div class="mt-4">
                         <a href="{{ auth()->user()->rolePrefix() === 'student'
                             ? route('student.dashboard')
                             : route('role.dashboard', ['role' => auth()->user()->rolePrefix()]) }}"
-                            class="text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
+                            class="text-sm   bg-secondary-500 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-secondary-500 transition">
 
                             Dashboard
                         </a>

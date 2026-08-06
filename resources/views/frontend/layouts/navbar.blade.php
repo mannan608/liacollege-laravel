@@ -1,5 +1,5 @@
     <header
-        class="fixed top-0 left-0 w-full z-50 border-b bg-secondary-500 backdrop-blur-md border-white/10  dark:border-gray-800 dark:bg-gray-900/95">
+        class="fixed top-0 left-0 w-full z-50 border-b bg-white backdrop-blur-md border-white/10  dark:border-gray-800 dark:bg-gray-900/95">
 
         <nav class="max-w-7xl mx-auto px-5 lg:px-8">
 
@@ -8,7 +8,7 @@
                 <button id="menuBtn" class="md:hidden">
 
                     <!-- Hamburger -->
-                    <svg id="menuOpenIcon" class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                    <svg id="menuOpenIcon" class="w-7 h-7 text-brand-500" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16">
@@ -16,7 +16,7 @@
                     </svg>
 
                     <!-- Close -->
-                    <svg id="menuCloseIcon" class="hidden w-7 h-7 text-white" fill="none" stroke="currentColor"
+                    <svg id="menuCloseIcon" class="hidden w-7 h-7 text-brand-500" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
@@ -36,9 +36,9 @@
                     {{-- Home --}}
                     <a href="{{ route('home') }}"
                         class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('home') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('home') ? 'text-brand-500 font-normal after:w-full' : 'text-brand-500 hover:text-brand-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-brand-500 after:transition-all after:duration-300">
 
                         Home
                     </a>
@@ -46,9 +46,9 @@
                     <a href="#" id="dropdownHoverButton" data-dropdown-toggle="dropdownHover"
                         data-dropdown-trigger="hover"
                         class="flex items-center relative font-normal transition-all duration-300
-                            {{ request()->routeIs('') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                            {{ request()->routeIs('') ? 'text-brand-500 font-normal after:w-full' : 'text-brand-500 hover:text-brand-500 after:w-0 hover:after:w-full' }}
                             after:absolute after:left-0 after:-bottom-1.5
-                            after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300"
+                            after:h-0.5 after:bg-brand-500 after:transition-all after:duration-300"
                         type="button">
                         Our Courses
                         <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -84,46 +84,37 @@
                     {{-- About --}}
                     <a href="{{ route('about') }}"
                         class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('about') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('about') ? 'text-brand-500 font-normal after:w-full' : 'text-brand-500 hover:text-brand-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-brand-500 after:transition-all after:duration-300">
 
                         About
-                    </a>
-                    {{-- student --}}
-                    <a href="{{ route('student-information') }}"
-                        class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('student-information') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-                        after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
-
-                        Student Information
                     </a>
 
                     {{-- Contact --}}
                     <a href="{{ route('contact') }}"
                         class="relative font-normal transition-all duration-300
-                            {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                            {{ request()->routeIs('contact') ? 'text-brand-500 font-normal after:w-full' : 'text-brand-500 hover:text-brand-500 after:w-0 hover:after:w-full' }}
                             after:absolute after:left-0 after:-bottom-1.5
-                            after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                            after:h-0.5 after:bg-brand-500 after:transition-all after:duration-300">
 
                         Contact
                     </a>
 
                     {{-- <a href="{{ route('blogs') }}"
                     class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('blogs') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('blogs') ? 'text-brand-500 font-normal after:w-full' : 'text-brand-500 hover:text-brand-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-brand-500 after:transition-all after:duration-300">
 
                     Blogs
                 </a> --}}
 
                     {{-- <a href="{{ route('events') }}"
                     class="relative font-normal transition-all duration-300
-                        {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        {{ request()->routeIs('contact') ? 'text-brand-500 font-normal after:w-full' : 'text-brand-500 hover:text-brand-500 after:w-0 hover:after:w-full' }}
                         after:absolute after:left-0 after:-bottom-1.5
-                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        after:h-0.5 after:bg-brand-500 after:transition-all after:duration-300">
 
                     Events
                 </a> --}}
@@ -132,7 +123,7 @@
 
                 <div class="flex items-center gap-4 lg:gap-6">
                     {{-- <button
-                        class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                        class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-brand-500"
                         @click="$store.theme.toggle()">
                         <svg class="hidden dark:block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -172,28 +163,26 @@
         </nav>
 
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-secondary-500 border-t border-slate-200 shadow-lg">
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-500 border-t border-slate-200 shadow-lg">
 
             <div class="flex flex-col px-6 py-5 space-y-3 text-sm lg:text-[15px]">
                 <a href="{{ route('home') }}"
-                    class="{{ request()->routeIs('home') ? 'text-brand-600 font-medium' : 'text-white' }}">Home</a>
+                    class="{{ request()->routeIs('home') ? 'text-brand-500 font-medium' : 'text-brand-500' }}">Home</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('courses') ? 'text-brand-600 font-medium' : 'text-white' }}">Our
+                    class="{{ request()->routeIs('courses') ? 'text-brand-500 font-medium' : 'text-brand-500' }}">Our
                     Courses</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('about') ? 'text-brand-600 font-medium' : 'text-white' }}">About</a>
-                <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('student-information') ? 'text-brand-600 font-medium' : 'text-white' }}">Student
-                    Information</a>
+                    class="{{ request()->routeIs('about') ? 'text-brand-500 font-medium' : 'text-brand-500' }}">About</a>
+              
                 <a href="{{ route('contact') }}"
-                    class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>
+                    class="{{ request()->routeIs('contact') ? 'text-brand-500 font-medium' : 'text-brand-500' }}">Contact</a>
 
                 @auth
                     <div class="mt-4">
                         <a href="{{ auth()->user()->rolePrefix() === 'student'
                             ? route('student.dashboard')
                             : route('role.dashboard', ['role' => auth()->user()->rolePrefix()]) }}"
-                            class="text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
+                            class="text-sm   bg-brand-500 text-brand-500 px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-500 transition">
 
                             Dashboard
                         </a>
@@ -208,7 +197,7 @@
                     flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200
                     rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700
                     dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800
-                    dark:hover:text-white" @click="$store.theme.toggle()">
+                    dark:hover:text-brand-500" @click="$store.theme.toggle()">
                     <svg class="hidden dark:block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
