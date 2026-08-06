@@ -18,25 +18,36 @@ use Spatie\Permission\Models\Role;
 
 class CourseEnrollmentController extends Controller
 {
-    public function create(
-        Course $course,
-        CourseSlot $slot
-    ) {
-        abort_unless(
-            $slot->course_id === $course->id,
-            404
-        );
+    public function create(Course $course, CourseSlot $slot)
+{
+    abort_unless(
+        $slot->course_id === $course->id,
+        404
+    );
 
-        $slot->load([
-            'course',
-            'trainingCenter',
-        ]);
+    $slot->load([
+        'course',
+        'trainingCenter',
+    ]);
 
-        return view(
-            'frontend.pages.course-enrollment.create',
-            compact('course', 'slot')
-        );
+    $student = null;
+
+    if (auth()->check()) {
+        $student = auth()->user()
+            ->student;
     }
+
+    // return $slot;
+
+    return view(
+        'frontend.pages.course-enrollment.create',
+        compact(
+            'course',
+            'slot',
+            'student'
+        )
+    );
+}
 
 public function success(Enrollment $enrollment)
 {

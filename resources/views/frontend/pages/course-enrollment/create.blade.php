@@ -1,6 +1,12 @@
 @extends('backend.layouts.fullscreen-layout')
 
 @section('content')
+@php
+    $fullName = explode(' ', auth()->user()->name, 2);
+
+    $firstName = $fullName[0] ?? '';
+    $lastName = $fullName[1] ?? '';
+@endphp
     <div class=" w-full p-0 bg-neutral-100 dark:bg-gray-900">
 
         <!-- Main Container -->
@@ -13,7 +19,7 @@
                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <div>
-                    <p class="text-sm text-amber-800 font-medium">If you're a returning student, please <a href="#"
+                    <p class="text-sm text-amber-800 font-medium">If you're a returning student, please <a href="{{ route('login') }}"
                             class="underline underline-offset-2 decoration-amber-400 hover:decoration-amber-600 font-semibold">log
                             in first</a> to access your existing profile before proceeding.</p>
                 </div>
@@ -43,9 +49,11 @@
                             </span>
                         </div>
 
-                        <h1 class="text-3xl font-bold text-white tracking-tight leading-tight mb-3">
-                            HLTAID011 Provide First Aid
+                        <h1 class="text-3xl font-bold text-white tracking-tight leading-tight">
+                            {{ $course->name }}
                         </h1>
+                        {{--course slot --}}
+                        <p class="mb-3 font-bold text-xs text-white tracking-tight leading-tight">Slot : {{ $slot->title }} & Traning Date : {{ $slot->training_date->format('d M Y') }}</p>
 
                         <div class="flex items-center gap-3 text-slate-300">
                             <div
@@ -58,7 +66,7 @@
                                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium">Sydney FA Quay Street</span>
+                            <span class="text-sm font-medium">{{ $slot->trainingCenter->name }}</span>
                         </div>
                     </div>
                 </div>
@@ -84,7 +92,7 @@
                                 <label class="block text-sm font-bold text-slate-800">
                                     First Name <span class="text-rose-400">*</span>
                                 </label>
-                                <input type="text" name="first_name" value="{{ old('first_name') }}"
+                                <input type="text" name="first_name" value="{{ old('first_name',auth()->check() ? $firstName : '') }}"
                                     placeholder="First name" required
                                     class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                             </div>
@@ -92,7 +100,7 @@
                                 <label class="block text-sm font-bold text-slate-800">
                                     Surname <span class="text-rose-400">*</span>
                                 </label>
-                                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Surname"
+                                <input type="text" name="last_name" value="{{ old('last_name',auth()->check() ? $lastName : '') }}" placeholder="Surname"
                                     required
                                     class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                             </div>
@@ -103,7 +111,7 @@
                             <label class="block text-sm font-bold text-slate-800">
                                 Date of Birth <span class="text-rose-400">*</span>
                             </label>
-                            <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" required
+                            <input type="date" name="date_of_birth" value="{{ old('date_of_birth',optional($student?->date_of_birth)->format('Y-m-d')) }}" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                         </div>
 
@@ -113,7 +121,7 @@
                                 <label class="block text-sm font-bold text-slate-800">
                                     E-mail Address <span class="text-rose-400">*</span>
                                 </label>
-                                <input type="email" name="email" value="{{ old('email') }}" placeholder="email address"
+                                <input type="email" name="email" value="{{ old('email',auth()->user()->email ?? '') }}" placeholder="email address"
                                     required
                                     class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                                 <div
@@ -138,7 +146,7 @@
                                 <label class="block text-sm font-bold text-slate-800">
                                     Enter E-mail Again <span class="text-rose-400">*</span>
                                 </label>
-                                <input type="email" name="email_confirmation" value="{{ old('email_confirmation') }}"
+                                <input type="email" name="email_confirmation" value="{{ old('email_confirmation',auth()->user()->email ?? '') }}"
                                     placeholder="email address again" required
                                     class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                             </div>
@@ -149,7 +157,7 @@
                             <label class="block text-sm font-bold text-slate-800">
                                 Mobile Phone Number <span class="text-rose-400">*</span>
                             </label>
-                            <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="mobile number"
+                            <input type="tel" name="phone" value="{{ old('phone',auth()->user()->phone ?? '') }}" placeholder="mobile number"
                                 required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                         </div>
@@ -159,7 +167,7 @@
                             <label class="block text-sm font-bold text-slate-800">
                                 U.S.I. <span class="text-rose-400">*</span>
                             </label>
-                            <input type="text" name="usi" value="{{ old('usi') }}" placeholder="USI" required
+                            <input type="text" name="usi" value="{{ old('usi',$student->usi ?? '') }}" placeholder="USI" required
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:bg-white transition-all duration-200">
                             <p class="text-xs text-slate-500 mt-2">
                                 If you do not yet have your USI, <a href="#"
