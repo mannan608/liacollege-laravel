@@ -15,14 +15,12 @@ use Illuminate\View\View;
 class AssignmentController extends Controller
 {
     use HandlesFiles;
-    /**
-     * Display all assignments with their course.
-     */
+
     public function index(Request $request, string $role): View
     {
         $assignments = Assignment::query()
             ->with('course')
-             ->visibleTo($request->user())
+            ->visibleTo($request->user())
             ->withCount('submissions')
             ->latest()
             ->paginate(15);
@@ -30,9 +28,6 @@ class AssignmentController extends Controller
         return view('backend.pages.assignments.index', compact('assignments'));
     }
 
-    /**
-     * Show create assignment form.
-     */
     public function create(string $role): View
     {
         $courses = Course::query()
@@ -42,9 +37,6 @@ class AssignmentController extends Controller
         return view('backend.pages.assignments.create', compact('courses'));
     }
 
-    /**
-     * Store a new assignment.
-     */
     public function store(
         Request $request,
         string $role
@@ -86,7 +78,7 @@ class AssignmentController extends Controller
             'attachment' => [
                 'nullable',
                 'file',
-                'mimes:pdf,doc,docx',
+                'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip',
                 'max:20480',
             ],
 
@@ -96,75 +88,47 @@ class AssignmentController extends Controller
             ],
         ]);
 
-       if ($request->hasFile('attachment')) {
-    $validated['attachment'] = $this->uploadFile(
-        $request->file('attachment'),
-        'assignments'
-    );
-}
+        if ($request->hasFile('attachment')) {
+            $validated['attachment'] = $this->uploadFile(
+                $request->file('attachment'),
+                'assignments'
+            );
+        }
 
         $validated['created_by'] = auth()->id();
 
-        $assignment = Assignment::create($validated);
+        Assignment::create($validated);
+
         return redirect()
             ->to(role_route('role.assignments.index'))
             ->with('success', 'Assignment created successfully.');
     }
 
-    /**
-     * Display assignment details.
-     */
-    public function show(
-        string $role,
-        Course $course,
-        Assignment $assignment
-    ): View {
-        $this->ensureAssignmentBelongsToCourse(
-            $course,
-            $assignment
-        );
-
-        $assignment->load([
-            'creator',
-            'submissions.student.user',
-        ]);
-
-        return view(
-            'backend.pages.assignments.show',
-            compact('course', 'assignment')
-        );
-    }
-
-    /**
-     * Show edit form.
-     */
     public function edit(
         string $role,
         Assignment $assignment
     ): View {
-       
+        $courses = Course::query()
+            ->orderBy('name')
+            ->get();
 
         return view(
             'backend.pages.assignments.edit',
-            compact('assignment')
+            compact('assignment', 'courses')
         );
     }
 
-    /**
-     * Update assignment.
-     */
     public function update(
         Request $request,
         string $role,
-        Course $course,
         Assignment $assignment
     ): RedirectResponse {
-        $this->ensureAssignmentBelongsToCourse(
-            $course,
-            $assignment
-        );
-
         $validated = $request->validate([
+            'course_id' => [
+                'required',
+                'exists:courses,id',
+            ],
+
             'title' => [
                 'required',
                 'string',
@@ -196,7 +160,7 @@ class AssignmentController extends Controller
             'attachment' => [
                 'nullable',
                 'file',
-                'mimes:pdf,doc,docx',
+                'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip',
                 'max:20480',
             ],
 
@@ -206,11 +170,13 @@ class AssignmentController extends Controller
             ],
         ]);
 
-        $validated['attachment'] = $this->replaceFile(
-    $request->file('attachment'),
-    $assignment->attachment,
-    'assignments'
-);
+        if ($request->hasFile('attachment')) {
+            $validated['attachment'] = $this->replaceFile(
+                $request->file('attachment'),
+                $assignment->attachment,
+                'assignments'
+            );
+        }
 
         $assignment->update($validated);
 
@@ -219,24 +185,15 @@ class AssignmentController extends Controller
             ->with('success', 'Assignment updated successfully.');
     }
 
-    /**
-     * Delete assignment.
-     */
     public function destroy(
         string $role,
-        Course $course,
         Assignment $assignment
     ): RedirectResponse {
-        $this->ensureAssignmentBelongsToCourse(
-            $course,
-            $assignment
-        );
-
         $this->deleteFile($assignment->attachment);
 
         foreach ($assignment->submissions as $submission) {
-    $this->deleteFile($submission->file);
-}
+            $this->deleteFile($submission->file);
+        }
 
         $assignment->delete();
 
@@ -244,19 +201,4 @@ class AssignmentController extends Controller
             ->to(role_route('role.assignments.index'))
             ->with('success', 'Assignment deleted successfully.');
     }
-
-    /**
-     * Make sure the assignment belongs to this course.
-     */
-    private function ensureAssignmentBelongsToCourse(
-        Course $course,
-        Assignment $assignment
-    ): void {
-        abort_unless(
-            $assignment->course_id === $course->id,
-            404
-        );
-    }  
-    
-    
 }

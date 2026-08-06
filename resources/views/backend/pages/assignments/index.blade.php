@@ -249,18 +249,6 @@
                                                 justify-end gap-2">
 
                                         <a
-                                            href="{{ role_route('role.assignments.show', [
-                                                'course' => $assignment->course_id,
-                                                'assignment' => $assignment,
-                                            ]) }}"
-                                            class="px-3 py-1.5 text-sm
-                                                   font-medium text-blue-600
-                                                   hover:text-blue-800"
-                                        >
-                                            View
-                                        </a>
-
-                                        <a
                                             href="{{ role_route('role.assignments.edit', [
                                                 'assignment' => $assignment,
                                             ]) }}"
@@ -274,7 +262,6 @@
                                         <form
                                             method="POST"
                                             action="{{ role_route('role.assignments.destroy', [
-                                                'course' => $assignment->course_id,
                                                 'assignment' => $assignment,
                                             ]) }}"
                                             onsubmit="return confirm('Are you sure you want to delete this assignment?')"

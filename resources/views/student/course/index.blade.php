@@ -150,7 +150,7 @@
         @endif
     </div>
 
-    @if(!empty($course))
+    {{-- @if(!empty($course))
         <div class="mt-10">
             @include('student.course.partials.module-sections', [
                 'course' => $course,
@@ -158,7 +158,7 @@
                 'courseQuizModules' => $courseQuizModule
             ])
         </div>
-    @endif
+    @endif --}}
 
 
     {{-- Cancel Confirmation Modal (Simple JS) --}}
