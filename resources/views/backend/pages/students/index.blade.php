@@ -31,10 +31,10 @@
             @endcan
         </div>
 
-        @include('backend.pages.LMS.enrollments.table', ['items' => $enrollments])
+        @include('backend.pages.LMS.enrollments.table', ['students' => $students])
 
         <div>
-            {{ $enrollments->links() }}
+            {{ $students->links() }}
         </div>
     </div>
 @endsection

@@ -26,38 +26,27 @@ class StudentController extends Controller
         private readonly StudentRepositoryInterface $students,
     ) {}
 
-    public function index(Request $request)
-    {
-        $enrollments = Enrollment::query()
-            ->select([
-                'id',
-                'student_id',
-                'course_slot_id',
-                'status',
-                'remarks',
-                'approved_by',
-                'approved_at',
-                'enrolled_at',
-            ])
-            ->with([
-                'student:id,user_id',
-                'student.user:id,name,email',
-                'slot:id,course_id,training_center_id,title,training_date,start_time,end_time',
-                'slot.course:id,name',
-                'slot.trainingCenter:id,name,city',
-                'approvedBy:id,name',
-            ])
-            ->when($request->status, function ($query) use ($request) {
-                $query->where('status', $request->status);
-            })
-            ->latest()
-            ->paginate(20);
+   public function index(Request $request)
+{
+    $students = Student::query()
+        ->with([
+            'user:id,name,email,phone',
+            'enrollments' => function ($query) {
+                $query->select([
+                    'id',
+                    'student_id',
+                    'status',
+                    'approved_by',
+                ])->with([
+                    'approvedBy:id,name',
+                ]);
+            },
+        ])
+        ->latest()
+        ->paginate(20);
 
-        // return $enrollments;
-
-        return view('backend.pages.students.index',compact('enrollments')
-        );
-    }
+    return view('backend.pages.students.index', compact('students'));
+}
 
 
     public function create(Request $request): View

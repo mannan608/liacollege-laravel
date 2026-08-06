@@ -1,5 +1,7 @@
 @php
-    $items = $items ?? collect();
+    $students = $students ?? collect();
+
+    // dd($students);
 
     $statusStyles = [
         'pending' => 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
@@ -8,7 +10,6 @@
         'completed' => 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
     ];
 
-  
 @endphp
 
 <div class="overflow-hidden rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
@@ -18,99 +19,54 @@
                 <tr>
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Student
                     </th>
-                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Course</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Slot</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Schedule
+                    <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Phone No
                     </th>
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Status</th>
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Approved By
                     </th>
-                    {{-- <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Upload Document</th> --}}
-                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Assign Permission</th>
-
-                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Status</th>
+                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Status
+                    </th>
                     <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Actions
                     </th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                @forelse ($items as $enrollment)
+                @forelse ($students as $student)
+                    @php
+                        $enrollment = $student->enrollments->first();
+                    @endphp
                     <tr class="align-top">
                         <td class="px-4 py-4">
                             <div class="text-sm font-medium text-gray-900 dark:text-white">
-                                {{ $enrollment->student?->user?->name ?? 'N/A' }}
+                                {{ $student?->user?->name ?? 'N/A' }}
                             </div>
                             <div class="text-sm text-gray-500">
-                                {{ $enrollment->student?->user?->email ?? 'N/A' }}
+                                {{ $student?->user?->email ?? 'N/A' }}
                             </div>
                         </td>
-                        <td class="px-4 py-4 text-sm text-gray-700 dark:text-gray-300">
-                            {{ $enrollment->slot?->course?->name ?? 'N/A' }}
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-700 dark:text-gray-300">
-                            {{ $enrollment->slot?->title ?? 'Slot #' . $enrollment->course_slot_id }}
-                        </td>
                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                            <div>{{ optional($enrollment->slot?->training_date)->format('d M Y') ?? 'N/A' }}</div>
-                            <div>{{ $enrollment->slot?->start_time }} - {{ $enrollment->slot?->end_time }}</div>
-                            <div>{{ $enrollment->slot?->trainingCenter?->name }}</div>
+                            {{ $student?->user?->phone ?? 'N/A' }}
                         </td>
                         <td class="px-4 py-4">
                             <span
                                 class="inline-flex rounded-full px-2.5 py-1 text-xs font-medium capitalize {{ $statusStyles[$enrollment->status] ?? 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300' }}">
-                                {{ $enrollment->status }}
+                                {{ ucfirst($enrollment?->status ?? '-') }}
                             </span>
                             <div class="mt-1 text-xs text-gray-400">
-                                {{ $enrollment->approved_at ? $enrollment->approved_at->format('d M Y h:i A') : 'Not approved yet' }}
+                               {{ $enrollment?->approvedBy?->name ?? '-' }}
                             </div>
                         </td>
                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                             {{ $enrollment->approvedBy?->name ?? 'N/A' }}
                         </td>
-                        {{-- <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                            @if ($enrollment->student)
-                                <a href="{{ role_route('role.documents.create', ['student' => $enrollment->student]) }}"
-                                    class="inline-flex items-center rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white">
-                                    Document Add
-                                </a>
-                            @else
-                                <span class="text-xs text-gray-400">No student</span>
-                            @endif
-                        </td> --}}
-                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                            @if ($enrollment->student && $enrollment->slot?->course)
-                                <form method="POST"
-                                    action="{{ role_route('role.enrollments.update', ['enrollment' => $enrollment]) }}"
-                                    class="space-y-2">
-                                    @csrf
-                                    @method('PUT')
-
-                                    <input type="hidden" name="status" value="{{ $enrollment->status }}">
-
-                                    <select name="course_permission_role_id"
-                                        onchange="this.form.submit()"
-                                        class="min-w-48 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
-                                        <option value="">No role assigned</option>
-                                        @foreach ($enrollment->slot->course->permissionRoles as $permissionRole)
-                                            <option value="{{ $permissionRole->id }}"
-                                                @selected((int) $enrollment->course_permission_role_id === (int) $permissionRole->id)>
-                                                {{ $permissionRole->name }}{{ $permissionRole->is_full_access ? ' - Full Access' : '' }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </form>
-                            @else
-                                <span class="text-xs text-gray-400">No course</span>
-                            @endif
-                        </td>
                         <td class="px-4 py-4 text-right">
-                            <form method="POST"
+                            <form method="POST" class="flex items-center justify-end"
                                 action="{{ role_route('role.enrollments.update', ['enrollment' => $enrollment]) }}">
                                 @csrf
                                 @method('PUT')
 
                                 <select name="status" onchange="this.form.submit()"
-                                    class="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
+                                    class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:border-brand-500 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
                                     <option value="pending" {{ $enrollment->status === 'pending' ? 'selected' : '' }}>
                                         Pending
                                     </option>
