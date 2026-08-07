@@ -9,6 +9,9 @@ use App\Models\LMS\Enrollment;
 use App\Models\Student;
 use App\Models\TrainingCenter;
 use App\Models\User;
+use App\Services\CourseService;
+use App\Traits\CourseTrait;
+use App\Traits\RouteDiscoveryTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -18,10 +21,21 @@ use Spatie\Permission\Models\Role;
 
 class FrontendController extends Controller
 {
+    use CourseTrait, RouteDiscoveryTrait;
 
+     protected $courseService;
+
+    /**
+     * Inject the CourseService.
+     */
+    public function __construct(CourseService $courseService)
+    {
+        $this->courseService = $courseService;
+    }
     public function landingPage()
     {
-        return view('frontend.pages.home');
+          $courses = $this->getCourses();
+        return view('frontend.pages.home', compact('courses'));
     }
 
     // public function index()
@@ -31,12 +45,12 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('frontend.lia-collage.about');
+        return view('frontend.pages.about');
     }
 
     public function contact()
     {
-        return view('frontend.lia-collage.contact');
+        return view('frontend.pages.contact');
     }
 
     public function faq()

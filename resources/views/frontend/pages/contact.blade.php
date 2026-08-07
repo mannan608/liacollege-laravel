@@ -1,209 +1,179 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <!-- Breadcrumb -->
-    <section class="relative py-8 md:py-0 min-h-80 md:min-h-90 lg:min-h-110 flex items-center overflow-hidden -mt-4">
-        <div class="absolute inset-0 z-0">
-            <img src="{{ asset('frontend-img/breadcrumb.jpg') }}" alt="Training" class="w-full h-full object-cover">
+<!-- Hero -->
+  <section class="relative bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 text-white py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-brand-500/10 rounded-full blur-3xl -tranbrand-y-1/2 tranbrand-x-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-emerald-500/10 rounded-full blur-3xl tranbrand-y-1/3 -tranbrand-x-1/4"></div>
+    <div class="relative max-w-5xl mx-auto text-center">
+      <span class="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/10 text-xs sm:text-sm font-medium tracking-wide mb-4 sm:mb-6 border border-white/10 backdrop-blur-sm">GET IN TOUCH</span>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight mb-4 sm:mb-6 leading-tight">Contact Us</h1>
+      <p class="text-base sm:text-lg md:text-xl text-brand-300 max-w-2xl mx-auto leading-relaxed font-light px-2 sm:px-0">We'd love to hear from you. Reach out for inquiries, campus tours, or just to say hello.</p>
+    </div>
+  </section>
 
-            <div class="absolute inset-0 bg-linear-to-r  bg-secondary-500/75 to-transparent"></div>
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10">
+
+      <!-- Left: Info -->
+      <div class="lg:col-span-5 space-y-4 sm:space-y-5 lg:space-y-6">
+
+        <!-- Address -->
+        <div class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-neutral-100 transition-all duration-300 hover:shadow-md hover:-tranbrand-y-1">
+          <div class="flex items-start gap-4 sm:gap-5">
+            <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-brand-50 flex items-center justify-center text-brand-600">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-base sm:text-lg font-semibold text-neutral-900 mb-0.5 sm:mb-1">Main Campus</h3>
+              <p class="text-sm sm:text-base text-neutral-600 leading-relaxed">Level 14, 333 Collins Street<br>Melbourne, VIC 3000</p>
+              <a href="https://maps.google.com/?q=333+Collins+St+Melbourne+VIC+3000" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 mt-2 sm:mt-3 text-xs sm:text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors">
+                Get Directions
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
-            <div class="max-w-2xl">
-
-                <h1 class="text-white font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight mb-4 sm:mb-6">
-                    Empowering the Next Generation of Professionals
-                </h1>
-
-                <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                    At Lia College, we bridge the gap between academic knowledge
-                    and industry demands. Our mission is to provide world-class
-                    vocational education that transforms careers and fuels
-                    professional growth.
-                </p>
-
-
-                <div class="flex flex-col sm:flex-row gap-4">
-
-                    <a href="{{ route('courses') }}"
-                        class="inline-flex items-center justify-center
-                        bg-brand-600 text-white
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500
-                        transition duration-300">
-                        Our Courses
-                    </a>
-
-                </div>
-
+        <!-- Phone -->
+        <div class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-neutral-100 transition-all duration-300 hover:shadow-md hover:-tranbrand-y-1">
+          <div class="flex items-start gap-4 sm:gap-5">
+            <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
             </div>
-
+            <div>
+              <h3 class="text-base sm:text-lg font-semibold text-neutral-900 mb-0.5 sm:mb-1">Phone</h3>
+              <a href="tel:0479110567" class="text-xl sm:text-2xl font-bold text-neutral-900 hover:text-brand-600 transition-colors">0479 110 567</a>
+              <p class="text-xs sm:text-sm text-neutral-500 mt-1 sm:mt-2">Available during business hours</p>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <section class="py-8 md:py-12 lg:py-14 ">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="flex flex-col  mb-3 md:mb-4 lg:mb-6">
-                <div class="h-1.5 w-14 bg-brand-500 rounded-full mb-3"></div>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">Contact Details</h1>
+        <!-- Hours -->
+        <div class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-neutral-100 transition-all duration-300 hover:shadow-md hover:-tranbrand-y-1">
+          <div class="flex items-start gap-4 sm:gap-5">
+            <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-[65%_35%] gap-6 md:gap-0">
-                <div class="content pr-0 md:pr-8 lg:pr-10">
-                    <p class="lg:text-base text-sm text-neutral-500">
-                        If you have a question about Lia College Australia, please contact our friendly team of Course
-                        and Careers advisers. For those new to replica watches, visiting <a
-                            href="https://www.skwatches.com/" class="text-brand-500">https://www.skwatches.com/</a> provides
-                        an excellent starting point. The site offers comprehensive information about different Rolex models
-                        and their replica counterparts.</p>
-
-
-                    <div class="flex flex-col mb-4 md:mb-6 lg:mb-8 mt-4 md:mt-6 lg:mt-8">
-                        <div class="h-1.5 w-14 bg-brand-500 rounded-full mb-1 "></div>
-                        <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">
-                            Student
-                            Information Forms</h1>
-                        <p class="text-neutral-500 text-sm mt-2">You can download our student information forms here</p>
-                    </div>
-
-                    <div class="form-lists flex flex-wrap gap-4">
-                        <a href=""
-                            class="inline-flex items-center justify-center
-                        bg-white text-brand-500 border border-brand-500
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500 hover:text-white
-                        transition duration-300">Application
-                            form</a>
-                        <a href=""
-                            class="inline-flex items-center justify-center
-                        bg-white text-brand-500 border border-brand-500
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500 hover:text-white
-                        transition duration-300">Complaints
-                            and Appeals Form</a>
-                        <a href=""
-                            class="inline-flex items-center justify-center
-                        bg-white text-brand-500 border border-brand-500
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500 hover:text-white
-                        transition duration-300">Deferral
-                            Application Form</a>
-                        <a href=""
-                            class="inline-flex items-center justify-center
-                        bg-white text-brand-500 border border-brand-500
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500 hover:text-white
-                        transition duration-300">International
-                            Student Handbook</a>
-                        <a href=""
-                            class="inline-flex items-center justify-center
-                        bg-white text-brand-500 border border-brand-500
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500 hover:text-white
-                        transition duration-300">Course
-                            Withdrawal/ Fee Refund or Variation of a Course Form</a>
-                    </div>
-
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base sm:text-lg font-semibold text-neutral-900 mb-2 sm:mb-3">Opening Hours</h3>
+              <div class="space-y-1.5 sm:space-y-2">
+                <div class="flex justify-between items-center py-1.5 sm:py-2 border-b border-neutral-100 gap-4">
+                  <span class="text-sm sm:text-base text-neutral-600">Monday – Friday</span>
+                  <span class="text-sm sm:text-base font-semibold text-neutral-900 text-right">9:00 AM – 6:00 PM</span>
                 </div>
-                <div class="border border-gray-200 p-6 w-full rounded-lg bg-white max-w-150 mx-auto" id="get-in-touch-form">
-                
-                    <div class="md:mb-4 mb-3 lg:mb-6">
-                        <h1 class="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Any Questions? Ask
-                            Us!!</h1>
-                    </div>
-                    <x-frontend.get-in-touch />
+                <div class="flex justify-between items-center py-1.5 sm:py-2 border-b border-neutral-100 gap-4">
+                  <span class="text-sm sm:text-base text-neutral-600">Saturday</span>
+                  <span class="text-sm sm:text-base font-semibold text-neutral-900 text-right">9:00 AM – 4:00 PM</span>
+                </div>
+                <div class="flex justify-between items-center py-1.5 sm:py-2 gap-4">
+                  <span class="text-sm sm:text-base text-neutral-600">Sunday</span>
+                  <span class="text-sm sm:text-base font-medium text-neutral-400 text-right">Closed</span>
+                </div>
+              </div>
             </div>
-            </div>
-
+          </div>
         </div>
-    </section>
-    <!-- Contact Info -->
-    <section class="py-14 sm:py-20 lg:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-5 md:px-8">
-            <!-- Heading -->
-            <div class="text-center mb-10 sm:mb-14">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-                    General Contact Information
-                </h2>
+
+
+      </div>
+
+      <!-- Right: Form -->
+      <div class="lg:col-span-7">
+        <div class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm border border-neutral-100 h-full">
+          <div class="mb-6 sm:mb-8">
+            <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 mb-1 sm:mb-2">Send us a message</h2>
+            <p class="text-sm sm:text-base text-neutral-500">Fill out the form below and we'll get back to you within 24 hours.</p>
+          </div>
+
+          <form id="contactForm" class="space-y-4 sm:space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              <div>
+                <label for="firstName" class="block text-xs sm:text-sm font-medium text-neutral-700 mb-1 sm:mb-1.5">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="John" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-200 bg-neutral-50 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm sm:text-base" required />
+              </div>
+              <div>
+                <label for="lastName" class="block text-xs sm:text-sm font-medium text-neutral-700 mb-1 sm:mb-1.5">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Doe" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-200 bg-neutral-50 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm sm:text-base" required />
+              </div>
             </div>
-            <!-- Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
-                <!-- Address -->
-                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 shadow-sm border">
-                    <div class="mb-5">
-                        <svg class="w-8 h-8 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                            <path d="M12 21s8-4.5 8-10.5S15.314 3 12 3 4 6.5 4 10.5 12 21 12 21z" />
-                        </svg>
-                    </div>
-                    <p class="text-gray-700 text-sm sm:text-base leading-7">
-                        Level 3, 235 Church St, PARRAMATTA,NSW, Australia 2150
-                    </p>
 
-                </div>
-
-                <!-- Phone -->
-                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 shadow-sm border">
-
-                    <div class="mb-5">
-                        <svg class="w-8 h-8 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                    </div>
-                    <a href="tel:6190376310" class="text-gray-700 text-sm sm:text-base hover:text-brand-600 transition">
-                        Head-Office : +61 (02) 9037 6310
-                    </a> <br>
-                    <a href="tel:61410219553"
-                        class="text-gray-700 text-sm sm:text-base hover:text-brand-600 transition mt-2">
-                        Head-Office : +61410 219 553
-                    </a>
-
-                </div>
-                <!-- Office Time -->
-                <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 shadow-sm border">
-
-                    <div class="mb-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5A2.25 2.25 0 0 0 2.25 6.75m19.5 0v.243a2.25 2.25 0 0 1-.876 1.782l-7.5 5.625a2.25 2.25 0 0 1-2.748 0l-7.5-5.625A2.25 2.25 0 0 1 2.25 6.993V6.75" />
-                        </svg>
-                    </div>
-                    <p class="text-gray-700 text-sm sm:text-base leading-7">
-                        info@liacollege.edu.au
-                    </p>
-                </div>
+            <div>
+              <label for="email" class="block text-xs sm:text-sm font-medium text-neutral-700 mb-1 sm:mb-1.5">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john.doe@example.com" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-200 bg-neutral-50 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all text-sm sm:text-base" required />
             </div>
+
+            <div>
+              <label for="subject" class="block text-xs sm:text-sm font-medium text-neutral-700 mb-1 sm:mb-1.5">Subject</label>
+              <div class="relative">
+                <select id="subject" name="subject" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 pr-10 rounded-lg sm:rounded-xl border border-neutral-200 bg-neutral-50 text-neutral-900 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all cursor-pointer appearance-none text-sm sm:text-base">
+                  <option>General Inquiry</option>
+                  <option>Campus Tour Booking</option>
+                  <option>Course Information</option>
+                  <option>Student Support</option>
+                  <option>Partnership Opportunity</option>
+                </select>
+                <div class="absolute right-3 top-1/2 -tranbrand-y-1/2 pointer-events-none text-neutral-400">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="message" class="block text-xs sm:text-sm font-medium text-neutral-700 mb-1 sm:mb-1.5">Message</label>
+              <textarea id="message" name="message" rows="4" sm:rows="5" placeholder="How can we help you?" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-neutral-200 bg-neutral-50 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all resize-none text-sm sm:text-base" required></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 sm:py-4 rounded-lg sm:rounded-xl transition-all duration-200 hover:shadow-lg hover:-tranbrand-y-0.5 active:tranbrand-y-0 text-sm sm:text-base">
+              Send Message
+            </button>
+
+            <p class="text-[11px] sm:text-xs text-neutral-400 text-center">By submitting this form, you agree to our privacy policy and terms of service.</p>
+          </form>
+
+          <!-- Success Message -->
+          <div id="successMessage" class="hidden text-center py-8 sm:py-12">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 sm:w-8 sm:h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-neutral-900 mb-2">Message Sent!</h3>
+            <p class="text-sm sm:text-base text-neutral-500">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+            <button type="button" onclick="resetForm()" class="mt-5 sm:mt-6 text-sm sm:text-base text-brand-600 font-semibold hover:text-brand-700 transition-colors">Send another message</button>
+          </div>
         </div>
-    </section>
+      </div>
+
+    </div>
+  </main>
 
 
-
-    <!-- Map Section -->
-    <section class="pb-14 sm:pb-20 lg:pb-24 bg-white">
-        <div class="max-w-7xl mx-auto px-5 md:px-8">
-            <!-- Heading -->
-            <div class="text-center mb-8 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-                    Other Campus Contacts
-                </h2>
-            </div>
-            <!-- Map -->
-            <div class="rounded-2xl overflow-hidden shadow-md border">
-                <iframe class="w-full h-75 sm:h-100 lg:h-125"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.948203948252!2d151.00044497657777!3d-33.81364971620606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a31facbfffff%3A0x682bea26a4fba3b!2sShop%203%2F235%20Church%20St%2C%20Parramatta%20NSW%202150%2C%20Australia!5e0!3m2!1sen!2sbd!4v1781672839236!5m2!1sen!2sbd"
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-    </section>
 @endsection
+
+<script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+        setTimeout(() => {
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            btn.textContent = originalText;
+            btn.disabled = false;
+            btn.classList.remove('opacity-75', 'cursor-not-allowed');
+        }, 1200);
+    });
+
+    function resetForm() {
+        form.reset();
+        successMessage.classList.add('hidden');
+        form.classList.remove('hidden');
+    }
+</script>

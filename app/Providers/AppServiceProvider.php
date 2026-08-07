@@ -76,9 +76,9 @@ class AppServiceProvider extends ServiceProvider
             ProviderRepositoryInterface::class,
             ProviderRepository::class
         );
-         $this->app->bind(
+        $this->app->bind(
             StudentRepositoryInterface::class,
-           StudentRepository::class
+            StudentRepository::class
         );
     }
 
@@ -95,15 +95,16 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('frontend.layouts.navbar', function ($view) {
 
-            $courses = Cache::remember(
-                'navbar_courses',
-                now()->addDay(),
-                function () {
-                    return Course::select('id', 'name', 'slug')
-                        ->orderBy('name')
-                        ->get();
-                }
-            );
+            $path = public_path('courses.json');
+
+            $courses = [];
+
+            if (file_exists($path)) {
+                $json = file_get_contents($path);
+                $data = json_decode($json, true);
+
+                $courses = $data['courses'] ?? [];
+            }
 
             $view->with('courses', $courses);
         });

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Student\AssignmentController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\QualificationController;
 use App\Http\Controllers\Student\CourseController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
@@ -21,15 +22,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
 Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
 Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
-Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
-Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
-Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
-Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
-Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
-    ->name('enroll-course');
+Route::get('/qualifications', [QualificationController::class, 'courses'])
+    ->name('qualifications');
 
-Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
-    ->name('course.enroll');
+Route::get('/qualifications/{slug}', [QualificationController::class, 'courseDetails'])
+    ->name('qualifications.details');
+    Route::post('/apply', [QualificationController::class, 'apply'])->name('qualifications.apply');
+
+
+// Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
+// Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
+// Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
+// Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
+// Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
+//     ->name('enroll-course');
+
+// Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
+//     ->name('course.enroll');
 
 Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
