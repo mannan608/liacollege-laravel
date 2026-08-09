@@ -24,7 +24,7 @@
 
                 </button>
                 <!-- Logo -->
-                <div class="w-14">
+                <div class="w-11">
                     <a href="/">
                         <img src="{{ asset('logo.webp') }}" alt="logo" class="w-auto h-auto">
                     </a>
@@ -59,7 +59,7 @@
                     </a>
 
                     <!-- Dropdown menu -->
-                    <div id="dropdownHover" class="z-10 hidden top-full left-0 bg-white rounded-md shadow-lg max-w-150">
+                    <div id="dropdownHover" class="z-50 hidden top-full left-0 bg-white rounded-md shadow-lg max-w-150 absolute">
                         <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownHoverButton">
 
                             @forelse($courses as $course)

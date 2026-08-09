@@ -8,7 +8,7 @@
 
             <div class="flex sm:justify-start items-center justify-center">
                 <a href="/">
-                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-34 h-auto">
+                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-20 h-auto">
                 </a>
             </div>
 
@@ -24,10 +24,10 @@
                     info@liacollege.edu.au
                 </li>
 
-                <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+                {{-- <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
                     <span class="font-semibold text-slate-700">Address:</span>
                     235 Church St, Parramatta,NSW, Australia 2150
-                </li>
+                </li> --}}
 
             </ul>
 
@@ -108,7 +108,7 @@
             <ul class="space-y-2 text-sm">
 
                 <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('about') }}"> About us</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('courses') }}">Our Courses</a></li>
+                {{-- <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('courses') }}">Our Courses</a></li> --}}
                 <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('contact') }}">Contact Us</a></li>
 
             </ul>
@@ -122,7 +122,7 @@
             <ul class="space-y-2 text-sm">
 
                 <li><a class="text-slate-500 hover:text-slate-900" href="#"> Our Agents</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('student-information') }}">Student Information</a></li>
+                {{-- <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('student-information') }}">Student Information</a></li> --}}
             </ul>
         </div>
 

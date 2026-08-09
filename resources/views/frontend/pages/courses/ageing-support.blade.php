@@ -104,7 +104,7 @@
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">About This Course</h2>
+                        <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-6">About This Course</h2>
                         <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
                             With Australia’s ageing population on the rise, CHC33021 Certificate III in Individual Support
                             (Ageing) is a popular course in Australia. We deliver this qualification to fulfil the gap in
@@ -198,7 +198,7 @@
         <section class="py-24 bg-surface reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Why Choose This Course</h2>
+                    <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Why Choose This Course</h2>
                     <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Discover the benefits of starting your
                         career in aged care.</p>
                 </div>
@@ -237,7 +237,7 @@
         <section class="py-24 bg-surface-container-low reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Where Can This Qualification Take
+                    <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Where Can This Qualification Take
                         You?</h2>
                     <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Upon successful completion, you can
                         pursue various roles in the aged care sector.</p>
@@ -281,7 +281,7 @@
         <!-- 7. Entry Requirements -->
         <section class="py-24 bg-surface reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-12 text-center">Entry Requirements</h2>
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-12 text-center">Entry Requirements</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div class="bg-surface-container-lowest p-8 rounded-[24px] border border-outline-variant/30">
                         <h3 class="font-headline-md text-2xl mb-6 text-primary flex items-center gap-3">
@@ -344,7 +344,7 @@
         <section class="py-24 bg-surface-container-low reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Course Structure</h2>
+                    <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Course Structure</h2>
                     <p class="font-body-lg text-primary font-semibold">Total Units: 15 Units</p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -411,7 +411,7 @@
         <section class="py-24 bg-surface reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Study Modes</h2>
+                    <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Study Modes</h2>
                     <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">We offer flexible delivery options to
                         suit your learning style and lifestyle.</p>
                 </div>
@@ -447,7 +447,7 @@
         <!-- 10. Work Placement -->
         <section class="py-24 bg-brand-500 text-on-primary reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
-                <h2 class="font-headline-lg text-headline-lg mb-6">Gain Real Industry Experience</h2>
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold mb-6">Gain Real Industry Experience</h2>
                 <div class="inline-block bg-white/10 backdrop-blur-sm p-8 rounded-[24px] border border-white/20">
                     <p class="font-display-lg text-4xl md:text-5xl font-bold mb-4">120 Hours Minimum</p>
                     <p class="font-body-lg max-w-2xl mx-auto opacity-90">
@@ -462,7 +462,7 @@
         <section class="py-24 bg-surface reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Assessment Tasks</h2>
+                    <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Assessment Tasks</h2>
                     <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Demonstrate your competency through a
                         mix of theory and practical tasks.</p>
                 </div>

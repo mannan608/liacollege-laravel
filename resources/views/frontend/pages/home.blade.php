@@ -9,7 +9,7 @@
 
 @section('content')
     <section
-        class="relative pt-20 pb-32 md:pt-32 md:pb-48 flex items-center justify-center min-h-[795px] overflow-hidden bg-surface-container-low">
+        class="relative pt-12 sm:pt-16 pb-24 md:pb-28 md:pt-24 lg:pb-40 flex items-center justify-center min-h-[795px] overflow-hidden bg-surface-container-low">
         <div
             class="absolute inset-0 z-0 bg-gradient-to-br from-surface-container-low via-white to-primary/5 bg-[length:200%_200%] animate-gradient-flow">
             <img alt="Students throwing graduation caps in the air in a modern auditorium"
@@ -22,7 +22,7 @@
             <!-- Left Content -->
             <div class="lg:col-span-6 space-y-8">
                 <div
-                    class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-outline-variant/50 soft-shadow">
+                    class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-outline-variant/50 soft-shadow text-sm md:text-base">
                     <div class="flex text-amber-400">
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -32,14 +32,14 @@
                     </div>
                     <span class="font-body-md text-body-md font-semibold text-on-surface">4.9/5 Student Rating</span>
                 </div>
-                <h1 class="font-display-lg text-display-lg md:text-[72px] text-on-surface leading-tight">
+                <h1 class="font-bold text-4xl sm:text-5xl md:text-[56px] text-on-surface leading-tight text-center md:text-start">
                     Advance Your Career with <span class="text-secondary-500">Excellence</span>
                 </h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl text-center md:text-start">
                     Join a global community of forward-thinkers. Our rigorous programs and industry partnerships prepare you
                     for tomorrow's challenges.
                 </p>
-                <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+                <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant flex flex-col md:flex-row items-center justify-center md:justify-start">
                     <li class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-secondary animate-float"
                             style="font-variation-settings: 'FILL' 1; animation-delay: 0s;">check_circle</span>
@@ -63,7 +63,7 @@
                     <div
                         class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl pointer-events-none">
                     </div>
-                    <h3 class="font-headline-md text-headline-md text-on-surface mb-6">Start Your Journey</h3>
+                    <h3 class="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-on-surface mb-6">Start Your Journey</h3>
                     <form class="space-y-5">
                         <div>
                             <label
@@ -73,7 +73,7 @@
                                 class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                                 placeholder="John Doe" type="text">
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label
                                     class="block font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">Email</label>
@@ -132,7 +132,7 @@
     <section class="py-24 md:py-32 bg-surface-container-lowest reveal-on-scroll">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Explore Our Qualifications</h2>
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Explore Our Qualifications</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant">Discover programs designed to equip
                     you with the skills demanded by today's leading employers.</p>
             </div>
@@ -171,7 +171,7 @@
             </div>
             <!-- Right Quiz -->
             <div>
-                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Check Your Eligibility</h2>
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Check Your Eligibility</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Find out which programs you
                     qualify for in less than 2 minutes. Our quick assessment helps tailor your educational path.</p>
                 <div class="bg-surface rounded-[20px] p-8 border border-outline-variant/30 soft-shadow">

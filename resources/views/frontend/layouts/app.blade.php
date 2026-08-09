@@ -83,7 +83,7 @@
 
     @stack('styles')
 </head>
-<body class="min-h-screen flex flex-col @yield('body-class')">
+<body class="min-h-screen flex flex-col">
 
     @include('frontend.layouts.navbar')
 
@@ -93,7 +93,7 @@
        </div>
     </main>
 
-    {{-- @include('frontend.layouts.footer') --}}
+    @include('frontend.layouts.footer')
 
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>

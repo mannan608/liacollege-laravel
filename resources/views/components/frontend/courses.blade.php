@@ -20,7 +20,7 @@
                     {{ $course['title'] }}
                 </h3>
                 <p class="text-sm md:text-base text-gray-500 mb-2 line-clamp-3">{{ $course['description'] }}</p>
-                <div class="flex items-center justify-between mt-4 gap-6">
+                <div class="flex items-center justify-between mt-4 gap-4 md:gap-6">
                     <a href="{{ route('qualifications.details', $course['slug']) }}"
                         class="group/btn text-sm flex items-center gap-2 px-5 py-2.5 bg-white border border-secondary-500 hover:bg-secondary-500 text-secondary-500 hover:text-white rounded-xl font-medium transition-all">
 

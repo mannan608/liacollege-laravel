@@ -168,7 +168,7 @@
       <div class="max-w-7xl mx-auto px-5 md:px-8">
           <!-- Heading -->
           <div class="text-center md:mb-8 mb-4">
-              <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2 text-center">Our Student Stories
+              <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-2 text-center">Our Student Stories
               </h2>
               <p class="text-on-surface-variant max-w-xl mx-auto text-sm md:text-base mb-12">Hear from our students
                   about their journey and success stories.</p>
@@ -204,9 +204,9 @@
                                       <div class="flex items-center justify-between mt-auto">
 
                                           <div class="flex items-center gap-3">
-                                              <img src="{{ asset('frontend-img/' . $review['image']) }}"
+                                              {{-- <img src="{{ asset('frontend-img/' . $review['image']) }}"
                                                   alt="{{ $review['name'] }}"
-                                                  class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+                                                  class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"> --}}
 
                                               <div>
                                                   <h5

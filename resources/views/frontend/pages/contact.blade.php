@@ -150,30 +150,4 @@
 
 @endsection
 
-<script>
-    const form = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-        btn.classList.add('opacity-75', 'cursor-not-allowed');
-
-        setTimeout(() => {
-            form.classList.add('hidden');
-            successMessage.classList.remove('hidden');
-            btn.textContent = originalText;
-            btn.disabled = false;
-            btn.classList.remove('opacity-75', 'cursor-not-allowed');
-        }, 1200);
-    });
-
-    function resetForm() {
-        form.reset();
-        successMessage.classList.add('hidden');
-        form.classList.remove('hidden');
-    }
-</script>

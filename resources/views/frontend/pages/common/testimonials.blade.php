@@ -1,7 +1,7 @@
 <!-- 15. Student Testimonials -->
         <section class="py-24 bg-surface-container-low reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-12 text-center">What Our Students Say</h2>
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-12 text-center">What Our Students Say</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-surface p-8 rounded-[24px] border border-outline-variant/30 soft-shadow">
                         <div class="flex items-center gap-2 mb-4 text-secondary">

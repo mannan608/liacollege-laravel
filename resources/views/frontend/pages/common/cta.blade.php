@@ -1,7 +1,7 @@
  <!-- 17. CTA -->
         <section class="py-24 bg-brand-500 text-on-primary text-center reveal-on-scroll">
             <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-                <h2 class="font-headline-lg text-headline-lg mb-6">Ready to Start Your Career in Aged Care?</h2>
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold mb-6">Ready to Start Your Career in Aged Care?</h2>
                 <p class="font-body-lg mb-10 max-w-2xl mx-auto opacity-90">Take the first step towards a rewarding
                     profession making a real difference in people's lives.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
