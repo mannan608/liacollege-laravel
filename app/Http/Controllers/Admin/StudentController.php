@@ -26,27 +26,6 @@ class StudentController extends Controller
         private readonly StudentRepositoryInterface $students,
     ) {}
 
-//    public function index(Request $request)
-// {
-//     $students = Student::query()
-//         ->with([
-//             'user:id,name,email,phone',
-//             'enrollments' => function ($query) {
-//                 $query->select([
-//                     'id',
-//                     'student_id',
-//                     'status',
-//                     'approved_by',
-//                 ])->with([
-//                     'approvedBy:id,name',
-//                 ]);
-//             },
-//         ])
-//         ->latest()
-//         ->paginate(20);
-
-//     return view('backend.pages.students.index', compact('students'));
-// }
 
 public function index(Request $request)
 {

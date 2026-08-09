@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="text-center mt-8">
-                        <a href=""
+                        <a href="/first-aid"
                             class="text-cyan-600 hover:text-cyan-700 font-medium inline-flex items-center gap-2">
                             ← Browse More Courses
                         </a>

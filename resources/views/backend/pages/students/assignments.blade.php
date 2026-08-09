@@ -8,56 +8,14 @@
     <div class="mb-6">
 
         <a
-            href=""
+            href="{{role_route('role.students.show', ['student' => $student])}}"
             class="inline-flex items-center gap-2
                    text-sm font-medium text-slate-500
                    hover:text-purple-600 mb-4"
         >
             ← Back 
         </a>
-
-        <div
-            class="bg-white rounded-2xl
-                   border border-slate-200
-                   shadow-sm p-6"
-        >
-
-            <div class="flex items-center gap-4">
-
-                <div
-                    class="w-14 h-14 rounded-full
-                           bg-purple-100
-                           flex items-center justify-center
-                           text-xl font-bold text-purple-700"
-                >
-                    {{ strtoupper(
-                        substr(
-                            $student->user->name ?? 'S',
-                            0,
-                            1
-                        )
-                    ) }}
-                </div>
-
-                <div>
-
-                    <h1 class="text-2xl font-bold text-slate-800">
-                        {{ $student->user->name }}
-                    </h1>
-
-                    <p class="text-sm text-slate-500">
-                        {{ $student->user->email ?? '' }}
-                    </p>
-
-                    <p class="mt-1 text-sm text-purple-600 font-medium">
-                        Assignment Submissions
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
+       
 
     </div>
 
@@ -129,6 +87,10 @@
 
                     @forelse($submissions as $submission)
 
+                   @php
+                       $course = $submission->assignment->course->name;
+                   @endphp
+
                         <tr class="hover:bg-slate-50">
 
                             {{-- Assignment --}}
@@ -160,7 +122,7 @@
                                            text-purple-700
                                            text-xs font-semibold"
                                 >
-                                    {{ $submission->assignment->course->title }}
+                                    {{ $course }}
                                 </span>
 
                             </td>

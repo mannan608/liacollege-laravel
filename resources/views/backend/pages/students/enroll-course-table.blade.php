@@ -11,7 +11,7 @@
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Course</th>
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Slot</th>
                     <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">Schedule</th>
-                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Assign Permission</th>                    
+                    <th class="px-4 py-3 text-right text-xs font-medium uppercase tracking-wide text-gray-500">Course Permission</th>                    
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
