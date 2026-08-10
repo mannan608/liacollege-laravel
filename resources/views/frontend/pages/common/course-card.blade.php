@@ -27,16 +27,6 @@
                 View Details
             </a>
 
-             <!-- <a
-                    href="{{ route('qualifications.details', $course['slug']) }}"
-                    class="group/btn flex items-center gap-2 rounded-xl border border-secondary-500 bg-white px-5 py-2.5 text-sm font-medium text-secondary-500 transition-all hover:bg-secondary-500 hover:text-white"
-                >
-                    <span>View Details</span>
-                    <svg class="h-4 w-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                </a> -->
-
             <button
                 type="button"
                 data-modal-target="modal-{{ $course['id'] }}"

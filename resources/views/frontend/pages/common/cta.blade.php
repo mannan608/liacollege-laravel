@@ -6,7 +6,7 @@
          <p class="font-body-lg mb-10 max-w-2xl mx-auto opacity-90">Rename Apply Now to. Book a Free Consultation
          </p>
          <div class="flex flex-col sm:flex-row justify-center gap-4">
-             <button
+             <button type="button" data-open-apply-modal
                  class="bg-secondary-500 text-white hover:bg-secondary-500 px-8 py-4 rounded-full font-body-md text-lg font-bold">
                  Apply Now
              </button>

@@ -281,13 +281,33 @@
 
                 <!-- Image -->
                 <div class="relative">
-                    <div
-                        class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-200 to-emerald-200 opacity-50 blur-xl">
+                    <div class="bg-white rounded-2xl p-2">
+                        <div class="px-6 pt-4 z-99999 relative">
+                            <h5 class="text-2xl text-center font-semibold">Quick Enquiry</h5>
+                            <p class="text-center text-base mt-2">Get a response within 1 business day</p>
+                        </div>
+                        <div class="-mt-10">
+                            <iframe
+                                        src="https://api.leadconnectorhq.com/widget/form/2pdjFMLV9R6WCmpwPwe5"
+                                        style="width:100%;height:100%;border:none;border-radius:3px"
+                                        id="inline-2pdjFMLV9R6WCmpwPwe5" 
+                                        data-layout="{'id':'INLINE'}"
+                                        data-trigger-type="alwaysShow"
+                                        data-trigger-value=""
+                                        data-activation-type="alwaysActivated"
+                                        data-activation-value=""
+                                        data-deactivation-type="neverDeactivate"
+                                        data-deactivation-value=""
+                                        data-form-name="CHC52025 Diploma of Community Services"
+                                        data-height="487"
+                                        data-layout-iframe-id="inline-2pdjFMLV9R6WCmpwPwe5"
+                                        data-form-id="2pdjFMLV9R6WCmpwPwe5"
+                                        title="CHC52025 Diploma of Community Services"
+                                            >
+                                    </iframe>
+                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                        </div>
                     </div>
-                    <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[1.5rem] bg-brand-100"></div>
-                    <img alt="Students in a practical training session"
-                        class="relative rounded-[1.5rem] w-full h-auto object-cover shadow-2xl"
-                        src="{{ asset('lia/single-course-banar.jpg') }}">
                 </div>
             </div>
         </div>

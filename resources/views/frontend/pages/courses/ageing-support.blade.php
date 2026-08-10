@@ -230,13 +230,25 @@
 
                 <!-- Image -->
                 <div class="relative">
-                    <div
-                        class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-200 to-emerald-200 opacity-50 blur-xl">
+                    <div class="bg-white rounded-2xl p-2">
+                        <div class="px-6 pt-4 z-99999 relative">
+                            <h5 class="text-2xl text-center font-semibold">Quick Enquiry</h5>
+                            <p class="text-center text-base mt-2">Get a response within 1 business day</p>
+                        </div>
+                        <div class="-mt-10">
+                            <iframe src="https://api.leadconnectorhq.com/widget/form/wl8u8aa5nPZ36dAGyds8"
+                                style="width:100%;height:100%;border:none;border-radius:3px"
+                                id="inline-wl8u8aa5nPZ36dAGyds8" data-layout="{'id':'INLINE'}"
+                                data-trigger-type="alwaysShow" data-trigger-value=""
+                                data-activation-type="alwaysActivated" data-activation-value=""
+                                data-deactivation-type="neverDeactivate" data-deactivation-value=""
+                                data-form-name="CHC43015 Certificate IV in Ageing Support" data-height="487"
+                                data-layout-iframe-id="inline-wl8u8aa5nPZ36dAGyds8" data-form-id="wl8u8aa5nPZ36dAGyds8"
+                                title="CHC43015 Certificate IV in Ageing Support">
+                            </iframe>
+                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                        </div>
                     </div>
-                    <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[1.5rem] bg-brand-100"></div>
-                    <img alt="Students in a practical training session"
-                        class="relative rounded-[1.5rem] w-full h-auto object-cover shadow-2xl"
-                        src="{{ asset('lia/single-course-banar.jpg') }}">
                 </div>
             </div>
         </div>
@@ -272,7 +284,8 @@
                     </div>
                     <h3 class="text-2xl font-bold text-slate-900"> Recognition of Prior Learning (RPL)</h3>
                 </div>
-                <p class="leading-relaxed text-slate-600 text-center">Already working in aged care or have relevant industry
+                <p class="leading-relaxed text-slate-600 text-center">Already working in aged care or have relevant
+                    industry
                     experience? <strong>Recognition of Prior Learning (RPL)</strong> allows your existing skills, knowledge
                     and workplace experience to be assessed against the requirements of CHC43015. This can help you avoid
                     repeating training for skills you can already demonstrate.
@@ -675,7 +688,7 @@
             <!-- Basic Requirements -->
             <div
                 class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-xl">
-              
+
                 <ul class="space-y-4">
                     <li class="flex items-start gap-3">
                         <div class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100">
@@ -800,105 +813,167 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-    <!-- Core Units -->
-    <div>
-        <div class="mb-6 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20">
-                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0111.186 0z" />
-                </svg>
+                <!-- Core Units -->
+                <div>
+                    <div class="mb-6 flex items-center gap-3">
+                        <div
+                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20">
+                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0111.186 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Core Units <span
+                                class="text-base font-medium text-slate-500">(8)</span></h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">01</span>
+                            <div><span class="font-bold text-slate-900">CHCAGE001</span><span class="text-slate-600"> —
+                                    Facilitate the empowerment of older people</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">02</span>
+                            <div><span class="font-bold text-slate-900">CHCAGE005</span><span class="text-slate-600"> —
+                                    Provide support to people living with dementia</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">03</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS011</span><span class="text-slate-600"> —
+                                    Meet personal support needs</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">04</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS023</span><span class="text-slate-600"> —
+                                    Support independence and wellbeing</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">05</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS025</span><span class="text-slate-600"> —
+                                    Support relationships with carers and families</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">06</span>
+                            <div><span class="font-bold text-slate-900">CHCDIV001</span><span class="text-slate-600"> —
+                                    Work with diverse people</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">07</span>
+                            <div><span class="font-bold text-slate-900">HLTAAP001</span><span class="text-slate-600"> —
+                                    Recognise healthy body systems</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">08</span>
+                            <div><span class="font-bold text-slate-900">HLTWHS002</span><span class="text-slate-600"> —
+                                    Follow safe work practices for direct client care</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Elective Units -->
+                <div>
+                    <div class="mb-6 flex items-center gap-3">
+                        <div
+                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20">
+                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Elective Units <span
+                                class="text-base font-medium text-slate-500">(10)</span></h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">01</span>
+                            <div><span class="font-bold text-slate-900">CHCADV001</span><span class="text-slate-600"> —
+                                    Facilitate the interests and rights of clients</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">02</span>
+                            <div><span class="font-bold text-slate-900">CHCAGE003</span><span class="text-slate-600"> —
+                                    Coordinate services for older people</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">03</span>
+                            <div><span class="font-bold text-slate-900">CHCAGE004</span><span class="text-slate-600"> —
+                                    Implement interventions with older people at risk</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">04</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS006</span><span class="text-slate-600"> —
+                                    Facilitate individual service planning and delivery</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">05</span>
+                            <div><span class="font-bold text-slate-900">CHCLEG003</span><span class="text-slate-600"> —
+                                    Manage legal and ethical compliance</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">06</span>
+                            <div><span class="font-bold text-slate-900">CHCPAL001</span><span class="text-slate-600"> —
+                                    Deliver care services using a palliative approach</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">07</span>
+                            <div><span class="font-bold text-slate-900">CHCPRP001</span><span class="text-slate-600"> —
+                                    Develop and maintain networks and collaborative partnerships</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">08</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS033</span><span class="text-slate-600"> —
+                                    Identify and report abuse</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">09</span>
+                            <div><span class="font-bold text-slate-900">HLTAID011</span><span class="text-slate-600"> —
+                                    Provide First Aid</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">10</span>
+                            <div><span class="font-bold text-slate-900">CHCDIV003</span><span class="text-slate-600"> —
+                                    Manage and promote diversity</span></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900">Core Units <span class="text-base font-medium text-slate-500">(8)</span></h3>
-        </div>
-        <ul class="space-y-3">
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">01</span>
-                <div><span class="font-bold text-slate-900">CHCAGE001</span><span class="text-slate-600"> — Facilitate the empowerment of older people</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">02</span>
-                <div><span class="font-bold text-slate-900">CHCAGE005</span><span class="text-slate-600"> — Provide support to people living with dementia</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">03</span>
-                <div><span class="font-bold text-slate-900">CHCCCS011</span><span class="text-slate-600"> — Meet personal support needs</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">04</span>
-                <div><span class="font-bold text-slate-900">CHCCCS023</span><span class="text-slate-600"> — Support independence and wellbeing</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">05</span>
-                <div><span class="font-bold text-slate-900">CHCCCS025</span><span class="text-slate-600"> — Support relationships with carers and families</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">06</span>
-                <div><span class="font-bold text-slate-900">CHCDIV001</span><span class="text-slate-600"> — Work with diverse people</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">07</span>
-                <div><span class="font-bold text-slate-900">HLTAAP001</span><span class="text-slate-600"> — Recognise healthy body systems</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">08</span>
-                <div><span class="font-bold text-slate-900">HLTWHS002</span><span class="text-slate-600"> — Follow safe work practices for direct client care</span></div>
-            </li>
-        </ul>
-    </div>
-    <!-- Elective Units -->
-    <div>
-        <div class="mb-6 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20">
-                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-                </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900">Elective Units <span class="text-base font-medium text-slate-500">(10)</span></h3>
-        </div>
-        <ul class="space-y-3">
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">01</span>
-                <div><span class="font-bold text-slate-900">CHCADV001</span><span class="text-slate-600"> — Facilitate the interests and rights of clients</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">02</span>
-                <div><span class="font-bold text-slate-900">CHCAGE003</span><span class="text-slate-600"> — Coordinate services for older people</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">03</span>
-                <div><span class="font-bold text-slate-900">CHCAGE004</span><span class="text-slate-600"> — Implement interventions with older people at risk</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">04</span>
-                <div><span class="font-bold text-slate-900">CHCCCS006</span><span class="text-slate-600"> — Facilitate individual service planning and delivery</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">05</span>
-                <div><span class="font-bold text-slate-900">CHCLEG003</span><span class="text-slate-600"> — Manage legal and ethical compliance</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">06</span>
-                <div><span class="font-bold text-slate-900">CHCPAL001</span><span class="text-slate-600"> — Deliver care services using a palliative approach</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">07</span>
-                <div><span class="font-bold text-slate-900">CHCPRP001</span><span class="text-slate-600"> — Develop and maintain networks and collaborative partnerships</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">08</span>
-                <div><span class="font-bold text-slate-900">CHCCCS033</span><span class="text-slate-600"> — Identify and report abuse</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">09</span>
-                <div><span class="font-bold text-slate-900">HLTAID011</span><span class="text-slate-600"> — Provide First Aid</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">10</span>
-                <div><span class="font-bold text-slate-900">CHCDIV003</span><span class="text-slate-600"> — Manage and promote diversity</span></div>
-            </li>
-        </ul>
-    </div>
-</div>
         </div>
     </section>
 

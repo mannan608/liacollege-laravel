@@ -287,13 +287,33 @@
 
                 <!-- Image -->
                 <div class="relative">
-                    <div
-                        class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-200 to-emerald-200 opacity-50 blur-xl">
+                    <div class="bg-white rounded-2xl p-2">
+                        <div class="px-6 pt-4 z-99999 relative">
+                            <h5 class="text-2xl text-center font-semibold">Quick Enquiry</h5>
+                            <p class="text-center text-base mt-2">Get a response within 1 business day</p>
+                        </div>
+                        <div class="-mt-10">
+                            <iframe
+                                        src="https://api.leadconnectorhq.com/widget/form/hBXfJpzmFliSUzVbie86"
+                                        style="width:100%;height:100%;border:none;border-radius:3px"
+                                        id="inline-hBXfJpzmFliSUzVbie86" 
+                                        data-layout="{'id':'INLINE'}"
+                                        data-trigger-type="alwaysShow"
+                                        data-trigger-value=""
+                                        data-activation-type="alwaysActivated"
+                                        data-activation-value=""
+                                        data-deactivation-type="neverDeactivate"
+                                        data-deactivation-value=""
+                                        data-form-name="CHC33021 Certificate III in Individual Support"
+                                        data-height="undefined"
+                                        data-layout-iframe-id="inline-hBXfJpzmFliSUzVbie86"
+                                        data-form-id="hBXfJpzmFliSUzVbie86"
+                                        title="CHC33021 Certificate III in Individual Support"
+                                            >
+                                    </iframe>
+                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                        </div>
                     </div>
-                    <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[1.5rem] bg-brand-100"></div>
-                    <img alt="Students in a practical training session"
-                        class="relative rounded-[1.5rem] w-full h-auto object-cover shadow-2xl"
-                        src="{{ asset('lia/single-course-banar.jpg') }}">
                 </div>
             </div>
         </div>

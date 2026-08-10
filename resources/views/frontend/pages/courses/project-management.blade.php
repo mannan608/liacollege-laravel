@@ -257,13 +257,33 @@
 
                 <!-- Image -->
                 <div class="relative">
-                    <div
-                        class="absolute -inset-4 rounded-4xl bg-linear-to-br from-brand-200 to-emerald-200 opacity-50 blur-xl">
+                    <div class="bg-white rounded-2xl p-2">
+                        <div class="px-6 pt-4 z-99999 relative">
+                            <h5 class="text-2xl text-center font-semibold">Quick Enquiry</h5>
+                            <p class="text-center text-base mt-2">Get a response within 1 business day</p>
+                        </div>
+                        <div class="-mt-10">
+                            <iframe
+                                        src="https://api.leadconnectorhq.com/widget/form/KSmGQZqWNAxU1itNZYAq"
+                                        style="width:100%;height:100%;border:none;border-radius:3px"
+                                        id="inline-KSmGQZqWNAxU1itNZYAq" 
+                                        data-layout="{'id':'INLINE'}"
+                                        data-trigger-type="alwaysShow"
+                                        data-trigger-value=""
+                                        data-activation-type="alwaysActivated"
+                                        data-activation-value=""
+                                        data-deactivation-type="neverDeactivate"
+                                        data-deactivation-value=""
+                                        data-form-name="BSB50820 Diploma of Project Management"
+                                        data-height="487"
+                                        data-layout-iframe-id="inline-KSmGQZqWNAxU1itNZYAq"
+                                        data-form-id="KSmGQZqWNAxU1itNZYAq"
+                                        title="BSB50820 Diploma of Project Management"
+                                            >
+                                    </iframe>
+                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                        </div>
                     </div>
-                    <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl bg-brand-100"></div>
-                    <img alt="Students in a practical training session"
-                        class="relative rounded-3xl w-full h-auto object-cover shadow-2xl"
-                        src="{{ asset('lia/single-course-banar.jpg') }}">
                 </div>
             </div>
         </div>
