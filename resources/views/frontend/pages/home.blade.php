@@ -9,7 +9,7 @@
 
 @section('content')
     <section
-        class="relative pt-12 sm:pt-16 pb-24 md:pb-28 md:pt-24 lg:pb-40 flex items-center justify-center min-h-[795px] overflow-hidden bg-surface-container-low">
+        class="relative pt-12 sm:pt-16 pb-24 md:pb-24 md:pt-24 lg:pb-32 flex items-center justify-center min-h-170 overflow-hidden bg-surface-container-low">
         <div
             class="absolute inset-0 z-0 bg-gradient-to-br from-surface-container-low via-white to-primary/5 bg-[length:200%_200%] animate-gradient-flow">
             <img alt="Students throwing graduation caps in the air in a modern auditorium"
@@ -39,7 +39,7 @@
                     Join a global community of forward-thinkers. Our rigorous programs and industry partnerships prepare you
                     for tomorrow's challenges.
                 </p>
-                <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant flex flex-col md:flex-row items-center justify-center md:justify-start">
+                <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant flex flex-col items-center justify-center md:justify-start md:items-start">
                     <li class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-secondary animate-float"
                             style="font-variation-settings: 'FILL' 1; animation-delay: 0s;">check_circle</span>
@@ -63,7 +63,7 @@
                     <div
                         class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl pointer-events-none">
                     </div>
-                    <h3 class="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-on-surface mb-6">Start Your Journey</h3>
+                    <h3 class="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-on-surface mb-6">Start Your Journey</h3>
                     <form class="space-y-5">
                         <div>
                             <label
@@ -131,7 +131,7 @@
     <!-- Qualifications Grid -->
     <section class="py-24 md:py-32 bg-surface-container-lowest reveal-on-scroll">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16">
+            <div class="text-center  mb-16">
                 <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Explore Our Qualifications</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant">Discover programs designed to equip
                     you with the skills demanded by today's leading employers.</p>
@@ -171,7 +171,7 @@
             </div>
             <!-- Right Quiz -->
             <div>
-                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">Check Your Eligibility</h2>
+                <h2 class="lg:text-5xl font-headline-lg md:text-4xl sm:text-3xl text-2xl font-bold text-on-surface mb-4">Check Your Eligibility</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Find out which programs you
                     qualify for in less than 2 minutes. Our quick assessment helps tailor your educational path.</p>
                 <div class="bg-surface rounded-[20px] p-8 border border-outline-variant/30 soft-shadow">

@@ -38,6 +38,19 @@
                         settings.
                     </p>
 
+                      <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 w-full md:w-[75%]">
+                        <div
+                            class="group flex items-center justify-center rounded-2xl  bg-white transition-all duration-300 ">
+                            <img src="https://liacollege.edu.au/frontend/images/brand/11.png" alt="Brand 1"
+                                class="h-32 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                        </div>
+                        <div
+                            class="group flex items-center justify-center rounded-2xl  bg-white  transition-all duration-300 ">
+                            <img src="https://liacollege.edu.au/frontend/images/brand/2.png" alt="Brand 2"
+                                class="h-32 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                        </div>
+                    </div>
+
                     <!-- CTAs -->
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
                         <button
@@ -60,7 +73,71 @@
                 </div>
 
                 <!-- Right Info Cards -->
-                <div class="lg:col-span-5">
+                <div class="lg:col-span-5 space-y-6">
+                    {{-- <div class="rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-lg backdrop-blur-sm sm:p-8"> --}}
+                  
+                    {{-- </div> --}}
+
+                    <div class="rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-lg backdrop-blur-sm sm:p-8">
+                        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <!-- Duration -->
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                                    <svg class="h-5 w-5 text-slate-700" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-brand-500 sm:text-base">Duration</h4>
+                                    <p class="text-sm text-slate-500">Up to 12 months</p>
+                                </div>
+                            </div>
+                            <!-- Delivery Mode -->
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                                    <svg class="h-5 w-5 text-slate-700" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-brand-500 sm:text-base">Delivery Mode</h4>
+                                    <p class="text-sm text-slate-500">Blended or Distance</p>
+                                </div>
+                            </div>
+                            <!-- Work Placement -->
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                                    <svg class="h-5 w-5 text-slate-700" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-brand-500 sm:text-base">Work Placement</h4>
+                                    <p class="text-sm text-slate-500">120 hours minimum</p>
+                                </div>
+                            </div>
+                            <!-- Qualification -->
+                            <div class="flex items-start gap-3">
+                                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+                                    <svg class="h-5 w-5 text-slate-700" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-brand-500 sm:text-base">Qualification</h4>
+                                    <p class="text-sm text-slate-500">Nationally Recognised</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-lg backdrop-blur-sm sm:p-8">
                         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <!-- Duration -->
@@ -216,8 +293,284 @@
         </div>
     </section>
 
+    <!-- 9. STUDY MODES -->
+    <section class="relative overflow-hidden bg-white py-24">
+        <div
+            class="pointer-events-none absolute top-1/2 left-0 h-96 w-96 -translate-y-1/2 rounded-full bg-brand-100/30 blur-3xl">
+        </div>
+        <div
+            class="pointer-events-none absolute top-1/2 right-0 h-96 w-96 -translate-y-1/2 rounded-full bg-emerald-100/30 blur-3xl">
+        </div>
+        <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-600">Flexible Options</p>
+                <h2 class="mb-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">Study Modes</h2>
+                <p class="mx-auto max-w-2xl text-lg text-slate-600">We offer flexible delivery options to suit your
+                    learning style and lifestyle.</p>
+            </div>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <!-- Blended Mode -->
+                <div class="space-y-6">
+                    <div
+                        class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300">
+                        {{-- <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-brand-500 to-violet-500"></div> --}}
+                        <div class="mb-6 flex items-center gap-4">
+                            <div
+                                class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20 transition-transform duration-300 group-hover:scale-110">
+                                <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900">Blended Mode</h3>
+                        </div>
+                        <p class="leading-relaxed text-slate-600">A combination of face-to-face and distance delivery.
+                            Theory
+                            tasks are completed at your own pace at home. Practical classes (first aid, manual handling,
+                            simulation, role-plays) are attended at our Burwood campus.</p>
+                        <div class="mt-6 flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">Face-to-Face</span>
+                            <span
+                                class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">Self-Paced</span>
+                            <span
+                                class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">Campus
+                                Practical</span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                            <!-- Code -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5.25 8.25h13.5m-13.5 3.75h13.5m-13.5 3.75h13.5m-13.5 3.75h13.5" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Code</span>
+                                <span class="text-lg font-bold text-slate-900">CHC33021</span>
+                            </div>
+                            <!-- Duration -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Duration</span>
+                                <span class="text-lg font-bold text-slate-900">Up to 12 Months</span>
+                            </div>
+                            <!-- Study Mode -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Study
+                                    Mode</span>
+                                <span class="text-lg font-bold text-slate-900">Blended/Distance</span>
+                            </div>
+                            <!-- Placement -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Placement</span>
+                                <span class="text-lg font-bold text-slate-900">120 Hours</span>
+                            </div>
+                            <!-- Entry -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Entry</span>
+                                <span class="text-lg font-bold text-slate-900">18+ Years</span>
+                            </div>
+                            <!-- Fee -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Fee</span>
+                                <span class="text-lg font-bold text-slate-900">From $1600</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Distance Mode -->
+                <div class="space-y-6">
+                    <div
+                        class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300">
+                        {{-- <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-emerald-500 to-teal-500"></div> --}}
+                        <div class="mb-6 flex items-center gap-4">
+                            <div
+                                class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-110">
+                                <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900">Distance Mode</h3>
+                        </div>
+                        <p class="leading-relaxed text-slate-600">Delivery without face-to-face interaction with the
+                            college.
+                            Training and support are provided via online technologies. Practical components are learned
+                            during
+                            an initial 40 hours at the work placement facility (total 160 hours placement).</p>
+                        <div class="mt-6 flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">100%
+                                Online</span>
+                            <span
+                                class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Remote
+                                Support</span>
+                            <span
+                                class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Work
+                                Placement</span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                            <!-- Code -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5.25 8.25h13.5m-13.5 3.75h13.5m-13.5 3.75h13.5m-13.5 3.75h13.5" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Code</span>
+                                <span class="text-lg font-bold text-slate-900">CHC33021</span>
+                            </div>
+                            <!-- Duration -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Duration</span>
+                                <span class="text-lg font-bold text-slate-900">Up to 12 Months</span>
+                            </div>
+                            <!-- Study Mode -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Study
+                                    Mode</span>
+                                <span class="text-lg font-bold text-slate-900">Blended/Distance</span>
+                            </div>
+                            <!-- Placement -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Placement</span>
+                                <span class="text-lg font-bold text-slate-900">120 Hours</span>
+                            </div>
+                            <!-- Entry -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Entry</span>
+                                <span class="text-lg font-bold text-slate-900">18+ Years</span>
+                            </div>
+                            <!-- Fee -->
+                            <div
+                                class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5">
+                                <div
+                                    class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <span
+                                    class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-500">Fee</span>
+                                <span class="text-lg font-bold text-slate-900">From $1600</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- 4. QUICK INFO CARDS -->
-    <section class="border-y border-slate-200 bg-white py-16">
+    {{-- <section class="border-y border-slate-200 bg-white py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4">
                 <!-- Code -->
@@ -328,7 +681,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- 5. WHY CHOOSE THIS COURSE -->
     <section class="relative overflow-hidden bg-slate-50 py-24">
@@ -353,8 +706,8 @@
                     class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-500/10">
                     <div
                         class="mx-auto mb-6 flex w-10 h-10 md:w-12 md:h-12 lg:h-16 lg:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-3deg]">
-                        <svg class="md:h-7 md:w-7 w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                            viewBox="0 0 24 24">
+                        <svg class="md:h-7 md:w-7 w-5 h-5 text-white" fill="none" stroke="currentColor"
+                            stroke-width="1.8" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                         </svg>
@@ -372,8 +725,8 @@
                     class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/10">
                     <div
                         class="mx-auto mb-6 flex w-10 h-10 md:w-12 md:h-12 lg:h-16 lg:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-3deg]">
-                        <svg class="md:h-7 md:w-7 h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                            viewBox="0 0 24 24">
+                        <svg class="md:h-7 md:w-7 h-5 w-5 text-white" fill="none" stroke="currentColor"
+                            stroke-width="1.8" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                         </svg>
@@ -391,8 +744,8 @@
                     class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-500/10">
                     <div
                         class="mx-auto mb-6 flex w-10 h-10 md:w-12 md:h-12 lg:h-16 lg:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-3deg]">
-                        <svg class="md:h-7 md:w-7 w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                            viewBox="0 0 24 24">
+                        <svg class="md:h-7 md:w-7 w-5 h-5 text-white" fill="none" stroke="currentColor"
+                            stroke-width="1.8" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.499 5.221 69.494 69.494 0 00-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
                         </svg>
@@ -842,83 +1195,7 @@
         </div>
     </section>
 
-    <!-- 9. STUDY MODES -->
-    <section class="relative overflow-hidden bg-slate-50 py-24">
-        <div
-            class="pointer-events-none absolute top-1/2 left-0 h-96 w-96 -translate-y-1/2 rounded-full bg-brand-100/30 blur-3xl">
-        </div>
-        <div
-            class="pointer-events-none absolute top-1/2 right-0 h-96 w-96 -translate-y-1/2 rounded-full bg-emerald-100/30 blur-3xl">
-        </div>
-        <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center">
-                <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-600">Flexible Options</p>
-                <h2 class="mb-4 text-3xl font-extrabold text-slate-900 sm:text-4xl">Study Modes</h2>
-                <p class="mx-auto max-w-2xl text-lg text-slate-600">We offer flexible delivery options to suit your
-                    learning style and lifestyle.</p>
-            </div>
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-                <!-- Blended Mode -->
-                <div
-                    class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-500/10">
-                    {{-- <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-brand-500 to-violet-500"></div> --}}
-                    <div class="mb-6 flex items-center gap-4">
-                        <div
-                            class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-900">Blended Mode</h3>
-                    </div>
-                    <p class="leading-relaxed text-slate-600">A combination of face-to-face and distance delivery. Theory
-                        tasks are completed at your own pace at home. Practical classes (first aid, manual handling,
-                        simulation, role-plays) are attended at our Burwood campus.</p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span
-                            class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">Face-to-Face</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">Self-Paced</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">Campus
-                            Practical</span>
-                    </div>
-                </div>
-                <!-- Distance Mode -->
-                <div
-                    class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/10">
-                    {{-- <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-emerald-500 to-teal-500"></div> --}}
-                    <div class="mb-6 flex items-center gap-4">
-                        <div
-                            class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-900">Distance Mode</h3>
-                    </div>
-                    <p class="leading-relaxed text-slate-600">Delivery without face-to-face interaction with the college.
-                        Training and support are provided via online technologies. Practical components are learned during
-                        an initial 40 hours at the work placement facility (total 160 hours placement).</p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span
-                            class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">100%
-                            Online</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Remote
-                            Support</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Work
-                            Placement</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- 10. WORK PLACEMENT -->
     <section class="relative overflow-hidden bg-slate-900 py-24">
@@ -950,7 +1227,18 @@
                     Distance students require an additional 40 hours. Advance College arranges placement for
                     Sydney-based students (Blended mode).
                 </p>
+                <div class="flex items-center justify-center mt-5">
+                
+                <button
+                    class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-300 bg-white py-3 px-6 lg:px-8 lg:py-4 text-base text-slate-700 transition-all duration-200 hover:border-brand-500 hover:bg-slate-50 hover:text-brand-500 sm:text-lg">
+                   Apply Now
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </button>
             </div>
+            </div>
+            
         </div>
     </section>
 
@@ -973,8 +1261,8 @@
                     <div class="mb-6 flex items-center gap-4">
                         <div
                             class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
+                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor"
+                                stroke-width="1.8" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                             </svg>
@@ -1011,8 +1299,8 @@
                     <div class="mb-6 flex items-center gap-4">
                         <div
                             class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
+                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor"
+                                stroke-width="1.8" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
                             </svg>
@@ -1074,7 +1362,7 @@
                 <p class="mx-auto max-w-2xl text-lg text-slate-600">Already have skills or prior qualifications? You may be
                     eligible for credit.</p>
             </div>
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div class="grid grid-cols-1">
                 <!-- RPL -->
                 <div
                     class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-violet-200 hover:shadow-xl hover:shadow-violet-500/10">
@@ -1082,8 +1370,8 @@
                     <div class="mb-6 flex  gap-4">
                         <div
                             class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center shrink-0 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8"
-                                viewBox="0 0 24 24">
+                            <svg class="h-5 w-5 md:h-7 md:w-7 text-white" fill="none" stroke="currentColor"
+                                stroke-width="1.8" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                             </svg>
@@ -1105,9 +1393,9 @@
                     </div>
                 </div>
                 <!-- Credit Transfer -->
-                <div
+                {{-- <div
                     class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-200 hover:shadow-xl hover:shadow-amber-500/10">
-                    {{-- <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-amber-500 to-orange-500"></div> --}}
+                   
                     <div class="mb-6 flex items-center gap-4">
                         <div
                             class="flex w-10 h-10 md:w-12 md:h-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20 transition-transform duration-300 group-hover:scale-110">
@@ -1132,7 +1420,7 @@
                             </svg>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

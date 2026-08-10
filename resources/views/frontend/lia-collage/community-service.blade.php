@@ -107,7 +107,7 @@
 
                 <h2 class="dlm-section-title">Course Overview</h2>
                 <p class="dlm-section-desc">The Diploma of Community Services (CHC52021) reflects the role of community services workers who manage, coordinate and deliver person-centred services to individuals, families and communities experiencing social disadvantage or complex needs. Workers in these roles may support people experiencing issues such as housing instability, mental health challenges, family conflict, disability, financial hardship or social exclusion.</p>
-                <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
+                <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
                 <div class="dlm-jobs-strip">
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Manage and coordinate community service programs</div>
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Provide person-centred support to individuals and families</div>
@@ -149,7 +149,7 @@
                     <h2 class="dlm-section-title">Outcomes</h2>
                     <p class="dlm-section-desc">On successful completion, you will receive a nationally recognised <strong>CHC52021 Diploma of Community Services</strong> — demonstrating your ability to design, coordinate and deliver community support programs while assisting individuals and families to improve their wellbeing and access appropriate services.</p>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
+                    <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
                         Job Outcomes After Graduating</h5>
                     <div class="dlm-audience-grid">
                         <div class="dlm-audience-chip"><span class="chip-icon">👥</span> Community Services Worker</div>
@@ -162,7 +162,7 @@
                         <div class="dlm-audience-chip"><span class="chip-icon">🏠</span> Housing Support Worker</div>
                     </div>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">
                         Industries That Value This Qualification</h5>
                     <div class="dlm-industries">
                         <span class="dlm-industry-tag">🏢 Community Service Organisations</span>
@@ -406,7 +406,7 @@
                         </div>
                     </div>
                     
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">Licensing Requirements</h5>
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">Licensing Requirements</h5>
                     <p style="color:rgba(10,10,18,0.7);">There are no specific licensing requirements attached to this qualification. However, depending on the workplace, employers may require:</p>
                     <ul style="color:rgba(10,10,18,0.7); margin-bottom:20px;">
                         <li>National Police Check</li>

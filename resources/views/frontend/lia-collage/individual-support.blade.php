@@ -108,7 +108,7 @@
 
                 <h2 class="dlm-section-title">Course Overview</h2>
                 <p class="dlm-section-desc">The Certificate III in Individual Support (CHC33021) reflects the role of workers who provide person-centred support to individuals who require assistance due to ageing, disability or other personal circumstances. Workers in these roles follow individualised care plans and support clients to maintain dignity, independence and quality of life.</p>
-                <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
+                <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
                 <div class="dlm-jobs-strip">
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Provide individualised support based on care plans</div>
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Communicate effectively with clients, families and healthcare professionals</div>
@@ -151,7 +151,7 @@
                     <h2 class="dlm-section-title">Outcomes</h2>
                     <p class="dlm-section-desc">On successful completion, you will receive a nationally recognised <strong>CHC33021 Certificate III in Individual Support</strong> — demonstrating your ability to provide quality care and support services in residential, community and home care environments.</p>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
+                    <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
                         Job Outcomes After Graduating</h5>
                     <div class="dlm-audience-grid">
                         <div class="dlm-audience-chip"><span class="chip-icon">👥</span> Personal Care Assistant</div>
@@ -164,7 +164,7 @@
                         <div class="dlm-audience-chip"><span class="chip-icon">🧩</span> Lifestyle Support Worker</div>
                     </div>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">
                         Industries That Value This Qualification</h5>
                     <div class="dlm-industries">
                         <span class="dlm-industry-tag">🏠 Aged Care Facilities</span>
@@ -379,7 +379,7 @@
                     
                     <p style="margin-top:24px; color:rgba(10,10,18,0.7);">Further study can support progression into supervisory roles, specialised care positions or broader community services careers.</p>
                     
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">Licensing Requirements</h5>
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">Licensing Requirements</h5>
                     <p style="color:rgba(10,10,18,0.7);">There are no specific licensing requirements attached to this qualification. However, depending on employment settings, employers may require:</p>
                     <ul style="color:rgba(10,10,18,0.7); margin-bottom:20px;">
                         <li>National Police Check</li>

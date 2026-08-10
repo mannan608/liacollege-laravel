@@ -107,7 +107,7 @@
 
                 <h2 class="dlm-section-title">Course Overview</h2>
                 <p class="dlm-section-desc">The Certificate IV in Ageing Support (CHC43015) reflects the role of support workers who perform specialised tasks and may coordinate services for older individuals in a variety of care settings. Workers at this level apply specialised knowledge, leadership capability and person-centred care practices to support the physical, emotional and social wellbeing of ageing individuals.</p>
-                <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
+                <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
                 <div class="dlm-jobs-strip">
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Provide advanced person-centred care to older individuals</div>
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Coordinate services and support care teams</div>
@@ -148,7 +148,7 @@
                     <h2 class="dlm-section-title">Outcomes</h2>
                     <p class="dlm-section-desc">On successful completion, you will receive a nationally recognised <strong>CHC43015 Certificate IV in Ageing Support</strong> — demonstrating your ability to provide advanced support services, coordinate care activities and contribute to the quality of aged care service delivery.</p>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
+                    <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
                         Job Outcomes After Graduating</h5>
                     <div class="dlm-audience-grid">
                         <div class="dlm-audience-chip"><span class="chip-icon">👥</span> Senior Personal Care Assistant</div>
@@ -160,7 +160,7 @@
                         <div class="dlm-audience-chip"><span class="chip-icon">📈</span> Advanced Aged Care Support Worker</div>
                     </div>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">
                         Industries That Value This Qualification</h5>
                     <div class="dlm-industries">
                         <span class="dlm-industry-tag">🏠 Residential Aged Care Facilities</span>
@@ -397,7 +397,7 @@
                     
                     <p style="margin-top:24px; color:rgba(10,10,18,0.7);">Further study can support progression into care coordination, service management or leadership roles within aged care organisations.</p>
                     
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">Licensing Requirements</h5>
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">Licensing Requirements</h5>
                     <p style="color:rgba(10,10,18,0.7);">There are no specific licensing requirements attached to this qualification. However, employment within aged care settings may require:</p>
                     <ul style="color:rgba(10,10,18,0.7); margin-bottom:20px;">
                         <li>National Police Check</li>

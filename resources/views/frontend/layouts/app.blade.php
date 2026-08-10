@@ -97,5 +97,8 @@
 
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://beta.leadconnectorhq.com/loader.js"
+        data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="691ff546be8b70bc978e5c9c"></script>
 </body>
 </html>

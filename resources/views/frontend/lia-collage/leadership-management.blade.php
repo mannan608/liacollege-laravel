@@ -106,7 +106,7 @@
 
                 <h2 class="dlm-section-title">Course Overview</h2>
                 <p class="dlm-section-desc">The Diploma of Leadership and Management (BSB50420) reflects the role of individuals who apply knowledge, practical skills and leadership experience to manage workplace operations and teams effectively.</p>
-                <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
+                <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
                 <div class="dlm-jobs-strip">
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Lead and manage effective workplace relationships</div>
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Communicate with influence across diverse stakeholders</div>
@@ -148,7 +148,7 @@
                     <p class="dlm-section-desc">On completion, you receive a nationally recognised <strong>BSB50420 Diploma
                             of Leadership and Management</strong> — opening doors to senior roles across every industry.</p>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
+                    <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
                         Job Titles After Graduating</h5>
                     <div class="dlm-audience-grid">
                         <div class="dlm-audience-chip"><span class="chip-icon">👥</span> Business Manager</div>
@@ -160,7 +160,7 @@
                         <div class="dlm-audience-chip"><span class="chip-icon">💼</span> Small Business Operators</div>
                     </div>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">
                         Industries That Value This Qualification</h5>
                     <div class="dlm-industries">
                         <span class="dlm-industry-tag">🛒 Retail</span>

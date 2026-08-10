@@ -20,15 +20,7 @@
       "duration": "6-12 Months",
       "description": "The Certificate IV in Ageing Support provides learners with the skills and knowledge required to support older people with complex needs and provide person-centred care in residential and community settings."
     },
-    {
-      "id": 3,
-      "code": "CHC52021",
-      "title": "Diploma of Community Service",
-      "slug": "community-service",
-       "image": "business.webp",
-      "duration": "12-24 Months",
-      "description": "The Diploma of Community Service prepares learners with advanced skills and knowledge to work in community services, case management, social support, and related human services roles."
-    },
+  
     {
       "id": 4,
       "code": "CHC52025",
