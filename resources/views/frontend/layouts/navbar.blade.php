@@ -197,4 +197,10 @@
             }
 
         });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('[data-open-apply-modal]')) {
+                window.dispatchEvent(new CustomEvent('open-apply-modal'));
+            }
+        });
     </script>
