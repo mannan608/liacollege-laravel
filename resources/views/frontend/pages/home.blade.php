@@ -135,7 +135,7 @@
                     you with the skills demanded by today's leading employers.</p>
             </div>
            <div class=" mt-8 md:mt-12">
-                    <x-frontend.courses :courses="$courses" />
+                     <x-frontend.courses :courses="$courses" />
                 </div>
         </div>
     </section>
