@@ -95,6 +95,7 @@
 
     @include('frontend.layouts.footer')
 
+    @stack('modals')
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     <script src="https://beta.leadconnectorhq.com/loader.js"
