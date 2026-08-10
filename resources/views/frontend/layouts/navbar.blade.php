@@ -142,12 +142,20 @@
                                     class="w-full h-full object-cover" />
                             </a>
                         @endauth
-                        @guest
-                            <a href="{{ route('login') }}">
-                                <img src="{{ asset('images/user/owner.png') }}" alt="User"
-                                    class="w-full h-full object-cover" />
+                        {{-- @guest
+                            <a href="{{ route('login') }}" aria-label="Sign in"
+                                class="group relative flex items-center justify-center w-10 h-10 rounded-full bg-white border hover:border-brand-500 shadow-sm hover:shadow-md transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="text-gray-500 group-hover:text-brand-600 transition-colors duration-300">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                
                             </a>
-                        @endguest
+                        @endguest --}}
+                       
 
                     </div>
 

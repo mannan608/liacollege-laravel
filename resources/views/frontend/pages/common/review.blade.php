@@ -2,164 +2,116 @@
   @php
       $reviews = [
           [
-              'name' => 'Sarah Mitchell',
-              'designation' => 'Retail Supervisor',
+              'name' => 'MALAMA KALOWA',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__1.jpg',
               'rating' => 5,
               'text' =>
-                  'Completed the Certificate IV in Retail Management with Specter Training and it really improved my leadership and customer service skills. The trainers explained everything clearly and the assessments were practical for real workplace situations.',
+                  '“Very supportive trainers and a smooth learning experience. I received great guidance throughout my course and placement. Highly recommended!”',
           ],
           [
-              'name' => 'Rajiv Sharma',
-              'designation' => 'Store Manager',
+              'name' => 'GURBRINDER SINGH DHILLON',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__2.jpg',
               'rating' => 4,
               'text' =>
-                  'I enrolled in the Certificate III in Retail and gained valuable knowledge about stock control, customer engagement, and sales operations. Great support from the trainers throughout the course.',
+                  '“Great experience from start to finish. The staff were helpful and professional, and the trainers made everything easy to understand.”',
           ],
           [
-              'name' => 'Pema Dorji',
-              'designation' => 'Hospitality Team Leader',
+              'name' => 'HARSH HITENDRAKUMAR JAISWAL',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__3.jpg',
               'rating' => 5,
               'text' =>
-                  'The Certificate IV in Hospitality helped me build confidence in managing teams and handling daily hospitality operations. Highly recommended for anyone already working in hotels or restaurants.',
+                  '“I really enjoyed my course with LIA. The team was friendly and supportive, and I received excellent guidance throughout my studies.”',
           ],
           [
-              'name' => 'Anjali Nair',
-              'designation' => 'Administrative Assistant',
+              'name' => 'REBECCA ANNE RUSSELL',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__4.jpg',
               'rating' => 4,
               'text' =>
-                  'I recently completed the Certificate III in Business through Specter Training. The course content was easy to follow and very relevant to office administration roles.',
+                  '“A great experience completing my course. The trainers were knowledgeable and supportive, and the course was practical and well organised.”',
           ],
           [
-              'name' => 'Jone Vakacegu',
-              'designation' => 'Retail Assistant',
-              'image' => 'teacher__1.jpg',
-              'rating' => 3,
-              'text' =>
-                  'The Certificate II in Retail gave me a strong understanding of customer service and workplace communication. The trainers were very supportive and patient.',
-          ],
-          [
-              'name' => 'Emily Rogers',
-              'designation' => 'Café Supervisor',
-              'image' => 'teacher__2.jpg',
-              'rating' => 5,
-              'text' =>
-                  'I completed the Certificate III in Hospitality and really enjoyed the learning experience. The practical examples and flexible study options made it easy to balance work and study.',
-          ],
-          [
-              'name' => 'Tashi Wangchuk',
-              'designation' => 'Front Office Staff',
-              'image' => 'teacher__3.jpg',
-              'rating' => 4,
-              'text' =>
-                  'The Certificate II in Hospitality was perfect for starting my hospitality career. I learned valuable customer service and workplace skills that helped me secure a better position.',
-          ],
-          [
-              'name' => 'Harpreet Singh',
-              'designation' => 'Production Operator',
-              'image' => 'teacher__4.jpg',
-              'rating' => 5,
-              'text' =>
-                  'The Certificate III in Process Manufacturing gave me hands-on knowledge about workplace safety, machinery processes, and production systems. Excellent trainers and support team.',
-          ],
-          [
-              'name' => 'Olivia Bennett',
-              'designation' => 'Office Coordinator',
-              'image' => 'teacher__1.jpg',
-              'rating' => 4,
-              'text' =>
-                  'I studied the Certificate IV in Business and found the course very professional and industry-focused. It improved my communication and administration skills significantly.',
-          ],
-          [
-              'name' => 'Rakesh Patel',
-              'designation' => 'Sales Consultant',
-              'image' => 'teacher__2.jpg',
-              'rating' => 5,
-              'text' =>
-                  'The Certificate III in Retail was very practical and helped me improve my sales techniques and customer interaction skills. I would definitely recommend Specter Training.',
-          ],
-          [
-              'name' => 'Sonam Choden',
-              'designation' => 'Restaurant Host',
-              'image' => 'teacher__3.jpg',
-              'rating' => 4,
-              'text' =>
-                  'I completed the Certificate III in Hospitality and really appreciated the flexibility of the training. The trainers were experienced and always ready to help.',
-          ],
-          [
-              'name' => 'Daniel Carter',
-              'designation' => 'Business Support Officer',
-              'image' => 'teacher__4.jpg',
-              'rating' => 3,
-              'text' =>
-                  'The Certificate III in Business helped me understand workplace systems, communication, and business operations much better. Great learning environment.',
-          ],
-          [
-              'name' => 'Priya Menon',
-              'designation' => 'Retail Team Member',
+              'name' => 'MARIE CECILIA LAUVAO ALATOA',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__1.jpg',
               'rating' => 5,
               'text' =>
-                  'I enrolled in the Certificate II in Retail and learned a lot about customer service, teamwork, and workplace procedures. Very supportive trainers and smooth enrolment process.',
+                  '“The trainers were patient and supportive throughout my course. I really appreciated their guidance and help with the placement process.”',
           ],
           [
-              'name' => 'Lobsang Tenzin',
-              'designation' => 'Hotel Receptionist',
+              'name' => 'PATRICIA KAREN VIJANDRE NAEL',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__2.jpg',
               'rating' => 4,
               'text' =>
-                  'The Certificate IV in Hospitality provided excellent industry knowledge and management skills. The course structure was very practical and easy to understand.',
+                  '“Very happy with my experience at LIA. The staff were professional, friendly and supportive throughout my course. I would highly recommend them.”',
           ],
           [
-              'name' => 'Sera Raiwalui',
-              'designation' => 'Customer Service Assistant',
+              'name' => 'JESSICA WILLIAMS',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__3.jpg',
               'rating' => 5,
               'text' =>
-                  'The Certificate III in Business helped me improve my office and communication skills. The trainers explained everything clearly and professionally.',
+                  '“I had a great experience completing my Certificate III in Individual Support. The trainers were very supportive and made the learning process easy to understand. The team was always helpful whenever I needed assistance.”',
           ],
           [
-              'name' => 'Matthew Collins',
-              'designation' => 'Shift Supervisor',
+              'name' => 'DANIEL KUMAR',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__4.jpg',
               'rating' => 4,
               'text' =>
-                  'Completing the Certificate IV in Retail Management gave me confidence in leading teams and handling retail operations efficiently. Highly valuable course.',
+                  '“The course was well organised and the staff were very professional. I received excellent support throughout my studies and gained valuable knowledge that I can use in my career. Highly recommended.”',
           ],
           [
-              'name' => 'Neha Kapoor',
-              'designation' => 'Administration Officer',
+              'name' => 'SOPHIA MARTIN',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__1.jpg',
               'rating' => 5,
               'text' =>
-                  'I had a wonderful experience studying the Certificate IV in Business. The learning materials were detailed and very relevant to real workplace tasks.',
+                  '“I really enjoyed studying with Leadership Institute Australia. The trainers were friendly, patient and always willing to help. I especially appreciated the guidance throughout the course and placement.”',
           ],
           [
-              'name' => 'Karma Tshering',
-              'designation' => 'Café Attendant',
+              'name' => 'MICHAEL THOMPSON',
+              'designation' => 'Certificate III in Individual Support',
               'image' => 'teacher__2.jpg',
-              'rating' => 3,
-              'text' =>
-                  'The Certificate II in Hospitality was a great starting point for my hospitality career. I learned customer service skills that I now use every day at work.',
-          ],
-          [
-              'name' => 'Amit Verma',
-              'designation' => 'Warehouse & Retail Staff',
-              'image' => 'teacher__3.jpg',
               'rating' => 4,
               'text' =>
-                  'The Certificate III in Retail improved my understanding of retail operations and customer handling. The flexible study mode was very convenient for working professionals.',
+                  '“A very positive learning experience. Everything was explained clearly, and the staff were available whenever I had questions. I would definitely recommend LIA to anyone looking to enter the care industry.”',
           ],
           [
-              'name' => 'Sophia Williams',
-              'designation' => 'Executive Assistant',
-              'image' => 'teacher__4.jpg',
+              'name' => 'PRIYA SHARMA',
+              'designation' => 'Certificate III in Individual Support',
+              'image' => 'teacher__3.jpg',
               'rating' => 5,
               'text' =>
-                  'I completed the Certificate III in Business with Specter Training and found the course highly beneficial for improving my administration and workplace communication skills.',
+                  '“The whole process was smooth and professional. The trainers provided great guidance and support throughout my studies. I feel much more confident about starting my career in aged care.”',
+          ],
+          [
+              'name' => 'AMANDA JOHNSON',
+              'designation' => 'Certificate III in Individual Support',
+              'image' => 'teacher__4.jpg',
+              'rating' => 4,
+              'text' =>
+                  '“I am very happy with my experience at LIA. The course was practical, well structured and supported by helpful trainers. The team made the learning journey much easier for me.”',
+          ],
+          [
+              'name' => 'MOHAMMED RAHMAN',
+              'designation' => 'Certificate III in Individual Support',
+              'image' => 'teacher__1.jpg',
+              'rating' => 5,
+              'text' =>
+                  '“Excellent support from the team throughout my course. The trainers were knowledgeable and approachable, and I always received help when I needed it. Great experience overall.”',
+          ],
+          [
+              'name' => 'EMILY ANDERSON',
+              'designation' => 'Certificate III in Individual Support',
+              'image' => 'teacher__2.jpg',
+              'rating' => 4,
+              'text' =>
+                  '“I really appreciated the support I received during my course. The learning materials were easy to follow and the trainers were very helpful. I would recommend LIA to others looking to develop their career in individual support.”',
           ],
       ];
   @endphp
@@ -168,7 +120,9 @@
       <div class="max-w-7xl mx-auto px-5 md:px-8">
           <!-- Heading -->
           <div class="text-center md:mb-8 mb-4">
-              <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-2 text-center">Our Student Stories
+              <h2
+                  class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-2 text-center">
+                  Our Student Stories
               </h2>
               <p class="text-on-surface-variant max-w-xl mx-auto text-sm md:text-base mb-12">Hear from our students
                   about their journey and success stories.</p>
@@ -179,12 +133,10 @@
                           @foreach ($reviews as $review)
                               <div class="swiper-slide h-auto">
                                   <div
-                                      class="bg-white rounded-md border border-slate-200 shadow-sm 
-                      p-5 sm:p-6 lg:p-7 
-                      flex flex-col h-full">
+                                      class="bg-white rounded-md border border-slate-200 shadow-sm  p-5 sm:p-6 lg:p-7  flex flex-col h-full">
 
                                       <!-- Stars -->
-                                      <div class="flex items-center gap-1 mb-4">
+                                      <div class="flex items-center justify-center gap-1 mb-4">
                                           @for ($i = 1; $i <= 5; $i++)
                                               @if ($i <= $review['rating'])
                                                   <span class="text-yellow-500 text-sm sm:text-xl">★</span>
@@ -196,7 +148,7 @@
 
                                       <!-- Text -->
                                       <p
-                                          class="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow line-clamp-2">
+                                          class="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flexgrow line-clamp-2">
                                           {{ $review['text'] }}
                                       </p>
 
@@ -204,14 +156,9 @@
                                       <div class="flex items-center justify-between mt-auto">
 
                                           <div class="flex items-center gap-3">
-                                              {{-- <img src="{{ asset('frontend-img/' . $review['image']) }}"
-                                                  alt="{{ $review['name'] }}"
-                                                  class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"> --}}
 
                                               <div>
-                                                  <h5
-                                                      class="font-semibold text-gray-900 
-                             text-sm sm:text-base">
+                                                  <h5 class="font-semibold text-gray-900 text-sm">
                                                       {{ $review['name'] }}
                                                   </h5>
                                                   <span class="text-gray-500 text-xs sm:text-sm">
