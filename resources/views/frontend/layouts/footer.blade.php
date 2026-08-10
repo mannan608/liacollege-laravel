@@ -1,7 +1,7 @@
 <footer class="w-full border-t bg-slate-50 border-slate-200 dark:bg-gray-900/95 dark:border-gray-800">
 
     <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16">
+        class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_auto_1.5fr_auto] lg:gap-x-10 lg:gap-y-8 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16">
 
         {{-- Column 1 --}}
         <div class="space-y-5 text-center sm:text-left">
@@ -13,21 +13,22 @@
             </div>
 
             <ul class="text-slate-500 text-sm space-y-2">
-
-                <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  Level 14 333 Collins St, MELBOURNE, VIC, 3000
-                </li>
+               
                   <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  0479 110 567
+                  <strong>Phone :</strong> 0479 110 567
                 </li>
                  <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  training@liacollege.edu.au
+                  <strong>Email :</strong> training@liacollege.edu.au
                 </li>
-                  <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  For Admission & Enrolment <br>
-                  0468 092 898
-                  enrol@liacollege.edu.au
-                </li>               
+                  <li class="flex flex-col gap-1 sm:gap-2">
+                  <strong>For Admission & Enrolment : </strong>
+                  <span>Email :  enrol@liacollege.edu.au </span>
+                 <span> Phone : 0468 092 898  </span>                
+                 
+                </li>   
+                 <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  Level 14 333 Collins St, MELBOURNE, VIC, 3000
+                </li>            
 
             </ul>
 

@@ -33,11 +33,10 @@
                     <span class="font-body-md text-body-md font-semibold text-on-surface">4.9/5 Student Rating</span>
                 </div>
                 <h1 class="font-bold text-4xl sm:text-5xl md:text-[56px] text-on-surface leading-tight text-center md:text-start">
-                    Advance Your Career with <span class="text-secondary-500">Excellence</span>
+                   Leadership Institute  <span class="text-secondary-500">Australia</span>
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl text-center md:text-start">
-                    Join a global community of forward-thinkers. Our rigorous programs and industry partnerships prepare you
-                    for tomorrow's challenges.
+                    Leadership Institute Australia is a nationally recognized training organization dedicated to delivering high-quality vocational education across community services, aged care, individual support, leadership, and project management.
                 </p>
                 <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant flex flex-col items-center justify-center md:justify-start md:items-start">
                     <li class="flex items-center gap-3">
@@ -117,14 +116,13 @@
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
             <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-8">Trusted by
                 Global Industry Leaders</p>
-            <div
-                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                <!-- Partner Logos Placeholder - text for simplicity in this constrained response, ideally SVG logos -->
-                <span class="font-headline-md text-xl font-bold text-on-surface">TechCorp</span>
-                <span class="font-headline-md text-xl font-bold text-on-surface">GlobalHealth</span>
-                <span class="font-headline-md text-xl font-bold text-on-surface">InnovateFinance</span>
-                <span class="font-headline-md text-xl font-bold text-on-surface">EduSolutions</span>
-                <span class="font-headline-md text-xl font-bold text-on-surface">FutureSystems</span>
+             <div class="flex flex-wrap justify-center items-center gap-12  transition-all duration-500">
+                <img class="h-16 object-contain"
+                    data-alt="clean geometric logo of a professional education authority in black and white"
+                    src="{{ asset('patner_1.png') }}" alt="patner image">
+
+                <img class="h-16 object-contain" data-alt="sleek corporate mark for a global vocational training federation"
+                    src="{{ asset('patner_2.png') }}" alt="patner image">
             </div>
         </div>
     </section>
