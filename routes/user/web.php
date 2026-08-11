@@ -73,10 +73,12 @@ Route::get('/signup', function () {
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
+Route::get('/rpl', [FrontendController::class, 'rpl'])->name('rpl');
 
 // Policies
-Route::get('/policy-and-procedure', [FrontendController::class, 'policyAndProcedure'])
-    ->name('policyAndProcedure');
+Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('refund-policy');
+Route::get('/payment-policy', [FrontendController::class, 'paymentPolicy'])->name('payment-policy');
 
 Route::get('/complaints-and-appeals-policy', [FrontendController::class, 'complaintsAndAppealsPolicy'])
     ->name('complaintsAndAppealsPolicy');

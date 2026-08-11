@@ -503,4 +503,26 @@ public function firstAid(Request $request)
     );
 }
 
+public function privacyPolicy()
+{
+    return view('frontend.pages.privacy-policy');
+
+}
+
+public function refundPolicy()
+{
+        return view('frontend.pages.cancel-policy');
+
+}
+
+public function paymentPolicy()
+{
+    return view('frontend.pages.payment-policy');
+
+}
+
+public function rpl(){
+    return view('frontend.pages.rpl');
+}
+
 }

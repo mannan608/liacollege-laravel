@@ -18,15 +18,15 @@
         </p>
         
         <div style="display: flex; flex-direction: column; gap: 2px;">
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="{{ route('privacy-policy') }}" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             Privacy policy
           </a>
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="{{ route('refund-policy') }}" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
             Refund / cancellation
           </a>
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="{{ route('payment-policy') }}" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             Course payment policy
           </a>
@@ -45,19 +45,19 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             Create USI
           </a>
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="https://www.checked.com.au/" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             Create police report
           </a>
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="https://www.service.nsw.gov.au/transaction/apply-for-a-working-with-children-check" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             Working with children check
           </a>
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="https://www.service.nsw.gov.au/services/ndiswc" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             NDIS check
           </a>
-          <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
+          <a href="https://www.advancecollege.edu.au/policy-and-procedure/" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             Policy and procedures
           </a>
@@ -119,11 +119,11 @@
           </div>
           <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px line-height: 1.5;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Level 14, 333 Collins St,<br>Melbourne, VIC 3000</span>
+            <span>Level 14, 333 Collins St,Melbourne, VIC 3000</span>
           </div>
         </div>
 
-        <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        {{-- <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
           <a href="#" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #10b981; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Start chat
@@ -132,7 +132,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Book meeting
           </a>
-        </div>
+        </div> --}}
       </div>
 
     </div>

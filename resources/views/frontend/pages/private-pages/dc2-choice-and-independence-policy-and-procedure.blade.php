@@ -1,4 +1,4 @@
-@extends('frontend.lia-collage.layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
     <div class="private-page-container">

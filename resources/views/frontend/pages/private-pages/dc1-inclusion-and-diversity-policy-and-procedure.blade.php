@@ -1,47 +1,75 @@
-@extends('frontend.lia-collage.layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
-    <div class="private-page-container">
-        <div class="private-page py-5">
 
-            <!-- Back Button -->
-            <div class="py-6 pb-5">
-                <a href="{{ route('student.dashboard') }}"
-                    class="btn btn-success d-inline-flex align-items-center gap-2 px-5 py-3" style="font-size: 16px">
-                    <i class="bi bi-arrow-left"></i>
-                    Back to Dashboard
-                </a>
-            </div>
+<div class="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
 
-            <div class="">
-                <div class="et_pb_module et_pb_post_content et_pb_post_content_0_tb_body">
+        <!-- Back Button -->
+        <div class="mb-8">
+            <a href="{{ route('student.dashboard') }}"
+                class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 shadow-sm text-base">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Dashboard
+            </a>
+        </div>
 
+        <!-- Main Card -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+            <div class="p-8 sm:p-10 lg:p-14">
 
+                <!-- Header -->
+                <div class="border-b border-slate-200 pb-8 mb-10 text-center sm:text-left">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#132b4e] tracking-tight leading-tight">
+                        Inclusion and Diversity Policy and Procedure
+                    </h1>
+                    <p class="text-2xl font-bold text-[#e6bb73] mt-2">(DC1)</p>
+                </div>
 
-
-                    <h1><span style="color: #132b4e;">Inclusion and Diversity Policy and Procedure</span></h1>
-                    <h1><span style="color: #132b4e;">(DC1)</span></h1>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Policy Statement</span></h2>
-                    <p>The purpose of the Inclusion and Diversity Policy at Lia College is to ensure the safety, wellbeing and
+                <!-- Policy Statement -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Policy Statement</h2>
+                    <p class="text-slate-700 leading-relaxed text-base">
+                        The purpose of the Inclusion and Diversity Policy at Lia College is to ensure the safety, wellbeing and
                         protection of our residents is the paramount consideration in all decisions staff make and is
                         managed in accordance with professional standards, community expectations and legal requirements.
                     </p>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Scope</span></h2>
-                    <p>This policy applies to residents, staff, management, medical professionals and visitors of Lia College
-                        Care.</p>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Background</span></h2>
-                    <p>Lia College recognises that everyone has the right to be treated with fairness and equity. It is of
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Scope -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Scope</h2>
+                    <p class="text-slate-700 leading-relaxed text-base">
+                        This policy applies to residents, staff, management, medical professionals and visitors of Lia College
+                        Care.
+                    </p>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Background -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Background</h2>
+                    <p class="text-slate-700 leading-relaxed text-base">
+                        Lia College recognises that everyone has the right to be treated with fairness and equity. It is of
                         utmost importance that our stakeholders feel a sense of belonging and are respected for their
                         individual needs. We aim to support the wellbeing of others and embrace individual and cultural
                         diversity. Lia College actively supports the inclusion of all residents and provides an environment
                         which is free from bias and prejudice in which everyone benefits from the principles of fairness and
-                        respect.</p>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Legislative Requirements</span></h2>
-                    <ul>
+                        respect.
+                    </p>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Legislative Requirements -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Legislative Requirements</h2>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 leading-relaxed marker:text-[#132b4e]">
                         <li>Public Service Act 1999</li>
                         <li>Racial Discrimination Act 1975</li>
                         <li>Sex Discrimination Act 1984</li>
@@ -50,115 +78,173 @@
                         <li>Disability Discrimination Act 1992</li>
                         <li>Fair Work Act 2009</li>
                     </ul>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Principles that Inform our Policy</span></h2>
-                    <p>All decision making about our <em>Inclusion and Diversity Procedure</em> is carried out in accordance
-                        with the principles of our <em>Inclusion and Diversity Policy</em>.</p>
-                    <p>Lia College is diverse. Every resident brings their own unique set of strengths and challenges.</p>
-                    <p>Our <em>Inclusion and Diversity Policy</em> ensures that all stakeholders have the strategies needed
-                        to understand and accept cultural diversity and embracing each resident’s uniqueness within our
-                        service.</p>
-                    <p>Our Wellbeing and Support Team will assist and encourage all stakeholders to be culturally competent
-                        and respect different ways of being, benefits of diversity and honouring differences.</p>
-                    <p>Our Inclusion and Diversity Policy refers to the following:</p>
-                    <ul>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Principles -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Principles that Inform our Policy</h2>
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        All decision making about our <em>Inclusion and Diversity Procedure</em> is carried out in accordance
+                        with the principles of our <em>Inclusion and Diversity Policy</em>.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        Lia College is diverse. Every resident brings their own unique set of strengths and challenges.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        Our <em>Inclusion and Diversity Policy</em> ensures that all stakeholders have the strategies needed
+                        to understand and accept cultural diversity and embracing each resident's uniqueness within our
+                        service.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        Our Wellbeing and Support Team will assist and encourage all stakeholders to be culturally competent
+                        and respect different ways of being, benefits of diversity and honouring differences.
+                    </p>
+                    <p class="text-slate-700 leading-relaxed text-base mb-4">
+                        Our Inclusion and Diversity Policy refers to the following:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 leading-relaxed marker:text-[#132b4e]">
                         <li>Cultural awareness and inclusion.</li>
                         <li>Implementation of gender equity.</li>
                         <li>Diversity in family household.</li>
                         <li>Guidance and support of Indigenous and Torres Strait Islander people.</li>
                         <li>Supporting and inclusion of additional needs.</li>
                     </ul>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Key Terms</span></h2>
-                    <div class="table-responsive mt-3">
-                        <table class="table table-bordered mb-0" style="min-width: 760px;">
-                            <tbody>
-                                <tr>
-                                    <td width="161"><strong>Term</strong></td>
-                                    <td width="321"><strong>Meaning</strong></td>
-                                    <td width="161"><strong>Source</strong></td>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Key Terms -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Key Terms</h2>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-[#132b4e] text-white">
+                                    <th class="px-6 py-4 font-semibold text-sm uppercase tracking-wide w-44">Term</th>
+                                    <th class="px-6 py-4 font-semibold text-sm uppercase tracking-wide">Meaning</th>
+                                    <th class="px-6 py-4 font-semibold text-sm uppercase tracking-wide w-48">Source</th>
                                 </tr>
-                                <tr>
-                                    <td width="161">Diversity</td>
-                                    <td width="321">Diversity includes characteristics such as age, ethnicity, gender,
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-slate-700">
+                                <tr class="bg-white hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-[#132b4e] align-top">Diversity</td>
+                                    <td class="px-6 py-4 leading-relaxed align-top">
+                                        Diversity includes characteristics such as age, ethnicity, gender,
                                         intellectual and/or physical ability, cultural background, sexual orientation,
-                                        gender
-                                        identity, or intersex status.<p></p>
-                                        <p>Diversity extends to aspects, such as education, socioeconomic background, faith,
+                                        gender identity, or intersex status.
+                                        <p class="mt-2">
+                                            Diversity extends to aspects, such as education, socioeconomic background, faith,
                                             marital status, family responsibilities, thinking styles, experience and work
-                                            styles.</p>
+                                            styles.
+                                        </p>
                                     </td>
-                                    <td width="161">www.business.gov.au</td>
+                                    <td class="px-6 py-4 align-top">www.business.gov.au</td>
                                 </tr>
-                                <tr>
-                                    <td width="161">Staff</td>
-                                    <td width="321">Any person employed by the service to work in our facilityies or
+                                <tr class="bg-slate-50 hover:bg-slate-100 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-[#132b4e] align-top">Staff</td>
+                                    <td class="px-6 py-4 leading-relaxed align-top">
+                                        Any person employed by the service to work in our facilityies or
                                         corporate support role in a permanent, temporary, casual, or contractual capacity.
                                     </td>
-                                    <td width="161">www.business.gov.au</td>
+                                    <td class="px-6 py-4 align-top">www.business.gov.au</td>
                                 </tr>
-                                <tr>
-                                    <td width="161">Inclusion</td>
-                                    <td width="321">Inclusion is the way an organisation’s culture, values, workplaces
+                                <tr class="bg-white hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-[#132b4e] align-top">Inclusion</td>
+                                    <td class="px-6 py-4 leading-relaxed align-top">
+                                        Inclusion is the way an organisation's culture, values, workplaces
                                         and
                                         behaviours make a person feel valued, included and able to participate fully. It
                                         relates
                                         to a work environment where all people are treated fairly and respectfully, with
-                                        equality of opportunity.</td>
-                                    <td width="161">https://www.dca.org.au/topics/inclusion</td>
+                                        equality of opportunity.
+                                    </td>
+                                    <td class="px-6 py-4 align-top">https://www.dca.org.au/topics/inclusion</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Links to other Policies and Documents</span></h2>
-                    <ul>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Links -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Links to other Policies and Documents</h2>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 leading-relaxed marker:text-[#132b4e]">
                         <li>Anti-Discrimination Act 1991</li>
                         <li>Sex Discrimination Act 1984</li>
                         <li>National Vocational Education and Training Regulator (Transitional Provisions) Act 2011</li>
-                        <li>Sex Discrimination Amendment (Sexual Orientation, Gender, Identity and Intersex Status) Act 2013
-                        </li>
+                        <li>Sex Discrimination Amendment (Sexual Orientation, Gender, Identity and Intersex Status) Act 2013</li>
                     </ul>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Induction and Ongoing Training</span></h2>
-                    <p>Lia College requires that induction and ongoing training of all staff include the <em>Inclusion and
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Induction -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Induction and Ongoing Training</h2>
+                    <p class="text-slate-700 leading-relaxed text-base">
+                        Lia College requires that induction and ongoing training of all staff include the <em>Inclusion and
                             Diversity Policy</em> to enable staff to fulfil their roles effectively. In addition, Lia College
                         Care promotes information sharing at staff meetings, sharing of information received from industry
-                        trends or changes in legislation, and in consultation at policy review sessions.</p>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Policy Created/Reviewed</span></h2>
-                    <div class="table-responsive mt-3">
-                        <table class="table table-bordered mb-0" style="min-width: 760px;">
-                            <tbody>
-                                <tr>
-                                    <td width="160"><strong>Policy Created/Reviewed</strong></td>
-                                    <td width="321"><strong>Modifications</strong></td>
-                                    <td width="160"><strong>Next Review Date</strong></td>
+                        trends or changes in legislation, and in consultation at policy review sessions.
+                    </p>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Policy Created/Reviewed -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Policy Created/Reviewed</h2>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-[#132b4e] text-white">
+                                    <th class="px-6 py-4 font-semibold text-sm uppercase tracking-wide">Policy Created/Reviewed</th>
+                                    <th class="px-6 py-4 font-semibold text-sm uppercase tracking-wide">Modifications</th>
+                                    <th class="px-6 py-4 font-semibold text-sm uppercase tracking-wide">Next Review Date</th>
                                 </tr>
-                                <tr>
-                                    <td width="160">Implemented July 2022</td>
-                                    <td width="321"></td>
-                                    <td width="160">December 2022</td>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-slate-700">
+                                <tr class="bg-white">
+                                    <td class="px-6 py-4 align-top">Implemented July 2022</td>
+                                    <td class="px-6 py-4 align-top"></td>
+                                    <td class="px-6 py-4 align-top">December 2022</td>
                                 </tr>
-                                <tr>
-                                    <td width="160"><br></td>
-                                    <td width="321"><br></td>
-                                    <td width="160"><br></td>
+                                <tr class="bg-slate-50">
+                                    <td class="px-6 py-4 align-top">&nbsp;</td>
+                                    <td class="px-6 py-4 align-top">&nbsp;</td>
+                                    <td class="px-6 py-4 align-top">&nbsp;</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Monitoring, Evaluation and Review</span></h2>
-                    <p>This policy will be reviewed annually or on occurrence of any relevant legislative Management of
-                        Lia College will conduct reviews in consultation with the team at staff meetings.</p>
-                    <ul></ul>
-                    <h2><span style="color: #e6bb73;">Inclusion and Diversity Procedure</span></h2>
-                    <p>Lia College will achieve an inclusive environment for all residents through the following actions:
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Monitoring -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Monitoring, Evaluation and Review</h2>
+                    <p class="text-slate-700 leading-relaxed text-base">
+                        This policy will be reviewed annually or on occurrence of any relevant legislative Management of
+                        Lia College will conduct reviews in consultation with the team at staff meetings.
                     </p>
-                    <ul>
+                </section>
+
+                <ul class="my-4 list-none"></ul>
+
+                <!-- Procedure -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-[#e6bb73] mb-4 border-l-4 border-[#e6bb73] pl-4">Inclusion and Diversity Procedure</h2>
+                    <p class="text-slate-700 leading-relaxed text-base mb-6">
+                        Lia College will achieve an inclusive environment for all residents through the following actions:
+                    </p>
+                    <ul class="list-disc list-inside space-y-4 text-slate-700 leading-relaxed marker:text-[#132b4e]">
                         <li>Implementation of Gender Equity (residents and staff):
-                            <ul>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2 marker:text-[#132b4e]">
                                 <li>Staff will monitor and reflect on their own interactions for bias.</li>
                                 <li>Gender-inclusive language will be used where appropriate.</li>
                                 <li>Staff will promote gender equality wherever possible.</li>
@@ -173,7 +259,7 @@
                             </ul>
                         </li>
                         <li>Cultural awareness and inclusions:
-                            <ul>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2 marker:text-[#132b4e]">
                                 <li>Staff, residents and families will be provided with resources and opportunities to learn
                                     about culture, cultural safety and cultural awareness.</li>
                                 <li>Staff will work together to learn about each other as well as working with residents and
@@ -187,7 +273,7 @@
                             </ul>
                         </li>
                         <li>Guidance and support of Indigenous and Torres Strait Islander People:
-                            <ul>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2 marker:text-[#132b4e]">
                                 <li>Staff will deepen their knowledge and understanding of Indigenous and Torres Strait
                                     Islander culture by attending professional development, reading current information and
                                     regularly reflecting together as a team to embed Indigenous and Torres Strait Islander
@@ -195,8 +281,7 @@
                                 <li>To develop an acknowledgment of the country, which will be displayed and demonstrated at
                                     special events at Lia College.</li>
                                 <li>Staff will show respect for the Indigenous and Torres Strait Islander culture, aiming to
-                                    instil sensitivity/appreciation of the culture and a knowing and valuing of individuals.
-                                </li>
+                                    instil sensitivity/appreciation of the culture and a knowing and valuing of individuals.</li>
                                 <li>Lia College will ensure the organisation is made accessible to Aboriginal and Torres Strait
                                     Islander students to access academic, social and cultural support through targeted
                                     programs.</li>
@@ -209,7 +294,7 @@
                             </ul>
                         </li>
                         <li>Supporting and inclusion of additional needs:
-                            <ul>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2 marker:text-[#132b4e]">
                                 <li>Staff will work collaboratively with residents, families and specialists to understand
                                     and support individual needs.</li>
                                 <li>Staff will undergo professional development to increase knowledge of additional need
@@ -220,7 +305,7 @@
                             </ul>
                         </li>
                         <li>Lia College offers the following support services to all residents:
-                            <ul>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2 marker:text-[#132b4e]">
                                 <li>personal support</li>
                                 <li>social support</li>
                                 <li>domestic support</li>
@@ -231,7 +316,7 @@
                             </ul>
                         </li>
                         <li>Lia College links with many support services, including:
-                            <ul>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2 marker:text-[#132b4e]">
                                 <li>Headspace</li>
                                 <li>Beyond Blue</li>
                                 <li>True Relationships and Reproductive Health</li>
@@ -241,10 +326,11 @@
                             </ul>
                         </li>
                     </ul>
-
-                </div>
+                </section>
 
             </div>
         </div>
     </div>
+</div>
+
 @endsection
