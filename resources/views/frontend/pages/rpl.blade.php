@@ -439,7 +439,7 @@
         </section>
 
         <!-- Application Tips Section -->
-        <section class="py-20 lg:py-28 bg-slate-50 w-full">
+        {{-- <section class="py-20 lg:py-28 bg-slate-50 w-full">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold mb-4">
@@ -499,6 +499,6 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </main>
 @endsection

@@ -123,7 +123,7 @@
           </div>
         </div>
 
-        {{-- <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
           <a href="#" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #10b981; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Start chat
@@ -132,7 +132,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Book meeting
           </a>
-        </div> --}}
+        </div>
       </div>
 
     </div>
