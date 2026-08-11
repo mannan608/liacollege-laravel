@@ -393,8 +393,7 @@ class FrontendController extends Controller
     }
   
 
-    return view(
-        'frontend.lia-collage.first-aid.index',
+    return view('frontend.pages.first-aid',
         compact('courses', 'locations', 'slots')
     );
 }

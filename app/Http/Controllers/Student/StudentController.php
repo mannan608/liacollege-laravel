@@ -393,7 +393,7 @@ public function index(Request $request)
             abort(403);
         }
 
-        $view = "frontend.pages.student.private-pages.$slug";
+        $view = "student.private-pages.$slug";
 
         abort_unless(view()->exists($view), 404);
 

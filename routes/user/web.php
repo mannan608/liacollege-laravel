@@ -137,7 +137,7 @@ Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track
 
 // enroll course
 Route::get('/first-aid', [FrontendController::class, 'firstAid'])
-    ->name('firstAid');
+    ->name('first-aid');
 
 Route::get('/first-aid/{course:slug}', [FrontendController::class, 'firstAidShow'])
     ->name('courses.show');
