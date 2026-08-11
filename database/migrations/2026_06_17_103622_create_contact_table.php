@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('contacts', function (Blueprint $table) {
@@ -16,18 +13,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->text('message');
-            $table->string('course_id')->nullable();
+            $table->text('message')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('contact');
+        Schema::dropIfExists('contacts');
     }
 };

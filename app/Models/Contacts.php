@@ -12,11 +12,7 @@ class Contacts extends Model
         'phone',
         'message',
         'course_id',
-    ];  
-    
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
+    ];     
+ 
 }
 

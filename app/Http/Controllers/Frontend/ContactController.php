@@ -37,22 +37,22 @@ class ContactController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'phone' => ['required', 'string', 'max:50'],
-            'message' => ['required', 'string'],
-            'course_id' => ['nullable', 'exists:courses,id'],
-        ]);
+ public function store(Request $request)
+{
+    $data = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'email', 'max:255'],
+        'phone' => ['required', 'string', 'max:50'],
+        'message' => ['nullable', 'string'],
+        'course_id' => ['nullable', 'integer'],
+    ]);
 
-        Contacts::create($data);
+    Contacts::create($data);
 
-        return redirect()
-            ->back()
-            ->with('success', 'Your inquiry has been submitted successfully.');
-    }
+    return redirect()
+        ->back()
+        ->with('success', 'Your inquiry has been submitted successfully.');
+}
 
    public function destroy(Request $request, string $role,Contacts $contact): RedirectResponse
     {

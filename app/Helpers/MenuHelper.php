@@ -155,28 +155,28 @@ class MenuHelper
                     ],
                 ],
             ],
-            // [
-            //     'name' => 'Leads',
-            //     'icon' => 'chat',
-            //     'subItems' => [
-            //         [
-            //             'name' => 'Messages',
-            //             'route' => 'role.contacts.index',
-            //             'permission' => 'contact.list',
-            //         ],
-            //         [
-            //             'name' => 'Subscriptions',
-            //             'route' => 'role.subscribers.index',
-            //             'permission' => 'subscriber.list',
-            //         ],
-            //         [
-            //             'name' => 'Enroll',
-            //             'route' => 'role.enrollments.index',
-            //             'permission' => 'enrollment.list',
-            //             'optional' => true,
-            //         ],
-            //     ],
-            // ],
+            [
+                'name' => 'Leads',
+                'icon' => 'chat',
+                'subItems' => [
+                    [
+                        'name' => 'Messages',
+                        'route' => 'role.contacts.index',
+                        'permission' => 'contact.list',
+                    ],
+                    [
+                        'name' => 'Subscriptions',
+                        'route' => 'role.subscribers.index',
+                        'permission' => 'subscriber.list',
+                    ],
+                    [
+                        'name' => 'Enroll',
+                        'route' => 'role.enrollments.index',
+                        'permission' => 'enrollment.list',
+                        'optional' => true,
+                    ],
+                ],
+            ],
 
         ];
     }

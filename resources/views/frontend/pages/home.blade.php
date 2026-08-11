@@ -63,50 +63,10 @@
                         class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl pointer-events-none">
                     </div>
                     <h3 class="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-on-surface mb-6">Start Your Journey</h3>
-                    <form class="space-y-5">
-                        <div>
-                            <label
-                                class="block font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">Full
-                                Name</label>
-                            <input
-                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                                placeholder="John Doe" type="text">
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label
-                                    class="block font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">Email</label>
-                                <input
-                                    class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                                    placeholder="john@example.com" type="email">
-                            </div>
-                            <div>
-                                <label
-                                    class="block font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">Phone</label>
-                                <input
-                                    class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                                    placeholder="+1 (555) 000-0000" type="tel">
-                            </div>
-                        </div>
-                        <div>
-                            <label
-                                class="block font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider">Qualification
-                                of Interest</label>
-                            <select
-                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 appearance-none">
-                                <option>Business Management</option>
-                                <option>Information Technology</option>
-                                <option>Healthcare Administration</option>
-                            </select>
-                        </div>
-                        <button
-                            class="w-full bg-brand-500 text-on-primary hover:bg-brand-500-container hover:text-on-primary-container py-3.5 rounded-[12px] font-body-md text-body-md font-semibold mt-4 lift-and-glow"
-                            type="button">
-                            Request Information
-                        </button>
-                        <p class="text-xs text-center text-on-surface-variant/70 mt-4">By submitting, you agree to our
-                            Privacy Policy.</p>
-                    </form>
+                    
+                    @include('frontend.pages.common.contact-form', ['courses' => $courses])
+
+                    
                 </div>
             </div>
         </div>

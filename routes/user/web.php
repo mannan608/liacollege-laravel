@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Student\AssignmentController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\QualificationController;
 use App\Http\Controllers\Student\CourseController;
@@ -53,8 +54,8 @@ Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
 // Route::get('/events/{slug}', [EventController::class, 'show'])
 //     ->name('event-details');
-// Route::post('/inquiry-us', [ContactController::class, 'store'])
-//     ->name('contact.store');
+Route::post('/inquiry-us', [ContactController::class, 'store'])
+    ->name('contact.store');
 
 // Route::post('/subscribe', [SubscriberController::class, 'store'])
 //     ->name('subscribe.store');
