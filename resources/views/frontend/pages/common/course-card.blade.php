@@ -3,7 +3,7 @@
     <div class="h-48 overflow-hidden">
         <img
             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-            src="{{ asset('frontend-img/' . $course['image']) }}"
+            src="{{ asset('lia/images/' . $course['image']) }}"
             alt="{{ $course['title'] }}"
         >
     </div>
