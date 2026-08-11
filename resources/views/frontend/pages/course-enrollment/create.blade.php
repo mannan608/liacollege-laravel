@@ -297,7 +297,7 @@
                             <!-- Sign In Link -->
                             <div class="flex items-center gap-2 text-sm text-slate-500 justify-center sm:justify-end">
                                 <span>Already enrolled?</span>
-                                <a href="#"
+                                <a href="{{ route('login') }}"
                                     class="group/link inline-flex items-center gap-1 font-semibold text-slate-700 hover:text-cyan-600 transition-colors duration-200">
                                     Sign In
                                     <svg class="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform duration-200"

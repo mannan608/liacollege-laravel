@@ -140,7 +140,7 @@ Route::get('/first-aid', [FrontendController::class, 'firstAid'])
     ->name('first-aid');
 
 Route::get('/first-aid/{course:slug}', [FrontendController::class, 'firstAidShow'])
-    ->name('courses.show');
+    ->name('first-aid.show');
 
 Route::view(
     '/first-aid/how-often-renew-first-aid-certificate',
