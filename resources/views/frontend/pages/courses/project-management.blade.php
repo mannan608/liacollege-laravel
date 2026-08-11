@@ -258,11 +258,11 @@
                 <!-- Image -->
                 <div class="relative">
                     <div class="bg-white rounded-2xl p-2">
-                        <div class="px-6 pt-4 z-99999 relative">
+                        <div class="px-6 pt-4 z-99999 relative -mb-10">
                             <h5 class="text-2xl text-center font-semibold">Quick Enquiry</h5>
                             <p class="text-center text-base mt-2">Get a response within 1 business day</p>
                         </div>
-                        <div class="-mt-10">
+                        <div>
                             <iframe
                                         src="https://api.leadconnectorhq.com/widget/form/KSmGQZqWNAxU1itNZYAq"
                                         style="width:100%;height:100%;border:none;border-radius:3px"

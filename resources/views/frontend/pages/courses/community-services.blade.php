@@ -257,7 +257,7 @@
                 <!-- Image -->
                 <div class="relative">
                     <div class="bg-white rounded-2xl p-2">
-                        <div class="px-6 pt-4 z-99999 relative">
+                        <div class="px-6 pt-4 z-99999 relative -mb-10">
                             <h5 class="text-2xl text-center font-semibold">Quick Enquiry</h5>
                             <p class="text-center text-base mt-2">Get a response within 1 business day</p>
                         </div>

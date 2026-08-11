@@ -217,13 +217,10 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- CTA Banner -->
-       
+    </section>    
 
-     
-     @include("frontend.pages.common.review")
-       @include("frontend.pages.common.cta")
+      @include("frontend.pages.common.cta")
+     @include("frontend.pages.common.review")     
 
 
 @endsection
