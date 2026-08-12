@@ -1,162 +1,199 @@
-<!-- Footer -->
-<div style="width: 100%; background: #ffff;  color: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
-  <div style="max-width: 1200px; margin: 0 auto; padding: 56px 32px 32px;">
+    <!-- Footer -->
+    <footer class="bg-brand-500 text-white">
 
-    <!-- Main Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 48px;">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
 
-      <!-- Column 1: Brand & Policies -->
-      <div>
-       <div class="flex mb-6">
-                <a href="/">
+                <!-- Brand Column -->
+                <div class="lg:col-span-3">
+                    <div class="flex items-center gap-3 mb-6">
+                        <!-- Logo Shield -->
+                      <a href="/">
                     <img src="{{ asset('logo.webp') }}" alt="logo" class="w-28 h-auto">
                 </a>
-            </div>
-        <p style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #d4b35b; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d4b35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-          Terms & policies
-        </p>
-        
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-          <a href="{{ route('privacy-policy') }}" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Privacy policy
-          </a>
-          <a href="{{ route('refund-policy') }}" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-            Refund / cancellation
-          </a>
-          <a href="{{ route('payment-policy') }}" style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Course payment policy
-          </a>
-        </div>
-      </div>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-xs">
+                        Empowering futures through quality education and professional training since 2008.
+                    </p>
 
-      <!-- Column 2: Useful Links & Admission -->
-      <div>
-        <p style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #d4b35b; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d4b35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          Useful links
-        </p>
-        
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-          <a href="https://www.usi.gov.au/" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            Create USI
-          </a>
-          <a href="https://www.checked.com.au/" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            Create police report
-          </a>
-          <a href="https://www.service.nsw.gov.au/transaction/apply-for-a-working-with-children-check" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Working with children check
-          </a>
-          <a href="https://www.service.nsw.gov.au/services/ndiswc" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            NDIS check
-          </a>
-          <a href="https://www.advancecollege.edu.au/policy-and-procedure/" style="display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px color: #94a3b8; text-decoration: none; line-height: 1.5; transition: color 0.2s;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; transition: stroke 0.2s;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            Policy and procedures
-          </a>
-        </div>
+                    <!-- Terms & Policies -->
+                    <div>
+                        <h4 class="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-4">Terms & Policies</h4>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="{{ route('privacy-policy') }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 text-sm">
+                                    <svg class="w-4 h-4 text-brand-gold/60 group-hover:text-brand-gold transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('refund-policy') }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 text-sm">
+                                    <svg class="w-4 h-4 text-brand-gold/60 group-hover:text-brand-gold transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    Refund & Cancellation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('payment-policy') }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-200 text-sm">
+                                    <svg class="w-4 h-4 text-brand-gold/60 group-hover:text-brand-gold transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+                                    Course Payment Policy
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-        <!-- Admission Box -->
-        <div style="margin-top: 22px; padding: 18px 20px; border-radius: 12px; border: 1px solid rgba(212, 179, 91, 0.18); background: rgba(212, 179, 91, 0.06);">
-          <p style="font-size: 12px; font-weight: 600; color: #d4b35b; margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d4b35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            For admission & enrolment
-          </p>
-          <a href="mailto:enrol@liacollege.edu.au" style="font-size: 13px; font-weight: 500; color: #94a3b8; text-decoration: none; transition: color 0.2s;">enrol@liacollege.edu.au</a>
-          <span style="color: #475569; padding: 0 8px;">|</span>
-          <a href="tel:0468092898" style="font-size: 13px; font-weight: 500; color: #94a3b8; text-decoration: none; transition: color 0.2s;">0468 092 898</a>
-        </div>
-      </div>
+                <!-- Useful Links Column -->
+                <div class="lg:col-span-3 lg:col-start-5">
+                    <h4 class="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-6">Useful Links</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://www.usi.gov.au/" class="group flex items-start gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                <span class="mt-0.5 w-5 h-5 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                    <svg class="w-3 h-3 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                                </span>
+                                <span class="text-sm">Create USI</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.checked.com.au/" class="group flex items-start gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                <span class="mt-0.5 w-5 h-5 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                    <svg class="w-3 h-3 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                                </span>
+                                <span class="text-sm">Create Police Report</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.service.nsw.gov.au/transaction/apply-for-a-working-with-children-check" class="group flex items-start gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                <span class="mt-0.5 w-5 h-5 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                    <svg class="w-3 h-3 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                                </span>
+                                <span class="text-sm">Working With Children Check</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.service.nsw.gov.au/services/ndiswc" class="group flex items-start gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                <span class="mt-0.5 w-5 h-5 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                    <svg class="w-3 h-3 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                                </span>
+                                <span class="text-sm">NDIS Check</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.advancecollege.edu.au/policy-and-procedure/" class="group flex items-start gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                <span class="mt-0.5 w-5 h-5 rounded-md bg-white/5 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                    <svg class="w-3 h-3 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                                </span>
+                                <span class="text-sm">Policy & Procedures</span>
+                            </a>
+                        </li>
+                    </ul>
 
-      <!-- Column 3: Accreditation & Contact -->
-      <div>
-        <p style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #d4b35b; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d4b35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-          Accreditation
-        </p>
-        {{-- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px 10px; text-align: center;">
-            <p style="font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #94a3b8; line-height: 1.4; margin: 0;">Australian<br>Qualifications<br>Framework</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 14px 10px; text-align: center;">
-            <p style="font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #10b981; line-height: 1.3; margin: 0 0 2px 0;">National</p>
-            <p style="font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #94a3b8; line-height: 1.3; margin: 0;">Recognised<br>Training</p>
-          </div>
-        </div> --}}
-        <div class="grid grid-cols-2 sm:grid-cols-2 items-end justify-end w-full md:w-[60%] ">
-                        <div
-                            class="group flex items-center justify-center  transition-all duration-300 ">
-                            <img src="https://liacollege.edu.au/frontend/images/brand/11.png" alt="Brand 1"
-                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                    <!-- Admission Card -->
+                    <div class="mt-8 p-5 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm">
+                        <div class="flex items-center gap-2 mb-3">
+                            <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                            <span class="text-brand-gold text-xs font-semibold tracking-wide">For Admission & Enrolment</span>
                         </div>
-                        <div
-                            class="group flex items-center justify-center  transition-all duration-300 ">
-                            <img src="https://liacollege.edu.au/frontend/images/brand/2.png" alt="Brand 2"
-                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                        <a href="mailto:enrol@liacollege.edu.au" class="text-white text-sm font-medium hover:text-brand-gold transition-colors">enrol@liacollege.edu.au</a>
+                        <div class="mt-1 text-slate-400 text-sm">0468 092 898</div>
+                    </div>
+                </div>
+
+                <!-- Contact & Accreditation Column -->
+                <div class="lg:col-span-4 lg:col-start-9">
+
+                    <!-- Accreditation -->
+                    <div class="mb-10">
+                        <h4 class="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-6">Accreditation</h4>
+                        <div class="flex items-center gap-4">
+                            <!-- NRT Badge -->
+                            <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white text-xs font-bold leading-tight">Nationally</div>
+                                    <div class="text-white text-xs font-bold leading-tight">Recognised</div>
+                                    <div class="text-slate-400 text-[10px] leading-tight">Training</div>
+                                </div>
+                            </div>
+                            <!-- AQF Badge -->
+                            <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.499 5.221 69.78 69.78 0 00-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white text-xs font-bold leading-tight">Australian</div>
+                                    <div class="text-white text-xs font-bold leading-tight">Qualifications</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-        <p style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #94a3b8; margin: 24px 0 14px 0; display: flex; align-items: center; gap: 8px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Contact
-        </p>
-        
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px line-height: 1.5;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:0479110567" style="color: #94a3b8; text-decoration: none; font-weight: 500; transition: color 0.2s;">0479 110 567</a>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px line-height: 1.5;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:training@liacollege.edu.au" style="color: #94a3b8; text-decoration: none; font-weight: 500; transition: color 0.2s;">training@liacollege.edu.au</a>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px line-height: 1.5;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Level 14, 333 Collins St,Melbourne, VIC 3000</span>
-          </div>
+                    <!-- Contact -->
+                    <div class="mb-8">
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="tel:0479110567" class="group flex items-center gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                    <span class="w-9 h-9 rounded-lg bg-brand-gold/10 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                                    </span>
+                                    <span class="text-sm">0479 110 567</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:training@liacollege.edu.au" class="group flex items-center gap-3 text-slate-300 hover:text-white transition-colors duration-200">
+                                    <span class="w-9 h-9 rounded-lg bg-brand-gold/10 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                                    </span>
+                                    <span class="text-sm">training@liacollege.edu.au</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="flex items-start gap-3 text-slate-300">
+                                    <span class="w-9 h-9 rounded-lg bg-brand-gold/10 flex items-center justify-center shrink-0">
+                                        <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                                    </span>
+                                    <span class="text-sm leading-relaxed">Level 14, 333 Collins St<br>Melbourne, VIC 3000</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="http://wa.me/+61468092898" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-400/30 hover:-translate-y-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+                            Start Chat
+                        </a>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/dp31qqshThiwc7Uslqjp" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-sky-400/30 hover:-translate-y-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                            Book Meeting
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
-          <a href="http://wa.me/+61468092898" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #10b981; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            Start chat
-          </a>
-          <a href="https://api.leadconnectorhq.com/widget/booking/dp31qqshThiwc7Uslqjp"
-                                target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #0ea5e9; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Book meeting
-          </a>
+        <!-- Bottom Bar -->
+        <div class="border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-white text-sm text-center md:text-left">
+                        &copy; 2026 All rights reserved. Education and Training Pty Ltd. trading as <span class="text-brand-gold font-medium">Leadership Institute Australia</span>
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex items-center gap-2 text-white text-sm">
+                            <svg class="w-4 h-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+                            <span>RTO 46049</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white text-sm">
+                            <svg class="w-4 h-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                            <span>ABN 93 653 303 621</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(212,179,91,0.3), transparent); margin: 40px 0 24px;"></div>
-
-    <!-- Bottom Bar -->
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
-      <p style="font-size: 12px; color: #64748b; margin: 0; line-height: 1.5;">
-        &copy; 2026 All rights reserved &middot; Education and Training Pty Ltd &middot; trading as <strong style="color: #d4b35b; font-weight: 600;">Leadership Institute Australia</strong>
-      </p>
-      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); font-size: 14px; font-weight: 500; color: #94a3b8; white-space: nowrap;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d4b35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          RTO 46049
-        </span>
-        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); font-size: 14px; font-weight: 500; color: #94a3b8; white-space: nowrap;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#d4b35b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-          ABN 93 653 303 621
-        </span>
-      </div>
-    </div>
-
-  </div>
-</div>
+    </footer>

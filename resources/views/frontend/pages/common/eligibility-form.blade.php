@@ -1,7 +1,4 @@
 @php
-    // -----------------------------------------------------------------
-    // Initialise state from server (old input, session, or defaults)
-    // -----------------------------------------------------------------
     $initialStep = $step ?? session('eligibility_step', 1);
     $initialStep = in_array((int) $initialStep, [1, 2]) ? (int) $initialStep : 1;
 
@@ -16,7 +13,6 @@
         'terms_accepted'  => old('terms_accepted',  $data['terms_accepted'] ?? '') ? true : false,
     ];
 
-    // Convert Laravel error bag to a plain array so Alpine can read it
     $serverErrors = [];
     foreach ($errors->getMessages() as $key => $messages) {
         $serverErrors[$key] = $messages;
@@ -156,11 +152,6 @@
     x-cloak
     class="bg-surface rounded-[20px] p-8 border border-outline-variant/30 soft-shadow"
 >
-
-
-    {{-- =========================================================
-        Progress
-    ========================================================== --}}
     <div class="mb-8">
         <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-2">
             <span>Step <span x-text="step"></span> of 2</span>
@@ -174,11 +165,6 @@
             ></div>
         </div>
     </div>
-
-
-    {{-- =========================================================
-        STEP 1  –  Name / Email / Phone
-    ========================================================== --}}
     <form
         x-show="step === 1"
         x-transition
@@ -256,11 +242,6 @@
             </button>
         </div>
     </form>
-
-
-    {{-- =========================================================
-        STEP 2  –  Industry / Qualification / Experience / State / Terms
-    ========================================================== --}}
     <form
         x-show="step === 2 && !success"
         x-transition
@@ -445,79 +426,4 @@
             </button>
         </div>
     </form>
-
-
-    {{-- =========================================================
-        Success Message
-    ========================================================== --}}
-  <div
-    x-show="success"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 translate-x-5"
-    x-transition:enter-end="opacity-100 translate-x-0"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 translate-x-0"
-    x-transition:leave-end="opacity-0 translate-x-5"
-    x-cloak
-    class="fixed top-5 right-5 z-[9999] w-[calc(100%-2rem)] max-w-md"
->
-    <div class="bg-white border border-green-200 shadow-xl rounded-xl p-5">
-
-        <div class="flex items-start gap-4">
-
-            <!-- Success Icon -->
-            <div class="shrink-0">
-                <svg
-                    class="w-10 h-10 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                </svg>
-            </div>
-
-            <!-- Message -->
-            <div class="flex-1">
-                <h3 class="text-lg font-bold text-gray-900">
-                    All done!
-                </h3>
-
-                <p
-                    x-text="successMessage"
-                    class="mt-1 text-sm text-gray-600"
-                ></p>
-            </div>
-
-            <!-- Close -->
-            <button
-                type="button"
-                @click="success = false"
-                class="text-gray-400 hover:text-gray-600"
-            >
-                <svg
-                    class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"
-                    />
-                </svg>
-            </button>
-
-        </div>
-
-    </div>
-</div>
-
 </div>
