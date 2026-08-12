@@ -58,12 +58,6 @@ class EligibilityController extends Controller
             ], 422);
         }
 
-        // $payload = array_merge($step1, $validator->validated());
-        // $payload['status'] = 'pending';
-
-        // EligibilitySubmission::create($payload);
-
-        // Session::forget(['eligibility_step1', 'eligibility_step']);
 
         $payload = array_merge($step1, $validator->validated());
         $payload['status'] = 'pending';
@@ -103,7 +97,7 @@ class EligibilityController extends Controller
         $query = EligibilitySubmission::query();
 
         $submissions = $query->latest()->paginate(15);
-        // i want get qualification name use code
+        // i want get qualification name use code and state name
         // return $submissions;
 
         return view('backend.pages.contacts.eligibility.index', compact('submissions'));
