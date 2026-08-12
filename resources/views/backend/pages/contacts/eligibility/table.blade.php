@@ -12,10 +12,9 @@
             'name' => $contact->name,
             'email' => $contact->email,
             'phone' => $contact->phone,
-            'industry' => $contact->industry,
-            'qualification' => $contact->qualification,
+            'qualification' => $contact->qualification_name,
             'experience_years' => $contact->experience_years,
-            'state' => $contact->state,
+            'state' => $contact->state_name,
 
         ];
     })->values();
@@ -84,8 +83,9 @@
                             <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                             <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                             <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                            <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
-                            <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                            <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Couse</th>
+                            <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Experience</th>
+                            <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
                             <th class="px-5 py-4 text-xs font-medium text-gray-500 uppercase tracking-wider text-right">Action</th>
                         </tr>
                     </thead>
@@ -106,10 +106,11 @@
                                 <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="row.email"></td>
                                 <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="row.phone"></td>
 
-                                {{-- <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
-                                    <span x-text="row.course"></span>
+                               <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400">
+                                    <span x-text="row.qualification"></span>
                                 </td>
-                                <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="row.message"></td> --}}
+                                <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="row.experience_years"></td>
+                                <td class="px-5 py-4 text-sm text-gray-500 dark:text-gray-400" x-text="row.state"></td>
                                
                                 <td class="px-5 py-4 text-right">
                                     <div class="flex justify-end gap-2">                                      

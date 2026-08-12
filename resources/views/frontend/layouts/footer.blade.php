@@ -1,5 +1,5 @@
 <!-- Footer -->
-<div style="width: 100%;  color: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+<div style="width: 100%; background: #ffff;  color: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
   <div style="max-width: 1200px; margin: 0 auto; padding: 56px 32px 32px;">
 
     <!-- Main Grid -->
@@ -9,7 +9,7 @@
       <div>
        <div class="flex mb-6">
                 <a href="/">
-                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-20 h-auto">
+                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-28 h-auto">
                 </a>
             </div>
         <p style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #d4b35b; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
@@ -94,12 +94,12 @@
                         <div
                             class="group flex items-center justify-center  transition-all duration-300 ">
                             <img src="https://liacollege.edu.au/frontend/images/brand/11.png" alt="Brand 1"
-                                class="h-24 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                         </div>
                         <div
                             class="group flex items-center justify-center  transition-all duration-300 ">
                             <img src="https://liacollege.edu.au/frontend/images/brand/2.png" alt="Brand 2"
-                                class="h-24 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                         </div>
                     </div>
 
@@ -124,11 +124,12 @@
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
-          <a href="#" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #10b981; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
+          <a href="http://wa.me/+61468092898" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #10b981; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Start chat
           </a>
-          <a href="#" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #0ea5e9; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
+          <a href="https://api.leadconnectorhq.com/widget/booking/dp31qqshThiwc7Uslqjp"
+                                target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 8px; font-size: 12px; font-weight: 600; background: #0ea5e9; color: #fff; text-decoration: none; border: none; transition: all 0.2s; cursor: pointer;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Book meeting
           </a>

@@ -4,6 +4,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\EligibilitySubmission;
+use App\Services\CourseService;
+use App\Traits\CourseTrait;
+use App\Traits\RouteDiscoveryTrait;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
@@ -15,6 +18,16 @@ use Illuminate\Support\Facades\Mail;
 class EligibilityController extends Controller
 {
 
+      use CourseTrait, RouteDiscoveryTrait;
+         protected $courseService;
+
+    /**
+     * Inject the CourseService.
+     */
+    public function __construct(CourseService $courseService)
+    {
+        $this->courseService = $courseService;
+    }
     public function step1(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -92,16 +105,39 @@ class EligibilityController extends Controller
     }
 
     // Admin Methods
-    public function index(Request $request)
-    {
-        $query = EligibilitySubmission::query();
+ public function index(Request $request)
+{
+    $query = EligibilitySubmission::query();
 
-        $submissions = $query->latest()->paginate(15);
-        // i want get qualification name use code and state name
-        // return $submissions;
+    $submissions = $query->latest()->paginate(15);
 
-        return view('backend.pages.contacts.eligibility.index', compact('submissions'));
-    }
+    $courses = $this->getCourses();
+
+    // Course code => course title
+    $courseTitles = collect($courses)->keyBy('code');
+
+    $submissions->getCollection()->transform(function ($submission) use ($courseTitles) {
+
+        // Qualification code => course title
+        $submission->qualification_name =
+            $courseTitles->get($submission->qualification)['title']
+            ?? $submission->qualification;
+
+        // State code => state name
+        $submission->state_name =
+            EligibilitySubmission::STATES[$submission->state]
+            ?? $submission->state;
+
+        return $submission;
+    });
+
+    // return $submissions;
+
+    return view(
+        'backend.pages.contacts.eligibility.index',
+        compact('submissions')
+    );
+}
 
     public function show(EligibilitySubmission $submission)
     {

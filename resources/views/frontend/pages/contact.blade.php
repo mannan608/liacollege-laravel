@@ -81,6 +81,24 @@
                         </div>
                     </div>
                 </div>
+                <div
+                    class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-neutral-100 transition-all duration-300 hover:shadow-md hover:-tranbrand-y-1">
+                    <div class="flex items-start gap-4 sm:gap-5">
+                        <div
+                            class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-semibold text-neutral-900 mb-0.5 sm:mb-1">Admission Enquiry</h3>
+                            <a href="tel:0479110567"
+                                class="text-xl sm:text-2xl font-bold text-neutral-900 hover:text-brand-600 transition-colors">0468 092 898</a>
+                            <p class="text-xs sm:text-sm text-neutral-500 mt-1 sm:mt-2">Available during business hours</p>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Hours -->
                 <div

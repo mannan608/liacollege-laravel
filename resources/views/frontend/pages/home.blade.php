@@ -105,9 +105,9 @@
             class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-surface-container-low to-surface opacity-50 pointer-events-none">
         </div>
         <div
-            class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+            class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex gap-16 items-center relative z-10">
             <!-- Left Image -->
-            <div class="relative rounded-[24px] overflow-hidden soft-shadow">
+            {{-- <div class="relative rounded-[24px] overflow-hidden soft-shadow">
                 <img alt="Advisor speaking with a smiling student in a modern office setting"
                     class="w-full h-auto object-cover"
                     src="{{ asset('lia/eligibility.webp') }}">
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Right Quiz -->
             <div>
                 <h2 class="lg:text-5xl font-headline-lg md:text-4xl sm:text-3xl text-2xl font-bold text-on-surface mb-4">Check Your Eligibility</h2>

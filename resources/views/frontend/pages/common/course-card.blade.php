@@ -11,7 +11,7 @@
     <div class="p-6 space-y-4">
 
         <h3 class="font-semibold text-slate-900 md:text-base text-sm leading-tight mt-2">
-            {{ $course['title'] }}
+           {{ $course['code'] }} {{ $course['title'] }}
         </h3>
 
         <p class="text-slate-600 text-sm line-clamp-2">
