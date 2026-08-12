@@ -36,12 +36,11 @@ class FrontendController extends Controller
     public function landingPage()
     {
         $courses = $this->getCourses();
-       $coursesByIndustry=$this->groupCoursesByIndustry($courses);
+        $coursesByIndustry = $this->groupCoursesByIndustry($courses->toArray());
 
         $industries = EligibilitySubmission::INDUSTRIES;
         $states     = EligibilitySubmission::STATES;
 
-        return $coursesByIndustry;
         return view('frontend.pages.home', compact('courses','states','industries','coursesByIndustry'));
     }
 

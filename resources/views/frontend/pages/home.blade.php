@@ -132,7 +132,12 @@
                 <h2 class="lg:text-5xl font-headline-lg md:text-4xl sm:text-3xl text-2xl font-bold text-on-surface mb-4">Check Your Eligibility</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Find out which programs you
                     qualify for in less than 2 minutes. Our quick assessment helps tailor your educational path.</p>
-                @include('frontend.pages.common.eligibility-form',['courses' => $courses,'coursesByIndustry'=>$coursesByIndustry,'states'=>$states,'industries'=>$industries])
+                @include('frontend.pages.common.eligibility-form', [
+                    'courses' => $courses,
+                    'coursesByIndustry' => $coursesByIndustry,
+                    'states' => $states,
+                    'industries' => $industries
+                ])
             </div>
         </div>
     </section>    

@@ -9,11 +9,13 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+
 
 class EligibilityController extends Controller
 {
-  
-public function step1(Request $request): JsonResponse
+
+    public function step1(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'name'  => 'required|string|max:255',
@@ -56,10 +58,37 @@ public function step1(Request $request): JsonResponse
             ], 422);
         }
 
+        // $payload = array_merge($step1, $validator->validated());
+        // $payload['status'] = 'pending';
+
+        // EligibilitySubmission::create($payload);
+
+        // Session::forget(['eligibility_step1', 'eligibility_step']);
+
         $payload = array_merge($step1, $validator->validated());
         $payload['status'] = 'pending';
 
-        EligibilitySubmission::create($payload);
+        $submission = EligibilitySubmission::create($payload);
+
+        // SEND EMAIL TO ADMIN
+        Mail::raw(
+            "New Eligibility Submission\n\n" .
+
+                "Name: {$submission->name}\n" .
+                "Phone: {$submission->phone}\n" .
+                "Email: {$submission->email}\n" .
+                "Industry: {$submission->industry}\n" .
+                "Qualification: {$submission->qualification}\n" .
+                "Experience: {$submission->experience_years} years\n" .
+                "State: {$submission->state}\n" .
+                "Status: {$submission->status}",
+
+            function ($message) {
+                $message
+                    ->to('mannan.hbdservices@gmail.com')
+                    ->subject('New Eligibility Submission - Lia College');
+            }
+        );
 
         Session::forget(['eligibility_step1', 'eligibility_step']);
 
@@ -73,23 +102,11 @@ public function step1(Request $request): JsonResponse
     {
         $query = EligibilitySubmission::query();
 
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
-
-        if ($request->filled('search')) {
-            $search = $request->search;
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%")
-                  ->orWhere('phone', 'like', "%{$search}%");
-            });
-        }
-
         $submissions = $query->latest()->paginate(15);
-        $statuses = EligibilitySubmission::STATUSES;
+        // i want get qualification name use code
+        // return $submissions;
 
-        return view('admin.eligibility.index', compact('submissions', 'statuses'));
+        return view('backend.pages.contacts.eligibility.index', compact('submissions'));
     }
 
     public function show(EligibilitySubmission $submission)
@@ -97,7 +114,7 @@ public function step1(Request $request): JsonResponse
         return view('admin.eligibility.show', compact('submission'));
     }
 
-    
+
 
     public function destroy(EligibilitySubmission $submission)
     {

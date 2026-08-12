@@ -92,7 +92,7 @@ public function store(Request $request)
         "Course: {$courseTitle}",
         function ($message) {
             $message
-                ->to('training@liacollege.edu.au')
+                ->to('enrol@liacollege.edu.au')
                 ->subject('New Course Inquiry - Lia College');
         }
     );

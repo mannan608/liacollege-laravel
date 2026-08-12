@@ -27,11 +27,8 @@ class EligibilitySubmission extends Model
     public const STATUSES = ['pending', 'reviewed', 'contacted', 'rejected'];
 
     public const INDUSTRIES = [
-        'health-community' => 'Health and Community Services',
-        'business-management' => 'Business and Management',
-        'education' => 'Education',
-        'construction' => 'Construction',
-        'it' => 'Information Technology',
+        'Services' => 'Health and Community Services',
+        'Management' => 'Business and Management',
     ];
 
     public const STATES = [
