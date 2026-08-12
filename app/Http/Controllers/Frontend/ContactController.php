@@ -26,28 +26,7 @@ class ContactController extends Controller
         $this->courseService = $courseService;
     }
     
-    // public function index(Request $request): View
-    // {
-    //     $request->user()->can('contact.list') || abort(403);
-    //     $courses = $this->getCourses();
-
-    //     $contacts = Contacts::query()
-    //         ->select([
-    //             'id',
-    //             'name',
-    //             'email',
-    //             'phone',
-    //             'message',
-    //             'course_id'
-    //         ])
-    //         ->latest()
-    //         ->get();
-
-    //     return view(
-    //         'backend.pages.contacts.index',
-    //         compact('contacts')
-    //     );
-    // }
+   
 
     public function index(Request $request)
 {
@@ -83,23 +62,6 @@ class ContactController extends Controller
 }
 
 
-//  public function store(Request $request)
-// {
-//     $data = $request->validate([
-//         'name' => ['required', 'string', 'max:255'],
-//         'email' => ['required', 'email', 'max:255'],
-//         'phone' => ['required', 'string', 'max:50'],
-//         'message' => ['nullable', 'string'],
-//         'course_id' => ['nullable', 'integer'],
-//     ]);
-
-//     Contacts::create($data);
-
-//     return redirect()
-//         ->back()
-//         ->with('success', 'Your inquiry has been submitted successfully.');
-// }
-
 public function store(Request $request)
 {
     $data = $request->validate([
@@ -130,8 +92,8 @@ public function store(Request $request)
         "Course: {$courseTitle}",
         function ($message) {
             $message
-                ->to('mannan.hbdservices@gmail.com')
-                ->subject('New Course Inquiry - HBDServices');
+                ->to('training@liacollege.edu.au')
+                ->subject('New Course Inquiry - Lia College');
         }
     );
 
