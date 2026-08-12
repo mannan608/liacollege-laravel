@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <main class="font-sans antialiased text-slate-800">
+    <main class=" text-slate-800">
         
         <!-- Hero Section -->
         <section class="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
@@ -18,6 +18,7 @@
             
             <!-- Content -->
             <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-[65%_35%] gap-8">
                 <div class="max-w-3xl">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-brand-200 text-sm font-medium mb-6">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -29,13 +30,7 @@
                     <p class="text-lg sm:text-xl text-slate-200 mb-10 max-w-2xl leading-relaxed">
                         Turn years of hard-earned skills into a nationally recognised qualification. Don't let your experience go unrecognised — fast-track your career today.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        {{-- <button class="group bg-secondary-500 hover:bg-secondary-500 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all duration-200 flex items-center justify-center gap-2  hover:-translate-y-0.5">
-                            Check Your Eligibility
-                            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </button> --}}
+                    <div class="flex flex-col sm:flex-row gap-4">                       
                         <button class="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-base font-semibold transition-all duration-200 border border-white/30 flex items-center justify-center gap-2 hover:-translate-y-0.5">
                             Download RPL Guide
                             <svg class="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,6 +38,14 @@
                             </svg>
                         </button>
                     </div>
+                </div>
+                 <div class="p-8 rounded-[20px] relative overflow-hidden bg-white">
+                    <div
+                        class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl pointer-events-none">
+                    </div>
+                    <h3 class="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-on-surface mb-6">Start Your Journey</h3>                    
+                    @include('frontend.pages.common.contact-form', ['courses' => $courses])                    
+                </div>
                 </div>
             </div>
             

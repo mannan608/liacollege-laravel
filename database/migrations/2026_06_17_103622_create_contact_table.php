@@ -13,8 +13,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->string('address')->nullable();
+            $table->string('state')->nullable();
+            $table->string('post_code')->nullable();
             $table->text('message')->nullable();
             $table->unsignedBigInteger('course_id')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

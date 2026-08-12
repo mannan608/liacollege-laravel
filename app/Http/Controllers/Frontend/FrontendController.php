@@ -44,6 +44,8 @@ class FrontendController extends Controller
         return view('frontend.pages.home', compact('courses','states','industries','coursesByIndustry'));
     }
 
+  
+
         private function groupCoursesByIndustry(array $courses): array
     {
         $grouped = [];
@@ -331,6 +333,7 @@ class FrontendController extends Controller
 
     public function rpl()
     {
-        return view('frontend.pages.rpl');
+         $courses = $this->getCourses();
+        return view('frontend.pages.rpl', compact('courses'));
     }
 }

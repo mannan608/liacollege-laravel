@@ -68,6 +68,9 @@ public function store(Request $request)
         'name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'email', 'max:255'],
         'phone' => ['required', 'string', 'max:50'],
+        'address' => ['nullable', 'string', 'max:255'],
+        'state' => ['nullable', 'string', 'max:100'],
+        'post_code' => ['nullable', 'string', 'max:20'],
         'message' => ['nullable', 'string'],
         'course_id' => ['nullable', 'integer'],
     ]);

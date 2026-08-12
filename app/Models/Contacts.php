@@ -10,6 +10,9 @@ class Contacts extends Model
         'name',
         'email',
         'phone',
+        'address',
+        'state',
+        'post_code',
         'message',
         'course_id',
     ];     
