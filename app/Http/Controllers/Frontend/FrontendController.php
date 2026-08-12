@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\EligibilitySubmission;
 use App\Models\LMS\CourseSlot;
 use App\Models\LMS\Enrollment;
 use App\Models\Student;
@@ -23,7 +24,7 @@ class FrontendController extends Controller
 {
     use CourseTrait, RouteDiscoveryTrait;
 
-     protected $courseService;
+    protected $courseService;
 
     /**
      * Inject the CourseService.
@@ -34,8 +35,29 @@ class FrontendController extends Controller
     }
     public function landingPage()
     {
-          $courses = $this->getCourses();
-        return view('frontend.pages.home', compact('courses'));
+        $courses = $this->getCourses();
+       $coursesByIndustry=$this->groupCoursesByIndustry($courses);
+
+        $industries = EligibilitySubmission::INDUSTRIES;
+        $states     = EligibilitySubmission::STATES;
+
+        return $coursesByIndustry;
+        return view('frontend.pages.home', compact('courses','states','industries','coursesByIndustry'));
+    }
+
+        private function groupCoursesByIndustry(array $courses): array
+    {
+        $grouped = [];
+
+        foreach ($courses as $course) {
+            $industry = $course['industry'] ?? 'Other';
+            $grouped[$industry][] = [
+                'code'  => $course['code'],
+                'title' => $course['title'],
+            ];
+        }
+
+        return $grouped;
     }
 
     // public function index()
@@ -108,7 +130,7 @@ class FrontendController extends Controller
     {
         return view('frontend.lia-collage.cardiopulmonary-resuscitation');
     }
- 
+
     public function leadershipManagement()
     {
         return view('frontend.lia-collage.leadership-management');
@@ -188,131 +210,128 @@ class FrontendController extends Controller
         return response()->json($data);
     }
 
-public function firstAid(Request $request)
-{
-    $courses = Course::query()
-    ->with('includes')
-        ->whereHas('slots', function ($query) {
-            $query->where('status', 'active');
-        })
-        ->orderBy('name')
-        ->get();
-
-    $locations = TrainingCenter::query()
-        ->select('city')
-        ->whereNotNull('city')
-        ->where('city', '!=', '')
-        ->distinct()
-        ->orderBy('city')
-        ->get();
-
-    $slots = collect();
-
-    if ($request->filled('course_id') && $request->filled('city')) {
-        $slots = CourseSlot::query()
-            ->with([
-                'course',
-                'trainingCenter',
-                'users.user',
-            ])
-            ->where('course_id', $request->course_id)
-            ->where('status', 'active')
-            ->whereDate('training_date', '>=', now())
-            ->when(
-                $request->city !== '__any__',
-                function ($query) use ($request) {
-                    $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
-                        $centerQuery->where('city', $request->city);
-                    });
-                }
-            )
-            ->orderBy('training_date')
+    public function firstAid(Request $request)
+    {
+        $courses = Course::query()
+            ->with('includes')
+            ->whereHas('slots', function ($query) {
+                $query->where('status', 'active');
+            })
+            ->orderBy('name')
             ->get();
-    }
 
-    // Check if it's an AJAX request
-    if ($request->ajax()) {
-        // Return only the slots partial view
-        return view('frontend.pages.first-aid.slot-filter.course-slots', compact('slots'))->render();
-    }
-
-    // return $courses;
-
-    return view('frontend.pages.first-aid.index', compact('courses', 'locations', 'slots'));
-}
-
-
-  public function firstAidShow(Request $request, Course $course)
-{
-    $course->load('includes');
-
-    $locations = TrainingCenter::query()
-        ->select('city')
-        ->whereNotNull('city')
-        ->where('city', '!=', '')
-        ->distinct()
-        ->orderBy('city')
-        ->get();
-
-    $slots = collect();
-
-    if ($request->filled('city')) {
-        $slots = CourseSlot::query()
-            ->with([
-                'course',
-                'trainingCenter',
-                'users.user',
-            ])
-            ->where('course_id', $course->id)
-            ->where('status', 'active')
-            ->whereDate('training_date', '>=', now())
-            ->when(
-                $request->city !== '__any__',
-                function ($query) use ($request) {
-                    $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
-                        $centerQuery->where('city', $request->city);
-                    });
-                }
-            )
-            ->orderBy('training_date')
+        $locations = TrainingCenter::query()
+            ->select('city')
+            ->whereNotNull('city')
+            ->where('city', '!=', '')
+            ->distinct()
+            ->orderBy('city')
             ->get();
+
+        $slots = collect();
+
+        if ($request->filled('course_id') && $request->filled('city')) {
+            $slots = CourseSlot::query()
+                ->with([
+                    'course',
+                    'trainingCenter',
+                    'users.user',
+                ])
+                ->where('course_id', $request->course_id)
+                ->where('status', 'active')
+                ->whereDate('training_date', '>=', now())
+                ->when(
+                    $request->city !== '__any__',
+                    function ($query) use ($request) {
+                        $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
+                            $centerQuery->where('city', $request->city);
+                        });
+                    }
+                )
+                ->orderBy('training_date')
+                ->get();
+        }
+
+        // Check if it's an AJAX request
+        if ($request->ajax()) {
+            // Return only the slots partial view
+            return view('frontend.pages.first-aid.slot-filter.course-slots', compact('slots'))->render();
+        }
+
+        // return $courses;
+
+        return view('frontend.pages.first-aid.index', compact('courses', 'locations', 'slots'));
     }
 
-    if ($request->ajax()) {
+
+    public function firstAidShow(Request $request, Course $course)
+    {
+        $course->load('includes');
+
+        $locations = TrainingCenter::query()
+            ->select('city')
+            ->whereNotNull('city')
+            ->where('city', '!=', '')
+            ->distinct()
+            ->orderBy('city')
+            ->get();
+
+        $slots = collect();
+
+        if ($request->filled('city')) {
+            $slots = CourseSlot::query()
+                ->with([
+                    'course',
+                    'trainingCenter',
+                    'users.user',
+                ])
+                ->where('course_id', $course->id)
+                ->where('status', 'active')
+                ->whereDate('training_date', '>=', now())
+                ->when(
+                    $request->city !== '__any__',
+                    function ($query) use ($request) {
+                        $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
+                            $centerQuery->where('city', $request->city);
+                        });
+                    }
+                )
+                ->orderBy('training_date')
+                ->get();
+        }
+
+        if ($request->ajax()) {
+            return view(
+                'frontend.pages.first-aid.slot-filter.course-slots',
+                compact('slots')
+            )->render();
+        }
+
+        // return $course;
+
         return view(
-            'frontend.pages.first-aid.slot-filter.course-slots',
-            compact('slots')
-        )->render();
+            'frontend.pages.first-aid.show',
+            compact('course', 'locations', 'slots')
+        );
     }
 
-    // return $course;
+    public function privacyPolicy()
+    {
+        return view('frontend.pages.privacy-policy');
+    }
 
-    return view(
-        'frontend.pages.first-aid.show',
-        compact('course', 'locations', 'slots')
-    );
-}
-
-public function privacyPolicy()
-{
-    return view('frontend.pages.privacy-policy');
-
-}
-
-public function refundPolicy()
-{
+    public function refundPolicy()
+    {
         return view('frontend.pages.cancel-policy');
+    }
 
-}
+    public function paymentPolicy()
+    {
+        return view('frontend.pages.payment-policy');
+    }
 
-public function paymentPolicy()
-{
-    return view('frontend.pages.payment-policy');
-
-}
-
-public function rpl(){
-    return view('frontend.pages.rpl');
-}
-
+    public function rpl()
+    {
+        return view('frontend.pages.rpl');
+    }
 }

@@ -164,6 +164,11 @@ class MenuHelper
                         'route' => 'role.contacts.index',
                         'permission' => 'contact.list',
                     ],
+                     [
+                        'name' => 'Eligible Students',
+                        'route' => 'role.eligibility.index',
+                        'permission' => 'eligibility.list',
+                    ],
                     [
                         'name' => 'Subscriptions',
                         'route' => 'role.subscribers.index',

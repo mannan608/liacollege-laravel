@@ -110,7 +110,7 @@
             <div class="relative rounded-[24px] overflow-hidden soft-shadow">
                 <img alt="Advisor speaking with a smiling student in a modern office setting"
                     class="w-full h-auto object-cover"
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLvr_vwDpYFieBms7t3vd38e44ZUCDsRgVKqB6l1y8eHObdNrd0kMBw5xTV-80B4uCLymblsH_lKexZU_0ejIvVdBaQyaueaOwjCRnP9Bk0vgcLRXIGChRl6XDe0Iwbztd-J42cxl5wa5O2RtyAqN41kKCYyrkhiPLWUaXTYpf3UKT0Jal1AxaqBMPf3kkCbs27LDvPZPrH-DjwJilRyx3DtmhOlf16s_Eh6UHNIJusQXhfBuPr1iexeNUzW">
+                    src="{{ asset('lia/eligibility.webp') }}">
                 <!-- overlay gradient for depth -->
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 <div class="absolute bottom-6 left-6 right-6">
@@ -132,49 +132,7 @@
                 <h2 class="lg:text-5xl font-headline-lg md:text-4xl sm:text-3xl text-2xl font-bold text-on-surface mb-4">Check Your Eligibility</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Find out which programs you
                     qualify for in less than 2 minutes. Our quick assessment helps tailor your educational path.</p>
-                <div class="bg-surface rounded-[20px] p-8 border border-outline-variant/30 soft-shadow">
-                    <!-- Progress -->
-                    <div class="mb-8">
-                        <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-2">
-                            <span class="">Step 1 of 3</span>
-                            <span class="">33% Completed</span>
-                        </div>
-                        <div class="w-full bg-surface-variant rounded-full h-2">
-                            <div class="bg-brand-500 h-2 rounded-full" style="width: 33%"></div>
-                        </div>
-                    </div>
-                    <!-- Question -->
-                    <div class="space-y-6">
-                        <h4 class="font-headline-md text-xl text-on-surface">What is your highest level of
-                            completed education?</h4>
-                        <div class="space-y-3">
-                            <label
-                                class="flex items-center p-4 border border-outline-variant/40 rounded-[12px] cursor-pointer hover:bg-brand-500/5 hover:border-primary/50 transition-all">
-                                <input class="text-primary focus:ring-primary w-5 h-5" name="education" type="radio">
-                                <span class="ml-3 font-body-md text-on-surface">High School Diploma / GED</span>
-                            </label>
-                            <label
-                                class="flex items-center p-4 border border-primary bg-brand-500/5 rounded-[12px] cursor-pointer transition-all">
-                                <input checked="" class="text-primary focus:ring-primary w-5 h-5" name="education"
-                                    type="radio">
-                                <span class="ml-3 font-body-md text-on-surface font-medium">Associate's
-                                    Degree</span>
-                            </label>
-                            <label
-                                class="flex items-center p-4 border border-outline-variant/40 rounded-[12px] cursor-pointer hover:bg-brand-500/5 hover:border-primary/50 transition-all">
-                                <input class="text-primary focus:ring-primary w-5 h-5" name="education" type="radio">
-                                <span class="ml-3 font-body-md text-on-surface">Bachelor's Degree</span>
-                            </label>
-                        </div>
-                        <div class="pt-4 flex justify-between items-center">
-                            <button
-                                class="text-on-surface-variant hover:text-on-surface font-body-md text-sm transition-colors disabled:opacity-50"
-                                disabled="">Back</button>
-                            <button
-                                class="bg-brand-500 text-on-primary hover:bg-brand-500-container px-8 py-3 rounded-[12px] font-body-md font-semibold hover-lift transition-colors">Continue</button>
-                        </div>
-                    </div>
-                </div>
+                @include('frontend.pages.common.eligibility-form',['courses' => $courses,'coursesByIndustry'=>$coursesByIndustry,'states'=>$states,'industries'=>$industries])
             </div>
         </div>
     </section>    

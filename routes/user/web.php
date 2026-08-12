@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Student\AssignmentController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\EligibilityController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\QualificationController;
@@ -179,7 +180,14 @@ Route::post(
     [CourseEnrollmentController::class, 'checkout']
 )->name('course-enrollment.checkout');
 
+// eligibility route
+// Route::get('/check-eligibility', [EligibilityController::class, 'checkEligibility'])->name('eligibility.check');
 
+Route::post('/eligibility/step1', [EligibilityController::class, 'step1'])
+    ->name('eligibility.step1.post');
+
+Route::post('/eligibility/step2', [EligibilityController::class, 'step2'])
+    ->name('eligibility.step2.post');
 
 
 

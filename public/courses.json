@@ -7,6 +7,7 @@
       "code": "CHC33021",
       "title": "Certificate III in Individual Support",
       "slug": "individual-support",
+      "industry": "Services",
        "image": "individual.jpg",
       "duration": "6-12 Months",
       "description": "The Certificate III in Individual Support provides learners with the practical skills and knowledge required to support individuals with their personal care, wellbeing, and daily living needs."
@@ -16,6 +17,7 @@
       "code": "CHC43015",
       "title": "Certificate IV in Ageing Support",
       "slug": "ageing-support",
+      "industry": "Services",
        "image": "ageing.jpg",
       "duration": "6-12 Months",
       "description": "The Certificate IV in Ageing Support provides learners with the skills and knowledge required to support older people with complex needs and provide person-centred care in residential and community settings."
@@ -26,6 +28,7 @@
       "code": "CHC52025",
       "title": "Diploma of Community Services",
       "slug": "community-services",
+      "industry": "Services",
        "image": "community.jpg",
       "duration": "12-24 Months",
       "description": "The Diploma of Community Services provides learners with advanced knowledge and practical skills to support individuals, families, and communities through professional community service and support programs."
@@ -35,6 +38,7 @@
       "code": "BSB50420",
       "title": "Diploma of Leadership and Management",
       "slug": "leadership-management",
+      "industry": "Management",
        "image": "leadership.jpg",
       "duration": "12-24 Months",
       "description": "The Diploma of Leadership and Management develops leadership, management, communication, and organisational skills required to effectively lead teams and manage business operations."
@@ -44,6 +48,7 @@
       "code": "BSB50820",
       "title": "Diploma of Project Management",
       "slug": "project-management",
+      "industry": "Management",
        "image": "project-management.jpg",
       "duration": "12-24 Months",
       "description": "The Diploma of Project Management provides learners with the skills and knowledge required to manage projects, coordinate teams, monitor project outcomes, and achieve organisational objectives."
