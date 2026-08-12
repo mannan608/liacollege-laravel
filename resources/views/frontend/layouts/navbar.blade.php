@@ -135,7 +135,7 @@
 
                         <button type="button" @click="showModal = true"
                             class="text-sm lg:text-base bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
-                            Apply Now
+                           Admission Enquiry
                         </button>
 
 

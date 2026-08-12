@@ -100,7 +100,7 @@
                 <div class="offcanvase__banner mt--50">
                     <div class="offcanvase__banner--content">
                         <img src="{{ asset('frontend/images/offcanvase.jpg') }}" alt="offcanvase">
-                        <a class='rts-theme-btn' href="{{ url('application') }}">Apply Now</a>
+                        <a class='rts-theme-btn' href="{{ url('application') }}">Admission Enquiry</a>
                     </div>
                 </div>
                 {{-- <div class="offcanvase__info">

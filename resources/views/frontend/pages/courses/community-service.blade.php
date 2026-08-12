@@ -55,7 +55,7 @@
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
                         <button type="button" data-open-apply-modal @click="$dispatch('open-apply-modal')"
                             class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3 text-base text-white shadow-lg transition-all duration-200 hover:bg-brand-500 hover:shadow-xl sm:text-base">
-                            Apply Now
+                            Admission Enquiry
                             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -1251,7 +1251,7 @@
                 
                 <button
                     class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-300 bg-white py-3 px-6 lg:px-8 lg:py-4 text-base text-slate-700 transition-all duration-200 hover:border-brand-500 hover:bg-slate-50 hover:text-brand-500 sm:text-lg">
-                   Apply Now
+                   Admission Enquiry
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>

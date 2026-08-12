@@ -8,7 +8,7 @@
          <div class="flex flex-col sm:flex-row justify-center gap-4">
             <button type="button" data-open-apply-modal @click="$dispatch('open-apply-modal')"
                 class="bg-secondary-500 text-white hover:bg-secondary-500 px-8 py-4 rounded-full font-body-md text-lg font-bold">
-                Apply Now
+                Admission Enquiry
             </button>
         </div>
      </div>
