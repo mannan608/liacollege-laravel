@@ -75,7 +75,7 @@
     <section class="py-12 bg-surface border-y border-outline-variant/20 reveal-on-scroll">
         <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
             <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-8">Trusted by
-                Global Industry Leaders</p>
+                Accredited By</p>
              <div class="flex flex-wrap justify-center items-center gap-12  transition-all duration-500">
                 <img class="h-16 object-contain"
                     data-alt="clean geometric logo of a professional education authority in black and white"
@@ -184,6 +184,58 @@
 
 
 @endsection
+
+{{-- Global Success Modal --}}
+@if (session('success'))
+    <div
+        x-data="{ showModal: true }"
+        x-show="showModal"
+        x-transition.opacity
+        class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4"
+        style="display: none;"
+        @keydown.escape.window="showModal = false"
+    >
+        <div
+            x-show="showModal"
+            x-transition
+            @click.outside="showModal = false"
+            class="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl"
+        >
+            {{-- Success Icon --}}
+            <div class="mb-4">
+                <svg
+                    class="mx-auto h-16 w-16 text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                    />
+                </svg>
+            </div>
+
+            <h3 class="mb-2 text-xl font-bold text-gray-900">
+                Success!
+            </h3>
+
+            <p class="mb-6 text-gray-600">
+                {{ session('success') }}
+            </p>
+
+            <button
+                type="button"
+                @click="showModal = false"
+                class="rounded-lg bg-brand-600 px-6 py-2 text-white transition hover:bg-brand-700"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+@endif
 
 @push('scripts')
     <script src="{{ asset('lia/assets/js/scroll-reveal.js') }}"></script>

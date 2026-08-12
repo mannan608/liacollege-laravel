@@ -3,12 +3,10 @@
         @csrf
         <div>
             <x-form.input-text name="name" label="Full Name" value="" placeholder="Enter Full Name..." />
-
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <x-form.input-text name="email" label="Email" type="email" value=""
-                    placeholder="Enter Email..." />
+                <x-form.input-text name="email" label="Email" type="email" value="" placeholder="Enter Email..." />
             </div>
             <div>
                 <x-form.input-text name="phone" label="Phone" value="" placeholder="Enter Phone No..." />
@@ -58,10 +56,7 @@
     </script>
 @endif
 
-
-
-<div x-data="{ showModal: {{ session('success') ? 'true' : 'false' }} }">
-
+{{-- <div x-data="{ showModal: {{ session('success') ? 'true' : 'false' }} }">
     @if (session('success'))
         <div x-show="showModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
             style="display:none">
@@ -89,5 +84,4 @@
             </div>
         </div>
     @endif
-
-</div>
+</div> --}}

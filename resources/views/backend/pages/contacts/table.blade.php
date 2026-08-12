@@ -12,7 +12,7 @@
             'name' => $contact->name,
             'email' => $contact->email,
             'phone' => $contact->phone,
-            'course' => $contact->course->name ?? null,
+            'course' => $contact->course_title,
             'message' => $contact->message,
         ];
     })->values();
