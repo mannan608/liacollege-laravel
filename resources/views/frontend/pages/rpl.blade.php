@@ -30,12 +30,12 @@
                         Turn years of hard-earned skills into a nationally recognised qualification. Don't let your experience go unrecognised — fast-track your career today.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="group bg-secondary-500 hover:bg-secondary-500 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all duration-200 flex items-center justify-center gap-2  hover:-translate-y-0.5">
+                        {{-- <button class="group bg-secondary-500 hover:bg-secondary-500 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all duration-200 flex items-center justify-center gap-2  hover:-translate-y-0.5">
                             Check Your Eligibility
                             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
-                        </button>
+                        </button> --}}
                         <button class="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-base font-semibold transition-all duration-200 border border-white/30 flex items-center justify-center gap-2 hover:-translate-y-0.5">
                             Download RPL Guide
                             <svg class="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,14 +138,14 @@
                 </div>
                 
                 <!-- International Applicants Banner -->
-                <div class="bg-gradient-to-r from-brand-600 to-indigo-700 rounded-2xl p-8 lg:p-10 text-center max-w-4xl mx-auto shadow-xl shadow-brand-600/20 relative overflow-hidden">
+                {{-- <div class="bg-gradient-to-r from-brand-600 to-indigo-700 rounded-2xl p-8 lg:p-10 text-center max-w-4xl mx-auto shadow-xl shadow-brand-600/20 relative overflow-hidden">
                     <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
                     <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
                     <div class="relative">
                         <h3 class="text-2xl font-bold text-white mb-3">International Applicants</h3>
                         <p class="text-brand-100 leading-relaxed max-w-2xl mx-auto">RPL is available for skilled migrants seeking to have their overseas experience recognised for Australian migration and employment purposes.</p>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
 

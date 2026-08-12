@@ -1071,7 +1071,7 @@
 
 
     <!-- 10. WORK PLACEMENT -->
-    <section class="relative overflow-hidden bg-slate-900 py-24">
+    {{-- <section class="relative overflow-hidden bg-slate-900 py-24">
         <div class="pointer-events-none absolute inset-0">
             <div class="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-brand-600/10 blur-3xl"></div>
             <div class="absolute bottom-0 right-1/4 h-96 w-96 translate-x-1/2 rounded-full bg-emerald-600/10 blur-3xl">
@@ -1082,7 +1082,6 @@
             <h2 class="mb-8 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Gain Real Industry Experience</h2>
             <div
                 class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-800/60 p-10 backdrop-blur-xl sm:p-14">
-                {{-- <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 via-violet-500 to-emerald-500"></div> --}}
                 <div class="mb-6 flex items-center justify-center">
                     <div
                         class="flex md:h-16 md:w-16 h-12 w-12 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-emerald-500 shadow-2xl shadow-brand-500/20">
@@ -1114,7 +1113,7 @@
             </div>
 
         </div>
-    </section>   
+    </section>    --}}
 
    <section class="relative overflow-hidden bg-slate-50 py-24">
         @include('frontend.pages.common.rpl-section')

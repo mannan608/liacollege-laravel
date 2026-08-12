@@ -1215,53 +1215,6 @@
         </div>
     </section>
 
-
-
-    <!-- 10. WORK PLACEMENT -->
-    <section class="relative overflow-hidden bg-slate-900 py-24">
-        <div class="pointer-events-none absolute inset-0">
-            <div class="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-brand-600/10 blur-3xl"></div>
-            <div class="absolute bottom-0 right-1/4 h-96 w-96 translate-x-1/2 rounded-full bg-emerald-600/10 blur-3xl">
-            </div>
-        </div>
-        <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-400">Real-World Experience</p>
-            <h2 class="mb-8 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Gain Real Industry Experience</h2>
-            <div
-                class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-800/60 p-10 backdrop-blur-xl sm:p-14">
-                {{-- <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 via-violet-500 to-emerald-500"></div> --}}
-                <div class="mb-6 flex items-center justify-center">
-                    <div
-                        class="flex md:h-16 md:w-16 h-12 w-12 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-emerald-500 shadow-2xl shadow-brand-500/20">
-                        <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                        </svg>
-                    </div>
-                </div>
-                <p class="mb-2 text-4xl lg:text-6xl font-extrabold text-white sm:text-5xl">120 Hours</p>
-                <p class="mb-2 text-lg font-semibold text-brand-300">Minimum Work Placement</p>
-                <p class="mx-auto max-w-2xl leading-relaxed text-slate-400">
-                    Voluntary work placement is mandatory. Translate classroom skills into the actual workplace.
-                    Distance students require an additional 40 hours. Advance College arranges placement for
-                    Sydney-based students (Blended mode).
-                </p>
-                <div class="flex items-center justify-center mt-5">
-                
-                <button
-                    class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-300 bg-white py-3 px-6 lg:px-8 lg:py-4 text-base text-slate-700 transition-all duration-200 hover:border-brand-500 hover:bg-slate-50 hover:text-brand-500 sm:text-lg">
-                   Admission Enquiry
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </button>
-            </div>
-            </div>
-            
-        </div>
-    </section>
-
     <!-- 11. ASSESSMENT TASKS -->
     <section class="relative overflow-hidden bg-white py-24">
         <div class="pointer-events-none absolute top-0 right-0 h-64 w-64 rounded-full bg-brand-100/40 blur-3xl"></div>

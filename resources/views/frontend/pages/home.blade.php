@@ -105,7 +105,7 @@
             class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-surface-container-low to-surface opacity-50 pointer-events-none">
         </div>
         <div
-            class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex gap-16 items-center relative z-10">
+            class=" mx-auto flex items-center justify-center relative z-10">
             <!-- Left Image -->
             {{-- <div class="relative rounded-[24px] overflow-hidden soft-shadow">
                 <img alt="Advisor speaking with a smiling student in a modern office setting"
