@@ -398,7 +398,7 @@ class EligibilityController extends Controller
     // Admin Methods
     public function index(Request $request)
     {
-        $query = EligibilitySubmission::query();
+        $query = EligibilityApplication::query();
 
         $submissions = $query->latest()->paginate(15);
 

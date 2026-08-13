@@ -55,7 +55,7 @@
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
                         <button type="button" data-open-apply-modal @click="$dispatch('open-apply-modal')"
                             class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3 text-base text-white shadow-lg transition-all duration-200 hover:bg-brand-500 hover:shadow-xl sm:text-base">
-                           Admission Enquiry
+                            Admission Enquiry
                             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -293,24 +293,16 @@
                             <p class="text-center text-base mt-2">Get a response within 1 business day</p>
                         </div>
                         <div class="-mt-10">
-                            <iframe
-                                        src="https://api.leadconnectorhq.com/widget/form/hBXfJpzmFliSUzVbie86"
-                                        style="width:100%;height:100%;border:none;border-radius:3px"
-                                        id="inline-hBXfJpzmFliSUzVbie86" 
-                                        data-layout="{'id':'INLINE'}"
-                                        data-trigger-type="alwaysShow"
-                                        data-trigger-value=""
-                                        data-activation-type="alwaysActivated"
-                                        data-activation-value=""
-                                        data-deactivation-type="neverDeactivate"
-                                        data-deactivation-value=""
-                                        data-form-name="CHC33021 Certificate III in Individual Support"
-                                        data-height="undefined"
-                                        data-layout-iframe-id="inline-hBXfJpzmFliSUzVbie86"
-                                        data-form-id="hBXfJpzmFliSUzVbie86"
-                                        title="CHC33021 Certificate III in Individual Support"
-                                            >
-                                    </iframe>
+                            <iframe src="https://api.leadconnectorhq.com/widget/form/hBXfJpzmFliSUzVbie86"
+                                style="width:100%;height:100%;border:none;border-radius:3px"
+                                id="inline-hBXfJpzmFliSUzVbie86" data-layout="{'id':'INLINE'}"
+                                data-trigger-type="alwaysShow" data-trigger-value=""
+                                data-activation-type="alwaysActivated" data-activation-value=""
+                                data-deactivation-type="neverDeactivate" data-deactivation-value=""
+                                data-form-name="CHC33021 Certificate III in Individual Support" data-height="undefined"
+                                data-layout-iframe-id="inline-hBXfJpzmFliSUzVbie86" data-form-id="hBXfJpzmFliSUzVbie86"
+                                title="CHC33021 Certificate III in Individual Support">
+                            </iframe>
                             <script src="https://link.msgsndr.com/js/form_embed.js"></script>
                         </div>
                     </div>
@@ -767,11 +759,14 @@
                 <div
                     class="group flex rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-300 hover:bg-white hover:shadow-lg hover:shadow-brand-500/5">
                     <div class="flex items-center gap-3">
-                       <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
+                        <div
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
                         <h4 class="text-base font-bold text-slate-900">Respite Care Worker</h4>
                     </div>
                 </div>
@@ -794,9 +789,11 @@
                     <div class="flex items-center gap-3">
                         <div
                             class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
                         </div>
                         <h4 class="text-base font-bold text-slate-900">Care Assistant</h4>
                     </div>
@@ -806,7 +803,7 @@
                     <div class="flex items-center gap-3">
                         <div
                             class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
-                           <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -820,9 +817,11 @@
                     <div class="flex items-center gap-3">
                         <div
                             class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-600 transition-transform duration-300 group-hover:scale-110">
-                           <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
-                        </svg>
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                            </svg>
                         </div>
                         <h4 class="text-base font-bold text-slate-900">Assistant in residential or community-based care
                             settings</h4>
@@ -978,298 +977,403 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-    <!-- Core Units -->
-    <div>
-        <div class="mb-6 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20">
-                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0111.186 0z" />
-                </svg>
+                <!-- Core Units -->
+                <div>
+                    <div class="mb-6 flex items-center gap-3">
+                        <div
+                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-violet-600 shadow-lg shadow-brand-500/20">
+                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0111.186 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Core Units <span
+                                class="text-base font-medium text-slate-500">(10)</span></h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">01</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS031</span><span class="text-slate-600"> —
+                                    Provide individualised support</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">02</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS038</span><span class="text-slate-600"> —
+                                    Facilitate the empowerment of people receiving support</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">03</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS040</span><span class="text-slate-600"> —
+                                    Support independence and wellbeing</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">04</span>
+                            <div><span class="font-bold text-slate-900">CHCCCS041</span><span class="text-slate-600"> —
+                                    Recognise healthy body systems</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">05</span>
+                            <div><span class="font-bold text-slate-900">CHCCOM005</span><span class="text-slate-600"> —
+                                    Communicate and work in health or community services</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">06</span>
+                            <div><span class="font-bold text-slate-900">CHCDIV001</span><span class="text-slate-600"> —
+                                    Work with diverse people</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">07</span>
+                            <div><span class="font-bold text-slate-900">CHCLEG001</span><span class="text-slate-600"> —
+                                    Work legally and ethically</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">08</span>
+                            <div><span class="font-bold text-slate-900">HLTINF006</span><span class="text-slate-600"> —
+                                    Apply basic principles and practices of infection prevention and control</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">09</span>
+                            <div><span class="font-bold text-slate-900">HLTWHS002</span><span class="text-slate-600"> —
+                                    Follow safe work practices for direct client care</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">10</span>
+                            <div><span class="font-bold text-slate-900">CHCAGE011</span><span class="text-slate-600"> —
+                                    Provide support to people living with dementia</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Elective Units -->
+                <div>
+                    <div class="mb-6 flex items-center gap-3">
+                        <div
+                            class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20">
+                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Elective Units <span
+                                class="text-base font-medium text-slate-500">(5)</span></h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">01</span>
+                            <div><span class="font-bold text-slate-900">CHCAGE013</span><span class="text-slate-600"> —
+                                    Work effectively in aged care</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">02</span>
+                            <div><span class="font-bold text-slate-900">CHCPAL003</span><span class="text-slate-600"> —
+                                    Deliver care services using a palliative approach</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">03</span>
+                            <div><span class="font-bold text-slate-900">CHCDIS011</span><span class="text-slate-600"> —
+                                    Contribute to ongoing skills development using a strengths-based approach</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">04</span>
+                            <div><span class="font-bold text-slate-900">CHCDIS012</span><span class="text-slate-600"> —
+                                    Support community participation and social inclusion</span></div>
+                        </li>
+                        <li
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
+                            <span
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">05</span>
+                            <div><span class="font-bold text-slate-900">CHCDIS020</span><span class="text-slate-600"> —
+                                    Work effectively in disability support</span></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900">Core Units <span class="text-base font-medium text-slate-500">(10)</span></h3>
-        </div>
-        <ul class="space-y-3">
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">01</span>
-                <div><span class="font-bold text-slate-900">CHCCCS031</span><span class="text-slate-600"> — Provide individualised support</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">02</span>
-                <div><span class="font-bold text-slate-900">CHCCCS038</span><span class="text-slate-600"> — Facilitate the empowerment of people receiving support</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">03</span>
-                <div><span class="font-bold text-slate-900">CHCCCS040</span><span class="text-slate-600"> — Support independence and wellbeing</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">04</span>
-                <div><span class="font-bold text-slate-900">CHCCCS041</span><span class="text-slate-600"> — Recognise healthy body systems</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">05</span>
-                <div><span class="font-bold text-slate-900">CHCCOM005</span><span class="text-slate-600"> — Communicate and work in health or community services</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">06</span>
-                <div><span class="font-bold text-slate-900">CHCDIV001</span><span class="text-slate-600"> — Work with diverse people</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">07</span>
-                <div><span class="font-bold text-slate-900">CHCLEG001</span><span class="text-slate-600"> — Work legally and ethically</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">08</span>
-                <div><span class="font-bold text-slate-900">HLTINF006</span><span class="text-slate-600"> — Apply basic principles and practices of infection prevention and control</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">09</span>
-                <div><span class="font-bold text-slate-900">HLTWHS002</span><span class="text-slate-600"> — Follow safe work practices for direct client care</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-xs font-bold text-brand-700">10</span>
-                <div><span class="font-bold text-slate-900">CHCAGE011</span><span class="text-slate-600"> — Provide support to people living with dementia</span></div>
-            </li>
-        </ul>
-    </div>
-    <!-- Elective Units -->
-    <div>
-        <div class="mb-6 flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20">
-                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-                </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900">Elective Units <span class="text-base font-medium text-slate-500">(5)</span></h3>
-        </div>
-        <ul class="space-y-3">
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">01</span>
-                <div><span class="font-bold text-slate-900">CHCAGE013</span><span class="text-slate-600"> — Work effectively in aged care</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">02</span>
-                <div><span class="font-bold text-slate-900">CHCPAL003</span><span class="text-slate-600"> — Deliver care services using a palliative approach</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">03</span>
-                <div><span class="font-bold text-slate-900">CHCDIS011</span><span class="text-slate-600"> — Contribute to ongoing skills development using a strengths-based approach</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">04</span>
-                <div><span class="font-bold text-slate-900">CHCDIS012</span><span class="text-slate-600"> — Support community participation and social inclusion</span></div>
-            </li>
-            <li class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-md">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-xs font-bold text-amber-700">05</span>
-                <div><span class="font-bold text-slate-900">CHCDIS020</span><span class="text-slate-600"> — Work effectively in disability support</span></div>
-            </li>
-        </ul>
-    </div>
-</div>
         </div>
     </section>
 
 
 
     <!-- 10. WORK PLACEMENT -->
-    {{-- <section class="relative overflow-hidden bg-slate-900 py-24">
+    <section class="relative overflow-hidden bg-slate-900 py-24">
         <div class="pointer-events-none absolute inset-0">
             <div class="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-brand-600/10 blur-3xl"></div>
             <div class="absolute bottom-0 right-1/4 h-96 w-96 translate-x-1/2 rounded-full bg-emerald-600/10 blur-3xl">
             </div>
         </div>
-        <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-            <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-400">Real-World Experience</p>
-            <h2 class="mb-8 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Gain Real Industry Experience</h2>
-            <div
-                class="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-slate-800/60 p-10 backdrop-blur-xl sm:p-14">
-                <div class="mb-6 flex items-center justify-center">
-                    <div
-                        class="flex md:h-16 md:w-16 h-12 w-12 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-emerald-500 shadow-2xl shadow-brand-500/20">
-                        <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                        </svg>
-                    </div>
-                </div>
-                <p class="mb-2 text-4xl lg:text-6xl font-extrabold text-white sm:text-5xl">120 Hours</p>
-                <p class="mb-2 text-lg font-semibold text-brand-300">Minimum Work Placement</p>
-                <p class="mx-auto max-w-2xl leading-relaxed text-slate-400">
-                    Voluntary work placement is mandatory. Translate classroom skills into the actual workplace.
-                    Distance students require an additional 40 hours. Advance College arranges placement for
-                    Sydney-based students (Blended mode).
-                </p>
-                <div class="flex items-center justify-center mt-5">
+        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
 
-                    <button
-                        class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-300 bg-white py-3 px-6 lg:px-8 lg:py-4 text-base text-slate-700 transition-all duration-200 hover:border-brand-500 hover:bg-slate-50 hover:text-brand-500 sm:text-lg">
-                        Admission Enquiry
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </button>
+            <div class="grid grid-cols-1 items-center gap-8 lg:gap-12 md:grid-cols-2">
+                <div
+                    class="flex flex-col items-center justify-center rounded-3xl border border-slate-700/50 bg-slate-800/60 p-10 backdrop-blur-xl sm:p-14">
+                    <div class="flex flex-col items-center justify-center">
+                        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-400">Real-World
+                            Experience</p>
+                        <h2 class="mb-8 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl text-center">Gain Real Industry
+                            Experience
+                        </h2>
+                    </div>
+                    <div class="mb-6 flex items-center justify-center">
+                        <div
+                            class="flex md:h-16 md:w-16 h-12 w-12 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-emerald-500 shadow-2xl shadow-brand-500/20">
+                            <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="mb-2 text-4xl lg:text-6xl font-extrabold text-white sm:text-5xl">120 Hours</p>
+                    <p class="mb-2 text-lg font-semibold text-brand-300">Minimum Work Placement</p>
+                    <p class="mx-auto max-w-2xl leading-relaxed text-slate-400 text-center">
+                        Voluntary work placement is mandatory. Translate classroom skills into the actual workplace.
+                        Distance students require an additional 40 hours. Advance College arranges placement for
+                        Sydney-based students (Blended mode).
+                    </p>
+                </div>
+                <div class="bg-white p-10 rounded-2xl">
+                    <div class="flex flex-col items-center justify-center mb-8 ">
+                        <h5 class="text-3xl font-extrabold text-brand-500 sm:text-4xl lg:text-5xl">Request information</h5>
+                        <p class="text-base mt-2 text-brand-400"> Fill in your details and we'll get back to you as soon as
+                            possible</p>
+                    </div>
+                    @include('frontend.pages.common.step-form.individual-contact-form')
                 </div>
             </div>
-
         </div>
-    </section>    --}}
+    </section>
 
-   <section class="relative overflow-hidden bg-slate-50 py-24">
+    <section class="relative overflow-hidden bg-slate-50 py-24">
         @include('frontend.pages.common.rpl-section')
     </section>
 
 
     @include('frontend.pages.common.why-us')
-   <!-- 16. FAQ -->
-<section class="py-24 bg-surface reveal-on-scroll">
-    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto max-w-3xl">
-        <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-12 text-center">
-            Frequently Asked Questions
-        </h2>
-        <div class="space-y-4">
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    What is CHC33021 Certificate III in Individual Support?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    CHC33021 is a nationally recognised Australian qualification designed for people working in community, home or residential care environments to provide person-centred support.
-                </div>
-            </details>
+    <!-- 16. FAQ -->
+    <section class="py-24 bg-surface reveal-on-scroll">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto max-w-3xl">
+            <h2
+                class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-12 text-center">
+                Frequently Asked Questions
+            </h2>
+            <div class="space-y-4">
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        What is CHC33021 Certificate III in Individual Support?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        CHC33021 is a nationally recognised Australian qualification designed for people working in
+                        community, home or residential care environments to provide person-centred support.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Is CHC33021 nationally recognised?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    Yes. CHC33021 is listed on the Australian Government's national training register and is an Australian Qualifications Framework qualification.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Is CHC33021 nationally recognised?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        Yes. CHC33021 is listed on the Australian Government's national training register and is an
+                        Australian Qualifications Framework qualification.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    How long does the course take?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    The advertised options are 4–6 weeks for RPL and 8 weeks for online self-paced study. Actual completion time can vary depending on assessment, evidence and individual circumstances.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        How long does the course take?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        The advertised options are 4–6 weeks for RPL and 8 weeks for online self-paced study. Actual
+                        completion time can vary depending on assessment, evidence and individual circumstances.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Can I complete CHC33021 through RPL?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    Yes. If you already have relevant work experience, skills or previous training, you may be eligible to undertake an RPL assessment.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Can I complete CHC33021 through RPL?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        Yes. If you already have relevant work experience, skills or previous training, you may be eligible
+                        to undertake an RPL assessment.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    What is RPL?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    RPL stands for Recognition of Prior Learning. It assesses your existing skills, knowledge and experience against the requirements of the qualification.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        What is RPL?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        RPL stands for Recognition of Prior Learning. It assesses your existing skills, knowledge and
+                        experience against the requirements of the qualification.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Is work placement required?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    For the qualification, students must complete at least 120 hours of work as specified in the relevant assessment requirements.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Is work placement required?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        For the qualification, students must complete at least 120 hours of work as specified in the
+                        relevant assessment requirements.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Can I study CHC33021 online?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    Yes, the course can be delivered through online/self-paced learning where the RTO's approved delivery and assessment arrangements support this. Practical/workplace requirements still need to be met where applicable.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Can I study CHC33021 online?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        Yes, the course can be delivered through online/self-paced learning where the RTO's approved
+                        delivery and assessment arrangements support this. Practical/workplace requirements still need to be
+                        met where applicable.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    What jobs can I get after completing CHC33021?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    Depending on the employer and your area of specialisation, potential roles include aged care worker, personal care assistant, disability support worker, community support worker, home care worker and other individual support roles.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        What jobs can I get after completing CHC33021?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        Depending on the employer and your area of specialisation, potential roles include aged care worker,
+                        personal care assistant, disability support worker, community support worker, home care worker and
+                        other individual support roles.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Can CHC33021 help me work in aged care?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    Yes. The qualification is designed for individual support roles across settings including residential care, home care and community environments, including support for people who require assistance due to ageing or disability.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Can CHC33021 help me work in aged care?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        Yes. The qualification is designed for individual support roles across settings including
+                        residential care, home care and community environments, including support for people who require
+                        assistance due to ageing or disability.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Can I specialise in disability support?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    Yes. The qualification's packaging rules allow electives to be structured toward a Disability specialisation. There are also Ageing and Ageing & Disability pathways.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Can I specialise in disability support?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        Yes. The qualification's packaging rules allow electives to be structured toward a Disability
+                        specialisation. There are also Ageing and Ageing & Disability pathways.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    How many units are in CHC33021?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    There are 15 units in total: 9 core units and 6 elective units.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        How many units are in CHC33021?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        There are 15 units in total: 9 core units and 6 elective units.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Is there a pathway after Certificate III?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    CHC33021 can provide a foundation for further study and career development within community services, aged care, disability and related fields. Specific credit or pathway arrangements depend on the next qualification and training provider.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Is there a pathway after Certificate III?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        CHC33021 can provide a foundation for further study and career development within community
+                        services, aged care, disability and related fields. Specific credit or pathway arrangements depend
+                        on the next qualification and training provider.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Does CHC33021 have licensing requirements?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    The national qualification information states that no licensing, legislative, regulatory or certification requirements apply to the qualification at the time of publication. Individual employers or workplaces may nevertheless have additional requirements.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Does CHC33021 have licensing requirements?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        The national qualification information states that no licensing, legislative, regulatory or
+                        certification requirements apply to the qualification at the time of publication. Individual
+                        employers or workplaces may nevertheless have additional requirements.
+                    </div>
+                </details>
 
-            <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
-                <summary class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
-                    Who is this course suitable for?
-                    <span class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
-                </summary>
-                <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
-                    It is suitable for people interested in working in aged care, disability support, home care or community services, as well as existing support workers seeking a formal qualification to recognise and develop their skills.
-                </div>
-            </details>
+                <details class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg group">
+                    <summary
+                        class="font-headline-md text-lg text-on-surface p-6 cursor-pointer flex justify-between items-center">
+                        Who is this course suitable for?
+                        <span
+                            class="material-symbols-outlined transform group-open:rotate-180 transition-transform">expand_more</span>
+                    </summary>
+                    <div class="p-6 pt-4 font-body-md text-on-surface-variant border-t border-outline-variant/20 mt-2">
+                        It is suitable for people interested in working in aged care, disability support, home care or
+                        community services, as well as existing support workers seeking a formal qualification to recognise
+                        and develop their skills.
+                    </div>
+                </details>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     @include('frontend.pages.common.cta')
     @include('frontend.pages.common.review')

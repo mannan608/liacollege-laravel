@@ -106,7 +106,7 @@
                     <!-- Accreditation -->
                     <div class="mb-10">
                         <h4 class="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-6">Accreditation</h4>
-                        <div class="flex items-center gap-4">
+                        {{-- <div class="flex items-center gap-4">
                             <!-- NRT Badge -->
                             <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
                                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
@@ -128,7 +128,19 @@
                                     <div class="text-white text-xs font-bold leading-tight">Qualifications</div>
                                 </div>
                             </div>
+                        </div> --}}
+                        <div class="grid grid-cols-2 sm:grid-cols-2 items-end justify-end w-full md:w-[60%] ">
+                        <div
+                            class="group flex items-center justify-center  transition-all duration-300 ">
+                            <img src="{{asset('frontend/images/ntr.png')}}" alt="Brand 1"
+                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                         </div>
+                        <div
+                            class="group flex items-center justify-center  transition-all duration-300 ">
+                            <img src="{{asset('frontend/images/aqf.png')}}" alt="Brand 2"
+                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                        </div>
+                    </div>
                     </div>
 
                     <!-- Contact -->
