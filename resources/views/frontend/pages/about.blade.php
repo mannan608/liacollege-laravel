@@ -37,11 +37,11 @@
                     At Leadership Institute Australia, we believe education should be practical, empowering, and career-focused. Our nationally recognized qualifications prepare students for real-world roles in community services, aged care, disability support, leadership, and management.
                 </p>
                 <div class="grid grid-cols-2 gap-6 sm:grid-cols-2">
-                    <div class="group flex items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-6 transition-all duration-300 hover:-tranbrand-y-1 hover:border-brand-200 hover:bg-white hover:shadow-lg">
-                        <img src="https://liacollege.edu.au/frontend/images/brand/11.png" alt="Brand 1" class="h-24 w-auto object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+                    <div class="group flex items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-4 transition-all duration-300 ">
+                        <img src="{{ asset('lia/11.webp') }}" alt="Brand 1" class="h-28 w-auto object-contain ">
                     </div>
-                    <div class="group flex items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-6 transition-all duration-300 hover:-tranbrand-y-1 hover:border-brand-200 hover:bg-white hover:shadow-lg">
-                        <img src="https://liacollege.edu.au/frontend/images/brand/2.png" alt="Brand 2" class="h-24 w-auto object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+                    <div class="group flex items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-4 transition-all duration-300 ">
+                        <img src="{{ asset('lia/2.webp') }}" alt="Brand 2" class="h-28 w-auto object-contain ">
                     </div>
                 </div>
             </div>

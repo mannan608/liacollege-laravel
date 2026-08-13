@@ -430,16 +430,16 @@ class EligibilityController extends Controller
         );
     }
 
-    public function show(EligibilitySubmission $submission)
+    public function show(string $role, EligibilityApplication $eligibility)
     {
-        return view('admin.eligibility.show', compact('submission'));
+        return view('admin.eligibility.show', compact('eligibility'));
     }
 
 
 
-    public function destroy(EligibilitySubmission $submission)
+    public function destroy(string $role, EligibilityApplication $eligibility)
     {
-        $submission->delete();
+        $eligibility->delete();
         return back()->with('success', 'Submission deleted successfully.');
     }
 }

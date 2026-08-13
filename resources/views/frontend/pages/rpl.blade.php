@@ -7,7 +7,7 @@
         <section class="relative w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
-                <img src="https://lh3.googleusercontent.com/aida/AP1WRLvhlqO5nA1JOwDhvYRZmaFkKnd0so-9Xq_LEgPJsPbt3Os5Qj2v9zbNNbKqpm8oFJBtr3iQFo8GsQyUDL_Bpt3KLyvaI_tKc46-DJLxuV5Rp3x77Vbjjyzb_iOIwZUzTi2Sb8JqZ39mVYVSWAwV1DHTx9TUUkoQKpJdH28lVRWu-ftBN9qdcR6_B0ZASaa6TUsMtZw0IHLlsw6kHT8LR3biaMK7B4LqfKxUw1rc2soWs4ERCCgQd9MsmOt-"
+                <img src="{{ asset('lia/home-hero-bg.jpg') }}"
                     alt="Professional consultation scene in a modern university office" class="w-full h-full object-cover">
             </div>
             <!-- Gradient Overlay -->
