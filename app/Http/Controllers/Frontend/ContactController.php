@@ -42,6 +42,7 @@ class ContactController extends Controller
             'phone',
             'message',
             'course_id',
+            'form_type',
         ])
         ->latest()
         ->get()
@@ -73,6 +74,7 @@ public function store(Request $request)
         'post_code' => ['nullable', 'string', 'max:20'],
         'message' => ['nullable', 'string'],
         'course_id' => ['nullable', 'integer'],
+        'form_type' => ['required', 'string', 'max:50'],
     ]);
 
     $contact = Contacts::create($data);
@@ -87,18 +89,19 @@ public function store(Request $request)
         ->firstWhere('id', (int) $request->course_id)['title']
         ?? 'Not selected';
 
-    Mail::raw(
-        "New Course Inquiry\n\n" .
-        "Name: {$contact->name}\n" .
-        "Phone: {$contact->phone}\n" .
-        "Email: {$contact->email}\n" .
-        "Course: {$courseTitle}",
-        function ($message) {
-            $message
-                ->to('enrol@liacollege.edu.au')
-                ->subject('New Course Inquiry - Lia College');
-        }
-    );
+Mail::raw(
+    "New Course Inquiry\n\n" .
+    "Name: {$contact->name}\n" .
+    "Phone: {$contact->phone}\n" .
+    "Email: {$contact->email}\n" .
+    "Course: {$courseTitle}\n" .
+    "Submission Type: {$contact->form_type}",
+    function ($message) {
+        $message
+            ->to('enrol@liacollege.edu.au')
+            ->subject('New Course Inquiry - Lia College');
+    }
+);
 
     return redirect()
         ->back()

@@ -1,5 +1,6 @@
 <form class="space-y-5" action="{{ route('contact.store') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="form_type" value="replecement">
                     <div>
                         <x-form.input-text name="name" label="Full Name" value=""
                             placeholder="Enter Full Name..." />

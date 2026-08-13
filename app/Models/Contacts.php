@@ -15,6 +15,7 @@ class Contacts extends Model
         'post_code',
         'message',
         'course_id',
+        'form_type',
     ];     
  
 }

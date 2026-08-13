@@ -80,13 +80,13 @@
                                         </span>
                                     </li>
                                 @endforelse
-                                <li>
+                                {{-- <li>
                                         <a href="{{ route('first-aid') }}"
                                             class="inline-flex items-center w-full p-2 hover:bg-gray-100 hover:text-heading rounded">
 
                                             First Aid & CPR
                                         </a>
-                                    </li>
+                                    </li> --}}
                             </ul>
                         </div>
 

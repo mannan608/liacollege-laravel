@@ -104,48 +104,29 @@
                 <div class="lg:col-span-4 lg:col-start-9">
 
                     <!-- Accreditation -->
-                    <div class="mb-10">
+                    <div class="mb-4">
                         <h4 class="text-brand-gold text-xs font-semibold tracking-widest uppercase mb-6">Accreditation</h4>
-                        {{-- <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-4">
                             <!-- NRT Badge -->
                             <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                                </div>
-                                <div>
-                                    <div class="text-white text-xs font-bold leading-tight">Nationally</div>
-                                    <div class="text-white text-xs font-bold leading-tight">Recognised</div>
-                                    <div class="text-slate-400 text-[10px] leading-tight">Training</div>
+                                <div class="h-10">
+                                     <img src="{{asset('frontend/images/ntr.png')}}" alt="Brand 1"
+                                class="h-full w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                                 </div>
                             </div>
                             <!-- AQF Badge -->
-                            <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.499 5.221 69.78 69.78 0 00-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
-                                </div>
-                                <div>
-                                    <div class="text-white text-xs font-bold leading-tight">Australian</div>
-                                    <div class="text-white text-xs font-bold leading-tight">Qualifications</div>
-                                </div>
+                            <div class="px-4 py-3  rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
+                             <div class="h-10">
+                                 <img src="{{asset('frontend/images/aqf.png')}}" alt="Brand 2"
+                                class=" h-full w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                             </div>
                             </div>
-                        </div> --}}
-                        <div class="grid grid-cols-2 sm:grid-cols-2 items-end justify-end w-full md:w-[60%] ">
-                        <div
-                            class="group flex items-center justify-center  transition-all duration-300 ">
-                            <img src="{{asset('frontend/images/ntr.png')}}" alt="Brand 1"
-                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                         </div>
-                        <div
-                            class="group flex items-center justify-center  transition-all duration-300 ">
-                            <img src="{{asset('frontend/images/aqf.png')}}" alt="Brand 2"
-                                class="h-28 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
-                        </div>
-                    </div>
                     </div>
 
                     <!-- Contact -->
                     <div class="mb-8">
-                        <ul class="space-y-1">
+                        <ul class="space-y-0">
                             <li>
                                 <a href="tel:0479110567" class="group flex items-center gap-3 text-slate-300 hover:text-white transition-colors duration-200">
                                     <span class="w-9 h-9 rounded-lg bg-brand-gold/10 flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors">

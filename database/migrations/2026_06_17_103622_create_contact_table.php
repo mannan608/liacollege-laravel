@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('post_code')->nullable();
             $table->text('message')->nullable();
             $table->unsignedBigInteger('course_id')->nullable();
+            $table->string('form_type')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
