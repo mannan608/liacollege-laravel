@@ -151,6 +151,10 @@ Route::view(
     'frontend.lia-collage.first-aid.cpr-guides.how-often-renew-first-aid-certificate'
 )->name('first-aid.renew');
 
+
+Route::post('/eligibility/step/save',[EligibilityController::class, 'saveStep']
+)->name('eligibility.step.save');
+
 // Route::get(
 //     '/first-aid/{course}/{slot}/course-enrollment',
 //     [FrontendController::class, 'enrollmentSlot']

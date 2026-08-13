@@ -36,30 +36,33 @@ class FrontendController extends Controller
     public function landingPage()
     {
         $courses = $this->getCourses();
-        $coursesByIndustry = $this->groupCoursesByIndustry($courses->toArray());
+       $coursesByIndustry = $this->groupCoursesByIndustry(
+        $courses->toArray()
+    );
 
         $industries = EligibilitySubmission::INDUSTRIES;
-        $states     = EligibilitySubmission::STATES;
+        $states     = EligibilitySubmission::STATES;    
 
         return view('frontend.pages.home', compact('courses','states','industries','coursesByIndustry'));
     }
 
   
 
-        private function groupCoursesByIndustry(array $courses): array
-    {
-        $grouped = [];
+ private function groupCoursesByIndustry(array $courses): array
+{
+    $grouped = [];
 
-        foreach ($courses as $course) {
-            $industry = $course['industry'] ?? 'Other';
-            $grouped[$industry][] = [
-                'code'  => $course['code'],
-                'title' => $course['title'],
-            ];
-        }
+    foreach ($courses as $course) {
+        $industry = trim($course['industry'] ?? 'Other');
 
-        return $grouped;
+        $grouped[$industry][] = [
+            'code' => $course['code'],
+            'title' => $course['title'],
+        ];
     }
+
+    return $grouped;
+}
 
     // public function index()
     // {
@@ -333,7 +336,13 @@ class FrontendController extends Controller
 
     public function rpl()
     {
-         $courses = $this->getCourses();
-        return view('frontend.pages.rpl', compact('courses'));
+            $courses = $this->getCourses();
+       $coursesByIndustry = $this->groupCoursesByIndustry(
+        $courses->toArray()
+    );
+
+        $industries = EligibilitySubmission::INDUSTRIES;
+        $states     = EligibilitySubmission::STATES;  
+        return view('frontend.pages.rpl', compact('courses','industries','states','coursesByIndustry'));
     }
 }

@@ -23,5 +23,11 @@
     @if($error)
         <p class="text-red-500 text-xs mt-1">{{ $error }}</p>
     @endif
+    <p
+        x-show="hasError('{{ $name }}')"
+        x-text="getError('{{ $name }}')"
+        x-cloak
+        class="text-red-500 text-xs mt-1"
+    ></p>
 
 </div>

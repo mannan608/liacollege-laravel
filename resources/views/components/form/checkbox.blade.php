@@ -47,5 +47,12 @@
         <p class="inline-block font-normal text-gray-500 dark:text-gray-400">
             {{ $label }}
         </p>
+        
     </label>
+    <p
+        x-show="hasError('{{ $name }}')"
+        x-text="getError('{{ $name }}')"
+        x-cloak
+        class="text-red-500 text-xs mt-1"
+    ></p>
 </div>
