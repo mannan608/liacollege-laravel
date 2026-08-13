@@ -343,7 +343,7 @@ class EligibilityController extends Controller
                 function ($message) {
 
                     $message
-                        ->to('mannan.hbdservices@gmail.com')
+                        ->to('enrol@liacollege.edu.au')
                         ->subject(
                             'New Eligibility Submission - Lia College'
                         );
