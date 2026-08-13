@@ -61,14 +61,14 @@
                                     d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                             </svg>
                         </button>
-                        <a href="{{ asset('brochure.pdf') }}" download
+                        {{-- <a href="{{ asset('brochure.pdf') }}" download
                             class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-slate-300 bg-white px-8 py-4 text-base text-slate-700 transition-all duration-200 hover:border-brand-500 hover:bg-slate-50 hover:text-brand-500 sm:text-lg">
                             Download Brochure
                             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                             </svg>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
 
@@ -1378,3 +1378,37 @@
     @include('frontend.pages.common.cta')
     @include('frontend.pages.common.review')
 @endsection
+
+{{-- Global Success Modal --}}
+@if (session('success'))
+    <div x-data="{ showModal: true }" x-show="showModal" x-transition.opacity
+        class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4" style="display: none;"
+        @keydown.escape.window="showModal = false">
+        <div x-show="showModal" x-transition @click.outside="showModal = false"
+            class="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl">
+            {{-- Success Icon --}}
+            <div class="mb-4">
+                <svg class="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <h3 class="mb-2 text-xl font-bold text-gray-900">
+                Success!
+            </h3>
+
+            <p class="mb-6 text-gray-600">
+                {{ session('success') }}
+            </p>
+
+            <button type="button" @click="showModal = false"
+                class="rounded-lg bg-brand-600 px-6 py-2 text-white transition hover:bg-brand-700">
+                Close
+            </button>
+        </div>
+    </div>
+@endif
+
+@push('scripts')
+    <script src="{{ asset('lia/assets/js/scroll-reveal.js') }}"></script>
+@endpush

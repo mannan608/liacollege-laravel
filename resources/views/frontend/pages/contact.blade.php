@@ -92,9 +92,11 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-base sm:text-lg font-semibold text-neutral-900 mb-0.5 sm:mb-1">Admission Enquiry</h3>
+                            <h3 class="text-base sm:text-lg font-semibold text-neutral-900 mb-0.5 sm:mb-1">Admission Enquiry
+                            </h3>
                             <a href="tel:0479110567"
-                                class="text-xl sm:text-2xl font-bold text-neutral-900 hover:text-brand-600 transition-colors">0468 092 898</a>
+                                class="text-xl sm:text-2xl font-bold text-neutral-900 hover:text-brand-600 transition-colors">0468
+                                092 898</a>
                             <p class="text-xs sm:text-sm text-neutral-500 mt-1 sm:mt-2">Available during business hours</p>
                         </div>
                     </div>
@@ -139,29 +141,49 @@
             </div>
 
             <!-- Right: Form -->
-            <div class="lg:col-span-7">
+            <div class="lg:col-span-7 h-fit">
                 <div
-                    class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm border border-neutral-100 h-full">                  
+                    class="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-10 shadow-sm border border-neutral-100 h-full">
 
-                    <div class="bg-white rounded-2xl p-2">
+                    <div class="bg-white rounded-2xl p-2 max-h-fit">
                         <div class="px-6 pt-4 z-99999 relative">
                             <h2 class="font-headline-md text-headline-md text-slate-900 text-center">Send us a message</h2>
                             <p class="text-slate-500 font-body-md text-center">Fill out the form below and we'll get back to
                                 you within 24 hours.</p>
                         </div>
 
-                        <div class="-mt-10">
-                            <iframe src="https://api.leadconnectorhq.com/widget/form/1Ni72mn2z8UmAIoTePsS"
-                                style="width:100%;height:100%;border:none;border-radius:3px"
-                                id="inline-1Ni72mn2z8UmAIoTePsS" data-layout="{'id':'INLINE'}"
-                                data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated"
-                                data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value=""
-                                data-form-name="Website Homepage CTA Form" data-height="757"
-                                data-layout-iframe-id="inline-1Ni72mn2z8UmAIoTePsS" data-form-id="1Ni72mn2z8UmAIoTePsS"
-                                title="Website Homepage CTA Form">
-                            </iframe>
-                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-                        </div>
+                        <div id="consultation-form">
+                        <form class="space-y-5 mt-6" action="{{ route('contact.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="form_type" value="contact us">
+                            <div>
+                                <x-form.input-text name="name" label="Full Name" value=""
+                                    placeholder="Enter Full Name..." />
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <x-form.input-text name="email" label="Email" type="email" value=""
+                                        placeholder="Enter Email..." />
+                                </div>
+                                <div>
+                                    <x-form.input-text name="phone" label="Phone" value=""
+                                        placeholder="Enter Phone No..." />
+                                </div>
+                            </div>
+                            <div>
+                                <x-form.textarea-input name="message" label="Message" placeholder="Enter Message..."></x-form.textarea>
+                            </div>                           
+
+                            <button type="submit"
+                                class="w-full bg-brand-500 text-on-primary hover:bg-brand-500  py-3.5 rounded-2xl mt-4">
+                                Submit
+                            </button>
+                            
+                        </form>
+</div>
+
+
+
 
                     </div>
                 </div>
@@ -170,3 +192,56 @@
         </div>
     </main>
 @endsection
+@if ($errors->any())
+    <script>
+        window.addEventListener('load', () => {
+            document
+                .getElementById('consultation-form')
+                ?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+            const firstErrorField = document.querySelector(
+                '.is-invalid, [aria-invalid="true"], .border-red-500'
+            );
+
+            firstErrorField?.focus();
+        });
+    </script>
+@endif
+
+
+{{-- Global Success Modal --}}
+@if (session('success'))
+    <div x-data="{ showModal: true }" x-show="showModal" x-transition.opacity
+        class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4" style="display: none;"
+        @keydown.escape.window="showModal = false">
+        <div x-show="showModal" x-transition @click.outside="showModal = false"
+            class="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl">
+            {{-- Success Icon --}}
+            <div class="mb-4">
+                <svg class="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <h3 class="mb-2 text-xl font-bold text-gray-900">
+                Success!
+            </h3>
+
+            <p class="mb-6 text-gray-600">
+                {{ session('success') }}
+            </p>
+
+            <button type="button" @click="showModal = false"
+                class="rounded-lg bg-brand-600 px-6 py-2 text-white transition hover:bg-brand-700">
+                Close
+            </button>
+        </div>
+    </div>
+@endif
+
+@push('scripts')
+    <script src="{{ asset('lia/assets/js/scroll-reveal.js') }}"></script>
+@endpush
