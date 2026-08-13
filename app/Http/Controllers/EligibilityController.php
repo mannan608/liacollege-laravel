@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Mail;
 class EligibilityController extends Controller
 {
 
-      use CourseTrait, RouteDiscoveryTrait;
-         protected $courseService;
+    use CourseTrait, RouteDiscoveryTrait;
+    protected $courseService;
 
     /**
      * Inject the CourseService.
@@ -107,229 +107,328 @@ class EligibilityController extends Controller
 
 
 
-    public function saveStep(Request $request)
-    {
-        $step = (int) $request->input('step');
-
-        if (!in_array($step, [1, 2, 3])) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid form step.',
-            ], 422);
-        }
-
-        $rules = match ($step) {
-
-            1 => [
-                'name' => [
-                    'required',
-                    'string',
-                    'max:255',
-                ],
-
-                'email' => [
-                    'required',
-                    'email',
-                    'max:255',
-                ],
-
-                'phone' => [
-                    'required',
-                    'string',
-                    'max:30',
-                ],
-            ],
-
-            2 => [
-                'industry' => [
-                    'required',
-                    'string',
-                    'max:255',
-                ],
-
-                'qualification' => [
-                    'required',
-                    'string',
-                    'max:255',
-                ],
-
-                'experience_years' => [
-                    'required',
-                    'integer',
-                    'min:0',
-                    'max:100',
-                ],
-            ],
-
-            3 => [
-                'state' => [
-                    'required',
-                    'string',
-                    'max:255',
-                ],
-
-                'terms_accepted' => [
-                    'required',
-                    'accepted',
-                ],
-            ],
-        };
+   public function saveStep(Request $request)
+{
+    $step = (int) $request->input('step');
 
 
-    
+    /*
+    |--------------------------------------------------------------------------
+    | VALID STEP
+    |--------------------------------------------------------------------------
+    */
 
-        $validator = Validator::make(
-            $request->all(),
-            $rules
-        );
-
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Please correct the errors.',
-                'errors' => $validator->errors(),
-            ], 422);
-        }
-
-
-        $applicationId = $request->input('application_id');
-
-
-        if ($applicationId) {
-
-            $application = EligibilityApplication::find($applicationId);
-
-            if (!$application) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Eligibility application not found.',
-                ], 404);
-            }
-
-        } else {
-
-            /*
-             * First step creates the application.
-             */
-            $application = new EligibilityApplication();
-
-        }
-
-       if ($step === 1) {
-
-    Mail::raw(
-        "New Eligibility Submission\n\n" .
-
-        "Name: {$application->name}\n" .
-        "Phone: {$application->phone}\n" .
-        "Email: {$application->email}\n",
-
-        function ($message) {
-
-            $message
-                ->to('mannan.hbdservices@gmail.com')
-                ->subject(
-                    'New Eligibility Submission - Lia College'
-                );
-
-        }
-    );
-}
-
-
-
-        if ($step === 2) {
-
-            $application->industry =
-                $request->input('industry');
-
-            $application->qualification =
-                $request->input('qualification');
-
-            $application->experience_years =
-                $request->input('experience_years');
-
-        }
-
-        if ($step === 3) {
-
-            $application->state =
-                $request->input('state');
-
-            $application->terms_accepted =
-                $request->boolean('terms_accepted');
-
-        }
-
-
-  
-        $application->current_step = $step;
-
-
-        if ($step === 3) {
-
-            $application->status = 'submitted';
-
-        } else {
-
-            $application->status = 'draft';
-
-        }
-
-        $application->save();
+    if (!in_array($step, [1, 2, 3])) {
 
         return response()->json([
-            'success' => true,
+            'success' => false,
+            'message' => 'Invalid form step.',
+        ], 422);
 
-            'message' => $step === 3
-                ? 'Your eligibility application has been submitted successfully.'
-                : "Step {$step} saved successfully.",
-
-            'application_id' => $application->id,
-
-            'step' => $application->current_step,
-
-            'status' => $application->status,
-
-            'completed' => $application->status === 'submitted',
-        ]);
     }
 
-    // Admin Methods
- public function index(Request $request)
-{
-    $query = EligibilitySubmission::query();
 
-    $submissions = $query->latest()->paginate(15);
+    /*
+    |--------------------------------------------------------------------------
+    | VALIDATION
+    |--------------------------------------------------------------------------
+    */
 
-    $courses = $this->getCourses();
+    $rules = match ($step) {
 
-    // Course code => course title
-    $courseTitles = collect($courses)->keyBy('code');
+        1 => [
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
 
-    $submissions->getCollection()->transform(function ($submission) use ($courseTitles) {
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+            ],
 
-        // Qualification code => course title
-        $submission->qualification_name =
-            $courseTitles->get($submission->qualification)['title']
-            ?? $submission->qualification;
+            'phone' => [
+                'required',
+                'string',
+                'max:30',
+            ],
+        ],
 
-        // State code => state name
-        $submission->state_name =
-            EligibilitySubmission::STATES[$submission->state]
-            ?? $submission->state;
+        2 => [
+            'industry' => [
+                'required',
+                'string',
+                'max:255',
+            ],
 
-        return $submission;
-    });
+            'qualification' => [
+                'required',
+                'string',
+                'max:255',
+            ],
 
-    // return $submissions;
+            'experience_years' => [
+                'required',
+                'integer',
+                'min:0',
+                'max:100',
+            ],
+        ],
 
-    return view(
-        'backend.pages.contacts.eligibility.index',
-        compact('submissions')
+        3 => [
+            'state' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'terms_accepted' => [
+                'required',
+                'accepted',
+            ],
+        ],
+
+    };
+
+
+    $validator = Validator::make(
+        $request->all(),
+        $rules
     );
+
+
+    if ($validator->fails()) {
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Please correct the errors.',
+            'errors' => $validator->errors(),
+        ], 422);
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FIND / CREATE APPLICATION
+    |--------------------------------------------------------------------------
+    */
+
+    $applicationId = $request->input('application_id');
+
+
+    if ($applicationId) {
+
+        $application =
+            EligibilityApplication::find($applicationId);
+
+
+        if (!$application) {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Eligibility application not found.',
+            ], 404);
+
+        }
+
+    } else {
+
+        $application =
+            new EligibilityApplication();
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STEP 1
+    |--------------------------------------------------------------------------
+    */
+
+    if ($step === 1) {
+
+        $application->name =
+            $request->input('name');
+
+        $application->email =
+            $request->input('email');
+
+        $application->phone =
+            $request->input('phone');
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STEP 2
+    |--------------------------------------------------------------------------
+    */
+
+    if ($step === 2) {
+
+        $application->industry =
+            $request->input('industry');
+
+        $application->qualification =
+            $request->input('qualification');
+
+        $application->experience_years =
+            $request->input('experience_years');
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STEP 3
+    |--------------------------------------------------------------------------
+    */
+
+    if ($step === 3) {
+
+        $application->state =
+            $request->input('state');
+
+        $application->terms_accepted =
+            $request->boolean('terms_accepted');
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | STATUS
+    |--------------------------------------------------------------------------
+    */
+
+    $application->current_step = $step;
+
+    $application->status =
+        $step === 3
+            ? 'submitted'
+            : 'draft';
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SAVE FIRST
+    |--------------------------------------------------------------------------
+    */
+
+    $application->save();
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SEND EMAIL ONLY AFTER STEP 1
+    |--------------------------------------------------------------------------
+    |
+    | IMPORTANT:
+    | Mail failure should NOT stop the form from moving to Step 2.
+    |
+    */
+
+    if ($step === 1) {
+
+        try {
+
+            Mail::raw(
+                "New Eligibility Submission\n\n" .
+
+                "Name: {$application->name}\n" .
+                "Phone: {$application->phone}\n" .
+                "Email: {$application->email}\n",
+
+                function ($message) {
+
+                    $message
+                        ->to('mannan.hbdservices@gmail.com')
+                        ->subject(
+                            'New Eligibility Submission - Lia College'
+                        );
+
+                }
+            );
+
+        } catch (\Throwable $e) {
+
+            /*
+             * Log mail error but don't break AJAX response.
+             */
+
+            \Log::error(
+                'Eligibility Step 1 email failed: ' .
+                $e->getMessage()
+            );
+
+        }
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPONSE
+    |--------------------------------------------------------------------------
+    */
+
+    return response()->json([
+
+        'success' => true,
+
+        'message' => $step === 3
+            ? 'Your eligibility application has been submitted successfully.'
+            : null,
+
+        'application_id' =>
+            $application->id,
+
+        'step' =>
+            $application->current_step,
+
+        'status' =>
+            $application->status,
+
+        'completed' =>
+            $application->status === 'submitted',
+
+    ]);
 }
+
+    // Admin Methods
+    public function index(Request $request)
+    {
+        $query = EligibilitySubmission::query();
+
+        $submissions = $query->latest()->paginate(15);
+
+        $courses = $this->getCourses();
+
+        // Course code => course title
+        $courseTitles = collect($courses)->keyBy('code');
+
+        $submissions->getCollection()->transform(function ($submission) use ($courseTitles) {
+
+            // Qualification code => course title
+            $submission->qualification_name =
+                $courseTitles->get($submission->qualification)['title']
+                ?? $submission->qualification;
+
+            // State code => state name
+            $submission->state_name =
+                EligibilitySubmission::STATES[$submission->state]
+                ?? $submission->state;
+
+            return $submission;
+        });
+
+        // return $submissions;
+
+        return view(
+            'backend.pages.contacts.eligibility.index',
+            compact('submissions')
+        );
+    }
 
     public function show(EligibilitySubmission $submission)
     {
