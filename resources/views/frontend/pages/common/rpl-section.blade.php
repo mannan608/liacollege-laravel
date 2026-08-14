@@ -11,11 +11,11 @@
         <p class="mx-auto max-w-2xl text-lg text-slate-600">Already have skills or prior qualifications? You may be
             eligible for credit.</p>
     </div>
-    <div class="grid grid-cols-1">
+    
         <!-- RPL -->
         <div
             class="group relative cursor-pointer overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-violet-200 hover:shadow-xl hover:shadow-violet-500/10">
-            {{-- <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-violet-500 to-purple-500"></div> --}}
+            
             <a href="{{ route('rpl') }}">
             <div class="mb-6 flex  gap-4">
                 <div
@@ -31,16 +31,16 @@
             <p class="leading-relaxed text-slate-600">Assessment of relevant prior learning, skills, knowledge, and
                 experiences to meet qualification requirements or gain credit.</p>
             <div class="mt-6">
-                <a href="{{ route('rpl') }}"
+                <p
                     class="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 transition-colors hover:text-violet-800">
                     Learn more about RPL
                     <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none"
                         stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                </a>
+                </p>
             </div>
             </a>
         </div>
-    </div>
+   
 </div>

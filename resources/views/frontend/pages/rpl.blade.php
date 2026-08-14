@@ -31,8 +31,8 @@
                             Turn years of hard-earned skills into a nationally recognised qualification. Don't let your
                             experience go unrecognised — fast-track your career today.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button
+                       
+                            {{-- <button
                                 class="group bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl text-base font-semibold transition-all duration-200 border border-white/30 flex items-center justify-center gap-2 hover:-translate-y-0.5">
                                 Download RPL Guide
                                 <svg class="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none"
@@ -40,8 +40,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                            </button>
-                        </div>
+                            </button> --}}
                     </div>
                     <div class="p-8 rounded-[20px] relative overflow-hidden bg-white">
                         <div

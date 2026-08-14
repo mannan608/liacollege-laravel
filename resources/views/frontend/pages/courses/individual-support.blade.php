@@ -1161,7 +1161,7 @@
                 </div>
                 <div class="bg-white p-10 rounded-2xl">
                     <div class="flex flex-col items-center justify-center mb-8 ">
-                        <h5 class="text-3xl font-extrabold text-brand-500 sm:text-4xl lg:text-5xl">Request information</h5>
+                        <h5 class="text-xl font-extrabold text-brand-500 sm:text-2xl lg:text-3xl">Request information</h5>
                         <p class="text-base mt-2 text-brand-400"> Fill in your details and we'll get back to you as soon as
                             possible</p>
                     </div>
