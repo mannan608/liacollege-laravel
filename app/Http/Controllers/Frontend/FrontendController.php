@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\EligibilitySubmission;
 use App\Models\LMS\CourseSlot;
 use App\Models\LMS\Enrollment;
 use App\Models\Student;
 use App\Models\TrainingCenter;
 use App\Models\User;
+use App\Services\CourseService;
+use App\Traits\CourseTrait;
+use App\Traits\RouteDiscoveryTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -18,20 +22,61 @@ use Spatie\Permission\Models\Role;
 
 class FrontendController extends Controller
 {
+    use CourseTrait, RouteDiscoveryTrait;
 
-    public function index()
+    protected $courseService;
+
+    /**
+     * Inject the CourseService.
+     */
+    public function __construct(CourseService $courseService)
     {
-        return view('frontend.lia-collage.welcome');
+        $this->courseService = $courseService;
     }
+    public function landingPage()
+    {
+        $courses = $this->getCourses();
+       $coursesByIndustry = $this->groupCoursesByIndustry(
+        $courses->toArray()
+    );
+
+        $industries = EligibilitySubmission::INDUSTRIES;
+        $states     = EligibilitySubmission::STATES;    
+
+        return view('frontend.pages.home', compact('courses','states','industries','coursesByIndustry'));
+    }
+
+  
+
+ private function groupCoursesByIndustry(array $courses): array
+{
+    $grouped = [];
+
+    foreach ($courses as $course) {
+        $industry = trim($course['industry'] ?? 'Other');
+
+        $grouped[$industry][] = [
+            'code' => $course['code'],
+            'title' => $course['title'],
+        ];
+    }
+
+    return $grouped;
+}
+
+    // public function index()
+    // {
+    //     return view('frontend.lia-collage.welcome');
+    // }
 
     public function about()
     {
-        return view('frontend.lia-collage.about');
+        return view('frontend.pages.about');
     }
 
     public function contact()
     {
-        return view('frontend.lia-collage.contact');
+        return view('frontend.pages.contact');
     }
 
     public function faq()
@@ -89,7 +134,7 @@ class FrontendController extends Controller
     {
         return view('frontend.lia-collage.cardiopulmonary-resuscitation');
     }
- 
+
     public function leadershipManagement()
     {
         return view('frontend.lia-collage.leadership-management');
@@ -97,154 +142,6 @@ class FrontendController extends Controller
     public function projectManagement()
     {
         return view('frontend.lia-collage.project-management');
-    }
-
-
-
-
-    public function store(Request $request)
-    {
-        // return $request->all();
-        try {
-            // Validate the request data
-            $validatedData = $request->validate([
-                'student_type' => 'required|string',
-                'title' => 'nullable|string',
-                'nickname' => 'nullable|string',
-                'first_name' => 'required|string',
-                'middle_name' => 'nullable|string',
-                'family_name' => 'required|string',
-                'gender' => 'required|string',
-                'date_of_birth' => 'required|date',
-                'email' => 'required|email',
-                'birthplace_city' => 'nullable|string',
-                'country_of_birth' => 'nullable|string',
-                'nationality' => 'nullable|string',
-                'identification_no' => 'nullable|string',
-                'usi' => 'nullable|string',
-                'cd_building_name' => 'nullable|string',
-                'cd_flat_unit' => 'nullable|string',
-                'cd_street_number' => 'nullable|string',
-                'cd_street_name' => 'nullable|string',
-                'cd_city' => 'nullable|string',
-                'cd_state' => 'nullable|string',
-                'cd_postcode' => 'nullable|string',
-                'cd_country' => 'nullable|string',
-                'cd_primary_contact' => 'nullable|string',
-                'cd_alternate_contact' => 'nullable|string',
-                'cd_mobile_phone' => 'nullable|string',
-                'different_mailing' => 'sometimes|boolean',
-                'overseas_address' => 'sometimes|boolean',
-                'pa_building_name' => 'nullable|string',
-                'pa_flat_unit' => 'nullable|string',
-                'pa_street_number' => 'nullable|string',
-                'pa_street_name' => 'nullable|string',
-                'pa_city' => 'nullable|string',
-                'pa_state' => 'nullable|string',
-                'pa_postcode' => 'nullable|string',
-                'pa_country' => 'nullable|string',
-                'pa_primary_contact' => 'nullable|string',
-                'pa_alternate_contact' => 'nullable|string',
-                'pa_mobile_phone' => 'nullable|string',
-                'opa_building_name' => 'nullable|string',
-                'opa_flat_unit' => 'nullable|string',
-                'opa_street_number' => 'nullable|string',
-                'opa_street_name' => 'nullable|string',
-                'opa_city' => 'nullable|string',
-                'opa_state' => 'nullable|string',
-                'opa_postcode' => 'nullable|string',
-                'opa_country' => 'nullable|string',
-                'opa_primary_contact' => 'nullable|string',
-                'opa_alternate_contact' => 'nullable|string',
-                'opa_mobile_phone' => 'nullable|string',
-                'aboriginal' => 'nullable|string',
-                'english_main' => 'nullable|string',
-                'main_language' => 'nullable|string',
-                'english_instruction' => 'nullable|string',
-                'english_test' => 'nullable|string',
-                'english_test_type' => 'nullable|string',
-                'english_test_date' => 'nullable|date',
-                'listening_score' => 'nullable|string',
-                'reading_score' => 'nullable|string',
-                'writing_score' => 'nullable|string',
-                'speaking_score' => 'nullable|string',
-                'overall_score' => 'nullable|string',
-                'secondary_school_level' => 'nullable|string',
-                'still_attending' => 'nullable|string',
-                'secondary_school_type' => 'nullable|string',
-                'add_qualifications' => 'sometimes|boolean',
-                'edu_level' => 'nullable|string',
-                'edu_qual_name' => 'nullable|string',
-                'edu_school_name' => 'nullable|string',
-                'edu_state_country' => 'nullable|string',
-                'edu_year_completed' => 'nullable|string',
-                'employment_status' => 'nullable|string',
-                'add_employment'     => 'sometimes|boolean',
-                'employer_name' => 'nullable|string',
-                'occupation_title' => 'nullable|string',
-                'employment_from' => 'nullable|date',
-                'employment_to' => 'nullable|date',
-                'employment_duties' => 'nullable|string',
-                'disability' => 'nullable|string',
-                'impairment[]' => 'nullable',
-                'city_of_birth' => 'nullable|string',
-                'study_mode' => 'nullable|string',
-                'intake_year' => 'nullable|string',
-                'course_code' => 'nullable|string',
-                'study_type' => 'nullable|string',
-                'intake_date' => 'nullable|string',
-                'course_location' => 'nullable|string',
-                'study_reason' => 'nullable|string',
-                'declaration' => 'sometimes|boolean',
-                'education_history' => 'nullable|array',
-                'employment_history' => 'nullable|array',
-                'applied_courses' => 'nullable|array',
-                'current_course' => 'nullable|array',
-            ]);
-
-            $validatedData['add_employment']     = $request->boolean('add_employment');
-            $validatedData['add_qualifications'] = $request->boolean('add_qualifications');
-            $validatedData['declaration']        = $request->boolean('declaration');
-            $validatedData['different_mailing']  = $request->boolean('different_mailing');
-            $validatedData['overseas_address']   = $request->boolean('overseas_address');
-            $validatedData['created_at'] = now();
-            $validatedData['updated_at'] = now();
-
-            // Convert arrays to JSON for storage
-            if (isset($validatedData['education_history'])) {
-                $validatedData['education_history'] = json_encode($validatedData['education_history']);
-            }
-            if (isset($validatedData['employment_history'])) {
-                $validatedData['employment_history'] = json_encode($validatedData['employment_history']);
-            }
-            if (isset($validatedData['applied_courses'])) {
-                $validatedData['applied_courses'] = json_encode($validatedData['applied_courses']);
-            }
-            if (isset($validatedData['current_course'])) {
-                $validatedData['current_course'] = json_encode($validatedData['current_course']);
-            }
-
-            // Store in database
-            $application = DB::table('applications')->insert($validatedData);
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Application submitted successfully',
-                'data' => $request->all()
-            ], 201);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation failed',
-                'errors' => $e->errors()
-            ], 422);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'An error occurred',
-                'error' => $e->getMessage()
-            ], 500);
-        }
     }
 
     public function fast_track_qualifications()
@@ -317,76 +214,135 @@ class FrontendController extends Controller
         return response()->json($data);
     }
 
-
-    // public function documentDownload(Course $course)
-    // {
-    //     $filePath = public_path('uploads/courses/' . $course->course_material);
-
-    //     if (! file_exists($filePath)) {
-    //         abort(404, 'File not found');
-    //     }
-
-    //     return response()->download($filePath);
-    // }
-
-
-   public function firstAid(Request $request)
-{
-    $courses = Course::query()
-        ->whereHas('slots', function ($query) {
-            $query->where('status', 'active');
-        })
-        ->orderBy('name')
-        ->get();
-
-    // ALL training center cities
-    $locations = TrainingCenter::query()
-        ->select('city')
-        ->whereNotNull('city')
-        ->where('city', '!=', '')
-        ->distinct()
-        ->orderBy('city')
-        ->get();
-
-    $slots = collect();
-
-    if ($request->filled('course_id') && $request->filled('city')) {
-
-        $slots = CourseSlot::query()
-            ->with([
-                'course',
-                'trainingCenter',
-                'users.user',
-            ])
-            ->where('course_id', $request->course_id)
-            ->where('status', 'active')
-            ->whereDate('training_date', '>=', now())
-            ->when(
-                $request->city !== '__any__',
-                function ($query) use ($request) {
-                    $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
-                        $centerQuery->where('city', $request->city);
-                    });
-                }
-            )
-            ->orderBy('training_date')
-            ->get();
-    }
-  
-
-    return view(
-        'frontend.lia-collage.first-aid.index',
-        compact('courses', 'locations', 'slots')
-    );
-}
-
-   public function firstAidShow(string $slug)
+    public function firstAid(Request $request)
     {
-           $view = "frontend.lia-collage.first-aid.$slug";
+        $courses = Course::query()
+            ->with('includes')
+            ->whereHas('slots', function ($query) {
+                $query->where('status', 'active');
+            })
+            ->orderBy('name')
+            ->get();
 
-    abort_unless(View::exists($view), 404);
+        $locations = TrainingCenter::query()
+            ->select('city')
+            ->whereNotNull('city')
+            ->where('city', '!=', '')
+            ->distinct()
+            ->orderBy('city')
+            ->get();
 
-    return view($view);
+        $slots = collect();
+
+        if ($request->filled('course_id') && $request->filled('city')) {
+            $slots = CourseSlot::query()
+                ->with([
+                    'course',
+                    'trainingCenter',
+                    'users.user',
+                ])
+                ->where('course_id', $request->course_id)
+                ->where('status', 'active')
+                ->whereDate('training_date', '>=', now())
+                ->when(
+                    $request->city !== '__any__',
+                    function ($query) use ($request) {
+                        $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
+                            $centerQuery->where('city', $request->city);
+                        });
+                    }
+                )
+                ->orderBy('training_date')
+                ->get();
+        }
+
+        // Check if it's an AJAX request
+        if ($request->ajax()) {
+            // Return only the slots partial view
+            return view('frontend.pages.first-aid.slot-filter.course-slots', compact('slots'))->render();
+        }
+
+        // return $courses;
+
+        return view('frontend.pages.first-aid.index', compact('courses', 'locations', 'slots'));
     }
 
+
+    public function firstAidShow(Request $request, Course $course)
+    {
+        $course->load('includes');
+
+        $locations = TrainingCenter::query()
+            ->select('city')
+            ->whereNotNull('city')
+            ->where('city', '!=', '')
+            ->distinct()
+            ->orderBy('city')
+            ->get();
+
+        $slots = collect();
+
+        if ($request->filled('city')) {
+            $slots = CourseSlot::query()
+                ->with([
+                    'course',
+                    'trainingCenter',
+                    'users.user',
+                ])
+                ->where('course_id', $course->id)
+                ->where('status', 'active')
+                ->whereDate('training_date', '>=', now())
+                ->when(
+                    $request->city !== '__any__',
+                    function ($query) use ($request) {
+                        $query->whereHas('trainingCenter', function ($centerQuery) use ($request) {
+                            $centerQuery->where('city', $request->city);
+                        });
+                    }
+                )
+                ->orderBy('training_date')
+                ->get();
+        }
+
+        if ($request->ajax()) {
+            return view(
+                'frontend.pages.first-aid.slot-filter.course-slots',
+                compact('slots')
+            )->render();
+        }
+
+        // return $course;
+
+        return view(
+            'frontend.pages.first-aid.show',
+            compact('course', 'locations', 'slots')
+        );
+    }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.pages.privacy-policy');
+    }
+
+    public function refundPolicy()
+    {
+        return view('frontend.pages.cancel-policy');
+    }
+
+    public function paymentPolicy()
+    {
+        return view('frontend.pages.payment-policy');
+    }
+
+    public function rpl()
+    {
+            $courses = $this->getCourses();
+       $coursesByIndustry = $this->groupCoursesByIndustry(
+        $courses->toArray()
+    );
+
+        $industries = EligibilitySubmission::INDUSTRIES;
+        $states     = EligibilitySubmission::STATES;  
+        return view('frontend.pages.rpl', compact('courses','industries','states','coursesByIndustry'));
+    }
 }

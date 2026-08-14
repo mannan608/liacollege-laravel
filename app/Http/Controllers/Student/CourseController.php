@@ -128,7 +128,7 @@ public function viewlearningDocument(Document $document)
             abort(403);
         }
 
-        $view = "frontend.pages.student.private-pages.$slug";
+        $view = "frontend.pages.private-pages.$slug";
 
         abort_unless(view()->exists($view), 404);
 

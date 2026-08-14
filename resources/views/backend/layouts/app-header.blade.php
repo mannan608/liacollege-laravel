@@ -49,9 +49,9 @@
             </button>
 
             <!-- Logo (mobile only) -->
-            <a href="/" class="xl:hidden">
-                <img class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" />
-                <img class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" />
+            <a href="/" class="xl:hidden w-14">
+                <img class="dark:hidden" src="/images/logo.png" alt="Logo" />
+                <img class="hidden dark:block" src="/images/logo.png" alt="Logo" />
             </a>
 
             <!-- Application Menu Toggle (mobile only) -->

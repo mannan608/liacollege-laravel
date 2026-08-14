@@ -10,13 +10,13 @@ class Contacts extends Model
         'name',
         'email',
         'phone',
+        'address',
+        'state',
+        'post_code',
         'message',
         'course_id',
-    ];  
-    
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
+        'form_type',
+    ];     
+ 
 }
 

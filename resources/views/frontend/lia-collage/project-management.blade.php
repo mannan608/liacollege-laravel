@@ -107,7 +107,7 @@
 
                 <h2 class="dlm-section-title">Course Overview</h2>
                 <p class="dlm-section-desc">The Diploma of Project Management (BSB50820) reflects the role of individuals who apply specialised project management knowledge, skills and leadership capability to deliver projects within organisational frameworks. Project managers at this level are responsible for managing project scope, time, cost, quality, risk and stakeholder relationships, while ensuring project objectives are achieved.</p>
-                <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
+                <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Throughout this qualification, you will develop the capability to:</h5>
                 <div class="dlm-jobs-strip">
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Initiate and define project scope and objectives</div>
                     <div class="dlm-job-tag"><span class="tag-dot"></span>Develop detailed project management plans</div>
@@ -149,7 +149,7 @@
                     <h2 class="dlm-section-title">Outcomes</h2>
                     <p class="dlm-section-desc">On successful completion, you will receive a nationally recognised <strong>BSB50820 Diploma of Project Management</strong> — demonstrating your ability to plan, execute, monitor and deliver projects while managing teams, resources and organisational expectations.</p>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
+                    <h5 style="font-weight:700;margin-top:36px;margin-bottom:12px;">Possible
                         Job Outcomes After Graduating</h5>
                     <div class="dlm-audience-grid">
                         <div class="dlm-audience-chip"><span class="chip-icon">📋</span> Project Manager</div>
@@ -161,7 +161,7 @@
                         <div class="dlm-audience-chip"><span class="chip-icon">🏢</span> Business Project Manager</div>
                     </div>
 
-                    <h5 style="font-family:var(--font-display);font-weight:700;margin-top:28px;margin-bottom:12px;">
+                    <h5 style="font-weight:700;margin-top:28px;margin-bottom:12px;">
                         Industries That Value This Qualification</h5>
                     <div class="dlm-industries">
                         <span class="dlm-industry-tag">🏗️ Construction</span>

@@ -91,8 +91,12 @@ class TrainingCenterController extends Controller
             ]);
 
             DB::commit();
-            return redirect(role_route('role.training-centers.index'))
-                ->with('success', 'Training center created successfully.');
+    
+            return redirect()
+            ->route('role.training-centers.index', [
+                'role' => $request->route('role')
+            ])
+            ->with('success', 'Training center created successfully.');
         } catch (Throwable $e) {
             DB::rollBack();
 

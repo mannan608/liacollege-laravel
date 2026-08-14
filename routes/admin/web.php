@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\TrainingCenterController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\LMS\CourseEnrollmentController;
+use App\Http\Controllers\EligibilityController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +79,9 @@ Route::prefix('{role}')
 
 
         Route::resource('contacts', ContactController::class);
+
+        Route::resource('eligibility', EligibilityController::class);
+
         Route::resource('subscribers', SubscriberController::class);
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');

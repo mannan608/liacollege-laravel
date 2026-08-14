@@ -98,6 +98,10 @@ class RolePermissionSeeder extends Seeder
             'contact.list',
             'contact.view',
             'contact.delete',
+             //eligibility
+            'eligibility.list',
+            'eligibility.view',
+            'eligibility.delete',
 
             //subscriber
             'subscriber.list',

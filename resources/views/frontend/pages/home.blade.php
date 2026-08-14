@@ -1,177 +1,183 @@
 @extends('frontend.layouts.app')
 
+@section('title', 'Lia College | Home')
+
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('lia/assets/css/custom.css') }}">
+@endpush
+
 @section('content')
-    {{-- background-image: linear-gradient(45deg, #182f59, #00c8f3); --}}
-    <section class="bg-secondary-500 -mt-22 pt-22 ">
-        <x-frontend.hero />
-    </section>
-    <section class="bg-white dark:bg-gray-900 py-8 md:py-12 lg:py-14">
-        <x-frontend.about />
-    </section>
-    <section class=" py-8 md:py-12 lg:py-14">
-        <div class="max-w-7xl mx-auto px-5 lg:px-8">
-            <div class="">
-                <div class="flex flex-col items-center justify-center">
-                    <div class="h-1.5 w-14 bg-brand-500 rounded-full mb-3"></div>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">Our Courses</h1>
-                    <p class="text-sm lg:text-base text-gray-600 text-center mt-3">We offer a range of industry-relevant
-                        courses which includes Advanced Diploma of Information Technology, Advanced Diploma of Leadership
-                        and Management, Diploma of Information Technology, Diploma of Leadership and Management, and
-                        Graduate Diploma of Management(Learning).</p>
+    <section
+        class="relative pt-12 sm:pt-16 pb-24 md:pb-24 md:pt-24 lg:pb-32 flex items-center justify-center min-h-170 overflow-hidden bg-surface-container-low">
+        <div
+            class="absolute inset-0 z-0 bg-gradient-to-br from-surface-container-low via-white to-primary/5 bg-[length:200%_200%] animate-gradient-flow">
+            <img alt="Students throwing graduation caps in the air in a modern auditorium"
+                class="w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
+                src="{{ asset('lia/home-hero-bg.jpg') }}">
+            <div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent"></div>
+        </div>
+        <div
+            class="relative z-10 w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+            <!-- Left Content -->
+            <div class="lg:col-span-6 space-y-8">
+                <div
+                    class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-outline-variant/50 soft-shadow text-sm md:text-base">
+                    <div class="flex text-amber-400">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+                    </div>
+                    <span class="font-body-md text-body-md font-semibold text-on-surface">4.9/5 Student Rating</span>
                 </div>
-                <div class=" mt-8 md:mt-12">
-                    <x-frontend.courses :courses="$courses" />
-                </div>
-                <div class="flex items-center justify-center mt-6 md:mt-8 lg:mt-10">
-                    <a href="{{ route('courses') }}"
-                        class="inline-flex items-center justify-center bg-brand-600 text-white  px-5 py-3 lg:px-6 lg:py-3  rounded-lg
-                        hover:bg-brand-500
-                        transition duration-300">
-                        VIEW ALL COURSES
-                    </a>
+                <h1
+                    class="font-bold text-4xl sm:text-5xl md:text-[56px] text-on-surface leading-tight text-center md:text-start">
+                    Leadership Institute <span class="text-secondary-500">Australia</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl text-center md:text-start">
+                    Leadership Institute Australia is a nationally recognized training organization dedicated to delivering
+                    high-quality vocational education across community services, aged care, individual support, leadership,
+                    and project management.
+                </p>
+                <ul
+                    class="space-y-3 font-body-md text-body-md text-on-surface-variant flex flex-col items-center justify-center md:justify-start md:items-start">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary animate-float"
+                            style="font-variation-settings: 'FILL' 1; animation-delay: 0s;">check_circle</span>
+                        Accredited Programs Worldwide
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary animate-float"
+                            style="font-variation-settings: 'FILL' 1; animation-delay: 0.5s;">check_circle</span>
+                        Flexible Learning Options
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary animate-float"
+                            style="font-variation-settings: 'FILL' 1; animation-delay: 1s;">check_circle</span>
+                        Dedicated Career Support
+                    </li>
+                </ul>
+            </div>
+            <!-- Right Form -->
+            <div class="lg:col-span-5 lg:col-start-8 mt-12 lg:mt-0">
+                <div class="glass-panel p-8 rounded-[20px] soft-shadow relative overflow-hidden">
+                    <div
+                        class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl pointer-events-none">
+                    </div>
+                    <h3 class="font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-on-surface mb-6">Start Your
+                        Journey</h3>
+
+                    @include('frontend.pages.common.contact-form', ['courses' => $courses])
+
+
                 </div>
             </div>
-
         </div>
     </section>
+    <!-- Partners Section -->
+    <section class="py-12 bg-surface border-y border-outline-variant/20 reveal-on-scroll">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-8">Trusted by
+                Accredited By</p>
+            <div class="flex flex-wrap justify-center items-center gap-12  transition-all duration-500">
+                <img class="h-16 object-contain"
+                    data-alt="clean geometric logo of a professional education authority in black and white"
+                    src="{{ asset('patner_1.png') }}" alt="patner image">
 
-    <section class="relative text-white mt-6 md:mt-10 lg:mt-16"
-        style="
-        background-image: url('{{ asset('penta-img/educator-img12.jpg') }}');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    ">
-
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-black/75"></div>
-        <!-- Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                <!-- Left Content -->
-                <div class="flex-1 py-12 lg:py-16">
-                    <div class="w-14 h-1.5 bg-brand-500 rounded-full mb-5"></div>
-                    <h1
-                        class="font-bold leading-tight tracking-tight
-                    text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                        Limitless Learning,
-                        <br class="hidden sm:block">
-                        Limitless Possibilities!
-                    </h1>
-
-                    <p class="mt-3 lg:mt-4 text-gray-200
-                    text-sm sm:text-base leading-relaxed">
-                        Lia College has educational programs that develop you for
-                        the real workforce. Our activities are designed to ensure that
-                        you can effectively transfer your skills and knowledge into
-                        workplace practice.
-                    </p>
-
-                    <!-- Features -->
-                    <div class="mt-3 lg:mt-4 space-y-2">
-
-                        <div class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#08C994" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-                            <p class="text-sm sm:text-base text-gray-100">
-                                Engaging and Modern classroom environment
-                            </p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#08C994" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-                            <p class="text-sm sm:text-base text-gray-100">
-                                Supportive community environment
-                            </p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#08C994" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-                            <p class="text-sm sm:text-base text-gray-100">
-                                Diverse backgrounds and inclusive culture
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="mt-10">
-                        <a href="#"
-                            class="inline-flex items-center justify-center
-                        bg-brand-600 text-white
-                        px-5 py-3 lg:px-6 lg:py-3
-                        rounded-lg
-                        hover:bg-brand-500
-                        transition duration-300">
-
-                            JOIN US NOW
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Right Fixed Width -->
-                <div class="w-full hidden md:block lg:w-151 -my-8 lg:shrink-0">
-
-                    <div class="bg-white rounded-[300px]  overflow-hidden ">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div
-                                class="aspect-square overflow-hidden flex items-center text-black py-6 pr-4 pl-16 font-medium text-right ">
-                                <h6 class="text-base md:text-lg">We aspire to set the standard as a leading training
-                                    provider.</h6>
+                <img class="h-16 object-contain" data-alt="sleek corporate mark for a global vocational training federation"
+                    src="{{ asset('patner_2.png') }}" alt="patner image">
+            </div>
+        </div>
+    </section>
+    <!-- Qualifications Grid -->
+    <section class="py-24 md:py-32 bg-surface-container-lowest reveal-on-scroll">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="text-center  mb-16">
+                <h2 class="lg:text-6xl font-headline-lg md:text-5xl sm:text-4xl text-3xl font-bold text-on-surface mb-4">
+                    Explore Our Qualifications</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Discover programs designed to equip
+                    you with the skills demanded by today's leading employers.</p>
+            </div>
+            <div class=" mt-8 md:mt-12">
+                <x-frontend.courses :courses="$courses" />
+            </div>
+        </div>
+    </section>
+    <!-- Eligibility Section -->
+    <section class="py-24 md:py-32 bg-surface-container-low overflow-hidden relative reveal-on-scroll">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto ">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Left Image -->
+                <div class="relative rounded-[24px] overflow-hidden soft-shadow">
+                    <img alt="Advisor speaking with a smiling student in a modern office setting"
+                        class="w-full h-auto object-cover" src="{{ asset('lia/eligibility.webp') }}">
+                    <!-- overlay gradient for depth -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="bg-white/90 backdrop-blur-md p-4 rounded-[12px] flex items-center gap-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-secondary"
+                                    style="font-variation-settings: 'FILL' 1;">support_agent</span>
                             </div>
-                            <div class="aspect-square overflow-hidden ">
-                                <img src="{{ asset('penta-img/educator-img27.jpg') }}" alt=""
-                                    class="w-full h-full object-cover">
+                            <div>
+                                <p class="font-headline-md text-sm text-on-surface">Need Guidance?</p>
+                                <p class="font-body-md text-xs text-on-surface-variant">Speak with our academic
+                                    advisors today.</p>
                             </div>
-                            <div class="aspect-square overflow-hidden ">
-                                <img src="{{ asset('penta-img/educator-img28.jpg') }}" alt=""
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="aspect-square overflow-hidden flex items-center text-black py-6 pr-16 pl-4 font-medium">
-                                <h6 class="text-base md:text-lg">Our mission is to make high-quality education accessible
-                                    for all students.</h6>
-                            </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section class=" pt-10 md:pt-16 lg:pt-22 pb-10 lg:pb-16 bg-white">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center justify-center">
-                <div class="h-1.5 w-14 bg-brand-500 rounded-full mb-3"></div>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">Let's Know More About
-                    Lia College</h1>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6 md:mt-10">
-
-                <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
-                    <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
-                        Unlocking the Doors to Success at Lia College</h5>
-                    <p class="text-body text-sm md:text-base">Section 1: A World of Opportunities Welcome to lia
-                        College.</p>
+                <!-- Right Quiz -->
+                <div class="bg-white rounded-2xl p-10">
+                    <h2
+                        class="lg:text-4xl font-headline-lg md:text-3xl sm:text-2xl text-xl font-bold text-on-surface mb-4">
+                        Check Your Eligibility</h2>
+                    <p class="text-sm md:text-base text-on-surface-variant mb-10">Find out which programs you
+                        qualify for in less than 2 minutes. Our quick assessment helps tailor your educational path.</p>
+                    @include('frontend.pages.common.step-form.eligibility-form')
                 </div>
-                <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
-                    <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
-                        5 Reasons to Choose Lia College for an Exciting Career in Business
-                    </h5>
-                    <p class="text-body text-sm md:text-base">SIntroduction Welcome to Lia College, the leading
-                        institution for aspiring.</p>
-                </div>
-                <div class="bg-white block  p-6 border rounded-2xl shadow-xs">
-                    <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
-                        Unlocking Your Potential at Lia College</h5>
-                    <p class="text-body text-sm md:text-base">Discovering Your True Potential At Lia College, we
-                        believe that.</p>
-                </div>
-
             </div>
         </div>
     </section>
-    <section class="">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <x-frontend.cta />
-        </div>
-    </section>
+
+    @include('frontend.pages.common.cta')
+    @include('frontend.pages.common.review')
+
+
 @endsection
+
+{{-- Global Success Modal --}}
+@if (session('success'))
+    <div x-data="{ showModal: true }" x-show="showModal" x-transition.opacity
+        class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4" style="display: none;"
+        @keydown.escape.window="showModal = false">
+        <div x-show="showModal" x-transition @click.outside="showModal = false"
+            class="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl">
+            {{-- Success Icon --}}
+            <div class="mb-4">
+                <svg class="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <h3 class="mb-2 text-xl font-bold text-gray-900">
+                Success!
+            </h3>
+
+            <p class="mb-6 text-gray-600">
+                {{ session('success') }}
+            </p>
+
+            <button type="button" @click="showModal = false"
+                class="rounded-lg bg-brand-600 px-6 py-2 text-white transition hover:bg-brand-700">
+                Close
+            </button>
+        </div>
+    </div>
+@endif
+
+@push('scripts')
+    <script src="{{ asset('lia/assets/js/scroll-reveal.js') }}"></script>
+@endpush

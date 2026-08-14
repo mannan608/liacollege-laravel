@@ -115,7 +115,7 @@
                 <x-backend.header.notification-dropdown />
                 
             </div>
-            @include("frontend.pages.student.layouts.user-dropdown")
+            @include("student.layouts.user-dropdown")
         </div>
     </div>
 </header>

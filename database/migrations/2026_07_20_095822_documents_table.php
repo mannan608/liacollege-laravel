@@ -20,7 +20,12 @@ return new class extends Migration
             // Document information
             $table->string('name');
             $table->string('document_type')->nullable();
-             $table->foreignId('course_id')->nullable()->after('documentable_id')->constrained()->nullOnDelete();
+
+            $table->foreignId('course_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+
             $table->string('file');
             $table->string('extension')->nullable();
             $table->unsignedBigInteger('size')->nullable();

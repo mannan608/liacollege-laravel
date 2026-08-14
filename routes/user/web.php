@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Student\AssignmentController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\EligibilityController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\QualificationController;
 use App\Http\Controllers\Student\CourseController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Student\CourseEnrollmentController;
@@ -18,9 +21,17 @@ use App\Http\Controllers\Student\StudentDocumentController;
 use App\SEO\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
-// Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
-// Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
+Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
+Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
+Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
+Route::get('/qualifications', [QualificationController::class, 'courses'])
+    ->name('qualifications');
+
+Route::get('/qualifications/{slug}', [QualificationController::class, 'courseDetails'])
+    ->name('qualifications.details');
+    Route::post('/apply', [QualificationController::class, 'apply'])->name('qualifications.apply');
+
+
 // Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
 // Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
 // Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
@@ -44,8 +55,8 @@ Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
 // Route::get('/events/{slug}', [EventController::class, 'show'])
 //     ->name('event-details');
-// Route::post('/inquiry-us', [ContactController::class, 'store'])
-//     ->name('contact.store');
+Route::post('/inquiry-us', [ContactController::class, 'store'])
+    ->name('contact.store');
 
 // Route::post('/subscribe', [SubscriberController::class, 'store'])
 //     ->name('subscribe.store');
@@ -58,16 +69,18 @@ Route::get('/signup', function () {
 
 
 // Home
-Route::get('/', [FrontendController::class, 'index'])->name('home');
+// Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 // About & Static Pages
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
+Route::get('/rpl', [FrontendController::class, 'rpl'])->name('rpl');
 
 // Policies
-Route::get('/policy-and-procedure', [FrontendController::class, 'policyAndProcedure'])
-    ->name('policyAndProcedure');
+Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('refund-policy');
+Route::get('/payment-policy', [FrontendController::class, 'paymentPolicy'])->name('payment-policy');
 
 Route::get('/complaints-and-appeals-policy', [FrontendController::class, 'complaintsAndAppealsPolicy'])
     ->name('complaintsAndAppealsPolicy');
@@ -128,15 +141,19 @@ Route::get('/fast-track-qualifications', [FrontendController::class, 'fast_track
 
 // enroll course
 Route::get('/first-aid', [FrontendController::class, 'firstAid'])
-    ->name('firstAid');
+    ->name('first-aid');
 
 Route::get('/first-aid/{course:slug}', [FrontendController::class, 'firstAidShow'])
-    ->name('courses.show');
+    ->name('first-aid.show');
 
 Route::view(
     '/first-aid/how-often-renew-first-aid-certificate',
     'frontend.lia-collage.first-aid.cpr-guides.how-often-renew-first-aid-certificate'
 )->name('first-aid.renew');
+
+
+Route::post('/eligibility/step/save',[EligibilityController::class, 'saveStep']
+)->name('eligibility.step.save');
 
 // Route::get(
 //     '/first-aid/{course}/{slot}/course-enrollment',
@@ -167,22 +184,15 @@ Route::post(
     [CourseEnrollmentController::class, 'checkout']
 )->name('course-enrollment.checkout');
 
+// eligibility route
+// Route::get('/check-eligibility', [EligibilityController::class, 'checkEligibility'])->name('eligibility.check');
 
-// New design ui route
-// Route::get('/', [FrontendController::class, 'landingPage'])->name('landing-page');
-// Route::get('/', [FrontendController::class, 'landingPage'])->name('home');
-// Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
-// Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
-// Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
-// Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
-// Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
-// Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
-// Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
-//     ->name('enroll-course');
+Route::post('/eligibility/step1', [EligibilityController::class, 'step1'])
+    ->name('eligibility.step1.post');
 
-// Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
-//     ->name('course.enroll');
-// New design ui route
+Route::post('/eligibility/step2', [EligibilityController::class, 'step2'])
+    ->name('eligibility.step2.post');
+
 
 
 Route::prefix('student')
