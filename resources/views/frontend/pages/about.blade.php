@@ -4,7 +4,7 @@
  <!-- BREADCRUMB / HERO AREA -->
 <section class="relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-brand-900">
     <div class="absolute inset-0">
-        <img src="https://liacollege.edu.au/frontend/images/banner/breadcrumb.jpg" alt="" class="h-full w-full object-cover opacity-30">
+        <img src="{{ asset('frontend/images/banner/breadcrumb.jpg') }}" alt="" class="h-full w-full object-cover opacity-30">
         <div class="absolute inset-0 bg-gradient-to-b from-brand-900/80 via-brand-900/60 to-brand-900"></div>
     </div>
     <div class="pointer-events-none absolute inset-0">
@@ -91,7 +91,7 @@
             <div class="relative">
                 <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-200 to-emerald-200 opacity-50 blur-xl"></div>
                 <div class="absolute inset-0 tranbrand-x-4 tranbrand-y-4 rounded-[1.5rem] bg-brand-100"></div>
-                <img src="https://liacollege.edu.au/frontend/images/banner/embark.png" alt="Quality Training" class="relative rounded-[1.5rem] w-full h-auto object-cover shadow-2xl">
+                <img src="{{ asset('frontend/images/banner/embark.png') }}" alt="Quality Training" class="relative rounded-[1.5rem] w-full h-auto object-cover shadow-2xl">
             </div>
             <div class="space-y-6">
                 <p class="text-sm font-semibold uppercase tracking-widest text-brand-600">Our Story</p>

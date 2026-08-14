@@ -4,18 +4,6 @@
     <div class="min-h-screen bg-slate-50 py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-5xl mx-auto">
 
-            <!-- Back Button -->
-            <div class="mb-6 sm:mb-8">
-                <a href="{{ route('student.dashboard') }}"
-                    class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-500/90 text-white font-semibold px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg transition-colors duration-200 shadow-sm text-sm sm:text-base">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Back to Dashboard
-                </a>
-            </div>
-
             <!-- Main Document Card -->
             <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
                 <div class="p-6 sm:p-10 lg:p-14">

@@ -40,14 +40,14 @@
 
                       <div class="grid grid-cols-2 gap-6 sm:grid-cols-2 w-full md:w-[75%]">
                         <div
-                            class="group flex items-center justify-center rounded-2xl  bg-white transition-all duration-300 ">
-                            <img src="https://liacollege.edu.au/frontend/images/brand/11.png" alt="Brand 1"
-                                class="h-32 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                            class="group flex items-center justify-center rounded-2xl p-6  bg-white transition-all duration-300 ">
+                            <img src="{{ asset('lia/11.webp') }}" alt="Brand 1"
+                                class="h-24 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                         </div>
                         <div
-                            class="group flex items-center justify-center rounded-2xl  bg-white  transition-all duration-300 ">
-                            <img src="https://liacollege.edu.au/frontend/images/brand/2.png" alt="Brand 2"
-                                class="h-32 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
+                            class="group flex items-center justify-center rounded-2xl p-6 bg-white  transition-all duration-300 ">
+                            <img src="{{ asset('lia/2.webp') }}" alt="Brand 2"
+                                class="h-24 w-auto object-contain  transition-all duration-300  group-hover:grayscale-0">
                         </div>
                     </div>
 

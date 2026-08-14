@@ -160,7 +160,7 @@ class MenuHelper
                 'icon' => 'chat',
                 'subItems' => [
                     [
-                        'name' => 'Messages',
+                        'name' => 'Contacts',
                         'route' => 'role.contacts.index',
                         'permission' => 'contact.list',
                     ],
